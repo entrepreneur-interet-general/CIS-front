@@ -7,6 +7,8 @@ import colorlog
 from colorlog import ColoredFormatter
 
 
+# cf : https://stackoverflow.com/questions/17668633/what-is-the-point-of-setlevel-in-a-python-logging-handler
+
 ### create a formatter for future logger
 formatter = ColoredFormatter(
 	"%(log_color)s%(levelname)1.1s ::: %(name)s %(asctime)s ::: %(module)s:%(lineno)d -in- %(funcName)s() ::: %(reset)s %(white)s%(message)s",
