@@ -1,6 +1,4 @@
 
-print "backend / config_vars_keep_secret.py / read "
-
 """
 main config file --> to keep secret 
 stores main secret keys and app passwords
@@ -13,9 +11,9 @@ WTF_CSRF_SECRET_KEY = "a_super_wtf_secret_key"
 
 """ HOST """
 DOMAIN_ROOT			= "127.0.0.1" 
-DOMAIN_PORT			= "6000"
-SERVER_NAME			= "127.0.0.1:6000"  ### if True need to set SESSION_COOKIE_DOMAIN
-DOMAIN_NAME			= "http://127.0.0.1:6000"
+DOMAIN_PORT			= "8100"
+SERVER_NAME			= "127.0.0.1:8100"  ### if True need to set SESSION_COOKIE_DOMAIN
+DOMAIN_NAME			= "http://127.0.0.1:8100"
 SERVER_NAME_TEST	= "True" 
 
 

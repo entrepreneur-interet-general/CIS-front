@@ -1,12 +1,20 @@
 # Created by https://www.gitignore.io/api/osx,python,komodoedit
 
-### CONFIG FILES
-*/config_secret_vars_prod.py 
-*/config.cfg
 
+
+### CONFIG FILES
+cis/app/backend/config_secret_vars_prod.py 
+cis/app/backend/config.cfg
+
+### LOG FILES
+cis/app/logs/
 
 ### DROPBOX FILES
 *.dropbox
+
+
+
+
 
 ### BOWER
 bower_components

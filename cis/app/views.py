@@ -32,10 +32,10 @@ def token_required(f):
 
 	
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/landing')
+@app.route('/')
 def index():
 
-	time_now     = datetime.datetime.utcnow()
+	time_now	= datetime.datetime.utcnow()
 
 	### FORMS FROM WTF
 
@@ -49,6 +49,8 @@ def index():
 		current_session_uid = None
 		
 
+	return render_template( "index.html",
 
-		
-	return "This is the future landing for the Carrefour"
+							title = "carrefour des innovations sociales"
+
+							)

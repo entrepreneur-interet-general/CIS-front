@@ -1,9 +1,12 @@
 
 import os
 
-print
+from .. import log_cis, pformat
+
 config_name = os.getenv('FLASK_CONFIGURATION', 'default') ### 'default' for local dev
-print "$ config_class.py / config_name : ", config_name 
+
+print
+log_cis.info("$ config_name : %s", config_name)  
 
 correction_env_path = {
 	"development"   : "",
@@ -17,12 +20,15 @@ repath_env_vars = correction_env_path[config_name]
 ### set environment default variables from gitignored config_mail_recaptcha.py
 try :
 	
-	# load secret env vars and keys
+	### load secret env vars and keys
+
 	if config_name == "default" : 
 		from .config_secret_vars_example import *
 	
 	elif config_name == "production" : 
 		from .config_secret_vars_prod import *
+
+	### load env vars
 
 	os.environ["SECRET_KEY"]			= SECRET_KEY
 	os.environ["WTF_CSRF_SECRET_KEY"]	= WTF_CSRF_SECRET_KEY
@@ -136,21 +142,25 @@ class TestingConfig(Config):
 	TESTING = True
 
 
-config = {
 
-	"development"	: "%sapp.backend.config_.DevelopmentConfig"    %(repath_env_vars),
-	"testing"		: "%sapp.backend.config_.TestingConfig"        %(repath_env_vars),
-	"production"	: "%sapp.backend.config_.ProductionConfig"     %(repath_env_vars),    	
-	"default"		: "app.backend.config_.DevelopmentConfig"      ### 'default' for local 
+### config dict to reroute to correct objects
+config = {
+	"development"	: "%sapp.backend.config_env.DevelopmentConfig"    %(repath_env_vars),
+	"testing"		: "%sapp.backend.config_env.TestingConfig"        %(repath_env_vars),
+	"production"	: "%sapp.backend.config_env.ProductionConfig"     %(repath_env_vars),    	
+	"default"		: "app.backend.config_env.DevelopmentConfig"      ### 'default' for local 
 }
 
 
+### main function to configure app
 def configure_app(app):
 	""" configure Flask app from object created above """
 
-	print "$ config_class.py / config[config_name] : ",  config[config_name] 
+	log_cis.info("$ config[config_name] : %s ",  config[config_name]  )
 
+	log_cis.info("$ creating app.config from object...")
 	app.config.from_object( config[config_name] )
-	print "$ app.config['RUNNING_ENV'] : ",   app.config["RUNNING_ENV"]
-	print "$ app.config['MONGO_DBNAME'] : ",  app.config["MONGO_DBNAME"]
+
+	log_cis.info("$ app.config['RUNNING_ENV']  : %s ", app.config["RUNNING_ENV"] )
+	log_cis.info("$ app.config['MONGO_DBNAME'] : %s ",  app.config["MONGO_DBNAME"] ) 
 	print

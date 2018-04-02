@@ -13,9 +13,9 @@ WTF_CSRF_SECRET_KEY = "fgqlkshgnxrdrgebvxwdxghsbdwfvsw<eq"
 
 """ HOST """
 DOMAIN_ROOT			= "XXX.XXX.XXX.X" ### your real prod IP here
-DOMAIN_PORT			= 8000
-SERVER_NAME			= "{}:{}".format(DOMAIN_ROOT, DOMAIN_PORT)  ### if True need to set SESSION_COOKIE_DOMAIN
-DOMAIN_NAME			= "http://{}".format(SERVER_NAME)
+DOMAIN_PORT			= "8000"
+SERVER_NAME			= "XXX.XXX.XXX.XXX:8000"  ### if True need to set SESSION_COOKIE_DOMAIN
+DOMAIN_NAME			= "http://XXX.XXX.XXX.XXX:8000"
 SERVER_NAME_TEST	= "False" 
 
 
