@@ -21,6 +21,8 @@ print "__init__ / global imports for functions"
 ### GLOBAL IMPORTS  #########################################################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
+import  os
+from    os import environ
 import	time, datetime
 from	datetime import timedelta
 import	json
@@ -50,12 +52,14 @@ log_cis.debug('TESTING LOGGER')
 
 from    flask import Flask, g
 from    flask import jsonify, flash, render_template, url_for, make_response, request, session, redirect
-import  os
-from    os import environ
+
 import  socket
 
-host_IP = socket.gethostbyname( socket.gethostname() )
-log_cis.info( "host IP : %s " , host_IP )
+try : 
+	host_IP = socket.gethostbyname( socket.gethostname() )
+	log_cis.info( "host IP : %s " , host_IP )
+except: 
+	log_cis.error("no IP host detected")
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###

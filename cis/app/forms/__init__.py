@@ -12,7 +12,7 @@ ALLOWED_IMAGES     = set([ 'png', 'jpg', 'jpeg', 'gif' ])
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### IMPORT SPECIFIC MODULES FOR _forms._init__.py
+### IMPORT SPECIFIC MODULES FOR forms._init__.py
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 #from flask_wtf import Form             ### flask_wtf instead of flask.ext.wtf
@@ -28,3 +28,7 @@ from wtforms.fields.core import SelectField, SelectMultipleField, RadioField, Da
 
 from wtforms.validators import DataRequired, Length, EqualTo, URL, Email, Optional, NumberRange
 
+
+
+### import forms
+from form_user import *

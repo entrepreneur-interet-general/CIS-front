@@ -21,7 +21,7 @@ def token_required(f):
 
 		try:
 			data = jwt.decode(token, app.config['SECRET_KEY'])
-			# current_user = User.query.filter_by(public_id=data['public_id']).first()
+			current_user = User.query.filter_by(public_id=data['public_id']).first()
 
 		except:
 			return jsonify({'message' : 'Token is invalid!'}), 401
@@ -31,7 +31,7 @@ def token_required(f):
 	return decorated
 
 	
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 @app.route('/')
 def index():
 

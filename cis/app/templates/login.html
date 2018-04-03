@@ -1,0 +1,62 @@
+
+
+{% block content %}
+
+{# from : https://dansup.github.io/bulma-templates/ #}
+
+<section class="hero is-success is-fullheight">
+	<div class="hero-body">
+		<div class="container has-text-centered">
+			
+			<div class="column is-6 is-offset-3">
+				
+				<h3 class="title has-text-grey">Login</h3>
+				<p class="subtitle has-text-grey">Please login to proceed.</p>
+				
+				<div class="box">
+
+					{# 
+					<figure class="avatar">
+						<img src="https://placehold.it/128x128">
+					</figure> 
+					#}
+				
+					<form>
+						<div class="field">
+							<div class="control">
+							<input class="input is-large" placeholder="votre email" autofocus="" type="email">
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+							<input class="input is-large" placeholder="votre mot de passe" type="password">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="checkbox">
+							<input type="checkbox">
+							se souvenir de moi
+							</label>
+						</div>
+
+						<button class="button is-block is-info is-large is-fullwidth">se connecter</button>
+
+					</form>
+				</div>
+
+				<p class="has-text-grey">
+					<a href="../">créer un compte</a> &nbsp;·&nbsp;
+					<a href="../">password oublié</a> &nbsp;·&nbsp;
+					<a href="../">aide</a>
+				</p>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+{% end content %}

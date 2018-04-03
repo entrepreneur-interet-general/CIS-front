@@ -22,10 +22,10 @@ app_metas = {
 		JS,javascript,python,flask,HTML,CSS,JSON,bulma
 		""",
 	"crisp_id"		: {
-		u"solidata" : "TO DO", 
+		u"cis" : "TO DO", 
 		},
 	"mixpanel_id" 	: {   
-		u'production'	: "TO DO ",     ### for production metrics  / mixpanel account : solidata.info
+		u'production'	: "TO DO ",    ### for production metrics  / mixpanel account : solidata.info
 		u'default'		: "TO DO"      ### for development metrics / mixpanel account : jparis.py
 		},
 	}
