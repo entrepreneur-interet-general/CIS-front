@@ -15,28 +15,35 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
 		
 		
-		{# BULMA #}
-		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}">
-		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		
+
 		{# BULMA EXTENSIONS FOR WHOLE WEBSITE #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-checkradio.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-tooltip.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-badge.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-divider.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-timeline.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.css') }}">
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.js') }}"></script>
+
+
+		{# BULMA #}
+		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		
 
 		
 		{# RECAPTCHA #}
 
+
 		{# CRISP CHAT #}
+
 
 		{# GOOGLE ANALYTICS #}
 
+
 		{# MIX PANEL METRICS #}
+
 
 		{# CHARTS #}
 		<script type="text/javascript" language="javascript" src="https://cdnjs.com/libraries/Chart.js"></script>		
@@ -48,7 +55,8 @@
 		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 
-		{# CUSTOM STYLES #}
+		{# CUSTOM STYLES ---> TO FIX #}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}">
 
 
 	</head>
@@ -56,11 +64,19 @@
 
 
 
-	{# MAIN CONTENT #}
+	{# MAIN CONTENTS #}
 	<body>
 		
 
-		{% block content %}{% endblock %}
+		{# nav bar #}
+		<header class="navbar is-white is-fixed-top">
+			{% include "navbar.html" %}
+		</header>
+
+
+		{# contents #}
+		{% block content %}
+		{% endblock %}
 
 
 

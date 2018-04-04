@@ -1,0 +1,209 @@
+TEXTE LANDING 
+
+
+
+
+--------------------------------------------
+
+Lame 1
+
+UN MOTEUR DE RECHERCHE 
+DES INNOVATIONS SOCIALES
+-> CAP
+-> 38
+-> Violet
+
+Le Carrefour des innovations sociales regroupe les innovations sociales recensées et actualisées par des partenaires experts.
+-> 18
+-> régular
+
+Le Carrefour des innovations sociales regroupe les innovations sociales recensées et actualisées par des partenaires experts.
+
+Découvrez la version bêta du moteur de recherche
+-> 24
+-> bold
+
+Vous êtes partenaire ? 
+-> 18
+-> regular
+
+
+
+
+--------------------------------------------
+
+Lame 2
+
+Les projets socialement innovants se multiplient dans les territoires. Ils créent de nouveaux services et de nouvelles solidarités. Bonne nouvelle, de nombreux acteurs les recensent déjà, mais il est difficile de s’y retrouver parmi un foisonnement de sites.
+-> 18 
+-> regular
+
+Le Carrefour des innovations sociales met en commun des projets et des outils pour donner une vision précise de l’innovation sociale en France
+-> 24
+-> bold
+
+
+
+
+--------------------------------------------
+
+Lame 3
+
+Regrouper (24 / bold / violet)
+en un espace partagé l’information fiable disponible sur les projets d’innovation sociale en France 
+(18 / regular)
+
+Repérer (24 / bold / violet)
+et visualiser les projets dans leurs écosystèmes  locaux, quelle que soit l’échelle (locale, régionale, nationale) 
+(18 / regular)
+
+Mesurer (24 / bold / violet)
+les dynamiques d’innovation sociale par territoire
+
+Inspirer (24 / bold / violet)
+toute envie d’agir et soutenir l’essaimage des innovations sociales
+
+
+
+
+---------------------------------------------
+
+Lame 4
+
+Comment ça fonctionne ? 
+(24 / bold )
+
+Vous êtes intéressé par le Carrefour des innovations sociales ? 
+(18 / regular)
+
+
+
+
+--------------------------------------------
+
+Lame 5
+
+UN COLLECTIF DE 70 PARTENAIRES
+-> CAP
+-> 38
+-> Violet
+
+Des associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche se font confiance et co-construisent le Carrefour des innovations sociales.
+-> 18 
+-> regular
+
+Un projet copiloté par 
+Soutenu par 
+Partenaires
+-> 18 
+-> regular
+-> violet
+
+
+
+
+
+--------------------------------------------
+
+Lame 6 
+
+Vous avez des projets à valoriser ? 
+(24 / bold)
+
+Partagez vos projets sur la plateforme et profitez d’un compte professionnel. 
+Participez à un collectif atypique géré sur le principe des communs. 
+Co-construisez ce projet avec nous ! 
+(18 / regular)
+
+
+
+
+
+--------------------------------------------
+
+Lame 7 
+
+Ils co-construisent le Carrefour des innovations sociales (24 / bold / blanc)
+
+Emma Stokking, Sparknews (18 / regular / violet)
+
+«  Sparknews a pour mission d’identifier et de mettre en valeur les innovations sociales les plus inspirantes. Il était donc naturel de nous associer à ce carrefour afin de contribuer et de trouver de nouveaux sujets »  (18 / regular)
+
+Christophe Thevignot, AEIDL 
+(18 / regular / violet)
+
+« Identifier, mettre en lumière et contribuer aux innovations sociales en Europe fait partie des priorités de l’AEIDL » (18 / regular)
+
+Giorgia Sebregondi, Fondation Cognacq-Jay 
+(18 / regular / violet)
+
+« Ce projet, ce sont des rencontres enrichissantes, d’autres perspectives sur l’innovation sociale, l’expérience d’une gouvernance originale et la découverte de nouveaux projets solidaires » (18 / regular)
+
+
+
+
+
+
+
+--------------------------------------------
+
+
+Lame 8 
+
+La charte du collectif 
+(24 / bold)
+
+Un projet gouverné de manière collective suivant les principes des Communs. Découvrez en détails les valeurs et l’organisation du Carrefour des innovations sociales. 
+(18 / regular)
+
+
+
+
+--------------------------------------------
+
+Lame 9 
+
+Les dates clés (24 / bold)
+
+Juillet 2016 (18 / bold / violet)
+Une dizaine d’acteurs se fédèrent pour repérer et valoriser les innovations sociales (18 / regular)
+
+Juillet 2017 (18 / bold / violet)
+Le Carrefour des innovations sociales est inscrit dans la Conférence nationale des territoires (18 / regular)
+
+Septembre 2017 (18 / bold / violet)
+La charte du collectif est adoptée (18 / regular)
+
+Novembre 2017 (18 / bold / violet)
+L’association de préfiguration du Carrefour des innovations sociales est créée (18 / regular)
+
+Avril 2018 (18 / bold / bleu)
+Le site beta est lancé (18 / regular)
+
+Des expérimentations territoriales sont mises en place pour améliorer le site (18 / regular / gris clair)
+
+Septembre 2018 (18 / bold / gris clair)
+Une nouvelle version du site avec plus de fonctionnalités (18 / regular/ gris clair) 
+
+
+
+
+--------------------------------------------
+
+Lame 10 : formulaire
+
+Une question à nous poser ? (24 / bold / blanc)
+
+Précisez votre envie (optionnel)(18 / regular / blanc)
+
+Je voudrais devenir bêta testeur (18 / regular / blanc)
+
+Vous bénéficiez d’un compte personnel pour tester la version bêta du site et nous proposer vos idées d’amélioration (14 / light / blanc)
+
+J’ai des projets à valoriser (18 / regular / blanc)
+
+Vous recensez des projets socialement innovants sur votre propre site et vous aimeriez qu’ils apparaissent sur le Carrefour des innovations sociales (14 / light / blanc)
+
+J’aimerais être partenaire du projet (18 / regular / blanc)
+
+Vous trouvez le projet intéressant  et vous voulez participer à sa construction avec ou sans projets à valoriser (14 / light / blanc)

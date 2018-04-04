@@ -25,13 +25,14 @@ choices_networks        = [
 						]
 						
 choices_subscriptions    = [
-							(u"open_data"       , u"open data"  ),
+							# (u"open_data"       , u"open data"  ),
 							(u"priv_social"     , u"association"),
 							(u"priv_social"     , u"entreprise ESS ou sympathisante"),
 							(u"network"         , u"tête de réseau"),
+							(u"network"         , u"accompagnateur"),
 							(u"network"         , u"coopérative"),
 							(u"network"         , u"mutuelle"),
-							(u"public"          , u"public"),
+							(u"public"          , u"structure publique"),
 							(u"public"          , u"para-public"),
 							(u"priv_commercial" , u"fondation"),
 							(u"priv_commercial" , u"entreprise hors ESS"),
@@ -53,9 +54,9 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
 	
 	### user infos
-	userName		= StringField   ( 'user name'    , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input is-large'	, 'placeholder':u'votre prénom'  }  )
-	userSurname		= StringField   ( 'user surname' , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input is-large'	, 'placeholder':u'votre nom'  }  )
-	userEmail       = EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input is-large'	, 'placeholder':u'votre email'  }  )
+	userName		= StringField   ( 'user name'    , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input'	, 'placeholder':u'votre prénom'  }  )
+	userSurname		= StringField   ( 'user surname' , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input'	, 'placeholder':u'votre nom'  }  )
+	userEmail       = EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input'	, 'placeholder':u'votre email'  }  )
 	
 	### user password
 	userPassword    = PasswordField ( 'user password',
@@ -64,9 +65,9 @@ class RegisterForm(FlaskForm):
 		EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
 		Length(min=4, max=100)
 		],
-		render_kw={'class': 'input is-large', 'placeholder': u'tapez votre password'}
+		render_kw={'class': 'input', 'placeholder': u'tapez votre password'}
 	)
-	confirmPassword = PasswordField ( 'repeat Password'	, render_kw={'class': 'input is-large', 'placeholder':u'répétez votre mot de passe' } )
+	confirmPassword = PasswordField ( 'repeat Password'	, render_kw={'class': 'input', 'placeholder':u'répétez votre mot de passe' } )
 	rememberMe  	= BooleanField  ( 'remember_me'	 	, default=False, 					render_kw={'class': 'is-checkradio'	, 'checked':'checked' } )
 
 	### optionnal infos

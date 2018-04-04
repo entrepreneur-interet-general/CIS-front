@@ -1,6 +1,27 @@
 /* custom css for CIS */
 
 .button {
-	border-radius: 2 px ;
-	height: 45 px;
+	border-radius: 10 px ;
+	height: 100 px;
+}
+
+.navbar {
+	border-bottom: 1px solid;
+	border-bottom-color: #d9d9d9 ;
+}
+
+
+/* images */
+
+.img-cis-full-width {
+	width		: cover;
+}
+
+.img-cis-mini {
+	max-width : 120px;
+}
+
+.img-cis-logo-mini {
+	max-width 	: 90px;
+	max-height 	: 60px;
 }

@@ -2,10 +2,9 @@
 <h1 align=center>  CARREFOUR DES INNOVATIONS SOCIALES </h1>
 
 
-<h3 align=center> a portal to discover social innovations </h3>
+<hr>
 
-
-
+![alt text](./screenshots/cis-front-landing.png "landing")
 
 
 

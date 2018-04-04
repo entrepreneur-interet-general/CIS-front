@@ -1,129 +1,98 @@
 
 
-<nav class="navbar is-fixed-top is-transparent">
-	
+<div class="container">
+
+	{# brand #}
 	<div class="navbar-brand">
 
 		<a class="navbar-item" href="/">
-			<img src="http://www.pvhc.net/img5/onmbyubllatmozmvsdtf.png" alt="" height="28">
+			<img src='{{url_for ("static", filename="logos/cis/CIS_beta_logo_LD.png" ) }}' alt="Logo" height="40">
+			{# Carrefour des innovations sociales #}
 		</a>
 
-		<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+		<span class="navbar-burger burger" data-target="navbarMenuHeroC">
 			<span></span>
 			<span></span>
 			<span></span>
-		</div>
+		</span>
 
 	</div>
 
 
-	<div id="navbarExampleTransparentExample" class="navbar-menu">
 
-		<div class="navbar-start">
+	{# navbar's buttons #}
+	<div id="navbarMenuHeroC" class="navbar-menu">
+		
+
+		{% if is_connected is defined %}
+		
+			{# buttons at navbar start #}
+			<div class="navbar-start">
+				
+				<span class="navbar-item">
+
+					<div class="field is-grouped">
+					
+						<div class="field has-addons">
+							<div class="control">
+								<input class="input" type="text" placeholder="Find a repository">
+							</div>
+							<div class="control">
+								<a class="button is-info">
+									chercher
+								</a>
+							</div>
+						</div>
+
+
+					</div>
+				
+				</span>
 			
-			<a class="navbar-item" href="/">
-			{{ title }}
-			</a>
-
-
-
-			{# dropdowns infos #}
-			<div class="navbar-item has-dropdown is-hoverable">
-			
-				<a class="navbar-link" href="/datamodel/view">
-					Documentation
-				</a>
-				<div class="navbar-dropdown is-boxed">
-					<a class="navbar-item" href="/infos/who">
-						Who created this and why ?
-					</a>
-					<a class="navbar-item" href="/infos/tuto">
-						How to use {{page_title}}
-					</a>
-					<a class="navbar-item" href="/infos/api">
-						API documentation 
-					</a>
-					<a class="navbar-item" href="/datamodel/form">
-						Example form
-					</a>
-					<a class="navbar-item" href="/test_bulma_ext">
-						Examples bulma extensions
-					</a>
-				</div>
-
 			</div>
 
+		{% endif %}
 
 
-		</div>
 
 
-		{# social / repo github #}
+		{# buttons at navbar start #}
+
 		<div class="navbar-end">
+			
+			<span class="navbar-item">
 
-			<div class="navbar-item">
 				<div class="field is-grouped">
 
-
 					<p class="control">
-						<a 	class="button is-rounded is-primary is-outlined tooltip is-tooltip-bottom"
-							data-tooltip="code source" 
-							href="https://github.com/entrepreneur-interet-general/CIS-front">
-							<span class="icon">
-								<i class="fab fa-github"></i>
+						<a class="button is-text">
+							<span class="icon is-primary">
+							<i class="fab fa-twitter"></i>
 							</span>
 						</a>
 					</p>
 
 
+					<p class="control">
+						<a class="button is-text">
+							<span class="icon is-primary">
+							<i class="fab fa-facebook"></i>
+							</span>
+						</a>
+					</p>
+
+
+					<p class="control">
+						<a class="button is-primary is-outlined" href="/login">
+							<span>Connectez-vous</span>
+						</a>
+					</p>
+
 				</div>
-			</div>
 
-
-		</div>
-
-
-	</div>
-
-
-
-</nav>
-
-
-
-<header class="navbar">
-	
-	<div class="container">
-		<div class="navbar-brand">
-			<a class="navbar-item">
-				Carrefour des innovations sociales
-			</a>
-			<span class="navbar-burger burger" data-target="navbarMenuHeroC">
-				<span></span>
-				<span></span>
-				<span></span>
 			</span>
-		</div>
-		<div id="navbarMenuHeroC" class="navbar-menu">
-			<div class="navbar-end">
-				<a class="navbar-item is-active">
-				Home
-				</a>
-				<a class="navbar-item">
-				Examples
-				</a>
-				<a class="navbar-item">
-				Documentation
-				</a>
-				<span class="navbar-item">
-				<a class="button is-success is-inverted">
-					<span class="icon">
-					<i class="fab fa-github"></i>
-					</span>
-					<span>Download</span>
-				</a>
-				</span>
-			</div>
+
+
 		</div>
 	</div>
-</header>
+</div>

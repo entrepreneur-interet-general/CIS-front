@@ -54,8 +54,8 @@ def index():
 
 	return render_template( "index.html",
 
-							title = "carrefour des innovations sociales"
-
+							title = "carrefour des innovations sociales",
+							is_landing = True
 
 							)
 
@@ -99,8 +99,10 @@ def login():
 		flash("Wrong username or password", category='error')
 	
 	return render_template(	'login.html', 
-							title='login', 
-							form=form
+							title		= 'login', 
+							form		= form,
+							# is_landing 	= True
+
 							)
 
 
@@ -112,6 +114,7 @@ def register():
 
 	if request.method == 'POST':
 
+		
 		log_cis.debug("login / form : %s ", pformat(form.__dict__) ) 
 
 		if form.validate_on_submit():
@@ -127,7 +130,8 @@ def register():
 				return redirect(url_for('index'))
 
 	return render_template(	'register.html', 
-							form=form
+							form		= form,
+							# is_landing 	= True
 							)
 
 	

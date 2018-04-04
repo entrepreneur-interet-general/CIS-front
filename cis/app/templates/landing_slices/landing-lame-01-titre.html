@@ -1,0 +1,91 @@
+<style>
+
+#lame-titre {
+	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Landing_illustration_lame1_France.png" ) }} ) ;
+	background-position : center center;
+	background-repeat	: no-repeat ;
+	background-size		: cover;
+	background-max-height : 600 px;
+}
+
+</style>
+
+
+<section class="hero is-fullheight" >
+
+	<div id="lame-titre" class="hero-body" >
+
+		<div class="container">
+
+
+			<div class="columns">
+
+				<div class="column is-7 is-offset-1">
+					
+
+					{# main title #}
+					<div class="columns">
+
+						<div class="column is-3">
+							<figure class="image">
+								<img src='{{url_for ("static", filename="logos/CIS/CIS_logo_triangles_LD.png" ) }}'>
+							</figure>
+						</div>
+
+
+						<div class="column">
+							<h1 class="title has-text-primary">
+								<span style="font-weight:normal">UN MOTEUR DE RECHERCHE</span><br>
+								<strong>DES INNOVATIONS SOCIALES</strong>
+							</h1>
+						</div>
+
+					</div>
+					
+					<h2 class="subtitle">
+						Le Carrefour des innovations sociales regroupe les innovations sociales
+						recensées et actualisées par des partenaires experts.
+					</h2>
+
+					<br><br><br>
+
+					{# tagline #}
+					<div class="content is-medium">
+						<h4>
+							<strong>Découvrez la version bêta du moteur de recherche</strong>
+						</h4>
+					</div>
+
+					{# buttons #}
+					<div class="columns">
+
+						<div class="column is-4">
+							<p>Vous êtes partenaire ?</p> <br>
+							<a class="button is-primary is-outlined" href="/login">
+								Connectez-vous
+							</a>
+			  			</div>
+
+						<div class="column">
+							<p>Vous êtes intéressé par le projet ?</p><br>
+							<a class="button is-primary is-outlined" href="#" >
+								Devenez bêta testeur
+							</a>
+			  			</div>
+
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+</section>
