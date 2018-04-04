@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		{# FONTS #}
-		<link href="https://fonts.googleapis.com/css?family=Assistant:200|Quicksand|Raleway|Roboto|Ubuntu" rel="stylesheet">
+		{# <link href="https://fonts.googleapis.com/css?family=Assistant:200|Barlow|Quicksand|Raleway|Roboto|Ubuntu" rel="stylesheet"> #}
 
 		{# JQUERY #}
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -16,15 +16,18 @@
 		
 		
 		{# BULMA #}
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		
 		{# BULMA EXTENSIONS FOR WHOLE WEBSITE #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-checkradio.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-tooltip.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-badge.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-divider.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.css') }}">
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.js') }}"></script>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-badge.min.css') }}">
 
 		
 		{# RECAPTCHA #}

@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from . import *
+from . 	import *
 from .. import log_cis, pformat
 
 log_cis.info(" >>> reading _forms.form_user.py ")
@@ -44,46 +44,56 @@ choices_subscriptions    = [
 
 
 class LoginForm(FlaskForm):
-	userEmail       = EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': '', 'placeholder':u'votre email'  }  )
-	userPassword = PasswordField ( 'user password', validators = [ DataRequired() ], render_kw={'class': '', 'placeholder':u"votre mot de passe"  }  )
-	#remember_me  = BooleanField  ( 'remember_me', default=False )
+
+	userEmail		= EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  )
+	userPassword 	= PasswordField ( 'user password', validators = [ DataRequired() ], render_kw={'class': 'input is-large', 'placeholder':u"votre mot de passe"  }  )
+	rememberMe  	= BooleanField  ( 'remember_me'	 , default=False, 					render_kw={'class': 'is-checkradio', 'checked':'checked' } )
 
 
-class UserRegisterForm(FlaskForm):
-	userName        = StringField   ( 'user name'    , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': '', 'placeholder':u'votre prénom'  }  )
-	userSurname     = StringField   ( 'user surname' , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': '', 'placeholder':u'votre nom'  }  )
-	userSiret       = IntegerField  ( 'user siret'   ,                                                         render_kw={'class': '', 'placeholder':u'votre numéro de SIRET'  }  )
-
-	userEmail       = EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': '', 'placeholder':u'votre email'  }  )
+class RegisterForm(FlaskForm):
+	
+	### user infos
+	userName		= StringField   ( 'user name'    , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input is-large'	, 'placeholder':u'votre prénom'  }  )
+	userSurname		= StringField   ( 'user surname' , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input is-large'	, 'placeholder':u'votre nom'  }  )
+	userEmail       = EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input is-large'	, 'placeholder':u'votre email'  }  )
+	
+	### user password
 	userPassword    = PasswordField ( 'user password',
 		[
 		DataRequired(),
 		EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
 		Length(min=4, max=100)
 		],
-		render_kw={'class': '', 'placeholder': u'tapez votre password'}
+		render_kw={'class': 'input is-large', 'placeholder': u'tapez votre password'}
 	)
-	confirmPassword = PasswordField ('repeat Password', render_kw={'class': '', 'placeholder':u'répétez votre mot de passe' } )
-	#remember_me     = BooleanField  ( 'remember_me', default=False )
+	confirmPassword = PasswordField ( 'repeat Password'	, render_kw={'class': 'input is-large', 'placeholder':u'répétez votre mot de passe' } )
+	rememberMe  	= BooleanField  ( 'remember_me'	 	, default=False, 					render_kw={'class': 'is-checkradio'	, 'checked':'checked' } )
 
-	userProfile     = SelectField   ( 'select profile', choices = choices_subscriptions , default="priv_social",
-														render_kw = {   'class': '',
+	### optionnal infos
+	userSiret		= IntegerField  ( 'user siret'   ,										render_kw={'class': 'input'			, 'placeholder':u'votre numéro de SIRET'  }  )
+	userProfile     = SelectField   ( 'select profile', choices   = choices_subscriptions , 
+														default   = "priv_social",
+														render_kw = {   'class'      : 'input select',
 																		'data-width' : "100%"
 														 }
 									)
 
+
 class PwdForgotForm(FlaskForm):
-	userName     = StringField   ( 'user name'         , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': '', 'placeholder':u'votre prénom'  }  )
-	userEmail    = EmailField    ( 'pwdforgot email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': '', 'placeholder':u'votre email'  }  )
+
+	userName     = StringField   ( 'user name'         , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input is-large', 'placeholder':u'votre prénom'  }  )
+	userEmail    = EmailField    ( 'pwdforgot email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  )
+
 
 
 class NewPwdForm(FlaskForm):
+
 	userPassword    = PasswordField ( 'user password',
 		[
 		DataRequired(),
 		EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
 		Length(min=4, max=100)
 		],
-		render_kw={'class': '', 'placeholder': u'tapez votre password'}
+		render_kw={'class': 'input is-large', 'placeholder': u'tapez votre password'}
 	)
-	confirmPassword = PasswordField ('repeat Password', render_kw={'class': '', 'placeholder':u'répétez votre mot de passe' } )
+	confirmPassword = PasswordField ('repeat Password', render_kw={'class': 'input is-large', 'placeholder':u'répétez votre mot de passe' } )

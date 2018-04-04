@@ -24,8 +24,9 @@ SERVER_NAME_TEST	= "False"
 
 
 """ MONGODB """
-MONGO_DBNAME	= 'cis_front'
-MONGO_URI		= 'mongodb://0.0.0.0:27017/cis_front'
+MONGO_DBNAME		= 'cis_front'
+MONGO_URI			= 'mongodb://0.0.0.0:27017/cis_front'
+MONGO_COLL_USERS	= "users"
 
 
 """ MAILING """

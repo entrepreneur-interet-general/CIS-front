@@ -1,0 +1,125 @@
+
+{% extends "main.html" %}
+
+
+{% block content %}
+
+{# from : https://dansup.github.io/bulma-templates/ #}
+
+<section class="hero is-light is-fullheight">
+	<div class="hero-body">
+		<div class="container has-text-centered">
+			
+			<div class="column is-8 is-offset-2">
+				
+				<h3 class="title has-text-grey">S'enregistrer</h3>
+				<p class="subtitle has-text-grey">merci de remplir le formulaire pour vous enregistrer</p>
+				
+				<div class="box">
+
+
+					{# 
+					<figure class="avatar">
+						<img src="https://placehold.it/128x128">
+					</figure> 
+					#}
+				
+
+					<form action="" method="POST" name="form">						
+					
+						{{ form.hidden_tag() }}
+
+						<div class="field">
+							<div class="control">
+								{{ form.userName }}
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+								{{ form.userSurname }}
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control has-icons-left">
+								{{ form.userEmail }}
+								<span class="icon is-small is-left">
+								<i class="fas fa-envelope"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+								{{ form.userPassword }}
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+								{{ form.confirmPassword }}
+							</div>
+						</div>
+						
+						<div class="is-divider" data-content="informations optionnelles"></div>
+
+
+						<div class="field">
+							<div class="control">
+								<div class="select is-fullwidth">
+									{{ form.userProfile }}
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="field">
+							<div class="control">
+								{{ form.userSiret }}
+							</div>
+						</div>
+
+
+
+						<br>
+
+						<div class="field">
+							{{ form.rememberMe }}
+							<label class="checkbox">
+								se souvenir de moi
+							</label>
+						</div>
+
+
+						<br>
+
+						<button class="button is-block is-primary is-large is-fullwidth" type="submit">
+							s'enregistrer
+						</button>
+
+					</form>
+				</div>
+
+
+
+
+
+				<p class="has-text-grey">
+					{# <a href="/register">créer un compte</a> &nbsp;·&nbsp;
+					<a href="/forgot-password">password oublié</a> &nbsp;·&nbsp; #}
+					<a href="/help">aide</a>
+				</p>
+
+
+
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+{% endblock %}

@@ -12,11 +12,14 @@ with app.app_context():
 	log_cis.info(">>> starting app --- MongoDB connected")
 
 	### access mongodb collections ###
-	mongo_users		= mongo.db.users
+	mongo_users		= mongo.db[ app.config["MONGO_COLL_USERS"] ]
 
 	mongoColls = {
-		"users"	: mongo_users,
+		# "users"	: mongo_users,
+		app.config["MONGO_COLL_USERS"]	: mongo_users,
 	}
 
 
-log_cis.debug(">>> MongoDB collections names : \n %s", pformat( mongoColls.keys() ) )
+log_cis.debug(">>> MongoDB / mongoColls.keys() : \n %s", pformat( mongoColls.keys() ) )
+log_cis.debug(">>> MongoDB : mongo_users : \n %s", mongo_users  )
+print 

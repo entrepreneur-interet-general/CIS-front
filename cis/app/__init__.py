@@ -97,11 +97,13 @@ from	flask_pymongo import PyMongo ### flask_pymongo instead of flask.ext.pymongo
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 ### create Flask app 
-app			= Flask( __name__ )
+app	= Flask( __name__ )
 
 ### set environment and app variables
 log_cis.debug("configuring app's env vars...\n")
+
 from .backend.config_env import * 
+
 configure_app(app)
 
 if config_name == "default" or config_name == "production" :
@@ -121,17 +123,23 @@ print
 
 
 
+
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### LOGIN MANAGER ###########################################################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-from  flask_login import LoginManager
+from  flask_login import LoginManager, login_user, logout_user, login_required
 
 ### create login manager
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.login_view = 'login'
 
-### TO DO : follow tuto login manager
+### TO DO : follow tuto login manager for pymongo
+# cf : https://runningcodes.net/flask-login-and-mongodb/ 
+# cf : 
+
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -144,6 +152,8 @@ from	flask_mail import Mail, Message
 mail 	= Mail(app)
 
 
+
+
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### INITIATE MONGO DB AND IMPORT MAIN CLASSES ###############################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -151,11 +161,16 @@ mail 	= Mail(app)
 # settings classes : global variable for app
 from settings import *
 
+# models :
+from models import *
+
 # forms classes :
 from forms import * # LoginForm, UserRegisterForm, UserUpdateForm, UserHistoryAloesForm, RequestCabForm
 
 # db classes and functions
 from api import *
+
+
 
 
 

@@ -55,6 +55,7 @@ try :
 
 	os.environ["MONGODB_DB"]			= MONGO_DBNAME
 	os.environ["MONGODB_URI"]			= MONGO_URI
+	os.environ["MONGODB_COLL_USERS"]	= MONGO_COLL_USERS
 
 ### except if no production env 
 except : 
@@ -100,6 +101,7 @@ class Config(object):
 	""" MONGODB """
 	MONGO_DBNAME		=  os.getenv("MONGODB_DB")
 	MONGO_URI			=  os.getenv("MONGODB_URI")
+	MONGO_COLL_USERS	=  os.getenv("MONGODB_COLL_USERS")
 
 	""" MAILING """
 	VALIDITY_CONFIRM	= os.getenv("VALIDITY_CONFIRM")

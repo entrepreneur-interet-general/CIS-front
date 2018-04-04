@@ -1,87 +1,129 @@
+
+
 <nav class="navbar is-fixed-top is-transparent">
+	
 	<div class="navbar-brand">
-	<a class="navbar-item" href="/">
-		<img src="http://www.pvhc.net/img5/onmbyubllatmozmvsdtf.png" alt="" height="28">
-	</a>
 
-	<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
-	</div>
-
-	<div id="navbarExampleTransparentExample" class="navbar-menu">
-	<div class="navbar-start">
-		
 		<a class="navbar-item" href="/">
-		{{ title }}
+			<img src="http://www.pvhc.net/img5/onmbyubllatmozmvsdtf.png" alt="" height="28">
 		</a>
 
+		<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+
+	</div>
 
 
-		{# dropdowns infos #}
-		<div class="navbar-item has-dropdown is-hoverable">
-		
-			<a class="navbar-link" href="/datamodel/view">
-				Documentation
+	<div id="navbarExampleTransparentExample" class="navbar-menu">
+
+		<div class="navbar-start">
+			
+			<a class="navbar-item" href="/">
+			{{ title }}
 			</a>
-			<div class="navbar-dropdown is-boxed">
-				<a class="navbar-item" href="/infos/who">
-					Who created this and why ?
+
+
+
+			{# dropdowns infos #}
+			<div class="navbar-item has-dropdown is-hoverable">
+			
+				<a class="navbar-link" href="/datamodel/view">
+					Documentation
 				</a>
-				<a class="navbar-item" href="/infos/tuto">
-					How to use {{page_title}}
-				</a>
-				<a class="navbar-item" href="/infos/api">
-					API documentation 
-				</a>
-				<a class="navbar-item" href="/datamodel/form">
-					Example form
-				</a>
-				<a class="navbar-item" href="/test_bulma_ext">
-					Examples bulma extensions
-				</a>
-			</div>
-
-		</div>
-
-
-
-	</div>
-
-
-	{# social / repo github #}
-	<div class="navbar-end">
-
-		<div class="navbar-item">
-			<div class="field is-grouped">
-
-
-				<p class="control">
-					<a 	class="button is-rounded is-primary is-outlined tooltip is-tooltip-bottom"
-						data-tooltip="code source" 
-						href="https://github.com/entrepreneur-interet-general/CIS-front">
-						<span class="icon">
-							<i class="fab fa-github"></i>
-						</span>
+				<div class="navbar-dropdown is-boxed">
+					<a class="navbar-item" href="/infos/who">
+						Who created this and why ?
 					</a>
-				</p>
-
-
-
+					<a class="navbar-item" href="/infos/tuto">
+						How to use {{page_title}}
+					</a>
+					<a class="navbar-item" href="/infos/api">
+						API documentation 
+					</a>
+					<a class="navbar-item" href="/datamodel/form">
+						Example form
+					</a>
+					<a class="navbar-item" href="/test_bulma_ext">
+						Examples bulma extensions
+					</a>
+				</div>
 
 			</div>
+
+
+
+		</div>
+
+
+		{# social / repo github #}
+		<div class="navbar-end">
+
+			<div class="navbar-item">
+				<div class="field is-grouped">
+
+
+					<p class="control">
+						<a 	class="button is-rounded is-primary is-outlined tooltip is-tooltip-bottom"
+							data-tooltip="code source" 
+							href="https://github.com/entrepreneur-interet-general/CIS-front">
+							<span class="icon">
+								<i class="fab fa-github"></i>
+							</span>
+						</a>
+					</p>
+
+
+				</div>
+			</div>
+
+
 		</div>
 
 
 	</div>
-
-
-
-	</div>
-
 
 
 
 </nav>
+
+
+
+<header class="navbar">
+	
+	<div class="container">
+		<div class="navbar-brand">
+			<a class="navbar-item">
+				Carrefour des innovations sociales
+			</a>
+			<span class="navbar-burger burger" data-target="navbarMenuHeroC">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
+		</div>
+		<div id="navbarMenuHeroC" class="navbar-menu">
+			<div class="navbar-end">
+				<a class="navbar-item is-active">
+				Home
+				</a>
+				<a class="navbar-item">
+				Examples
+				</a>
+				<a class="navbar-item">
+				Documentation
+				</a>
+				<span class="navbar-item">
+				<a class="button is-success is-inverted">
+					<span class="icon">
+					<i class="fab fa-github"></i>
+					</span>
+					<span>Download</span>
+				</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</header>

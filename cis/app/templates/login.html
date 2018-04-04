@@ -1,17 +1,19 @@
 
+{% extends "main.html" %}
+
 
 {% block content %}
 
 {# from : https://dansup.github.io/bulma-templates/ #}
 
-<section class="hero is-success is-fullheight">
+<section class="hero is-light is-fullheight">
 	<div class="hero-body">
 		<div class="container has-text-centered">
 			
 			<div class="column is-6 is-offset-3">
 				
 				<h3 class="title has-text-grey">Login</h3>
-				<p class="subtitle has-text-grey">Please login to proceed.</p>
+				<p class="subtitle has-text-grey">merci de remplir le formulaire pour vous connecter</p>
 				
 				<div class="box">
 
@@ -21,36 +23,53 @@
 					</figure> 
 					#}
 				
-					<form>
+
+
+					<form action="" method="POST" name="form">						
+					
+						{{ form.hidden_tag() }}
+
 						<div class="field">
-							<div class="control">
-							<input class="input is-large" placeholder="votre email" autofocus="" type="email">
+							<div class="control has-icons-left">
+								{{ form.userEmail }}
+								<span class="icon is-small is-left">
+								<i class="fas fa-envelope"></i>
+								</span>
 							</div>
 						</div>
 
 						<div class="field">
 							<div class="control">
-							<input class="input is-large" placeholder="votre mot de passe" type="password">
+								{{ form.userPassword }}
 							</div>
 						</div>
 
 						<div class="field">
+							{{ form.rememberMe }}
 							<label class="checkbox">
-							<input type="checkbox">
-							se souvenir de moi
+								se souvenir de moi
 							</label>
 						</div>
 
-						<button class="button is-block is-info is-large is-fullwidth">se connecter</button>
+						<button class="button is-block is-primary is-large is-fullwidth" type="submit">
+							se connecter
+						</button>
 
 					</form>
 				</div>
 
+
+
+
+
 				<p class="has-text-grey">
-					<a href="../">créer un compte</a> &nbsp;·&nbsp;
-					<a href="../">password oublié</a> &nbsp;·&nbsp;
-					<a href="../">aide</a>
+					<a href="/register">créer un compte</a> &nbsp;·&nbsp;
+					<a href="/forgot-password">password oublié</a> &nbsp;·&nbsp;
+					<a href="/help">aide</a>
 				</p>
+
+
+
 
 			</div>
 
@@ -59,4 +78,4 @@
 </section>
 
 
-{% end content %}
+{% endblock %}
