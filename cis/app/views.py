@@ -54,8 +54,8 @@ def index():
 
 	return render_template( "index.html",
 
-							title = "carrefour des innovations sociales",
-							is_landing = True
+							title 		= "carrefour des innovations sociales",
+							is_landing 	= True
 
 							)
 
@@ -69,9 +69,9 @@ def index():
 
 @login_manager.user_loader
 def load_user(username):
-    user = app.config['MONGO_COLL_USERS'].find_one({"email": username})
-    if not user :
-        return None
+	user = app.config['MONGO_COLL_USERS'].find_one({"email": username})
+	if not user :
+		return None
 	return User(user['_id'])
 
 

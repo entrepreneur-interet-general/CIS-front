@@ -22,6 +22,33 @@
 }
 
 .img-cis-logo-mini {
+	display		: block;
+	/* height 		: 60px ; */
 	max-width 	: 90px;
 	max-height 	: 60px;
+	/* max-width 	: 90px; */
+	/* object-fit	: contain ; */
+	width		: auto;
+	height		: auto;
+	display		: inline-block;
+	margin-left : 15px ;
 }
+
+/* cf : https://codepen.io/jahid-webdev/pen/JRPvBj */
+.img-cis-logo-partner{
+	/* filter: url(filters.svg#grayscale); Firefox 3.5+ */
+	  filter: gray; /* IE5+ */
+	  -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
+	  -webkit-transition: all .2s ease-in-out;  
+	}
+
+.img-cis-logo-partner:hover {
+filter: none;
+	-webkit-filter: grayscale(0);
+	-webkit-transform: scale(1.1);
+}
+
+
+/* .logo-row {
+	height: 70px ;
+} */
