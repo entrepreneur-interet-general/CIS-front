@@ -6,15 +6,15 @@
 
 {# from : https://dansup.github.io/bulma-templates/ #}
 
-<section class="hero is-light is-fullheight">
+<section class="hero is-light is-fullheight skip-navbar">
 	<div class="hero-body">
 		<div class="container has-text-centered">
 			
-			<div class="column is-6 is-offset-3">
+			<div class="column is-4 is-offset-4">
 				
 				<h3 class="title has-text-grey">Login</h3>
 				
-				<p class="subtitle has-text-grey">merci de remplir le formulaire pour vous connecter</p>
+				<p class="subtitle has-text-grey">vous connecter à l'espace pro</p>
 				
 				<div class="box">
 
@@ -45,16 +45,38 @@
 							</div>
 						</div>
 
+
 						<div class="field">
-							{{ form.rememberMe }}
-							<label class="checkbox">
+							{{ form.rememberMe() }}
+							{{ form.rememberMe.label }}
+							{# <label class="checkbox is-black">
 								se souvenir de moi
-							</label>
+							</label> #}
 						</div>
 
+
+						
 						<button class="button is-block is-primary is-large is-fullwidth" type="submit">
 							se connecter
-						</button>
+						</button> 
+						
+
+						{# <div class="field ">
+							<div class="control is-large has-text-centered is-fullwidth">
+								<label 	for="postLogin" 
+										class="button is-block is-primary is-large">
+									<span>
+										s'enregistrer
+									</span>
+								</label>
+								<input 	id="postLogin"
+										class="is-hidden" 
+										type="submit" 
+									>
+								</input>
+							</div>
+						</div> 
+						#}
 
 					</form>
 				</div>

@@ -25,6 +25,7 @@ choices_networks        = [
 						]
 						
 choices_subscriptions    = [
+							(u""				, u"- sélectionnez le profil de votre structure -"),
 							# (u"open_data"       , u"open data"  ),
 							(u"priv_social"     , u"association"),
 							(u"priv_social"     , u"entreprise ESS ou sympathisante"),
@@ -38,6 +39,21 @@ choices_subscriptions    = [
 							(u"priv_commercial" , u"entreprise hors ESS"),
 						]
 
+choices_structures		= [
+							(u""				, u"- sélectionnez votre structure parmi les partenaire -"),
+							# (u"open_data"       , u"open data"  ),
+							(u"avise"			, u"Avise"),
+							(u"cognac_jay"		, u"Fondation Cognac-Jay"),
+							(u"fnce"			, u"FNCE"),
+							(u"apriles"			, u"Apriles"),
+							(u"cget"			, u"CGET"),
+							(u"gniac"			, u"GNIAC"),
+							(u"fonda"			, u"La Fonda"),
+							(u"labo_ess"		, u"Le Labo de l'ESS"),
+
+							(u"other"			, u"- autre -"),
+
+						]
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
@@ -46,38 +62,106 @@ choices_subscriptions    = [
 
 class LoginForm(FlaskForm):
 
-	userEmail		= EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  )
-	userPassword 	= PasswordField ( 'user password', validators = [ DataRequired() ], render_kw={'class': 'input is-large', 'placeholder':u"votre mot de passe"  }  )
-	rememberMe  	= BooleanField  ( 'remember_me'	 , default=False, 					render_kw={'class': 'is-checkradio', 'checked':'checked' } )
+	userEmail		= EmailField	( 	u'user email'   , 
+										validators = [ DataRequired(), Length(min=7, max=50) ], 
+										render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  
+									)
+	userPassword 	= PasswordField	( 	u'user password', 
+										validators = [ DataRequired() ], 
+										render_kw={'class': 'input is-large', 'placeholder':u"votre mot de passe"  }  
+									)
+	rememberMe  	= BooleanField  ( 	u'se souvenir de moi', 
+										default=False, 	
+										render_kw={'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
+									)
 
 
 class RegisterForm(FlaskForm):
 	
 	### user infos
-	userName		= StringField   ( 'user name'    , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input'	, 'placeholder':u'votre prénom'  }  )
-	userSurname		= StringField   ( 'user surname' , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input'	, 'placeholder':u'votre nom'  }  )
-	userEmail       = EmailField    ( 'user email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input'	, 'placeholder':u'votre email'  }  )
+
+	userName		= StringField	( 	u'user name', 
+										validators = [ DataRequired(), Length(min=3, max=50) ], 
+										render_kw={'class': 'input'	, 'placeholder':u'votre prénom *'  }  
+									)
+	userSurname		= StringField	( 	u'user surname' , 
+										validators = [ DataRequired(), Length(min=3, max=50) ], 
+										render_kw={'class': 'input'	, 'placeholder':u'votre nom *'  }  
+									)
+	userEmail       = EmailField	( 	u'user email', 
+										validators = [ DataRequired(), Length(min=7, max=50) ], 
+										render_kw={'class': 'input'	, 'placeholder':u'votre email *'  }  
+									)
 	
 	### user password
-	userPassword    = PasswordField ( 'user password',
-		[
-		DataRequired(),
-		EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
-		Length(min=4, max=100)
-		],
-		render_kw={'class': 'input', 'placeholder': u'tapez votre password'}
-	)
-	confirmPassword = PasswordField ( 'repeat Password'	, render_kw={'class': 'input', 'placeholder':u'répétez votre mot de passe' } )
-	rememberMe  	= BooleanField  ( 'remember_me'	 	, default=False, 					render_kw={'class': 'is-checkradio'	, 'checked':'checked' } )
+
+	userPassword    = PasswordField ( 	u'user password',
+										[
+											DataRequired(),
+											EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
+											Length(min=4, max=100)
+										],
+										render_kw={'class': 'input', 'placeholder': u'tapez votre password *'}
+									)
+	confirmPassword = PasswordField ( 	u'repeat Password', 
+										render_kw={'class': 'input', 'placeholder':u'répétez votre mot de passe *' } 
+										)
+
+
 
 	### optionnal infos
-	userSiret		= IntegerField  ( 'user siret'   ,										render_kw={'class': 'input'			, 'placeholder':u'votre numéro de SIRET'  }  )
-	userProfile     = SelectField   ( 'select profile', choices   = choices_subscriptions , 
-														default   = "priv_social",
-														render_kw = {   'class'      : 'input select',
-																		'data-width' : "100%"
-														 }
+
+	rememberMe  	= BooleanField  ( 	u'se souvenir de moi', 
+										default=False, 	
+										render_kw={'class': 'is-checkradio has-background-color is-black is-normal'	, 'checked':'' } 
 									)
+
+	userSiret		= IntegerField  ( 	u'user siret',
+										render_kw={'class': 'input', 
+										'placeholder':u'votre numéro de SIRET'  }  
+									)
+	userProfile		= SelectField   ( 	u'select profile', 
+										choices   = choices_subscriptions , 
+										# default   = "priv_social",
+										render_kw = {   'class'      : 'input select',
+														'data-width' : "100%",
+														'description': u'votre profil de structure'
+											}
+									)
+	userStructure	= SelectField	( 	u'select structure', 
+										choices = choices_structures , 
+										# default   = "other",
+										render_kw = {   'class'      : 'input select',
+														'data-width' : "100%",
+														'description': u'votre structure'
+											}
+									)
+	userOtherStructure	= StringField   (	u'user structure' , 
+											validators = [ Length(min=3, max=50) ], 
+											render_kw={'class': 'input', 'placeholder': u'le nom de votre structure'  }  
+										)
+
+
+
+class PreRegisterForm(RegisterForm) : 
+
+	userHaveProjects  	= BooleanField  ( 	u'<strong>J’ai des projets à valoriser</strong>'	, 
+											default=False, 	
+											render_kw={'class': 'is-checkradio has-background-color is-white is-normal'	 } 
+										)
+	userJoinCollective  = BooleanField  ( 	u'<strong>J’aimerais être partenaire du projet</strong>', 
+											default=False, 	
+											render_kw={'class': 'is-checkradio has-background-color is-white is-normal'	 } 
+										)
+
+	userMessage 		= TextAreaField(  	u'Message', 					
+											render_kw={'class' : 'textarea' , 'rows':'3', 'placeholder' : 'Votre message, vos suggestions... *' }
+										)
+
+
+
+
+
 
 
 class PwdForgotForm(FlaskForm):

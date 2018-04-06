@@ -1,32 +1,65 @@
 
 {# section formulaire #}
-<section class="hero is-primary">
+<section id="landing-form" class="hero is-primary skip-navbar">
 	<div class="hero-body">
 		<div class="container">
 
 
-			<div class="content is-medium has-text-centered">
-				<h3 class="has-text-white">
-					<strong>Une question à nous poser ? </strong>
-				</h3>
-			</div>
-
-			<br>
+			<div class="columns is-centered">
 
 
+				<div class="column is-6">
 
-			<form>
+					<div class="content has-text-centered">
+						
+						{# 
+						<div class="content is-medium ">
+							<h3 class="has-text-white">
+								<strong>Devenez beta testeur </strong>
+							</h3>
+						</div> 
+						#}
 
-				<div class="columns is-multiline">
 
-					<div class="column is-offset-1 is-5">
+						<a class="button is-white is-large is-outlined is-fullwidth" href="/register" >
+							<strong>Créez votre compte et devenez beta testeur </strong>
+						</a>
+
+
+					</div>
+
+
+					{# 
+					<br>
+
+					<hr> #}
+
+					<br>
+
+
+
+					<div class="content is-medium has-text-centered">
+						<h4 class="has-text-white">
+							<strong>Une question à nous poser ? </strong>
+						</h4>
+					</div>
+
+					<br>
+
+
+
+					<form action="" method="POST" name="form">
+					
+						{{ form.hidden_tag() }}
 
 						<div class="field is-horizontal">
 
 							<div class="field-body">
+								
 								<div class="field">
 									<p class="control is-expanded has-icons-left">
-										<input class="input" type="text" placeholder="Prénom *">
+										{# <input class="input" type="text" placeholder="Prénom *"> #}
+										{{ form.userName() }}
 										<span class="icon is-small is-left">
 											<i class="fas fa-user"></i>
 										</span>
@@ -35,7 +68,7 @@
 
 								<div class="field">
 									<p class="control is-expanded has-icons-left has-icons-right">
-										<input class="input" type="text" placeholder="Nom *">
+										{{ form.userSurname() }}
 										<span class="icon is-small is-left">
 											<i class="fas fa-user"></i>
 										</span>
@@ -50,15 +83,13 @@
 						<div class="field is-horizontal">
 
 							<div class="field-body">
+
 								<div class="field">
 									<p class="control is-expanded has-icons-left">
-										<input class="input" type="email" placeholder="Email *">
+										{{ form.userEmail() }}
 										<span class="icon is-small is-left">
 											<i class="fas fa-envelope"></i>
 										</span>
-										{# <span class="icon is-small is-right">
-											<i class="fas fa-check"></i>
-										</span> #}
 									</p>
 								</div>
 
@@ -66,12 +97,73 @@
 							
 						</div>
 
+{# 
+						<div class="field is-horizontal">
 
+							<div class="field-body"> #}
+
+								<div class="field">
+									<p class="control is-expanded has-icons-left has-icons-right">
+										<div class="select is-fullwidth">
+											{{ form.userStructure() }}
+										</div>
+									</p>
+								</div>
+
+
+								<div class="field">
+									<p class="control is-expanded has-icons-left has-icons-right">
+										{{ form.userOtherStructure() }}
+										<span class="icon is-small is-left">
+											<i class="fas fa-building"></i>
+										</span>
+									</p>
+								</div>
+
+							{# </div>
+
+						</div> #}
+
+
+
+						<div class="field is-horizontal">
+
+							<div class="field">
+								{# <input class="is-checkradio has-background-color is-white is-normal" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"> #}
+								{{ form.userHaveProjects() }}
+								{{ form.userHaveProjects.label }}
+								{# <label for="exampleCheckbox"><strong>J’ai des projets à valoriser</strong></label> #}
+								<p class="is-small" style="padding-left: 40px">
+									<small><small>
+										Vous recensez des projets socialement innovants sur votre propre site et 
+										vous aimeriez qu’ils apparaissent sur le Carrefour des innovations sociales
+									</small></small>
+								</p>
+							</div>
+
+							<div class="field">
+								{# <input class="is-checkradio has-background-color is-white is-normal" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"> #}
+								{{ form.userJoinCollective() }}
+								{{ form.userJoinCollective.label }}
+								{# <label for="exampleCheckbox"><strong>J’aimerais être partenaire du projet</strong></label> #}
+								<p class="is-small" style="padding-left: 40px">
+									<small><small>
+										Vous trouvez le projet intéressant et vous voulez participer 
+										à sa construction avec ou sans projets à valoriser
+									</small></small>
+								</p>
+							</div>
+
+						</div>
+
+
+						
 						<div class="field is-horizontal">
 							<div class="field-body">
 								<div class="field">
 									<div class="control">
-										<textarea class="textarea" placeholder="Votre message, vos suggestions... *" rows="8"></textarea>
+										{{ form.userMessage() }}
+										{# <textarea class="textarea" placeholder="Votre message, vos suggestions... *" rows="3"></textarea> #}
 									</div>
 									<p class="help is-light">* champs requis</p>
 								</div>
@@ -79,51 +171,32 @@
 						</div>
 
 
-					</div>
-
-
-
-
-					<div class="column is-5">
-
-
-						<div class="field">
-							<input class="is-checkradio is-medium" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked">
-							<label for="exampleCheckbox">Je voudrais devenir bêta testeur</label>
-							<p style="margin-left: 50px">
-								Vous bénéficiez d’un compte personnel pour tester la version bêta
-								du site et nous proposer vos idées d’amélioration
-							</p>
+						<div class="field is-grouped is-grouped-centered">
+							<button class="button is-primary is-inverted is-outlined is-large" type="submit">
+								Envoyer votre question
+							</button>
 						</div>
 
-						<div class="field">
-							<input class="is-checkradio is-medium" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked">
-							<label for="exampleCheckbox">J’ai des projets à valoriser</label>
-							<p style="margin-left: 50px">
-								Vous recensez des projets socialement innovants sur votre propre site et 
-								vous aimeriez qu’ils apparaissent sur le Carrefour des innovations sociales
-							</p>
-						</div>
-
-						<div class="field">
-							<input class="is-checkradio is-medium" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked">
-							<label for="exampleCheckbox">J’aimerais être partenaire du projet</label>
-							<p style="margin-left: 50px">
-								Vous trouvez le projet intéressant et vous voulez participer 
-								à sa construction avec ou sans projets à valoriser
-							</p>
-						</div>
-
-						<br>
-
-						<div class="field">
-							<div class="control">
-								<button class="button is-medium is-primary is-inverted is-outlined">Envoyer</button>
+						{# <div class="field is-grouped is-grouped-centered">
+							<div class="control is-medium  has-text-centered">
+								<label 	for="sendMessage" 
+										class="button is-primary is-inverted is-outlined">
+									<span>
+										Envoyer votre question
+									</span>
+								</label>
+								<input 	id="sendMessage"
+										class="is-hidden" 
+										type="submit" 
+									>
+								</input>
 							</div>
-						</div>
+						</div> #}
 
 
-					</div>
+
+					</form>
+		
 
 
 
@@ -131,12 +204,16 @@
 				</div>
 
 
-			</form>
-		
-		
-		
+
+
+			</div>
 		
 		
 		</div>
+
+
+		<br>
+
+
 	</div>
 </section>

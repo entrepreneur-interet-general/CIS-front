@@ -1,5 +1,13 @@
 /* custom css for CIS */
 
+html {
+	scroll-behavior: smooth;
+}
+
+#navbar-top {
+	height: 70px;
+}
+
 .button {
 	border-radius: 10 px ;
 	height: 100 px;
@@ -10,9 +18,19 @@
 	border-bottom-color: #d9d9d9 ;
 }
 
+#navbar-logo {
+	max-height:45px ! important ;
+}
+
 .tab {
 	text-indent:40px
 }
+
+.is-vcentered {
+	display: flex;
+	align-items: center;
+  }
+  
 
 /* images */
 
@@ -55,3 +73,12 @@ filter: none;
 /* .logo-row {
 	height: 70px ;
 } */
+
+
+/* #landing-form {
+	padding-top: 52px;
+} */
+
+.skip-navbar {
+	padding-top: 70px;
+}

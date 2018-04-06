@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import "../../node_modules/font-awesome/css/font-awesome.min.css";
-@import url(https://fonts.googleapis.com/css?family=Barlow);
+@import url(https://fonts.googleapis.com/css?family=Barlow&subset=latin,latin-ext);
 /*! bulma.io v0.6.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {

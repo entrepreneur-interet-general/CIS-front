@@ -40,6 +40,8 @@ def index():
 
 	time_now	= datetime.datetime.utcnow()
 
+	form = PreRegisterForm()
+
 	### FORMS FROM WTF
 
 	### set language
@@ -50,12 +52,21 @@ def index():
 		# Check_tokens_user ( current_session_uid, lang_set )
 	except : 
 		current_session_uid = None
-		
+
+
+
+	if request.method == 'POST' and form.validate_on_submit():
+
+		log_cis.debug("index / form : %s ", pformat(form.__dict__) ) 
+
+
+
 
 	return render_template( "index.html",
 
-							title 		= "carrefour des innovations sociales",
-							is_landing 	= True
+							site_section	= "landing",
+							is_landing 		= True, 
+							form			= form
 
 							)
 
@@ -69,9 +80,13 @@ def index():
 
 @login_manager.user_loader
 def load_user(username):
+
 	user = app.config['MONGO_COLL_USERS'].find_one({"email": username})
+
 	if not user :
+		
 		return None
+
 	return User(user['_id'])
 
 
@@ -99,8 +114,8 @@ def login():
 		flash("Wrong username or password", category='error')
 	
 	return render_template(	'login.html', 
-							title		= 'login', 
-							form		= form,
+							site_section	= 'login', 
+							form			= form,
 							# is_landing 	= True
 
 							)
@@ -110,11 +125,11 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+
 	form = RegisterForm()
 
 	if request.method == 'POST':
 
-		
 		log_cis.debug("login / form : %s ", pformat(form.__dict__) ) 
 
 		if form.validate_on_submit():
@@ -129,8 +144,10 @@ def register():
 
 				return redirect(url_for('index'))
 
+
 	return render_template(	'register.html', 
-							form		= form,
+							site_section 	= "register",
+							form			= form,
 							# is_landing 	= True
 							)
 
@@ -151,4 +168,5 @@ def logout():
 @app.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
+
 	return render_template('index.html')

@@ -23,4 +23,4 @@ if __name__ == '__main__':
 	app_port = int(app.config["DOMAIN_PORT"])
 
 	# simple flask runner
-	app.run( debug=debug, port=app_port )
+	app.run( debug=debug, port=app_port, threaded=True )
