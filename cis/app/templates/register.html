@@ -25,119 +25,9 @@
 					#}
 				
 
-					<form action="" method="POST" name="form">
-					
-						{{ form.hidden_tag() }}
-
-						<div class="field">
-							<label class="label">vos informations</label>
-							<div class="control has-icons-left">
-								{{ form.userName }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
-								</span>
-							</div>
-						</div>
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.userSurname }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-user"></i>
-								</span>
-							</div>
-						</div>
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.userEmail }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-envelope"></i>
-								</span>
-							</div>
-						</div>
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.userPassword }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-key"></i>
-								</span>
-							</div>
-						</div>
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.confirmPassword }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-key"></i>
-								</span>
-							</div>
-						</div>
-						<p class="help is-light">* champs requis</p>
-
-						<div class="is-divider" data-content="informations optionnelles"></div>
+					{% include "forms/form-register.html" %}
 
 
-						<div class="field">
-							<label class="label">votre structure</label>
-							<div class="control">
-								<div class="select is-fullwidth">
-									{{ form.userStructure }}
-								</div>
-							</div>
-						</div>
-						
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.userOtherStructure }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-building"></i>
-								</span>
-							</div>
-						</div>
-
-
-						<div class="field">
-							<div class="control">
-								<div class="select is-fullwidth">
-									{{ form.userProfile }}
-								</div>
-							</div>
-						</div>
-
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.userSiret }}
-								<span class="icon is-small is-left">
-									<i class="fas fa-building"></i>
-								</span>
-							</div>
-						</div>
-
-
-						{# 
-						<br>
-
-						<div class="field">
-							{{ form.rememberMe }}
-							<label class="checkbox">
-								se souvenir de moi
-							</label>
-						</div> 
-						#}
-
-
-						<br>
-
-						<button class="button is-block is-primary is-large is-fullwidth" type="submit">
-							s'enregistrer
-						</button>
-
-
-					</form>
 				</div>
 
 
@@ -147,7 +37,7 @@
 				<p class="has-text-grey">
 					{# <a href="/register">créer un compte</a> &nbsp;·&nbsp;
 					<a href="/forgot-password">password oublié</a> &nbsp;·&nbsp; #}
-					<a href="/help">aide</a>
+					<a href="/help" disabled>besoin d' aide ?</a>
 				</p>
 
 

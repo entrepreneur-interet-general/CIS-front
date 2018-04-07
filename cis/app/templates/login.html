@@ -18,79 +18,19 @@
 				
 				<div class="box">
 
-					{# 
-					<figure class="avatar">
-						<img src="https://placehold.it/128x128">
-					</figure> 
-					#}
-				
+
+					{% include "forms/form-login.html" %}
 
 
-					<form action="" method="POST" name="form">						
-					
-						{{ form.hidden_tag() }}
-
-						<div class="field">
-							<div class="control has-icons-left">
-								{{ form.userEmail }}
-								<span class="icon is-small is-left">
-								<i class="fas fa-envelope"></i>
-								</span>
-							</div>
-						</div>
-
-						<div class="field">
-							<div class="control">
-								{{ form.userPassword }}
-							</div>
-						</div>
-
-
-						<div class="field">
-							{{ form.rememberMe() }}
-							{{ form.rememberMe.label }}
-							{# <label class="checkbox is-black">
-								se souvenir de moi
-							</label> #}
-						</div>
-
-
-						
-						<button class="button is-block is-primary is-large is-fullwidth" type="submit">
-							se connecter
-						</button> 
-						
-
-						{# <div class="field ">
-							<div class="control is-large has-text-centered is-fullwidth">
-								<label 	for="postLogin" 
-										class="button is-block is-primary is-large">
-									<span>
-										s'enregistrer
-									</span>
-								</label>
-								<input 	id="postLogin"
-										class="is-hidden" 
-										type="submit" 
-									>
-								</input>
-							</div>
-						</div> 
-						#}
-
-					</form>
 				</div>
-
-
 
 
 
 				<p class="has-text-grey">
 					<a href="/register">créer un compte</a> &nbsp;·&nbsp;
-					<a href="/forgot-password">password oublié</a> &nbsp;·&nbsp;
-					<a href="/help">aide</a>
+					<a href="/forgot-password" disabled>password oublié ?</a> &nbsp;·&nbsp;
+					<a href="/help" disabled>besoin d'aide ?</a>
 				</p>
-
 
 
 

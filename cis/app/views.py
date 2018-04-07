@@ -34,7 +34,7 @@ def token_required(f):
 ### INDEX AND LANDING
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/')
 def index():
 
@@ -42,7 +42,6 @@ def index():
 
 	form = PreRegisterForm()
 
-	### FORMS FROM WTF
 
 	### set language
 
@@ -55,9 +54,14 @@ def index():
 
 
 
-	if request.method == 'POST' and form.validate_on_submit():
 
-		log_cis.debug("index / form : %s ", pformat(form.__dict__) ) 
+	if request.method == 'POST' : #and form.validate_on_submit():
+
+		for f_field in form : 
+			log_cis.debug( "form : \n %s \n", pformat(f_field.__dict__) )
+			# log_cis.debug( "form name : %s / form data : %s \n", f_field.name, f_field.data )
+
+		return redirect(request.args.get("next") or url_for("index"))
 
 
 
@@ -99,7 +103,11 @@ def login():
 
 	if request.method == 'POST' and form.validate_on_submit():
 
-		log_cis.debug("login / form : %s ", pformat(form.__dict__) ) 
+		# log_cis.debug("login / form : %s ", pformat(form.__dict__) ) 
+
+		for f_field in form : 
+			# log_cis.debug( "form : \n %s \n", pformat(f_field.__dict__) )
+			log_cis.debug( "form name : %s / form data : %s \n", f_field.name, f_field.data )
 
 		user = mongo_users.find_one({"_id": form.userEmail.data})
 
@@ -130,7 +138,12 @@ def register():
 
 	if request.method == 'POST':
 
-		log_cis.debug("login / form : %s ", pformat(form.__dict__) ) 
+		# log_cis.debug("login / form : %s ", pformat(form.__dict__) ) 
+
+		for f_field in form : 
+			# log_cis.debug( "form : \n %s \n", pformat(f_field.__dict__) )
+			log_cis.debug( "form name : %s / form data : %s \n", f_field.name, f_field.data )
+
 
 		if form.validate_on_submit():
 

@@ -11,47 +11,47 @@ log_cis.info(" >>> reading _forms.form_user.py ")
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 
-choices_data_type       = [
-							(u"data_company"    , u"données sur votre structure"),
-							(u"data_network"    , u"données sur vos réseaux"  ),
-							(u"data_activity"   , u"données sur une de vos activités"),
-							(u"data_people"     , u"données sur une des personnes travaillant dans votre structure"),
+choices_data_type		= [
+							(u"data_company"	, u"données sur votre structure"),
+							(u"data_network"	, u"données sur vos réseaux"  ),
+							(u"data_activity"	, u"données sur une de vos activités"),
+							(u"data_people"		, u"données sur une des personnes travaillant dans votre structure"),
 						]
 
-choices_networks        = [
-							(u"network_up"      , u"structures auxquelles j'adhère"),
-							(u"network_flat"    , u"structures avec qui je travaille"),
-							(u"network_down"    , u"structures de mon propre réseau"),
+choices_networks		= [
+							(u"network_up"		, u"structures auxquelles j'adhère"),
+							(u"network_flat"	, u"structures avec qui je travaille"),
+							(u"network_down"	, u"structures de mon propre réseau"),
 						]
 						
-choices_subscriptions    = [
+choices_subscriptions	= [
 							(u""				, u"- sélectionnez le profil de votre structure -"),
-							# (u"open_data"       , u"open data"  ),
-							(u"priv_social"     , u"association"),
-							(u"priv_social"     , u"entreprise ESS ou sympathisante"),
-							(u"network"         , u"tête de réseau"),
-							(u"network"         , u"accompagnateur"),
-							(u"network"         , u"coopérative"),
-							(u"network"         , u"mutuelle"),
-							(u"public"          , u"structure publique"),
-							(u"public"          , u"para-public"),
-							(u"priv_commercial" , u"fondation"),
-							(u"priv_commercial" , u"entreprise hors ESS"),
+							# (u"open_data"		, u"open data"  ),
+							(u"priv_social"		, u"association"),
+							(u"priv_social"		, u"entreprise ESS ou sympathisante"),
+							(u"network"			, u"tête de réseau"),
+							(u"network"			, u"accompagnateur"),
+							(u"network"			, u"coopérative"),
+							(u"network"			, u"mutuelle"),
+							(u"public"			, u"structure publique"),
+							(u"public"			, u"para-public"),
+							(u"priv_commercial"	, u"fondation"),
+							(u"priv_commercial"	, u"entreprise hors ESS"),
 						]
 
 choices_structures		= [
-							(u""				, u"- sélectionnez votre structure parmi les partenaire -"),
+							(u""				, u"- sélectionnez votre structure -"),
 							# (u"open_data"       , u"open data"  ),
+							(u"apriles"			, u"Apriles"),
 							(u"avise"			, u"Avise"),
+							(u"cget"			, u"CGET"),
 							(u"cognac_jay"		, u"Fondation Cognac-Jay"),
 							(u"fnce"			, u"FNCE"),
-							(u"apriles"			, u"Apriles"),
-							(u"cget"			, u"CGET"),
-							(u"gniac"			, u"GNIAC"),
 							(u"fonda"			, u"La Fonda"),
+							(u"gniac"			, u"GNIAC"),
 							(u"labo_ess"		, u"Le Labo de l'ESS"),
 
-							(u"other"			, u"- autre -"),
+							(u"other"			, u"- autre structure -"),
 
 						]
 
@@ -64,11 +64,11 @@ class LoginForm(FlaskForm):
 
 	userEmail		= EmailField	( 	u'user email'   , 
 										validators = [ DataRequired(), Length(min=7, max=50) ], 
-										render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  
+										render_kw={'class': 'input is-large', 'placeholder': u'votre email'  }  
 									)
 	userPassword 	= PasswordField	( 	u'user password', 
 										validators = [ DataRequired() ], 
-										render_kw={'class': 'input is-large', 'placeholder':u"votre mot de passe"  }  
+										render_kw={'class': 'input is-large', 'placeholder': u"votre mot de passe"  }  
 									)
 	rememberMe  	= BooleanField  ( 	u'se souvenir de moi', 
 										default=False, 	
@@ -82,15 +82,15 @@ class RegisterForm(FlaskForm):
 
 	userName		= StringField	( 	u'user name', 
 										validators = [ DataRequired(), Length(min=3, max=50) ], 
-										render_kw={'class': 'input'	, 'placeholder':u'votre prénom *'  }  
+										render_kw={'class': 'input'	, 'placeholder': u'votre prénom *'  }  
 									)
 	userSurname		= StringField	( 	u'user surname' , 
 										validators = [ DataRequired(), Length(min=3, max=50) ], 
-										render_kw={'class': 'input'	, 'placeholder':u'votre nom *'  }  
+										render_kw={'class': 'input'	, 'placeholder': u'votre nom *'  }  
 									)
 	userEmail       = EmailField	( 	u'user email', 
 										validators = [ DataRequired(), Length(min=7, max=50) ], 
-										render_kw={'class': 'input'	, 'placeholder':u'votre email *'  }  
+										render_kw={'class': 'input'	, 'placeholder': u'votre email *'  }  
 									)
 	
 	### user password
@@ -104,7 +104,7 @@ class RegisterForm(FlaskForm):
 										render_kw={'class': 'input', 'placeholder': u'tapez votre password *'}
 									)
 	confirmPassword = PasswordField ( 	u'repeat Password', 
-										render_kw={'class': 'input', 'placeholder':u'répétez votre mot de passe *' } 
+										render_kw={'class': 'input', 'placeholder': u'répétez votre mot de passe *' } 
 										)
 
 
@@ -118,7 +118,7 @@ class RegisterForm(FlaskForm):
 
 	userSiret		= IntegerField  ( 	u'user siret',
 										render_kw={'class': 'input', 
-										'placeholder':u'votre numéro de SIRET'  }  
+										'placeholder':u'le numéro de SIRET de votre structure'  }  
 									)
 	userProfile		= SelectField   ( 	u'select profile', 
 										choices   = choices_subscriptions , 
@@ -166,19 +166,26 @@ class PreRegisterForm(RegisterForm) :
 
 class PwdForgotForm(FlaskForm):
 
-	userName     = StringField   ( 'user name'         , validators = [ DataRequired(), Length(min=3, max=50) ], render_kw={'class': 'input is-large', 'placeholder':u'votre prénom'  }  )
-	userEmail    = EmailField    ( 'pwdforgot email'   , validators = [ DataRequired(), Length(min=7, max=50) ], render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  )
-
+	userName	= StringField	(	'user name', 
+									validators = [ DataRequired(), Length(min=3, max=50) ], 
+									render_kw={'class': 'input is-large', 'placeholder':u'votre prénom'  }
+								)
+	userEmail	= EmailField	(	'pwdforgot email', 
+									validators = [ DataRequired(), Length(min=7, max=50) ],
+									render_kw={'class': 'input is-large', 'placeholder':u'votre email'  }  
+								)
 
 
 class NewPwdForm(FlaskForm):
 
-	userPassword    = PasswordField ( 'user password',
-		[
-		DataRequired(),
-		EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
-		Length(min=4, max=100)
-		],
-		render_kw={'class': 'input is-large', 'placeholder': u'tapez votre password'}
-	)
-	confirmPassword = PasswordField ('repeat Password', render_kw={'class': 'input is-large', 'placeholder':u'répétez votre mot de passe' } )
+	userPassword	=	PasswordField	( 	'user password',
+											[
+												DataRequired(),
+												EqualTo('confirmPassword', message=u'les deux mots de passe doivent être identiques'),
+												Length(min=4, max=100)
+											],
+											render_kw={'class': 'input is-large', 'placeholder': u'tapez votre password'}
+										)
+	confirmPassword	=	PasswordField 	(	'repeat Password', 
+											render_kw={'class': 'input is-large', 'placeholder':u'répétez votre mot de passe' } 
+										)

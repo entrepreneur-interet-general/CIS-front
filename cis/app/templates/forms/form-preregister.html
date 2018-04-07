@@ -1,0 +1,152 @@
+
+<form action="" method="POST" name="form">
+
+	{{ form.hidden_tag() }}
+
+	<div class="field is-horizontal">
+
+		<div class="field-body">
+			
+			<div class="field">
+				<p class="control is-expanded has-icons-left">
+					{# <input class="input" type="text" placeholder="Prénom *"> #}
+					{{ form.userName() }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-user"></i>
+					</span>
+				</p>
+			</div>
+
+			<div class="field">
+				<p class="control is-expanded has-icons-left has-icons-right">
+					{{ form.userSurname() }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-user"></i>
+					</span>
+				</p>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="field is-horizontal">
+
+		<div class="field-body">
+
+			<div class="field">
+				<p class="control is-expanded has-icons-left">
+					{{ form.userEmail() }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-envelope"></i>
+					</span>
+				</p>
+			</div>
+
+		</div>
+		
+	</div>
+
+{# 
+	<div class="field is-horizontal">
+
+		<div class="field-body"> #}
+
+			<div class="field">
+				<p class="control is-expanded has-icons-left has-icons-right">
+					<div class="select is-fullwidth">
+						{{ form.userStructure() }}
+					</div>
+				</p>
+			</div>
+
+
+			<div class="field" style='display:none' id="userOtherStructureField">
+				<p class="control is-expanded has-icons-left has-icons-right">
+					{{ form.userOtherStructure() }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-building"></i>
+					</span>
+				</p>
+			</div>
+
+		{# </div>
+
+	</div> #}
+
+
+
+	<div class="field is-horizontal">
+
+		<div class="field">
+			{# <input class="is-checkradio has-background-color is-white is-normal" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"> #}
+			{{ form.userHaveProjects() }}
+			{{ form.userHaveProjects.label }}
+			{# <label for="exampleCheckbox"><strong>J’ai des projets à valoriser</strong></label> #}
+			<p class="is-small" style="padding-left: 40px">
+				<small><small>
+					Vous recensez des projets socialement innovants sur votre propre site et 
+					vous aimeriez qu’ils apparaissent sur le Carrefour des innovations sociales
+				</small></small>
+			</p>
+		</div>
+
+		<div class="field">
+			{# <input class="is-checkradio has-background-color is-white is-normal" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"> #}
+			{{ form.userJoinCollective() }}
+			{{ form.userJoinCollective.label }}
+			{# <label for="exampleCheckbox"><strong>J’aimerais être partenaire du projet</strong></label> #}
+			<p class="is-small" style="padding-left: 40px">
+				<small><small>
+					Vous trouvez le projet intéressant et vous voulez participer 
+					à sa construction avec ou sans projets à valoriser
+				</small></small>
+			</p>
+		</div>
+
+	</div>
+
+
+	
+	<div class="field is-horizontal">
+		<div class="field-body">
+			<div class="field">
+				<div class="control">
+					{{ form.userMessage() }}
+					{# <textarea class="textarea" placeholder="Votre message, vos suggestions... *" rows="3"></textarea> #}
+				</div>
+				<p class="help is-light">* champs requis</p>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="field is-grouped is-grouped-centered">
+		<button class="button is-primary is-inverted is-outlined is-large" type="submit">
+			Envoyer votre question
+		</button>
+	</div>
+
+	{# <div class="field is-grouped is-grouped-centered">
+		<div class="control is-medium  has-text-centered">
+			<label 	for="sendMessage" 
+					class="button is-primary is-inverted is-outlined">
+				<span>
+					Envoyer votre question
+				</span>
+			</label>
+			<input 	id="sendMessage"
+					class="is-hidden" 
+					type="submit" 
+				>
+			</input>
+		</div>
+	</div> #}
+
+
+
+</form>
+
+<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/form-display-other-structure-name.js') }}"></script>
+
