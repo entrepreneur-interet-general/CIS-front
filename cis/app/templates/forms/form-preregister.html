@@ -4,8 +4,10 @@
 	{# { { form.hidden_tag() }} #}
 	{{ form.csrf_token }}
 
-	<div class="field is-horizontal">
 
+
+	{# USER NAME AND SURNAME #}
+	<div class="field is-horizontal">
 		<div class="field-body">
 			
 			<div class="field">
@@ -27,14 +29,12 @@
 			</div>
 
 		</div>
-
 	</div>
 
 
+	{# USER EMAIL #}
 	<div class="field is-horizontal">
-
 		<div class="field-body">
-
 			<div class="field">
 				<p class="control is-expanded has-icons-left">
 					{{ form.userEmail() }}
@@ -43,44 +43,48 @@
 					</span>
 				</p>
 			</div>
-
 		</div>
-		
 	</div>
 
-{# 
-	<div class="field is-horizontal">
 
-		<div class="field-body"> #}
-
-			<div class="field">
-				<p class="control is-expanded has-icons-left has-icons-right">
-					<div class="select is-fullwidth">
-						{{ form.userStructure() }}
-					</div>
-				</p>
+	{# USER STRUCTURE #}
+	<div class="field">
+		<p class="control is-expanded has-icons-left has-icons-right">
+			<div class="select is-fullwidth">
+				{{ form.userPartnerStructure }}
 			</div>
+		</p>
+	</div>
 
 
-			<div class="field" style='display:none' id="userOtherStructureField">
-				<p class="control is-expanded has-icons-left has-icons-right">
-					{{ form.userOtherStructure() }}
-					<span class="icon is-small is-left">
-						<i class="fas fa-building"></i>
-					</span>
-				</p>
+	{# USER STRUCTURE NAME #}
+	<div class="field" style='display:none' id="userOtherStructureField">
+		<p class="control is-expanded has-icons-left has-icons-right">
+			{{ form.userOtherStructure }}
+			<span class="icon is-small is-left">
+				<i class="fas fa-building"></i>
+			</span>
+		</p>
+	</div>
+	
+
+	{# USER STRUCTURE PROFILE #}
+	<div class="field" style='display:none' id="userStructureProfileField">
+		<div class="control">
+			<div class="select is-fullwidth">
+				{{ form.userStructureProfile }}
 			</div>
-
-		{# </div>
-
-	</div> #}
-
+		</div>
+	</div>
+			
 
 
-	<div class="field is-horizontal">
+
+	{# USER WISHES #}
+	<div class="field is-horizontal" id="userWishesFields" style='display:none'>
 
 		<div class="field">
-			{{ form.userHaveProjects() }}
+			{{ form.userHaveProjects }}
 			{{ form.userHaveProjects.label }}
 			<p class="is-small" style="padding-left: 40px">
 				<small><small>
@@ -91,7 +95,7 @@
 		</div>
 
 		<div class="field">
-			{{ form.userJoinCollective() }}
+			{{ form.userJoinCollective }}
 			{{ form.userJoinCollective.label }}
 			<p class="is-small" style="padding-left: 40px">
 				<small><small>
@@ -104,12 +108,12 @@
 	</div>
 
 
-	
+	{# USER MESSAGE #}
 	<div class="field is-horizontal">
 		<div class="field-body">
 			<div class="field">
 				<div class="control">
-					{{ form.userMessage() }}
+					{{ form.userMessage }}
 				</div>
 				<p class="help is-light">* champs requis</p>
 			</div>
@@ -117,6 +121,7 @@
 	</div>
 
 
+	{# SUBMIT BTN #}
 	<div class="field is-grouped is-grouped-centered">
 		<button class="button is-primary is-inverted is-outlined is-large" type="submit">
 			Envoyer votre question

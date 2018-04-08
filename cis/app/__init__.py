@@ -63,6 +63,13 @@ except:
 	log_cis.error("no IP host detected")
 
 
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### FLASK-ADMIN IMPORT ###########################################################################
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+from	flask_admin 	import Admin, AdminIndexView
+
+
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### CRYPTO IMPORT ###########################################################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -130,17 +137,13 @@ print
 ### LOGIN MANAGER ###########################################################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-from  flask_login import LoginManager, login_user, logout_user, login_required
+from  	flask_login import 	LoginManager, login_user, logout_user, login_required, \
+							current_user
 
 ### create login manager
-login_manager = LoginManager()
+login_manager 				= LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-### TO DO : follow tuto login manager for pymongo
-# cf : https://runningcodes.net/flask-login-and-mongodb/ 
-# cf : 
-
+login_manager.login_view 	= 'login'
 
 
 
@@ -164,6 +167,7 @@ from settings import *
 
 # models :
 from models import *
+login_manager.anonymous_user = AnonymousUser
 
 # forms classes :
 from forms import * # LoginForm, UserRegisterForm, UserUpdateForm, UserHistoryAloesForm, RequestCabForm
@@ -173,6 +177,13 @@ from api import *
 
 
 
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### IMPORT VIEWS ############################################################################
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+from . import views
+
+
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### CREATE ADMIN MANAGER VIEWS ###########################################################################
@@ -180,22 +191,17 @@ from api import *
 # cf : https://github.com/flask-admin/flask-admin/blob/master/examples/pymongo/app.py
 
 
-from	flask_admin 	import Admin
-
-admin = Admin(app, name='admin interface for CIS')
+admin = Admin(app, index_view=views.MyAdminIndexView(), name='admin interface for CIS')
 
 # Add views
-admin.add_view( UserViewAdmin( mongo_users, 'Users' ) )
+admin.add_view( views.UserViewAdmin( mongo_users, 'Users' ) )
+
 
 
 
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### IMPORT VIEWS ############################################################################
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-
-from . import views
 
 print
 log_cis.debug("all imports are finished...\n")

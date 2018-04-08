@@ -3,7 +3,7 @@
 from . 	import *
 from .. import app, log_cis, pformat
 
-log_cis.info(" >>> reading _forms.form_user.py ")
+log_cis.info(">>> reading _forms.form_user.py ")
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -23,7 +23,7 @@ choices_networks		= [	(u"network_up"		, u"structures auxquelles j'adhère"),
 						]
 						
 choices_structures		= [ (u""				, u"- sélectionnez votre structure -"),
-							# (u"open_data"       , u"open data"  ),
+							(u""				, u"- structures partenaires -"  ),
 							(u"apriles"			, u"Apriles"),
 							(u"avise"			, u"Avise"),
 							(u"cget"			, u"CGET"),
@@ -33,7 +33,9 @@ choices_structures		= [ (u""				, u"- sélectionnez votre structure -"),
 							(u"gniac"			, u"GNIAC"),
 							(u"labo_ess"		, u"Le Labo de l'ESS"),
 
-							(u"other"			, u"- autre structure - merci de compléter -"),
+							(u"other"			, u"- autres structures -"  ),
+							(u"_no_"			, u"sans structure"  ),
+							(u"other"			, u"autre structure - merci de compléter"),
 
 						]
 
@@ -43,15 +45,15 @@ choices_auth_level		= [	(u"visitor"			, u"visiteur"),
 							(u"admin"			, u"administrateur"),
 						]
 
-choices_profile			= [	(u""				, u"- sélectionnez votre profil de métier -"),
-							(u"observer"		, u"observateur"),
-							(u"analyst"			, u"analyste"),
-							(u"helper"			, u"accompagnateur"),
-							(u"financer"		, u"financeur"),
-							(u"project_holder"	, u"porteur de projet"),
-							(u"citizen"			, u"citoyen"),
+choices_profile				= [	(u""				, u"- sélectionnez votre profil de métier -"),
+								(u"observer"		, u"observateur"),
+								(u"analyst"			, u"analyste"),
+								(u"helper"			, u"accompagnateur"),
+								(u"financer"		, u"financeur"),
+								(u"project_holder"	, u"porteur de projet"),
+								(u"citizen"			, u"citoyen"),
 
-						]
+							]
 
 choices_structure_profile	= [	(u""				, u"- sélectionnez le profil de votre structure -"),
 								# (u"open_data"		, u"open data"  ),
@@ -101,22 +103,22 @@ userEmail		= EmailField	( 	u'user email'   ,
 # 									validators = [ DataRequired() ], 
 # 									render_kw={'class': 'input is-large', 'placeholder': u"votre mot de passe"  }
 # 								) 
-userPassword 	= PasswordField	( 	u'user password', 
+userPassword 		= PasswordField	( 	u'user password', 
 									validators = [ DataRequired() ], 
-									render_kw={'class': 'input', 'placeholder': u"votre mot de passe"  }
+									render_kw={'class': 'input', 'placeholder': u"votre mot de passe *"  }
 								) 
-registerPassword = PasswordField ( 	u'user password',
+registerPassword 	= PasswordField ( 	u'user password',
 									validators = [
 										DataRequired(),
-										EqualTo('confirmPassword', message=u"les deux mots de passe doivent être identiques"),
+										EqualTo('userConfirmPassword', message=u"les deux mots de passe doivent être identiques"),
 										Length(min=4, max=100)
 									],
 									render_kw={'class': 'input', 'placeholder': u"tapez votre password *"}
 								)
-confirmPassword = PasswordField ( 	u'repeat Password', 
+userConfirmPassword = PasswordField ( 	u'repeat Password', 
 									render_kw={'class': 'input', 'placeholder': u"répétez votre mot de passe *" } 
 									)
-rememberMe  	= BooleanField  ( 	u'se souvenir de moi', 
+userRememberMe 		= BooleanField  ( 	u'se souvenir de moi', 
 									default=False, 	
 									render_kw={'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
 								)
@@ -146,24 +148,24 @@ userMessage					= TextAreaField	(  	u'Message',
 
 ### specific infos about user's structure
 
-userSiret			= IntegerField  ( 	u'le numéro de siret de votre structure',
-										validators = [ Optional() ],
-										render_kw={'class': 'input', 
-										'placeholder':u"le numéro de SIRET de votre structure"  }  
-									)
-userStructure		= SelectField	( 	u'sélectionner votre structure', 
-										validators 	= [ Optional() ],
-										choices 	= choices_structures , 
-										default   	= 0 ,
-										render_kw 	= {	'class'      : 'input select',
-														'data-width' : "100%",
-														'description': u'votre structure'
-											}
-									)
-userOtherStructure	= StringField	(	u'le nom de votre structure' , 
-										validators = [ Optional(), Length(min=0, max=50) ], 
-										render_kw={'class': 'input', 'placeholder': u"le nom de votre structure"  }  
-									)
+userStructureSiret		= IntegerField  ( 	u'le numéro de siret de votre structure',
+											validators = [ Optional() ],
+											render_kw={'class': 'input', 
+											'placeholder':u"le numéro de SIRET de votre structure"  }  
+										)
+userPartnerStructure	= SelectField	( 	u'sélectionner votre structure', 
+											validators 	= [ Optional() ],
+											choices 	= choices_structures , 
+											default   	= 0 ,
+											render_kw 	= {	'class'      : 'input select',
+															'data-width' : "100%",
+															'description': u'votre structure'
+												}
+										)
+userOtherStructure		= StringField	(	u'le nom de votre structure' , 
+											validators = [ Optional(), Length(min=0, max=50) ], 
+											render_kw={'class': 'input', 'placeholder': u"le nom de votre structure"  }  
+										)
 
 
 ### user preferences / auth level
@@ -224,9 +226,9 @@ class UserProfile(FlaskForm) :
 
 class UserStructureInfos(FlaskForm) :
 
-	userSiret 				= userSiret
+	userStructureSiret		= userStructureSiret
 	userStructureProfile 	= userStructureProfile
-	userStructure 			= userStructure
+	userPartnerStructure	= userPartnerStructure
 	userOtherStructure 		= userOtherStructure
 
 class UserSharedInfos(FlaskForm) :
@@ -243,7 +245,7 @@ class LoginForm( UserBasics ):
 
 	userEmail			= userEmail
 	userPassword 		= userPassword
-	rememberMe			= rememberMe
+	userRememberMe		= userRememberMe
 
 
 class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
@@ -252,11 +254,11 @@ class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 	userEmail		= userEmail
 
 	### user password
-	userPassword 	= registerPassword
-	confirmPassword = confirmPassword
+	userPassword 		= registerPassword
+	userConfirmPassword = userConfirmPassword
 
 	### optionnal infos
-	rememberMe 			= rememberMe
+	userRememberMe 	= userRememberMe
 
 
 class PreRegisterForm( RegisterForm ) : 
@@ -273,8 +275,8 @@ class PwdForgotForm( FlaskForm ):
 
 class NewPwdForm( FlaskForm ):
 
-	userPassword 	= registerPassword
-	confirmPassword	= confirmPassword
+	userPassword 		= registerPassword
+	userConfirmPassword	= userConfirmPassword
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -292,9 +294,9 @@ class UserAdminBasics(form.Form) :
 
 class UserAdminStructureInfos(form.Form) : 
 
-	userSiret 				= userSiret
+	userStructureSiret		= userStructureSiret
 	userStructureProfile 	= userStructureProfile
-	userStructure 			= userStructure
+	userPartnerStructure 	= userPartnerStructure
 	userOtherStructure 		= userOtherStructure
 
 class UserAdminSharedInfos(form.Form) : 
@@ -326,28 +328,4 @@ class UserAdminInfos(UserAdminSharedInfos, UserAdminStructureInfos, UserAdminAut
 	# auth_level		= InlineFieldList(InlineFormField(UserAdminAuthLevel))
 
 
-from flask_admin.contrib.pymongo.filters import FilterEqual, BooleanEqualFilter
 
-class UserViewAdmin(ModelView):
-	"""
-	view of an user in admin
-	"""
-	
-	column_list 			= (	
-								'userName', 'userSurname', 'userEmail', \
-								'userStructure',
-								'userAuthLevel',
-								'userHaveProjects',
-								'userProfile'
-								# 'structure.userStructure',
-								# '<structure>.<userStructure>'
-							)
-	
-	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
-	# 							'structure',)
-	column_sortable_list	= column_list
-	
-	# column_filters = (BooleanEqualFilter(column=UserID.userName, name='userName'),)
-
-
-	form 					= UserAdminInfos

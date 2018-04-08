@@ -16,21 +16,24 @@
 		<div class="control has-icons-left">
 			{{ form.userEmail(class='input is-large') }}
 			<span class="icon is-small is-left">
-			<i class="fas fa-envelope"></i>
+				<i class="fas fa-envelope"></i>
 			</span>
 		</div>
 	</div>
 
 	<div class="field">
-		<div class="control">
+		<div class="control has-icons-left">
 			{{ form.userPassword(class='input is-large') }}
+			<span class="icon is-small is-left">
+				<i class="fas fa-key"></i>
+			</span>
 		</div>
 	</div>
 
 
 	<div class="field">
-		{{ form.rememberMe() }}
-		{{ form.rememberMe.label }}
+		{{ form.userRememberMe }}
+		{{ form.userRememberMe.label }}
 	</div>
 
 

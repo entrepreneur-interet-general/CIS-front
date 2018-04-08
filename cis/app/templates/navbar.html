@@ -26,30 +26,7 @@
 
 		{% if is_connected is defined %}
 		
-			{# buttons at navbar start #}
-			<div class="navbar-start">
-				
-				<span class="navbar-item">
-
-					<div class="field is-grouped">
-					
-						<div class="field has-addons">
-							<div class="control">
-								<input class="input" type="text" placeholder="Find a repository">
-							</div>
-							<div class="control">
-								<a class="button is-info">
-									chercher
-								</a>
-							</div>
-						</div>
-
-
-					</div>
-				
-				</span>
-			
-			</div>
+			{% include "elements/navbar-search-input.html" %}
 
 		{% endif %}
 
@@ -64,29 +41,72 @@
 
 				<div class="field is-grouped">
 
+
+					{# 
 					<p class="control">
-						<a class="button is-text is-primary is-inverted">
-							<span class="icon ">
-								<i class="fab fa-lg fa-twitter"></i>
+						 {{ user_infos.userName }} - {{ user_infos.userAuthLevel}}
+					</p>
+					#}
+
+
+					{# SOCIAL NETWORKS #}
+					<a class="navbar-item ">
+						<span class="icon has-text-primary">
+							<i class="fab fa-2x fa-twitter"></i>
+						</span>
+					</a>
+
+
+					<a class="navbar-item ">
+						<span class="icon has-text-primary ">
+							<i class="fab fa-2x fa-facebook"></i>
+						</span>
+					</a>
+
+
+					{# LOGIN - LOGOUT - USER BTNS #}
+					{% if user_infos.is_authenticated == False %}
+
+						<div class="navbar-item">
+							<a class="button is-primary is-outlined" href="/login">
+								<span>Connectez-vous</span>
+							</a>
+						</div>
+
+					{% else %}
+
+
+						{% if user_infos.userAuthLevel == "admin" %}
+						<div class="navbar-item">
+							<a class="button is-warning is-outlined" href="/admin">
+								<span class="icon">
+									<i class="fas fa-lg fa-lock"></i>
+								</span>
+							</a>
+						</div>
+						{% endif %}
+
+						<a class="navbar-item tooltip is-tooltip-bottom"
+							data-tooltip="bonjour, {{ user_infos.userName }} ({{ user_infos.userAuthLevel }})"
+							>
+							<span class="icon has-text-grey">
+								<i class="fas fa-2x fa-user-circle"></i>
 							</span>
 						</a>
-					</p>
 
-
-					<p class="control">
-						<a class="button is-text is-primary is-inverted">
-							<span class="icon ">
-								<i class="fab fa-lg fa-facebook"></i>
+						<a 	class="navbar-item tooltip is-tooltip-bottom" 
+							data-tooltip="se déconnecter"
+							href="/logout">
+							<span class="icon has-text-light">
+								<i class="fas fa-2x fa-sign-out-alt"></i>
 							</span>
 						</a>
-					</p>
+
+					{% endif %}
 
 
-					<p class="control">
-						<a class="button is-primary is-outlined" href="/login">
-							<span>Connectez-vous</span>
-						</a>
-					</p>
+
+
 
 				</div>
 

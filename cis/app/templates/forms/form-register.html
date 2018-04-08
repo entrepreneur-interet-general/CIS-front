@@ -1,5 +1,5 @@
 
-<form action="" method="POST" name="form">
+<form action="/register" method="POST" name="form">
 
 	{# { { form.hidden_tag() }} #}
 	{{ form.csrf_token }}
@@ -43,28 +43,13 @@
 
 	<div class="field">
 		<div class="control has-icons-left">
-			{{ form.confirmPassword }}
+			{{ form.userConfirmPassword }}
 			<span class="icon is-small is-left">
 				<i class="fas fa-key"></i>
 			</span>
 		</div>
 	</div>
 	<p class="help is-light">* champs requis</p>
-
-
-	<div class="is-divider" data-content="vos envies"></div>
-
-
-	<div class="field is-pulled-left">
-		{{ form.userHaveProjects( class ='is-checkradio is-black is-normal') }}
-		{{ form.userHaveProjects.label }}
-	</div>
-	<br>
-	<div class="field is-pulled-left">
-		{{ form.userJoinCollective( class ='is-checkradio is-black is-normal') }}
-		{{ form.userJoinCollective.label }}
-	</div>
-	<br><br>
 	
 
 
@@ -72,7 +57,6 @@
 	
 
 	<div class="field">
-		{# <label class="label">votre profil métier</label> #}
 		<div class="control">
 			<div class="select is-fullwidth">
 				{{ form.userProfile }}
@@ -86,10 +70,9 @@
 
 
 	<div class="field">
-		{# <label class="label">votre structure</label> #}
 		<div class="control">
 			<div class="select is-fullwidth">
-				{{ form.userStructure }}
+				{{ form.userPartnerStructure }}
 			</div>
 		</div>
 	</div>
@@ -115,7 +98,7 @@
 	</div> #}
 
 
-	<div class="field">
+	<div class="field" style='display:none' id="userStructureProfileField">
 		<div class="control">
 			<div class="select is-fullwidth">
 				{{ form.userStructureProfile }}
@@ -124,7 +107,23 @@
 	</div>
 
 
+	<div id="userWishesFields" style='display:none'>
 
+		<div class="is-divider" data-content="vos envies"></div>
+
+		<div class="field is-pulled-left">
+			{{ form.userHaveProjects( class ='is-checkradio is-black is-normal') }}
+			{{ form.userHaveProjects.label }}
+		</div>
+		<br>
+		<div class="field is-pulled-left">
+			{{ form.userJoinCollective( class ='is-checkradio is-black is-normal') }}
+			{{ form.userJoinCollective.label }}
+		</div>
+		<br><br>
+		
+	</div>
+	
 
 
 	{# 
