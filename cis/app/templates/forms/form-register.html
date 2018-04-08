@@ -1,7 +1,8 @@
 
 <form action="" method="POST" name="form">
 
-	{{ form.hidden_tag() }}
+	{# { { form.hidden_tag() }} #}
+	{{ form.csrf_token }}
 
 	<div class="field">
 		<label class="label">vos informations</label>
@@ -50,11 +51,42 @@
 	</div>
 	<p class="help is-light">* champs requis</p>
 
-	<div class="is-divider" data-content="informations optionnelles"></div>
+
+	<div class="is-divider" data-content="vos envies"></div>
+
+
+	<div class="field is-pulled-left">
+		{{ form.userHaveProjects( class ='is-checkradio is-black is-normal') }}
+		{{ form.userHaveProjects.label }}
+	</div>
+	<br>
+	<div class="field is-pulled-left">
+		{{ form.userJoinCollective( class ='is-checkradio is-black is-normal') }}
+		{{ form.userJoinCollective.label }}
+	</div>
+	<br><br>
+	
+
+
+	<div class="is-divider" data-content="votre profil métier (optionnel)"></div>
+	
+
+	<div class="field">
+		{# <label class="label">votre profil métier</label> #}
+		<div class="control">
+			<div class="select is-fullwidth">
+				{{ form.userProfile }}
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="is-divider" data-content="votre structure (optionnel) "></div>
 
 
 	<div class="field">
-		<label class="label">votre structure</label>
+		{# <label class="label">votre structure</label> #}
 		<div class="control">
 			<div class="select is-fullwidth">
 				{{ form.userStructure }}
@@ -72,24 +104,27 @@
 		</div>
 	</div>
 
-
-	<div class="field">
-		<div class="control">
-			<div class="select is-fullwidth">
-				{{ form.userProfile }}
-			</div>
-		</div>
-	</div>
-
-
-	<div class="field">
+	{# <div class="field" style='display:none' id="userSiretField">
 		<div class="control has-icons-left">
 			{{ form.userSiret }}
 			<span class="icon is-small is-left">
 				<i class="fas fa-building"></i>
 			</span>
 		</div>
+		<p class="help is-light">(optionnel)</p>
+	</div> #}
+
+
+	<div class="field">
+		<div class="control">
+			<div class="select is-fullwidth">
+				{{ form.userStructureProfile }}
+			</div>
+		</div>
 	</div>
+
+
+
 
 
 	{# 
@@ -103,11 +138,24 @@
 	</div> 
 	#}
 
+	<div class="is-divider" data-content="une remarque, un commentaire ? (optionnel)"></div>
+
+
+	<div class="field is-horizontal">
+		<div class="field-body">
+			<div class="field">
+				<div class="control">
+					{{ form.userMessage() }}
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<br>
 
 	<button class="button is-block is-primary is-large is-fullwidth" type="submit">
-		s'enregistrer
+		S'enregistrer
 	</button>
 
 

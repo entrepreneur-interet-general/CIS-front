@@ -9,11 +9,12 @@
 
 <form action="" method="POST" name="form">
 					
-	{{ form.hidden_tag() }}
-
+	{# { { form.hidden_tag() }} #}
+	{{ form.csrf_token }}
+	
 	<div class="field">
 		<div class="control has-icons-left">
-			{{ form.userEmail }}
+			{{ form.userEmail(class='input is-large') }}
 			<span class="icon is-small is-left">
 			<i class="fas fa-envelope"></i>
 			</span>
@@ -22,7 +23,7 @@
 
 	<div class="field">
 		<div class="control">
-			{{ form.userPassword }}
+			{{ form.userPassword(class='input is-large') }}
 		</div>
 	</div>
 
@@ -35,7 +36,7 @@
 
 	
 	<button class="button is-block is-primary is-large is-fullwidth" type="submit">
-		se connecter
+		Se connecter
 	</button> 
 	
 

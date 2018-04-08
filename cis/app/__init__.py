@@ -50,8 +50,9 @@ log_cis.debug('TESTING LOGGER')
 ### FLASK IMPORTS ###########################################################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-from    flask import Flask, g
-from    flask import jsonify, flash, render_template, url_for, make_response, request, session, redirect
+from	flask 			import Flask, g, current_app, session
+from 	flask_wtf.csrf 	import CSRFProtect
+# from	flask import jsonify, flash, render_template, url_for, make_response, request, redirect
 
 import  socket
 
@@ -97,7 +98,9 @@ from	flask_pymongo import PyMongo ### flask_pymongo instead of flask.ext.pymongo
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 ### create Flask app 
-app	= Flask( __name__ )
+app		= Flask( __name__ )
+# csrf 	= CSRFProtect(app)
+# csrf.init_app(app)
 
 ### set environment and app variables
 log_cis.debug("configuring app's env vars...\n")
@@ -120,7 +123,6 @@ if config_name == "default" or config_name == "production" :
 	print
 
 print
-
 
 
 
@@ -153,7 +155,6 @@ mail 	= Mail(app)
 
 
 
-
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### INITIATE MONGO DB AND IMPORT MAIN CLASSES ###############################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -169,6 +170,22 @@ from forms import * # LoginForm, UserRegisterForm, UserUpdateForm, UserHistoryAl
 
 # db classes and functions
 from api import *
+
+
+
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### CREATE ADMIN MANAGER VIEWS ###########################################################################
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+# cf : https://github.com/flask-admin/flask-admin/blob/master/examples/pymongo/app.py
+
+
+from	flask_admin 	import Admin
+
+admin = Admin(app, name='admin interface for CIS')
+
+# Add views
+admin.add_view( UserViewAdmin( mongo_users, 'Users' ) )
 
 
 

@@ -1,7 +1,8 @@
 
 <form action="" method="POST" name="form">
 
-	{{ form.hidden_tag() }}
+	{# { { form.hidden_tag() }} #}
+	{{ form.csrf_token }}
 
 	<div class="field is-horizontal">
 
@@ -9,7 +10,6 @@
 			
 			<div class="field">
 				<p class="control is-expanded has-icons-left">
-					{# <input class="input" type="text" placeholder="Prénom *"> #}
 					{{ form.userName() }}
 					<span class="icon is-small is-left">
 						<i class="fas fa-user"></i>
@@ -80,10 +80,8 @@
 	<div class="field is-horizontal">
 
 		<div class="field">
-			{# <input class="is-checkradio has-background-color is-white is-normal" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"> #}
 			{{ form.userHaveProjects() }}
 			{{ form.userHaveProjects.label }}
-			{# <label for="exampleCheckbox"><strong>J’ai des projets à valoriser</strong></label> #}
 			<p class="is-small" style="padding-left: 40px">
 				<small><small>
 					Vous recensez des projets socialement innovants sur votre propre site et 
@@ -93,10 +91,8 @@
 		</div>
 
 		<div class="field">
-			{# <input class="is-checkradio has-background-color is-white is-normal" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"> #}
 			{{ form.userJoinCollective() }}
 			{{ form.userJoinCollective.label }}
-			{# <label for="exampleCheckbox"><strong>J’aimerais être partenaire du projet</strong></label> #}
 			<p class="is-small" style="padding-left: 40px">
 				<small><small>
 					Vous trouvez le projet intéressant et vous voulez participer 
@@ -114,7 +110,6 @@
 			<div class="field">
 				<div class="control">
 					{{ form.userMessage() }}
-					{# <textarea class="textarea" placeholder="Votre message, vos suggestions... *" rows="3"></textarea> #}
 				</div>
 				<p class="help is-light">* champs requis</p>
 			</div>

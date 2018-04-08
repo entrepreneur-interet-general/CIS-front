@@ -1,7 +1,10 @@
 # -*- encoding: utf-8 -*-
 
 ### import all from app.__init__
-from . import *
+from . 	import *
+from	flask import 	jsonify, flash, render_template, \
+						url_for, make_response, request, redirect, \
+						send_file
 
 
 ########################################################################################
@@ -28,6 +31,7 @@ def token_required(f):
 		return f(current_user, *args, **kwargs)
 
 	return decorated
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -182,4 +186,21 @@ def logout():
 @login_required
 def settings():
 
-	return render_template('index.html')
+	return render_template('user_settings.html')
+
+
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### FILES ROUTES
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+@app.route('/<file_to_dowload>', methods=['GET'] ) # this is a job for GET, not POST
+def download_file(file_to_dowload):
+	"""
+	
+	"""
+
+	return send_file(	'outputs/Adjacency.csv',
+						mimetype='text/csv',
+						attachment_filename='Adjacency.csv',
+						as_attachment=True)

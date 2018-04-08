@@ -2,7 +2,7 @@
 	
 	
 // function to hide / show #userOtherStructureField
-function DisplayOtherStructureNameField(){
+function DisplaySiretAndOtherStructureNameField(){
 
 	console.log("DisplayOtherStructureNameField...");
 
@@ -11,19 +11,22 @@ function DisplayOtherStructureNameField(){
 
 	if (selected_option === 'other') {
 		$('#userOtherStructureField').show();
+		// $('#userSiretField').show();
 	}
 	if (selected_option != 'other') {
 		$("#userOtherStructureField").hide();
+		// $("#userSiretField").hide();
 	}
 
 };
 
 
-$(document).ready(function() {
+
+// $(document).ready(function() {
 
 	// run function when load or change on #userStructure select input
 	$("#userStructure").bind( 'load change', function() {
-		DisplayOtherStructureNameField() 
+		DisplaySiretAndOtherStructureNameField() 
 	});
 
-})
+// })

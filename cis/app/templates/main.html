@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>	 
+<html>
 
+
+	{# IMPORTS #}
 	<head>
+
 
 		<title>CIS - {{ site_section }}</title>
 		<meta charset="utf-8">
@@ -13,7 +16,6 @@
 		{# JQUERY #}
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
-		
 		
 
 		{# BULMA EXTENSIONS FOR WHOLE WEBSITE #}
@@ -33,23 +35,23 @@
 		
 
 		
-		{# RECAPTCHA #}
+		{# RECAPTCHA - SECURITY #}
 
 
-		{# CRISP CHAT #}
+		{# CRISP - CHAT #}
 
 
-		{# GOOGLE ANALYTICS #}
+		{# GOOGLE ANALYTICS - METRICS #}
 
 
-		{# MIX PANEL METRICS #}
+		{# MIX PANEL - METRICS #}
 
 
-		{# CHARTS #}
+		{# CHARTS - VIZ #}
 		<script type="text/javascript" language="javascript" src="https://cdnjs.com/libraries/Chart.js"></script>		
 
 
-		{# DATATABLE #}
+		{# DATATABLE - VIZ #}
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 		<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -68,7 +70,8 @@
 
 	{# MAIN CONTENTS #}
 	<body>
-		
+
+
 		{# nav bar #}
 		<header class="navbar is-white is-fixed-top">
 			{% include "navbar.html" %}
@@ -86,5 +89,9 @@
 
 	
 	</body>
+
+
+
+
 
 </html>

@@ -7,7 +7,7 @@ stores main secret keys and app passwords
 """ APP SECRET KEY """
 SECRET_KEY			= "app_very_secret_key"
 WTF_CSRF_SECRET_KEY = "a_super_wtf_secret_key"
-
+WTF_CSRF_ADMIN_KEY	= "a_mega_super_key_for_admin_views"
 
 """ HOST """
 DOMAIN_ROOT			= "127.0.0.1" 
