@@ -8,6 +8,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app import app
 
+# set environment variable to set config later in backend.config_env.py
+os.environ['FLASK_CONFIGURATION'] = "production"
 
 if __name__ == '__main__':
 	""" 

@@ -1,4 +1,4 @@
-TEXTE LANDING 
+﻿TEXTE LANDING 
 
 
 
@@ -88,7 +88,7 @@ UN COLLECTIF DE 70 PARTENAIRES
 -> 38
 -> Violet
 
-Des associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche se font confiance et co-construisent le Carrefour des innovations sociales.
+Des associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche se font confiance et co-construisent le Carrefour des innovations sociales Témoignages.
 -> 18 
 -> regular
 
