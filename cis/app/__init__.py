@@ -132,11 +132,11 @@ if config_name == "default" or config_name == "production" :
 	log_cis.info('config_name : %s', config_name )
 	print
 
-	log_cis.debug(	"ENVIRONMENT VARIABLES / to understand what the fuck is goin on ... : \n %s", 
+	log_cis.info(	"ENVIRONMENT VARIABLES / to understand what the fuck is goin on ... : \n %s", 
 					pformat({ k : v for k,v in  os.environ.iteritems() }) )
 	print
 
-	log_cis.debug(	"APP.CONFIG / to understand what the fucking fuck is goin on ... : \n %s", 
+	log_cis.info(	"APP.CONFIG / to understand what the fucking fuck is goin on ... : \n %s", 
 					pformat({ k : v for k,v in  app.config.iteritems() }) )
 	print
 
