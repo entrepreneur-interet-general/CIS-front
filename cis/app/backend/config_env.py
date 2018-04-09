@@ -136,6 +136,9 @@ class ProductionConfig(Config):
 	""" PRODUCTION Config Class """
 	DEBUG 				= False
 
+	ALLOWED_HOSTS		= os.getenv("ALLOWED_HOSTS")
+
+
 	""" RUNNING ENVIRONNEMENT """
 	RUNNING_ENV			= os.getenv("RUNNING_ENV", "production")
 
