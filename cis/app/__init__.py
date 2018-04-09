@@ -50,7 +50,7 @@ log_cis.debug('TESTING LOGGER')
 ### FLASK IMPORTS ###########################################################################
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-from	flask 			import Flask, g, current_app, session
+from	flask 			import Flask, g, current_app, session, request
 from 	flask_wtf.csrf 	import CSRFProtect
 # from	flask import jsonify, flash, render_template, url_for, make_response, request, redirect
 
@@ -106,8 +106,19 @@ from	flask_pymongo import PyMongo ### flask_pymongo instead of flask.ext.pymongo
 
 ### create Flask app 
 app		= Flask( __name__ )
-# csrf 	= CSRFProtect(app)
-# csrf.init_app(app)
+
+### FOR DEBUGGING PURPOSES
+@app.before_request
+def before_request():
+	
+	print
+	print "+ - "*25
+
+	### print headers
+	log_cis.debug( 'REQUEST HEADERS : \n %s ', request.headers )
+	### NOTE BUG : 
+	### SAFARI HEADERS DON'T CONTAIN COOKIE, THEREFORE NOR CSRF VALUE
+	
 
 ### set environment and app variables
 log_cis.debug("configuring app's env vars...\n")
@@ -144,6 +155,15 @@ from  	flask_login import 	LoginManager, login_user, logout_user, login_required
 login_manager 				= LoginManager()
 login_manager.init_app(app)
 login_manager.login_view 	= 'login'
+
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### CSRF ####################################################################################
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+# deprecated --> messing with form.validate_on_submit()
+# csrf = CSRFProtect(app)
+# csrf.init_app(app)
 
 
 

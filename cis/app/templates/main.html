@@ -9,6 +9,7 @@
 		<title>CIS - {{ site_section }}</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 		{# FONTS #}
 		{# <link href="https://fonts.googleapis.com/css?family=Assistant:200|Barlow|Quicksand|Raleway|Roboto|Ubuntu" rel="stylesheet"> #}
@@ -73,9 +74,9 @@
 
 
 		{# nav bar #}
-		<header class="navbar is-white is-fixed-top">
+		<nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
 			{% include "navbar.html" %}
-		</header>
+		</nav>
 
 
 		{# contents #}

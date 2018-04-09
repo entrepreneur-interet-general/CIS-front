@@ -87,7 +87,7 @@ class User( UserMixin ):
 		"""
 
 		for f_field in userForm : 
-			if f_field.name not in [ "userPassword", "userConfirmPassword", "csrf_token" ] :
+			if f_field.name not in [ "userPassword", "registerpassword",  "userConfirmPassword", "csrf_token" ] :
 				"""
 				do not save password here : 
 				password needs to be hashed and should be initialized at __init__

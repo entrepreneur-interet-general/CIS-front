@@ -1,8 +1,8 @@
 
 <form action="/register" method="POST" name="form">
 
-	{# { { form.hidden_tag() }} #}
-	{{ form.csrf_token }}
+	{{ form.hidden_tag() }}
+	{# { { form.csrf_token }} #}
 
 	<div class="field">
 		<label class="label">vos informations</label>
@@ -34,7 +34,7 @@
 
 	<div class="field">
 		<div class="control has-icons-left">
-			{{ form.userPassword }}
+			{{ form.registerPassword }}
 			<span class="icon is-small is-left">
 				<i class="fas fa-key"></i>
 			</span>

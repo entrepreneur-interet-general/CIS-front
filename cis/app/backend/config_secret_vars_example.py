@@ -10,10 +10,10 @@ WTF_CSRF_SECRET_KEY = "a_super_wtf_secret_key"
 WTF_CSRF_ADMIN_KEY	= "a_mega_super_key_for_admin_views"
 
 """ HOST """
-DOMAIN_ROOT			= "127.0.0.1" 
+DOMAIN_ROOT			= "localhost" 
 DOMAIN_PORT			= "8100"
-SERVER_NAME			= "127.0.0.1:8100"  ### if True need to set SESSION_COOKIE_DOMAIN
-DOMAIN_NAME			= "http://127.0.0.1:8100"
+SERVER_NAME			= "localhost:8100"  ### if True need to set SESSION_COOKIE_DOMAIN + cf : https://stackoverflow.com/questions/47666210/cookies-not-saved-in-the-browser 
+DOMAIN_NAME			= "http://localhost.1:8100"
 SERVER_NAME_TEST	= "True" 
 
 

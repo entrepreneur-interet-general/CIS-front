@@ -23,20 +23,20 @@ choices_networks		= [	(u"network_up"		, u"structures auxquelles j'adhère"),
 						]
 						
 choices_structures		= [ (u""				, u"- sélectionnez votre structure -"),
-							(u""				, u"- structures partenaires -"  ),
+
+							(u""				, u"*** structures partenaires ***"  ),
 							(u"apriles"			, u"Apriles"),
 							(u"avise"			, u"Avise"),
 							(u"cget"			, u"CGET"),
-							(u"cognac_jay"		, u"Fondation Cognac-Jay"),
 							(u"fnce"			, u"FNCE"),
 							(u"fonda"			, u"La Fonda"),
+							(u"cognac_jay"		, u"Fondation Cognac-Jay"),
 							(u"gniac"			, u"GNIAC"),
 							(u"labo_ess"		, u"Le Labo de l'ESS"),
 
-							(u"other"			, u"- autres structures -"  ),
+							(u"other"			, u"*** autres structures ***"  ),
 							(u"_no_"			, u"sans structure"  ),
-							(u"other"			, u"autre structure - merci de compléter"),
-
+							(u"other"			, u"autre (merci de compléter)"),
 						]
 
 choices_auth_level		= [	(u"visitor"			, u"visiteur"),
@@ -46,17 +46,17 @@ choices_auth_level		= [	(u"visitor"			, u"visiteur"),
 						]
 
 choices_profile				= [	(u""				, u"- sélectionnez votre profil de métier -"),
-								(u"observer"		, u"observateur"),
-								(u"analyst"			, u"analyste"),
-								(u"helper"			, u"accompagnateur"),
-								(u"financer"		, u"financeur"),
-								(u"project_holder"	, u"porteur de projet"),
-								(u"citizen"			, u"citoyen"),
 
+								(u"observer"		, u"observateur.trice"),
+								(u"analyst"			, u"analyste"),
+								(u"helper"			, u"accompagnateur.trice"),
+								(u"financer"		, u"financeur.euse"),
+								(u"project_holder"	, u"porteur.euse de projet"),
+								(u"citizen"			, u"citoyen.ne"),
 							]
 
 choices_structure_profile	= [	(u""				, u"- sélectionnez le profil de votre structure -"),
-								# (u"open_data"		, u"open data"  ),
+
 								(u"priv_social"		, u"association"),
 								(u"priv_social"		, u"entreprise ESS ou sympathisante"),
 
@@ -107,6 +107,7 @@ userPassword 		= PasswordField	( 	u'user password',
 									validators = [ DataRequired() ], 
 									render_kw={'class': 'input', 'placeholder': u"votre mot de passe *"  }
 								) 
+
 registerPassword 	= PasswordField ( 	u'user password',
 									validators = [
 										DataRequired(),
@@ -118,6 +119,7 @@ registerPassword 	= PasswordField ( 	u'user password',
 userConfirmPassword = PasswordField ( 	u'repeat Password', 
 									render_kw={'class': 'input', 'placeholder': u"répétez votre mot de passe *" } 
 									)
+
 userRememberMe 		= BooleanField  ( 	u'se souvenir de moi', 
 									default=False, 	
 									render_kw={'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
@@ -254,7 +256,7 @@ class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 	userEmail		= userEmail
 
 	### user password
-	userPassword 		= registerPassword
+	registerPassword 	= registerPassword
 	userConfirmPassword = userConfirmPassword
 
 	### optionnal infos
@@ -290,7 +292,7 @@ class UserAdminBasics(form.Form) :
 	userName 			= userName
 	userSurname 		= userSurname
 	userEmail 			= userEmail
-	userPassword 		= userPassword
+	# userPassword 		= userPassword
 
 class UserAdminStructureInfos(form.Form) : 
 

@@ -136,41 +136,48 @@ def login():
 
 	form = LoginForm()
 
-	if request.method == 'POST' and form.validate_on_submit():
+	if request.method == 'POST' :
 
 		log_cis.debug("login / reading form ... " ) 
 		for f_field in form : 
 			log_cis.info( "form name : %s / form data : %s \n", f_field.name, f_field.data )
 
-		user = mongo_users.find_one({"userEmail": form.userEmail.data})
-		log_cis.info("user - type : %s - : %s", type(user), pformat(user) )
 
-		if user and User.validate_login( user['userPassword'], form.userPassword.data ):
+		if form.validate_on_submit():
 
-			log_cis.debug("user found + User.validate_login ")
-			
-			user_obj = User()
-			# user_obj = User( 	
-			# 					userEmail 		= user['userEmail'],
-			# 					userName 		= user['userName'],
-			# 					userAuthLevel 	= user['userAuthLevel'] 
-			# 				)
-			user_obj.populate_user_class_from_dict(user)
+			user = mongo_users.find_one({"userEmail": form.userEmail.data})
+			log_cis.info("user - type : %s - : %s", type(user), pformat(user) )
 
-			login_user( user_obj, remember=form.userRememberMe.data )
-			
-			log_cis.info("Logged in successfully")
-			flash("Logged in successfully", category='success')
+			if user and User.validate_login( user['userPassword'], form.userPassword.data ):
 
-			return redirect(request.args.get("next") or url_for("index"))
+				log_cis.debug("user found + User.validate_login ")
+				
+				user_obj = User()
+				# user_obj = User( 	
+				# 					userEmail 		= user['userEmail'],
+				# 					userName 		= user['userName'],
+				# 					userAuthLevel 	= user['userAuthLevel'] 
+				# 				)
+				user_obj.populate_user_class_from_dict(user)
+
+				login_user( user_obj, remember=form.userRememberMe.data )
+				
+				log_cis.info("Logged in successfully")
+
+				flash("Logged in successfully", category='success')
+
+				return redirect(request.args.get("next") or url_for("index"))
 
 		else :
 
+			log_cis.error("form was not validated / form.errors : %s", form.errors )
+			
 			flash("Wrong username or password", category='error')
-	
+
+			return redirect(url_for("index"))
 
 	elif request.method == 'GET' : 
-	
+		
 		return render_template(	'login.html', 
 								site_section	= 'login', 
 								form			= form,
@@ -195,7 +202,7 @@ def register():
 
 		# for debugging purposes 
 		for f_field in form : 
-			log_cis.debug( "form name : %s / form data : %s \n", f_field.name, f_field.data )
+			log_cis.debug( "form name : %s / form data : %s ", f_field.name, f_field.data )
 
 
 		if form.validate_on_submit():
@@ -207,7 +214,7 @@ def register():
 			if existing_user is None:
 				
 				# create hashpassword
-				hashpass = generate_password_hash(form.userPassword.data, method='sha256')
+				hashpass = generate_password_hash(form.registerPassword.data, method='sha256')
 				log_cis.debug("hashpass : %s", hashpass )
 		
 				# populate user class
@@ -227,7 +234,8 @@ def register():
 				return redirect(url_for('index'))
 
 		else :
-			log_cis.error("form was not validated ...")
+			
+			log_cis.error("form was not validated : form.errors : %s", form.errors )
 
 			return redirect(url_for('register'))
 

@@ -22,6 +22,13 @@ html {
 	max-height:45px ! important ;
 }
 
+.input-navbar{
+	border-top	: 0px transparent;
+	border-right: 0px transparent;
+	border-left	: 0px transparent;	
+	box-shadow	: none;
+}
+
 .tab {
 	text-indent:40px
 }

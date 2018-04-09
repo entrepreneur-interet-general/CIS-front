@@ -5,12 +5,13 @@
 	{# brand #}
 	<div class="navbar-brand">
 
+		{# logo brand #}
 		<a class="navbar-item" href="/">
 			<img id="navbar-logo" src='{{url_for ("static", filename="logos/cis/CIS_beta_logo_LD.png" ) }}' alt="Logo">
-			{# Carrefour des innovations sociales #}
 		</a>
 
-		<span class="navbar-burger burger" data-target="navbarMenuHeroC">
+		{# burger #}
+		<span class="navbar-burger burger" data-target="navbarMain">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -21,14 +22,17 @@
 
 
 	{# navbar's buttons #}
-	<div id="navbarMenuHeroC" class="navbar-menu">
+	<div id="navbarMain" class="navbar-menu">
 		
+		<div class="navbar-start is-fullwidth">
 
-		{% if is_connected is defined %}
+		{% if user_infos.is_authenticated == True %}
 		
 			{% include "elements/navbar-search-input.html" %}
 
 		{% endif %}
+
+		</div>
 
 
 
@@ -97,8 +101,9 @@
 						<a 	class="navbar-item tooltip is-tooltip-bottom" 
 							data-tooltip="se déconnecter"
 							href="/logout">
-							<span class="icon has-text-light">
-								<i class="fas fa-2x fa-sign-out-alt"></i>
+							<span class="icon has-text-grey">
+								{# <i class="fas fa-2x fa-sign-out-alt"></i> #}
+								<i class="fas fa-lg fa-power-off"></i>
 							</span>
 						</a>
 
