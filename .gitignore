@@ -3,8 +3,10 @@
 
 
 ### CONFIG FILES
-cis/app/backend/config_secret_vars_prod.py 
-cis/app/backend/config.cfg
+# cis/app/backend/config_secret_vars_prod.py 
+# cis/app/backend/config.cfg
+**/config_secret_vars_prod.py
+**/config.cfg
 
 ### LOG FILES
 cis/app/logs/
