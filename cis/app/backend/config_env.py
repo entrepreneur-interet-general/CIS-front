@@ -17,12 +17,12 @@ correction_env_path = {
 repath_env_vars = correction_env_path[config_name]
 
 
-### set environment default variables from gitignored config_mail_recaptcha.py
+### set environment default variables from gitignored : config_secret_vars_prod.py
 try :
 	
 	### load secret env vars and keys
 
-	if config_name == "default" : 
+	if config_name in ["default", "testing"] : 
 		from .config_secret_vars_example import *
 	
 	elif config_name == "production" : 
@@ -141,7 +141,7 @@ class ProductionConfig(Config):
 
 
 
-class TestingConfig(Config):
+class TestingConfig(DevelopmentConfig, Config):
 	
 	TESTING = True
 

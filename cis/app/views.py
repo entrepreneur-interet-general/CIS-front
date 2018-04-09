@@ -345,7 +345,7 @@ class UserViewAdmin(ModelView):
 ### FILES ROUTES
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-@app.route('/<file_to_dowload>', methods=['GET'] ) # this is a job for GET, not POST
+@app.route('/download/<file_to_dowload>', methods=['GET'] ) # this is a job for GET, not POST
 def download_file(file_to_dowload):
 	"""
 	
