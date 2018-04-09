@@ -60,7 +60,7 @@ try :
 
 ### except if no production env 
 except : 
-	pass 
+	log_cis.error(" --- ENV VARS NOT LOADED CORRECTLY --- ") 
 
 
 
@@ -137,7 +137,7 @@ class ProductionConfig(Config):
 	DEBUG 				= False
 
 	""" RUNNING ENVIRONNEMENT """
-	RUNNING_ENV			= os.getenv("RUNNING_ENV")
+	RUNNING_ENV			= os.getenv("RUNNING_ENV", "production")
 
 
 
@@ -151,7 +151,7 @@ class TestingConfig(Config):
 config = {
 	"development"	: "%sapp.backend.config_env.DevelopmentConfig"    %(repath_env_vars),
 	"testing"		: "%sapp.backend.config_env.TestingConfig"        %(repath_env_vars),
-	"production"	: "%sapp.backend.config_env.ProductionConfig"     %(repath_env_vars),    	
+	"production"	: "app.backend.config_env.ProductionConfig",     #%(repath_env_vars),    	
 	"default"		: "app.backend.config_env.DevelopmentConfig"      ### 'default' for local 
 }
 
@@ -166,5 +166,5 @@ def configure_app(app):
 	app.config.from_object( config[config_name] )
 
 	log_cis.info("$ app.config['RUNNING_ENV']  : %s ", app.config["RUNNING_ENV"] )
-	log_cis.info("$ app.config['MONGO_DBNAME'] : %s ",  app.config["MONGO_DBNAME"] ) 
+	log_cis.info("$ app.config['MONGO_DBNAME'] : %s ", app.config["MONGO_DBNAME"] ) 
 	print
