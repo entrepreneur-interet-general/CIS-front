@@ -2,7 +2,7 @@
 
 import os
 
-os.environ['FLASK_CONFIGURATION'] = "testing"
+os.environ['FLASK_CONFIGURATION'] = "default" # "testing" / "production"
 
 from app import app
 

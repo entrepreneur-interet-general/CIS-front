@@ -41,6 +41,11 @@ try :
 	os.environ["SERVER_NAME"]			= SERVER_NAME
 	os.environ["SERVER_NAME_TEST"]		= SERVER_NAME_TEST
 
+	try : 
+		os.environ["ALLOWED_HOSTS"]		= ALLOWED_HOSTS
+	except :
+		log_cis.info("no ALLOWED_HOSTS env var") 
+
 	# os.environ["PORT_EVENTLET"]		= PORT_EVENTLET
 	
 	os.environ["RECAPTCHA_SECRET_KEY"]	= RECAPTCHA_SECRET_KEY
@@ -146,7 +151,9 @@ class ProductionConfig(Config):
 
 class TestingConfig(DevelopmentConfig, Config):
 	
-	TESTING = True
+	DEBUG 				= True
+	
+	TESTING 			= True
 
 
 
