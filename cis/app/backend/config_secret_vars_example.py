@@ -13,7 +13,7 @@ WTF_CSRF_ADMIN_KEY	= "a_mega_super_key_for_admin_views"
 DOMAIN_ROOT			= "localhost" 
 DOMAIN_PORT			= "8100"
 SERVER_NAME			= "localhost:8100"  ### if True need to set SESSION_COOKIE_DOMAIN + cf : https://stackoverflow.com/questions/47666210/cookies-not-saved-in-the-browser 
-DOMAIN_NAME			= "http://localhost.1:8100"
+DOMAIN_NAME			= "http://localhost:8100"
 SERVER_NAME_TEST	= "True" 
 
 
