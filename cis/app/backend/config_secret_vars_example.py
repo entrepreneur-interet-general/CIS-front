@@ -23,7 +23,7 @@ SERVER_NAME_TEST	= "True"
 
 """ MONGODB """
 MONGO_DBNAME		= 'cis_front'
-MONGO_URI			= 'mongodb://127.0.0.1:27017/cis_front'
+MONGO_URI			= 'mongodb://localhost:27017/cis_front'
 MONGO_COLL_USERS	= "users"
 
 """ MAILING """

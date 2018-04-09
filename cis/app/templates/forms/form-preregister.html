@@ -48,17 +48,18 @@
 
 
 	{# USER STRUCTURE #}
-	<div class="field">
+	{# <div class="field">
 		<p class="control is-expanded has-icons-left has-icons-right">
 			<div class="select is-fullwidth">
 				{{ form.userPartnerStructure }}
 			</div>
 		</p>
-	</div>
+	</div> #}
 
 
 	{# USER STRUCTURE NAME #}
-	<div class="field" style='display:none' id="userOtherStructureField">
+	{# <div class="field" style='display:none' id="userOtherStructureField"> #}
+	<div class="field" id="userOtherStructureField">
 		<p class="control is-expanded has-icons-left has-icons-right">
 			{{ form.userOtherStructure }}
 			<span class="icon is-small is-left">
@@ -69,7 +70,8 @@
 	
 
 	{# USER STRUCTURE PROFILE #}
-	<div class="field" style='display:none' id="userStructureProfileField">
+	{# <div class="field" id="userStructureProfileField"> #}
+	<div class="field" id="userStructureProfileField">
 		<div class="control">
 			<div class="select is-fullwidth">
 				{{ form.userStructureProfile }}
@@ -81,7 +83,8 @@
 
 
 	{# USER WISHES #}
-	<div class="field is-horizontal" id="userWishesFields" style='display:none'>
+	{# <div class="field is-horizontal" id="userWishesFields" style='display:none'> #}
+	<div class="field is-horizontal" id="userWishesFields">
 
 		<div class="field">
 			{{ form.userHaveProjects }}
@@ -123,7 +126,7 @@
 
 	{# SUBMIT BTN #}
 	<div class="field is-grouped is-grouped-centered">
-		<button class="button is-primary is-inverted is-outlined is-large" type="submit">
+		<button class="button is-primary is-inverted is-outlined is-medium" type="submit">
 			Envoyer votre question
 		</button>
 	</div>

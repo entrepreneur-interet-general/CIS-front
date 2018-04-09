@@ -21,6 +21,7 @@ if __name__ == '__main__':
 	print "= "*50
 
 	app_port = int(app.config["DOMAIN_PORT"])
+	app_host = app.config["DOMAIN_ROOT"]
 
 	# simple flask runner
-	app.run( debug=debug, port=app_port, threaded=True )
+	app.run( debug=debug, host=app_host, port=app_port, threaded=True )

@@ -22,6 +22,10 @@ html {
 	max-height:45px ! important ;
 }
 
+.fullwidth-navbar-item{
+	width : 100% ! important;
+}
+
 .input-navbar{
 	border-top	: 0px transparent;
 	border-right: 0px transparent;

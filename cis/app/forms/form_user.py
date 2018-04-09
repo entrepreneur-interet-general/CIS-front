@@ -64,8 +64,9 @@ choices_structure_profile	= [	(u""				, u"- sélectionnez le profil de votre str
 								(u"network"			, u"coopérative"),
 								(u"network"			, u"mutuelle"),
 								
+								(u"public"			, u"collectivité"),
 								(u"public"			, u"structure publique"),
-								(u"public"			, u"para-public"),
+								(u"public"			, u"structure para-public"),
 								
 								(u"priv_commercial"	, u"fondation"),
 								(u"priv_commercial"	, u"entreprise hors ESS"),
