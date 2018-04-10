@@ -82,7 +82,7 @@ def index():
 	return render_template( "index.html",
 
 							site_section		= "landing",
-							is_landing 			= True, 
+							# is_landing 			= True, 
 							form				= form,
 
 							user_infos			= current_user.get_public_infos

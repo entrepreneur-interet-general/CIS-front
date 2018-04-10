@@ -1,0 +1,23 @@
+
+### NGINX file cis_front in /etc/nginx/sites-available
+### < create file and copy config into it >
+### $ sudo vim /etc/nginx/sites-available/cis_front
+### <link file> 
+### $ sudo ln -s /etc/nginx/sites-available/cis_front /etc/nginx/sites-enabled
+### 
+
+server {
+	listen 80;
+	server_name carrefour-des-innovations-sociales.fr www.carrefour-des-innovations-sociales.fr
+				carrefour-innovations-sociales.fr www.carrefour-innovations-sociales.fr
+				carrefourdesinnovationssociales.com www.carrefourdesinnovationssociales.com
+				carrefourdesinnovationssociales.fr www.carrefourdesinnovationssociales.fr
+				carrefourinnovationssociales.com www.carrefourinnovationssociales.com
+				carrefourinnovationssociales.fr www.carrefourinnovationssociales.fr
+		;
+
+	location / {
+		include proxy_params;
+		proxy_pass http://unix:/home/jpy/app_cis/cis/cis_front.sock;
+	}
+}

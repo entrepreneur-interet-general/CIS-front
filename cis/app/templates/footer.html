@@ -39,10 +39,31 @@
 						<strong class="has-text-primary"> Le Carrefour des innovations sociales </strong>
 					</h3>
 					
-					<p> Qui sommes-nous ?  </p>
-					<p> La charte du collectif </p>
-					<p> Mentions légales </p>
-					<p> Code source </p>
+					<br>
+					
+					<p>
+						<a class="modal-button" data-target="modal_who" aria-haspopup="true"> 
+							Qui sommes-nous ?  
+						</a>
+					</p>
+					
+					<p>
+						<a class="modal-button" data-target="modal_charte" aria-haspopup="true"> 
+							La charte du collectif 
+						</a>
+					</p>
+					
+					<p>
+						<a class="modal-button" data-target="modal_legal" aria-haspopup="true"> 
+							Mentions légales 
+						</a>
+					</p>
+					
+					<p>
+						<a href="https://github.com/entrepreneur-interet-general/CIS-front" target="_blank"> 
+							Code source 
+						</a>
+					</p>
 
 				</div>
 
@@ -54,7 +75,12 @@
 						<strong class="has-text-primary">Contactez-nous</strong>
 					</h3>
 
-					<a href="mailto:carrefour.innoso@gmail.com">contact@carrefourdesinnovationssociales.fr </a>
+					<br>
+
+					<p>
+						Pour toute question, contactez-nous sur : 
+						<a href="mailto:carrefour.innoso@gmail.com">carrefour.innoso@gmail.com </a>
+					</p>
 
 					<h3>
 						<strong class="has-text-primary"> Suivez-nous </strong>
@@ -62,16 +88,16 @@
 					
 					<div class="content is-medium">
 						
-						<a>
-							<span class="icon  has-text-primary">
+						<a class="button is-primary" href="https://www.facebook.com/TouteslesInnoSo/" >
+							<span class="icon">
 								<i class="fab fa-lg fa-facebook"></i>
 							</span>
 						</a>
 						
 						&nbsp;&nbsp;&nbsp;
 
-						<a class="button " href="https://twitter.com/touteslesinnoso" >
-							<span class="icon has-text-primary">
+						<a class="button is-primary" href="https://twitter.com/touteslesinnoso" >
+							<span class="icon ">
 								<i class="fab fa-lg fa-twitter"></i>
 							</span>
 						</a>
@@ -91,3 +117,9 @@
 	</div>
 	
 </footer>
+
+
+
+{% include "modals/modal-legal-mentions.html" %}
+{% include "modals/modal-who-are-we.html" %}
+{% include "modals/modal-charte.html" %}

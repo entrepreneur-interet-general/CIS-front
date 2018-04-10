@@ -4,7 +4,8 @@
 {% block content %}
 
 
-	{% if is_landing is defined %}
+	{# { % if is_landing is defined %} #}
+	{% if user_infos.is_authenticated == False %}
 
 		{% include "landing.html" %}
 	

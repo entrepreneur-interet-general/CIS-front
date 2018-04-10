@@ -39,10 +39,52 @@ Les internautes sont autorisés à partager, reproduire et adapter le contenu en
 Chacune de ces conditions peut être levée sur autorisation expresse de l’équipe opérationnelle du Carrefour des innovations sociales et/ou de l’auteur du contenu.
 
 
-Les données présentées dans le moteur de recherche et la cartographiques sont mises à disposition selon les conditions établies par chaque partenaire contributeur. 
+Les données accessibles via le moteur de recherche et la cartographie sont mises à disposition selon les conditions établies par le partenaire qui en est la source.
 Crédits 
 Ligne graphique et design UX/UI : Elise Lalique
 Développement : Julien Paris
+
+
+
+
+_____________
+
+
+Qui sommes-nous
+
+
+Le carrefour des innovations sociales est un collectif atypique composé d’associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche … mus par une volonté partagée de renforcer la connaissance et le potentiel transformateur des innovations sociales
+
+
+Une équipe opérationnelle conduit le projet au quotidien. Elle instruit, met en oeuvre les actions décidées par le collectif et le comité de pilotage et suit leur état d’avancement.
+Bastien Engelbach et Bénédicte Pachod coordonnent le projet. 
+Julien Paris et Elise Lalique sont des entrepreneurs d’intérêt général dédiés à la conception et au développement du site.
+Denis Sabardine apporte ses conseils d’expert en innovation sociale pour le projet.
+Yannick Blanc, président de l’Association de préfiguration du Carrefour des innovations sociales (APCIS) et Emmanuel Dupont, son vice-président, assurent les relations institutionnelles.
+
+
+Un comité de pilotage guide et coordonne le développement du projet. 
+Le Commissariat général à l’égalité des territoires, la Fonda, l’AVISE, la Fondation Cognacq-Jay, le Labo de l’ESS, l’APRILES et le GNIAC le composent.  
+
+
+Ce projet est accéléré par le soutien d’Etalab, plus précisément du programme Entrepreneur d’intérêt général, et de la Fédération nationale des Caisses d’Epargne, merci à eux !
+
+
+Près de 70 partenaires forment le collectif du Carrefour des innovations sociales.
+Parmi eux des associations et accompagnateurs opérationnels tels l’AEIDL, Ashoka, Bleu Blanc Zèbre, Brie’Nov, BRUDED, Coorace, EnSSemble, Génération 2 Conseil, Prima Terra, SIILAB, Synergies, Territoria, Ticket for change ou encore Villes Internet.
+
+
+Des institutions et têtes de réseaux se font confiance, à l’instar de l’ADEME, de l’Agence du Numérique, d’ANIMAFAC, de l’APIE, de l’Association des Maires Ruraux de France, de la Confédération générale des SCOP, de la Chambre régionale d'économie sociale et solidaire des Pays de la Loire, de la Direction générale de la cohésion sociale, de la Délégation interministérielle pour l’hébergement et l’accès au logement, de la DRJCS Hauts-de-France, de la Fédération française des GEIQ, du Fonds d'expérimentation pour la jeunesse, du Réseau Rural, du RTES, de la ville de Sceaux ou de l’UNADEL. 
+
+
+Des think-tanks et acteurs de la recherche se penchent sur le projet, comme par exemple Citego ou l’Ecole de Paris du Management.
+
+
+Enfin, des médias de solution se joignent à nous, tel La Part du Colibri ou Sparknews.
+
+
+
+
 
 
 

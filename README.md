@@ -1,11 +1,17 @@
 
-<h1 align=center>  CARREFOUR DES INNOVATIONS SOCIALES </h1>
+<h1 align=center>  SOCIAL CONNECT <br>-alias-<br> CARREFOUR DES INNOVATIONS SOCIALES </h1>
 
 
-<hr>
+-------
+## PRESENTATION
+
+
+The official website for the project SocialConnect / aka (in French) Carrefour des Innovations Sociales
+
+
+-------
 
 ![alt text](./screenshots/cis-front-landing.png "landing")
-
 
 
 -------
@@ -34,9 +40,12 @@
 ### _PRODUCTION_
 
 1. **get a server** - check digital ocean, OVH, ...
-1. optionnal : get a domain name : check OVH, namecheap, godaddy.... 
-1. **follow (most of) these [instructions](https://github.com/entrepreneur-interet-general/tutos-2018/wiki/Admin-Sys)** 
-1. pray for all that to work as expected... 
+1. optionnal : get a domain name : check OVH, namecheap, godaddy.... + setup DNS
+1. **follow (most of) these [instructions](https://github.com/entrepreneur-interet-general/tutos-2018/wiki/Admin-Sys)**
+1. **create a `app/backend/config_secret_vars_prod.py` file** based on `config_secret_vars_example.py` structure
+1. **go to app folder and create a virtual env** (for instance called "venv")
+1. **set up the [gunicorn service](./unit/working_service_config.service) and [NGINX](./nginx/working_nginx_config)** accordingly 
+1. ... pray for all that to work as expected, and keep calm... 
 
 
 
@@ -46,9 +55,9 @@
 
 #### Tech stack
 - _Language_ : **Python**... because ... uuh ... eeeh ... I like this language too much ? 
-- _Backend_  : **[Flask](http://www.tornadoweb.org/en/stable/)**... minimalistic Python framework
+- _Backend_  : **[Flask](http://flask.pocoo.org/)**... minimalistic Python framework
 - _Frontend_ : **[Bulma](https://bulma.io/)**  (to make it nice) and then **[Vue.js](https://vuejs.org/)** (to make it even nicer and bi-directional)
-
+- _Server_   : **[Ubuntu 16.04]()**, **[NGINX](https://www.nginx.com/)**, **[Gunicorn](http://gunicorn.org/)**, hosted in **[Digital Ocean](http://digitalocean.com/)**, domain name from **[OVH](http://ovh.com/)**
 
 ------
 
@@ -56,9 +65,10 @@
 
 #### To do list :
 
-1. set up a basic Flask skeleton
-1. make the landing page + integrate a form 
-1. create a login page and store users in db
+1. DONE - set up a basic Flask skeleton
+1. DONE - make the landing page + integrate a form 
+1. DONE - deploy with domain name
+1. DONE - create a login page and store users in db
 1. connect logged pages to [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API + display results
 1. create a search engine based on [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API 
 
@@ -72,6 +82,6 @@
 - the [EIG](https://entrepreneur-interet-general.etalab.gouv.fr/) program by [Etalab](https://www.etalab.gouv.fr/)
 - the [CGET](http://www.cget.gouv.fr/)
 
-#### Contacts :
+#### Contacts - maintainance :
 
 - [Julien Paris](<mailto:julien.paris@cget.gouv.fr>) (aka [JPy](https://twitter.com/jparis_py) on Twitter)

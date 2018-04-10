@@ -2,10 +2,12 @@
  
 1er  sous-rubrique : Un collectif  atypique
  
-Le carrefour des innovations sociales est un collectif atypique composé d’associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche.
+Le carrefour des innovations sociales est un collectif atypique composé d’associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche … mus par une volonté partagée de renforcer la connaissance et le potentiel transformateur des innovations sociales
+
+
  
  
-Une ÉQUIPE OPÉRATIONNELLE met en œuvre le projet au quotidien. Elle instruit, met en oeuvre les actions décidées par le collectif et le comité de pilotage et suit leur état d’avancement.
+Une ÉQUIPE OPÉRATIONNELLE conduit le projet au quotidien. Elle instruit, met en oeuvre les actions décidées par le collectif et le comité de pilotage et suit leur état d’avancement.
  
 Bastien Engelbach, coordonnateur des programmes à la Fonda et Bénédicte Pachod, chargée de projets au Commissariat général à l’égalité des territoires, coordonnent le projet 
 -> Vous avez une question ou idée sur le projet ? Contactez les.
@@ -22,22 +24,26 @@ Denis Sabardine, animateur et développeur des réseaux GNIAC et RESET réalise 
 -> Vous ne le connaissez pas encore ? Contactez-le.
 d.sabard@gmail.com
  
-Yannick Blanc, président de l’Association de préfiguration du Carrefour des innovations sociales (APCIS) et Emmanuel Dupont, son vice-président, assurent les relations institutionnelles  du Carrefour des innovations sociales
+Yannick Blanc, président de l’Association de préfiguration du Carrefour des innovations sociales (APCIS) et Emmanuel Dupont, son vice-président, assurent les relations institutionnelles.
 -> Vous souhaitez soutenir le carrefour des innovations sociales ou nouer un partenariat ? Contactez-les.
 Emmanuel.dupont@cget.gouv.fr
 yannick.blanc@fonda.asso.fr 
  
  
-Un COMITÉ DE PILOTAGE pilote et coordonne le développement du projet
-= logos des membres du comité de pilotage
+Un COMITÉ DE PILOTAGE guide et coordonne le développement du projet
+= logos des membres du comité de pilotage : Commissariat général à l’égalité des territoires, la Fonda, l’AVISE, la Fondation Cognacq-Jay, le Labo de l’ESS, l’APRILES et le GNIAC
  
- 
-Le COLLECTIF comprend tous les partenaires du projet adhérents à la charte. Il fixe les grandes orientations et décisions stratégiques. Des partenaires participent à certains chantiers du Carrefour des innovations sociales. 
-= logos des 60 restants 
- 
-Ils sont partenaires du Carrefour des innovations sociales et soutiennent le développement du projet
+Ce projet est accéléré par le soutien d’Etalab, plus précisément du programme Entrepreneur d’intérêt général, et de la Fédération nationale des Caisses d’Epargne, merci à eux !
 = logo EIG / Etalab + FNCE
- 
+
+
+Le COLLECTIF comprend tous les partenaires du projet adhérents à la charte. Il fixe les grandes orientations et décisions stratégiques. Des partenaires participent à certains chantiers du Carrefour des innovations sociales. 
+= logos des partenaires restants. Voici leur liste par type d’acteurs (hors COPIL et partenaire financier) : 
+* associations et accompagnateurs opérationnels : AEIDL, Ashoka, Bleu Blanc Zèbre, Brie’Nov, BRUDED, Coorace, EnSSemble, Génération 2 Conseil, Prima Terra, SIILAB, Synergies, Territoria, Ticket for change et Villes Internet.
+* institutions et têtes de réseaux  : ADEME, Agence du Numérique, ANIMAFAC, APIE, Association des Maires Ruraux de France, Confédération générale des SCOP, Chambre régionale d'économie sociale et solidaire des Pays de la Loire, Direction générale de la cohésion sociale, Délégation interministérielle pour l’hébergement et l’accès au logement, DRJCS Hauts-de-France, Fédération française des GEIQ, Fonds d'expérimentation pour la jeunesse, Réseau Rural, RTES, ville de Sceaux et UNADEL. 
+* think-tanks et acteurs de la recherche: Citego et Ecole de Paris du Management
+* médias de solution : La Part du Colibri et Sparknews.
+  
 Pour connaître les règles partagées du fonctionnement du Carrefour des innovations sociales en détails :
 Lien vers la charte du Carrefour des innovations sociales
 
