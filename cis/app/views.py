@@ -8,7 +8,6 @@ from	flask 				import 	jsonify, flash, render_template, \
 
 from 	werkzeug.security 	import 	generate_password_hash, check_password_hash
 
-
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### AUTH - TOKEN
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -51,7 +50,7 @@ def token_required(f):
 @app.route('/')
 def index():
 
-	time_now	= datetime.datetime.utcnow()
+	# time_now	= datetime.datetime.utcnow()
 
 	form 		= PreRegisterForm()
 
@@ -65,15 +64,52 @@ def index():
 		current_session_uid = None
 
 
-
-	# TO DO 
 	if request.method == 'POST' : #and form.validate_on_submit():
-
+		
+		### for debugging purposes
 		for f_field in form : 
-			log_cis.debug( "form : \n %s \n", pformat(f_field.__dict__) )
-			# log_cis.debug( "form name : %s / form data : %s \n", f_field.name, f_field.data )
+			log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
 
-		return redirect(request.args.get("next") or url_for("index"))
+
+		if form.validate_on_submit():
+
+
+			# create preregister data and store it in MongoDB
+			new_preregister 	= PreRegister()
+			new_preregister.populate_from_form( form=form )
+			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
+			
+			# check if email/user already exists in users db
+			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
+			
+
+			# create a potential user if doesn't already exist in db
+			if not existing_user :
+				
+				# create default password
+				temp_pwd = pwd_generator()
+				hashpass = generate_password_hash( temp_pwd, method='sha256')
+				
+				# populate user class
+				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
+				new_user.populate_from_form( form=form )
+				new_user.check_if_user_structure_is_partner()
+
+				# save user in db as visitor
+				new_user.insert_to_mongo( coll=mongo_users )
+			
+			return redirect(request.args.get("next") or url_for("index"))
+
+
+		else :
+			
+			log_cis.error("form was not validated / form.errors : %s", form.errors )
+			
+			flash("something went wrong while sending form", category='error')
+
+			return redirect(url_for("index"))
+
+		
 
 
 
@@ -107,21 +143,23 @@ def load_user(userEmail):
 	log_cis.debug("userEmail : %s", userEmail)
 
 	user = mongo_users.find_one({ "userEmail" : userEmail })
-	log_cis.debug( "user : \n %s", pformat(user)  )
 
 	if not user :
 		
+		log_cis.debug( "no user found in db" )
 		# return None
 		return AnonymousUser()
 
 	else :
+		
+		log_cis.debug( "user : \n %s", pformat(user)  )
 		# return User( 
 		# 				userEmail 		= user['userEmail'],
 		# 				userName 		= user['userName'],
 		# 				userAuthLevel 	= user['userAuthLevel'] 
 		# 			)
 		user_ = User()
-		user_.populate_user_class_from_dict(user)
+		user_.populate_from_dict(dict_input=user)
 
 		return user_
 
@@ -153,12 +191,8 @@ def login():
 				log_cis.debug("user found + User.validate_login ")
 				
 				user_obj = User()
-				# user_obj = User( 	
-				# 					userEmail 		= user['userEmail'],
-				# 					userName 		= user['userName'],
-				# 					userAuthLevel 	= user['userAuthLevel'] 
-				# 				)
-				user_obj.populate_user_class_from_dict(user)
+				user_obj.populate_from_dict(dict_input=user)
+				### update last_access_at
 
 				login_user( user_obj, remember=form.userRememberMe.data )
 				
@@ -219,7 +253,9 @@ def register():
 		
 				# populate user class
 				new_user 	= User( userPassword = hashpass, userAuthLevel="user" )
-				new_user.populate_user_class_from_form(userForm=form)
+				new_user.populate_from_form(form=form)
+				
+
 				new_user.check_if_user_structure_is_partner()
 
 				# save user in db
@@ -323,13 +359,14 @@ class UserViewAdmin(ModelView):
 	### for flask-admin
 
 	column_list 			= (	
-								'userName', 'userSurname', 'userEmail', \
-								'userPartnerStructure',
+								'userName', 'userSurname', 'userEmail',
+								'userPartnerStructure', 'userOtherStructure',
 								'userAuthLevel',
 								'userHaveProjects',
 								'userProfile'
 							)
-	
+
+	column_searchable_list 		= ( 'userName', 'userEmail', 'userPartnerStructure', 'userOtherStructure' )
 	column_sortable_list	= column_list
 	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
 	# 							'structure',)
@@ -338,6 +375,60 @@ class UserViewAdmin(ModelView):
 
 	form 					= UserAdminInfos
 
+	# custom field rendering in admin interface 
+	# cf : https://stackoverflow.com/questions/21727129/how-to-make-a-field-non-editable-in-flask-admin-view-of-a-model-class 
+	form_widget_args = {
+		'userEmail'			: { 'readonly' : True },
+		'userPublicKeyAPI'	: { 'readonly' : True },
+		'temp_pwd'			: { 'readonly' : True },
+	}
+
+
+class MessagesFromLandingAdmin(ModelView):
+	"""
+	view of a message in flask-admin
+	cf : https://github.com/mrjoes/flask-admin/blob/master/examples/pymongo/app.py
+	"""
+	
+	### for flask-login 
+
+	def is_accessible(self) :
+		""" 
+		make it accessible via flask-login
+		"""
+		# using custom property class 
+		return current_user.is_admin_level # instead of : return current_user.is_authenticated
+
+	def inaccessible_callback(self, name, **kwargs) :
+		
+		# TO DO : flash if auth level not enough
+
+		return redirect(url_for('login'))
+
+
+
+	### for flask-admin
+
+	column_list 			= (	
+								'userName', 'userSurname', 'userEmail', 'userOtherStructure',
+								'userHaveProjects', 'userJoinCollective', 
+								'userMessage'
+							)
+	column_searchable_list 		= ('userName', 'userEmail', 'userOtherStructure')
+	column_sortable_list	= column_list
+	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
+	# 							'structure',)
+	
+	# column_filters = (BooleanEqualFilter(column=UserID.userName, name='userName'),)
+
+	form 					= MessagesFromLandingAdmin
+
+	# custom field rendering in admin interface 
+	form_widget_args = {
+		'userEmail': {
+			'readonly': True
+		},
+	}
 
 
 
@@ -345,13 +436,42 @@ class UserViewAdmin(ModelView):
 ### FILES ROUTES
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-@app.route('/download/<file_to_dowload>', methods=['GET'] ) # this is a job for GET, not POST
-def download_file(file_to_dowload):
+
+@app.route('/download/<file_ext>/<file_name>', methods=['GET'] ) # this is a job for GET, not POST
+def download_file(file_ext, file_name):
 	"""
-	
+	send file from server
+	example href : /download/pdf/Charte_carrefourdesinnovationssociales_VF_V2
 	"""
 
-	return send_file(	'outputs/Adjacency.csv',
-						mimetype='text/csv',
-						attachment_filename='Adjacency.csv',
-						as_attachment=True)
+	log_cis.debug("file_name : %s ", 	file_name)
+	log_cis.debug("file_ext : %s ", 	file_ext)
+	log_cis.info("file_ext in AUTHORIZED_FILETYPES_LIST: %s", (file_ext in AUTHORIZED_FILETYPES_LIST) )
+
+
+	if file_ext in AUTHORIZED_FILETYPES_LIST : 
+
+		file_mimetype 		= AUTHORIZED_FILETYPES_DICT[file_ext]["mimetype"]
+		file_foldername 	= AUTHORIZED_FILETYPES_DICT[file_ext]["folder"]
+		file_folder 		= "static/{}/".format(file_foldername)
+		file_name_ext 		= "{}.{}".format(file_name, file_ext) 
+		full_filepath 		= file_folder + file_name_ext
+
+		try : 
+
+			return send_file(	full_filepath,
+								mimetype			= file_mimetype,
+								attachment_filename	= file_name_ext,
+								as_attachment		= True
+							)
+		except :
+			
+			log_cis.error("downloading this file is not working: %s.%s ", file_name, file_ext )
+			
+			return redirect(url_for('index'))
+
+	else :
+		
+		log_cis.error("downloading this file is not authorized: %s.%s ", file_name, file_ext )
+
+		return redirect(url_for('index'))

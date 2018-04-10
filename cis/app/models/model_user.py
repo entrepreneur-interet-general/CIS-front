@@ -5,7 +5,11 @@ from flask_login 		import UserMixin, AnonymousUserMixin
 
 from werkzeug.security 	import check_password_hash
 
+from . 	import FORM_FIELDS_TO_IGNORE, ModelMixin, time, datetime
+
 from .. import log_cis, pformat
+
+from ..settings.app_choices import * 
 
 
 class AnonymousUser(AnonymousUserMixin):
@@ -31,13 +35,17 @@ class AnonymousUser(AnonymousUserMixin):
 				}
 
 
-class User( UserMixin ):
+class User( UserMixin, ModelMixin ):
+
 
 	def __init__(self, 	userName		= None,
 						userEmail		= None, 
 						userPassword	= None,
 						userAuthLevel	= "visitor",
 						userRememberMe	= True,
+
+						temp_pwd		= None,
+
 						):
 		"""
 		datamodel for a user in CIS_front
@@ -55,6 +63,11 @@ class User( UserMixin ):
  		self.userAuthLevel 			= userAuthLevel
  		self.userPassword 			= userPassword
  		self.userPublicKeyAPI 		= None
+
+
+		# just for preregister
+
+		self.temp_pwd				= temp_pwd
 
 
 		# infos variables
@@ -76,32 +89,6 @@ class User( UserMixin ):
  		self.userStructureSiret 	= None
 
 
-		# log user
-
- 		self.userCreatedAt 			= None
- 		self.userModifiedAt 		= None
-
-	def populate_user_class_from_form(self, userForm=None) : 
-		"""
-		retrieve register or preregister form (from .forms) 
-		"""
-
-		for f_field in userForm : 
-			if f_field.name not in [ "userPassword", "registerpassword",  "userConfirmPassword", "csrf_token" ] :
-				"""
-				do not save password here : 
-				password needs to be hashed and should be initialized at __init__
-				"""
-				log_cis.debug("f_field.name : %s / f_field.data: %s ", f_field.name, f_field.data)
-				self.__dict__[ f_field.name ] = f_field.data
-
-
-	def populate_user_class_from_dict(self, userDict=None) : 
-		"""
-		populate User class from dict (as from pymongo query)
-		"""
-		for k,v in userDict.iteritems() :
-			self.__dict__[ k ] = v
 
 
 	@property
@@ -117,6 +104,19 @@ class User( UserMixin ):
 					"is_authenticated" 	: self.is_authenticated
 				}
 
+	def get_auth_level(self):
+		return self.userAuthLevel
+
+
+	def get_id(self):
+		return self.userEmail
+
+	@staticmethod
+	def validate_login(password_hash, password):
+		return check_password_hash(password_hash, password)
+
+
+
 	# TO DO 
 	def check_if_user_structure_is_partner(self) :
 		pass
@@ -129,38 +129,6 @@ class User( UserMixin ):
 	def create_API_key(self):
 		pass
 
-	def insert_to_mongo(self, coll=None ):
-		"""
-		save model as document in mongoDB
-		"""
-		
-		# convert object to dict
-		user_as_dict = self.__dict__
-		log_cis.debug("user_as_dict : \n %s", pformat(user_as_dict))
-
-		# save it to collection
-		coll.insert( user_as_dict )
-
 	# TO DO 
 	def update_existing_user(self):
 		pass
-
-	# def is_authenticated(self):
-	# 	return True
-
-	# def is_active(self):
-	# 	return True
-
-	# def is_anonymous(self):
-	# 	return False
-
-	def get_auth_level(self):
-		return self.userAuthLevel
-
-
-	def get_id(self):
-		return self.userEmail
-
-	@staticmethod
-	def validate_login(password_hash, password):
-		return check_password_hash(password_hash, password)

@@ -59,9 +59,10 @@ try :
 	os.environ["MAIL_SERVER"]			= MAIL_SERVER
 	os.environ["MAIL_USERNAME"]			= MAIL_USERNAME
 
-	os.environ["MONGODB_DB"]			= MONGO_DBNAME
-	os.environ["MONGODB_URI"]			= MONGO_URI
-	os.environ["MONGODB_COLL_USERS"]	= MONGO_COLL_USERS
+	os.environ["MONGODB_DB"]				= MONGO_DBNAME
+	os.environ["MONGODB_URI"]				= MONGO_URI
+	os.environ["MONGODB_COLL_USERS"]		= MONGO_COLL_USERS
+	os.environ["MONGODB_COLL_FEEDBACKS"]	= MONGO_COLL_FEEDBACKS
 
 ### except if no production env 
 except : 
@@ -106,9 +107,10 @@ class Config(object):
 	WTF_CSRF_ADMIN_KEY	= os.getenv("WTF_CSRF_ADMIN_KEY")
 
 	""" MONGODB """
-	MONGO_DBNAME		=  os.getenv("MONGODB_DB")
-	MONGO_URI			=  os.getenv("MONGODB_URI")
-	MONGO_COLL_USERS	=  os.getenv("MONGODB_COLL_USERS")
+	MONGO_DBNAME			=  os.getenv("MONGODB_DB")
+	MONGO_URI				=  os.getenv("MONGODB_URI")
+	MONGO_COLL_USERS		=  os.getenv("MONGODB_COLL_USERS")
+	MONGO_COLL_FEEDBACKS	=  os.getenv("MONGODB_COLL_FEEDBACKS")
 
 	""" MAILING """
 	VALIDITY_CONFIRM	= os.getenv("VALIDITY_CONFIRM")

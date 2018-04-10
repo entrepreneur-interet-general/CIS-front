@@ -18,7 +18,7 @@ print "__init__ / global imports for functions"
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### GLOBAL IMPORTS  #########################################################################
+### GLOBAL IMPORTS  
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 import  os
@@ -40,14 +40,14 @@ import	uuid
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### SET LOGGER ##############################################################################
+### SET LOGGER 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from backend.config_logging import log_cis
-log_cis.debug('TESTING LOGGER')
+log_cis.debug('>>> TESTING LOGGER')
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### FLASK IMPORTS ###########################################################################
+### FLASK IMPORTS 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from	flask 			import Flask, g, current_app, session, request
@@ -58,20 +58,20 @@ import  socket
 
 try : 
 	host_IP = socket.gethostbyname( socket.gethostname() )
-	log_cis.info( "host IP : %s " , host_IP )
+	log_cis.info( ">>> host IP : %s " , host_IP )
 except: 
-	log_cis.error("no IP host detected")
+	log_cis.error(">>> no IP host detected")
 
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### FLASK-ADMIN IMPORT ###########################################################################
+### FLASK-ADMIN IMPORT 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 from	flask_admin 	import Admin, AdminIndexView
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### CRYPTO IMPORT ###########################################################################
+### CRYPTO IMPORT 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 import  bcrypt
@@ -80,7 +80,7 @@ import	jwt
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### SCHEDULER IMPORT  #######################################################################
+### SCHEDULER IMPORT  
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 ### no need for now 
@@ -90,7 +90,7 @@ import	jwt
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### MONGO DB IMPORTS ########################################################################
+### MONGO DB IMPORTS 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from	flask_pymongo import PyMongo ### flask_pymongo instead of flask.ext.pymongo
@@ -101,7 +101,7 @@ from	flask_pymongo import PyMongo ### flask_pymongo instead of flask.ext.pymongo
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### SETTINGS AT MAIN LEVEL ###################################################################
+### SETTINGS AT MAIN LEVEL 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 ### create Flask app 
@@ -115,13 +115,13 @@ def before_request():
 	print "+ - "*25
 
 	### print headers
-	log_cis.debug( 'REQUEST HEADERS : \n %s ', request.headers )
+	log_cis.debug( '/// REQUEST HEADERS : \n %s ', request.headers )
 	### NOTE BUG : 
 	### SAFARI HEADERS DON'T CONTAIN COOKIE, THEREFORE NOR CSRF VALUE
 	
 
 ### set environment and app variables
-log_cis.debug("configuring app's env vars...\n")
+log_cis.debug(">>> configuring app's env vars...\n")
 
 from .backend.config_env import * 
 
@@ -129,14 +129,14 @@ configure_app(app)
 
 if config_name == "default" or config_name == "production" :
 
-	log_cis.info('config_name : %s', config_name )
+	log_cis.info('>>> config_name : %s', config_name )
 	print
 
-	log_cis.info(	"ENVIRONMENT VARIABLES / to understand what the fuck is goin on ... : \n %s", 
+	log_cis.info(	">>> ENVIRONMENT VARIABLES / to understand what the fuck is goin on ... : \n %s", 
 					pformat({ k : v for k,v in  os.environ.iteritems() }) )
 	print
 
-	log_cis.info(	"APP.CONFIG / to understand what the fucking fuck is goin on ... : \n %s", 
+	log_cis.info(	">>> APP.CONFIG / to understand what the fucking fuck is goin on ... : \n %s", 
 					pformat({ k : v for k,v in  app.config.iteritems() }) )
 	print
 
@@ -145,7 +145,7 @@ print
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### LOGIN MANAGER ###########################################################################
+### LOGIN MANAGER 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from  	flask_login import 	LoginManager, login_user, logout_user, login_required, \
@@ -158,7 +158,7 @@ login_manager.login_view 	= 'login'
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### CSRF ####################################################################################
+### CSRF 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 # deprecated --> messing with form.validate_on_submit()
@@ -168,7 +168,7 @@ login_manager.login_view 	= 'login'
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### EMAILING IMPORTS ########################################################################
+### EMAILING IMPORTS 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from	flask_mail import Mail, Message
@@ -179,18 +179,29 @@ mail 	= Mail(app)
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### INITIATE MONGO DB AND IMPORT MAIN CLASSES ###############################################
+### INITIATE MONGO DB AND IMPORT MAIN CLASSES 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 # settings classes : global variable for app
-from settings import *
+from 	settings 	import *
+log_cis.info(">>> LIST_PARTNERS : \n %s", pformat(LIST_PARTNERS) )
+
+# utils 
+from 	utils		import *
 
 # models :
-from models import *
+from 	models 	import *
+
+# set Anonymous user class
 login_manager.anonymous_user = AnonymousUser
 
 # forms classes :
 from forms import * # LoginForm, UserRegisterForm, UserUpdateForm, UserHistoryAloesForm, RequestCabForm
+
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### INITIATE MONGO DB 
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 # db classes and functions
 from api import *
@@ -198,7 +209,7 @@ from api import *
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### IMPORT VIEWS ############################################################################
+### IMPORT VIEWS 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from . import views
@@ -206,15 +217,16 @@ from . import views
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### CREATE ADMIN MANAGER VIEWS ###########################################################################
+### CREATE ADMIN MANAGER VIEWS 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 # cf : https://github.com/flask-admin/flask-admin/blob/master/examples/pymongo/app.py
 
 
 admin = Admin(app, index_view=views.MyAdminIndexView(), name='admin interface for CIS')
 
-# Add views
-admin.add_view( views.UserViewAdmin( mongo_users, 'Users' ) )
+# Add views in admin interface
+admin.add_view( views.UserViewAdmin( 			mongo_users, 		'Users' ) )
+admin.add_view( views.MessagesFromLandingAdmin( mongo_feedbacks, 	'Feedbacks' ) )
 
 
 
@@ -224,4 +236,4 @@ admin.add_view( views.UserViewAdmin( mongo_users, 'Users' ) )
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 print
-log_cis.debug("all imports are finished...\n")
+log_cis.debug(">>> all imports are finished...\n")
