@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 ### good encoding of flash messages
+### cf : https://stackoverflow.com/questions/8924014/how-to-handle-my-unicodedecodeerror 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
