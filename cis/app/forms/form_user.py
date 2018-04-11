@@ -19,11 +19,11 @@ log_cis.info(">>> reading _forms.form_user.py ")
 # 									validators = [ DataRequired(), Length(min=3, max=50) ], 
 # 									render_kw={'class': 'input is-large'	, 'placeholder': u"votre prénom *"  }  
 # 								)
-userName		= StringField	( 	u'prénom', 
+userName		= StringField	( 	u"prénom", 
 									validators = [ DataRequired(), Length(min=3, max=50) ], 
 									render_kw={'class': 'input'	, 'placeholder': u"votre prénom *"  }  
 								)
-userSurname		= StringField	( 	u'nom' , 
+userSurname		= StringField	( 	u"nom" , 
 									validators = [ DataRequired(), Length(min=3, max=50) ], 
 									render_kw={'class': 'input'	, 'placeholder': u"votre nom *"  }  
 								)
@@ -31,7 +31,7 @@ userSurname		= StringField	( 	u'nom' ,
 # 									validators = [ DataRequired(), Length(min=7, max=50) ], 
 # 									render_kw={'class': 'input is-large', 'placeholder': u"votre email"  }  
 # 								)
-userEmail		= EmailField	( 	u'email'   , 
+userEmail		= EmailField	( 	u"email"   , 
 									validators = [ DataRequired(), Length(min=7, max=50) ], 
 									render_kw={'class': 'input', 'placeholder': u"votre email *"  }  
 								)
@@ -39,12 +39,12 @@ userEmail		= EmailField	( 	u'email'   ,
 # 									validators = [ DataRequired() ], 
 # 									render_kw={'class': 'input is-large', 'placeholder': u"votre mot de passe"  }
 # 								) 
-userPassword 		= PasswordField	( 	u'password', 
+userPassword 		= PasswordField	( 	u"mot de passe", 
 										validators = [ DataRequired() ], 
 										render_kw={'class': 'input', 'placeholder': u"votre mot de passe *"  }
 									) 
 
-registerPassword 	= PasswordField ( 	u'password',
+registerPassword 	= PasswordField ( 	u"votre mot de passe",
 										validators = [
 											DataRequired(),
 											EqualTo('userConfirmPassword', message=u"les deux mots de passe doivent être identiques"),
@@ -52,13 +52,19 @@ registerPassword 	= PasswordField ( 	u'password',
 										],
 										render_kw={'class': 'input', 'placeholder': u"tapez votre password *"}
 									)
-userConfirmPassword = PasswordField ( 	u'répéter le password', 
+userConfirmPassword = PasswordField ( 	u"répéter le mot de passe", 
 										render_kw={'class': 'input', 'placeholder': u"répétez votre mot de passe *" } 
 									)
 
-userRememberMe 		= BooleanField  ( 	u'se souvenir de moi', 
+userRememberMe 		= BooleanField  ( 	u"se souvenir de moi", 
 										default=False, 	
 										render_kw={'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
+									)
+
+userAcceptCGU 		= BooleanField  ( 	u"j'accepte les conditions générales d'utilisation", 
+										validators = [ DataRequired() ] ,
+										default = False, 	
+										render_kw = {'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
 									)
 
 
@@ -197,6 +203,7 @@ class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 
 	### optionnal infos
 	userRememberMe 	= userRememberMe
+	userAcceptCGU 	= userAcceptCGU
 
 
 class PreRegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):

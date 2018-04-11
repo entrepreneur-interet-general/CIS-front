@@ -123,19 +123,17 @@
 		<br><br>
 		
 	</div>
+
+
+
 	
-
-
-	{# 
-	<br>
+	{# <br>
 
 	<div class="field">
-		{{ form.rememberMe }}
-		<label class="checkbox">
-			se souvenir de moi
-		</label>
-	</div> 
-	#}
+		{{ form.userRememberMe }}
+		{{ form.userRememberMe.label}}
+	</div>  #}
+	
 
 	<div class="is-divider" data-content="une remarque, un commentaire ? (optionnel)"></div>
 
@@ -152,6 +150,15 @@
 
 
 	<br>
+
+	<div class="field">
+		{{ form.userAcceptCGU( class ='is-checkradio is-black is-normal') }}
+		{{ form.userAcceptCGU.label }}
+	</div>
+
+	<br>
+
+
 
 	<button class="button is-block is-primary is-large is-fullwidth" type="submit">
 		S'enregistrer
