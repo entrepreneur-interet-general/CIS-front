@@ -1,0 +1,38 @@
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+	
+	{% if messages %}
+		
+		{# <ul class=flashes> #}
+		
+		{% for category, message in messages %}
+			
+			{# <article class="message is-{{ category }}">
+				<div class="message-header">
+					<p>{{ category }}</p>
+					<button class="delete" aria-label="delete"></button>
+				</div> #}
+
+				{# <div class="message-body"> #}
+				<div class="notification is-{{ category }}">
+					<button class="delete"></button>
+					
+					{# <li> #}
+					{{ message }}
+					{# </li> #}
+				
+				</div>
+		
+			{# </article> #}
+
+		{% endfor %}
+		
+		{# </ul> #}
+	
+	{% endif %}
+
+{% endwith %}
+
+
+

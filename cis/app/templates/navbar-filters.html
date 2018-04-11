@@ -4,66 +4,78 @@
 	{# navbar's buttons #}
 	<div id="navbarFilters" class="navbar-menu">
 
+		{% set disabled_filters=["geoloc"] %}
 
-		{% for filter_codename, filter_data in filters_choices.iteritems() %}
+		{% for f_choices in filters_choices %}
 
+			{% for filter_codename, filter_data in f_choices.iteritems() %}
 
-		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+			<span 	class="navbar-item navbar-item-filter has-dropdown 
+					{% if filter_codename not in disabled_filters %}
+						is-hoverable
+					{% else %}
+						tooltip is-tooltip-danger is-tooltip-bottom
+					{% endif %}" 
+					{% if filter_codename in disabled_filters %}
+					data-tooltip="fonctionnalité en construction"
+					{% endif %}
+					>
 
-			<a class="navbar-link" >
-				<span>{{ filter_data["fullname"] }}</span>
-			</a>
-
-			<div class="navbar-dropdown">
-
-				{% for i in filter_data["choices"] %}
-			
-				<a class="navbar-item">
-					<div class="field">
-						<input class="is-checkradio is-default is-normal" id="{{filter_codename}}-{{ i[0] }}" name="{{ i[0] }}" value="n" type="checkbox">
-						<label for="{{filter_codename}}-{{ i[0] }}">
-							{{ i[1] }}
-						</label>
-					</div>
+				<a class="navbar-link">
+					<span>{{ filter_data["fullname"] }}</span>
 				</a>
 
-				{% endfor %}
-			
+				<div class="navbar-dropdown">
 
-				{# <hr class="navbar-divider"> #}
-			
-				<div class="columns is-centered ">
-
-					{# <div class="navbar-item"> #}
-
-						<div class="column is-half">
-							<div class="navbar-item">
-								<a class="button is-text is-fullwidth">
-								Effacer
-								</a>
-							</div>
+					{% for i in filter_data["choices"] %}
+				
+					<a class="navbar-item">
+						<div class="field">
+							<input class="is-checkradio is-default is-normal" id="{{filter_codename}}-{{ i[0] }}" name="{{ i[0] }}" value="n" type="checkbox">
+							<label for="{{filter_codename}}-{{ i[0] }}">
+								{{ i[1] }}
+							</label>
 						</div>
+					</a>
 
-						{# <div class="is-divider-vertical"></div> #}
+					{% endfor %}
+				
 
-						<div class="column is-half">
-							<div class="navbar-item">
-								<a class="button is-text is-fullwidth">
-								Valider
-								</a>
+					{# <hr class="navbar-divider"> #}
+				
+					<div class="columns is-centered ">
+
+						{# <div class="navbar-item"> #}
+
+							<div class="column is-half">
+								<div class="navbar-item">
+									<a class="button is-text is-fullwidth">
+										Effacer
+									</a>
+								</div>
 							</div>
-						</div>
 
-					{# </div> #}
+							{# <div class="is-divider-vertical"></div> #}
+
+							<div class="column is-half">
+								<div class="navbar-item">
+									<a class="button is-text is-fullwidth">
+										Valider
+									</a>
+								</div>
+							</div>
+
+						{# </div> #}
+
+					</div>
 
 				</div>
+					
+			</span>
 
-			</div>
-				
-		</span>
+			{% endfor %}
 
 		{% endfor %}
-
 
 
 

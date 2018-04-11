@@ -1,4 +1,10 @@
+#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
+
+### good encoding of flash messages
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 ### import all from app.__init__
 from . 	import *
@@ -80,7 +86,7 @@ def index():
 			new_preregister 	= PreRegister()
 			new_preregister.populate_from_form( form=form )
 			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
-			
+
 			# check if email/user already exists in users db
 			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
 			
@@ -100,6 +106,8 @@ def index():
 				# save user in db as visitor
 				new_user.insert_to_mongo( coll=mongo_users )
 			
+			flash(u"votre message a bien été envoyé", category='primary')
+
 			return redirect(request.args.get("next") or url_for("index"))
 
 
@@ -107,12 +115,11 @@ def index():
 			
 			log_cis.error("form was not validated / form.errors : %s", form.errors )
 			
-			flash("something went wrong while sending form", category='error')
+			flash(u"problème lors de l'envoi de votre message", category='warning')
 
 			return redirect(url_for("index"))
 
 		
-
 
 	log_cis.debug("current_user : \n %s ", pformat(current_user.__dict__))
 
@@ -134,13 +141,13 @@ def search():
 
 	log_cis.debug("entering search page")
 
-	filters_choices = {
-						"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS},
-						"localisations"	: {"fullname":u"Localisations",	"choices": 	[] },
-						"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS},
-						"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS},
-						"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}
-					}
+	filters_choices = [
+						{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
+						{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},
+						{"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS}	},
+						{"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS}	},
+						{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
+					]
 
 	return render_template( "index.html",
 
@@ -223,7 +230,7 @@ def login():
 				
 				log_cis.info("Logged in successfully")
 
-				flash("Logged in successfully", category='success')
+				# flash(u"Vous êtes bien connecté.e", category='success')
 
 				return redirect(request.args.get("next") or url_for("index"))
 
@@ -231,9 +238,10 @@ def login():
 
 			log_cis.error("form was not validated / form.errors : %s", form.errors )
 			
-			flash("Wrong username or password", category='error')
+			flash(u"Mauvais email ou mot de passe", category='warning')
 
 			return redirect(url_for("index"))
+
 
 	elif request.method == 'GET' : 
 		
@@ -291,13 +299,19 @@ def register():
 				# log user
 				login_user(new_user)
 
+
+				flash(u"Votre message a bien été envoyé", category='success')
+
 				return redirect(url_for('index'))
 
 		else :
 			
 			log_cis.error("form was not validated : form.errors : %s", form.errors )
 
+			flash(u"Votre message n'a pas été envoyé", category='warning')
+
 			return redirect(url_for('register'))
+
 
 	elif request.method == 'GET':
 		
@@ -321,6 +335,8 @@ def logout():
 
 	log_cis.info("user is logged out...")
 	
+	flash(u"Vous êtes maintenant déconnecté.e", category='primary')
+
 	return redirect(url_for('index'))
 
 
@@ -353,6 +369,7 @@ class MyAdminIndexView(AdminIndexView) :
 	def inaccessible_callback(self, name, **kwargs) :
 		
 		# TO DO : flash if auth level not enough
+		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
 		return redirect(url_for('login'))
 
 
@@ -375,6 +392,7 @@ class UserViewAdmin(ModelView):
 	def inaccessible_callback(self, name, **kwargs) :
 		
 		# TO DO : flash if auth level not enough
+		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
 
 		return redirect(url_for('login'))
 

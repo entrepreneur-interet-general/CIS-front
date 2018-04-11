@@ -4,6 +4,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+.is-hidden {
+	display: none;
+}
+
 #navbar-top {
 	height: 70px;
 	z-index:10;

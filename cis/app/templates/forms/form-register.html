@@ -153,14 +153,22 @@
 
 	<div class="field">
 		{{ form.userAcceptCGU( class ='is-checkradio is-black is-normal') }}
-		{{ form.userAcceptCGU.label }}
+		{# { { form.userAcceptCGU.label }} #}
+		<label for="userAcceptCGU">
+			J'accepte les 
+			<a class="modal-button has-text-primary" data-target="modal_legal" aria-haspopup="true"> 
+				Conditions Générales d'Utilisation
+			</a>
+		</label>
 	</div>
 
 	<br>
 
 
 
-	<button class="button is-block is-primary is-large is-fullwidth" type="submit">
+	<button class="button is-block is-primary is-large is-fullwidth tooltip is-tooltip-danger is-tooltip-multiline" 
+			data-tooltip="Soyez parmi les premiers à être informé.e de la sortie de la première version du moteur de recherche" 
+			type="submit">
 		S'enregistrer
 	</button>
 
