@@ -1,0 +1,139 @@
+<div class="container">
+
+
+
+	{# navbar's buttons #}
+	<div id="navbarFilters" class="navbar-menu">
+
+
+		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+
+			<a class="navbar-link" >
+				<span>Domaines</span>
+			</a>
+
+			<div class="navbar-dropdown">
+
+				{% for i in [ ("cadre_vie", "cadre de vie"), ("dev_dur", "développement durable"), ("stuff", "stuff yeah")] %}
+			
+				<a class="navbar-item">
+					<div class="field">
+						<input class="is-checkradio is-default is-normal" id="{{ i[1] }}" name="{{ i[1] }}" value="n" type="checkbox">
+						<label for="{{ i[1] }}">
+							{{ i[1] }}
+						</label>
+					</div>
+				</a>
+
+				{% endfor %}
+			
+				{# <a class="navbar-item">
+					Elements
+				</a>
+			
+				<a class="navbar-item">
+					Components
+				</a> #}
+			
+				{# <hr class="navbar-divider"> #}
+			
+				<div class="columns is-centered ">
+
+					{# <div class="navbar-item"> #}
+
+						<div class="column is-half">
+							<div class="navbar-item">
+								<a class="button is-text is-fullwidth">
+								Effacer
+								</a>
+							</div>
+						</div>
+
+						{# <div class="is-divider-vertical"></div> #}
+
+						<div class="column is-half">
+							<div class="navbar-item">
+								<a class="button is-text is-fullwidth">
+								Valider
+								</a>
+							</div>
+						</div>
+
+					{# </div> #}
+
+				</div>
+
+			</div>
+				
+		</span>
+
+
+		<!--
+		<span class="navbar-item navbar-item-filter dropdown is-hoverable">
+
+
+			<div class="dropdown-trigger">
+				<button class="button is-primary is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
+					<span>Localisation</span>
+					{# <span class="icon is-small">
+						<i class="fas fa-angle-down" aria-hidden="true"></i>
+					</span> #}
+				</button>
+			</div>
+			<div class="dropdown-menu" id="dropdown-menu4" role="menu">
+				<div class="dropdown-content">
+					<div class="dropdown-item">
+
+						{% for i in [ ("cadre_vie", "cadre de vie"), ("dev_dur", "développement durable"), ("stuff", "stuff yeah")] %}
+					
+						{# <a class="navbar-item"> #}
+							<div class="field">
+								<input class="is-checkradio is-default is-small" id="{{ i[1] }}" name="{{ i[1] }}" value="n" type="checkbox">
+								<label for="{{ i[1] }}">
+									{{ i[1] }}
+								</label>
+							</div>
+						{# </a> #}
+
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		
+		
+		</span>
+		-->
+
+		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+			<a class="navbar-link" >
+				<span>Partenaires</span>
+			</a>
+		</span>
+
+
+
+		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+			<a class="navbar-link" >
+				<span>Publics</span>
+			</a>
+		</span>
+
+
+
+		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+			<a class="navbar-link" >
+				<span>Méthodes</span>
+			</a>
+		</span>
+
+
+
+
+
+	</div>
+
+
+
+
+</div>

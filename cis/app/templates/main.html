@@ -73,10 +73,18 @@
 	<body>
 
 
-		{# nav bar #}
-		<nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
+		{# 1st nav bar - main navbar #}
+		<nav class="navbar is-white is-fixed-top" id="navbar-top" role="navigation" aria-label="main navigation">
 			{% include "navbar.html" %}
 		</nav>
+
+		{# 2d nav bar - filters navbar #}
+		{% if user_infos.is_authenticated == True %}
+		<nav class="navbar is-white is-fixed-top" id="navbar-filters" role="navigation" aria-label="filters navigation">
+			{% include "navbar-filters.html" %}
+		</nav>
+		{% endif %}
+
 
 
 		{# contents #}

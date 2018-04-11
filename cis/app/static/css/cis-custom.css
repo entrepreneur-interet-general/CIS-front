@@ -6,7 +6,19 @@ html {
 
 #navbar-top {
 	height: 70px;
+	z-index:10;
 }
+
+#navbar-filters {
+	height: 30px;
+	top: 70px;
+	z-index: 5 ;
+}
+
+#navbarFilters {
+	padding-left:175px;
+}
+
 
 .button {
 	border-radius: 10 px ;
@@ -22,6 +34,9 @@ html {
 	max-height:45px ! important ;
 }
 
+.navbar-item-filter {
+	padding : 0.5rem ;
+}
 /* .fullwidth-navbar-item{
 	width : 100% ! important;
 } */

@@ -1,19 +1,62 @@
-{# section index #}
-<section id="user-index-title" class="hero is-primary">
 
-	<div  class="hero-body">
 
-		<div class="container">
+<style>
+
+#user-index-title {
+	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Illustration_reperer.png" ) }} ) ;
+	background-position : left center;
+	background-repeat	: no-repeat ;
+	background-size		: auto 70%;
+	background-max-height : 400 px;
+}
+
+</style>
+
+
+{# 1st section index-user #}
+<section id="user-index-title" class="hero is-primary skip-navbar ">
+
+	<div class="hero-body">
+
+		<div class="container content">
 
 			<div class="columns">
 
-				<div class="column is-half is-offset-6">
+				<div class="column is-half is-offset-3 has-text-centered">
+
 
 					<br>
-		
-					<p class="has-text-black">
-						Bonjour, vous êtes connecté.e et c'est cool
-					</p>
+
+					<h1 class="has-text-white">
+						<strong>
+						+ 5000 
+						</strong>
+						<small>projets référencés</small>
+						
+					</h1>
+
+
+					<h1 class="has-text-white">
+						<strong>
+						Trouvez le projet qui vous intéresse
+						</strong>
+					</h1>
+					
+
+					<br>
+
+
+
+					<a class="button is-white is-outlined" href="/" >
+						Faites une recherche
+					</a>
+
+
+					<p>
+						&nbsp;
+					</p> 
+
+
 
 				</div>
 
@@ -24,3 +67,8 @@
 	</div>
 
 </section>
+
+
+
+
+

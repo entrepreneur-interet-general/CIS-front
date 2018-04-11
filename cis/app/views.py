@@ -441,7 +441,6 @@ class MessagesFromLandingAdmin(ModelView):
 def download_file(file_ext, file_name):
 	"""
 	send file from server
-	example href : /download/pdf/Charte_carrefourdesinnovationssociales_VF_V2
 	"""
 
 	log_cis.debug("file_name : %s ", 	file_name)
@@ -471,7 +470,7 @@ def download_file(file_ext, file_name):
 			return redirect(url_for('index'))
 
 	else :
-		
+
 		log_cis.error("downloading this file is not authorized: %s.%s ", file_name, file_ext )
 
 		return redirect(url_for('index'))
