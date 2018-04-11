@@ -54,8 +54,10 @@ def index():
 
 	form 		= PreRegisterForm()
 
+	# TO DO 
 	### set language
 
+	# TO DO 
 	### check token from session["public_id"] 
 	try :
 		current_session_uid = session["public_id"]
@@ -112,15 +114,38 @@ def index():
 		
 
 
-
 	log_cis.debug("current_user : \n %s ", pformat(current_user.__dict__))
 
 	return render_template( "index.html",
 
-							site_section		= "landing",
-							# is_landing 			= True, 
+							site_section		= "home",
 							form				= form,
+							user_infos			= current_user.get_public_infos
+						)
 
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### SEARCH PAGES
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+@app.route('/search', methods=['GET', 'POST'])
+@login_required
+def search():
+
+	log_cis.debug("entering search page")
+
+	filters_choices = {
+						"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS},
+						"localisations"	: {"fullname":u"Localisations",	"choices": 	[] },
+						"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS},
+						"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS},
+						"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}
+					}
+
+	return render_template( "index.html",
+
+							site_section		= "search",
+							filters_choices		= filters_choices,
 							user_infos			= current_user.get_public_infos
 						)
 
@@ -213,10 +238,9 @@ def login():
 	elif request.method == 'GET' : 
 		
 		return render_template(	'login.html', 
+
 								site_section	= 'login', 
 								form			= form,
-								# is_landing 	= True
-
 								user_infos		= current_user.get_public_infos
 
 								)
@@ -278,9 +302,9 @@ def register():
 	elif request.method == 'GET':
 		
 		return render_template(	'register.html', 
+
 								site_section 	= "register",
 								form			= form,
-
 								user_infos		= current_user.get_public_infos
 
 								)

@@ -85,3 +85,48 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 #### Contacts - maintainance :
 
 - [Julien Paris](<mailto:julien.paris@cget.gouv.fr>) (aka [JPy](https://twitter.com/jparis_py) on Twitter)
+
+-------
+
+## SCREENSHOTS (development)
+
+<h4 align=center>landing page<br> </h4>
+
+![alt text](./screenshots/cis-front-landing.png "landing")
+
+-------
+
+<h4 align=center><br>login</h4>
+
+![alt text](./screenshots/cis-front-login.png "home")
+
+-------
+
+<h4 align=center><br>register</h4>
+
+![alt text](./screenshots/cis-front-register.png "register")
+
+-------
+
+<h4 align=center><br>home for connected user (work in progress)</h4>
+
+![alt text](./screenshots/cis-front-user-index.png "index")
+
+
+-------
+
+<h4 align=center><br>search engine for connected user (work in progress)</h4>
+
+![alt text](./screenshots/cis-front-user-search.png "search")
+
+-------
+
+<h4 align=center><br>backoffice to manage users</h4>
+
+![alt text](./screenshots/cis-front-backoffice-users.png "users")
+
+-------
+
+<h4 align=center><br>backoffice to manage feedbacks</h4>
+
+![alt text](./screenshots/cis-front-backoffice-feedbacks.png "feedbacks")

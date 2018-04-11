@@ -1,17 +1,20 @@
 
 
 
+{% if site_section == "home" %}
 
-{% include "user_slices/user-slice-index-title.html"%}
+	{% include "user_slices/user-slice-index-title.html"%}
 
-
-{% include "user_slices/user-slice-tags.html"%}
-
-
-{% include "user_slices/user-slice-switch-views.html"%}
+	{% include "user_slices/user-slice-index-galery-projects.html"%}
 
 
-{% include "user_slices/user-slice-index-galery-projects.html"%}
 
+{% elif site_section == "search" %}
 
-{% include "user_slices/user-slice-results-projects.html"%}
+	{% include "user_slices/user-slice-tags.html"%}
+
+	{% include "user_slices/user-slice-switch-views.html"%}
+
+	{% include "user_slices/user-slice-results-projects.html"%}
+
+{% endif %}

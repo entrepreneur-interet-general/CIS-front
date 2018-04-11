@@ -43,7 +43,7 @@ Les données accessibles via le moteur de recherche et la cartographie sont mise
 Crédits 
 Ligne graphique et design UX/UI : Elise Lalique
 Développement : Julien Paris
-
+Rédaction : Emmanuel Dupont, Bastien Engelbach, Bénédicte Pachod
 
 
 
@@ -52,9 +52,7 @@ _____________
 
 Qui sommes-nous
 
-
-Le carrefour des innovations sociales est un collectif atypique composé d’associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche … mus par une volonté partagée de renforcer la connaissance et le potentiel transformateur des innovations sociales
-
+Le carrefour des innovations sociales est un collectif atypique mu par une envie commune de partager la connaissance des solutions de terrain et les rendre accessibles. Il s’agit de renforcer le potentiel transformateur des innovations sociales et cultiver une société meilleure. Le collectif est composé d’acteurs divers : associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche.
 
 Une équipe opérationnelle conduit le projet au quotidien. Elle instruit, met en oeuvre les actions décidées par le collectif et le comité de pilotage et suit leur état d’avancement.
 Bastien Engelbach et Bénédicte Pachod coordonnent le projet. 

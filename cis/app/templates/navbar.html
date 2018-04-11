@@ -26,7 +26,7 @@
 		
 		{# <div class="navbar-start is-fullwidth"> #}
 
-		{% if user_infos.is_authenticated == True %}
+		{% if user_infos.is_authenticated == True  %}
 		
 			{% include "elements/navbar-search-input.html" %}
 
@@ -83,6 +83,28 @@
 						</div>
 
 					{% else %}
+
+
+						<div class="navbar-item">
+							<a class="modal-button" data-target="modal_charte" aria-haspopup="true"> 
+							{# <a class="button is-text" href="/info/project-history" disabled> #}
+								<span>Le projet</span>
+							</a>
+						</div>
+
+						<div class="navbar-item">
+							{# <a class="button is-text" href="/info/who-are-we" disabled> #}
+							<a class="modal-button" data-target="modal_who" aria-haspopup="true"> 
+								<span>Qui sommes-nous ?</span>
+							</a>
+						</div>
+
+						<div class="navbar-item" >
+							<a class="modal-button" data-target="modal_legal" aria-haspopup="true"> 
+							{# <a class="button is-text" href="/info/contact" disabled> #}
+								<span>Contact</span>
+							</a>
+						</div>
 
 
 						{% if user_infos.userAuthLevel == "admin" %}

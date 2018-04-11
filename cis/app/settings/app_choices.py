@@ -123,5 +123,34 @@ CHOICES_STRUCTURES			= [ (u""					, u" - sélectionnez votre structure -"),
 							]
 
 
+CHOICES_DOMAINS 			= [
+								(u"cadre_vie"		, u"Cadre de vie"),
+								(u"dev_dur"			, u"Développement durable"),
+								(u"dev_eco"			, u"Développement économique"),
+								(u"habitat"			, u"Habitat"),
+								(u"inclusio "		, u"Inclusion"),
+								(u"lien_social"		, u"Lien social"),
+								(u"sante_sport"		, u"Santé et sport"),
+								(u"travail"			, u"Travail"),
+							]
+
+
+CHOICES_METHODS 			= [
+								(u"cooperate"		, u"Coopération"),
+								(u"evaluate"		, u"Evaluation"),
+								(u"govern"			, u"Gouvernance"),
+								(u"philantropy"		, u"Mécénat"),
+								(u"mediate"			, u"Médiation"),
+								(u"participate"		, u"Participation"),
+								(u"research"		, u"Recherche"),
+							]
+
+CHOICES_PUBLICS 			= [
+
+								# (u""				, u"Tous publics"),
+								(u"travail"			, u"Handicap"),
+								(u"travail"			, u"Jeunesse"),
+								(u"travail"			, u"Seniors"),
+							]
 
 

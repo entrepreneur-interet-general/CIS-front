@@ -1,25 +1,27 @@
 <div class="container">
 
 
-
 	{# navbar's buttons #}
 	<div id="navbarFilters" class="navbar-menu">
+
+
+		{% for filter_codename, filter_data in filters_choices.iteritems() %}
 
 
 		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
 			<a class="navbar-link" >
-				<span>Domaines</span>
+				<span>{{ filter_data["fullname"] }}</span>
 			</a>
 
 			<div class="navbar-dropdown">
 
-				{% for i in [ ("cadre_vie", "cadre de vie"), ("dev_dur", "développement durable"), ("stuff", "stuff yeah")] %}
+				{% for i in filter_data["choices"] %}
 			
 				<a class="navbar-item">
 					<div class="field">
-						<input class="is-checkradio is-default is-normal" id="{{ i[1] }}" name="{{ i[1] }}" value="n" type="checkbox">
-						<label for="{{ i[1] }}">
+						<input class="is-checkradio is-default is-normal" id="{{filter_codename}}-{{ i[0] }}" name="{{ i[0] }}" value="n" type="checkbox">
+						<label for="{{filter_codename}}-{{ i[0] }}">
 							{{ i[1] }}
 						</label>
 					</div>
@@ -27,14 +29,7 @@
 
 				{% endfor %}
 			
-				{# <a class="navbar-item">
-					Elements
-				</a>
-			
-				<a class="navbar-item">
-					Components
-				</a> #}
-			
+
 				{# <hr class="navbar-divider"> #}
 			
 				<div class="columns is-centered ">
@@ -67,45 +62,13 @@
 				
 		</span>
 
-
-		<!--
-		<span class="navbar-item navbar-item-filter dropdown is-hoverable">
+		{% endfor %}
 
 
-			<div class="dropdown-trigger">
-				<button class="button is-primary is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
-					<span>Localisation</span>
-					{# <span class="icon is-small">
-						<i class="fas fa-angle-down" aria-hidden="true"></i>
-					</span> #}
-				</button>
-			</div>
-			<div class="dropdown-menu" id="dropdown-menu4" role="menu">
-				<div class="dropdown-content">
-					<div class="dropdown-item">
 
-						{% for i in [ ("cadre_vie", "cadre de vie"), ("dev_dur", "développement durable"), ("stuff", "stuff yeah")] %}
-					
-						{# <a class="navbar-item"> #}
-							<div class="field">
-								<input class="is-checkradio is-default is-small" id="{{ i[1] }}" name="{{ i[1] }}" value="n" type="checkbox">
-								<label for="{{ i[1] }}">
-									{{ i[1] }}
-								</label>
-							</div>
-						{# </a> #}
 
-						{% endfor %}
 
-					</div>
-				</div>
-			</div>
-		
-		
-		</span>
-		-->
-
-		<span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+		{# <span class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 			<a class="navbar-link" >
 				<span>Partenaires</span>
 			</a>
@@ -125,7 +88,7 @@
 			<a class="navbar-link" >
 				<span>Méthodes</span>
 			</a>
-		</span>
+		</span> #}
 
 
 

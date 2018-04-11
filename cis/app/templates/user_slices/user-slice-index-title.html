@@ -2,7 +2,7 @@
 
 <style>
 
-#user-index-title {
+#user-index-title-1 {
 	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Illustration_reperer.png" ) }} ) ;
 	background-position : left center;
 	background-repeat	: no-repeat ;
@@ -10,11 +10,19 @@
 	background-max-height : 400 px;
 }
 
+#user-index-title-2 {
+	background-image	: url({{url_for ("static", filename="illustrations/illustrations_landing_Moteur_recherche_lame1.png" ) }} ) ;
+	background-position : center center;
+	background-repeat	: no-repeat ;
+	background-size		: cover;
+	background-max-height : 600 px;
+}
+
 </style>
 
 
 {# 1st section index-user #}
-<section id="user-index-title" class="hero is-primary skip-navbar ">
+<section id="user-index-title-2" class="hero is-primary skip-navbar ">
 
 	<div class="hero-body">
 
@@ -25,7 +33,6 @@
 				<div class="column is-half is-offset-3 has-text-centered">
 
 
-					<br>
 
 					<h1 class="has-text-white">
 						<strong>
@@ -47,7 +54,7 @@
 
 
 
-					<a class="button is-white is-outlined" href="/" >
+					<a class="button is-white is-outlined" href="/search" >
 						Faites une recherche
 					</a>
 

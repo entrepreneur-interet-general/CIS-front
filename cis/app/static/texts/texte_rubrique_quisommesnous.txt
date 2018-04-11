@@ -2,9 +2,7 @@
  
 1er  sous-rubrique : Un collectif  atypique
  
-Le carrefour des innovations sociales est un collectif atypique composé d’associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche … mus par une volonté partagée de renforcer la connaissance et le potentiel transformateur des innovations sociales
-
-
+Le carrefour des innovations sociales est un collectif atypique mu par une envie commune de partager la connaissance des solutions de terrain et les rendre accessibles. Il s’agit de renforcer le potentiel transformateur des innovations sociales et cultiver une société meilleure. Le collectif est composé d’acteurs divers : associations, têtes de réseaux, accompagnateurs, institutions, fondations, think-tanks, médias et acteurs de la recherche.
  
  
 Une ÉQUIPE OPÉRATIONNELLE conduit le projet au quotidien. Elle instruit, met en oeuvre les actions décidées par le collectif et le comité de pilotage et suit leur état d’avancement.
@@ -31,13 +29,13 @@ yannick.blanc@fonda.asso.fr
  
  
 Un COMITÉ DE PILOTAGE guide et coordonne le développement du projet
-= logos des membres du comité de pilotage : Commissariat général à l’égalité des territoires, la Fonda, l’AVISE, la Fondation Cognacq-Jay, le Labo de l’ESS, l’APRILES et le GNIAC
+= logos des membres du comité de pilotage : Commissariat général à l’égalité des territoires, la Fonda, AVISE, la Fondation Cognacq-Jay, le Labo de l’ESS, ’APRILES et le GNIAC
  
 Ce projet est accéléré par le soutien d’Etalab, plus précisément du programme Entrepreneur d’intérêt général, et de la Fédération nationale des Caisses d’Epargne, merci à eux !
 = logo EIG / Etalab + FNCE
 
 
-Le COLLECTIF comprend tous les partenaires du projet adhérents à la charte. Il fixe les grandes orientations et décisions stratégiques. Des partenaires participent à certains chantiers du Carrefour des innovations sociales. 
+Le COLLECTIF comprend tous les partenaires actuels du projet, adhérents la charte. Il fixe les grandes orientations et décisions stratégiques. Des partenaires participent à certains chantiers du Carrefour des innovations sociales. 
 = logos des partenaires restants. Voici leur liste par type d’acteurs (hors COPIL et partenaire financier) : 
 * associations et accompagnateurs opérationnels : AEIDL, Ashoka, Bleu Blanc Zèbre, Brie’Nov, BRUDED, Coorace, EnSSemble, Génération 2 Conseil, Prima Terra, SIILAB, Synergies, Territoria, Ticket for change et Villes Internet.
 * institutions et têtes de réseaux  : ADEME, Agence du Numérique, ANIMAFAC, APIE, Association des Maires Ruraux de France, Confédération générale des SCOP, Chambre régionale d'économie sociale et solidaire des Pays de la Loire, Direction générale de la cohésion sociale, Délégation interministérielle pour l’hébergement et l’accès au logement, DRJCS Hauts-de-France, Fédération française des GEIQ, Fonds d'expérimentation pour la jeunesse, Réseau Rural, RTES, ville de Sceaux et UNADEL. 
@@ -51,7 +49,7 @@ Lien vers la charte du Carrefour des innovations sociales
 
 
 2ème sous-rubrique : Les membres du collectif
-Près de 70 partenaires forment le collectif du Carrefour des innovations sociales. Découvrez les missions  de chacun. 
+Près de 70 partenaires forment actuellement le collectif du Carrefour des innovations sociales. Découvrez les missions  de chacun. 
  
 Pour chaque partenaire : nom + lien site + description + échelle action.
 Voir  fichier  “Annuaire_partenaires”

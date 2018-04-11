@@ -1,35 +1,36 @@
 ﻿Titre de la rubrique : Le projet 
  
-Les projets socialement innovants se multiplient dans les territoires. Ils créent de nouveaux services et de nouvelles solidarités. De nombreux acteurs les recensent déjà, mais il est difficile de s’y retrouver parmi un foisonnement de sites. Renforcer la valorisation de ces initiatives est donc essentiel, afin d’en renforcer la portée.
+Les projets socialement innovants se multiplient dans les territoires. Ils créent de nouveaux services et solidarités qui inventent, testent et mettent en action les solutions de demain. De nombreux acteurs territoriaux ou thématiques les recensent déjà, mais il est difficile de s’y retrouver. Se repérer dans ce foisonnement de sites et rendre lisible la diversité des innovations sociales est donc essentiel, afin d’en renforcer la portée. 
 
 
 Le carrefour des innovations sociales met en commun des projets et des outils pour donner une vision précise de l’innovation sociale en France.
 Télécharger notre plaquette (flyer)
  
 Le carrefour des innovations sociales poursuit trois objectifs majeurs : 
-* Recenser et mettre en visibilité les innovations sociales. Il s’agit de fournir une information tendant vers l’exhaustivité, fiable et mise à jour des projets d’innovation sociale ;  
-* Reconnaître et libérer le potentiel inspirant des innovations sociales ;  
-* Renforcer les écosystèmes d’innovation sociale, dans les territoires ainsi qu’au niveau national et être un outil d'appui et de plaidoyer pour le développement de l'innovation sociale dans le système économique et les politiques publiques.
+* Recenser et mettre en visibilité les innovations sociales. Il s’agit de fournir une information exhaustive, fiable et mise à jour des projets 
+* Reconnaître et libérer le potentiel inspirant des innovations sociales 
+* Renforcer les écosystèmes d’innovation sociale, dans les territoires ainsi qu’au niveau national et être un outil d'appui et de plaidoyer pour le développement de l'innovation sociale dans le système économique et les politiques publiques
  
 Le Carrefour des innovations sociales, c’est :  
-* Une plateforme web qui regroupe dans un espace partagé les innovations sociales recensées et actualisées par des partenaires experts. Un moteur de recherche et une cartographie permettent de trier les projets, de les visualiser dans leurs écosystèmes locaux, quelle que soit l’échelle (locale, régionale, nationale) et de mesurer les dynamiques d’innovation sociale par territoires
+* Une plateforme web qui regroupe dans un espace partagé les innovations sociales recensées et actualisées par des partenaires experts. Sa richesse est la somme et le croisement de ce chacun apporte. Un moteur de recherche et une cartographie permettent de trier les projets, de les visualiser dans leurs écosystèmes locaux, quelle que soit l’échelle (locale, régionale, nationale) et de mesurer les dynamiques d’innovation sociale par territoires
+* Des outils open-source. Un logiciel de configuration de crawling de sites web, Open Scraper a ainsi été mis en place pour l’alimentation en continu du Carrefour des innovations sociales. Outil libre et gratuit, il est mis à disposition de tous 
 * Un lieu d’échange de savoir-faire pour qualifier, raconter les innovations sociales et ainsi soutenir le déploiement de projets
-* Des outils open-source. Un logiciel de configuration de crawling de sites web, Open Scraper a ainsi été mis en place pour l’alimentation du Carrefour des innovations sociales. Outil libre et gratuit, il est mis à disposition de tous. 
 * De nouvelles opportunités de collaborations au sein du collectif ! 
 
 
 
 
-Ils co-construisent le Carrefour des innovations sociales et témoignent
+Ils co-construisent le Carrefour des innovations sociales 
+Témoignages
 Témoignages de partenaires (issus des témoignages présents sur la landing page)
 
 
 
 
 Un projet en co-construction permanente
-Juin 2016 
-Une dizaine d’acteurs se fédèrent pour repérer et valoriser les innovations sociales. Création du collectif de la Banque de l’innovation sociale.
 Décembre 2016 
+Une dizaine d’acteurs se fédèrent pour repérer et valoriser les innovations sociales. Création du collectif de la Banque de l’innovation sociale.  
+Janvier 2017
 Elaboration d’une POC du moteur de recherche pour explorer sa faisabilité technique. Test réussi !
 Juillet 2017
 Le projet est inscrit dans la Conférence Nationale des Territoires, l'instance de dialogue entre l’État et les collectivités
@@ -41,33 +42,33 @@ L’association de préfiguration du Carrefour des innovations sociales est cré
 Décembre 2017
 Une maquette web fonctionnelle du moteur de recherche est réalisée afin d'amorcer la construction du moteur de recherche
 Janvier 2018
-Deux Entrepreneurs d’intérêt général, Elise et Julien rejoignent le projet, avec le soutien d'Etalab et du Programme d'investissement d'avenir
+Deux Entrepreneurs d’intérêt général, Elise Lalique et Julien Paris rejoignent le projet, avec le soutien d'Etalab et du Programme d'investissement d'avenir
 Mars 2018
-La Fédération Nationale des Caisses d’Epargne rejoint le collectif et apporte son soutien
+La Fédération Nationale des Caisses d’Epargne devient partenaire et apporte son soutien
 Avril 2018
 Le site beta est lancé
 Mai à Août 2018
-Des expérimentations territoriales sont mises en place pour améliorer le site
+Des expérimentations territoriales sont mises en place pour ajouter de nouvelles fonctionnalités 
 Septembre 2018
-Une nouvelle version du site sort avec plus de fonctionnalités
+Une version finalisée du site sort 
 
 
 
 
 Valeurs et principes fondateurs du projet 
-Carrefour des innovations sociales est structuré autour de trois  valeurs fondamentales :
-* la valorisation et la reconnaissance de l’expertise de chaque partenaire ainsi que le respect de chaque partenaire et des porteurs de projet concernés par les contenus diffusés inscrivent le projet dans une dynamique de confiance ;
+Le Carrefour des innovations sociales est structuré autour de trois  valeurs fondamentales :
+* la valorisation et la reconnaissance de l’expertise de chaque partenaire ainsi que le respect de chaque partenaire et des porteurs de projet concernés par les contenus diffusés inscrivent le projet dans une dynamique de confiance 
 * une approche ouverte de l’innovation sociale dans les territoires. Chaque partenaire est garant du caractère innovant des solutions concrètes, utiles, conduites en réponse à des problématiques territoriales. Le collectif du carrefour des innovations sociales s’appuie sur l’expertise d’usage de chaque
-partenaire suivant une logique de bienveillance ;
-* une approche open data et open source : la plateforme fait office de catalyseur de nouveaux échanges de pratiques et de savoir-faire. Chaque utilisateur de la plateforme a la possibilité de contacter les porteurs de projets capitalisés, les partenaires qui les ont recensés ou les coordinateurs du collectif du carrefour des innovations sociales. La plateforme web se place en complémentarité d’initiatives existantes. Elle s’appuie sur des outils développés en open source et est développée selon une approche utilisateurs, en mode agile ;
+partenaire suivant une logique de bienveillance 
+* une approche open data et open source : la plateforme fait office de catalyseur de nouveaux échanges de pratiques et de savoir-faire. Chaque utilisateur de la plateforme a la possibilité de contacter les porteurs de projets recensés, les partenaires qui les ont recensés ou les coordinateurs du collectif du carrefour des innovations sociales. La plateforme web est pensée de manière complémentaire aux sites partenaires. Elle s’appuie sur des outils développés en open source et est développée selon une approche utilisateurs, en mode agile 
 
 
 
 
 Gouvernance 
-* Le projet est géré selon les principes des Communs. Les données issues du travail de capitalisation sont une ressource partagée, que la plateforme valorise et diffuse collectivement, tout en reconnaissant l’apport de chacun. 
-* La richesse informationnelle produite par l’ensemble des acteurs constituant le collectif du Carrefour des innovations sociales est gérée de façon collective. Le développement du moteur de recherche et des outils qui y sont associés est porté par le collectif dans son ensemble. 
-* Chaque partenaire participe de manière égale à la gouvernance du projet selon le principe « un partenaire, une voix » ;
+* Le projet est géré selon les principes des Communs. Les données issues du travail de capitalisation sont une ressource partagée, que la plateforme valorise et diffuse collectivement, tout en reconnaissant l’apport de chacun
+* La richesse informationnelle produite par l’ensemble des acteurs constituant le collectif du Carrefour des innovations sociales est gérée de façon collective. Le développement du moteur de recherche et des outils qui y sont associés est porté par le collectif dans son ensemble
+* Chaque partenaire participe de manière égale à la gouvernance du projet selon le principe « un partenaire, une voix »
 
 
 

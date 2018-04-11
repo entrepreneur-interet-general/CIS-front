@@ -125,14 +125,14 @@ Lame 7
 
 Ils co-construisent le Carrefour des innovations sociales Témoignages (24 / bold / blanc)
 
- Yannick Blanc, Vice-Président de la Fonda  (18 / regular / violet)
-« Le Carrefour des innovations sociales peut devenir un levier avec lequel on soulève le monde. Il permettra de comprendre et développer la capacité d’initiative et de coopération présente dans la société, au fondement de l’innovation sociale et de ses promesses »  (18 / regular) 
+ (18 / regular) 
 
 Hugues Sibille, Président du Labo de l’ESS et de la Commission Innovation sociale du CSESS   
 (18 / regular / violet)
 « L’innovation sociale est une Grande Promesse qu’il nous incombe de reconnaître, de transformer et surtout d’accélérer, pour obtenir des résultats à la hauteur des besoins sociaux non  satisfaits » (18 / regular)
 
- Florence Raineix (copyright Greg Gonzales), directrice générale de la Fédération Nationale des Caisses d’Epargne, « En tant que banques coopératives régionales, les Caisses d’Epargne via leur fédération, sont fières de contribuer à la co-construction de cette plateforme au service des territoires et de ses innovations sociales » Cédric Szabo, Directeur des Maires Ruraux de France  
+ Florence Raineix, directrice générale de la Fédération Nationale des Caisses d’Epargne (copyright Greg Gonzales), « En tant que banques coopératives régionales, les Caisses d’Epargne via leur fédération, sont fières de contribuer à la co-construction de cette plateforme au service des territoires et de ses innovations sociales » Yannick Blanc, Vice-Président de la Fonda  (18 / regular / violet)
+ « Le Carrefour des innovations sociales peut devenir un levier avec lequel on soulève le monde. Il permettra de comprendre et développer la capacité d’initiative et de coopération présente dans la société, au fondement de l’innovation sociale et de ses promesses » Cédric Szabo, Directeur des Maires Ruraux de France  
 (18 / regular / violet)
 « A un carrefour, se rencontrent des protagonistes venus de tous horizons, dont certains ignoraient l’existence des autres. C’est pour donner à tous à voir le monde rural tel qu’il est que les projets municipaux ruraux ont toute leur place dans ce lieu d’échanges  » (18 / regular) Giorgia Sebregondi, Directrice du laboratoire des solidarités de la Fondation Cognacq-Jay « Ce projet, ce sont des rencontres enrichissantes, d'autres perspectives sur l'innovation sociale, l'expérience d'une gouvernance originale et la découverte de nouveaux projets solidaires » Julien Kounowski, Chef de projet SIILAB pour la DRJSCS Hauts-de-France « Pour apporter les travaux et les réalisations de notre laboratoire d'innovation publique et les partager au national sur le champ de l'innovation sociale » Emma Stokking, Responsable innovation sociale à Sparknews 
 « Sparknews a pour mission d’identifier et de mettre en valeur les innovations sociales les plus inspirantes. Il était donc naturel de nous associer à ce carrefour afin de contribuer et de trouver de nouveaux sujets » 
@@ -160,8 +160,7 @@ Un projet gouverné de manière collective suivant les principes des Communs. D�
 Lame 9 
 
 Les dates clés (24 / bold)
-
-Juillet 2016 (18 / bold / violet)
+Décembre 2016 (18 / bold / violet)
 Une dizaine d’acteurs se fédèrent pour repérer et valoriser les innovations sociales (18 / regular)
 
 Juillet 2017 (18 / bold / violet)
@@ -176,10 +175,10 @@ L’association de préfiguration du Carrefour des innovations sociales est cré
 Avril 2018 (18 / bold / bleu)
 Le site beta est lancé (18 / regular)
 
-Des expérimentations territoriales sont mises en place pour améliorer le site (18 / regular / gris clair)
+Des expérimentations territoriales sont mises en place pour ajouter de nouvelles fonctionnalités (18 / regular / gris clair)
 
 Septembre 2018 (18 / bold / gris clair)
-Une nouvelle version du site avec plus de fonctionnalités (18 / regular/ gris clair) 
+Une version finalisée du site sort (18 / regular/ gris clair) 
 
 
 
