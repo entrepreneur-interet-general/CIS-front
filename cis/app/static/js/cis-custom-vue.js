@@ -1,15 +1,40 @@
 
 
+// - - - - - - - - - - - - - //
+// DATA
+// - - - - - - - - - - - - - //
 
+// instanciate main data object for search
+var results_data = {
+
+	results_count : 789 ,
+	results_list : [
+		null
+	]
+
+} ;
+
+
+
+
+// - - - - - - - - - - - - - //
+// VUE.JS FUNCTIONS
+// - - - - - - - - - - - - - //
 
 
 // following tutorial for now...
 // cf : https://fr.vuejs.org/v2/guide/
 
+// var Vue_custom = new Vue({}) ;
+// Vue_custom.config.delimiters =  ['[[',']]'] ;
+
+
 Vue.config.delimiters =  ['[[',']]'] ;
 
 
-
+// - - - - - - - - - - - - - //
+// COMPONENTS 
+// - - - - - - - - - - - - - //
 
 Vue.component('todo-item', {
 	// Le composant todo-item accepte maintenant une
@@ -24,15 +49,17 @@ Vue.component('todo-item', {
 
 
 
+// - - - - - - - - - - - - - //
+// APP
+// - - - - - - - - - - - - - //
 
-var app_test = new Vue({
+var cis_vue_app = new Vue({
 
 	el: '#vue_test', //'#user-switch',
-	delimiters: ['[[',']]'],
+	// delimiters: ['[[',']]'],
 	
 	data: {
 		message			: 'Bienvenue in vue.js ...',
-		results_count	: 678,
 		seen			: false,
 		mess_hover 		: 'Bienvenue...' + new Date().toLocaleString(),
 		todos			: [
@@ -40,7 +67,9 @@ var app_test = new Vue({
 			{ text: 'Apprendre Vue' },
 			{ text: 'Intégrer Vue au moteur de recherche' },
 			{ text: 'Passer à la prochaine app' }
-			]
+			],
+
+		results_data 	: results_data,
 	},
 	
 	methods: {
@@ -51,16 +80,3 @@ var app_test = new Vue({
 
 
 })
-
-
-// var app = new Vue({
-
-// 	el: '#cis_app',
-// 	delimiters: ['[[',']]'],
-	
-// 	data: {
-// 		results_count		: 678,
-// 	},
-	
-
-// })

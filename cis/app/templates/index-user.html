@@ -3,9 +3,11 @@
 
 {% if site_section == "home" %}
 
+
 	{% include "user_slices/user-slice-index-title.html" %}
 
 	{# { % include "user_slices/user-slice-index-galery-projects.html"%} #}
+
 
 
 
@@ -15,6 +17,8 @@
 	<section id="user-search-section" class="section skip-navbar-search ">
 	{# <section class="hero is-grey skip-navbar-search "> #}
 		
+		{% include "elements/flash-messages.html"%}
+
 		{% include "user_slices/user-slice-tags.html" %}
 
 		{% include "user_slices/user-slice-results-count-switch-views.html" %}

@@ -34,6 +34,14 @@ class AnonymousUser(AnonymousUserMixin):
 					"is_authenticated" 	: self.is_authenticated
 				}
 
+	@property
+	def is_admin_level(self):
+		return False
+
+	@property
+	def is_staff_level(self):
+		return False
+
 
 class User( UserMixin, ModelMixin ):
 
@@ -89,11 +97,14 @@ class User( UserMixin, ModelMixin ):
  		self.userStructureSiret 	= None
 
 
-
-
 	@property
 	def is_admin_level(self):
 		return self.userAuthLevel == "admin"
+
+	@property
+	def is_staff_level(self):
+		return self.userAuthLevel in ["admin", "staff"]
+
 
 	@property
 	def get_public_infos(self):
@@ -110,6 +121,7 @@ class User( UserMixin, ModelMixin ):
 
 	def get_id(self):
 		return self.userEmail
+
 
 	@staticmethod
 	def validate_login(password_hash, password):

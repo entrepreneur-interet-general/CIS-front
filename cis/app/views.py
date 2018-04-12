@@ -365,13 +365,13 @@ class MyAdminIndexView(AdminIndexView) :
 		log_cis.debug("current_user : \n %s", pformat(current_user.__dict__))
 
 		# using custom property class 
-		return current_user.is_admin_level # instead of : return current_user.is_authenticated
+		return current_user.is_staff_level # instead of : return current_user.is_authenticated
 
 	def inaccessible_callback(self, name, **kwargs) :
 		
 		# TO DO : flash if auth level not enough
 		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
-		return redirect(url_for('login'))
+		return redirect(url_for('index'))
 
 
 class UserViewAdmin(ModelView):
@@ -395,7 +395,7 @@ class UserViewAdmin(ModelView):
 		# TO DO : flash if auth level not enough
 		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
 
-		return redirect(url_for('login'))
+		return redirect(url_for('index'))
 
 
 
@@ -440,13 +440,14 @@ class MessagesFromLandingAdmin(ModelView):
 		make it accessible via flask-login
 		"""
 		# using custom property class 
-		return current_user.is_admin_level # instead of : return current_user.is_authenticated
+		# return current_user.is_admin_level # instead of : return current_user.is_authenticated
+		return current_user.is_staff_level # instead of : return current_user.is_authenticated
 
 	def inaccessible_callback(self, name, **kwargs) :
 		
 		# TO DO : flash if auth level not enough
 
-		return redirect(url_for('login'))
+		return redirect(url_for('index'))
 
 
 

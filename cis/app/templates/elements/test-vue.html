@@ -7,18 +7,22 @@
 
 		<div class="container content">
 
-
+			{# WARNING : delimiters for Vue are customized to avoid confusion with jinja #}
 			{# cf : https://stackoverflow.com/questions/41082626/how-to-render-by-vue-instead-of-jinja  #}
 
+
+			{# id for Vue app #}
 			<div id="vue_test">
 
+
+				{# reading vars #}
 				<p>
 					<span v-bind:title="mess_hover" >
-						[[ message ]]
+						[[ message ]] - [[ results_data.results_count ]]
 					</span>
 				</p>
 
-
+				{# condition #}
 				<p v-if="seen">
 					<span >
 						not seen here
@@ -26,11 +30,19 @@
 				</p>
 				
 				
+				{# list by v-for #}
 				<ol>
 					<li v-for="todo in todos">
 						[[ todo.text ]]
 					</li>
 				</ol>
+
+
+				{# list by component #}
+				<ol>
+					<todo-item></todo-item>
+				</ol>
+
 
 
 

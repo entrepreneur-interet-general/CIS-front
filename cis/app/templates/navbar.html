@@ -107,8 +107,10 @@
 						</div>
 
 
-						{% if user_infos.userAuthLevel == "admin" %}
-						<div class="navbar-item">
+						{% if user_infos.userAuthLevel in ["admin", "staff"] %}
+						<div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip multiline"
+								data-tooltip="espace d'administration du site réservé aux niveaux : staff et admin"
+							>
 							<a class="button is-warning is-outlined" href="/admin" target="_blank">
 								<span class="icon">
 									<i class="fas fa-lg fa-lock"></i>
