@@ -10,12 +10,14 @@
 
 			{% for filter_codename, filter_data in f_choices.iteritems() %}
 
-			<span 	class="navbar-item navbar-item-filter has-dropdown 
-					{% if filter_codename not in disabled_filters %}
-						is-hoverable
-					{% else %}
-						tooltip is-tooltip-danger is-tooltip-bottom
-					{% endif %}" 
+			<span 	id="{{ filter_codename}}"
+					class="navbar-item navbar-item-filter has-dropdown 
+							{% if filter_codename not in disabled_filters %}
+								is-hoverable
+							{% else %}
+								tooltip is-tooltip-danger is-tooltip-bottom
+							{% endif %}
+						" 
 					{% if filter_codename in disabled_filters %}
 					data-tooltip="fonctionnalité en construction"
 					{% endif %}
@@ -31,8 +33,8 @@
 				
 					<a class="navbar-item">
 						<div class="field">
-							<input class="is-checkradio is-default is-normal" id="{{filter_codename}}-{{ i[0] }}" name="{{ i[0] }}" value="n" type="checkbox">
-							<label for="{{filter_codename}}-{{ i[0] }}">
+							<input class="is-checkradio is-default is-normal" id="{{filter_codename}}_{{ i[0] }}" name="{{ i[0] }}" value="n" type="checkbox">
+							<label for="{{filter_codename}}_{{ i[0] }}">
 								{{ i[1] }}
 							</label>
 						</div>

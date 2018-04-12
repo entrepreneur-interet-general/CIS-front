@@ -56,7 +56,7 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 #### Tech stack
 - _Language_ : **Python**... because ... uuh ... eeeh ... I like this language too much ? 
 - _Backend_  : **[Flask](http://flask.pocoo.org/)**... minimalistic Python framework
-- _Frontend_ : **[Bulma](https://bulma.io/)**  (to make it nice) and then **[Vue.js](https://vuejs.org/)** (to make it even nicer and bi-directional)
+- _Frontend_ : **[Bulma](https://bulma.io/)**  (to make it nice) and **[Vue.js](https://vuejs.org/)**, **[Ajax]()** (to make queries to [Openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) )
 - _Server_   : **[Ubuntu 16.04]()**, **[NGINX](https://www.nginx.com/)**, **[Gunicorn](http://gunicorn.org/)**, hosted in **[Digital Ocean](http://digitalocean.com/)**, domain name from **[OVH](http://ovh.com/)**
 
 ------

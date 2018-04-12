@@ -1,9 +1,9 @@
 
 
 
-<section id="user-test-vue" class="hero ">
+<section id="user-test-vue" class="level ">
 
-	<div class="hero-body">
+	<div class="">
 
 		<div class="container content">
 
@@ -11,61 +11,66 @@
 			{# cf : https://stackoverflow.com/questions/41082626/how-to-render-by-vue-instead-of-jinja  #}
 
 
+			<div class="columns">
 
-			<button id="query-openscraper-button">
-				Click me query openscraper!
-			</button>
-
-
-			{# id for Vue app #}
-			<div id="vue_test">
-
-
-				{# reading vars #}
-				<p>
-					<span v-bind:title="mess_hover" >
-						[[ message ]] - [[ results_data.results_count ]]
-					</span>
-				</p>
-
-				{# condition #}
-				<p v-if="seen">
-					<span >
-						not seen here
-					</span>
-				</p>
-				
-				
-				{# list by v-for #}
-				<ul>
-					<li v-for="todo in todos">
-						[[ todo.text ]] 
-					</li>
-				</ul>
+				{# AJAX QUERY HERE #}
+				<div class="column has-text-centered">
+					<button id="query-openscraper-button" class="button is-medium is-primary">
+						query openscraper!
+					</button>
+				</div>
 
 
-				{# list by component #}
-				<ol>
-					<todo-item
-						v-for="item in todos"
-						v-bind:todo="item"
-						v-bind:key="item.id"
-					>
-					</todo-item>
-				</ol>
+				{# VUE FUNCTIONS HERE #}
+				<div id="vue_test" class="column">
+
+
+					{# reading vars #}
+					<p>
+						<span v-bind:title="mess_hover" >
+							[[ message ]] - [[ results_data.results_count ]]
+						</span>
+					</p>
+
+					{# condition #}
+					<p v-if="seen">
+						<span >
+							not seen here
+						</span>
+					</p>
+					
+					
+					{# list by v-for #}
+					<ul>
+						<li v-for="todo in todos">
+							[[ todo.text ]] 
+						</li>
+					</ul>
+
+
+					{# list by component #}
+					<ol>
+						<todo-item
+							v-for="item in todos"
+							v-bind:todo="item"
+							v-bind:key="item.id"
+						>
+						</todo-item>
+					</ol>
 
 
 
 
-				<input v-model="message">
+					<input v-model="message">
 
-				<p>[[ message ]]</p>
+					<p>[[ message ]]</p>
 
-				<button v-on:click="reverseMessage">reverseMessage</button>
+					<button v-on:click="reverseMessage">reverseMessage</button>
 
-				{# <button v-on:click="reverseTodo">reverseTodo</button> #}
+					{# <button v-on:click="reverseTodo">reverseTodo</button> #}
 
 
+				</div>
 
 			</div>
 
