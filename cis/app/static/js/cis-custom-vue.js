@@ -44,7 +44,8 @@ Vue.component('todo-item', {
 	delimiters: ['[[',']]'],
 
 	props: ['todo'],
-	template: '<li>[[ todo.text ]]</li>'
+	template: '<li>[[ todo.text ]]</li>',
+
 })
 
 
@@ -56,17 +57,17 @@ Vue.component('todo-item', {
 var cis_vue_app = new Vue({
 
 	el: '#vue_test', //'#user-switch',
-	// delimiters: ['[[',']]'],
+	delimiters: ['[[',']]'],
 	
 	data: {
 		message			: 'Bienvenue in vue.js ...',
 		seen			: false,
 		mess_hover 		: 'Bienvenue...' + new Date().toLocaleString(),
 		todos			: [
-			{ text: 'Apprendre JavaScript' },
-			{ text: 'Apprendre Vue' },
-			{ text: 'Intégrer Vue au moteur de recherche' },
-			{ text: 'Passer à la prochaine app' }
+			{ id:1, text: 'Apprendre JavaScript' },
+			{ id:2, text: 'Apprendre Vue' },
+			{ id:3, text: 'Intégrer Vue au moteur de recherche' },
+			{ id:4, text: 'Passer à la prochaine app' }
 			],
 
 		results_data 	: results_data,
@@ -75,8 +76,13 @@ var cis_vue_app = new Vue({
 	methods: {
 		reverseMessage: function () {
 			this.message = this.message.split('').reverse().join('')
-		}
+		},
 	},
 
 
 })
+
+// $watch est une méthode de l'instance
+cis_vue_app.$watch('data', function (newVal, oldVal) {
+	// cette fonction de rappel sera appelée quand `cis_vue_app.data` changera
+  })

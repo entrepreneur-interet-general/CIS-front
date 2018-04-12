@@ -7,8 +7,14 @@
 
 		<div class="container content">
 
-			{# WARNING : delimiters for Vue are customized to avoid confusion with jinja #}
+			{# WARNING : [[ ]] delimiters for Vue are customized to avoid confusion with jinja #}
 			{# cf : https://stackoverflow.com/questions/41082626/how-to-render-by-vue-instead-of-jinja  #}
+
+
+
+			<button id="query-openscraper-button">
+				Click me query openscraper!
+			</button>
 
 
 			{# id for Vue app #}
@@ -31,16 +37,21 @@
 				
 				
 				{# list by v-for #}
-				<ol>
+				<ul>
 					<li v-for="todo in todos">
-						[[ todo.text ]]
+						[[ todo.text ]] 
 					</li>
-				</ol>
+				</ul>
 
 
 				{# list by component #}
 				<ol>
-					<todo-item></todo-item>
+					<todo-item
+						v-for="item in todos"
+						v-bind:todo="item"
+						v-bind:key="item.id"
+					>
+					</todo-item>
 				</ol>
 
 
@@ -49,8 +60,10 @@
 				<input v-model="message">
 
 				<p>[[ message ]]</p>
-				<button v-on:click="reverseMessage">Message retourné</button>
 
+				<button v-on:click="reverseMessage">reverseMessage</button>
+
+				{# <button v-on:click="reverseTodo">reverseTodo</button> #}
 
 
 

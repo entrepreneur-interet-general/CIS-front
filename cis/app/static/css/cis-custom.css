@@ -142,6 +142,28 @@ filter: none;
 }
 
 
+
+/* videos */
+
+/* .vid-border{
+	position: relative;
+	height: 480px;
+	width: 854px;
+	border: 1px solid ; 
+	border-color : grey;
+	overflow: hidden;
+} */
+#video-landing {
+	/* position: absolute;
+	top:-5px;
+	left:-5px;
+	height: 480px;
+	width: 854px; */
+	max-height : 400px ;
+	border: 1px solid ; 
+	border-color : #d9d9d9 ;
+}
+
 /* .logo-row {
 	height: 70px ;
 } */

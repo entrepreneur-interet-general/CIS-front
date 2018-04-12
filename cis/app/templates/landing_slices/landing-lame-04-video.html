@@ -17,7 +17,7 @@
 	
 	<div class="hero-body">
 	
-		<div class="container content is-medium  has-text-centered">
+		<div class="container content is-medium has-text-centered">
 			
 
 			<h2 class="has-text-black">
@@ -27,16 +27,17 @@
 			<br>
 
 			{# video #}
+			{# <div class="vid-border is-centered"> #}
 				{# <img 	
 						style="max-height: 300px;"
 						src='{{url_for ("static", filename="illustrations/illustrations_landing_Landing_encadre_video.png" ) }}' > #}
-				<video style="max-height: 400px"  style="border:2px solid black" controls>
-					<source src='{{url_for ("static", filename="videos/Export_video_son_V1.m4v" ) }}'
+				<video id="video-landing" controls autobuffer>
+					<source src='{{url_for ("static", filename="videos/video_CIS_V2_son.m4v" ) }}'
 							type="video/mp4"
 					>
 					Your browser does not support the video tag.
 				</video> 
-
+			{# </div> #}
 
 			<br>
 
