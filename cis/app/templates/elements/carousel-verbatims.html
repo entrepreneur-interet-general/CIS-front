@@ -2,12 +2,19 @@
 	
 	
 	<div class="carousel-navigation is-centered">
+		
 		<div class="carousel-nav-left">
-			<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			<span class="button is-normal is-outlined is-white">
+				<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			</span>
 		</div>
+		
 		<div class="carousel-nav-right">
-			<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			<span class="button is-normal is-outlined is-white">
+				<i class="fa fa-chevron-right" aria-hidden="true"></i>
+			</span>
 		</div>
+	
 	</div>
 	
 	
@@ -32,7 +39,8 @@
 		<div class='carousel-item'>
 			<div class="box">
 				<figure class="image avatar">
-					<img src='{{url_for ("static", filename="illustrations/Illustration_Emma.png" ) }}' />
+					{# <img src='{{url_for ("static", filename="illustrations/Illustration_Emma.png" ) }}' /> #}
+					<img src='{{url_for ("static", filename="photos/7-EStokkingNB.png" ) }}' />
 				</figure>
 				<br>
 				<h3 class="has-text-primary">
@@ -52,24 +60,8 @@
 		<div class='carousel-item'>
 			<div class="box">
 				<figure class="image avatar">
-					<img src='{{url_for ("static", filename="photos/2-FRaineixNB-Copyright-Greg-Gonzales.jpg" ) }}' />
-				</figure>
-				<br>
-				<h3 class="has-text-primary">
-					Florence Raineix, directrice générale de la Fédération Nationale des Caisses d’Epargne 
-				</h3>
-				<br>
-				<em>
-					« En tant que banques coopératives régionales, les Caisses d’Epargne via leur fédération, sont fières de contribuer à la co-construction de cette plateforme au service des territoires et de ses innovations sociales » 
-				</em>
-			</div>
-		</div>
-
-
-		<div class='carousel-item'>
-			<div class="box">
-				<figure class="image avatar">
-					<img src='{{url_for ("static", filename="illustrations/Illustration_Christophe.png" ) }}' />
+					{# <img src='{{url_for ("static", filename="illustrations/Illustration_Christophe.png" ) }}' /> #}
+					<img src='{{url_for ("static", filename="photos/8-CThevignotNB.jpg" ) }}' />
 				</figure>
 				<br>
 				<h3 class="has-text-primary">
@@ -84,10 +76,29 @@
 		</div>
 
 
+
 		<div class='carousel-item'>
 			<div class="box">
 				<figure class="image avatar">
-					<img src='{{url_for ("static", filename="photos/3-YBlancNB_qualite+.jpg" ) }}' />
+					<img src='{{url_for ("static", filename="photos/2-FRaineix©GGonzales.jpg" ) }}' />
+				</figure>
+				<br>
+				<h3 class="has-text-primary">
+					Florence Raineix, directrice générale de la Fédération Nationale des Caisses d’Epargne 
+				</h3>
+				<br>
+				<em>
+					« En tant que banques coopératives régionales, les Caisses d’Epargne via leur fédération, sont fières de contribuer à la co-construction de cette plateforme au service des territoires et de ses innovations sociales » 
+				</em>
+			</div>
+		</div>
+
+
+
+		<div class='carousel-item'>
+			<div class="box">
+				<figure class="image avatar">
+					<img src='{{url_for ("static", filename="photos/3-YBlancNB.jpg" ) }}' />
 				</figure>
 				<br>
 				<h3 class="has-text-primary">
@@ -105,6 +116,7 @@
 			<div class="box">
 				<figure class="image avatar">
 					<img src='{{url_for ("static", filename="illustrations/Illustration_Giorgia.png" ) }}' />
+					{# <img src='{{url_for ("static", filename="photos/1-HSibilleNB.jpg" ) }}' /> #}
 				</figure>
 				<br>
 				<h3 class="has-text-primary">
@@ -121,17 +133,39 @@
 		</div>
 
 
+		<div class='carousel-item'>
+			<div class="box">
+				<figure class="image avatar">
+					<img src='{{url_for ("static", filename="photos/4-CSzabo©LDaniereNB.jpg" ) }}' />
+				</figure>
+				<br>
+				<h3 class="has-text-primary">
+					Cédric Szabo, Directeur des Maires Ruraux de France  
+				</h3>
+				<br>
+				<em>
+					« A un carrefour, se rencontrent des protagonistes 
+					venus de tous horizons, dont certains ignoraient l’existence 
+					des autres. C’est pour donner à tous à voir le monde rural 
+					tel qu’il est que les projets municipaux ruraux ont toute 
+					leur place dans ce lieu d’échanges  » 
+
+				</em>
+			</div>
+		</div>
+
+
 	</div>
 
 
-	<div class="carousel-navigation is-centered">
+	{# <div class="carousel-navigation is-centered">
 		<div class="carousel-nav-left">
 			<i class="fa fa-chevron-left" aria-hidden="true"></i>
 		</div>
 		<div class="carousel-nav-right">
 			<i class="fa fa-chevron-right" aria-hidden="true"></i>
 		</div>
-	</div>
+	</div> #}
 
 
 	

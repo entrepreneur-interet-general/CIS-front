@@ -28,7 +28,10 @@ html {
 }
 
 .skip-navbar-search {
-	padding-top : 90px ;
+	padding-top : 135px ;
+	/* position: fixed ;
+	top : 130px ; */
+
 }
 
 .button {
@@ -148,3 +151,17 @@ filter: none;
 	padding-top: 52px;
 } */
 
+
+/* main sections and elements in search */
+
+#user-search-section {
+	background-color: #d9d9d9 ;
+}
+
+#btns-switch-level {
+	margin-right: 0px ; 
+}
+
+#notification-search-results {
+	padding : 0.25rem 1.5rem 0.5rem 1.0rem
+}

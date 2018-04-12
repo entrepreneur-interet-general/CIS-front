@@ -1,7 +1,7 @@
 
 
 
-<section id="user-results" class="hero">
+<section id="user-test-vue" class="hero ">
 
 	<div class="hero-body">
 
@@ -17,21 +17,30 @@
 						[[ message ]]
 					</span>
 				</p>
-				<p v-if:seen>
+
+
+				<p v-if="seen">
 					<span >
 						not seen here
 					</span>
 				</p>
-					<ol>
+				
+				
+				<ol>
 					<li v-for="todo in todos">
 						[[ todo.text ]]
 					</li>
 				</ol>
 
+
+
 				<input v-model="message">
 
 				<p>[[ message ]]</p>
 				<button v-on:click="reverseMessage">Message retourné</button>
+
+
+
 
 			</div>
 
