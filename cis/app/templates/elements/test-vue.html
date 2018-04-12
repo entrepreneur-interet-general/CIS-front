@@ -1,0 +1,42 @@
+
+
+
+<section id="user-results" class="hero">
+
+	<div class="hero-body">
+
+		<div class="container content">
+
+
+			{# cf : https://stackoverflow.com/questions/41082626/how-to-render-by-vue-instead-of-jinja  #}
+
+			<div id="vue_test">
+
+				<p>
+					<span v-bind:title="mess_hover" >
+						[[ message ]]
+					</span>
+				</p>
+				<p v-if:seen>
+					<span >
+						not seen here
+					</span>
+				</p>
+					<ol>
+					<li v-for="todo in todos">
+						[[ todo.text ]]
+					</li>
+				</ol>
+
+				<input v-model="message">
+
+				<p>[[ message ]]</p>
+				<button v-on:click="reverseMessage">Message retourné</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
