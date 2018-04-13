@@ -13,24 +13,45 @@
 
 			<div class="columns">
 
+
+
 				{# AJAX QUERY HERE #}
 				<div class="column has-text-centered">
-					<button id="query-openscraper-button" class="button is-medium is-primary">
+					<button id="query-openscraper-button" 
+							class="button is-medium is-primary">
 						query openscraper!
 					</button>
 				</div>
+
+
 
 
 				{# VUE FUNCTIONS HERE #}
 				<div id="vue_test" class="column">
 
 
+					<button id="vue-query-openscraper-button"
+							class="button is-warning is-medium" 
+							v-on:click="v_queryOpenScraper">
+							v_queryOpenScraper
+					</button>
+
+					<br>
+
 					{# reading vars #}
 					<p>
 						<span v-bind:title="mess_hover" >
-							[[ message ]] - [[ results_data.results_count ]]
+							[[ message ]] - [[ q_message ]]
 						</span>
 					</p>
+
+					<p>
+					[[ q_message ]]
+					</p>
+
+					<input v-model="q_message">
+
+					<hr>
 
 					{# condition #}
 					<p v-if="seen">
@@ -40,7 +61,7 @@
 					</p>
 					
 					
-					{# list by v-for #}
+					{# generate list by v-for #}
 					<ul>
 						<li v-for="todo in todos">
 							[[ todo.text ]] 
@@ -48,7 +69,7 @@
 					</ul>
 
 
-					{# list by component #}
+					{# generate list by component #}
 					<ol>
 						<todo-item
 							v-for="item in todos"
@@ -68,6 +89,7 @@
 					<button v-on:click="reverseMessage">reverseMessage</button>
 
 					{# <button v-on:click="reverseTodo">reverseTodo</button> #}
+
 
 
 				</div>

@@ -10,7 +10,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+		
+		{# force refresh every 600 seconds #}
+		{# cf trick here : https://stackoverflow.com/questions/1922910/force-browser-to-clear-cache/9516207 #}
+		<meta http-equiv="refresh" content="600">
+		
 		{# FONTS #}
 		{# <link href="https://fonts.googleapis.com/css?family=Assistant:200|Barlow|Quicksand|Raleway|Roboto|Ubuntu" rel="stylesheet"> #}
 
@@ -34,7 +38,7 @@
 
 		{# BULMA #}
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.1">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		
 
@@ -69,7 +73,7 @@
 
 
 		{# CUSTOM STYLES ---> TO FIX #}
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}?version=0.0.1">
 
 
 	</head>
@@ -113,15 +117,15 @@
 
 
 	{# CUSTOM JS FOR AJAX CALLS #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.2"></script>
 
 	{# CUSTOM VUE JS FOR BULMA #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-custom-vue.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-custom-vue.js') }}?version=0.0.2"></script>
 
 
 	{# CUSTOM UTIL JS FOR BULMA #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/modals-toggler.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/notification-dismisser.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/modals-toggler.js') }}?version=0.0.1"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/notification-dismisser.js') }}?version=0.0.1"></script>
 
 
 	<!-- start Mixpanel -->

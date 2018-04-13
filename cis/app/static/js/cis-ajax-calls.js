@@ -4,6 +4,9 @@
 // - - - - - - - - - - - - - - - - - - - - - - //
 
 
+// initiate data as strigified json
+
+
 // initiate query fields
 var q_search_for	= { "search_for" 			: [] } ; // aka #q_free_input
 
@@ -12,12 +15,7 @@ var q_localisations = { "limit_by_places" 		: [] } ;
 var q_partners		= { "limit_by_partners" 	: [] } ;
 var q_methods		= { "limit_by_methods" 		: [] } ;
 var q_publics		= { "limit_by_publics" 		: [] } ;
-
 var q_token			= "test"
-
-// initiate container for results
-var data_results = {} ;
-
 
 
 
@@ -48,9 +46,12 @@ function ajax_ok(data) {
 	console.log(data) ;
 }
 
-function query_openscraper() {
+function ajax_query_to_openscraper( ) {
 	
 	//  TO DO 
+
+	// get filters values
+
 	// build data slug
 	var query_slug 		= "search_for=coco" ;
 
@@ -81,24 +82,72 @@ function query_openscraper() {
 		// jsonp			: false,
 		// jsonpCallback	: "myJsonMethod",
 		
-		success 		: function(data){
-			console.log( "SUCCESS >>> " ) ;
-			alert("json successfully loaded...")
-			console.log(data) ;
-			data_results = data ;
+		success 		: function( data ){
+			console.log( "SUCCESS ! >>> " ) ;
+			// alert("json successfully loaded...")
+
+			console.log( "SUCCESS ! >>> raw json data : " ) ;
+			console.log( data ) ;
+
+			console.log( "SUCCESS ! >>> raw data as json.stringify : " ) ;
+			console.log(JSON.stringify( data )) ;
+
+			q_data = data ;
+			// q_data = JSON.stringify(data) ;
+			// q_data = JSON.parse(data) ;
+			
+			return q_data ;
 		},
+
 		error 			: function(httpReq,status,exception){
 			console.log( "ERROR >>> " ) ;
 			alert(status+" "+exception);
+			return {"status" : "error", "exception": exception }
 		}
 		
 	}
 
 	// run ajax request
-	$.ajax(r);
+	// $.ajax(r);
+	return new Promise(function(resolve, reject) {
+		$.ajax(r).done(resolve).fail(reject);
+	});
 }
 
 
+// // with callback
+// function ajax_to_os(callback) {
+// 	result = ajax_query_to_openscraper() ;
+// 	callback(result) 
+// }
+
+
+// with promise
+// function ajax_to_os() {
+// 	return new Promise((resolve, reject) => {
+// 		var a = ajax_query_to_openscraper() ;
+// 		console.log(a);
+// 		resolve(a)
+// 	})
+// }
+
+// function call_ajax_os() {
+// 	ajax_to_os()
+// 		.then( function(res){
+// 			console.log(res);
+//			return res ; }
+// 		)
+// }
+
+
+function call_ajax_os() {
+	ajax_query_to_openscraper()
+		.then( function(res){
+			console.log(">>> after then() / res : ") ;
+			console.log(res);
+			return res ;
+		})
+}
 
 
 // - - - - - - - - - - - - - - - - - - - - - - //
@@ -108,7 +157,8 @@ function query_openscraper() {
 
 $(document).ready(function() {
 
-	$("#query-openscraper-button").on("click", query_openscraper);
+	// $("#query-openscraper-button").on("click", ajax_query_to_openscraper);
+	$("#query-openscraper-button").on("click", call_ajax_os );
 
 });
 
