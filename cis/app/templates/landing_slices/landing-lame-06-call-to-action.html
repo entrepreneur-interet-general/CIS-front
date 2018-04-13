@@ -1,21 +1,23 @@
 
 
 {# section rejoignez-nous #}
-<section class="hero is-white">
+<section id="lame-cta" class="hero is-white skip-navbar">
+	
 	<div class="hero-body">
+		
 		<div class="container">
 
 
 			<div class="columns">
 
 
-				<div class="column is-offset-1 is-6">
+				<div class="column is-offset-1 is-5">
 
 
 					<br>
 					<br>
 
-					<div class="content is-medium">
+					<div class="content is-medium has-text-centered">
 						<h3 class="has-text-primary ">
 							<strong>Vous avez des projets à valoriser ?</strong>
 						</h3>
@@ -29,10 +31,26 @@
 					</p>
 
 					<br>
+					<br>
 
-					<a class="button is-primary is-outlined" href="#landing-form" >
-						Rejoignez le réseau des partenaires
-					</a>
+					<div class="content is-normal has-text-centered">
+						<a class="button is-primary is-outlined" href="#landing-form" >
+							Rejoignez le réseau des partenaires
+						</a>
+					</div>
+
+					<br>
+
+					{# button to scroll down #}
+					<div 	class="content has-text-centered" >
+						<a 	href="#lame-verbatims" 
+							class="button is-text tooltip is-tooltip-bottom"
+							data-tooltip="continuer pour en savoir plus...">
+							<span class="icon has-text-primary">
+								<i class="fas fa-2x fa-chevron-down"></i>
+							</span>
+						</a>
+					</div>
 
 
 				</div>
@@ -40,11 +58,9 @@
 
 
 
-				<div class="column">
+				<div class="column is-4 is-offset-1">
 					<img src='{{url_for ("static", filename="illustrations/landing_page_export_Illustration_reseau_partenaires.png" ) }}'/>
 				</div>
-
-
 
 
 

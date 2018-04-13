@@ -5,7 +5,7 @@
 	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Landing_applat_gris_dates_cles.png" ) }} ) ;
 	background-position : center center;
 	background-repeat	: no-repeat ;
-	background-size		: cover;
+	background-size		: 100% auto;
 	background-max-height : 600 px;
 }
 
@@ -15,14 +15,24 @@
 
 
 {# section dates clés #}
-<section id="lame-dates" class="hero is-white">
+<section id="lame-dates" class="hero is-white skip-navbar">
 	<div class="hero-body">
 		<div class="container">
 
 			<div class="content is-medium  has-text-centered">
+				
 				<h2 class="has-text-black">
 					<strong>Les dates clés </strong>
 				</h2>
+									
+				{# button to scroll down #}
+				<a 	href="#lame-betatest" 
+					class="button is-text is-medium tooltip is-tooltip-bottom"
+					data-tooltip="continuer pour en savoir plus...">
+					<span class="icon has-text-primary">
+						<i class="fas fa-lg fa-chevron-down"></i>
+					</span>
+				</a>
 			</div>
 
 
