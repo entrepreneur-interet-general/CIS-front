@@ -148,9 +148,9 @@ CHOICES_METHODS 			= [
 CHOICES_PUBLICS 			= [
 
 								# (u""				, u"Tous publics"),
-								(u"travail"			, u"Handicap"),
-								(u"travail"			, u"Jeunesse"),
-								(u"travail"			, u"Seniors"),
+								(u"handicap"		, u"Handicap"),
+								(u"youth"			, u"Jeunesse"),
+								(u"senior"			, u"Seniors"),
 							]
 
 

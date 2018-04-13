@@ -1,0 +1,17 @@
+Explication betatesteur dans la landing et la page log in :
+
+Profitez d’un compte sur la plateforme, découvrez les fonctionnalités régulièrement enrichies et participez à l’amélioration du site. Le site est-il agréable à utiliser ? Vous avez des idées pour améliorer le moteur de recherche ? Certains boutons ne fonctionnent pas ? Faites-nous part de vos retours et suggestions.
+
+_____________________________________________
+Pop up une fois le compte créé : 
+
+
+Bienvenue sur le site beta du Carrefour des innovations sociales
+
+
+Ce site est en construction, la vue cartographique et graphique des résultats de recherche ne sont pas encore accessibles mais revenez régulièrement, les fonctionnalités seront enrichies progressivement.
+
+
+Ce site est aussi le vôtre, faites-nous part de vos retours et suggestions pour l’améliorer
+
+Bonne visite ! 
