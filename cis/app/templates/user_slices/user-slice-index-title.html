@@ -2,7 +2,7 @@
 
 <style>
 
-#user-index-title-1 {
+#user-index-title-bis {
 	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Illustration_reperer.png" ) }} ) ;
 	background-position : left center;
 	background-repeat	: no-repeat ;
@@ -10,11 +10,11 @@
 	background-max-height : 400 px;
 }
 
-#user-index-title-2 {
+#user-index-title {
 	background-image	: url({{url_for ("static", filename="illustrations/illustrations_landing_Moteur_recherche_lame1.png" ) }} ) ;
 	background-position : center center;
 	background-repeat	: no-repeat ;
-	background-size		: cover;
+	background-size		: auto 100%;
 	background-max-height : 600 px;
 }
 
@@ -22,17 +22,18 @@
 
 
 {# 1st section index-user #}
-<section id="user-index-title-2" class="hero is-primary skip-navbar ">
+<section id="user-index-title" class="hero is-primary is-fullheight skip-navbar ">
 
 	<div class="hero-body">
 
 		<div class="container content">
 
-			<div class="columns">
+			<div class="columns is-centered">
 
-				<div class="column is-half is-offset-3 has-text-centered">
+				<div class="column is-5 has-text-centered">
 
 
+					<br>
 					<br><br>
 
 					{# { % include "elements/flash-messages.html"%} #}
@@ -41,36 +42,119 @@
 					{% include "elements/flash-messages.html"%}
 
 
-					<h1 class="has-text-white">
-						<strong>
-						+ 5000 
-						</strong>
-						<small>projets référencés</small>
+					<br><br>
+					<br>
+
+		
+
+					{# <nav class="level is-mobile">
+
+						<div class="level-item is-medium has-text-centered">
+							<div>
+								<p class="title Count">6907</p>
+								<p class="heading">projets</p>
+							</div>
+						</div>
+
+						<div class="level-item has-text-centered">
+							<div>
+								<p class="title Count">15</p>
+								<h3 class="heading">sites partenaires</h3>
+							</div>
+						</div>
+					
+					</nav> #}
+
+
+					<div class="columns is-centered is-white">
+
+						<div 	class="column is-half has-text-centered tooltip is-tooltip-info is-tooltip-top"
+								data-tooltip="découvrez les données brutes sur openscraper"
+							>
+							<a 	class=""
+								target="_blank"
+								href="http://cis-openscraper.com">
+								<h1 class="title">
+									<span class="Count">6907</span>
+								</h1>
+							</a>
+							{# <br> #}
+							<h3 class="subtitle has-text-white">projets référencés</h3>
+						</div>
 						
-					</h1>
+						{# <div class="column is-2 has-text-centered">
+							<p class="title ">&nbsp;</p>
+							<p class="has-text-white">par</p>
+						</div> #}
+
+						<div 	class="column is-half has-text-centered tooltip is-tooltip-info"						
+								data-tooltip="découvrez les données brutes sur openscraper"
+							>
+							<a 	class=""
+								target="_blank"
+								href="http://cis-openscraper.com">
+								<h1 class="title">
+									<span class="Count">15</span>
+								</h1>
+							</a>
+							{# <br> #}
+							<h3 class="subtitle has-text-white">sites partenaires</h3>
+						</div>
 
 
-					<h1 class="has-text-white" >
+					</div>
+
+
+
+
+					{# <h1 class="has-text-white" >
 						<strong>
 							Trouvez le projet qui vous intéresse
 						</strong>
-					</h1>
+					</h1> #}
 					
 
 					<br>
 
 
-
-					<a class="button is-white is-medium is-outlined tooltip is-tooltip-danger"
+					{# <a class="button is-white is-medium is-outlined tooltip is-tooltip-danger"
 						data-tooltip="fonctionnalité en construction" 
 						href="/search" 
 						disabled>
 						Faites une recherche
-					</a>
+					</a> #}
+
+					<strong>
+						<a class="button is-white is-large is-outlined is-fullwidth tooltip is-tooltip-danger is-tooltip-right"
+							data-tooltip="fonctionnalité en construction" 
+							href="/search" 
+							disabled
+							>
+							Trouvez le projet qui vous intéresse
+						</a>
+					</strong>
+
+
+					<br>
+
+
+					<strong>
+						<a class="button has-text-white is-text tooltip is-tooltip-danger is-tooltip-right is-tooltip-multiline"
+							data-tooltip="fonctionnalité en construction... En attendant contactez-nous directement !" 
+							href="/" 
+							disabled
+							>
+							Je voudrais ajouter les projets d'innovation sociale de ma structure
+						</a>
+					</strong>
 
 
 					<p>
-						<br><br>&nbsp;
+						<br>
+						<br><br>
+						&nbsp;
+						<br><br>
+						<br>
 					</p> 
 
 

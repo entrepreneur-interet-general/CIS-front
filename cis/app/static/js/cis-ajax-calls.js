@@ -1,21 +1,60 @@
 
+console.log("::: cis-ajax-call.js is loaded") ;
+
 // - - - - - - - - - - - - - - - - - - - - - - //
-// initiate query values
+// initiate query variables
 // - - - - - - - - - - - - - - - - - - - - - - //
 
+// initiate and wrap all query fields in a variable
 
-// initiate data as strigified json
+var q_wrapper		= {
+
+	token				: "cis_front_token",
+
+	search_for 			: [] , // aka #q_search_for
+
+	search_in			: [],
+	spider_id			: [ "all" ],
+
+	search_in_domains 	: [] ,
+	search_in_places 	: [] , 
+	search_in_partners 	: [] ,
+	search_in_methods 	: [] ,
+	search_in_publics 	: [] ,
+
+	added_by			: null,
+	all_results			: false,
+	is_complete			: false,
+
+	results_per_page	: 50,
+	sort_by				: null,
+
+};
 
 
-// initiate query fields
-var q_search_for	= { "search_for" 			: [] } ; // aka #q_free_input
 
-var q_domains 		= { "limit_by_domains" 		: [] } ;
-var q_localisations = { "limit_by_places" 		: [] } ; 
-var q_partners		= { "limit_by_partners" 	: [] } ;
-var q_methods		= { "limit_by_methods" 		: [] } ;
-var q_publics		= { "limit_by_publics" 		: [] } ;
-var q_token			= "test"
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+// CUSTOM FUNCTIONS TO UPDATE / BUILD QUERY SLUG (AKA data_q_slug for AJAX)
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+// TO DO :
+// function to transform object into a string
+// cf : https://gist.github.com/lucasdavila/4331999
+function wrapper_to_string (object, glue='=', separator='&', adder='+') { 
+
+	return $.map(	Object.getOwnPropertyNames(object), 
+					function(k) { 
+						return [ k, object[k] ].join(glue) 
+					}).join(separator);
+}
+
+// simpler function to call join_wrapper
+function build_q_slug ( q_wrapper ) {
+
+	var q_slug = wrapper_to_string(q_wrapper) ; 
+
+	return q_slug
+}
 
 
 
@@ -32,35 +71,28 @@ var q_token			= "test"
 // 4TH : RASSEMBLE ALL THAT TO FEED VUE.JS					<-- IN VUE.JS
 
 // TO DO 
-// send specific JWT token to openscraper for authentication
+// send specific JWT token proper to CIS front --> to openscraper for authentication
 
 
 
-function ajax_err(request, error) {
-	console.log(request);
-	console.log(error);
-}
-function ajax_ok(data) {
-	console.log( "SUCCESS >>> " ) ;
-	alert("json successfully loaded...")
-	console.log(data) ;
-}
+// function ajax_err(request, error) {
+// 	console.log(request);
+// 	console.log(error);
+// }
+// function ajax_ok(data) {
+// 	console.log( "SUCCESS >>> " ) ;
+// 	alert("json successfully loaded...")
+// 	console.log(data) ;
+// }
 
-function ajax_query_to_openscraper( ) {
+// MAIN AJAX FUNCTION AS PROMISE
+function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 	
-	//  TO DO 
-
-	// get filters values
-
-	// build data slug
-	var query_slug 		= "search_for=coco" ;
-
-	// 
-
-	// build ajax request
+	// build ajax request options
 	// https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 
 	// https://stackoverflow.com/questions/26896679/tornado-cannot-read-json-ajax-requests 
-	let r = {
+
+	let request_options = {
 
 		type 			: 'GET', //'POST' not working with openscraper because of _xsrf missing
 		crossDomain 	: true,
@@ -69,10 +101,9 @@ function ajax_query_to_openscraper( ) {
 		// url 			: 'http://www.cis-openscraper.com/api/data',	// query deployed openscraper instance
 		url 			: 'http://localhost:8000/api/data', 			// query local openscraper instance
 		
-		data			:  query_slug ,
+		data			:  data_q_slug ,
 		
 		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
-
 		// data			: {'token': 'test_token'},
 		// data 		: JSON.stringify({new_val : $(this).text()}),
 
@@ -99,7 +130,7 @@ function ajax_query_to_openscraper( ) {
 			return q_data ;
 		},
 
-		error 			: function(httpReq,status,exception){
+		error 			: function ( httpReq,status,exception ){
 			console.log( "ERROR >>> " ) ;
 			alert(status+" "+exception);
 			return {"status" : "error", "exception": exception }
@@ -107,10 +138,11 @@ function ajax_query_to_openscraper( ) {
 		
 	}
 
-	// run ajax request
-	// $.ajax(r);
+	// run ajax request as Promise 
+	// cf : https://www.stephanboyer.com/post/107/fun-with-promises-in-javascript 
+	// $.ajax(request_options);
 	return new Promise(function(resolve, reject) {
-		$.ajax(r).done(resolve).fail(reject);
+		$.ajax(request_options).done(resolve).fail(reject);
 	});
 }
 
@@ -122,28 +154,13 @@ function ajax_query_to_openscraper( ) {
 // }
 
 
-// with promise
-// function ajax_to_os() {
-// 	return new Promise((resolve, reject) => {
-// 		var a = ajax_query_to_openscraper() ;
-// 		console.log(a);
-// 		resolve(a)
-// 	})
-// }
-
-// function call_ajax_os() {
-// 	ajax_to_os()
-// 		.then( function(res){
-// 			console.log(res);
-//			return res ; }
-// 		)
-// }
-
-
-function call_ajax_os() {
-	ajax_query_to_openscraper()
+function call_ajax_os(data_q_slug="") {
+	
+	console.log(">>> call_ajax_os / data_q_slug : ", data_q_slug )
+	
+	ajax_query_to_openscraper( data_q_slug )
 		.then( function(res){
-			console.log(">>> after then() / res : ") ;
+			console.log(">>> call_ajax_os / after then() / res : ") ;
 			console.log(res);
 			return res ;
 		})
@@ -157,8 +174,13 @@ function call_ajax_os() {
 
 $(document).ready(function() {
 
-	// $("#query-openscraper-button").on("click", ajax_query_to_openscraper);
-	$("#query-openscraper-button").on("click", call_ajax_os );
+	$("#query-openscraper-button")
+		.on("click", 
+			function() { 
+				// for debugging purposes
+				call_ajax_os(data_q_slug="search_for=coco&token=test_token" );
+			}
+		);
 
 });
 

@@ -1,3 +1,7 @@
+
+
+console.log("::: cis-modals-toggler.js is loaded") ;
+
 // from : https://siongui.github.io/2018/02/11/bulma-modal-with-javascript/ 
 // mainly copied from main.js on bulma.io official website
 

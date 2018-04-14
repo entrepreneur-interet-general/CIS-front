@@ -50,7 +50,7 @@ registerPassword 	= PasswordField ( 	u"votre mot de passe",
 											EqualTo('userConfirmPassword', message=u"les deux mots de passe doivent être identiques"),
 											Length(min=4, max=100)
 										],
-										render_kw={'class': 'input', 'placeholder': u"tapez votre password *"}
+										render_kw={'class': 'input', 'placeholder': u"tapez votre mot de passe *"}
 									)
 userConfirmPassword = PasswordField ( 	u"répéter le mot de passe", 
 										render_kw={'class': 'input', 'placeholder': u"répétez votre mot de passe *" } 
@@ -136,7 +136,7 @@ userAuthLevel			= SelectField	( 	u"votre niveau d'autorisation",
 											default   	= "user",
 											render_kw 	= {	'class'      : 'input select',
 															'data-width' : "100%",
-															'description': u"votre niveau d'authorization"
+															'description': u"votre niveau d'authorisation"
 												}
 										)
 userPublicKeyAPI		= StringField	(	u'user Public Key for the API' , 

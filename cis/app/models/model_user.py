@@ -58,7 +58,7 @@ class User( UserMixin, ModelMixin ):
 		"""
 		datamodel for a user in CIS_front
 		- includes a UserMixin from flask-login
-		- take care of keeping same 
+		- take care of keeping same field names than in forms
 		"""
 
 		log_cis.debug("creating User")
@@ -144,3 +144,21 @@ class User( UserMixin, ModelMixin ):
 	# TO DO 
 	def update_existing_user(self):
 		pass
+
+
+### TO DO 
+# class UserPreferences( ModelMixin ) :
+
+# 	def __init__(self, 	userName		= None,
+# 						userEmail		= None, 
+# 						userPassword	= None,
+# 						userPassword	= None,
+
+# 					):
+# 	"""
+# 	UserPreferences for a user in CIS_front
+# 	- includes a UserMixin from flask-login
+# 	- take care of keeping same field names than in forms
+# 	"""
+
+# 	log_cis.debug("creating UserPreferences")

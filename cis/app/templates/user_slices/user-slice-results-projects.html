@@ -1,11 +1,18 @@
+
+
+
 {# count results and switch views #}
-<level id="user-results" class="level">
+<level class="level">
 
+	<div id="user-results" class="container">
 
-	<div class="container">
+		{% include "components/vue-tags.html" %}
+
+		{% include "components/vue-count-switch-views.html" %}
 
 		{# {% include "elements/results-tiles.html" %} #}
-		{% include "elements/results-columns.html" %}
+		{# {% include "elements/results-columns.html" %} #}
+		{% include "components/vue-search-results.html" %}
 
 	</div>
 

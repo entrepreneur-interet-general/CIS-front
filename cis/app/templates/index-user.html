@@ -10,8 +10,11 @@
 
 	{% include "user_slices/user-slice-index-title.html" %}
 
-	{# { % include "user_slices/user-slice-index-galery-projects.html"%} #}
+	{# { % include "components/vue-galery-projects.html"%} #}
 
+	<!-- TESTS VUE -->	
+	{# <br>	 #}
+	{# {% include "components/vue-test-tutorial.html" %} #}
 
 
 
@@ -19,26 +22,21 @@
 
 
 	<section id="user-search-section" class="section skip-navbar-search ">
-	{# <section class="hero is-grey skip-navbar-search "> #}
 		
+
 		{% include "elements/flash-messages.html"%}
 
-		{% include "user_slices/user-slice-tags.html" %}
 
-		{% include "user_slices/user-slice-results-count-switch-views.html" %}
-
-
-		<!-- TESTS VUE -->
-		<hr>
+		<!-- TESTS VUE -->		
+		{# {% include "components/vue-test-tutorial.html" %} #}
 		
-		{% include "elements/test-vue.html" %}
-		
-		<hr>
-
 
 		{% include "user_slices/user-slice-results-projects.html" %}
 
-	
+
 	</section>
+
+
+
 
 {% endif %}

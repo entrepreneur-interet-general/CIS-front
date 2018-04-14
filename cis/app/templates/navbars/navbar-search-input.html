@@ -1,0 +1,57 @@
+
+{# INPUT FIELD IN NAVBAR FOR FREE SEARCH #}	
+{# TO BE CONTROLLED BY A VUE INSTANCE #}
+
+<!-- V_APP : cis_v_search_for -->
+
+<div id="navbar-search-input" class="navbar-item is-expanded">
+
+	<div class="" style="width:70%">
+
+		<div class="field has-addons is-fullwidth" >
+
+			<p class="control has-icons-left has-icons-right is-expanded">
+			
+
+
+
+				
+				<input 	id="q_search_for"
+						class="input is-normal is-light input-navbar filters-toggler" 
+						type="text" 
+						placeholder="rechercher un projet, un mot-clé, un lieu..."
+						
+						v-model			= "q_search_string"
+						v-on:keyup.13 	= "v_queryOpenScraper"
+				>
+
+
+
+
+				<span class="icon is-normal is-left">
+					<i class="fas fa-search"></i>
+				</span>
+			
+			</p>
+
+		</div>
+
+	</div>
+
+	<button id="filtersToggler"
+			class="button filters-toggler is-text tooltip is-tooltip-right"
+			data-tooltip="ouvrir/fermer la recherche avancée par filtres" 
+			>
+		<span class="icon is-normal has-text-light">
+			<i class="fas fa-cog"></i>
+		</span>
+	</button>
+
+
+	<p>
+		[[ q_message ]]
+	</p>
+
+
+</div>
+

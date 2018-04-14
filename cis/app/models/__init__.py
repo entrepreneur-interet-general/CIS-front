@@ -11,3 +11,4 @@ from 	model_mixins		import *
 # then import classes potentially using mixin classes 
 from	model_user			import *
 from	model_preregister	import *
+from	model_partner		import *

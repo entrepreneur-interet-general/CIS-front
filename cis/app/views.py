@@ -59,7 +59,8 @@ def index():
 
 	# time_now	= datetime.datetime.utcnow()
 
-	form 		= PreRegisterForm()
+	filters_choices = get_filters_choices()
+	form 			= PreRegisterForm()
 
 	# TO DO 
 	### set language
@@ -127,6 +128,7 @@ def index():
 	return render_template( "index.html",
 
 							site_section		= "home",
+							filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos
 						)
@@ -142,13 +144,14 @@ def search():
 
 	log_cis.debug("entering search page")
 
-	filters_choices = [
-						{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
-						{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},
-						{"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS}	},
-						{"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS}	},
-						{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
-					]
+	filters_choices = get_filters_choices()
+	# filters_choices = [
+	# 					{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
+	# 					{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},
+	# 					{"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS}	},
+	# 					{"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS}	},
+	# 					{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
+	# 				]
 
 	return render_template( "index.html",
 
@@ -342,7 +345,7 @@ def logout():
 
 
 
-
+### TO DO 
 @app.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
