@@ -244,7 +244,7 @@ def login():
 			
 			flash(u"Mauvais email ou mot de passe", category='warning')
 
-			return redirect(url_for("index"))
+			return redirect(url_for("login"))
 
 
 	elif request.method == 'GET' : 
@@ -304,7 +304,7 @@ def register():
 				login_user(new_user)
 
 
-				flash(u"Votre message a bien été envoyé", category='success')
+				flash(u"Votre compte a bien été créé", category='success')
 
 				return redirect(url_for('index'))
 
@@ -312,7 +312,7 @@ def register():
 			
 			log_cis.error("form was not validated : form.errors : %s", form.errors )
 
-			flash(u"Votre message n'a pas été envoyé", category='warning')
+			flash(u"Problème lors de l'envoi de votre formulaire, veuillez réessayer", category='warning')
 
 			return redirect(url_for('register'))
 

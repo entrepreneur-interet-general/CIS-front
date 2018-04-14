@@ -2,8 +2,7 @@
 {# INPUT FIELD IN NAVBAR FOR FREE SEARCH #}	
 {# TO BE CONTROLLED BY A VUE INSTANCE #}
 
-<!-- V_APP : cis_v_search_for -->
-
+<!-- V_APP : v_navbar_search_input -->
 <div id="navbar-search-input" class="navbar-item is-expanded">
 
 	<div class="" style="width:70%">
@@ -21,9 +20,9 @@
 						type="text" 
 						placeholder="rechercher un projet, un mot-clé, un lieu..."
 						
-						v-model			= "q_search_string"
-						v-on:keyup.13 	= "v_queryOpenScraper"
-				>
+						v-model						= "q_search_string"
+						v-on:keyup.enter.prevent 	= "v_queryOpenScraper"
+				/>
 
 
 
@@ -48,9 +47,14 @@
 	</button>
 
 
+
+
+	{# callback message for debugging purposes #}
 	<p>
 		[[ q_message ]]
 	</p>
+
+
 
 
 </div>

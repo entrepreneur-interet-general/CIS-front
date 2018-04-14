@@ -85,6 +85,8 @@ function build_q_slug ( q_wrapper ) {
 // 	console.log(data) ;
 // }
 
+
+
 // MAIN AJAX FUNCTION AS PROMISE
 function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 	
@@ -171,7 +173,7 @@ function call_ajax_os(data_q_slug="") {
 // bind ajax query to button(s) 
 // - - - - - - - - - - - - - - - - - - - - - - //
 
-
+// FOR DEBUGGING PURPOSES
 $(document).ready(function() {
 
 	$("#query-openscraper-button")
