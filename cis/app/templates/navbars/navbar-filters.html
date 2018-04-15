@@ -3,18 +3,18 @@
 	{# navbar's buttons #}
 	<div id="navbar-search-filters" class="navbar-menu">
 
-		{% set disabled_filters=["geoloc"] %}
+		{% set disabled_filters=["domains", "geoloc", "partners", "publics", "methods"] %}
 
 		{% for f_choices in filters_choices %}
 
 			{% for filter_codename, filter_data in f_choices.iteritems() %}
 
 			<span 	id="{{ filter_codename}}"
-					class="navbar-item navbar-item-filter has-dropdown 
+					class="navbar-item navbar-item-filter has-dropdown is-hoverable
 							{% if filter_codename not in disabled_filters %}
-								is-hoverable
+								
 							{% else %}
-								tooltip is-tooltip-danger is-tooltip-bottom
+								tooltip is-tooltip-danger is-tooltip-right
 							{% endif %}
 						" 
 					{% if filter_codename in disabled_filters %}

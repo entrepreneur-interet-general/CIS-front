@@ -14,13 +14,18 @@
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 	// from tutorial
-	var todos_var			= [
-		{ id:1, text: 'Apprendre JavaScript' },
-		{ id:2, text: 'Apprendre Vue' },
-		{ id:3, text: 'Intégrer Vue au moteur de recherche' },
-		{ id:4, text: 'Passer à la prochaine app' }
-	]
+	// var todos_var			= [
+	// 	{ id:1, text: 'Apprendre JavaScript' },
+	// 	{ id:2, text: 'Apprendre Vue' },
+	// 	{ id:3, text: 'Intégrer Vue au moteur de recherche' },
+	// 	{ id:4, text: 'Passer à la prochaine app' }
+	// ]
 
+
+	// random number to display missing photos as illustrations
+	function randomIntFromInterval(min=1,max=8){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
 
 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
@@ -44,31 +49,42 @@
 	// - - - - - - - - - - - - - //
 
 	// DEBUGGING - TUTORIAL
-	Vue.component('todo-item', {
-		// Le composant todo-item accepte maintenant une
-		// « prop » qui est comme un attribut personnalisé.
-		// Cette prop est appelée todo.
+	// Vue.component('todo-item', {
+	// 	// Le composant todo-item accepte maintenant une
+	// 	// « prop » qui est comme un attribut personnalisé.
+	// 	// Cette prop est appelée todo.
 
-		delimiters	: custom_delimiters,
-		props		: ['todo'],
-		template	: '<li>[[ todo ]]</li>',
+	// 	delimiters	: custom_delimiters,
+	// 	props		: ['todo'],
+	// 	template	: '<li>[[ todo ]]</li>',
 
-	})
+	// })
 
 
 	// MAIN RESULTS DISPLAYER
-	Vue.component('cis-search-results', {
+	Vue.component('v-results-item', {
 		// Le composant search-item accepte maintenant une
 		// « prop » qui est comme un attribut personnalisé.
 		// Cette prop est appelée results.
 
 		delimiters	: custom_delimiters,
-		props		: ['results'],
-		template	: '<div> my results </div>',
+		props		: ['item'],
+		// template	:  '<div class="column is-3"><div class="card"><div class="column is-3"> [[ item["titre du projet"] ]] </div></div></div>',
+		template	:  '<div class="column is-3"><div class="card"><div class="card-content"> [[ item["titre du projet"][0] ]] </div></div></div>',
 
 	})
 
 
+	// Vue.component('v-results-list', {
+	// 	// Le composant search-item accepte maintenant une
+	// 	// « prop » qui est comme un attribut personnalisé.
+	// 	// Cette prop est appelée results.
+
+	// 	delimiters	: custom_delimiters,
+	// 	props		: ['item'],
+	// 	template	: '<div class="column is-3"> [[ item["titre du projet"] ]] </div>',
+
+	// })
 
 
 
@@ -77,24 +93,29 @@
 	// CONTROLLERS 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
-	// declare default vars here 
-	var search_string   = "" ;
-	var search_tags		= [] ;
-	var results 		= {} ;
-	
-	var count_results 	= 0 ;
-	var default_message = "no request for now..." ;
 
+
+
+	// declare default vars here 
+	var search_string   	= "" ;
+	var search_tags			= [] ;
+	var results_per_page 	= 50 ;
+
+	var results 			= {} ;
+	var page_n				= 1 ;
+	var page_max			= 1 ;
+
+	var count_results 		= 0 ;
+	var count_results_total = 0;
+	var default_message 	= "no request for now..." ;
 
 	// declare vue instances variable names
 	var v_navbar_search_input, v_navbar_search_filters, v_results ;
 
 
-
-
-	// ONLY FIRE THIS CONTROLLER IF '#user-results' exists
-	var is_user_results = $('#user-results') ; 
-	console.log("::: is_user_results.length : ", is_user_results.length ) ;
+	// // ONLY FIRE THIS CONTROLLER IF '#user-results' exists
+	// var is_user_results = $('#user-results') ; 
+	// console.log("::: is_user_results.length : ", is_user_results.length ) ;
 
 
 
@@ -108,13 +129,17 @@
 		delimiters	: custom_delimiters,
 
 		data		: {
-
+			
+			// d_test		: ["lalala", "oyoyo", "lalala", "oyoyo", "lalala", "oyoyo"],
 			d_results	: results, 
-
+			d_page_n	: page_n,
+			d_page_max	: page_max,
+			
 			d_count  	: count_results, 
-			d_tags		: search_tags,
+			d_count_tot	: count_results_total,
 
-			d_as_list 	: [] ,
+			d_tags		: search_tags,
+			// d_as_list 	: [] ,
 
 		},
 
@@ -125,11 +150,10 @@
 		// ],
 
 		computed	: {
-			// TO DO 
-			myComputedFunction : function() {
-				console.log() ; 
-				return true
-			}
+			// d_count : function() {
+			// 	console.log() ; 
+			// 	return this.d_results.query_log.count_results  ; 
+			// }, 
 		},
 
 		created		: function() {
@@ -147,13 +171,20 @@
 
 					// this function will be called when chenge in `v_results.d_results`
 					
-					console.log( "--- v_results / $watch( q_results ) --> old_results : " ) ; 
-					console.log( "--- v_results / old_results.status : ", old_results.status ) ; 
-					console.log( old_results ) ; 
+					// console.log( "--- v_results / $watch( q_results ) --> old_results : " ) ; 
+					// console.log( "--- v_results / old_results.status : ", old_results.status ) ; 
+					// console.log( old_results ) ; 
 					
-					console.log( "--- v_results / $watch( q_results ) --> new_results : " ) ; 
-					console.log( "--- v_results / new_results.status :", new_results.status ) ; 
-					console.log( new_results ) ; 
+					// console.log( "--- v_results / $watch( q_results ) --> new_results : " ) ; 
+					// console.log( "--- v_results / new_results.status :", new_results.status ) ; 
+					// console.log( new_results ) ; 
+
+					this.d_count 		= new_results.query_log.count_results ;
+					this.d_count_tot 	= new_results.query_log.count_results_tot ;
+					this.d_page_n 		= new_results.query_log.query.page_n ;
+					this.d_page_max 	= new_results.query_log.page_n_max ;
+
+					console.log( "--- v_results / this.d_count : ", this.d_count ); 
 				},
 			
 		}
@@ -212,9 +243,13 @@
 		delimiters	: custom_delimiters,
 
 		data		: {
-			q_message		: default_message,
-			q_search_string : search_string,
-			// q_results		: results,
+			q_message			: default_message,
+
+			q_search_string 	: search_string,
+			q_results_per_page 	: results_per_page,
+			q_page_n			: page_n,
+			
+			q_is_results		: false,
 		},
 
 		created		: function() {
@@ -236,7 +271,7 @@
 				console.log(this.q_message) ;
 				
 				// generate slug
-				var q_slug = "search_for="+ this.q_search_string ;
+				var q_slug = "page_n=" + this.q_page_n + "token=test&search_for="+ this.q_search_string +"&results_per_page=" + this.q_results_per_page;
 				console.log("- v_navbar_search_input / before .then() / q_slug : ", q_slug ) ;
 				
 				// setTimeout for debugging ...
@@ -275,15 +310,15 @@
 		},
 		watch 		: {
 
-			'q_search_string' : 
+			// 'q_search_string' : 
 			
-				function (newVal, oldVal) {
-					//  this function will be called when chenge in `cis_v_search_for.q_search_for`
-					console.log("--- v_navbar_search_input / $watch( q_search_for ) --> newVal : ", newVal + " / oldVal :" + oldVal ) ; 
-					// this.q_search_string = newVal ; 
-					search_string = newVal ; 
+			// 	function (newVal, oldVal) {
+			// 		//  this function will be called when chenge in `cis_v_search_for.q_search_for`
+			// 		console.log("--- v_navbar_search_input / $watch( q_search_for ) --> newVal : ", newVal + " / oldVal :" + oldVal ) ; 
+			// 		// this.q_search_string = newVal ; 
+			// 		search_string = newVal ; 
 					
-				},
+			// 	},
 
 		}
 
@@ -297,7 +332,7 @@
 
 
 
-
+/*  // FROM TUTORIAL : cf : https://fr.vuejs.org/v2/guide/index.html 
 	// - - - - - - - - - - - - - //
 	// VUE APPS - SEARCH 
 	var tutorial_v_search = new Vue({
@@ -395,6 +430,7 @@
 		}
 
 	})
+*/
 
 
 

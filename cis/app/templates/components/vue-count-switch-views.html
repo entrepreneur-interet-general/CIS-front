@@ -12,27 +12,78 @@
 			
 				<div class="level-item">
 
-					<div id="notification-search-results" class="notification is-white">
+					<div id="notification-search-results" class="notification notification-results  is-white">
 						
 						<strong>
-							<span class="subtitle is-8 Count">
-								6907
-								{# [[ results_count ]] #}
+							<span class="has-text-primary is-8">
+								[[ d_count ]]
 							</span>
 						</strong> 
 
 						<span>
-							Projets trouvés 
+							projets sur 
+						</span>
+						<span class="has-text-primary">
+							[[ d_count_tot ]] 
+						</span>
+						<span>
+							projets trouvés 
+						</span>
+
+					</div>
+
+				</div>
+
+
+				<div class="level-item">
+
+					<div id="notification-search-results-pages" class="notification notification-results  is-white">
+						
+						<span>
+							page [[ d_page_n ]] / [[ d_page_max ]]
 						</span>
 						
-						<a class="">
-						<span class="icon has-text-primary"  style="transform: translate(0px, 4px);">
-							<i class="fas fa-lg fa-random"></i>
-						</span>
+					</div>
+					
+				</div>
+
+				{# pagination btns #}
+				<div class="level-item">
+					
+					<div class="buttons has-addons is-centered">
+
+						<a class="button">
+							<span class="icon">
+								<i class="fas fa-chevron-left"></i>
+							</span>					
+						</a>
+						<a class="button">
+							<span class="icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>					
 						</a>
 
 					</div>
+
 				</div>
+
+				{# shuffle btn #}
+				<div class="level-item">
+
+					{# <div id="notification-search-results-random" class="notification notification-results  is-white"> #}
+						
+						<a 	class="button is-primary tooltip is-tooltip-danger is-tooltip-right"
+							data-tooltip="mélanger les résultats au hasard (en construction)"
+							disabled>
+							<span class="icon is-medium">
+								<i class="fas fa-random"></i>
+							</span>
+						</a>
+						
+					{# </div> #}
+					
+				</div>
+
 
 			</div>
 

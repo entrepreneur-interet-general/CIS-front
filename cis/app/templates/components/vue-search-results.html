@@ -1,11 +1,33 @@
 
 <!-- V_APP : cis_v_search_for -->
 
-<div class="columns is-multiline is-mobile">
+
+{# <style>
+
+#search-results-canvas {
+	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Illustration_reperer.png" ) }} ) ;
+	background-position : center center;
+	background-repeat	: no-repeat ;
+	background-size		: 50% auto;
+	background-max-height : 500 px;
+	min-height			: 300px
+}
+
+</style> #}
 
 
-	<cis-search-results>
-	</cis-search-results>
+<div id="search-results-canvas" class="columns is-multiline is-mobile">
+
+
+
+		<v-results-item 
+			v-for="d in d_results['query_results']" 
+			v-bind:item="d"
+		>
+		</v-results-item>
+
+
+
 
 
 </div>
