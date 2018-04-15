@@ -6,20 +6,12 @@
 
 
 
-	console.log("::: cis-custom-vue.js is loaded") ;
+	console.log("::: cis-vue-controllers.js is loaded") ;
 
 	
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// DATA
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
-
-	// from tutorial
-	// var todos_var			= [
-	// 	{ id:1, text: 'Apprendre JavaScript' },
-	// 	{ id:2, text: 'Apprendre Vue' },
-	// 	{ id:3, text: 'Intégrer Vue au moteur de recherche' },
-	// 	{ id:4, text: 'Passer à la prochaine app' }
-	// ]
 
 
 	// random number to display missing photos as illustrations
@@ -44,8 +36,9 @@
 
 
 
-	// - - - - - - - - - - - - - //
-	// COMPONENTS 
+/*	///// COMPONENTS ---> MIGRATED IN cis-vue-components.js
+	// - - - - - - - - - - - - - // 
+	// COMPONENTS ---> MIGRATED IN cis-vue-components.js
 	// - - - - - - - - - - - - - //
 
 	// DEBUGGING - TUTORIAL
@@ -70,21 +63,72 @@
 		delimiters	: custom_delimiters,
 		props		: ['item'],
 		// template	:  '<div class="column is-3"><div class="card"><div class="column is-3"> [[ item["titre du projet"] ]] </div></div></div>',
-		template	:  '<div class="column is-3"><div class="card"><div class="card-content"> [[ item["titre du projet"][0] ]] </div></div></div>',
+		template	:  `<div class="column is-3">
+
+							<div class="card">
+								
+								<div class="card-image">
+									<figure class="image">
+										<img v-bind:src="returnImage" alt="Placeholder image">
+									</figure>
+								</div>
+								
+								<div class="card-content">
+	
+									<p class="title is-5">[[ getTitle ]] </p>
+
+									<div class="content">
+										<p class="subtitle is-6">@[[ trimAbstract ]]</p>
+									</div>
+
+
+								</div>
+
+							</div>
+						</div>`,
+		computed : {
+
+			returnImage : function() {
+				var imageUrl = this.item['image(s) du projet'] ;
+				if (imageUrl == undefined){
+					var randomInt =  Math.floor((Math.random() * 8) + 1); 
+					var imageUrl_ = "/static/illustrations/textures/textures_encarts_fiches_texture "+ randomInt +".png" ;
+				} else {
+					var imageUrl_ = imageUrl[0] ;
+				}
+				return imageUrl_
+			},
+
+			getTitle : function() {
+				var title = this.item["titre du projet"] ;
+				if (title == undefined ){
+					var title_ = "(projet sans titre)"
+				} else {
+					var title_ = title[0]
+				}
+				return title_
+			},
+
+			trimAbstract : function() {
+				var fullAbstract = this.item["résumé du projet"][0] ;
+				return fullAbstract.slice(0,100) + "..." 
+			},
+		}
 
 	})
 
 
-	// Vue.component('v-results-list', {
-	// 	// Le composant search-item accepte maintenant une
-	// 	// « prop » qui est comme un attribut personnalisé.
-	// 	// Cette prop est appelée results.
+	Vue.component('v-results-list', {
+		// Le composant search-item accepte maintenant une
+		// « prop » qui est comme un attribut personnalisé.
+		// Cette prop est appelée results.
 
-	// 	delimiters	: custom_delimiters,
-	// 	props		: ['item'],
-	// 	template	: '<div class="column is-3"> [[ item["titre du projet"] ]] </div>',
+		delimiters	: custom_delimiters,
+		props		: ['item'],
+		template	: '<div class="column is-3"> [[ item["titre du projet"] ]] </div>',
 
-	// })
+	})
+*/
 
 
 
@@ -95,19 +139,25 @@
 
 
 
-
 	// declare default vars here 
 	var search_string   	= "" ;
 	var search_tags			= [] ;
-	var results_per_page 	= 50 ;
+	var results_per_page 	= 40 ;
+	var token_openscraper	= "call_from_cis_front";		
 
 	var results 			= {} ;
 	var page_n				= 1 ;
 	var page_max			= 1 ;
 
 	var count_results 		= 0 ;
+	var count_start			= 1 ;
+	var count_stop			= 1 ;
+
 	var count_results_total = 0;
 	var default_message 	= "no request for now..." ;
+
+	var sort_by				= null;
+	var shuffle_seed		= randomIntFromInterval() ; 
 
 	// declare vue instances variable names
 	var v_navbar_search_input, v_navbar_search_filters, v_results ;
@@ -131,23 +181,46 @@
 		data		: {
 			
 			// d_test		: ["lalala", "oyoyo", "lalala", "oyoyo", "lalala", "oyoyo"],
-			d_results	: results, 
-			d_page_n	: page_n,
-			d_page_max	: page_max,
-			
-			d_count  	: count_results, 
-			d_count_tot	: count_results_total,
+			d_results		: results, 
+			d_page_n		: page_n,
+			d_page_max		: page_max,
 
-			d_tags		: search_tags,
+			d_count  		: count_results, 
+			d_count_tot		: count_results_total,
+
+			d_count_start 	: count_start, 
+			d_count_stop  	: count_stop, 
+			d_results_per_page	: results_per_page,
+
+			d_tags			: search_tags,
 			// d_as_list 	: [] ,
 
 		},
 
-		// methods		: [
-		// 	update_d_results : function(new_results){
-				
-		// 	}
-		// ],
+		methods		: {
+
+			// go to next page
+			v_page_up : function() {
+				console.log("--- v_results -M- v_page_up...")
+				var next_p_queried = this.d_page_n + 1 ;
+				// this.d_page_n += 1 ;				
+				(next_p_queried > this.d_page_max ) ? this.d_page_n = this.d_page_max : this.d_page_n = next_p_queried ;
+			},
+
+			// go to previous page
+			v_page_down : function() {
+				console.log("--- v_results -M- v_page_down...")
+				// this.d_page_n -= 1 ; 
+				var next_p_queried = this.d_page_n - 1 ;
+				(next_p_queried <=0 ) ? this.d_page_n = 1 : this.d_page_n = next_p_queried ;
+			},
+
+			// reset q_shuffle_seed
+			reShuffleResults : function(){
+				console.log("- v_navbar_search_input / call_ajax ... ") ; 
+				v_navbar_search_input.q_shuffle_seed = randomIntFromInterval(min=1, max=1000);
+			},
+		},
 
 		computed	: {
 			// d_count : function() {
@@ -164,25 +237,37 @@
 		},
 
 		watch 		: {
-			
+
+			// TO TRY
+			'd_page_n' : function(newVal, oldVal){
+				console.log("--- v_results -W- d_page_n / oldVal : " + oldVal + " / newVal : " + newVal );
+				console.log("--- v_results -W- d_page_n / this.d_page_n : ", this.d_page_n );
+				// this.d_page_n = newVal ;
+				v_navbar_search_input.q_page_n = newVal ; //this.d_page_n ; 
+
+			},
+
 			'd_results' : 
 
 				function (new_results, old_results) {
 
 					// this function will be called when chenge in `v_results.d_results`
 					
-					// console.log( "--- v_results / $watch( q_results ) --> old_results : " ) ; 
+					console.log( "--- v_results -W- d_results --> old_results : " ) ; 
 					// console.log( "--- v_results / old_results.status : ", old_results.status ) ; 
-					// console.log( old_results ) ; 
+					console.log( old_results ) ; 
 					
-					// console.log( "--- v_results / $watch( q_results ) --> new_results : " ) ; 
+					console.log( "--- v_results -W- d_results --> new_results : " ) ; 
 					// console.log( "--- v_results / new_results.status :", new_results.status ) ; 
-					// console.log( new_results ) ; 
+					console.log( new_results ) ; 
 
 					this.d_count 		= new_results.query_log.count_results ;
 					this.d_count_tot 	= new_results.query_log.count_results_tot ;
-					this.d_page_n 		= new_results.query_log.query.page_n ;
+					// this.d_page_n 		= new_results.query_log.query.page_n ;
 					this.d_page_max 	= new_results.query_log.page_n_max ;
+					
+					this.d_count_stop	= this.d_count * this.d_page_n ;
+					this.d_count_start  = this.d_count_stop - this.d_results_per_page + 1 ;
 
 					console.log( "--- v_results / this.d_count : ", this.d_count ); 
 				},
@@ -245,9 +330,14 @@
 		data		: {
 			q_message			: default_message,
 
+			q_token				: token_openscraper,
+
 			q_search_string 	: search_string,
 			q_results_per_page 	: results_per_page,
 			q_page_n			: page_n,
+
+			q_shuffle_seed		: shuffle_seed,
+			q_sort_by			: sort_by,
 			
 			q_is_results		: false,
 		},
@@ -255,24 +345,39 @@
 		created		: function() {
 			console.log(">>> v_navbar_search_input / initiating ... "); 
 			console.log(">>> v_navbar_search_input / this.q_search_string 		: " + this.q_search_string ); 
+			console.log(">>> v_navbar_search_input / run : this.v_queryOpenScraper() "); 	
+			this.v_queryOpenScraper() ;
 		},
 
 		methods		: {
-			
+
 			// main query function to openscraper
-			v_queryOpenScraper: function(e) {
+			v_queryOpenScraper: function(reset_page_n=false) {
 				
 				console.log("- v_navbar_search_input / call_ajax ... ") ; 
 
+				console.log("- v_navbar_search_input / reset_page_n : ", reset_page_n) ; 
+				if (reset_page_n == true ){
+					this.q_page_n = 1 ;
+				}
 				// _this = this ;
 				this.q_message = "request sent : "+ this.q_search_string;
 
-				console.log("- v_navbar_search_input / before .then() / _this.q_message : ") ;
+				console.log("- v_navbar_search_input -M- / before .then() / _this.q_message : ") ;
 				console.log(this.q_message) ;
-				
+
+				console.log("- v_navbar_search_input -M- / before .then() / this.q_results_per_page :", this.q_results_per_page ) ;
+				v_results.d_results_per_page 	= this.q_results_per_page ;
+				v_results.d_page_n 				= this.q_page_n ;
+
+				// TO DO CLEANER
 				// generate slug
-				var q_slug = "page_n=" + this.q_page_n + "token=test&search_for="+ this.q_search_string +"&results_per_page=" + this.q_results_per_page;
-				console.log("- v_navbar_search_input / before .then() / q_slug : ", q_slug ) ;
+				var q_slug = 	 "page_n=" + this.q_page_n
+								+ "&token=" + this.q_token
+								+ "&shuffle_seed=" + this.q_shuffle_seed 
+								+ "&search_for=" + this.q_search_string 
+								+ "&results_per_page=" + this.q_results_per_page;
+				console.log("- v_navbar_search_input -M- / before .then() / q_slug : ", q_slug ) ;
 				
 				// setTimeout for debugging ...
 				// setTimeout( function(){
@@ -286,13 +391,13 @@
 							// this.q_results	= q_data ; 
 							
 							// pass data to other Vue instance
-							console.log("- v_navbar_search_input / after then() / passing q_data to v_results.d_results ... ") ;
-							v_results.d_results = q_data ;
+							console.log("- v_navbar_search_input -M- / after then() / passing q_data to v_results.d_results ... ") ;
+							v_results.d_results 			= q_data ;
 
 							// console.log("- v_navbar_search_input / after then() / q_data : ") ;
 							// console.log(q_data) ;
 
-							console.log("- v_navbar_search_input /after then() / this.q_message : ") ;
+							console.log("- v_navbar_search_input -M- / after then() / this.q_message : ") ;
 							console.log(this.q_message) ;
 
 							// console.log("- v_navbar_search_input / after then() / _this.q_data : ") ;
@@ -310,6 +415,19 @@
 		},
 		watch 		: {
 
+			// TO TRY
+			'q_page_n' : function(newVal, oldVal){
+				console.log("--- v_navbar_search_input -W- q_page_n --> oldVal : " + oldVal + " / newVal : " + newVal );
+				console.log("--- v_navbar_search_input -W- q_page_n --> run : this.v_queryOpenScraper() ");
+				this.v_queryOpenScraper();
+			},
+
+			'q_shuffle_seed' : function(newVal, oldVal){
+				console.log("--- v_navbar_search_input -W- q_shuffle_seed --> oldVal : " + oldVal + " / newVal: " + newVal );
+				console.log("--- v_navbar_search_input -W- q_shuffle_seed --> run : this.v_queryOpenScraper() ");
+				this.v_queryOpenScraper();
+			}
+
 			// 'q_search_string' : 
 			
 			// 	function (newVal, oldVal) {
@@ -324,6 +442,17 @@
 
 	})
 	
+
+
+
+
+
+
+
+
+
+
+
 
 
 

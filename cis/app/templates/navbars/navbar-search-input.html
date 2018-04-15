@@ -15,13 +15,14 @@
 
 
 				<!-- call ajax from within v_navbar_search_input if enter is pressed -->
+				<!-- when new search needs to reset page_n (reset_page_n=true) -> "v_queryOpenScraper(true)" -->
 				<input 	id="q_search_for"
 						class="input is-normal is-light input-navbar filters-toggler" 
 						type="text" 
 						placeholder="rechercher un projet, un mot-clé, un lieu..."
 						
 						v-model						= "q_search_string"
-						v-on:keyup.enter.prevent 	= "v_queryOpenScraper"
+						v-on:keyup.enter.prevent 	= "v_queryOpenScraper(true)"
 				/>
 
 

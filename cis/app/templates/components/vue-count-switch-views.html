@@ -9,23 +9,52 @@
 			
 			<!-- Left side -->
 			<div class="level-left">
-			
+
+
+				{# pagination btns #}
+				<div class="level-item">
+					
+					<div class="buttons has-addons is-centered">
+
+						<a class="button" id="page_down" v-on:click="v_page_down">
+							<span class="icon">
+								<i class="fas fa-chevron-left"></i>
+							</span>					
+						</a>
+						<a class="button" id="page_up" v-on:click="v_page_up">
+							<span class="icon">
+								<i class="fas fa-chevron-right"></i>
+							</span>					
+						</a>
+
+					</div>
+
+				</div>
+
+				{# projects counter #}
 				<div class="level-item">
 
 					<div id="notification-search-results" class="notification notification-results  is-white">
 						
 						<strong>
-							<span class="has-text-primary is-8">
+							{# <span class="has-text-primary is-8">
 								[[ d_count ]]
+							</span> #}
+							<span class="has-text-primary is-8">
+								[[ d_count_start ]] - [[ d_count_stop ]]
 							</span>
 						</strong> 
 
 						<span>
 							projets sur 
 						</span>
-						<span class="has-text-primary">
-							[[ d_count_tot ]] 
-						</span>
+
+						<strong>
+							<span class="has-text-primary">
+								[[ d_count_tot ]] 
+							</span>
+						</strong>
+						
 						<span>
 							projets trouvés 
 						</span>
@@ -34,7 +63,7 @@
 
 				</div>
 
-
+				{# pagination #}
 				<div class="level-item">
 
 					<div id="notification-search-results-pages" class="notification notification-results  is-white">
@@ -47,36 +76,18 @@
 					
 				</div>
 
-				{# pagination btns #}
-				<div class="level-item">
-					
-					<div class="buttons has-addons is-centered">
 
-						<a class="button">
-							<span class="icon">
-								<i class="fas fa-chevron-left"></i>
-							</span>					
-						</a>
-						<a class="button">
-							<span class="icon">
-								<i class="fas fa-chevron-right"></i>
-							</span>					
-						</a>
-
-					</div>
-
-				</div>
 
 				{# shuffle btn #}
 				<div class="level-item">
 
 					{# <div id="notification-search-results-random" class="notification notification-results  is-white"> #}
 						
-						<a 	class="button is-primary tooltip is-tooltip-danger is-tooltip-right"
-							data-tooltip="mélanger les résultats au hasard (en construction)"
-							disabled>
-							<span class="icon is-medium">
-								<i class="fas fa-random"></i>
+						<a 	class="button is-primary tooltip is-tooltip-right"
+							data-tooltip="re-mélanger les résultats au hasard"
+							v-on:click="reShuffleResults">
+							<span class="icon">
+								<i class="fas fa-lg fa-random"></i>
 							</span>
 						</a>
 						

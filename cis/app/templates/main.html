@@ -129,6 +129,9 @@
 
 	{# note : hack refresh cache adding this : ?version=0.0.1 after brackets #}
 
+	<!-- CUSTOM JS FILTERS TOGGLING -->
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-tags-nomenclature.js') }}"></script>
+
 
 	<!-- CUSTOM UTIL JS FOR BULMA -->
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-modals-toggler.js') }}"></script>
@@ -147,7 +150,8 @@
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.1"></script>
 		
 		<!-- CUSTOM VUE JS FOR BULMA -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controller.js') }}?version=0.0.1"></script>
+		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.1"></script>
+		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.1"></script>
 
 		<!-- CUSTOM JS SEARCH CALLER -->
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script>
