@@ -76,7 +76,7 @@
 
 					<div class="columns is-centered is-white">
 
-						<div 	class="column is-half has-text-centered tooltip is-tooltip-info is-tooltip-top"
+						<div 	class="column is-half has-text-centered tooltip is-tooltip-top"
 								data-tooltip="découvrez les données brutes sur openscraper"
 							>
 							<a 	class=""
@@ -95,12 +95,12 @@
 							<p class="has-text-white">par</p>
 						</div> #}
 
-						<div 	class="column is-half has-text-centered tooltip is-tooltip-info"						
-								data-tooltip="découvrez les données brutes sur openscraper"
+						<div 	class="column is-half has-text-centered tooltip is-tooltip-top is-tooltip-multiline"						
+								data-tooltip="rejoignez le collectif pour partager vos propres projets !"
 							>
-							<a 	class=""
-								target="_blank"
-								href="http://cis-openscraper.com">
+							<a 	class="modal-button "
+								data-target="modal_feedback_tester"
+								aria-haspopup="true">
 								<h1 class="title">
 									<span class="Count">15</span>
 								</h1>
@@ -145,11 +145,12 @@
 					<br>
 
 
+
 					<strong>
-						<a class="button has-text-white is-text tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline"
+						<a class="modal-button has-text-white tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline"
 							data-tooltip="fonctionnalité en construction... En attendant contactez-nous directement !" 
-							href="/" 
-							disabled
+							data-target="modal_feedback_tester"
+							aria-haspopup="true"
 							>
 							Je voudrais ajouter les projets d'innovation sociale de ma structure
 						</a>
