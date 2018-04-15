@@ -26,7 +26,7 @@
 		
 		{# <div class="navbar-start is-fullwidth"> #}
 
-		{% if user_infos.is_authenticated == True  %}
+		{% if user_infos.is_authenticated == True and site_section == "search" %}
 		
 			{% include "navbars/navbar-search-input.html" %}
 

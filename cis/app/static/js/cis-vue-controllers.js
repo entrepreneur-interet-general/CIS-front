@@ -34,7 +34,7 @@
 	// Vue.config.delimiters =  ['[[',']]'] ;
 
 
-
+	var spiders_infos ;
 
 /*	///// COMPONENTS ---> MIGRATED IN cis-vue-components.js
 	// - - - - - - - - - - - - - // 
@@ -386,6 +386,9 @@
 						
 						.then( function( q_data ){
 							
+							// reset spiders_infos 
+							spiders_infos = q_data.spiders_dict ; 
+
 							// reset vars
 							this.q_message = "json received";
 							// this.q_results	= q_data ; 

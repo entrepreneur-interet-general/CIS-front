@@ -100,7 +100,7 @@
 			{% if site_section == "home" %}
 				{% set display_filters = "none" %}
 			{% else %}
-				{% set display_filters = "" %}
+				{% set display_filters = "none" %}
 			{% endif %}
 			<nav 	class="navbar is-white is-fixed-top" 
 					id="navbar-filters" 
@@ -150,8 +150,8 @@
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.1"></script>
 		
 		<!-- CUSTOM VUE JS FOR BULMA -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.1"></script>
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.1"></script>
+		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.1"></script>
 
 		<!-- CUSTOM JS SEARCH CALLER -->
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script>

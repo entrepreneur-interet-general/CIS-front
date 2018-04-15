@@ -40,6 +40,9 @@ console.log("::: cis-vue-components.js is loaded") ;
 // GET FIELDS FROM API OR SETUP IN DB CIS_FRONT + BACKOFFICE
 // q_results.
 
+var max_title_length		= 55 ;
+var max_abstract_length		= 120 ;
+
 var imageFieldName			= "image(s) du projet" ;
 var titleFieldName			= "titre du projet" ;
 var abstractFieldName 		= "résumé du projet" ;
@@ -52,7 +55,7 @@ var linksrcFieldName 		= "link_src" ;
 var linkdataFieldName 		= "link_data" ;
 var websiteFieldName 		= "website" ;
 
-var linkdataFieldName 		= "link_data" ;
+var spideridFieldName 		= "spider_id" ;
 
 
 
@@ -93,6 +96,11 @@ Vue.component('v-results-item', {
 								<!-- title -->
 								<p class="title is-5">[[ trimTitle ]] </p>
 
+
+
+
+
+
 								<!-- abstract -->
 								<div class="content">
 									<p class="subtitle is-6">[[ trimAbstract ]]</p>
@@ -106,8 +114,42 @@ Vue.component('v-results-item', {
 								</div>
 
 
-
 							</div>
+						
+							<footer class="card-footer">
+									<!-- link source -->
+									<a 	v-bind:href="getLinkSrc" 
+										class="card-footer-item tooltip is-tooltip-top"
+										data-tooltip="lien vers le site sourceur"
+										target="_blank"
+										>
+										<span class="icon">
+											<i class="fas fa-link "></i>
+										</span>
+									</a>
+
+									<!-- link data -->
+									<a 	v-bind:href="getLinkData" 
+										class="card-footer-item tooltip is-tooltip-top"
+										data-tooltip="lien vers la page du projet chez le sourceur"
+										target="_blank"
+										>
+										<span class="icon">
+											<i class="fas fa-external-link-alt "></i>
+										</span>
+									</a>
+
+									<!-- link contributor -->
+									<a 	v-bind:href="getLinkContributor" 
+										class="card-footer-item tooltip is-tooltip-top"
+										v-bind:data-tooltip="getNameContributor"
+										target="_blank"
+										>
+										<span class="icon">
+											<i class="fas fa-info-circle "></i>
+										</span>
+									</a>
+							</footer>
 
 						</div>
 
@@ -117,8 +159,6 @@ Vue.component('v-results-item', {
 	
 	computed : {
 		
-		// MAINLY CATCH ERRORS
-
 		getImage : function() {
 			var imageUrl = this.item[imageFieldName] ;
 			if (imageUrl == undefined){
@@ -134,7 +174,7 @@ Vue.component('v-results-item', {
 
 		getAdress : function() {
 			var adress = this.item[adressFieldName] ;
-			if (adress == undefined ){
+			if (adress == undefined | adress == "" ){
 				var adress_ = "(adresse non définie)"
 			} else {
 				var adress_ = adress[0]
@@ -142,28 +182,68 @@ Vue.component('v-results-item', {
 			return adress_
 		},
 
+
+
+		// LINKS
+		getLinkSrc : function() {
+			var link = this.item[linksrcFieldName] ;
+			if (link == undefined ){
+				return false
+			} 
+			return link
+		},
+		getLinkData : function() {
+			var link = this.item[linkdataFieldName] ;
+			if (link == undefined ){
+				return false
+			} 
+			return link
+		},
+		getLinkWebsite : function() {
+			var link = this.item[linkwebsiteFieldName] ;
+			if (link == undefined ){
+				return false
+			} 
+			return link
+		},
+		getLinkContributor : function(){
+			var spider_id = this.item[spideridFieldName];
+			return spiders_infos[spider_id]["page_url"]
+		},
+		getNameContributor : function(){
+			var spider_id = this.item[spideridFieldName];
+			return "partagé par : " + spiders_infos[spider_id]["name"]
+		},
+
+		// TEXTS
 		trimTitle : function() {
 			var title = this.item[titleFieldName] ;
 			if (title == undefined ){
 				var title_ = "(projet sans titre)"
 			} else {
 				var title_  = title[0] ;
-				title_ 		= title_.slice(0,60) + " ..." ;
+				var tail ;
+
+				title_size	= title_.length ; 
+				( title_size > max_title_length ) ? tail = " ..."  : tail = "" ;
+				title_		= title_.slice(0,max_title_length) + tail ;
 			}
-			return title_
+			return title_ 
 		},
-		
 		trimAbstract : function() {
 			var abstract = this.item[abstractFieldName];
 			if (abstract == undefined ){
 				var abstract_ 	= "(projet sans résumé)"
 			} else {
 				var abstract_  	= abstract[0] ;
-				abstract_		= abstract_.slice(0,120) + " ..." ;
-			}
-			return abstract_ + " ..." 
-		},
+				var tail ;
 
+				abstract_size	= abstract_.length ; 
+				( abstract_size > max_abstract_length ) ? tail = " ..."  : tail = "" ;
+				abstract_		= abstract_.slice(0,max_abstract_length) + tail ;
+			}
+			return abstract_ 
+		},
 		isTags : function(){
 			var tags = this.item[tagsFieldName] ;
 			if (tags == undefined ){
@@ -172,7 +252,6 @@ Vue.component('v-results-item', {
 				return true
 			}
 		},
-
 		getTags : function() {
 			var tags = this.item[tagsFieldName] ;
 			if (tags == undefined ){
