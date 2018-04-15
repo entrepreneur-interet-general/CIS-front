@@ -100,8 +100,8 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 		crossDomain 	: true,
 		crossOrigin		: true, 
 
-		// url 			: 'http://www.cis-openscraper.com/api/data',	// query deployed openscraper instance
-		url 			: 'http://localhost:8000/api/data', 			// query local openscraper instance
+		url 			: 'http://www.cis-openscraper.com/api/data',	// query deployed openscraper instance
+		// url 			: 'http://localhost:8000/api/data', 			// query local openscraper instance
 		
 		data			:  data_q_slug ,
 		
