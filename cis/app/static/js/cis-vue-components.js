@@ -77,7 +77,7 @@ Vue.component('v-results-item', {
 							<!-- image -->
 							<div class="card-image">
 								<figure class="image">
-									<img v-bind:src="getImage" alt="image du projet">
+									<img v-bind:src="getCardImage" alt="image du projet">
 								</figure>
 							</div>
 							
@@ -159,11 +159,12 @@ Vue.component('v-results-item', {
 	
 	computed : {
 		
-		getImage : function() {
+		getCardImage : function() {
 			var imageUrl = this.item[imageFieldName] ;
 			if (imageUrl == undefined){
 				var randomInt =  Math.floor((Math.random() * 8) + 1); 
-				var imageUrl_ = "/static/illustrations/textures/textures_encarts_fiches_texture "+ randomInt +".png" ;
+				// var imageUrl_ = "/static/illustrations/textures/textures_encarts_fiches_texture "+ randomInt +".png" ;
+				var imageUrl_ = "/static/illustrations/textures/thin_fiche_"+ randomInt +".png" ;
 			} else {
 				var imageUrl_ = imageUrl[0] ;
 				// TO DO : check if image url contains 'logo', 'tampon', or that kind of shitty stuff...

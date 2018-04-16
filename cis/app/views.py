@@ -108,7 +108,7 @@ def index():
 				# save user in db as visitor
 				new_user.insert_to_mongo( coll=mongo_users )
 			
-			flash(u"votre message a bien été envoyé", category='primary')
+			flash(u"votre message a bien été envoyé, merci de votre intérêt !", category='primary')
 
 			return redirect(request.args.get("next") or url_for("index"))
 
@@ -153,7 +153,8 @@ def search():
 	# 					{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
 	# 				]
 
-	flash(	u" Le Carrefour des innovations sociales bêta est en construction.    Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement. Revenez régulièrement !", 
+	# as long search engine is in beta version
+	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction.</strong> <br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement. Revenez régulièrement !", 
 			category='primary'
 		)
 

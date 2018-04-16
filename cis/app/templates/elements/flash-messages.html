@@ -7,24 +7,26 @@
 		{# <ul class=flashes> #}
 		
 		{% for category, message in messages %}
-			
-			{# <article class="message is-{{ category }}">
-				<div class="message-header">
-					<p>{{ category }}</p>
-					<button class="delete" aria-label="delete"></button>
-				</div> #}
 
-				{# <div class="message-body"> #}
-				<div class="notification is-{{ category }}">
-					<button class="delete"></button>
-					
-					{# <li> #}
-					{{ message }}
-					{# </li> #}
-				
+			{# {% if category == "popup" %}
+				{% set color = "primary" %}
+			{% endif %} #}
+
+
+			<article class="message is-{{ category }} has-text-centered">
+				<div class="message-header ">
+					<div>{{ message | safe }}</div>
+					<button class="delete" aria-label="delete"></button>
 				</div>
+			</article>
+
+
+
+			{# <div class="notification is-{{ category }}">
+				<button class="delete is-medium"></button>
+				{{ message }}
+			</div> #}
 		
-			{# </article> #}
 
 		{% endfor %}
 		
