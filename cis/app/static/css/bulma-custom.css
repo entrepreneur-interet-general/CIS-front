@@ -3643,7 +3643,7 @@ a.box:active {
 
 .notification {
   background-color: whitesmoke;
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 1.25rem 2.5rem 1.25rem 1.5rem;
   position: relative;
 }

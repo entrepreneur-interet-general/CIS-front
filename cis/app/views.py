@@ -154,7 +154,7 @@ def search():
 	# 				]
 
 	# as long search engine is in beta version
-	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction.</strong> <br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement. Revenez régulièrement !", 
+	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction.</strong><br> Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
 			category='primary'
 		)
 

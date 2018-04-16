@@ -215,6 +215,9 @@ iframe{
 	margin-right: 0px ; 
 }
 
+.notification {
+	padding : 0.75rem 2.5rem 0.75rem 1.5rem ;
+}
 .notification-results {
 	padding : 0.25rem 1.5rem 0.5rem 1.0rem
 }

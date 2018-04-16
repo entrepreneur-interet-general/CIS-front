@@ -13,19 +13,19 @@
 			{% endif %} #}
 
 
-			<article class="message is-{{ category }} has-text-centered">
-				<div class="message-header ">
-					<div>{{ message | safe }}</div>
+			{# <article class="message is-{{ category }} ">
+				<div class="message-header has-text-centered">
+					<span>{{ message | safe }}</span>
 					<button class="delete" aria-label="delete"></button>
 				</div>
-			</article>
+			</article> #}
 
 
 
-			{# <div class="notification is-{{ category }}">
+			<div class="notification is-{{ category }} has-text-centered">
 				<button class="delete is-medium"></button>
-				{{ message }}
-			</div> #}
+				{{ message | safe }}
+			</div>
 		
 
 		{% endfor %}
