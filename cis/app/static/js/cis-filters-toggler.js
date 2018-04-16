@@ -18,7 +18,7 @@ $(document).ready(function() {
 	function toogle_filters_display () { 
 		console.log("--- toggling filters ---") ; 
 		// navbar_filters.css("display", navbar_filters.css("display") === 'none' ? '' : 'none');	
-		toggler_filters = toggler_filters === 'filters_on' ? 'filters_off' : 'filters_on' ;	
+		toggler_filters === 'filters_on' ? 'filters_off' : 'filters_on' ;	
 		navbar_filters.toggle();	
 	};
 

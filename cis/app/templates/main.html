@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		
-		{# force refresh every 600 seconds #}
+		{# force refresh every 600 seconds = 10 minutes #}
 		{# cf trick here : https://stackoverflow.com/questions/1922910/force-browser-to-clear-cache/9516207 #}
 		<meta http-equiv="refresh" content="600">
 		
@@ -97,10 +97,10 @@
 
 		{# 2d nav bar - filters navbar #}
 		{% if user_infos.is_authenticated == True %}
-			{% if site_section == "home" %}
+			{% if site_section in ["home", "register", "login"] %}
 				{% set display_filters = "none" %}
 			{% else %}
-				{% set display_filters = "none" %}
+				{% set display_filters = "" %}
 			{% endif %}
 			<nav 	class="navbar is-white is-fixed-top" 
 					id="navbar-filters" 

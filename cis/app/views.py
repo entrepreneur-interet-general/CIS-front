@@ -153,6 +153,10 @@ def search():
 	# 					{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
 	# 				]
 
+	flash(	u" Le Carrefour des innovations sociales bêta est en construction.    Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement. Revenez régulièrement !", 
+			category='primary'
+		)
+
 	return render_template( "index.html",
 
 							site_section		= "search",
@@ -234,7 +238,7 @@ def login():
 				
 				log_cis.info("Logged in successfully")
 
-				# flash(u"Vous êtes bien connecté.e", category='success')
+				# flash(u"Vous êtes bien connecté.e", category='light')
 
 				return redirect(request.args.get("next") or url_for("index"))
 

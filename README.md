@@ -69,8 +69,9 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. DONE - make the landing page + integrate a form 
 1. DONE - deploy with domain name
 1. DONE - create a login page and store users in db
-1. connect logged pages to [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API + display results
-1. create a search engine based on [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API 
+1. DONE - connect logged pages to [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API + display results
+1. DONE - create a search engine based on [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API 
+1. what else ? ...
 
 -------
 

@@ -91,7 +91,10 @@ html {
 	overflow-y: auto;
 }
 
-
+/* USER-RESULTS */
+#user-results-top{
+	margin-top: -15px;
+}
 
 /* LINKS */
 
@@ -147,7 +150,7 @@ filter: none;
 
 #btn-feedbacks {
 	position: fixed;
-	margin : 0px 15px ;
+	margin : 0px 25px ;
 	bottom: -4px;
 	right: 0px;
 	z-index : 30;
@@ -165,7 +168,11 @@ filter: none;
 }
 iframe{
 	position:relative;
-	width:100%;
+	/* width:100%; */
+	width: 1px;
+	min-width: 100%;
+	*width: 100%;
+
 	height:100%;
 }
 

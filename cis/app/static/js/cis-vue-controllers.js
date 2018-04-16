@@ -267,7 +267,10 @@
 					this.d_page_max 	= new_results.query_log.page_n_max ;
 					
 					this.d_count_stop	= this.d_count * this.d_page_n ;
-					this.d_count_start  = this.d_count_stop - this.d_results_per_page + 1 ;
+
+					start_page_n 		= this.d_count_stop - this.d_results_per_page + 1 ;
+					// this.d_count_start  = this.d_count_stop - this.d_results_per_page + 1 ;
+					(start_page_n <=0 ) ? this.d_count_start = 1 : this.d_count_start = start_page_n ;
 
 					console.log( "--- v_results / this.d_count : ", this.d_count ); 
 				},

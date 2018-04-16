@@ -1,12 +1,16 @@
 
 
-
 {# count results and switch views #}
 <level class="level">
 
 	<!-- V_APP : v_results -->
 	<div id="user-results" class="container">
 
+		<div class="columns is-centered">
+			<div class="column is-12">
+				{% include "elements/flash-messages.html"%}
+			</div>
+		</div>
 
 		{# {% include "components/vue-tags.html" %} #}
 
@@ -16,6 +20,8 @@
 
 		{# {% include "components/vue-results-columns.html" %} #}
 		{# {% include "elements/results-tiles.html" %} #}
+
+		{% include "components/vue-count-switch-views.html" %}
 
 
 	</div>
