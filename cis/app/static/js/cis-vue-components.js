@@ -60,7 +60,27 @@ var spideridFieldName 		= "spider_id" ;
 
 
 
-// MAIN RESULTS DISPLAYER
+// MAIN RESULTS DISPLAYERS
+
+// Vue.component('v-results-tiles-colmuns', {
+// 	delimiters	: custom_delimiters,
+// 	props		: ['queryResults','resultsPerPage'],
+
+// 	template	: `	<template v-for="results_part in queryResults">
+// 						<div class="tile is-parent is-3 is-vertical">
+// 							<v-results-item 
+// 								v-for="d in results_part" 
+// 								v-bind:item="d"
+// 							>
+// 							</v-results-item>
+// 						</div>
+// 					</template>
+// 				`,
+// 	computed 	: {
+
+// 	}
+// })
+
 Vue.component('v-results-item', {
 	// Le composant search-item accepte maintenant une
 	// « prop » qui est comme un attribut personnalisé.
@@ -70,8 +90,8 @@ Vue.component('v-results-item', {
 	props		: ['item'],
 
 	template	: `
-					<div class="column is-3">
-
+					<div class="column is-12">
+						
 						<div class="card">
 							
 							<!-- image -->
@@ -161,10 +181,17 @@ Vue.component('v-results-item', {
 		
 		getCardImage : function() {
 			var imageUrl = this.item[imageFieldName] ;
+			
 			if (imageUrl == undefined){
+
+				// default image if no scrapped image
 				var randomInt =  Math.floor((Math.random() * 8) + 1); 
+				
+				//// choose thick default image
 				var imageUrl_ = "/static/illustrations/textures/textures_encarts_fiches_texture "+ randomInt +".png" ;
+				//// choose thin default image
 				// var imageUrl_ = "/static/illustrations/textures/thin_fiche_"+ randomInt +".png" ;
+			
 			} else {
 				var imageUrl_ = imageUrl[0] ;
 				// TO DO : check if image url contains 'logo', 'tampon', or that kind of shitty stuff...

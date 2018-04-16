@@ -17,41 +17,33 @@
 
 
 {# <div id="search-results-canvas" class="columns is-multiline is-mobile"> #}
-<div id="search-results-canvas" class="">
+<div id="search-results-canvas" class="is-multiline">
 
+
+	{# <v -results-item 
+		v -for="d in d_results['query_results']" 
+		v -bind:item="d"
+	>
+	</v -results-item> #}
 
 
 	{# TO DO : CHANGE DISPLAY FROM COLUMNS TO TILES #}
 	<div class="container">
 		
-		<!-- <div class="tile is-ancestor"> -->
-		<div class="columns">
+		<div class="tile is-ancestor">
 
-			<div	class="column is-3"
+			<div	class="tile is-parent is-3 is-vertical"
 					v-for="i in d_columns"
-			>	
-				<div class="columns is-multiline">
-
-
-					<!-- <v-results-item 
-						v-for="d in d_results['query_results'].slice(i*d_items_per_column,(i+1)*d_items_per_column+1)" 
-						v-bind:item="d">
-					</v-results-item> -->
-					<v-results-item 
-						v-for="d in resortArray(i)" 
-						v-bind:item="d">
-					</v-results-item>
-
-				</div>
-
+			>
+				<v-results-item 
+					v-for="d in d_results['query_results'].slice(i*d_items_per_column,(i+1)*d_items_per_column)" 
+					v-bind:item="d"
+				>
+				</v -results-item>
 			</div>
 
 		</div>
 	
-
-
-
-
 	</div>
 
 

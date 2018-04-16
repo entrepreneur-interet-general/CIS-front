@@ -137,7 +137,8 @@
 	// CONTROLLERS 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
-
+	// for displaying
+	var columns_indices 	= [0,1,2,3];
 
 	// declare default vars here 
 	var search_string   	= "" ;
@@ -153,10 +154,10 @@
 	var count_start			= 1 ;
 	var count_stop			= 1 ;
 
-	var count_results_total = 0;
+	var count_results_total = 0 ;
 	var default_message 	= "no request for now..." ;
 
-	var sort_by				= null;
+	var sort_by				= null ;
 	var shuffle_seed		= randomIntFromInterval() ; 
 
 	// declare vue instances variable names
@@ -180,6 +181,12 @@
 
 		data		: {
 			
+			// columns display variables
+			d_columns			: columns_indices,
+			d_number_of_columns : columns_indices.length , 
+			d_items_per_column 	: results_per_page/columns_indices.length,
+			d_columns_width 	: 12/columns_indices.length,
+
 			// d_test		: ["lalala", "oyoyo", "lalala", "oyoyo", "lalala", "oyoyo"],
 			d_results		: results, 
 			d_page_n		: page_n,
@@ -220,13 +227,27 @@
 				console.log("- v_navbar_search_input / call_ajax ... ") ; 
 				v_navbar_search_input.q_shuffle_seed = randomIntFromInterval(min=1, max=1000);
 			},
+			
+			// resort result array
+			resortArray : function(columnIndex) {
+	
+				console.log("*** v_results / resortArray...");
+				
+				var arrayResultsForColumn = [] ;
+				
+				var fullResultsArray = this.d_results['query_results'] ;
+				
+				for( var i = columnIndex ; i < fullResultsArray.length; i += this.d_number_of_columns ) {  // take every i + d_number_of_columns element
+					arrayResultsForColumn.push(fullResultsArray[i]);
+				}
+
+				return arrayResultsForColumn ;
+
+			},
 		},
 
 		computed	: {
-			// d_count : function() {
-			// 	console.log() ; 
-			// 	return this.d_results.query_log.count_results  ; 
-			// }, 
+			///
 		},
 
 		created		: function() {
