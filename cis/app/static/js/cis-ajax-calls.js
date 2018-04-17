@@ -86,6 +86,10 @@ function build_q_slug ( q_wrapper ) {
 // }
 
 
+var url_dev		= 'http://localhost:8000/api/data' ; 			// query local openscraper instance
+var url_prod	= 'http://www.cis-openscraper.com/api/data' ;	// query deployed openscraper instance
+
+var url_current ;
 
 // MAIN AJAX FUNCTION AS PROMISE
 function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
@@ -100,10 +104,11 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 		crossDomain 	: true,
 		crossOrigin		: true, 
 
-		url 			: 'http://www.cis-openscraper.com/api/data',	// query deployed openscraper instance
+		// url 			: 'http://www.cis-openscraper.com/api/data',	// query deployed openscraper instance
 		// url 			: 'http://localhost:8000/api/data', 			// query local openscraper instance
-		
-		data			:  data_q_slug ,
+		url 			: url_prod ,
+
+		data			: data_q_slug ,
 		
 		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
 		// data			: {'token': 'test_token'},

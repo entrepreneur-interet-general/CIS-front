@@ -40,6 +40,12 @@ console.log("::: cis-vue-components.js is loaded") ;
 // GET FIELDS FROM API OR SETUP IN DB CIS_FRONT + BACKOFFICE
 // q_results.
 
+var numb_default_images		= 16 ;
+var deft_imageUrl_large 	= "/static/illustrations/textures/large_fiche_" ;
+var deft_imageUrl_medium 	= "/static/illustrations/textures/medium_fiche_" ;
+var deft_imageUrl_thin 		= "/static/illustrations/textures/thin_fiche_" ;
+
+
 var max_title_length		= 55 ;
 var max_abstract_length		= 120 ;
 
@@ -185,12 +191,10 @@ Vue.component('v-results-item', {
 			if (imageUrl == undefined){
 
 				// default image if no scrapped image
-				var randomInt =  Math.floor((Math.random() * 8) + 1); 
+				var randomInt =  Math.floor( ( Math.random() * numb_default_images ) + 1 ); 
 				
 				//// choose thick default image
-				var imageUrl_ = "/static/illustrations/textures/textures_encarts_fiches_texture "+ randomInt +".png" ;
-				//// choose thin default image
-				// var imageUrl_ = "/static/illustrations/textures/thin_fiche_"+ randomInt +".png" ;
+				var imageUrl_ = deft_imageUrl_medium + randomInt + ".png";
 			
 			} else {
 				var imageUrl_ = imageUrl[0] ;
