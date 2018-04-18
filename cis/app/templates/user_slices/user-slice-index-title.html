@@ -34,23 +34,90 @@
 
 	<div class="hero-body">
 
+		<br><br>
+
 		<div class="container content">
+
+
 
 			<div class="columns is-centered">
 
 				<div class="column is-5 has-text-centered">
 
 
-					
-					<br><br>
-
-
 
 					{% include "elements/flash-messages.html"%}
 
 
-					<br><br>
+					<br>
 
+
+
+					<div class="columns is-centered is-white">
+
+						<div 	class="column is-half has-text-centered tooltip is-tooltip-top"
+								data-tooltip="découvrez les données brutes sur openscraper"
+							>
+							<h1 class="title has-text-warning">
+								<a 	class=""
+									target="_blank"
+									href="http://cis-openscraper.com">
+										<span class="Count has-text-weight-bold">4858</span>
+								</a>
+							</h1>
+							<h3 class="subtitle has-text-white">projets référencés</h3>
+							{# <br> #}
+						</div>
+						
+						{# <div class="column is-2 has-text-centered">
+							<p class="title ">&nbsp;</p>
+							<p class="has-text-white">par</p>
+						</div> #}
+
+						<div 	class="column is-half has-text-centered tooltip is-tooltip-top is-tooltip-multiline"						
+								data-tooltip="rejoignez le collectif pour partager vos propres projets !"
+							>
+							<h1 class="title has-text-warning">
+								<a 	class="modal-button "
+									data-target="modal_feedback_tester"
+									aria-haspopup="true">
+									<span class="Count has-text-weight-bold">15</span>
+								</a>
+							</h1>
+							</a>
+							<h3 class="subtitle has-text-white">sites partenaires</h3>
+							{# <br> #}
+						</div>
+
+
+					</div>
+
+
+					<br>
+
+
+					{# <h1 class="has-text-white" >
+						<strong>
+							Trouvez le projet qui vous intéresse
+						</strong>
+					</h1> #}
+					
+
+
+
+					<h1 class="title has-text-centered">
+						<strong>
+							<a class=" has-text-white is-large is-fullwidth has-text-weight-bold"
+								href="/search" 
+								>
+								<b>
+								Trouvez
+								le projet d'innovation sociale 
+								qui vous intéresse
+								</b>
+							</a>
+						</strong>
+					</h1>
 		
 
 					{# <nav class="level is-mobile">
@@ -73,10 +140,10 @@
 
 
 					
-					<p class="subtitle has-text-centered">
+					{# <p class="subtitle has-text-centered">
 						Bienvenue sur le moteur de recherche <br>du Carrefour des innovations sociales
 					</p>
-					<br></br>
+					<br></br> #}
 
 					{# <a class="button is-white is-medium is-outlined tooltip is-tooltip-danger"
 						data-tooltip="fonctionnalité en construction" 
@@ -84,69 +151,20 @@
 						disabled>
 						Faites une recherche
 					</a> #}
-					<strong>
-						<a class="button is-white is-large is-outlined is-fullwidth  is-tooltip-danger is-tooltip-top"
-							data-tooltip="fonctionnalité en construction" 
-							href="/search" 
-							>
-							Trouvez le projet qui vous intéresse
-						</a>
-					</strong>
-
-
-					<br><br>
-
-
-
-					<div class="columns is-centered is-white">
-
-						<div 	class="column is-half has-text-centered tooltip is-tooltip-top"
-								data-tooltip="découvrez les données brutes sur openscraper"
-							>
-							<a 	class=""
-								target="_blank"
-								href="http://cis-openscraper.com">
-								<h1 class="title">
-									<span class="Count">4858</span>
-								</h1>
-							</a>
-							{# <br> #}
-							<h3 class="subtitle has-text-white">projets référencés</h3>
-						</div>
-						
-						{# <div class="column is-2 has-text-centered">
-							<p class="title ">&nbsp;</p>
-							<p class="has-text-white">par</p>
-						</div> #}
-
-						<div 	class="column is-half has-text-centered tooltip is-tooltip-top is-tooltip-multiline"						
-								data-tooltip="rejoignez le collectif pour partager vos propres projets !"
-							>
-							<a 	class="modal-button "
-								data-target="modal_feedback_tester"
-								aria-haspopup="true">
-								<h1 class="title">
-									<span class="Count">15</span>
-								</h1>
-							</a>
-							{# <br> #}
-							<h3 class="subtitle has-text-white">sites partenaires</h3>
-						</div>
-
-
-					</div>
-
-
-
-
-					{# <h1 class="has-text-white" >
+					<h3>
 						<strong>
-							Trouvez le projet qui vous intéresse
+							<a class="button is-white has-text-primary is-medium is-fullwidth has-text-weight-bold"
+								href="/search" 
+								>
+								Je commence une recherche
+							</a>
 						</strong>
-					</h1> #}
-					
+					</h3>
 
-					<br>
+
+
+
+
 
 
 
@@ -154,7 +172,7 @@
 
 
 					<strong>
-						<a class="button is-outlined is-white is-fullwidth modal-button tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline"
+						<a class="is-white is-fullwidth modal-button tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline"
 							data-tooltip="fonctionnalité en construction... En attendant contactez-nous directement !" 
 							data-target="modal_feedback_tester"
 							aria-haspopup="true"
@@ -165,11 +183,9 @@
 
 
 					<p>
-						<br>
 						<br><br>
 						&nbsp;
 						<br><br>
-						<br>
 					</p> 
 
 

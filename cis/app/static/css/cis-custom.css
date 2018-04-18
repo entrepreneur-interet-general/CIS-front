@@ -102,6 +102,7 @@ html {
 	text-decoration: none ;
 }
 
+
 /* IMAGES */
 
 .img-cis-full-width {
@@ -144,7 +145,14 @@ filter: none;
 	border-radius : 50% ;
 }
 
+.proj-card-img {
+	border-radius : 3px 3px 0px 0px ;
+}
 
+.proj-card {
+	border-radius: 3px ;
+	box-shadow : 5px 5px 9px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1) ; 
+}
 
 /* FEEDBACKS  */
 
@@ -222,3 +230,5 @@ iframe{
 .notification-results {
 	padding : 0.25rem 1.5rem 0.5rem 1.0rem
 }
+
+

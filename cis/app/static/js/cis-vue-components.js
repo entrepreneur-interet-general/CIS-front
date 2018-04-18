@@ -98,12 +98,12 @@ Vue.component('v-results-item', {
 	template	: `
 					<div class="column is-12">
 						
-						<div class="card">
+						<div class="card proj-card">
 							
 							<!-- image -->
 							<div class="card-image">
 								<figure class="image">
-									<img v-bind:src="getCardImage" alt="image du projet">
+									<img v-bind:src="getCardImage" alt="image du projet" class="proj-card-img">
 								</figure>
 							</div>
 							
