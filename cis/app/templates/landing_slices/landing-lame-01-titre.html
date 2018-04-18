@@ -62,18 +62,20 @@
 							Message avec tooltip
 						</span>
 					</div> #}
-					<div class="content has-text-centered is-fullwidth">
-						<span 	class="tag is-large is-warning"
-							>
-							Le moteur de recherche en version bêta est désormais accessible !
-						</span>
-					</div>
 
 					<br>
-
+					<div class="notification is-warning has-text-centered">
+						<button class="delete is-medium"></button>
+						<p class="has-text-weight-bold is-uppercase">
+							Le moteur de recherche en version bêta est désormais accessible !
+						</p>
+					</div>
+					
+					
 					{# flash messages #}
 					{% include "elements/flash-messages.html"%}
 
+					<br>
 					<br>
 
 					{# tagline #}

@@ -24,6 +24,9 @@ class AnonymousUser(AnonymousUserMixin):
 
 		self.userName 		= 'Guest'
 		self.userAuthLevel	= 'visitor'
+		self.login_last_at	= datetime.datetime.now()
+		self.logins_total	= 0
+
 
 	@property
 	def get_public_infos(self):
@@ -52,6 +55,9 @@ class User( UserMixin, ModelMixin ):
 						userAuthLevel	= "visitor",
 						userRememberMe	= True,
 
+						login_last_at	= None,
+						logins_total	= 0,
+
 						temp_pwd		= None,
 
 						):
@@ -72,6 +78,10 @@ class User( UserMixin, ModelMixin ):
  		self.userPassword 			= userPassword
  		self.userPublicKeyAPI 		= None
 
+		# session metrics 
+
+		self.login_last_at			= login_last_at
+		self.logins_total			= logins_total
 
 		# just for preregister
 
@@ -95,6 +105,11 @@ class User( UserMixin, ModelMixin ):
 		self.userOtherStructure		= None
  		self.userStructureProfile 	= None
  		self.userStructureSiret 	= None
+
+
+		### FOR MODERATION 
+
+		self.verified_as_partner 	= None
 
 
 	@property
@@ -128,10 +143,24 @@ class User( UserMixin, ModelMixin ):
 		return check_password_hash(password_hash, password)
 
 
+	def setCreatedAt(self) :
+		self.userCreatedAt = datetime.datetime.now()
 
-	# TO DO 
+	def setLastModifiedAt(self) :
+		self.userLastModifiedAt = datetime.datetime.now()
+
 	def check_if_user_structure_is_partner(self) :
-		pass
+		"""
+		update self.admin_has_verified_as_partner 
+		- for now : an admin has to manually check if user can be upgraded 
+			from "user" to "staff"
+		- TO DO : send an email to admins to alert a new partener member had created an account
+		"""
+		if self.userPartnerStructure in LIST_PARTNERS :
+			# self.admin_has_verified_as_partner = "VERIFY"
+			# self.verified_as_partner = False
+			self.verified_as_partner = CHOICES_VERIFY_USER_IS_PARTNER_LIST[2]
+		
 
 	# TO DO 
 	def create_jwt_token(self):
@@ -141,9 +170,10 @@ class User( UserMixin, ModelMixin ):
 	def create_API_key(self):
 		pass
 
-	# TO DO 
-	def update_existing_user(self):
-		pass
+
+	# # TO DO  
+	# def update_existing_user(self):
+	# 	pass
 
 
 ### TO DO 

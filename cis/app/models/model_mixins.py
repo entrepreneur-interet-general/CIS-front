@@ -48,14 +48,28 @@ class ModelMixin :
 		coll.insert( obj_as_dict )
 
 
-	def add_created_by(self, 	created_by		= None,
-								created_at		= None ) :
+	# TO DO !!!
+	def update_document_in_mongo(self, document=None, coll=None , **kwargs):
+		"""
+		update current model as document in mongoDB, in defined collection coll
+		"""
+		for k,v in self.__dict__.iteritems() :
+			document[k] = v 
+		coll.save(document)
 
-		self.created_by 		= created_by
+
+
+	
+	### datetimes infos
+
+	def add_created_at(self, 	created_at=datetime.datetime.now()  ) :
 		self.created_at 		= created_at
 
+	def add_created_by(self, 	created_by=None ) :
+		self.created_by 		= created_by
 
-	def add_modified_by(self, last_modified_by = "system") : 
+	def add_modified_by(self, 	last_modified_by = "system",
+								last_modified_at = datetime.datetime.now() ) : 
 
 		self.last_modified_by 	= last_modified_by
-		self.last_modified_at 	= time.time() 		# put timestamp
+		self.last_modified_at 	= last_modified_at #time.time() 		# put timestamp

@@ -1,6 +1,8 @@
 
 console.log("::: cis-notification-dismisser.js is loaded") ;
 
+
+// NOTIFICATIONS DISMISSER
 // cf : https://codepen.io/martincarlin87/pen/yewgNy
 
 $(document).on('click', '.notification > button.delete', function() {

@@ -95,8 +95,8 @@ var url_current ;
 function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 	
 	// build ajax request options
-	// https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 
-	// https://stackoverflow.com/questions/26896679/tornado-cannot-read-json-ajax-requests 
+	// cf : https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 
+	// cf : https://stackoverflow.com/questions/26896679/tornado-cannot-read-json-ajax-requests 
 
 	let request_options = {
 
@@ -104,8 +104,7 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 		crossDomain 	: true,
 		crossOrigin		: true, 
 
-		// url 			: 'http://www.cis-openscraper.com/api/data',	// query deployed openscraper instance
-		// url 			: 'http://localhost:8000/api/data', 			// query local openscraper instance
+		//// WARNING !!! SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
 		url 			: url_prod ,
 
 		data			: data_q_slug ,

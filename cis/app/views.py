@@ -233,10 +233,15 @@ def login():
 				
 				user_obj = User()
 				user_obj.populate_from_dict(dict_input=user)
-				### update last_access_at
-
+				
+				### login with flask-login
 				login_user( user_obj, remember=form.userRememberMe.data )
 				
+				### update login_last_at in db
+				user["login_last_at"] 	= datetime.datetime.now()
+				user["logins_total"]	= user["logins_total"] + 1
+				mongo_users.save(user)
+
 				log_cis.info("Logged in successfully")
 
 				# flash(u"Vous êtes bien connecté.e", category='light')
@@ -247,7 +252,7 @@ def login():
 
 			log_cis.error("form was not validated / form.errors : %s", form.errors )
 			
-			flash(u"Mauvais email ou mot de passe", category='warning')
+			flash(u"Email ou mot de passe incorrect(s)", category='warning')
 
 			return redirect(url_for("login"))
 
@@ -286,27 +291,58 @@ def register():
 			
 			log_cis.debug("existing_user : %s", pformat(existing_user) )
 
-			if existing_user is None:
+			
+			if existing_user is None : 
+				is_new_user = "create_new_user"
+			else : 
+				if existing_user["userAuthLevel"] == "visitor" :
+					is_new_user = "update_visitor_to_user"
+				else :
+					is_new_user = "no" 
+					flash(u"Cet email est déjà utilisé, veuillez réessayer", category='warning')
+					return redirect(url_for('register'))
+
+			log_cis.warning("is_new_user : %s", is_new_user )
+
+			# if existing_user is None or existing_user["userAuthLevel"] == "visitor" :
+			if is_new_user != "no" :
 				
 				# create hashpassword
 				hashpass = generate_password_hash(form.registerPassword.data, method='sha256')
 				log_cis.debug("hashpass : %s", hashpass )
 		
 				# populate user class
-				new_user 	= User( userPassword = hashpass, userAuthLevel="user" )
+				new_user 	= User( 	userPassword=hashpass, 
+										userAuthLevel="user",
+										login_last_at=datetime.datetime.now(),
+										logins_total=1
+										 )
 				new_user.populate_from_form(form=form)
-				
+				new_user.add_created_at()
 
+				# check if user declared being from a partner and set 'verified_as_partner' as 'VERIFY
 				new_user.check_if_user_structure_is_partner()
 
-				# save user in db
-				new_user.insert_to_mongo( coll=mongo_users )
+
+				if is_new_user == "create_new_user":
+					# save user in db --> function from ModelMixin
+					log_cis.warning("inserting new_user in mongo_users" )
+					new_user.insert_to_mongo( coll=mongo_users )
+				
+				# else : # equivalent to <-- 
+				if is_new_user == "update_visitor_to_user" :
+					# update visitor to user in db --> function from ModelMixin
+					log_cis.warning("updating new_user in mongo_users" )
+					new_user.update_document_in_mongo( document=existing_user,  coll=mongo_users )
+
 
 				# logout previous user if any
 				logout_user()
 
-				# log user
+				# log user with flask-login
 				login_user(new_user)
+
+
 
 
 				flash(u"Votre compte a bien été créé", category='success')
@@ -317,7 +353,11 @@ def register():
 			
 			log_cis.error("form was not validated : form.errors : %s", form.errors )
 
-			flash(u"Problème lors de l'envoi de votre formulaire, veuillez réessayer", category='warning')
+			# flash(u"Problème lors de l'envoi de votre formulaire.<br>Merci de réessayer", category='warning')
+
+			for k,errors in form.errors.iteritems() :
+				for e in errors : 
+					flash( e , category='danger')
 
 			return redirect(url_for('register'))
 
@@ -410,14 +450,19 @@ class UserViewAdmin(ModelView):
 	### for flask-admin
 
 	column_list 			= (	
-								'userName', 'userSurname', 'userEmail',
-								'userPartnerStructure', 'userOtherStructure',
-								'userAuthLevel',
+								'userName', 'userSurname', 'userEmail', 
+								'userProfile',
+								# 'last_modified_at', 
+								'logins_total',
+								'userPartnerStructure', 'userOtherStructure','verified_as_partner',
+								'userAuthLevel', 
 								'userHaveProjects',
-								'userProfile'
+								'userMessage',
+								'created_at', 
 							)
 
-	column_searchable_list 		= ( 'userName', 'userEmail', 'userPartnerStructure', 'userOtherStructure' )
+	column_searchable_list 		= ( 'userName', 'userSurname', 'userEmail', 
+									'userPartnerStructure', 'userOtherStructure' )
 	column_sortable_list	= column_list
 	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
 	# 							'structure',)
@@ -430,6 +475,7 @@ class UserViewAdmin(ModelView):
 	# cf : https://stackoverflow.com/questions/21727129/how-to-make-a-field-non-editable-in-flask-admin-view-of-a-model-class 
 	form_widget_args = {
 		'userEmail'			: { 'readonly' : True },
+		'created_at'		: { 'readonly' : True },
 		'userPublicKeyAPI'	: { 'readonly' : True },
 		'temp_pwd'			: { 'readonly' : True },
 	}
@@ -462,11 +508,15 @@ class MessagesFromLandingAdmin(ModelView):
 	### for flask-admin
 
 	column_list 			= (	
-								'userName', 'userSurname', 'userEmail', 'userOtherStructure',
+								'userName', 'userSurname', 'userEmail', 
+								'userOtherStructure', 
+								'userMessage',
+								'created_at',
 								'userHaveProjects', 'userJoinCollective', 
-								'userMessage'
 							)
-	column_searchable_list 		= ('userName', 'userEmail', 'userOtherStructure')
+	column_searchable_list 		= column_list
+
+	# column_searchable_list 		= ('userName', 'userEmail', 'userOtherStructure')
 	column_sortable_list	= column_list
 	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
 	# 							'structure',)
@@ -477,9 +527,8 @@ class MessagesFromLandingAdmin(ModelView):
 
 	# custom field rendering in admin interface 
 	form_widget_args = {
-		'userEmail': {
-			'readonly': True
-		},
+		'userEmail'	: {'readonly': True},
+		'created_at': {'readonly': True },
 	}
 
 

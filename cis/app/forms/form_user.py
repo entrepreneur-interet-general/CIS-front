@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 from . 	import *
-from .. import app, log_cis, pformat
+from .. import app, log_cis, pformat, datetime
 
 from ..settings.app_choices import * 
 
@@ -15,16 +15,31 @@ log_cis.info(">>> reading _forms.form_user.py ")
 
 ### commons infos about user 
 
+created_at 			= DateField 	( 	u"crée le", 
+										format="%Y-%m-%d @ %H:%M:%S",
+										default=datetime.datetime.now, ## Now it will call it everytime.
+										# validators=[ DataRequired() ]
+									)
+last_modified_at 	= DateField 	( 	u"modifié le",
+										format="%Y-%m-%d @ %H:%M:%S",
+										default=datetime.datetime.now,
+									)
+
 # userName_large	= StringField	( 	u'user name', 
 # 									validators = [ DataRequired(), Length(min=3, max=50) ], 
 # 									render_kw={'class': 'input is-large'	, 'placeholder': u"votre prénom *"  }  
 # 								)
 userName		= StringField	( 	u"prénom", 
-									validators = [ DataRequired(), Length(min=3, max=50) ], 
+									validators = [ 
+										DataRequired(			message=u"vous devez rentrer un prénom"), 
+										Length(min=3, max=50,	message=u"vous devez rentrer un prénom d'au moins 3 caractères ")
+									], 
 									render_kw={'class': 'input'	, 'placeholder': u"votre prénom *"  }  
 								)
 userSurname		= StringField	( 	u"nom" , 
-									validators = [ DataRequired(), Length(min=3, max=50) ], 
+									validators = [ 
+										DataRequired(			message=u"vous devez rentrer un nom pour valider"), 
+										Length(min=3, max=50, 	message=u"vous devez rentrer un nom d'au moins 3 caractères ") ], 
 									render_kw={'class': 'input'	, 'placeholder': u"votre nom *"  }  
 								)
 # userEmail_large	= EmailField	( 	u'user email'   , 
@@ -32,7 +47,10 @@ userSurname		= StringField	( 	u"nom" ,
 # 									render_kw={'class': 'input is-large', 'placeholder': u"votre email"  }  
 # 								)
 userEmail		= EmailField	( 	u"email"   , 
-									validators = [ DataRequired(), Length(min=7, max=50) ], 
+									validators = [ 
+										DataRequired(			message=u"email invalide"), 
+										Length(min=7, max=50) 
+									], 
 									render_kw={'class': 'input', 'placeholder': u"votre email *"  }  
 								)
 # userPassword_large 	= PasswordField	( 	u'user password', 
@@ -40,15 +58,19 @@ userEmail		= EmailField	( 	u"email"   ,
 # 									render_kw={'class': 'input is-large', 'placeholder': u"votre mot de passe"  }
 # 								) 
 userPassword 		= PasswordField	( 	u"mot de passe", 
-										validators = [ DataRequired() ], 
+										validators = [ 
+											DataRequired( 		message=u"vous devez rentrer un mot de passe" ),
+											Length(min=4, 		message=u"vous devez rentrer un mot de passe plus long") 
+											], 
 										render_kw={'class': 'input', 'placeholder': u"votre mot de passe *"  }
 									) 
 
 registerPassword 	= PasswordField ( 	u"votre mot de passe",
 										validators = [
-											DataRequired(),
-											EqualTo('userConfirmPassword', message=u"les deux mots de passe doivent être identiques"),
-											Length(min=4, max=100)
+											DataRequired(			message=u"vous devez rentrer un mot de passe" ),
+											EqualTo(				'userConfirmPassword', 
+																	message=u"les deux mots de passe doivent être identiques"),
+											Length(min=4, max=100, 	message=u"vous devez rentrer un mot de passe")
 										],
 										render_kw={'class': 'input', 'placeholder': u"tapez votre mot de passe *"}
 									)
@@ -62,8 +84,10 @@ userRememberMe 		= BooleanField  ( 	u"se souvenir de moi",
 									)
 
 userAcceptCGU 		= BooleanField  ( 	u"j'accepte les conditions générales d'utilisation", 
-										validators = [ DataRequired() ] ,
-										default = False, 	
+										validators = [ 
+											DataRequired(	message=u"merci de bien cocher la case") 
+											] ,
+										default 	= False, 	
 										render_kw = {'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
 									)
 
@@ -107,7 +131,7 @@ userPartnerStructure	= SelectField	( 	u'sélectionner votre structure',
 												}
 										)
 userOtherStructure		= StringField	(	u'le nom de votre structure' , 
-											validators = [ Optional(), Length(min=0, max=50) ], 
+											validators = [ Optional(), Length(min=0, max=75) ], 
 											render_kw={'class': 'input', 'placeholder': u"le nom de votre structure"  }  
 										)
 
@@ -140,15 +164,27 @@ userAuthLevel			= SelectField	( 	u"votre niveau d'autorisation",
 												}
 										)
 userPublicKeyAPI		= StringField	(	u'user Public Key for the API' , 
-											validators 	= [ Optional(), Length(min=0, max=50) ], 
+											validators 	= [ Optional(), Length(min=0, max=75) ], 
 											render_kw	= {'class': 'input', 'placeholder': u"votre token"  }  
 										)
 
 temp_pwd				= StringField	(	u'temporary password for user' , 
-											validators 	= [ Optional(), Length(min=0, max=50) ], 
+											validators 	= [ Optional(), Length(min=0, max=75) ], 
 											render_kw	= {'class': 'input', 'placeholder': u"votre token"  }  
 										)
 
+
+### JUST FOR ADMIN AND MODERATION 
+
+verified_as_partner		= SelectField	( 	u"un.e admin a vérifié que l'utilisateur peut passer en staff", 
+											validators 	= [ Optional() ],
+											default		= "no",
+											choices   	= CHOICES_VERIFY_USER_IS_PARTNER , 
+											render_kw 	= { 'class'      : 'input select',
+															'data-width' : "100%",
+															'description': u"utilisateur s'est enregistré comme faisant partie d'une structure partenaire"
+												}
+										)
 
 
 
@@ -260,6 +296,8 @@ class UserAdminSharedInfos(form.Form) :
 	userJoinCollective	= userJoinCollective
 	userMessage			= userMessage
 
+	# created_at			= created_at
+
 class UserAdminProfile(form.Form) : 
 
 	userProfile			= userProfile
@@ -276,7 +314,8 @@ class UserAdminInfos(UserAdminSharedInfos, UserAdminStructureInfos, UserAdminAut
 	"""
 	mixin form to display a user in admin  
 	"""
-	pass
+	verified_as_partner = verified_as_partner
+	# last_modified_at	= last_modified_at
 
 class MessagesFromLandingAdmin (UserAdminSharedInfos, UserAdminBasics) :
 	"""

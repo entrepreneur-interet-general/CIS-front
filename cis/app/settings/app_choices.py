@@ -7,12 +7,17 @@
 ### CHOICES ONLY FOR ADMIN
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-CHOICES_AUTH_LEVEL			= [	(u"visitor"			, u"visiteur"),
-								(u"user"			, u"utilisateur"),
-								(u"staff"			, u"membre du collectif"),
-								(u"admin"			, u"administrateur"),
-							]
+CHOICES_AUTH_LEVEL					= [	(u"visitor"			, u"visiteur"),
+										(u"user"			, u"utilisateur"),
+										(u"staff"			, u"membre du collectif"),
+										(u"admin"			, u"administrateur"),
+									]
 
+CHOICES_VERIFY_USER_IS_PARTNER 		= [ (u"yes" 	, "user is really a partner"),
+										(u"no"		, "user is not a partner"),
+										(u"VERIFY"	, "VERIFY if user is really a partner")
+									]
+CHOICES_VERIFY_USER_IS_PARTNER_LIST = [ i[0] for i in CHOICES_VERIFY_USER_IS_PARTNER ]
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### CHOICES FOR USERS

@@ -206,6 +206,24 @@ from forms import * # LoginForm, UserRegisterForm, UserUpdateForm, UserHistoryAl
 # db classes and functions
 from api import *
 
+# create fields in user documents if fields doesn't exit yet
+mongo_users.update_many({'verified_as_partner'	: {"$exists" : False}}, {"$set": {'verified_as_partner'	: 'no'}})
+mongo_users.update_many({'created_at'			: {"$exists" : False}}, {"$set": {'created_at'			: datetime.datetime.now() }})
+mongo_users.update_many({'last_modified_by'		: {"$exists" : False}}, {"$set": {'last_modified_by'	: "system" }})
+mongo_users.update_many({'login_last_at'		: {"$exists" : False}}, {"$set": {'login_last_at'		: datetime.datetime.now() }})
+mongo_users.update_many({'logins_total'			: {"$exists" : False}}, {"$set": {'logins_total'		: 1 }})
+
+# create fields in feedback documents if fields doesn't exit yet
+mongo_feedbacks.update_many({'created_at'		: {"$exists" : False}}, {"$set": {'created_at'			: datetime.datetime.today() }})
+
+
+### TEMPORARY FUNCTIONS FOR CLEANING WHILE DEVELOPPING
+### WARNING : COMMENT THIS BEFORE PUSHING TO PROD
+# mongo_users.update_many({}, {"$set": { "last_modified_by": "" } } )
+# mongo_users.update_many({}, {"$unset": { "userCreatedAt":1 } } )
+# mongo_users.update_many({}, {"$unset": { "userLastModifiedAt":1 } } )
+
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
