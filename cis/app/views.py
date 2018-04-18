@@ -47,6 +47,60 @@ def token_required(f):
 """
 
 
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### ERRORS HANDLERS
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+
+@app.errorhandler(404)
+def error404(error):
+
+	log_cis.error( "error - 404 : %s", error )
+
+	filters_choices = get_filters_choices()
+	form 			= PreRegisterForm()
+	
+	return render_template( "errors.html",
+							site_section		= "404",
+							error_msg			= u"la page demandée n'existe pas",
+							filters_choices		= filters_choices,
+							form				= form,
+							user_infos			= current_user.get_public_infos,
+						),404
+
+@app.errorhandler(500)
+def error500(error):
+
+	log_cis.error( "error - 500 : %s", error )
+
+	filters_choices = get_filters_choices()
+	form 			= PreRegisterForm()
+	
+	return render_template( "errors.html",
+							site_section		= "500",
+							error_msg			= u"erreur serveur",
+							filters_choices		= filters_choices,
+							form				= form,
+							user_infos			= current_user.get_public_infos,
+						),500
+
+@app.errorhandler(403)
+def error403(error):
+
+	log_cis.error( "error - 403 : %s", error )
+
+	filters_choices = get_filters_choices()
+	form 			= PreRegisterForm()
+	
+	return render_template( "errors.html",
+							site_section		= "403",
+							error_msg			= u"méthode non autorisé",
+							filters_choices		= filters_choices,
+							form				= form,
+							user_infos			= current_user.get_public_infos,
+						),403
+
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###

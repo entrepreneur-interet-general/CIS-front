@@ -1,0 +1,57 @@
+
+{% extends "main.html" %}
+
+{% block content %}
+
+
+
+
+	{# {% include "errors/404.html" %} #}
+	<style>
+
+	#lame-error {
+		background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Landing_illustration_lame_comment_reperer.png" ) }} ) ;
+		background-position : center center;
+		background-repeat	: no-repeat ;
+		background-size		: cover;
+		background-max-height : 600 px;
+	}
+
+	</style>
+
+	{# section charte #}
+	<section class="hero is-fullheight is-white">
+		
+		<div id="lame-error" class="hero-body skip-navbar">
+
+			<div class="container has-text-centered has-text-primary">
+
+
+				<h1 class="title ">
+					<i class="fas fa-exclamation-triangle"></i>
+				</h1>
+
+				<h1 class="title">
+					- erreur {{ site_section }} -
+					<br><br>
+					{{ error_msg }}
+				</h1>
+				
+				
+				<br>
+				<div class="content is-large has-text-centered">
+					<a class="button is-medium is-primary is-outlined" href="#landing-form" >
+						nous signaler un problème
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+	{% include "landing_slices/landing-lame-11-form-landing.html"%}
+	{# {% include "forms/form-preregister.html" %} #}
+
+
+{% endblock %}

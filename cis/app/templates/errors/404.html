@@ -1,0 +1,43 @@
+
+
+{% block body %}
+
+
+<style>
+
+#lame-error {
+	background-image	: url({{url_for ("static", filename="illustrations/landing_page_export_Landing_illustration_lame_comment_reperer.png" ) }} ) ;
+	background-position : center center;
+	background-repeat	: no-repeat ;
+	background-size		: cover;
+	background-max-height : 600 px;
+}
+
+</style>
+
+{# section charte #}
+<section class="hero is-fullheight is-white">
+	
+	<div id="lame-error" class="hero-body ">
+
+		<div class="container has-text-centered">
+
+
+			<h1 class="title">
+				<i class="fas fa-exclamation-triangle"></i>
+
+				<br><br>erreur 404
+				<br {{ error_msg }}
+			</h1>
+			
+			<p>
+				- en construction -
+			</p>
+
+		</div>
+	</div>
+
+</section>
+
+
+{% endblock %}
