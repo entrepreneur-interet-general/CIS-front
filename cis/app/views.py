@@ -511,9 +511,9 @@ class UserViewAdmin(ModelView):
 								'logins_total',
 								'userPartnerStructure', 'userOtherStructure','verified_as_partner',
 								'userAuthLevel', 
-								'userHaveProjects',
+								'userHaveProjects','userJoinCollective',
 								'userMessage',
-								'created_at', 
+								'created_at', 'login_last_at'
 							)
 
 	column_searchable_list 		= ( 'userName', 'userSurname', 'userEmail', 

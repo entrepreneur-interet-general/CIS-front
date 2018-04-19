@@ -37,7 +37,7 @@ def backup_mongo_collection(coll, filepath) :
 	backup_file = open(filepath, "w")
 	backup_file.write('[')
 	for document in cursor:
-		backup_file.write(json.dumps(document, default=json_util.default))
+		backup_file.write(json.dumps(document,indent=4, default=json_util.default))
 		backup_file.write(',')
 	backup_file.write(']')
 
