@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 
-from .. import app, PyMongo, log_cis, pformat
+from .. import app, PyMongo, log_cis, pformat, json, json_util
 
 
 # set as OK to run with app.context()
@@ -26,5 +26,21 @@ log_cis.debug(">>> MongoDB / mongoColls.keys() : \n %s", pformat( mongoColls.key
 
 log_cis.info(">>> MongoDB : mongo_users 		: \n %s", mongo_users  )
 log_cis.info(">>> MongoDB : mongo_feedbacks 	: \n %s", mongo_feedbacks  )
+
+
+def backup_mongo_collection(coll, filepath) :
+	"""
+	dumps all documents in collection in _backups_collections 
+	"""
+
+	cursor 		= coll.find({})
+	backup_file = open(filepath, "w")
+	backup_file.write('[')
+	for document in cursor:
+		backup_file.write(json.dumps(document, default=json_util.default))
+		backup_file.write(',')
+	backup_file.write(']')
+
+
 
 print 

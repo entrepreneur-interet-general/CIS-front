@@ -29,6 +29,7 @@ import	json
 from 	pprint import pprint, pformat
 from	bson import json_util
 from	bson.objectid import ObjectId
+from 	bson import json_util
 from	bson.json_util import dumps
 import	itertools
 import	unidecode
@@ -212,10 +213,11 @@ mongo_users.update_many({'created_at'			: {"$exists" : False}}, {"$set": {'creat
 mongo_users.update_many({'last_modified_by'		: {"$exists" : False}}, {"$set": {'last_modified_by'	: "system" }})
 mongo_users.update_many({'login_last_at'		: {"$exists" : False}}, {"$set": {'login_last_at'		: datetime.datetime.now() }})
 mongo_users.update_many({'logins_total'			: {"$exists" : False}}, {"$set": {'logins_total'		: 1 }})
+mongo_users.update_many({'follow_up_user'		: {"$exists" : False}}, {"$set": {'follow_up_user'		: "- suivi des échanges avec l'utilisateur -" }})
 
 # create fields in feedback documents if fields doesn't exit yet
-mongo_feedbacks.update_many({'created_at'		: {"$exists" : False}}, {"$set": {'created_at'			: datetime.datetime.today() }})
-
+mongo_feedbacks.update_many({'created_at'			: {"$exists" : False}}, {"$set": {'created_at'			: datetime.datetime.today() }})
+mongo_feedbacks.update_many({'follow_up_feedback'	: {"$exists" : False}}, {"$set": {'follow_up_feedback'	: "- suivi du message de l'utilisateur -" }})
 
 ### TEMPORARY FUNCTIONS FOR CLEANING WHILE DEVELOPPING
 ### WARNING : COMMENT THIS BEFORE PUSHING TO PROD
@@ -223,6 +225,13 @@ mongo_feedbacks.update_many({'created_at'		: {"$exists" : False}}, {"$set": {'cr
 # mongo_users.update_many({}, {"$unset": { "userCreatedAt":1 } } )
 # mongo_users.update_many({}, {"$unset": { "userLastModifiedAt":1 } } )
 
+
+# backup all collections when restart in ./_backups_collections
+cwd = os.getcwd()
+log_cis.debug('>>> BACKUP MONGO COLLECITONS : cwd : %s', cwd )
+
+backup_mongo_collection(mongo_users,	 cwd + "/app/_backups_collections/backup_coll_users.json")
+backup_mongo_collection(mongo_feedbacks, cwd + "/app/_backups_collections/backup_coll_feedbacks.json")
 
 
 

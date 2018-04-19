@@ -186,8 +186,13 @@ verified_as_partner		= SelectField	( 	u"un.e admin a vérifié que l'utilisateur
 												}
 										)
 
+follow_up_user			= TextAreaField	(  	u'Suivi utilisateur', 					
+												render_kw={'class' : 'textarea' , 'rows':'3', 'placeholder' : u"suivi des échanges avec l'utilisateur" }
+											)
 
-
+follow_up_feedback		= TextAreaField	(  	u'Suivi du message', 					
+												render_kw={'class' : 'textarea' , 'rows':'3', 'placeholder' : u"suivi du message de l'utilisateur" }
+											)
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -316,12 +321,13 @@ class UserAdminInfos(UserAdminSharedInfos, UserAdminStructureInfos, UserAdminAut
 	"""
 	verified_as_partner = verified_as_partner
 	# last_modified_at	= last_modified_at
+	follow_up_user		= follow_up_user
 
 class MessagesFromLandingAdmin (UserAdminSharedInfos, UserAdminBasics) :
 	"""
 	mixin form to display messages sent from landing
 	"""
 	userOtherStructure 		= userOtherStructure
-
+	follow_up_user			= follow_up_user
 
 

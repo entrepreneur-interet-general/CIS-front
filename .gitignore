@@ -15,6 +15,9 @@
 **/config_secret_vars_prod.py
 **/config.cfg
 
+### BACKUP FILES
+_backups_collections/*.json
+
 ### LOG FILES
 cis/app/logs/
 

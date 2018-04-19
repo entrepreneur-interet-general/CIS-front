@@ -58,6 +58,8 @@ class User( UserMixin, ModelMixin ):
 						login_last_at	= None,
 						logins_total	= 0,
 
+						follow_up_user	= "- suivi utilisateur -",
+
 						temp_pwd		= None,
 
 						):
@@ -110,6 +112,7 @@ class User( UserMixin, ModelMixin ):
 		### FOR MODERATION 
 
 		self.verified_as_partner 	= None
+		self.follow_up_user			= follow_up_user
 
 
 	@property

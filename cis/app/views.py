@@ -137,7 +137,7 @@ def index():
 
 		if form.validate_on_submit():
 
-
+			### ADD A NEW FEEDBACK
 			# create preregister data and store it in MongoDB
 			new_preregister 	= PreRegister()
 			new_preregister.populate_from_form( form=form )
@@ -146,7 +146,7 @@ def index():
 			# check if email/user already exists in users db
 			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
 			
-
+			### ADD A NEW USER
 			# create a potential user if doesn't already exist in db
 			if not existing_user :
 				
@@ -156,7 +156,8 @@ def index():
 				
 				# populate user class
 				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
-				new_user.populate_from_form( form=form )
+				new_user.populate_from_form(form=form)
+				new_user.add_created_at()
 				new_user.check_if_user_structure_is_partner()
 
 				# save user in db as visitor
