@@ -216,6 +216,7 @@ mongo_users.update_many({'logins_total'			: {"$exists" : False}}, {"$set": {'log
 mongo_users.update_many({'follow_up_user'		: {"$exists" : False}}, {"$set": {'follow_up_user'		: "- suivi des échanges avec l'utilisateur -" }})
 
 # create fields in feedback documents if fields doesn't exit yet
+# note : files created are ignored by .gitignore
 mongo_feedbacks.update_many({'created_at'			: {"$exists" : False}}, {"$set": {'created_at'			: datetime.datetime.today() }})
 mongo_feedbacks.update_many({'follow_up_feedback'	: {"$exists" : False}}, {"$set": {'follow_up_feedback'	: "- suivi du message de l'utilisateur -" }})
 
