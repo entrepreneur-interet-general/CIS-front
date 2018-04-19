@@ -16,7 +16,7 @@
 **/config.cfg
 
 ### BACKUP FILES
-_backups_collections/*.json
+cis/app/_backups_collections/*.json
 
 ### LOG FILES
 cis/app/logs/
