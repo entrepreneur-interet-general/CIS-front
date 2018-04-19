@@ -231,8 +231,9 @@ mongo_feedbacks.update_many({'follow_up_feedback'	: {"$exists" : False}}, {"$set
 cwd = os.getcwd()
 log_cis.debug('>>> BACKUP MONGO COLLECITONS : cwd : %s', cwd )
 
-backup_mongo_collection(mongo_users,	 cwd + "/app/_backups_collections/backup_coll_users.json")
-backup_mongo_collection(mongo_feedbacks, cwd + "/app/_backups_collections/backup_coll_feedbacks.json")
+reboot_datetime = datetime.datetime.now().strftime("%Y-%m-%d-h%H-m%M-s%S")
+backup_mongo_collection(mongo_users,	 cwd + "/app/_backups_collections/backup_coll_users-"+reboot_datetime +".json")
+backup_mongo_collection(mongo_feedbacks, cwd + "/app/_backups_collections/backup_coll_feedbacks-"+reboot_datetime +".json")
 
 
 
