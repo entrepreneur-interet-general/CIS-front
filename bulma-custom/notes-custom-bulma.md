@@ -23,3 +23,6 @@ or :
 #### create custom css file with sass / from within bulma-custom folder
 - `$ sass public/styles/bulma-custom.scss public/styles/bulma-custom.css`
 
+or 
+- `$ sass public/styles/bulma-custom.scss ../cis/app/static/css/bulma-custom.css`
+
