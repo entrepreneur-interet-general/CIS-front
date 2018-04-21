@@ -61,6 +61,12 @@ def error404(error):
 	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
+
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
+
 							site_section		= "404",
 							error_msg			= u"la page demandée n'existe pas",
 							filters_choices		= filters_choices,
@@ -77,6 +83,12 @@ def error500(error):
 	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
+
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
+
 							site_section		= "500",
 							error_msg			= u"erreur serveur",
 							filters_choices		= filters_choices,
@@ -93,6 +105,12 @@ def error403(error):
 	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
+
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
+							
 							site_section		= "403",
 							error_msg			= u"méthode non autorisé",
 							filters_choices		= filters_choices,
@@ -128,7 +146,7 @@ def index():
 		current_session_uid = None
 
 
-	if request.method == 'POST' : #and form.validate_on_submit():
+	if request.method == 'POST' :
 		
 		### for debugging purposes
 		for f_field in form : 
@@ -141,6 +159,7 @@ def index():
 			# create preregister data and store it in MongoDB
 			new_preregister 	= PreRegister()
 			new_preregister.populate_from_form( form=form )
+			new_preregister.add_created_at()
 			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
 
 			# check if email/user already exists in users db
@@ -181,6 +200,11 @@ def index():
 	log_cis.debug("current_user : \n %s ", pformat(current_user.__dict__))
 
 	return render_template( "index.html",
+							
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
 
 							site_section		= "home",
 							filters_choices		= filters_choices,
@@ -215,6 +239,11 @@ def search():
 
 	return render_template( "index.html",
 
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
+							
 							site_section		= "search",
 							filters_choices		= filters_choices,
 							user_infos			= current_user.get_public_infos
@@ -315,6 +344,11 @@ def login():
 	elif request.method == 'GET' : 
 		
 		return render_template(	'login.html', 
+
+								config_name		= config_name, # prod or default...
+								app_metas		= app_metas, 
+								language		= "fr" ,
+								languages_dict	= app_languages_dict ,
 
 								site_section	= 'login', 
 								form			= form,
@@ -420,6 +454,11 @@ def register():
 	elif request.method == 'GET':
 		
 		return render_template(	'register.html', 
+
+								config_name		= config_name, # prod or default...
+								app_metas		= app_metas, 
+								language		= "fr" ,
+								languages_dict	= app_languages_dict ,
 
 								site_section 	= "register",
 								form			= form,

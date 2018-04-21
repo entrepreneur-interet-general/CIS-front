@@ -7,20 +7,22 @@ console.log("::: cis-ajax-call.js is loaded") ;
 
 // initiate and wrap all query fields in a variable
 
+var meta_token = $('meta[name="user_token"]').attr("content") ;
+console.log("::: current token in meta : ", meta_token ) ; 
+
+
 var q_wrapper		= {
 
-	token				: "cis_front_token",
+	token				: meta_token, // "cis_front_token",
 
 	search_for 			: [] , // aka #q_search_for
 
 	search_in			: [],
 	spider_id			: [ "all" ],
 
-	search_in_domains 	: [] ,
-	search_in_places 	: [] , 
-	search_in_partners 	: [] ,
-	search_in_methods 	: [] ,
-	search_in_publics 	: [] ,
+	search_in_tags 		: [] ,
+	search_in_adress 	: [] , 
+	search_in_spiders 	: [] ,
 
 	added_by			: null,
 	all_results			: false,
@@ -89,7 +91,13 @@ function build_q_slug ( q_wrapper ) {
 var url_dev		= 'http://localhost:8000/api/data' ; 			// query local openscraper instance
 var url_prod	= 'http://www.cis-openscraper.com/api/data' ;	// query deployed openscraper instance
 
+// choose api url depending on config_name
 var url_current ;
+if (meta_token == "production") {
+	url_current = url_prod ;
+} else {
+	url_current = url_dev ;
+};
 
 // MAIN AJAX FUNCTION AS PROMISE
 function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
@@ -104,8 +112,8 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 		crossDomain 	: true,
 		crossOrigin		: true, 
 
-		//// WARNING !!! SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
-		url 			: url_prod ,
+		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
+		url 			: url_current , // url_prod - url_dev
 
 		data			: data_q_slug ,
 		

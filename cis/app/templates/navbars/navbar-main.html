@@ -6,7 +6,9 @@
 	<div class="navbar-brand">
 
 		{# logo brand #}
-		<a class="navbar-item" href="/">
+		<a 	id="logo_home"
+			class="navbar-item" 
+			href="/">
 			<img id="navbar-logo" src='{{url_for ("static", filename="logos/CIS/CIS_beta_logo_LD.png" ) }}' alt="Logo">
 		</a>
 
@@ -77,7 +79,9 @@
 					{% if user_infos.is_authenticated == False %}
 
 						<div class="navbar-item">
-							<a class="button is-primary is-outlined" href="/login">
+							<a 	id="btn_login" 
+								class="button is-primary is-outlined" 
+								href="/login">
 								<span>Connectez-vous</span>
 							</a>
 						</div>
@@ -101,7 +105,9 @@
 
 						<div class="navbar-item" >
 							{# <a class="modal-button" data-target="modal_legal" aria-haspopup="true">  #}
-							<a class="button is-text" href="mailto:contact@carrefourdesinnovationssociales.fr">
+							<a 	id="btn_mailto_navbar"
+								class="button is-text" 
+								href="mailto:contact@carrefourdesinnovationssociales.fr">
 								<span>Contact</span>
 							</a>
 						</div>
@@ -128,6 +134,7 @@
 						</a>
 
 						<a 	class="navbar-item tooltip is-tooltip-bottom" 
+							id="btn_logout"
 							data-tooltip="se déconnecter"
 							href="/logout">
 							<span class="icon has-text-grey">

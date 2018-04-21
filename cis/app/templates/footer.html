@@ -81,24 +81,35 @@
 
 				<div class="column is-4">
 
+
+					{# newsletter #}
 					<h3>
+						<strong class="has-text-primary">Newsletter</strong>
+					</h3>
+					{% include "elements/newsletter-mailchimp.html" %}
+
+
+					{# contact us #}
+					<h3 style="margin-top: 0.5em">
 						<strong class="has-text-primary">Contactez-nous</strong>
 					</h3>
-
-					<br>
-
 					<p>
 						Pour toute question, écrivez-nous à : <br>
-						<a href="mailto:contact@carrefourdesinnovationssociales.fr">contact@carrefourdesinnovationssociales.fr</a>
+						<a 	id="btn_mailto_footer" 
+							href="mailto:contact@carrefourdesinnovationssociales.fr">
+							contact@carrefourdesinnovationssociales.fr
+						</a>
 					</p>
 
-					<h3>
+					{# social networks #}
+					<h3 style="margin-top: 1em">
 						<strong class="has-text-primary"> Suivez-nous </strong>
 					</h3>
-					
 					<div class="content is-medium">
 						
-						<a class="button is-primary" href="https://www.facebook.com/TouteslesInnoSo/" >
+						<a 	id="btn_cis_facebook"
+							class="button is-primary" 
+							href="https://www.facebook.com/TouteslesInnoSo/" >
 							<span class="icon">
 								<i class="fab fa-lg fa-facebook"></i>
 							</span>
@@ -106,13 +117,17 @@
 						
 						&nbsp;&nbsp;&nbsp;
 
-						<a class="button is-primary" href="https://twitter.com/touteslesinnoso" >
+						<a 	id="btn_cis_twitter"
+							class="button is-primary" 
+							href="https://twitter.com/touteslesinnoso" >
 							<span class="icon ">
 								<i class="fab fa-lg fa-twitter"></i>
 							</span>
 						</a>
 						
 					</div>
+
+					
 
 				</div>
 

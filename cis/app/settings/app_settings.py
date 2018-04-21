@@ -15,6 +15,8 @@ app_metas = {
 	"description"	: u"Le Carrefour des innovations sociales regroupe les innovations sociales recensées et actualisées par des partenaires experts. ",
 	"authors"		: u"Julien Paris - jpylab.com",
 	"licence"		: u"MIT",
+
+	"refresh_page"	: 1800, # refresh/reload page every n seconds
 	
 	"metas"			: u"""
 		ESS,économie sociale et solidaire,innovation sociale,
@@ -33,3 +35,4 @@ app_metas = {
 		u'default'		: "TO DO"      ### for development metrics / mixpanel account : jparis.py
 		},
 }
+

@@ -34,6 +34,8 @@ try :
 	os.environ["WTF_CSRF_SECRET_KEY"]	= WTF_CSRF_SECRET_KEY
 	os.environ["WTF_CSRF_ADMIN_KEY"]	= WTF_CSRF_ADMIN_KEY
 
+	os.environ["JWT_SECRET_KEY"]		= JWT_SECRET_KEY
+
 	os.environ["DOMAIN_NAME"]			= DOMAIN_NAME
 	os.environ["DOMAIN_ROOT"]			= DOMAIN_ROOT
 	os.environ["DOMAIN_PORT"]			= DOMAIN_PORT
@@ -106,6 +108,9 @@ class Config(object):
 	WTF_CSRF_SECRET_KEY	= os.getenv("WTF_CSRF_SECRET_KEY")
 	WTF_CSRF_ADMIN_KEY	= os.getenv("WTF_CSRF_ADMIN_KEY")
 
+	""" JWT """
+	JWT_SECRET_KEY		= os.getenv("JWT_SECRET_KEY")
+	
 	""" MONGODB """
 	MONGO_DBNAME			=  os.getenv("MONGODB_DB")
 	MONGO_URI				=  os.getenv("MONGODB_URI")

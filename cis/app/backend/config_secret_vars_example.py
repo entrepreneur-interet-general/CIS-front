@@ -9,6 +9,9 @@ SECRET_KEY			= "app_very_secret_key"
 WTF_CSRF_SECRET_KEY = "a_super_wtf_secret_key"
 WTF_CSRF_ADMIN_KEY	= "a_mega_super_key_for_admin_views" 
 
+""" SHARED JWT SECRET KEY : this key must be shared with openscraper and solidata """
+JWT_SECRET_KEY		= "a_key_shared_with_front_and_openscraper_and_solidata"
+
 """ HOST """
 DOMAIN_ROOT			= "localhost" 
 DOMAIN_PORT			= "8100"
