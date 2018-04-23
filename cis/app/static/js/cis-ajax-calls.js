@@ -7,9 +7,20 @@ console.log("::: cis-ajax-call.js is loaded") ;
 
 // initiate and wrap all query fields in a variable
 
-var meta_token = $('meta[name="user_token"]').attr("content") ;
+var meta_config_name 	= $('meta[name="config_name"]').attr("content") ;
+console.log("::: current config_name in meta : ", meta_config_name ) ; 
+
+var meta_token 			= $('meta[name="user_token"]').attr("content") ;
 console.log("::: current token in meta : ", meta_token ) ; 
 
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+// CUSTOM FUNCTIONS TO UPDATE / BUILD QUERY SLUG (AKA data_q_slug for AJAX)
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+// here just for debug usage and debug function 'build_q_slug'
 
 var q_wrapper		= {
 
@@ -17,12 +28,12 @@ var q_wrapper		= {
 
 	search_for 			: [] , // aka #q_search_for
 
-	search_in			: [],
+	// search_in			: [],
 	spider_id			: [ "all" ],
 
 	search_in_tags 		: [] ,
-	search_in_adress 	: [] , 
-	search_in_spiders 	: [] ,
+	search_in_adress 	: [] ,
+
 
 	added_by			: null,
 	all_results			: false,
@@ -33,11 +44,6 @@ var q_wrapper		= {
 
 };
 
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
-// CUSTOM FUNCTIONS TO UPDATE / BUILD QUERY SLUG (AKA data_q_slug for AJAX)
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
 // TO DO :
 // function to transform object into a string
@@ -92,12 +98,13 @@ var url_dev		= 'http://localhost:8000/api/data' ; 			// query local openscraper 
 var url_prod	= 'http://www.cis-openscraper.com/api/data' ;	// query deployed openscraper instance
 
 // choose api url depending on config_name
-var url_current ;
-if (meta_token == "production") {
-	url_current = url_prod ;
+var api_url_current ;
+if (meta_config_name == "production") {
+	api_url_current = url_prod ;
 } else {
-	url_current = url_dev ;
+	api_url_current = url_dev ;
 };
+console.log("api_url_current")
 
 // MAIN AJAX FUNCTION AS PROMISE
 function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
@@ -113,7 +120,7 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
 		crossOrigin		: true, 
 
 		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
-		url 			: url_current , // url_prod - url_dev
+		url 			: api_url_current , // url_prod - url_dev
 
 		data			: data_q_slug ,
 		

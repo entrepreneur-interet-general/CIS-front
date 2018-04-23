@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////
 // METRICS - GLOBAL
 
-// MP METRICS - LOGIN
+// MP METRICS - LOGO HOME
 $("#logo_home").on('click', function() {
 	// console.log("send metric - logo_home") ; 
 	mixpanel.track("logo_home");
@@ -12,25 +12,26 @@ $("#logo_home").on('click', function() {
 // MP METRICS - LOGIN
 $("#btn_login").on('click', function() {
 	// console.log("send metric - login") ; 
-	mixpanel.track("login");
+	mixpanel.track("login login");
 });
+
 // MP METRICS - LOGIN LANDING
 $("#btn_login_landing").on('click', function() {
 	// console.log("send metric - login_landing") ; 
-	mixpanel.track("login_landing");
+	mixpanel.track("login login_landing");
 });
 
 
 // MP METRICS - REGISTER
 $("#btn_register").on('click', function() {
 	// console.log("send metric - register") ; 
-	mixpanel.track("register");
+	mixpanel.track("register register");
 });
 
 // MP METRICS - REGISTER LANDING
 $("#btn_register_landing").on('click', function() {
 	// console.log("send metric - register_landing") ; 
-	mixpanel.track("register_landing");
+	mixpanel.track("register register_landing");
 });
 
 
@@ -50,6 +51,12 @@ $("#btn_mailto_navbar").on('click', function() {
 $("#btn_mailto_footer").on('click', function() {
 	// console.log("send metric - mailto_footer") ; 
 	mixpanel.track("mailto footer");
+});
+
+// MP METRICS - NEWSLETTER
+$("#mc-embedded-subscribe").on('click', function() {
+	// console.log("send metric - newsletter") ; 
+	mixpanel.track("mailto newsletter");
 });
 
 // MP METRICS - CIS_FACEBOOK
@@ -73,3 +80,6 @@ $("#btn_shuffle").on('click', function() {
 	// console.log("send metric - shuffle") ; 
 	mixpanel.track("search shuffle");
 });
+
+// MP METRICS - SEARCH INPUT - ENTER
+// TO DO 

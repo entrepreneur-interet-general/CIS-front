@@ -3,14 +3,11 @@
 // $( document ).ready(function() {
 
 
-
-
-
 	console.log("::: cis-vue-controllers.js is loaded") ;
 
 	
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
-	// DATA
+	// DATA UTILS
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 
@@ -21,7 +18,7 @@
 
 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
-	// VUE.JS FUNCTIONS
+	// VUE.JS GLOBAL VARS AND UTILS
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 
@@ -33,8 +30,22 @@
 	var custom_delimiters =  ['[[',']]'] 
 	// Vue.config.delimiters =  ['[[',']]'] ;
 
-
 	var spiders_infos ;
+
+	
+	function getUserToken() {
+		
+		// get token from meta in html 
+
+		var meta_token = $('meta[name="user_token"]').attr("content") ;
+		console.log("::: current token in meta : ", meta_token ) ; 
+		
+		return meta_token
+	}
+
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
+	// VUE.JS FUNCTIONS
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 /*	///// COMPONENTS ---> MIGRATED IN cis-vue-components.js
 	// - - - - - - - - - - - - - // 
@@ -133,6 +144,8 @@
 
 
 
+
+	
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// CONTROLLERS 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
@@ -142,9 +155,19 @@
 
 	// declare default vars here 
 	var search_string   	= "" ;
-	var search_tags			= [] ;
+
+	// var search_tags			= [] ;
+	var search_in_domains 	= [] ;
+	var search_in_location 	= [] ;
+	var search_in_partners 	= [] ;
+	var search_in_publics 	= [] ;
+	var search_in_methods 	= [] ;
+
 	var results_per_page 	= 40 ;
-	var token_openscraper	= "call_from_cis_front";		
+
+	// var token_openscraper	= "call_from_cis_front" ;		
+	// var token_openscraper	= meta_token ;		
+	var token_openscraper	= getUserToken() ;		
 
 	var results 			= {} ;
 	var page_n				= 1 ;
@@ -199,7 +222,7 @@
 			d_count_stop  	: count_stop, 
 			d_results_per_page	: results_per_page,
 
-			d_tags			: search_tags,
+			// d_tags			: search_tags,
 			// d_as_list 	: [] ,
 
 		},
@@ -357,6 +380,13 @@
 			q_token				: token_openscraper,
 
 			q_search_string 	: search_string,
+
+			q_search_in_domains 	: search_in_domains,
+			q_search_in_location 	: search_in_location,
+			q_search_in_partners 	: search_in_partners,
+			q_search_in_publics 	: search_in_publics,
+			q_search_in_methods 	: search_in_methods,
+
 			q_results_per_page 	: results_per_page,
 			q_page_n			: page_n,
 
@@ -379,6 +409,9 @@
 			v_queryOpenScraper: function(reset_page_n=false) {
 				
 				console.log("- v_navbar_search_input / call_ajax ... ") ; 
+				
+				// TO DO 
+				// show loading page css
 
 				console.log("- v_navbar_search_input / reset_page_n : ", reset_page_n) ; 
 				if (reset_page_n == true ){
@@ -394,13 +427,22 @@
 				v_results.d_results_per_page 	= this.q_results_per_page ;
 				v_results.d_page_n 				= this.q_page_n ;
 
-				// TO DO CLEANER
+				// TO DO CLEANER --> WRITE A METHOD !!
 				// generate slug
 				var q_slug = 	 "page_n=" + this.q_page_n
 								+ "&token=" + this.q_token
 								+ "&shuffle_seed=" + this.q_shuffle_seed 
 								+ "&search_for=" + this.q_search_string 
-								+ "&results_per_page=" + this.q_results_per_page;
+								+ "&results_per_page=" + this.q_results_per_page 
+								
+								// TO DO 
+								// + "&spider_id=" + this.q_search_in_partners
+								// + "&search_in_tags=" + this.q_search_in_methods
+								// + "&search_in_tags=" + this.q_search_in_domains
+								// + "&search_in_tags=" + this.q_search_in_locations
+								// + "&search_in_tags=" + this.q_search_in_publics
+							;
+
 				console.log("- v_navbar_search_input -M- / before .then() / q_slug : ", q_slug ) ;
 				
 				// setTimeout for debugging ...
@@ -417,6 +459,9 @@
 							this.q_message = "json received";
 							// this.q_results	= q_data ; 
 							
+							// TO DO 
+							// hide loading page css
+
 							// pass data to other Vue instance
 							console.log("- v_navbar_search_input -M- / after then() / passing q_data to v_results.d_results ... ") ;
 							v_results.d_results 			= q_data ;

@@ -13,15 +13,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		
 		{# CUSTOM APP META DATA #}
-		<meta name="keywords" 		content="{{ app_metas.metas }}">
+		<meta name="keywords" 		content="{{ app_metas.keywords }}">
 		<meta name="author"			content="{{ app_metas.authors }}">
 		<meta name="description" 	content="{{ app_metas.description }}">
+		
 		<meta name="config_name" 	content="{{ config_name }}">
 
 		<meta name="user_token" 	content="test_token">
 
 
-		{# force refresh every 1800 seconds = 30 minutes #}
+		{# force refresh (for instance : every 1800 seconds = 30 minutes ) #}
 		{# cf trick here : https://stackoverflow.com/questions/1922910/force-browser-to-clear-cache/9516207 #}
 		<meta http-equiv="refresh" content="{{ app_metas.refresh_page }}">
 		
@@ -63,12 +64,14 @@
 		
 
 		{# VUE.JS #}
-		<!-- development version, includes helpful console warnings -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		{# 
-		<!-- production version, optimized for size and speed -->
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script> 
-		#}
+		{% if config_name == "production" %}
+			<!-- production version, optimized for size and speed -->
+			<script src="https://cdn.jsdelivr.net/npm/vue"></script> 
+		{% else %}
+			<!-- development version, includes helpful console warnings -->
+			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		{% endif %}
+
 
 		{# RECAPTCHA - SECURITY #}
 

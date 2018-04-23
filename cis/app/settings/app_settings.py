@@ -18,12 +18,14 @@ app_metas = {
 
 	"refresh_page"	: 1800, # refresh/reload page every n seconds
 	
-	"metas"			: u"""
+	"keywords"		: u"""
 		ESS,économie sociale et solidaire,innovation sociale,
-		dataviz,data visualisation,data visualization,graph,SIG,France,
-		commons,digital commons,
-		opensource,open source,open data,creative commons,github,
-		JS,javascript,python,flask,HTML,CSS,JSON,bulma
+		dataviz,data visualisation,data visualization,SIG,
+		France,
+		commons,digital commons,API,OpenScraper,Open Scraper,
+		opensource,open source,open data,opendata,MIT licence,github,
+		JS,javascript,python,flask,HTML,CSS,JSON,bulma,Vue.js,
+		Etalab,CGET,Fonda,
 		""",
 	
 	"crisp_id"		: {
