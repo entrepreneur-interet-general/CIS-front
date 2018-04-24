@@ -39,6 +39,7 @@ from	functools import wraps
 import	urllib2
 import	uuid
 
+import inspect
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### SET LOGGER 
@@ -171,6 +172,8 @@ login_manager.login_view 	= 'login'
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### EMAILING IMPORTS 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+### TO DO : password forgotten 
 
 from	flask_mail import Mail, Message
 

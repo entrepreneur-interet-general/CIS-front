@@ -152,8 +152,13 @@
 
 	{# note : hack refresh cache adding this : ?version=0.0.1 after brackets #}
 
-	<!-- CUSTOM JS FILTERS TOGGLING -->
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-tags-nomenclature.js') }}"></script>
+	<!-- CUSTOM JS FILTERS VARS / TEMPORARY WHILE SOLIDATA IN DEVELOPMENT -->
+	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-getjson-nomenclature.js') }}"></script> #}
+	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-tags-nomenclature.js') }}"></script> #}
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NOMENCLATURE_CIS_DICT.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS_DICT.js') }}"></script>
 
 
 	<!-- CUSTOM UTIL JS FOR BULMA -->

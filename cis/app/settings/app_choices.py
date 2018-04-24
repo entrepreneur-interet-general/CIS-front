@@ -23,16 +23,16 @@ CHOICES_VERIFY_USER_IS_PARTNER_LIST = [ i[0] for i in CHOICES_VERIFY_USER_IS_PAR
 ### CHOICES FOR USERS
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-CHOICES_DATA_TYPES			= [	(u"data_company"	, u"données sur votre structure"),
-								(u"data_network"	, u"données sur vos réseaux"  ),
-								(u"data_activity"	, u"données sur une de vos activités"),
-								(u"data_people"		, u"données sur une des personnes travaillant dans votre structure"),
-							]
+# CHOICES_DATA_TYPES			= [	(u"data_company"	, u"données sur votre structure"),
+# 								(u"data_network"	, u"données sur vos réseaux"  ),
+# 								(u"data_activity"	, u"données sur une de vos activités"),
+# 								(u"data_people"		, u"données sur une des personnes travaillant dans votre structure"),
+# 							]
 
-CHOICES_NETWORKS			= [	(u"network_up"		, u"structures auxquelles j'adhère"),
-								(u"network_flat"	, u"structures avec qui je travaille"),
-								(u"network_down"	, u"structures de mon propre réseau"),
-							]
+# CHOICES_NETWORKS			= [	(u"network_up"		, u"structures auxquelles j'adhère"),
+# 								(u"network_flat"	, u"structures avec qui je travaille"),
+# 								(u"network_down"	, u"structures de mon propre réseau"),
+# 							]
 
 CHOICES_PROFILES			= [	(u""				, u" - sélectionnez votre profil de métier-"),
 
@@ -139,33 +139,6 @@ CHOICES_STRUCTURES			= [ (u""					, u" - sélectionnez votre structure -"),
 ### TO DO LATER : 
 ### THOSE TAGS AND RAW TAGS FROM ITEMS WILL BE HOMOGENISED
 ### BY CUSTOM THIRD PARTY APP 'SOLIDATA', AS A PROXY BETWEEN OPENSCRAPER AND CIS_FRONT)
-CHOICES_DOMAINS 			= [
-								(u"cadre_vie"		, u"Cadre de vie"),
-								(u"dev_dur"			, u"Développement durable"),
-								(u"dev_eco"			, u"Développement économique"),
-								(u"habitat"			, u"Habitat"),
-								(u"inclusio "		, u"Inclusion"),
-								(u"lien_social"		, u"Lien social"),
-								(u"sante_sport"		, u"Santé et sport"),
-								(u"travail"			, u"Travail"),
-							]
 
-
-CHOICES_METHODS 			= [
-								(u"cooperate"		, u"Coopération"),
-								(u"evaluate"		, u"Evaluation"),
-								(u"govern"			, u"Gouvernance"),
-								(u"philantropy"		, u"Mécénat"),
-								(u"mediate"			, u"Médiation"),
-								(u"participate"		, u"Participation"),
-								(u"research"		, u"Recherche"),
-							]
-
-CHOICES_PUBLICS 			= [
-								(u""				, u"Tous publics"),
-								(u"handicap"		, u"Handicap"),
-								(u"youth"			, u"Jeunesse"),
-								(u"senior"			, u"Seniors"),
-							]
 
 

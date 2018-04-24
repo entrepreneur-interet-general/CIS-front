@@ -223,7 +223,7 @@ def search():
 
 	log_cis.debug("entering search page")
 
-	filters_choices = get_filters_choices()
+	filters_choices = get_filters_choices() 	### function inside : utils.py/__init__.py
 	# filters_choices = [
 	# 					{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
 	# 					{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},

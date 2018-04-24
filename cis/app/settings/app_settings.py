@@ -16,7 +16,7 @@ app_metas = {
 	"authors"		: u"Julien Paris - jpylab.com",
 	"licence"		: u"MIT",
 
-	"refresh_page"	: 1800, # refresh/reload page every n seconds
+	"refresh_page"	: 1800, # refresh/reload page every n seconds : f.e. 1800 s == every 30 min
 	
 	"keywords"		: u"""
 		ESS,économie sociale et solidaire,innovation sociale,

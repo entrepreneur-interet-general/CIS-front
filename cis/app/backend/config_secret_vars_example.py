@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 
 """
 main config file --> to keep secret 

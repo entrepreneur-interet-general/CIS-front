@@ -142,7 +142,11 @@
 */
 
 
-
+	console.log("::: tags var initialisation ... ")
+	console.log("::: CATEGORIES_CIS_DICT : ", CATEGORIES_CIS_DICT )
+	console.log("::: NOMENCLATURE_CIS_DICT : ", NOMENCLATURE_CIS_DICT)
+	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS : ", NORMALIZATION_TAGS_SOURCES_CIS)
+	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT : ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
 
 
 	

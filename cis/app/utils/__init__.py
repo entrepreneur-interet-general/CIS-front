@@ -17,11 +17,29 @@ def pwd_generator( size=16, chars=string.ascii_uppercase + string.digits):
 def get_filters_choices() : 
 
 	filters_choices = [
-						{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
-						{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},
-						{"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS}	},
-						{"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS}	},
-						{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
+						{ "domains" 	: {	
+											"fullname"	: u"Domaines",		
+											"choices"	: CHOICES_DOMAINS ,
+										} 	
+						},
+						{ "geoloc"		: {	
+											"fullname"	: u"Localisations",	
+											"choices"	: [] ,
+										} 				
+						},
+						{ "partners"	: {	"fullname" 	: u"Sourceurs",		
+											"choices"	: CHOICES_PARTNERS , 
+										}	
+						},
+						{ "publics"		: {	"fullname"	: u"Publics",		
+											"choices"	: CHOICES_PUBLICS ,
+										}	
+						},
+						{ "methods"		: {	
+											"fullname"	: u"Méthodes",		
+											"choices"	: CHOICES_METHODS , 
+										}	
+						},
 					]
 
 	return filters_choices
