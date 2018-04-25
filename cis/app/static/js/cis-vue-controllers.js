@@ -323,12 +323,14 @@
 
 
 	console.log("::: tags var initialisation ... ")
-	console.log("::: CHOICES_FILTERS_VUE : ", CHOICES_FILTERS_VUE )
-	console.log("::: CATEGORIES_CIS_DICT 	  : ", CATEGORIES_CIS_DICT )
-	console.log("::: CATEGORIES_CIS_DICT_FLAT : ", CATEGORIES_CIS_DICT_FLAT)
-	console.log("::: NOMENCLATURE_CIS_DICT : ", NOMENCLATURE_CIS_DICT)
-	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS : ", NORMALIZATION_TAGS_SOURCES_CIS)
-	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT : ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
+	console.log("::: CHOICES_FILTERS_TAGS 		: ", CHOICES_FILTERS_TAGS )
+	console.log("::: CHOICES_FILTERS_PARTNERS 	: ", CHOICES_FILTERS_PARTNERS )
+	console.log("::: CHOICES_FILTERS_GEOLOC 	: ", CHOICES_FILTERS_GEOLOC )
+	// console.log("::: CATEGORIES_CIS_DICT 	  	: ", CATEGORIES_CIS_DICT )
+	console.log("::: CATEGORIES_CIS_DICT_FLAT 	: ", CATEGORIES_CIS_DICT_FLAT)
+	// console.log("::: NOMENCLATURE_CIS_DICT 		: ", NOMENCLATURE_CIS_DICT)
+	// console.log("::: NORMALIZATION_TAGS_SOURCES_CIS 		: ", NORMALIZATION_TAGS_SOURCES_CIS)
+	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT 	: ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
 
 
 	// - - - - - - - - - - - - - //
@@ -344,15 +346,17 @@
 			// flask-jinja |OR| ajax request to distant API in the future (TO DO)
 			// --> as vue data vars..
 			
-			f_filters			: CHOICES_FILTERS_VUE, 		// 
+			f_filters_tags		: CHOICES_FILTERS_TAGS, 		
 			f_categories 		: CATEGORIES_CIS_DICT_FLAT,		// codes for every filters
 			f_normalization		: NORMALIZATION_TAGS_SOURCES_CIS_DICT, 
 			
 			f_checked			: [],
 
-			f_checked_as_code_tags	: [], 	//
-			f_checked_as_src_tags 	: [], 	//
+			f_checked_as_code_tags	: [], 
+			f_checked_as_src_tags 	: [], 
 
+			f_filters_partners	: CHOICES_FILTERS_PARTNERS, 
+			f_checked_partners	: [],
 		},
 
 		created		: function() {
@@ -361,28 +365,37 @@
 		},
 
 		methods		: {
+
+			f_update_checked_spider_id : function () {
+				console.log("- v_navbar_search_input -M- f_update_checked_as_spider_id ... ") ; 
+				v_navbar_search_input.q_search_in_spiders = this.f_checked_partners ;
+			},
+
 			f_update_checked_as_tags_codes : function() {
 				// 
 				console.log("- v_navbar_search_input -M- f_update_checked_as_tags_codes ... ") ; 
 				var f_categories 			= this.f_categories ;
+				var f_normalization 		= this.f_normalization ;
+
 				var f_checked_as_code_tags 	= this.f_checked_as_code_tags = [] ;
 				var f_checked_as_src_tags 	= this.f_checked_as_src_tags = [] ;
-				var f_normalization 		= this.f_normalization ;
 
 				this.f_checked.forEach( function( filter ) {
 					
 					// console.log("- v_navbar_search_input -M- filter : ", filter) ; 
 
-					// get corresponding_code for each filter && f_categories
-					var corresponding_code = f_categories[filter] ;
+					// get corresponding_codes for each filter && f_categories
+					// E.G : filter     --> f_categories[filter]
+					// E.G : "evaluate" --> ["EVA"]
+					var corresponding_codes = f_categories[filter] ;
 					
 					// push it to f_checked_as_code_tags
-					f_checked_as_code_tags.push( corresponding_code ) ;
+					f_checked_as_code_tags.push( corresponding_codes ) ;
 					
 					// get src tags from corresponding_code && f_normalization 
 					var temp_src_tags = [] ;
-					corresponding_code.forEach( function(code) {
-						temp_src_tags.push(f_normalization[code]) ;
+					corresponding_codes.forEach( function(code) {
+						temp_src_tags.push( f_normalization[code] ) ;
 					});
 					f_checked_as_src_tags.push( temp_src_tags ) ;
 					
@@ -404,6 +417,13 @@
 				console.log("--- v_navbar_search_filters -W- f_checked --> oldVal : " + oldVal + " / newVal : " + newVal );
 				console.log("--- v_navbar_search_filters -W- f_checked --> run : this.f_update_checked_as_tags_codes() ");
 				this.f_update_checked_as_tags_codes();
+			},
+			'f_checked_partners' : function(newVal, oldVal){
+				// launch f_update_checked_as_tags_codes() if f_checked changes
+				// note : newVal === oldVal because of v-model ... I guess ...
+				console.log("--- v_navbar_search_filters -W- f_checked_partners --> oldVal : " + oldVal + " / newVal : " + newVal );
+				console.log("--- v_navbar_search_filters -W- f_checked_partners --> run : this.f_update_checked_spider_id() ");
+				this.f_update_checked_spider_id();
 			}
 		},
 
@@ -436,16 +456,16 @@
 
 			// tags for query
 			q_search_in_tags		: search_in_tags,
-			// q_search_in_domains 	: search_in_domains,
-			// q_search_in_partners : search_in_partners,
-			// q_search_in_publics 	: search_in_publics,
-			// q_search_in_methods 	: search_in_methods,
+
+
 
 			// TO DO : spiders ( aka partners )
 			q_search_in_spiders		: search_in_spiders,
 
 			// TO DO : adresses ( aka locations )
 			q_search_in_adresses 	: search_in_adresses,
+
+
 
 			// pagination
 			q_results_per_page 	: results_per_page,
@@ -494,6 +514,10 @@
 						tags_list_as_string += tag + "," 
 					});
 					slug += "&search_in_tags=" + tags_list_as_string
+				}) ;
+
+				this.q_search_in_spiders.forEach( function( spider_id ) {
+					slug += "&spider_id=" + spider_id
 				}) ;
 
 				// return q_slug to v_queryOpenScraper
@@ -599,6 +623,11 @@
 
 			'q_search_in_tags' : function(newVal, oldVal){
 				console.log("--- v_navbar_search_input -W- q_search_in_tags --> oldVal : " + oldVal + " / newVal: " + newVal );
+				this.v_queryOpenScraper();
+			},
+
+			'q_search_in_spiders' : function(newVal, oldVal){
+				console.log("--- v_navbar_search_input -W- q_search_in_spiders --> oldVal : " + oldVal + " / newVal: " + newVal );
 				this.v_queryOpenScraper();
 			}
 			// 'q_search_string' : 

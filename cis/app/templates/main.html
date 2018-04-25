@@ -153,15 +153,17 @@
 	{# note : hack refresh cache adding this : ?version=0.0.1 after brackets #}
 
 	{# TEMPORARY SOLUTION #}
-	<!-- CUSTOM JS FILTERS VARS / TEMPORARY WHILE SOLIDATA IN DEVELOPMENT -->
+	<!-- CUSTOM JS FILTERS VARS / TEMPORARY WHILE SOLIDATA IS IN DEVELOPMENT -->
 	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-getjson-nomenclature.js') }}"></script> #}
 	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-tags-nomenclature.js') }}"></script> #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_VUE.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT.js') }}"></script>
+	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS.js') }}"></script> #}
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_TAGS.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_PARTNERS.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_GEOLOC.js') }}"></script>
+	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT.js') }}"></script> #}
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT_FLAT.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NOMENCLATURE_CIS_DICT.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS.js') }}"></script>
+	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NOMENCLATURE_CIS_DICT.js') }}"></script> #}
+	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS.js') }}"></script> #}
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS_DICT.js') }}"></script>
 
 

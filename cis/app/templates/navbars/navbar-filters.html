@@ -103,7 +103,8 @@
 			</v-filters-list> #}
 
 
-			<span 	v-for="checkboxes_list in f_filters" 
+			{# FILTERS TAGS #}
+			<span 	v-for="checkboxes_list in f_filters_tags" 
 					v-bind:id="checkboxes_list.name"
 					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
@@ -114,7 +115,7 @@
 				<div class="navbar-dropdown">
 
 					<!-- checkboxes loop -->
-					<v-filter-item 
+					<v-filter-categ-item 
 						v-for="checkbox in checkboxes_list.choices"
 						v-bind:filter="checkbox"
 						v-model="f_checked"
@@ -124,7 +125,7 @@
 					<!-- footer -->
 					<div class="columns is-centered ">
 
-						<div class="column is-half">
+						<div class="column">
 							<div class="navbar-item">
 								<a class="button is-text is-fullwidth">
 									Effacer
@@ -132,32 +133,90 @@
 							</div>
 						</div>
 
-						<div class="column is-half">
+						{# <div class="column is-half">
 							<div class="navbar-item">
 								<a class="button is-text is-fullwidth">
 									Valider
 								</a>
 							</div>
-						</div>
+						</div> #}
 
 					</div>
 				</div>
 			
 			</span>
 
+
+			{# SPIDERS TAGS #}
+			<span 	v-for="checkboxes_list in f_filters_partners" 
+					v-bind:id="checkboxes_list.name"
+					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+
+				<a class="navbar-link">
+					<span>[[ checkboxes_list.fullname ]]</span>
+				</a>
+
+				<div class="navbar-dropdown">
+
+					<!-- checkboxes loop -->
+					<v-filter-categ-item 
+						v-for="checkbox in checkboxes_list.choices"
+						v-bind:filter="checkbox"
+						v-model="f_checked_partners"
+						>
+					</v-filter-item>
+				
+					<!-- footer -->
+					<div class="columns is-centered ">
+
+						<div class="column">
+							<div class="navbar-item">
+								<a class="button is-text is-fullwidth">
+									Effacer
+								</a>
+							</div>
+						</div>
+
+						{# <div class="column is-half">
+							<div class="navbar-item">
+								<a class="button is-text is-fullwidth">
+									Valider
+								</a>
+							</div>
+						</div> #}
+
+					</div>
+				</div>
+			
+			</span>
+
+
+
 		</div>
 
 
 		{# FOR DEBUGGING PURPOSES #}
+		<!--
 		<div class="navbar-end">
 
 			<div class="navbar-item">
 				{# <span>[[ f_checked ]]</span> #}
-				<span>[[ f_checked_as_code_tags ]]</span>
+				{# <span>[[ f_checked_as_code_tags ]]</span> #}
 				{# <span>[[ f_checked_as_src_tags ]]</span> #}
 			</div>
 
+			<div class="navbar-item">
+				{# <span>[[ f_checked ]]</span> #}
+				{# <span>[[ f_checked_as_code_tags ]]</span> #}
+				{# <span>[[ f_checked_as_src_tags ]]</span> #}
+			</div>
+
+			<div class="navbar-item">
+				{# <span>[[ f_checked_partners ]]</span> #}
+			</div>
+
 		</div>
+		-->
 
 
 	</div>

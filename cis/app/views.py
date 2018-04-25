@@ -57,7 +57,7 @@ def error404(error):
 
 	log_cis.error( "error - 404 : %s", error )
 
-	filters_choices = get_filters_choices()
+	# filters_choices = get_filters_choices()
 	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
@@ -69,7 +69,7 @@ def error404(error):
 
 							site_section		= "404",
 							error_msg			= u"la page demandée n'existe pas",
-							filters_choices		= filters_choices,
+							# filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos,
 						),404
@@ -79,7 +79,7 @@ def error500(error):
 
 	log_cis.error( "error - 500 : %s", error )
 
-	filters_choices = get_filters_choices()
+	# filters_choices = get_filters_choices()
 	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
@@ -91,7 +91,7 @@ def error500(error):
 
 							site_section		= "500",
 							error_msg			= u"erreur serveur",
-							filters_choices		= filters_choices,
+							# filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos,
 						),500
@@ -101,7 +101,7 @@ def error403(error):
 
 	log_cis.error( "error - 403 : %s", error )
 
-	filters_choices = get_filters_choices()
+	# filters_choices = get_filters_choices()
 	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
@@ -113,7 +113,7 @@ def error403(error):
 							
 							site_section		= "403",
 							error_msg			= u"méthode non autorisé",
-							filters_choices		= filters_choices,
+							# filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos,
 						),403
@@ -131,7 +131,7 @@ def index():
 
 	# time_now	= datetime.datetime.utcnow()
 
-	filters_choices = get_filters_choices()
+	# filters_choices = get_filters_choices()
 	form 			= PreRegisterForm()
 
 	# TO DO 
@@ -207,7 +207,7 @@ def index():
 							languages_dict		= app_languages_dict ,
 
 							site_section		= "home",
-							filters_choices		= filters_choices,
+							# filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos
 						)
@@ -223,7 +223,7 @@ def search():
 
 	log_cis.debug("entering search page")
 
-	filters_choices = get_filters_choices() 	### function inside : utils.py/__init__.py
+	# filters_choices = get_filters_choices() 	### function inside : utils.py/__init__.py
 	# filters_choices = [
 	# 					{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
 	# 					{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},
@@ -245,7 +245,7 @@ def search():
 							languages_dict		= app_languages_dict ,
 							
 							site_section		= "search",
-							filters_choices		= filters_choices,
+							# filters_choices		= filters_choices,
 							user_infos			= current_user.get_public_infos
 						)
 

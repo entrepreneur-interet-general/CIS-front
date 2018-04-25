@@ -34,7 +34,7 @@ console.log("::: cis-vue-components.js is loaded") ;
 // cf : https://jsfiddle.net/0ckqpk2g/3/
 // cf : https://jsfiddle.net/Herteby/bgoLcy40/ 
 
-Vue.component('v-filter-item', {
+Vue.component('v-filter-categ-item', {
 
 	delimiters	: custom_delimiters,
 	props		: ['filter', 'f_checked', 'value'],
@@ -51,8 +51,7 @@ Vue.component('v-filter-item', {
 									type="checkbox" 
 
 									:id="filter.id" 
-									:value="filter.name" 
-									:f_checked="f_checked"
+									:value="filter.id" 
 									
 									change="$emit('change', $event.target.value)"
 									@change="updateChecked"

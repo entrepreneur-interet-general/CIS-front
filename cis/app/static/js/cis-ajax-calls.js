@@ -107,7 +107,7 @@ if (meta_config_name == "production") {
 console.log("api_url_current")
 
 // MAIN AJAX FUNCTION AS PROMISE
-function ajax_query_to_openscraper( data_q_slug = "search_for=coco" ) {
+function ajax_query_to_openscraper( data_q_slug = "search_for=" ) {
 	
 	// build ajax request options
 	// cf : https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 

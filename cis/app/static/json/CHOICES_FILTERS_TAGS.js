@@ -1,4 +1,4 @@
-var CHOICES_FILTERS_VUE = [
+var CHOICES_FILTERS_TAGS = [
     {
         "fullname": "Domaines", 
         "name": "domains_", 
@@ -44,16 +44,6 @@ var CHOICES_FILTERS_VUE = [
                 "id": "domains_employment"
             }
         ]
-    }, 
-    {
-        "fullname": "Localisations", 
-        "name": "localisation_", 
-        "choices": []
-    }, 
-    {
-        "fullname": "Sourceurs", 
-        "name": "sources_", 
-        "choices": []
     }, 
     {
         "fullname": "Publics", 

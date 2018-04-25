@@ -42,65 +42,81 @@ def normalization_as_json( var_name, norm_dict, filepath=json_folderpath ) :
 ### NORMALIZATION / CHOICES FOR CHECKBOXES INPUTS
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
-CHOICES_DOMAINS 	= [
-	(u"life_env"		, u"Cadre de vie"),
-	(u"sust_env"		, u"Développement durable"),
-	(u"eco_dev"			, u"Développement économique"),
-	(u"habitat"			, u"Habitat"),
-	(u"inclusion "		, u"Inclusion"),
-	(u"social_net"		, u"Lien social"),
-	(u"health_sport"	, u"Santé et sport"),
-	(u"employment"		, u"Travail"),
-]
+# CHOICES_DOMAINS 	= [
+# 	(u"life_env"		, u"Cadre de vie"),
+# 	(u"sust_env"		, u"Développement durable"),
+# 	(u"eco_dev"			, u"Développement économique"),
+# 	(u"habitat"			, u"Habitat"),
+# 	(u"inclusion "		, u"Inclusion"),
+# 	(u"social_net"		, u"Lien social"),
+# 	(u"health_sport"	, u"Santé et sport"),
+# 	(u"employment"		, u"Travail"),
+# ]
 
-CHOICES_METHODS 	= [
-	(u"cooperate"		, u"Coopération"),
-	(u"evaluate"		, u"Evaluation"),
-	(u"govern"			, u"Gouvernance"),
-	(u"philantropy"		, u"Mécénat"),
-	(u"mediate"			, u"Médiation"),
-	(u"participate"		, u"Participation"),
-	(u"research"		, u"Recherche"),
-]
+# CHOICES_METHODS 	= [
+# 	(u"cooperate"		, u"Coopération"),
+# 	(u"evaluate"		, u"Evaluation"),
+# 	(u"govern"			, u"Gouvernance"),
+# 	(u"philantropy"		, u"Mécénat"),
+# 	(u"mediate"			, u"Médiation"),
+# 	(u"participate"		, u"Participation"),
+# 	(u"research"		, u"Recherche"),
+# ]
 
-CHOICES_PUBLICS 	= [
-	(u""				, u"Tous publics"),
-	(u"handicap"		, u"Handicap"),
-	(u"youth"			, u"Jeunesse"),
-	(u"senior"			, u"Seniors"),
-]
+# CHOICES_PUBLICS 	= [
+# 	(u""				, u"Tous publics"),
+# 	(u"handicap"		, u"Handicap"),
+# 	(u"youth"			, u"Jeunesse"),
+# 	(u"senior"			, u"Seniors"),
+# ]
 
-CHOICES_FILTERS = [
+# CHOICES_FILTERS_TAGS = [
 
-	{ "domains" 	: {	
-						"fullname"	: u"Domaines",		
-						"choices"	: CHOICES_DOMAINS ,
-					} 	
-	},
-	{ "geoloc"		: {	
-						"fullname"	: u"Localisations",	
-						"choices"	: [] ,
-					} 				
-	},
-	{ "partners"	: {	"fullname" 	: u"Sourceurs",		
-						"choices"	: [] , 
-					}	
-	},
-	{ "publics"		: {	"fullname"	: u"Publics",		
-						"choices"	: CHOICES_PUBLICS ,
-					}	
-	},
-	{ "methods"		: {	
-						"fullname"	: u"Méthodes",		
-						"choices"	: CHOICES_METHODS , 
-					}	
-	},
+# 	{ "domains" 	: {	
+# 						"fullname"	: u"Domaines",		
+# 						"choices"	: CHOICES_DOMAINS ,
+# 					} 	
+# 	},
+# 	# { "geoloc"		: {	
+# 	# 					"fullname"	: u"Localisations",	
+# 	# 					"choices"	: [] ,
+# 	# 				} 				
+# 	# },
+# 	# { "partners"	: {	"fullname" 	: u"Sourceurs",		
+# 	# 					"choices"	: [] , 
+# 	# 				}	
+# 	# },
+# 	{ "publics"		: {	"fullname"	: u"Publics",		
+# 						"choices"	: CHOICES_PUBLICS ,
+# 					}	
+# 	},
+# 	{ "methods"		: {	
+# 						"fullname"	: u"Méthodes",		
+# 						"choices"	: CHOICES_METHODS , 
+# 					}	
+# 	},
 
-]
-normalization_as_json( "CHOICES_FILTERS", CHOICES_FILTERS )
+# ]
+# CHOICES_FILTERS_PARTNERS = [
+# 	{ "partners"	: {	"fullname" 	: u"Sourceurs",		
+# 						"choices"	: [] , 
+# 					}	
+# 	},
+# ]
+# CHOICES_FILTERS_GEOLOC = [
+# 	{ "geoloc"		: {	
+# 						"fullname"	: u"Localisations",	
+# 						"choices"	: [] ,
+# 					} 				
+# 	},
+# ]
+# normalization_as_json( "CHOICES_FILTERS_TAGS", 		CHOICES_FILTERS_TAGS )
+# normalization_as_json( "CHOICES_FILTERS_PARTNERS",	CHOICES_FILTERS_PARTNERS )
+# normalization_as_json( "CHOICES_FILTERS_GEOLOC", 	CHOICES_FILTERS_GEOLOC )
 
 
-CHOICES_FILTERS_VUE = [
+
+CHOICES_FILTERS_TAGS = [
 
 	{ 	"name"		: u"domains_",
 		"fullname"	: u"Domaines",		
@@ -114,16 +130,6 @@ CHOICES_FILTERS_VUE = [
 			{"name" : u"health_sport"	, "fullname" : u"Santé et sport"},
 			{"name" : u"employment"		, "fullname" : u"Travail"},
 		]
-	},
-
-	{	"name"		: u"localisation_",
-		"fullname"	: u"Localisations",	
-		"choices"	: [] ,
-	},
-	
-	{	"name"		: u"sources_",
-		"fullname" 	: u"Sourceurs",		
-		"choices"	: [] , 
 	},
 	
 	{	"name"		: u"pubics_",
@@ -149,14 +155,50 @@ CHOICES_FILTERS_VUE = [
 		] , 
 	},
 ]
+CHOICES_FILTERS_PARTNERS = [
+
+	{	"name"		: u"sources_",
+		"fullname" 	: u"Sourceurs",		
+		"choices"	: [
+			{"id" : "5a9da08d0a82868f49cd3816" , "name" : u"AG2R la mondiale",				 	"fullname" : u"AG2R la mondiale"},
+			{"id" : "5aa3de630a828651b2ebfe3e" , "name" : u"Apriles", 							"fullname" : u"Apriles"},
+			{"id" : "5a9d9fd80a82868f4973d2d3" , "name" : u"Avise", 							"fullname" : u"Avise"},
+			{"id" : "5ab3f5fe0a8286585d3a307e" , "name" : u"Bretagne Creative",					"fullname" : u"Bretagne Creative"},
+			{"id" : "5aabf8250a8286bf097cec82" , "name" : u"Fondation Daniel et Nina Carasso", 	"fullname" : u"Fondation Daniel et Nina Carasso"},
+			{"id" : "5aaff7360a82860b06c94a6d" , "name" : u"Fondation Veolia", 					"fullname" : u"Fondation Veolia"},
+			{"id" : "5aaff8aa0a82860b06c94a6e" , "name" : u"Fondation Vinci",				 	"fullname" : u"Fondation Vinci"},
+			{"id" : "5aaff93f0a82860b06c94a6f" , "name" : u"MOT", 								"fullname" : u"MOT"},
+			{"id" : "5aaffa390a82860b06c94a70" , "name" : u"Semeoz", 							"fullname" : u"Semeoz"},
+			{"id" : "5ab410c00a82863566d5fd05" , "name" : u"My Positive Impact",				"fullname" : u"My Positive Impact"},
+
+		] , 
+	},
+]
+CHOICES_FILTERS_GEOLOC = [
+
+	{	"name"		: u"sources_",
+		"fullname" 	: u"Sourceurs",		
+		"choices"	: [] , 
+	},
+]
 ### create ids:
-for filters_list in CHOICES_FILTERS_VUE :
-	for filter_ in filters_list["choices"] :
-		if filter_ != [] :
-			filter_["id"] = filters_list["name"] + filter_["name"]
-		else :
-			filter_["id"] = u""
-normalization_as_json( "CHOICES_FILTERS_VUE", CHOICES_FILTERS_VUE )
+
+def add_id_key( list_of_dicts ) :
+	for filters_list in list_of_dicts : 
+		for filter_ in filters_list["choices"] :
+			if filter_ != [] :
+				filter_["id"] = filters_list["name"] + filter_["name"]
+			else :
+				filter_["id"] = u""
+	return list_of_dicts
+
+CHOICES_FILTERS_TAGS = add_id_key(CHOICES_FILTERS_TAGS)
+# CHOICES_FILTERS_PARTNERS = add_id_key(CHOICES_FILTERS_PARTNERS)
+CHOICES_FILTERS_GEOLOC = add_id_key(CHOICES_FILTERS_GEOLOC)
+
+normalization_as_json( "CHOICES_FILTERS_TAGS", 		CHOICES_FILTERS_TAGS )
+normalization_as_json( "CHOICES_FILTERS_PARTNERS", 	CHOICES_FILTERS_PARTNERS )
+normalization_as_json( "CHOICES_FILTERS_GEOLOC", 	CHOICES_FILTERS_GEOLOC )
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -199,7 +241,7 @@ normalization_as_json( "CATEGORIES_CIS_DICT", CATEGORIES_CIS_DICT )
 CATEGORIES_CIS_DICT_FLAT = {}
 for categ, metatags in CATEGORIES_CIS_DICT.iteritems() : 
 	for k,v in metatags.iteritems() : 
-		CATEGORIES_CIS_DICT_FLAT[k] = v
+		CATEGORIES_CIS_DICT_FLAT[ categ + k ] = v
 normalization_as_json( "CATEGORIES_CIS_DICT_FLAT", CATEGORIES_CIS_DICT_FLAT )
 
 

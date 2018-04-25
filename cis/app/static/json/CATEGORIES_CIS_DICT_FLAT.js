@@ -1,24 +1,19 @@
 var CATEGORIES_CIS_DICT_FLAT = {
-    "philantropy": [
-        "MEC"
+    "domains_eco_dev": [
+        "ECO", 
+        "FIN", 
+        "COM", 
+        "INS", 
+        "SER", 
+        "EMP"
     ], 
-    "life_env": [
-        "NUM", 
-        "LOI", 
-        "SAN", 
-        "CUL", 
-        "AME", 
-        "URB", 
-        "HAB"
+    "pubics_handicap": [
+        "HAN"
     ], 
-    "habitat": [
-        "URB", 
-        "HAB", 
-        "MOB", 
-        "AME", 
-        "ENE"
+    "methods_research": [
+        "REC"
     ], 
-    "inclusion": [
+    "domains_inclusion": [
         "HAB", 
         "INS", 
         "DRO", 
@@ -30,44 +25,10 @@ var CATEGORIES_CIS_DICT_FLAT = {
         "SAN", 
         "EMP"
     ], 
-    "handicap": [
-        "HAN"
+    "methods_philantropy": [
+        "MEC"
     ], 
-    "evaluate": [
-        "EVA"
-    ], 
-    "social_net": [
-        "DRO", 
-        "CIT", 
-        "COH", 
-        "CUL", 
-        "SPO", 
-        "LOI"
-    ], 
-    "participate": [
-        "PAR"
-    ], 
-    "eco_dev": [
-        "ECO", 
-        "FIN", 
-        "COM", 
-        "INS", 
-        "SER", 
-        "EMP"
-    ], 
-    "cooperate": [
-        "COO"
-    ], 
-    "youth": [
-        "JEU"
-    ], 
-    "mediate": [
-        "MED"
-    ], 
-    "govern": [
-        "GOU"
-    ], 
-    "sust_env": [
+    "domains_sust_env": [
         "BIO", 
         "EAU", 
         "CLI", 
@@ -75,19 +36,58 @@ var CATEGORIES_CIS_DICT_FLAT = {
         "ENE", 
         "AGR"
     ], 
-    "senior": [
+    "domains_habitat": [
+        "URB", 
+        "HAB", 
+        "MOB", 
+        "AME", 
+        "ENE"
+    ], 
+    "domains_life_env": [
+        "NUM", 
+        "LOI", 
+        "SAN", 
+        "CUL", 
+        "AME", 
+        "URB", 
+        "HAB"
+    ], 
+    "methods_mediate": [
+        "MED"
+    ], 
+    "domains_social_net": [
+        "DRO", 
+        "CIT", 
+        "COH", 
+        "CUL", 
+        "SPO", 
+        "LOI"
+    ], 
+    "methods_cooperate": [
+        "COO"
+    ], 
+    "methods_govern": [
+        "GOU"
+    ], 
+    "methods_participate": [
+        "PAR"
+    ], 
+    "methods_evaluate": [
+        "EVA"
+    ], 
+    "pubics_senior": [
         "SEN"
     ], 
-    "research": [
-        "REC"
+    "pubics_youth": [
+        "JEU"
     ], 
-    "employment": [
+    "domains_employment": [
         "INS", 
         "EMP", 
         "FOR", 
         "EDU"
     ], 
-    "health_sport": [
+    "domains_health_sport": [
         "SPO", 
         "SAN", 
         "AGR", 
