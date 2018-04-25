@@ -25,8 +25,8 @@ var CHOICES_FILTERS_VUE = [
             }, 
             {
                 "fullname": "Inclusion", 
-                "name": "inclusion ", 
-                "id": "domains_inclusion "
+                "name": "inclusion", 
+                "id": "domains_inclusion"
             }, 
             {
                 "fullname": "Lien social", 

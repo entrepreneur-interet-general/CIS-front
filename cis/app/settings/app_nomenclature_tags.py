@@ -109,7 +109,7 @@ CHOICES_FILTERS_VUE = [
 			{"name" : u"sust_env"		, "fullname" : u"Développement durable"},
 			{"name" : u"eco_dev"		, "fullname" : u"Développement économique"},
 			{"name" : u"habitat"		, "fullname" : u"Habitat"},
-			{"name" : u"inclusion "		, "fullname" : u"Inclusion"},
+			{"name" : u"inclusion"		, "fullname" : u"Inclusion"},
 			{"name" : u"social_net"		, "fullname" : u"Lien social"},
 			{"name" : u"health_sport"	, "fullname" : u"Santé et sport"},
 			{"name" : u"employment"		, "fullname" : u"Travail"},
@@ -181,7 +181,6 @@ CATEGORIES_CIS_DICT = {
 		u"social_net"	: [ "DRO","CIT","COH","CUL","SPO","LOI" ],
 		u"health_sport"	: [ "SPO","SAN","AGR","HAN","SEN","JEU" ],
 		u"employment"	: [ "INS","EMP","FOR","EDU" ],
-
 	},
 
 	"methods_"	: {	
@@ -197,6 +196,11 @@ CATEGORIES_CIS_DICT = {
 }
 normalization_as_json( "CATEGORIES_CIS_DICT", CATEGORIES_CIS_DICT )
 
+CATEGORIES_CIS_DICT_FLAT = {}
+for categ, metatags in CATEGORIES_CIS_DICT.iteritems() : 
+	for k,v in metatags.iteritems() : 
+		CATEGORIES_CIS_DICT_FLAT[k] = v
+normalization_as_json( "CATEGORIES_CIS_DICT_FLAT", CATEGORIES_CIS_DICT_FLAT )
 
 
 

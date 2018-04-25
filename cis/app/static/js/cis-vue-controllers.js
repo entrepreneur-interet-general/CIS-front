@@ -288,33 +288,31 @@
 
 			},
 
-			'd_results' : 
+			'd_results' : function (new_results, old_results) {
 
-				function (new_results, old_results) {
+				// this function will be called when chenge in `v_results.d_results`
+				
+				console.log( "--- v_results -W- d_results --> old_results : " ) ; 
+				// console.log( "--- v_results / old_results.status : ", old_results.status ) ; 
+				console.log( old_results ) ; 
+				
+				console.log( "--- v_results -W- d_results --> new_results : " ) ; 
+				// console.log( "--- v_results / new_results.status :", new_results.status ) ; 
+				console.log( new_results ) ; 
 
-					// this function will be called when chenge in `v_results.d_results`
-					
-					console.log( "--- v_results -W- d_results --> old_results : " ) ; 
-					// console.log( "--- v_results / old_results.status : ", old_results.status ) ; 
-					console.log( old_results ) ; 
-					
-					console.log( "--- v_results -W- d_results --> new_results : " ) ; 
-					// console.log( "--- v_results / new_results.status :", new_results.status ) ; 
-					console.log( new_results ) ; 
+				this.d_count 		= new_results.query_log.count_results ;
+				this.d_count_tot 	= new_results.query_log.count_results_tot ;
+				// this.d_page_n 		= new_results.query_log.query.page_n ;
+				this.d_page_max 	= new_results.query_log.page_n_max ;
+				
+				this.d_count_stop	= this.d_count * this.d_page_n ;
 
-					this.d_count 		= new_results.query_log.count_results ;
-					this.d_count_tot 	= new_results.query_log.count_results_tot ;
-					// this.d_page_n 		= new_results.query_log.query.page_n ;
-					this.d_page_max 	= new_results.query_log.page_n_max ;
-					
-					this.d_count_stop	= this.d_count * this.d_page_n ;
+				start_page_n 		= this.d_count_stop - this.d_results_per_page + 1 ;
+				// this.d_count_start  = this.d_count_stop - this.d_results_per_page + 1 ;
+				(start_page_n <=0 ) ? this.d_count_start = 1 : this.d_count_start = start_page_n ;
 
-					start_page_n 		= this.d_count_stop - this.d_results_per_page + 1 ;
-					// this.d_count_start  = this.d_count_stop - this.d_results_per_page + 1 ;
-					(start_page_n <=0 ) ? this.d_count_start = 1 : this.d_count_start = start_page_n ;
-
-					console.log( "--- v_results / this.d_count : ", this.d_count ); 
-				},
+				console.log( "--- v_results / this.d_count : ", this.d_count ); 
+			},
 			
 		}
 	})
@@ -325,7 +323,8 @@
 
 	console.log("::: tags var initialisation ... ")
 	console.log("::: CHOICES_FILTERS_VUE : ", CHOICES_FILTERS_VUE )
-	console.log("::: CATEGORIES_CIS_DICT : ", CATEGORIES_CIS_DICT )
+	console.log("::: CATEGORIES_CIS_DICT 	  : ", CATEGORIES_CIS_DICT )
+	console.log("::: CATEGORIES_CIS_DICT_FLAT : ", CATEGORIES_CIS_DICT_FLAT)
 	console.log("::: NOMENCLATURE_CIS_DICT : ", NOMENCLATURE_CIS_DICT)
 	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS : ", NORMALIZATION_TAGS_SOURCES_CIS)
 	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT : ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
@@ -345,23 +344,49 @@
 			// --> as vue data vars..
 			
 			f_filters			: CHOICES_FILTERS_VUE, 		// 
-			f_categories 		: CATEGORIES_CIS_DICT,		// codes for every filters
+			f_categories 		: CATEGORIES_CIS_DICT_FLAT,		// codes for every filters
 			f_normalization		: NORMALIZATION_TAGS_SOURCES_CIS_DICT, 
 			
 			f_checked			: [],
 
-			f_checked_as_tags 		: {}, 	//
-			f_checked_as_src_tags 	: {}, 	//
+			f_checked_as_code_tags	: [], 	//
+			f_checked_as_src_tags 	: [], 	//
 
 		},
 
 		created		: function() {
 			console.log(">>> v_navbar_search_filters / initiating ... "); 
-			console.log(">>> v_navbar_search_filters / this.f_filters : ", this.f_categories); 
+			console.log(">>> v_navbar_search_filters / this.f_categories : ", this.f_categories); 
 		},
 
 		methods		: {
-		// 	// TO DO 
+			f_update_checked_as_tags_codes : function() {
+				// 
+				console.log("- v_navbar_search_input -M- f_update_checked_as_tags_codes ... ") ; 
+				var f_categories 			= this.f_categories ;
+				var f_checked_as_code_tags 	= this.f_checked_as_code_tags = [] ;
+				var f_checked_as_src_tags 	= this.f_checked_as_src_tags = [] ;
+				var f_normalization 		= this.f_normalization ;
+
+				this.f_checked.forEach( function( filter ) {
+					
+					// console.log("- v_navbar_search_input -M- filter : ", filter) ; 
+
+					// get corresponding_code for each filter && f_categories
+					var corresponding_code = f_categories[filter] ;
+					
+					// push it to f_checked_as_code_tags
+					f_checked_as_code_tags.push( corresponding_code ) ;
+					
+					// get src tags from corresponding_code && f_normalization 
+					var temp_src_tags = [] ;
+					corresponding_code.forEach( function(code) {
+						temp_src_tags.push(f_normalization[code]) ;
+					});
+					f_checked_as_src_tags.push( temp_src_tags ) ;
+					
+				} )
+			}
 		},
 
 		computed	: {
@@ -369,7 +394,12 @@
 		},
 
 		watch		: {
-			// TO DO 
+			'f_checked' : function(newVal, oldVal){
+				// launch f_update_checked_as_tags_codes() if f_checked changes
+				console.log("--- v_navbar_search_filters -W- f_checked --> oldVal : " + oldVal + " / newVal : " + newVal );
+				console.log("--- v_navbar_search_filters -W- f_checked --> run : this.f_update_checked_as_tags_codes() ");
+				this.f_update_checked_as_tags_codes();
+			}
 		},
 
 	})
