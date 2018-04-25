@@ -21,18 +21,165 @@ console.log("::: cis-vue-components.js is loaded") ;
 // COMPONENTS 
 // - - - - - - - - - - - - - //
 
-// DEBUGGING - TUTORIAL
-// Vue.component('todo-item', {
-// 	// Le composant todo-item accepte maintenant une
-// 	// « prop » qui est comme un attribut personnalisé.
-// 	// Cette prop est appelée todo.
 
-// 	delimiters	: custom_delimiters,
-// 	props		: ['todo'],
-// 	template	: '<li>[[ todo ]]</li>',
 
-// })
 
+// - - - - - - - - - - - - - //
+// MAIN FILTERS DISPLAYERS
+// - - - - - - - - - - - - - //
+
+// NOTE : what a fucking headheache !!!!
+// cf : https://vuejs.org/v2/guide/components-custom-events.html
+// cf : http://steveholgado.com/posts/vue-component-v-model-multiple-checkboxes/ 
+// cf : https://jsfiddle.net/0ckqpk2g/3/
+// cf : https://jsfiddle.net/Herteby/bgoLcy40/ 
+
+Vue.component('v-filter-item', {
+
+	delimiters	: custom_delimiters,
+	props		: ['filter', 'f_checked', 'value'],
+	model: {
+		prop : 'f_checked',
+		event: 'change'
+	  },
+	template	: `
+					<a class="navbar-item">
+
+						<div class="field">
+
+							<input 	class="is-checkradio is-default is-normal" 
+									type="checkbox" 
+
+									:id="filter.id" 
+									:value="filter.name" 
+									:f_checked="f_checked"
+									
+									change="$emit('change', $event.target.value)"
+									@change="updateChecked"
+
+									>
+							<label :for="filter.id">
+								[[ filter.fullname ]]
+							</label>
+
+						</div>
+
+					</a>
+				`,
+	methods 	: {
+		updateChecked : function(e) {
+
+			var current_value = e.target.value ;
+			console.log("+++ current_value : ", current_value  ) ;
+
+			if(this.f_checked.includes(current_value)){
+				this.f_checked.splice(this.f_checked.indexOf(current_value), 1)
+			} else {
+				this.f_checked.push(current_value)
+			}
+
+			console.log("+++ this.f_checked : ", this.f_checked  ) ;
+
+		}
+	}
+
+})
+
+
+Vue.component('v-filters-list', {
+
+	delimiters	: custom_delimiters,
+	props		: ['checkboxes_list'],
+	template	: `
+					<span 	v-bind:id="checkboxes_list.name"
+							class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+
+						<a class="navbar-link">
+							<span>[[ checkboxes_list.fullname ]]</span>
+						</a>
+
+						<div class="navbar-dropdown">
+
+							<!-- checkboxes loop -->
+							< v-filter-item 
+								v-for="checkbox in checkboxes_list.choices"
+								v-bind:filter="checkbox"
+								v-model="f_checked"
+								>
+							</ v-filter-item>
+							
+
+							<!--
+							<a class="navbar-item"
+								v-for="filter in checkboxes_list.choices"
+								>
+
+								<div class="field">
+		
+									<input 	class="is-checkradio is-default is-normal" 
+											type="checkbox" 
+		
+											v-bind:id="filter.id" 
+											v-bind:value="filter.name" 
+											
+											v-model="f_checked"
+											
+											v-on:change="updateChecked"
+											
+											>
+									<label v-bind:for="filter.id">
+		
+										[[ filter.fullname ]]
+									
+									</label>
+		
+								</div>
+		
+							</a>
+							-->
+
+
+							<!-- footer -->
+							<div class="columns is-centered ">
+
+								<div class="column is-half">
+									<div class="navbar-item">
+										<a class="button is-text is-fullwidth">
+											Effacer
+										</a>
+									</div>
+								</div>
+
+								<div class="column is-half">
+									<div class="navbar-item">
+										<a class="button is-text is-fullwidth">
+											Valider
+										</a>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+							
+					</span>
+				`,
+	methods 	: {
+		updateChecked : function() {
+			console.log("this.f_checked", this.f_checked  ) ;
+			this.$emit('input', this.f_checked )
+			// this.$emit('input', function(e){
+			// 	if(this.f_checked.includes(this.value)){
+			// 		this.f_checked.splice(this.f_checked.indexOf(this.value), 1)
+			// 	} else {
+			// 		this.f_checked.push(this.value)
+			// 	}
+			// })
+
+		}
+	}
+
+})
 
 // DECLARE FIELDS TO RETRIEVE FROM OPENSCRAPER RAW DATA
 // WARNING !!! FIELDS NAMES COULD CHANGE --> DATAMODEL IN OPENSCRAPER IS FLEXIBLE !!!
@@ -66,7 +213,9 @@ var spideridFieldName 		= "spider_id" ;
 
 
 
+// - - - - - - - - - - - - - //
 // MAIN RESULTS DISPLAYERS
+// - - - - - - - - - - - - - //
 
 // Vue.component('v-results-tiles-colmuns', {
 // 	delimiters	: custom_delimiters,
@@ -136,7 +285,7 @@ Vue.component('v-results-item', {
 								<div class="content" v-if="isTags">
 									<template v-for="tag_ in getTags ">
 										<span class="tag">[[ tag_ ]]</span>
-									<template>
+									</template>
 								</div>
 
 

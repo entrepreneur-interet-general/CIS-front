@@ -70,6 +70,93 @@ CHOICES_PUBLICS 	= [
 	(u"senior"			, u"Seniors"),
 ]
 
+CHOICES_FILTERS = [
+
+	{ "domains" 	: {	
+						"fullname"	: u"Domaines",		
+						"choices"	: CHOICES_DOMAINS ,
+					} 	
+	},
+	{ "geoloc"		: {	
+						"fullname"	: u"Localisations",	
+						"choices"	: [] ,
+					} 				
+	},
+	{ "partners"	: {	"fullname" 	: u"Sourceurs",		
+						"choices"	: [] , 
+					}	
+	},
+	{ "publics"		: {	"fullname"	: u"Publics",		
+						"choices"	: CHOICES_PUBLICS ,
+					}	
+	},
+	{ "methods"		: {	
+						"fullname"	: u"Méthodes",		
+						"choices"	: CHOICES_METHODS , 
+					}	
+	},
+
+]
+normalization_as_json( "CHOICES_FILTERS", CHOICES_FILTERS )
+
+
+CHOICES_FILTERS_VUE = [
+
+	{ 	"name"		: u"domains_",
+		"fullname"	: u"Domaines",		
+		"choices"	: [
+			{"name" : u"life_env"		, "fullname" : u"Cadre de vie"},
+			{"name" : u"sust_env"		, "fullname" : u"Développement durable"},
+			{"name" : u"eco_dev"		, "fullname" : u"Développement économique"},
+			{"name" : u"habitat"		, "fullname" : u"Habitat"},
+			{"name" : u"inclusion "		, "fullname" : u"Inclusion"},
+			{"name" : u"social_net"		, "fullname" : u"Lien social"},
+			{"name" : u"health_sport"	, "fullname" : u"Santé et sport"},
+			{"name" : u"employment"		, "fullname" : u"Travail"},
+		]
+	},
+
+	{	"name"		: u"localisation_",
+		"fullname"	: u"Localisations",	
+		"choices"	: [] ,
+	},
+	
+	{	"name"		: u"sources_",
+		"fullname" 	: u"Sourceurs",		
+		"choices"	: [] , 
+	},
+	
+	{	"name"		: u"pubics_",
+		"fullname"	: u"Publics",		
+		"choices"	: [
+			# {"name" : u""				, "fullname" : u"Tous publics"},
+			{"name" : u"handicap"		, "fullname" : u"Handicap"},
+			{"name" : u"youth"			, "fullname" : u"Jeunesse"},
+			{"name" : u"senior"			, "fullname" : u"Seniors"}, 
+		]
+	},
+	
+	{ 	"name"		: u"methods_",
+		"fullname"	: u"Méthodes",		
+		"choices"	: [
+			{"name" : u"cooperate"		, "fullname" : u"Coopération"},
+			{"name" : u"evaluate"		, "fullname" : u"Evaluation"},
+			{"name" : u"govern"			, "fullname" : u"Gouvernance"},
+			{"name" : u"philantropy"	, "fullname" : u"Mécénat"},
+			{"name" : u"mediate"		, "fullname" : u"Médiation"},
+			{"name" : u"participate"	, "fullname" : u"Participation"},
+			{"name" : u"research"		, "fullname" : u"Recherche"},
+		] , 
+	},
+]
+### create ids:
+for filters_list in CHOICES_FILTERS_VUE :
+	for filter_ in filters_list["choices"] :
+		if filter_ != [] :
+			filter_["id"] = filters_list["name"] + filter_["name"]
+		else :
+			filter_["id"] = u""
+normalization_as_json( "CHOICES_FILTERS_VUE", CHOICES_FILTERS_VUE )
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -79,13 +166,13 @@ CHOICES_PUBLICS 	= [
 
 CATEGORIES_CIS_DICT = {
 	
-	"_PUBLICS" 	: {	
+	"pubics_" 	: {	
 		u"handicap" 	: [ "HAN" ],
 		u"youth" 		: [ "JEU" ],
 		u"senior" 		: [ "SEN" ],
 	},
 
-	"_DOMAINS"	: {	
+	"domains_"	: {	
 		u"life_env"		: [ "NUM","LOI","SAN","CUL","AME","URB","HAB" ],
 		u"sust_env"		: [ "BIO","EAU","CLI","DEC","ENE","AGR" ],
 		u"eco_dev"		: [ "ECO","FIN","COM","INS","SER","EMP" ],
@@ -97,7 +184,7 @@ CATEGORIES_CIS_DICT = {
 
 	},
 
-	"_METHODS"	: {	
+	"methods_"	: {	
 		u"cooperate"	: [ "COO" ] ,
 		u"evaluate"		: [ "EVA" ] ,
 		u"govern"		: [ "GOU" ] ,

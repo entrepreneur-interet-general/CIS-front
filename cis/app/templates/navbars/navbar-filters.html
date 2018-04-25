@@ -3,50 +3,60 @@
 	{# navbar's buttons #}
 	<div id="navbar-search-filters" class="navbar-menu">
 
-		{% set disabled_filters=["domains", "geoloc", "partners", "publics", "methods"] %}
+		<!--
+		{# FILTERS FROM JINJA #}
+		<div class="navbar-start">
 
-		{% for f_choices in filters_choices %}
+			{% set disabled_filters=["domains", "geoloc", "partners", "publics", "methods"] %}
 
-			{% for filter_codename, filter_data in f_choices.iteritems() %}
+			{% for f_choices in filters_choices %}
 
-			<span 	id="{{ filter_codename }}"
-					class="navbar-item navbar-item-filter has-dropdown is-hoverable
-							{% if filter_codename not in disabled_filters %}
-								
-							{% else %}
-								tooltip is-tooltip-danger is-tooltip-right
-							{% endif %}
-						" 
-					{% if filter_codename in disabled_filters %}
-					data-tooltip="fonctionnalité en construction"
-					{% endif %}
-					>
+				{% for filter_codename, filter_data in f_choices.iteritems() %}
 
-				<a class="navbar-link">
-					<span>{{ filter_data["fullname"] }}</span>
-				</a>
+				<span 	id="{{ filter_codename }}"
+						class="navbar-item navbar-item-filter has-dropdown is-hoverable
+								{% if filter_codename not in disabled_filters %}
+									
+								{% else %}
+									tooltip is-tooltip-danger is-tooltip-right
+								{% endif %}
+							" 
+						{% if filter_codename in disabled_filters %}
+						data-tooltip="fonctionnalité en construction"
+						{% endif %}
+						>
 
-				<div class="navbar-dropdown">
-
-					{% for i in filter_data["choices"] %}
-				
-					<a class="navbar-item">
-						<div class="field">
-							<input class="is-checkradio is-default is-normal" id="{{filter_codename}}_{{ i[0] }}" name="{{ i[0] }}" value="n" type="checkbox">
-							<label for="{{filter_codename}}_{{ i[0] }}">
-								{{ i[1] }}
-							</label>
-						</div>
+					<a class="navbar-link">
+						<span>{{ filter_data["fullname"] }}</span>
 					</a>
 
-					{% endfor %}
-				
+					<div class="navbar-dropdown">
 
-					{# <hr class="navbar-divider"> #}
-				
-					<div class="columns is-centered ">
+						{% for i in filter_data["choices"] %}
+					
+						<a class="navbar-item">
+							<div class="field">
+								<input 	class="is-checkradio is-default is-normal" 
+										id="{{filter_codename}}_{{ i[0] }}" 
+										name="{{ i[0] }}" 
+										value="{{ i[0] }}" 
+										type="checkbox" 
+										v-model="f_checked"
+										>
+								<label for="{{filter_codename}}_{{ i[0] }}">
+									{{ i[1] }}
+								</label>
+							</div>
+						</a>
 
-						{# <div class="navbar-item"> #}
+						{% endfor %}
+					
+
+						{# <hr class="navbar-divider"> #}
+					
+						<div class="columns is-centered ">
+
+							{# <div class="navbar-item"> #}
 
 							<div class="column is-half">
 								<div class="navbar-item">
@@ -66,20 +76,98 @@
 								</div>
 							</div>
 
-						{# </div> #}
+							{# </div> #}
+
+						</div>
 
 					</div>
+						
+				</span>
 
-				</div>
-					
-			</span>
+				{% endfor %}
 
 			{% endfor %}
 
-		{% endfor %}
+		</div>
+		-->
+
+
+		{# FILTERS FOR VUE #}
+		<div class="navbar-start">
+
+			{# <v-filters-list 
+				v-for="filters_list in f_filters"
+				v-bind:checkboxes_list="filters_list"
+				v-model="f_checked"
+				>
+			</v-filters-list> #}
+
+
+
+			<span 	v-for="checkboxes_list in f_filters" 
+					v-bind:id="checkboxes_list.name"
+					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+
+				<a class="navbar-link">
+					<span>[[ checkboxes_list.fullname ]]</span>
+				</a>
+
+				<div class="navbar-dropdown">
+
+					<!-- checkboxes loop -->
+					<v-filter-item 
+						v-for="checkbox in checkboxes_list.choices"
+						v-bind:filter="checkbox"
+						v-model="f_checked"
+						>
+					</v-filter-item>
+				
+					<!-- footer -->
+					<div class="columns is-centered ">
+
+						<div class="column is-half">
+							<div class="navbar-item">
+								<a class="button is-text is-fullwidth">
+									Effacer
+								</a>
+							</div>
+						</div>
+
+						<div class="column is-half">
+							<div class="navbar-item">
+								<a class="button is-text is-fullwidth">
+									Valider
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			
+			</span>
+
+		</div>
+
+		<div class="navbar-end">
+
+
+			{# <div class="navbar-item">
+				<base-checkbox v-model="f_checked"></base-checkbox>
+			</div> #}
+
+			<div class="navbar-item">
+				<span>[[ f_checked ]]</span>
+			</div>
+
+
+
+
+		</div>
 
 
 	</div>
+
+
 
 
 </div>

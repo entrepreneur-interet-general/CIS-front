@@ -1,5 +1,39 @@
 var CATEGORIES_CIS_DICT = {
-    "_DOMAINS": {
+    "pubics_": {
+        "handicap": [
+            "HAN"
+        ], 
+        "youth": [
+            "JEU"
+        ], 
+        "senior": [
+            "SEN"
+        ]
+    }, 
+    "methods_": {
+        "philantropy": [
+            "MEC"
+        ], 
+        "evaluate": [
+            "EVA"
+        ], 
+        "govern": [
+            "GOU"
+        ], 
+        "cooperate": [
+            "COO"
+        ], 
+        "mediate": [
+            "MED"
+        ], 
+        "participate": [
+            "PAR"
+        ], 
+        "research": [
+            "REC"
+        ]
+    }, 
+    "domains_": {
         "employment": [
             "INS", 
             "EMP", 
@@ -65,40 +99,6 @@ var CATEGORIES_CIS_DICT = {
             "CUL", 
             "SPO", 
             "LOI"
-        ]
-    }, 
-    "_PUBLICS": {
-        "handicap": [
-            "HAN"
-        ], 
-        "youth": [
-            "JEU"
-        ], 
-        "senior": [
-            "SEN"
-        ]
-    }, 
-    "_METHODS": {
-        "philantropy": [
-            "MEC"
-        ], 
-        "evaluate": [
-            "EVA"
-        ], 
-        "govern": [
-            "GOU"
-        ], 
-        "cooperate": [
-            "COO"
-        ], 
-        "mediate": [
-            "MED"
-        ], 
-        "participate": [
-            "PAR"
-        ], 
-        "research": [
-            "REC"
         ]
     }
 }

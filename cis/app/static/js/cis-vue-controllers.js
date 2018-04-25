@@ -142,13 +142,6 @@
 */
 
 
-	console.log("::: tags var initialisation ... ")
-	console.log("::: CATEGORIES_CIS_DICT : ", CATEGORIES_CIS_DICT )
-	console.log("::: NOMENCLATURE_CIS_DICT : ", NOMENCLATURE_CIS_DICT)
-	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS : ", NORMALIZATION_TAGS_SOURCES_CIS)
-	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT : ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
-
-
 	
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// CONTROLLERS 
@@ -330,7 +323,14 @@
 
 
 
-	// TO DO 
+	console.log("::: tags var initialisation ... ")
+	console.log("::: CHOICES_FILTERS_VUE : ", CHOICES_FILTERS_VUE )
+	console.log("::: CATEGORIES_CIS_DICT : ", CATEGORIES_CIS_DICT )
+	console.log("::: NOMENCLATURE_CIS_DICT : ", NOMENCLATURE_CIS_DICT)
+	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS : ", NORMALIZATION_TAGS_SOURCES_CIS)
+	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT : ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
+
+
 	// - - - - - - - - - - - - - //
 	// VUE APPS - FILTERS 
 	v_navbar_search_filters = new Vue({
@@ -339,26 +339,36 @@
 		delimiters	: custom_delimiters,
 
 		data		: {
-			// TO DO : 
-			// retrieve all filters buttons created on the fly by flask-jinja
-			// as vue data vars... 
 
-			q_search_string : search_string ,
+			// retrieve all filters buttons created on the fly by : 
+			// flask-jinja |OR| ajax request to distant API in the future (TO DO)
+			// --> as vue data vars..
 			
-			q_dict 			: q_wrapper,
+			f_filters			: CHOICES_FILTERS_VUE, 		// 
+			f_categories 		: CATEGORIES_CIS_DICT,		// codes for every filters
+			f_normalization		: NORMALIZATION_TAGS_SOURCES_CIS_DICT, 
+			
+			f_checked			: [],
+
+			f_checked_as_tags 		: {}, 	//
+			f_checked_as_src_tags 	: {}, 	//
 
 		},
 
 		created		: function() {
 			console.log(">>> v_navbar_search_filters / initiating ... "); 
-			console.log(">>> v_navbar_search_filters / this.q_search_string : " + this.q_search_string); 
+			console.log(">>> v_navbar_search_filters / this.f_filters : ", this.f_categories); 
 		},
 
-		// methods		: {
+		methods		: {
 		// 	// TO DO 
-		// },
+		},
 
 		computed	: {
+			// TO DO 
+		},
+
+		watch		: {
 			// TO DO 
 		},
 

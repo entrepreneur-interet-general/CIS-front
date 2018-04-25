@@ -152,9 +152,12 @@
 
 	{# note : hack refresh cache adding this : ?version=0.0.1 after brackets #}
 
+	{# TEMPORARY SOLUTION #}
 	<!-- CUSTOM JS FILTERS VARS / TEMPORARY WHILE SOLIDATA IN DEVELOPMENT -->
 	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-getjson-nomenclature.js') }}"></script> #}
 	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-tags-nomenclature.js') }}"></script> #}
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS.js') }}"></script>
+	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_VUE.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NOMENCLATURE_CIS_DICT.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS.js') }}"></script>
@@ -178,8 +181,8 @@
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.1"></script>
 		
 		<!-- CUSTOM VUE JS FOR BULMA -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.1"></script>
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.1"></script>
+		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.1"></script>
 
 		<!-- CUSTOM JS SEARCH CALLER -->
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script>
