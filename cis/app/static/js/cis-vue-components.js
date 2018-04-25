@@ -85,7 +85,7 @@ Vue.component('v-filter-item', {
 
 })
 
-
+/* 
 Vue.component('v-filters-list', {
 
 	delimiters	: custom_delimiters,
@@ -180,6 +180,7 @@ Vue.component('v-filters-list', {
 	}
 
 })
+*/
 
 // DECLARE FIELDS TO RETRIEVE FROM OPENSCRAPER RAW DATA
 // WARNING !!! FIELDS NAMES COULD CHANGE --> DATAMODEL IN OPENSCRAPER IS FLEXIBLE !!!

@@ -153,12 +153,13 @@
 	// declare default vars here 
 	var search_string   	= "" ;
 
-	// var search_tags			= [] ;
-	var search_in_domains 	= [] ;
-	var search_in_location 	= [] ;
-	var search_in_partners 	= [] ;
-	var search_in_publics 	= [] ;
-	var search_in_methods 	= [] ;
+	var search_in_tags 		= [] ;
+	// var search_in_domains 	= [] ;
+	// var search_in_partners 	= [] ;
+	// var search_in_publics 	= [] ;
+	// var search_in_methods 	= [] ;
+	var search_in_adresses 	= [] ;
+	var search_in_spiders 	= [] ;
 
 	var results_per_page 	= 40 ;
 
@@ -385,7 +386,10 @@
 					});
 					f_checked_as_src_tags.push( temp_src_tags ) ;
 					
-				} )
+				}) ;
+
+				// update q_search_in_tags inside v_navbar_search_input
+				v_navbar_search_input.q_search_in_tags = f_checked_as_src_tags ;
 			}
 		},
 
@@ -396,6 +400,7 @@
 		watch		: {
 			'f_checked' : function(newVal, oldVal){
 				// launch f_update_checked_as_tags_codes() if f_checked changes
+				// note : newVal === oldVal because of v-model ... I guess ...
 				console.log("--- v_navbar_search_filters -W- f_checked --> oldVal : " + oldVal + " / newVal : " + newVal );
 				console.log("--- v_navbar_search_filters -W- f_checked --> run : this.f_update_checked_as_tags_codes() ");
 				this.f_update_checked_as_tags_codes();
@@ -419,24 +424,41 @@
 		delimiters	: custom_delimiters,
 
 		data		: {
+			
+			// debug 
 			q_message			: default_message,
 
+			// token
 			q_token				: token_openscraper,
 
+			// free text
 			q_search_string 	: search_string,
 
-			q_search_in_domains 	: search_in_domains,
-			q_search_in_location 	: search_in_location,
-			q_search_in_partners 	: search_in_partners,
-			q_search_in_publics 	: search_in_publics,
-			q_search_in_methods 	: search_in_methods,
+			// tags for query
+			q_search_in_tags		: search_in_tags,
+			// q_search_in_domains 	: search_in_domains,
+			// q_search_in_partners : search_in_partners,
+			// q_search_in_publics 	: search_in_publics,
+			// q_search_in_methods 	: search_in_methods,
 
+			// TO DO : spiders ( aka partners )
+			q_search_in_spiders		: search_in_spiders,
+
+			// TO DO : adresses ( aka locations )
+			q_search_in_adresses 	: search_in_adresses,
+
+			// pagination
 			q_results_per_page 	: results_per_page,
 			q_page_n			: page_n,
 
+			// shuffle & sort
 			q_shuffle_seed		: shuffle_seed,
 			q_sort_by			: sort_by,
 			
+			// full url string for API call with ajax
+			// q_full_url			: "",
+
+			// 
 			q_is_results		: false,
 		},
 
@@ -446,13 +468,42 @@
 			console.log(">>> v_navbar_search_input / run : this.v_queryOpenScraper() "); 	
 			this.v_queryOpenScraper() ;
 		},
-
+		
+		computed	: {
+			// TO DO 
+			// createAjaxUrl 	: function() {
+			// 	var url = "gnaaaaa" ;
+			// 	return url
+			// },
+		},
+		
 		methods		: {
 
-			// main query function to openscraper
-			v_queryOpenScraper: function(reset_page_n=false) {
+			createAjaxSlug 	: function() {
+				// initiate slug
+				var slug =	  "page_n=" + this.q_page_n
+							+ "&token=" + this.q_token
+							+ "&shuffle_seed=" + this.q_shuffle_seed 
+							+ "&search_for=" + this.q_search_string 
+							+ "&results_per_page=" + this.q_results_per_page 
+				;
 				
-				console.log("- v_navbar_search_input / call_ajax ... ") ; 
+				this.q_search_in_tags.forEach( function( tags_list ) {
+					tags_list_as_string = "" ; 
+					tags_list.forEach( function(tag) {
+						tags_list_as_string += tag + "," 
+					});
+					slug += "&search_in_tags=" + tags_list_as_string
+				}) ;
+
+				// return q_slug to v_queryOpenScraper
+				return slug
+			},
+
+			// main query function to openscraper
+			v_queryOpenScraper : function(reset_page_n=false) {
+				
+				console.log("- v_navbar_search_input / call_ajax with v_queryOpenScraper method ... ") ; 
 				
 				// TO DO 
 				// show loading page css
@@ -471,14 +522,18 @@
 				v_results.d_results_per_page 	= this.q_results_per_page ;
 				v_results.d_page_n 				= this.q_page_n ;
 
-				// TO DO CLEANER --> WRITE A METHOD !!
+
 				// generate slug
-				var q_slug = 	 "page_n=" + this.q_page_n
-								+ "&token=" + this.q_token
-								+ "&shuffle_seed=" + this.q_shuffle_seed 
-								+ "&search_for=" + this.q_search_string 
-								+ "&results_per_page=" + this.q_results_per_page 
+				var q_slug = this.createAjaxSlug() ;
+				// TO DO CLEANER --> WRITE A METHOD OR A COMPUTED !!
+				// var q_slug = 	 "page_n=" + this.q_page_n
+				// 				+ "&token=" + this.q_token
+				// 				+ "&shuffle_seed=" + this.q_shuffle_seed 
+				// 				+ "&search_for=" + this.q_search_string 
+				// 				+ "&results_per_page=" + this.q_results_per_page 
 								
+								// + "&search_in_tags=" + this.q_search_in_tags
+
 								// TO DO 
 								// + "&spider_id=" + this.q_search_in_partners
 								// + "&search_in_tags=" + this.q_search_in_methods
@@ -486,49 +541,47 @@
 								// + "&search_in_tags=" + this.q_search_in_locations
 								// + "&search_in_tags=" + this.q_search_in_publics
 							;
-
 				console.log("- v_navbar_search_input -M- / before .then() / q_slug : ", q_slug ) ;
-				
+				// this.q_full_url = q_slug ;
+
 				// setTimeout for debugging ...
 				// setTimeout( function(){
-					// call ajax function 
-					ajax_query_to_openscraper( data_q_slug=q_slug )
+				// call ajax function 
+				ajax_query_to_openscraper( data_q_slug=q_slug )
+					
+					.then( function( q_data ){
 						
-						.then( function( q_data ){
-							
-							// reset spiders_infos 
-							spiders_infos = q_data.spiders_dict ; 
+						// reset spiders_infos 
+						spiders_infos = q_data.spiders_dict ; 
 
-							// reset vars
-							this.q_message = "json received";
-							// this.q_results	= q_data ; 
-							
-							// TO DO 
-							// hide loading page css
+						// reset vars
+						this.q_message = "json received";
+						// this.q_results	= q_data ; 
+						
+						// TO DO 
+						// hide loading page css
 
-							// pass data to other Vue instance
-							console.log("- v_navbar_search_input -M- / after then() / passing q_data to v_results.d_results ... ") ;
-							v_results.d_results 			= q_data ;
+						// pass data to other Vue instance
+						console.log("- v_navbar_search_input -M- / after then() / passing q_data to v_results.d_results ... ") ;
+						v_results.d_results 			= q_data ;
 
-							// console.log("- v_navbar_search_input / after then() / q_data : ") ;
-							// console.log(q_data) ;
+						// console.log("- v_navbar_search_input / after then() / q_data : ") ;
+						// console.log(q_data) ;
 
-							console.log("- v_navbar_search_input -M- / after then() / this.q_message : ") ;
-							console.log(this.q_message) ;
+						console.log("- v_navbar_search_input -M- / after then() / this.q_message : ") ;
+						console.log(this.q_message) ;
 
-							// console.log("- v_navbar_search_input / after then() / _this.q_data : ") ;
-							// console.log(this.q_results) ;
+						// console.log("- v_navbar_search_input / after then() / _this.q_data : ") ;
+						// console.log(this.q_results) ;
 
-						}
+					}
 
-					);
+				);
 				// },1000)
 
 			},
 		},
-		computed	: {
-			// TO DO 
-		},
+
 		watch 		: {
 
 			// TO TRY
@@ -542,8 +595,12 @@
 				console.log("--- v_navbar_search_input -W- q_shuffle_seed --> oldVal : " + oldVal + " / newVal: " + newVal );
 				console.log("--- v_navbar_search_input -W- q_shuffle_seed --> run : this.v_queryOpenScraper() ");
 				this.v_queryOpenScraper();
-			}
+			},
 
+			'q_search_in_tags' : function(newVal, oldVal){
+				console.log("--- v_navbar_search_input -W- q_search_in_tags --> oldVal : " + oldVal + " / newVal: " + newVal );
+				this.v_queryOpenScraper();
+			}
 			// 'q_search_string' : 
 			
 			// 	function (newVal, oldVal) {
