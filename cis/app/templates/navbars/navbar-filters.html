@@ -148,10 +148,9 @@
 
 
 			{# SPIDERS TAGS #}
-			<span 	v-for="checkboxes_list in f_filters_partners" 
+			{# <span	v-for="checkboxes_list in f_filters_partners" 
 					v-bind:id="checkboxes_list.name"
 					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
-
 				<a class="navbar-link">
 					<span>[[ checkboxes_list.fullname ]]</span>
 				</a>
@@ -161,6 +160,24 @@
 					<!-- checkboxes loop -->
 					<v-filter-categ-item 
 						v-for="checkbox in checkboxes_list.choices"
+						v-bind:filter="checkbox"
+						v-model="f_checked_partners"
+						>
+					</v-filter-item>
+					 #}
+					 
+			<span	id="sources_"
+					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
+
+				<a class="navbar-link">
+					<span>Sourceurs</span>
+				</a>
+
+				<div class="navbar-dropdown">
+
+					<!-- checkboxes loop -->
+					<v-filter-categ-item 
+						v-for="checkbox in f_filters_partners"
 						v-bind:filter="checkbox"
 						v-model="f_checked_partners"
 						>
@@ -196,7 +213,7 @@
 
 
 		{# FOR DEBUGGING PURPOSES #}
-		<!--
+		
 		<div class="navbar-end">
 
 			<div class="navbar-item">
@@ -213,10 +230,12 @@
 
 			<div class="navbar-item">
 				{# <span>[[ f_checked_partners ]]</span> #}
+				<button class="button" id="query-openscraper-infos-button">
+				</button>
 			</div>
 
 		</div>
-		-->
+		
 
 
 	</div>

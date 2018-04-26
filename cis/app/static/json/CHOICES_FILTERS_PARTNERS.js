@@ -4,6 +4,11 @@ var CHOICES_FILTERS_PARTNERS = [
         "name": "sources_", 
         "choices": [
             {
+                "fullname": "test", 
+                "id": "aaaaaaaaaaaaaaaaaaaaaaaa", 
+                "name": "test"
+            }, 
+            {
                 "fullname": "AG2R la mondiale", 
                 "id": "5a9da08d0a82868f49cd3816", 
                 "name": "AG2R la mondiale"

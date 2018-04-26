@@ -20,12 +20,11 @@
 <div id="search-results-canvas" class="">
 
 
-
-	{# TO DO : CHANGE DISPLAY FROM COLUMNS TO TILES #}
 	<div class="container">
 		
 		<!-- <div class="tile is-ancestor"> -->
-		<div class="columns">
+		<div 	v-if="d_count > 0"
+				class="columns">
 
 			<div	class="column is-3"
 					v-for="i in d_columns"
@@ -47,6 +46,14 @@
 
 		</div>
 	
+		<div 	v-else
+				class="has-text-centered">
+			<br>
+			<span>
+				pas de résultats
+			</span>
+			<br>
+		</div>
 
 
 

@@ -160,6 +160,9 @@ CHOICES_FILTERS_PARTNERS = [
 	{	"name"		: u"sources_",
 		"fullname" 	: u"Sourceurs",		
 		"choices"	: [
+
+			{"id" : "aaaaaaaaaaaaaaaaaaaaaaaa" , "name" : u"test",				 				"fullname" : u"test"},
+			
 			{"id" : "5a9da08d0a82868f49cd3816" , "name" : u"AG2R la mondiale",				 	"fullname" : u"AG2R la mondiale"},
 			{"id" : "5aa3de630a828651b2ebfe3e" , "name" : u"Apriles", 							"fullname" : u"Apriles"},
 			{"id" : "5a9d9fd80a82868f4973d2d3" , "name" : u"Avise", 							"fullname" : u"Avise"},

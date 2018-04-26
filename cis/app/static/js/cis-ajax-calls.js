@@ -94,20 +94,26 @@ function build_q_slug ( q_wrapper ) {
 // }
 
 
-var url_dev		= 'http://localhost:8000/api/data' ; 			// query local openscraper instance
-var url_prod	= 'http://www.cis-openscraper.com/api/data' ;	// query deployed openscraper instance
+var url_dev			= 'http://localhost:8000/api/data' ; 			// query local openscraper instance
+var url_dev_infos	= 'http://localhost:8000/api/infos' ; 			// query local openscraper instance
+var url_prod		= 'http://www.cis-openscraper.com/api/data' ;	// query deployed openscraper instance
+var url_prod_infos	= 'http://www.cis-openscraper.com/api/infos' ;	// query deployed openscraper instance
 
 // choose api url depending on config_name
-var api_url_current ;
+var api_url_current, api_url_current_infos ;
+
 if (meta_config_name == "production") {
-	api_url_current = url_prod ;
+	api_url_current 		= url_prod ;
+	api_url_current_infos 	= url_prod_infos ; 
+
 } else {
-	api_url_current = url_dev ;
+	api_url_current 		= url_dev ;
+	api_url_current_infos 	= url_dev_infos ; 
 };
 console.log("api_url_current")
 
 // MAIN AJAX FUNCTION AS PROMISE
-function ajax_query_to_openscraper( data_q_slug = "search_for=" ) {
+function ajax_query_to_openscraper( url_arg = api_url_current, data_q_slug = "search_for=" ) {
 	
 	// build ajax request options
 	// cf : https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 
@@ -120,7 +126,8 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=" ) {
 		crossOrigin		: true, 
 
 		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
-		url 			: api_url_current , // url_prod - url_dev
+		// url 			: api_url_current , // url_prod - url_dev
+		url 			: url_arg , // url_prod - url_dev
 
 		data			: data_q_slug ,
 		
@@ -135,14 +142,14 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=" ) {
 		// jsonpCallback	: "myJsonMethod",
 		
 		success 		: function( data ){
-			console.log( "SUCCESS ! >>> " ) ;
+			// console.log( "AJAX response >>> " ) ;
 			// alert("json successfully loaded...")
 
-			console.log( "SUCCESS ! >>> raw json data : " ) ;
+			console.log( "AJAX response ! >>> raw json data : " ) ;
 			console.log( data ) ;
 
-			console.log( "SUCCESS ! >>> raw data as json.stringify : " ) ;
-			console.log(JSON.stringify( data )) ;
+			// console.log( "AJAX response ! >>> raw data as json.stringify : " ) ;
+			// console.log(JSON.stringify( data )) ;
 
 			q_data = data ;
 			// q_data = JSON.stringify(data) ;
@@ -152,9 +159,9 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=" ) {
 		},
 
 		error 			: function ( httpReq,status,exception ){
-			console.log( "ERROR >>> " ) ;
-			alert(status+" "+exception);
-			return {"status" : "error", "exception": exception }
+			console.log( "ERROR in AJAX >>> " ) ;
+			alert( status + " " + exception );
+			return { "status" : "error", "exception": exception }
 		}
 		
 	}
@@ -175,17 +182,32 @@ function ajax_query_to_openscraper( data_q_slug = "search_for=" ) {
 // }
 
 
-function call_ajax_os(data_q_slug="") {
+function call_ajax_os( url_arg=api_url_current, data_q_slug="") {
 	
 	console.log(">>> call_ajax_os / data_q_slug : ", data_q_slug )
+	console.log(">>> call_ajax_os / data_q_slug : ", data_q_slug )
 	
-	ajax_query_to_openscraper( data_q_slug )
+	ajax_query_to_openscraper( url_arg, data_q_slug )
 		.then( function(res){
 			console.log(">>> call_ajax_os / after then() / res : ") ;
 			console.log(res);
 			return res ;
 		})
 }
+
+
+// var SRC_INFOS = call_ajax_os(url_arg=api_url_current_infos ) ;
+var SRC_INFOS = [] ;
+// var SRC_INFOS = {
+// 	"fullname"	: "Sourceurs", 
+// 	"name"		: "sources_", 
+// 	"choices"	: []
+// };
+ajax_query_to_openscraper( url_arg=api_url_current_infos, data_q_slug="" )
+	.then( function(res){
+		SRC_INFOS["choices"] = res ;
+		console.log(">>> SRC_INFOS >>> ", SRC_INFOS ) ;
+	});
 
 
 // - - - - - - - - - - - - - - - - - - - - - - //
@@ -195,11 +217,20 @@ function call_ajax_os(data_q_slug="") {
 // FOR DEBUGGING PURPOSES
 $(document).ready(function() {
 
+
 	$("#query-openscraper-button")
 		.on("click", 
 			function() { 
 				// for debugging purposes
-				call_ajax_os(data_q_slug="search_for=coco&token=test_token" );
+				call_ajax_os(url_arg=api_url_current, data_q_slug="search_for=coco&token=test_token" );
+			}
+		);
+
+	$("#query-openscraper-infos-button")
+		.on("click", 
+			function() { 
+				// for debugging purposes
+				call_ajax_os(url_arg=api_url_current_infos );
 			}
 		);
 

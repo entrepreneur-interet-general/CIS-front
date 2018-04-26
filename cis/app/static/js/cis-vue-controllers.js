@@ -16,6 +16,15 @@
 		return Math.floor(Math.random()*(max-min+1)+min);
 	}
 
+	// sort an array of objects of partners
+	// cf : https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript 
+	function compare(a,b) {
+		if (a.name < b.name)
+		  return -1;
+		if (a.name > b.name)
+		  return 1;
+		return 0;
+	}
 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// VUE.JS GLOBAL VARS AND UTILS
@@ -30,6 +39,7 @@
 	var custom_delimiters =  ['[[',']]'] 
 	// Vue.config.delimiters =  ['[[',']]'] ;
 
+	
 	var spiders_infos ;
 
 	
@@ -46,101 +56,6 @@
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// VUE.JS FUNCTIONS
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
-
-/*	///// COMPONENTS ---> MIGRATED IN cis-vue-components.js
-	// - - - - - - - - - - - - - // 
-	// COMPONENTS ---> MIGRATED IN cis-vue-components.js
-	// - - - - - - - - - - - - - //
-
-	// DEBUGGING - TUTORIAL
-	// Vue.component('todo-item', {
-	// 	// Le composant todo-item accepte maintenant une
-	// 	// « prop » qui est comme un attribut personnalisé.
-	// 	// Cette prop est appelée todo.
-
-	// 	delimiters	: custom_delimiters,
-	// 	props		: ['todo'],
-	// 	template	: '<li>[[ todo ]]</li>',
-
-	// })
-
-
-	// MAIN RESULTS DISPLAYER
-	Vue.component('v-results-item', {
-		// Le composant search-item accepte maintenant une
-		// « prop » qui est comme un attribut personnalisé.
-		// Cette prop est appelée results.
-
-		delimiters	: custom_delimiters,
-		props		: ['item'],
-		// template	:  '<div class="column is-3"><div class="card"><div class="column is-3"> [[ item["titre du projet"] ]] </div></div></div>',
-		template	:  `<div class="column is-3">
-
-							<div class="card">
-								
-								<div class="card-image">
-									<figure class="image">
-										<img v-bind:src="returnImage" alt="Placeholder image">
-									</figure>
-								</div>
-								
-								<div class="card-content">
-	
-									<p class="title is-5">[[ getTitle ]] </p>
-
-									<div class="content">
-										<p class="subtitle is-6">@[[ trimAbstract ]]</p>
-									</div>
-
-
-								</div>
-
-							</div>
-						</div>`,
-		computed : {
-
-			returnImage : function() {
-				var imageUrl = this.item['image(s) du projet'] ;
-				if (imageUrl == undefined){
-					var randomInt =  Math.floor((Math.random() * 8) + 1); 
-					var imageUrl_ = "/static/illustrations/textures/textures_encarts_fiches_texture "+ randomInt +".png" ;
-				} else {
-					var imageUrl_ = imageUrl[0] ;
-				}
-				return imageUrl_
-			},
-
-			getTitle : function() {
-				var title = this.item["titre du projet"] ;
-				if (title == undefined ){
-					var title_ = "(projet sans titre)"
-				} else {
-					var title_ = title[0]
-				}
-				return title_
-			},
-
-			trimAbstract : function() {
-				var fullAbstract = this.item["résumé du projet"][0] ;
-				return fullAbstract.slice(0,100) + "..." 
-			},
-		}
-
-	})
-
-
-	Vue.component('v-results-list', {
-		// Le composant search-item accepte maintenant une
-		// « prop » qui est comme un attribut personnalisé.
-		// Cette prop est appelée results.
-
-		delimiters	: custom_delimiters,
-		props		: ['item'],
-		template	: '<div class="column is-3"> [[ item["titre du projet"] ]] </div>',
-
-	})
-*/
-
 
 	
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
@@ -179,7 +94,7 @@
 	var default_message 	= "no request for now..." ;
 
 	var sort_by				= null ;
-	var shuffle_seed		= randomIntFromInterval() ; 
+	var shuffle_seed		= randomIntFromInterval(min=1, max=1000) ; 
 
 	// declare vue instances variable names
 	var v_navbar_search_input, v_navbar_search_filters, v_results ;
@@ -208,20 +123,16 @@
 			d_items_per_column 	: results_per_page/columns_indices.length,
 			d_columns_width 	: 12/columns_indices.length,
 
-			// d_test		: ["lalala", "oyoyo", "lalala", "oyoyo", "lalala", "oyoyo"],
-			d_results		: results, 
-			d_page_n		: page_n,
-			d_page_max		: page_max,
+			d_results			: results, 
+			d_page_n			: page_n,
+			d_page_max			: page_max,
 
-			d_count  		: count_results, 
-			d_count_tot		: count_results_total,
+			d_count  			: count_results, 
+			d_count_tot			: count_results_total,
 
-			d_count_start 	: count_start, 
-			d_count_stop  	: count_stop, 
+			d_count_start 		: count_start, 
+			d_count_stop  		: count_stop, 
 			d_results_per_page	: results_per_page,
-
-			// d_tags			: search_tags,
-			// d_as_list 	: [] ,
 
 		},
 
@@ -272,10 +183,15 @@
 		},
 
 		created		: function() {
-			console.log(">>> v_results / initiating ... "); 
-			console.log(">>> v_results / this.d_count 		: " + this.d_count); 
-			console.log(">>> v_results / this.d_tags 		: " + this.d_tags); 
-			console.log(">>> v_results / this.d_list 		: " + this.d_list); 
+
+			// ajax_query_to_openscraper( url_arg=api_url_current_infos, data_q_slug="" )
+			// 	.then( function(res){
+			// 		SRC_INFOS = res ;
+					console.log(">>> v_results / initiating ... "); 
+					console.log(">>> v_results / this.d_count 	: " + this.d_count); 
+					console.log(">>> v_results / this.d_tags 	: " + this.d_tags); 
+					console.log(">>> v_results / this.d_list 	: " + this.d_list); 
+			// });
 		},
 
 		watch 		: {
@@ -317,6 +233,7 @@
 			
 		}
 	})
+	
 	// }
 
 
@@ -355,16 +272,47 @@
 			f_checked_as_code_tags	: [], 
 			f_checked_as_src_tags 	: [], 
 
-			f_filters_partners	: CHOICES_FILTERS_PARTNERS, 
+			// f_is_partners 		: false , 
+			f_filters_partners	: SRC_INFOS, 
+			// f_filters_partners	: CHOICES_FILTERS_PARTNERS["choices"], 
+			// f_filters_partners	: CHOICES_FILTERS_PARTNERS, 
 			f_checked_partners	: [],
 		},
 
 		created		: function() {
 			console.log(">>> v_navbar_search_filters / initiating ... "); 
 			console.log(">>> v_navbar_search_filters / this.f_categories : ", this.f_categories); 
+			this.f_queryOpenScraper_infos() ;	
 		},
 
 		methods		: {
+			
+			f_queryOpenScraper_infos : function() {
+
+				var f_filters_partners = this.f_filters_partners ;
+
+				console.log("- v_navbar_search_filters / this.f_filters_partners : ", this.f_filters_partners ) ;
+
+				ajax_query_to_openscraper( url_arg=api_url_current_infos, data_q_slug="" )
+					
+					.then( function(res){
+					
+						console.log("- v_navbar_search_filters / res : ", res ) ;
+
+						// f_filters_partners["choices"] = [] ;
+						// f_filters_partners["choices"].push(res["spiders"]["spiders_list"]) ;
+						
+						res["spiders"]["spiders_list"].forEach( function (spider, index) {
+							Vue.set(f_filters_partners, index, spider) 
+						})
+						f_filters_partners.sort(compare) ; 
+						// this.f_is_partners = true ;
+						console.log("- v_navbar_search_filters / this.f_filters_partners : ", f_filters_partners ) ;
+
+				});
+
+				
+			},
 
 			f_update_checked_spider_id : function () {
 				console.log("- v_navbar_search_input -M- f_update_checked_as_spider_id ... ") ; 
@@ -411,6 +359,9 @@
 		},
 
 		watch		: {
+			'f_filters_partners' : function(newVal, oldVal){
+				console.log("--- v_navbar_search_filters -W- f_filters_partners --> oldVal : " + oldVal + " / newVal : " + newVal );
+			},
 			'f_checked' : function(newVal, oldVal){
 				// launch f_update_checked_as_tags_codes() if f_checked changes
 				// note : newVal === oldVal because of v-model ... I guess ...
@@ -424,7 +375,9 @@
 				console.log("--- v_navbar_search_filters -W- f_checked_partners --> oldVal : " + oldVal + " / newVal : " + newVal );
 				console.log("--- v_navbar_search_filters -W- f_checked_partners --> run : this.f_update_checked_spider_id() ");
 				this.f_update_checked_spider_id();
-			}
+			},
+
+
 		},
 
 	})
@@ -446,7 +399,7 @@
 		data		: {
 			
 			// debug 
-			q_message			: default_message,
+			// q_message			: default_message,
 
 			// token
 			q_token				: token_openscraper,
@@ -485,7 +438,7 @@
 		created		: function() {
 			console.log(">>> v_navbar_search_input / initiating ... "); 
 			console.log(">>> v_navbar_search_input / this.q_search_string 		: " + this.q_search_string ); 
-			console.log(">>> v_navbar_search_input / run : this.v_queryOpenScraper() "); 	
+			console.log(">>> v_navbar_search_input / run : this.v_queryOpenScraper() "); 
 			this.v_queryOpenScraper() ;
 		},
 		
@@ -537,7 +490,7 @@
 					this.q_page_n = 1 ;
 				}
 				// _this = this ;
-				this.q_message = "request sent : "+ this.q_search_string;
+				this.q_message = "request sent : " + this.q_search_string;
 
 				console.log("- v_navbar_search_input -M- / before .then() / _this.q_message : ") ;
 				console.log(this.q_message) ;
@@ -549,29 +502,13 @@
 
 				// generate slug
 				var q_slug = this.createAjaxSlug() ;
-				// TO DO CLEANER --> WRITE A METHOD OR A COMPUTED !!
-				// var q_slug = 	 "page_n=" + this.q_page_n
-				// 				+ "&token=" + this.q_token
-				// 				+ "&shuffle_seed=" + this.q_shuffle_seed 
-				// 				+ "&search_for=" + this.q_search_string 
-				// 				+ "&results_per_page=" + this.q_results_per_page 
-								
-								// + "&search_in_tags=" + this.q_search_in_tags
-
-								// TO DO 
-								// + "&spider_id=" + this.q_search_in_partners
-								// + "&search_in_tags=" + this.q_search_in_methods
-								// + "&search_in_tags=" + this.q_search_in_domains
-								// + "&search_in_tags=" + this.q_search_in_locations
-								// + "&search_in_tags=" + this.q_search_in_publics
-							;
 				console.log("- v_navbar_search_input -M- / before .then() / q_slug : ", q_slug ) ;
 				// this.q_full_url = q_slug ;
 
 				// setTimeout for debugging ...
 				// setTimeout( function(){
 				// call ajax function 
-				ajax_query_to_openscraper( data_q_slug=q_slug )
+				ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug=q_slug )
 					
 					.then( function( q_data ){
 						
@@ -579,7 +516,7 @@
 						spiders_infos = q_data.spiders_dict ; 
 
 						// reset vars
-						this.q_message = "json received";
+						// this.q_message = "json received";
 						// this.q_results	= q_data ; 
 						
 						// TO DO 
@@ -608,7 +545,7 @@
 
 		watch 		: {
 
-			// TO TRY
+			
 			'q_page_n' : function(newVal, oldVal){
 				console.log("--- v_navbar_search_input -W- q_page_n --> oldVal : " + oldVal + " / newVal : " + newVal );
 				console.log("--- v_navbar_search_input -W- q_page_n --> run : this.v_queryOpenScraper() ");

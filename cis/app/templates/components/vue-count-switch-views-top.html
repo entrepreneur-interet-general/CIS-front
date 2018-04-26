@@ -1,18 +1,18 @@
 {# count results and switch views #}
-<level id="user-switch" class="level">
+<level id="user-switch-top" class="level">
 
 
-		<div class="container">
+	<div class="container">
 
 		<!-- Main container -->
 		<nav class="level is-mobile">
 			
 			<!-- Left side -->
-			<div class="level-left">
+			<div  class="level-left">
 
 
 				{# pagination btns #}
-				<div class="level-item">
+				<div v-if="d_count > 0" class="level-item">
 					
 					<div class="buttons has-addons is-centered">
 
@@ -32,7 +32,7 @@
 				</div>
 
 				{# projects counter #}
-				<div class="level-item">
+				<div v-if="d_count > 0" class="level-item">
 
 					<div id="notification-search-results" class="notification notification-results  is-white">
 						
@@ -64,7 +64,7 @@
 				</div>
 
 				{# pagination #}
-				<div class="level-item">
+				{# <div class="level-item">
 
 					<div id="notification-search-results-pages" class="notification notification-results  is-white">
 						
@@ -74,25 +74,21 @@
 						
 					</div>
 					
-				</div>
+				</div> #}
 
 
 
 				{# shuffle btn #}
-				<div class="level-item">
-
-					{# <div id="notification-search-results-random" class="notification notification-results  is-white"> #}
+				<div v-if="d_count > 0" class="level-item">
 						
-						<a 	class="button is-primary tooltip is-tooltip-right"
-							data-tooltip="re-mélanger les résultats au hasard"
-							v-on:click="reShuffleResults">
-							<span class="icon">
-								<i class="fas fa-lg fa-random"></i>
-							</span>
-						</a>
-						
-					{# </div> #}
-					
+					<a 	class="button is-primary tooltip is-tooltip-right"
+						data-tooltip="re-mélanger les résultats au hasard"
+						v-on:click="reShuffleResults">
+						<span class="icon">
+							<i class="fas fa-lg fa-random"></i>
+						</span>
+					</a>
+				
 				</div>
 
 
