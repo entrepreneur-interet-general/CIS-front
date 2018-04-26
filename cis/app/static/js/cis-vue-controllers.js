@@ -500,6 +500,7 @@
 				console.log(this.q_message) ;
 
 				console.log("- v_navbar_search_input -M- / before .then() / this.q_results_per_page :", this.q_results_per_page ) ;
+				v_results.d_count 				= 0 ;
 				v_results.d_results_per_page 	= this.q_results_per_page ;
 				v_results.d_page_n 				= this.q_page_n ;
 				v_results.d_loading 			= true ;

@@ -115,8 +115,9 @@ console.log("api_url_current")
 // MAIN AJAX FUNCTION AS PROMISE
 function ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug = "search_for=" ) {
 	
-	console.log( "AJAX >>> url_arg 	   : ", url_arg ) ;
-	console.log( "AJAX >>> data_q_slug : ", data_q_slug ) ;
+	console.log( "AJAX >>> url_arg 	   			: ", url_arg ) ;
+	console.log( "AJAX >>> data_q_slug 			: ", data_q_slug ) ;
+	console.log( "AJAX >>> data_q_slug.length 	: ", data_q_slug.length ) ;
 
 	// build ajax request options
 	// cf : https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 
@@ -124,26 +125,34 @@ function ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug = "sear
 
 	let request_options = {
 
-		type 			: 'GET', //'POST' not working with openscraper because of _xsrf missing
+		type 			: 'GET', //'POST' not working with openscraper as long as _xsrf is either wrong or missing
+		
 		crossDomain 	: true,
-		crossOrigin		: true, 
+		// crossOrigin		: true, 
+		// cors 			: true,
+		// secure			: true,
 		
 		// WARNING : somtimes slug is very long so response could be denied even is CORS is enabled...
 		// cf : https://openclassrooms.com/forum/sujet/probleme-avec-cross-origin-request-node
-		header			: {'Access-Control-Allow-Origin': "http://carrefourdesinnovationssociales.fr/" },
+		// header			: {'Access-Control-Allow-Origin': "*" },
+		// header  		: {"Content-Length": data_q_slug.length }, 
+		// header			: {'Access-Control-Allow-Origin': "http://carrefourdesinnovationssociales.fr/" },
 		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
 
 		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
 		url 			: url_arg ,
 
+		// WARNING / POSSIBLE ERROR : "414 Request-URI Too Large" on nginx if data_q_slug is very long... 
+		// cf : http://gbanis.com/blog/howto-troubleshoot-nginx-error-uri-too-large 
+		// resolved with : https://stackoverflow.com/questions/23732147/configuring-nginx-for-large-uris 
 		data			: data_q_slug ,
 		
 		// data			: {'token': 'test_token'},
 		// data 		: JSON.stringify({new_val : $(this).text()}),
 
+		// contentType		: 'application/json',
 		dataType		: 'json',
 		// dataType		: 'script',
-		// contentType		: 'application/json',
 		// dataType 		:"jsonp",
 		// jsonp			: false,
 		// jsonpCallback	: "myJsonMethod",

@@ -2,10 +2,12 @@
 
 import os
 
+### set environment variable 
 os.environ['FLASK_CONFIGURATION'] = "default" # "testing" / "production"
-
 ### for debugging
-os.environ['FLASK_CONFIGURATION'] = "production"
+# os.environ['FLASK_CONFIGURATION'] = "production"
+
+
 
 from app import app
 
