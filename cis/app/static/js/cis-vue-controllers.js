@@ -117,20 +117,21 @@
 
 						h_counts["spiders"]		= res["counts"]["spiders_tested"] ;
 						h_counts["projects"]	= res["counts"]["data"] ;
+						RunCounter();			
 
-				});
+				})
 				
 			},
 		},
 
-		watch 		: {
+		// watch 		: {
 
-			'h_counts' : function(newVal, oldVal){
-				console.log("--- v_navbar_search_filters -W- h_counts --> oldVal : " + oldVal + " / newVal : " + newVal );
-				RunCounter();
-			},
+		// 	'h_counts' : function(newVal, oldVal){
+		// 		console.log("--- v_navbar_search_filters -W- h_counts --> oldVal : " + oldVal + " / newVal : " + newVal );
+		// 		// RunCounter();
+		// 	},
 
-		},
+		// },
 
 	});
 
@@ -438,16 +439,25 @@
 
 			},
 
-			f_cleanCheckedCheckboxesList : function(checkboxes_list_name) {
+			f_cleanCheckedFromCheckboxesList : function(checkboxes_list_name) {
 				
 				console.log("- v_navbar_search_input -M- f_cleanTagsFromCheckboxesList ... ") ; 
 				console.log("- v_navbar_search_input -M- checkboxes_list :", checkboxes_list_name) ; 
 				
-				var f_checked = this.f_checked ;
+				if ( checkboxes_list_name === 'sources_' ) {
+					var f_checked = this.f_checked_partners ;
+					// get corresponding checkboxes 
+					var corresponding_checkboxes 	= $("#sources_").find("input") ; 
+				} else {
+					var f_checked = this.f_checked ;
+					// get corresponding checkboxes 
+					var regex_for_checkboxes 		= 'input[id^="' + checkboxes_list_name + '"]:checked' ;
+					var corresponding_checkboxes 	= $(regex_for_checkboxes) ; 
+				}
 
-				// get corresponding checkboxes 
-				var regex_for_checkboxes 		= 'input[id^="' + checkboxes_list_name + '"]:checked' ;
-				var corresponding_checkboxes 	= $(regex_for_checkboxes) ; 
+				// // get corresponding checkboxes 
+				// var regex_for_checkboxes 		= 'input[id^="' + checkboxes_list_name + '"]:checked' ;
+				// var corresponding_checkboxes 	= $(regex_for_checkboxes) ; 
 				console.log("- v_navbar_search_input -M- corresponding_checkboxes :", corresponding_checkboxes ) ; 
 
 				// clear f_checked from corresponding values 
@@ -459,6 +469,7 @@
 				// uncheck corresponding checkboxes
 				corresponding_checkboxes.prop('checked', false); // Unchecks it
 			},
+
 		},
 
 		computed	: {

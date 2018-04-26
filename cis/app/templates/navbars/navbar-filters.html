@@ -128,13 +128,13 @@
 
 						<div class="column"> #}
 							<div class="navbar-item">
-								<a 	class="button is-text is-fullwidth"
-									@click="f_cleanCheckedCheckboxesList(checkboxes_list.name)"
+								<a 	class="button is-text is-fullwidth has-text-primary"
+									@click="f_cleanCheckedFromCheckboxesList(checkboxes_list.name)"
 									>
 									Effacer
 								</a>
-							{# </div>
-						</div> #}
+							</div>
+						{# </div> #}
 
 						{# <div class="column is-half">
 							<div class="navbar-item">
@@ -145,7 +145,8 @@
 						</div> #}
 
 
-					</div>
+					{# </div> #}
+
 				</div>
 			
 			</span>
@@ -185,18 +186,21 @@
 						v-bind:filter="checkbox"
 						v-model="f_checked_partners"
 						>
-					</v-filter-item>
-				
-					<!-- footer -->
-					<div class="columns is-centered ">
+					</v-filter-categ-item>
 
-						<div class="column">
+						
+					<!-- footer -->
+					{# <div class="columns is-centered "> #}
+
+						{# <div class="column"> #}
 							<div class="navbar-item">
-								<a class="button is-text is-fullwidth">
+								<a 	class="button is-text is-fullwidth has-text-primary"
+									@click="f_cleanCheckedFromCheckboxesList('sources_')"
+									>
 									Effacer
 								</a>
 							</div>
-						</div>
+						{# </div> #}
 
 						{# <div class="column is-half">
 							<div class="navbar-item">
@@ -206,7 +210,8 @@
 							</div>
 						</div> #}
 
-					</div>
+					{# </div> #}
+
 				</div>
 			
 			</span>
