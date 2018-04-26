@@ -351,6 +351,9 @@
 
 				// update q_search_in_tags inside v_navbar_search_input
 				v_navbar_search_input.q_search_in_tags = f_checked_as_src_tags ;
+
+				// reset page_n
+				v_navbar_search_input.q_page_n = 1 ;
 			}
 		},
 

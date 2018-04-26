@@ -93,23 +93,23 @@ function build_q_slug ( q_wrapper ) {
 // 	console.log(data) ;
 // }
 
+var url_api_root_dev	= 'http://localhost:8000' ;
+var url_api_root_prod	= 'http://www.cis-openscraper.com' ;
 
-var url_dev			= 'http://localhost:8000/api/data' ; 			// query local openscraper instance
-var url_dev_infos	= 'http://localhost:8000/api/infos' ; 			// query local openscraper instance
-var url_prod		= 'http://www.cis-openscraper.com/api/data' ;	// query deployed openscraper instance
-var url_prod_infos	= 'http://www.cis-openscraper.com/api/infos' ;	// query deployed openscraper instance
+var url_api_data	= '/api/data' ;
+var url_api_infos	= '/api/infos' ;
 
 // choose api url depending on config_name
-var api_url_current, api_url_current_infos ;
-
+var url_root ; 
 if (meta_config_name == "production") {
-	api_url_current 		= url_prod ;
-	api_url_current_infos 	= url_prod_infos ; 
-
+	url_root 		= url_api_root_prod ;
 } else {
-	api_url_current 		= url_dev ;
-	api_url_current_infos 	= url_dev_infos ; 
+	url_root 		= url_api_root_dev ;
 };
+
+var api_url_current 		= url_root + url_api_data ;
+var api_url_current_infos	= url_root + url_api_infos ; 
+
 console.log("api_url_current")
 
 // MAIN AJAX FUNCTION AS PROMISE
@@ -124,6 +124,9 @@ function ajax_query_to_openscraper( url_arg = api_url_current, data_q_slug = "se
 		type 			: 'GET', //'POST' not working with openscraper because of _xsrf missing
 		crossDomain 	: true,
 		crossOrigin		: true, 
+		
+		// cf : https://openclassrooms.com/forum/sujet/probleme-avec-cross-origin-request-node
+		header			: {'Access-Control-Allow-Origin': url_root },
 
 		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
 		// url 			: api_url_current , // url_prod - url_dev
@@ -136,6 +139,7 @@ function ajax_query_to_openscraper( url_arg = api_url_current, data_q_slug = "se
 		// data 		: JSON.stringify({new_val : $(this).text()}),
 
 		dataType		: 'json',
+		// dataType		: 'script',
 		// contentType		: 'application/json',
 		// dataType 		:"jsonp",
 		// jsonp			: false,
