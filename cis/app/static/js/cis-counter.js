@@ -1,7 +1,9 @@
 
 
-$( document ).ready(function() {
-	
+console.log("::: cis-counter.js is loaded ") ;
+
+
+function RunCounter () {
 
 	setTimeout( function() {
 
@@ -19,5 +21,11 @@ $( document ).ready(function() {
 		}), 
 		1000 // time for timeout in milliseconds
 	});
+};
 
-})
+
+// $( document ).ready(function() {
+
+// 	RunCounter() ;
+
+// })

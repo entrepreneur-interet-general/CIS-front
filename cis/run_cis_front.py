@@ -4,7 +4,7 @@ import os
 
 ### set environment variable 
 os.environ['FLASK_CONFIGURATION'] = "default" # "testing" / "production"
-### for debugging
+### change environment var to "production" for debugging
 # os.environ['FLASK_CONFIGURATION'] = "production"
 
 

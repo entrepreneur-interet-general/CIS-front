@@ -32,7 +32,8 @@
 {# 1st section index-user #}
 <section id="user-index-title" class="hero is-primary is-fullheight skip-navbar ">
 
-	<div class="hero-body">
+	<div 	id="user-home" 
+			class="hero-body">
 
 		<br><br>
 
@@ -45,12 +46,10 @@
 				<div class="column is-5 has-text-centered">
 
 
-
 					{% include "elements/flash-messages.html"%}
 
 
 					<br>
-
 
 
 					<div class="columns is-centered is-white">
@@ -62,7 +61,10 @@
 								<a 	class=""
 									target="_blank"
 									href="http://cis-openscraper.com">
-										<span class="Count has-text-weight-bold">4858</span>
+										<span class="Count has-text-weight-bold">
+											{# 4858 #}
+											[[ h_counts.projects ]]
+										</span>
 								</a>
 							</h1>
 							<h3 class="subtitle has-text-white">projets référencés</h3>
@@ -81,7 +83,10 @@
 								<a 	class="modal-button "
 									data-target="modal_feedback_tester"
 									aria-haspopup="true">
-									<span class="Count has-text-weight-bold">15</span>
+									<span class="Count has-text-weight-bold">
+										{# 15 #}
+										[[ h_counts.spiders ]]
+									</span>
 								</a>
 							</h1>
 							</a>

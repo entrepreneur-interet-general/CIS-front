@@ -226,6 +226,10 @@ ajax_query_to_openscraper( url_arg=api_url_current_infos, data_q_slug="" )
 	});
 
 
+
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - //
 // bind ajax query to button(s) 
 // - - - - - - - - - - - - - - - - - - - - - - //

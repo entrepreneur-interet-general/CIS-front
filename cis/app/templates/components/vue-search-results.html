@@ -22,7 +22,8 @@
 
 	<div class="container">
 		
-		<!-- <div class="tile is-ancestor"> -->
+
+		{# RESULTS #}
 		<div 	v-if="d_count > 0"
 				class="columns">
 
@@ -46,6 +47,8 @@
 
 		</div>
 	
+
+		{# LOADING #}
 		<div 	v-else-if="d_loading"
 				class="has-text-centered is-large">
 			<br>
@@ -58,6 +61,7 @@
 		</div>
 
 
+		{# NO RESULTS #}
 		<div 	v-else
 				class="has-text-centered is-large">
 			<br>

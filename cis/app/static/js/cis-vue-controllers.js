@@ -5,9 +5,11 @@
 
 	console.log("::: cis-vue-controllers.js is loaded") ;
 
-	
+
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// DATA UTILS
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 
@@ -26,8 +28,12 @@
 		return 0;
 	}
 
+
+
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// VUE.JS GLOBAL VARS AND UTILS
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 
@@ -39,10 +45,9 @@
 	var custom_delimiters =  ['[[',']]'] 
 	// Vue.config.delimiters =  ['[[',']]'] ;
 
-	
 	var spiders_infos ;
 
-	
+	// TO DO : implement for real
 	function getUserToken() {
 		
 		// get token from meta in html 
@@ -53,14 +58,88 @@
 		return meta_token
 	}
 
+
+
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// VUE.JS FUNCTIONS
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
+	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 
 	
+
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
 	// CONTROLLERS 
 	// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = //
+
+
+
+
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+	// VUE APPS - USER INDEX (HOME) 
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+
+	var infos_counts = { 
+		"spiders"	: 0 , 
+		"projects"	: 0 ,
+	}; 
+
+
+	v_user_home = new Vue({
+		
+		el			: '#user-home',
+		delimiters	: custom_delimiters,
+
+		data		: {
+
+			h_counts : infos_counts ,
+
+		},
+
+		created		: function() {
+			console.log(">>> v_user_home / initiating ... "); 
+			this.h_queryOpenScraper_infos() ;	
+		},
+
+		methods		: {
+			
+			h_queryOpenScraper_infos : function() {
+
+				var h_counts 	= this.h_counts ;
+
+				console.log("- v_user_home / this.h_counts : ", this.h_counts ) ;
+
+				ajax_query_to_openscraper( url_arg=api_url_current_infos, data_q_slug="" )
+					
+					.then( function(res){
+					
+						console.log("- v_user_home / res : ", res ) ;
+
+						h_counts["spiders"]		= res["counts"]["spiders_tested"] ;
+						h_counts["projects"]	= res["counts"]["data"] ;
+
+				});
+				
+			},
+		},
+
+		watch 		: {
+
+			'h_counts' : function(newVal, oldVal){
+				console.log("--- v_navbar_search_filters -W- h_counts --> oldVal : " + oldVal + " / newVal : " + newVal );
+				RunCounter();
+			},
+
+		},
+
+	});
+
+
+
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+	// VUE APPS - SEARCH RESULTS --> dispatcher to box cards
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+
 
 	// for displaying
 	var columns_indices 	= [0,1,2,3];
@@ -104,12 +183,8 @@
 	// var is_user_results = $('#user-results') ; 
 	// console.log("::: is_user_results.length : ", is_user_results.length ) ;
 
-
-
 	// if (is_user_results.lenght === 1 ) {
 
-	// - - - - - - - - - - - - - //
-	// VUE APPS - SEARCH RESULTS --> dispatcher to box cards
 	v_results = new Vue({
 		
 		el			: '#user-results',
@@ -239,7 +314,10 @@
 
 
 
-
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+	// VUE APPS - FILTERS 
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+	
 	console.log("::: tags var initialisation ... ")
 	console.log("::: CHOICES_FILTERS_TAGS 		: ", CHOICES_FILTERS_TAGS )
 	console.log("::: CHOICES_FILTERS_PARTNERS 	: ", CHOICES_FILTERS_PARTNERS )
@@ -251,8 +329,7 @@
 	console.log("::: NORMALIZATION_TAGS_SOURCES_CIS_DICT 	: ", NORMALIZATION_TAGS_SOURCES_CIS_DICT)
 
 
-	// - - - - - - - - - - - - - //
-	// VUE APPS - FILTERS 
+
 	v_navbar_search_filters = new Vue({
 		
 		el			: '#navbar-search-filters',
@@ -321,7 +398,7 @@
 			},
 
 			f_update_checked_as_tags_codes : function() {
-				// 
+
 				console.log("- v_navbar_search_input -M- f_update_checked_as_tags_codes ... ") ; 
 				var f_categories 			= this.f_categories ;
 				var f_normalization 		= this.f_normalization ;
@@ -354,8 +431,34 @@
 				v_navbar_search_input.q_search_in_tags = f_checked_as_src_tags ;
 
 				// reset page_n
-				v_navbar_search_input.q_page_n = 1 ;
-			}
+				v_navbar_search_input.q_page_n 	= 1 ;
+
+				// show loader
+				v_results.d_count 				= 0 ;
+
+			},
+
+			f_cleanCheckedCheckboxesList : function(checkboxes_list_name) {
+				
+				console.log("- v_navbar_search_input -M- f_cleanTagsFromCheckboxesList ... ") ; 
+				console.log("- v_navbar_search_input -M- checkboxes_list :", checkboxes_list_name) ; 
+				
+				var f_checked = this.f_checked ;
+
+				// get corresponding checkboxes 
+				var regex_for_checkboxes 		= 'input[id^="' + checkboxes_list_name + '"]:checked' ;
+				var corresponding_checkboxes 	= $(regex_for_checkboxes) ; 
+				console.log("- v_navbar_search_input -M- corresponding_checkboxes :", corresponding_checkboxes ) ; 
+
+				// clear f_checked from corresponding values 
+				corresponding_checkboxes.each(function() {
+					var checked_value = $(this).val() ;
+					f_checked.splice( $.inArray(checked_value, f_checked), 1 );
+				}),
+
+				// uncheck corresponding checkboxes
+				corresponding_checkboxes.prop('checked', false); // Unchecks it
+			},
 		},
 
 		computed	: {
@@ -363,9 +466,11 @@
 		},
 
 		watch		: {
+			
 			'f_filters_partners' : function(newVal, oldVal){
 				console.log("--- v_navbar_search_filters -W- f_filters_partners --> oldVal : " + oldVal + " / newVal : " + newVal );
 			},
+
 			'f_checked' : function(newVal, oldVal){
 				// launch f_update_checked_as_tags_codes() if f_checked changes
 				// note : newVal === oldVal because of v-model ... I guess ...
@@ -373,6 +478,7 @@
 				console.log("--- v_navbar_search_filters -W- f_checked --> run : this.f_update_checked_as_tags_codes() ");
 				this.f_update_checked_as_tags_codes();
 			},
+
 			'f_checked_partners' : function(newVal, oldVal){
 				// launch f_update_checked_as_tags_codes() if f_checked changes
 				// note : newVal === oldVal because of v-model ... I guess ...
@@ -391,10 +497,10 @@
 
 
 
-
-
-	// - - - - - - - - - - - - - //
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
 	// VUE APPS - SEARCH INPUT 
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  //
+
 	v_navbar_search_input = new Vue({
 		
 		el			: '#navbar-search-input',
@@ -500,7 +606,7 @@
 				console.log(this.q_message) ;
 
 				console.log("- v_navbar_search_input -M- / before .then() / this.q_results_per_page :", this.q_results_per_page ) ;
-				v_results.d_count 				= 0 ;
+				// v_results.d_count 				= 0 ;
 				v_results.d_results_per_page 	= this.q_results_per_page ;
 				v_results.d_page_n 				= this.q_page_n ;
 				v_results.d_loading 			= true ;
@@ -573,16 +679,17 @@
 			'q_search_in_spiders' : function(newVal, oldVal){
 				console.log("--- v_navbar_search_input -W- q_search_in_spiders --> oldVal : " + oldVal + " / newVal: " + newVal );
 				this.v_queryOpenScraper();
-			}
-			// 'q_search_string' : 
+			},
 			
-			// 	function (newVal, oldVal) {
-			// 		//  this function will be called when chenge in `cis_v_search_for.q_search_for`
-			// 		console.log("--- v_navbar_search_input / $watch( q_search_for ) --> newVal : ", newVal + " / oldVal :" + oldVal ) ; 
-			// 		// this.q_search_string = newVal ; 
-			// 		search_string = newVal ; 
-					
-			// 	},
+			// 'q_search_string' : function (newVal, oldVal) {
+			// 	// 		//  this function will be called when chenge in `cis_v_search_for.q_search_for`
+			// 	// 		console.log("--- v_navbar_search_input / $watch( q_search_for ) --> newVal : ", newVal + " / oldVal :" + oldVal ) ; 
+			// 	// 		// this.q_search_string = newVal ; 
+			// 	// 		search_string = newVal ; 
+				
+			// 	// show loader
+			// 	v_results.d_count 				= 0 ;
+			// },
 
 		}
 

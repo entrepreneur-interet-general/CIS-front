@@ -112,7 +112,8 @@
 					<span>[[ checkboxes_list.fullname ]]</span>
 				</a>
 
-				<div class="navbar-dropdown">
+				<div 	:id="checkboxes_list.name" 
+						class="navbar-dropdown">
 
 					<!-- checkboxes loop -->
 					<v-filter-categ-item 
@@ -120,18 +121,20 @@
 						v-bind:filter="checkbox"
 						v-model="f_checked"
 						>
-					</v-filter-item>
+					</v-filter-categ-item>
 				
 					<!-- footer -->
-					<div class="columns is-centered ">
+					{# <div class="columns is-centered ">
 
-						<div class="column">
+						<div class="column"> #}
 							<div class="navbar-item">
-								<a class="button is-text is-fullwidth">
+								<a 	class="button is-text is-fullwidth"
+									@click="f_cleanCheckedCheckboxesList(checkboxes_list.name)"
+									>
 									Effacer
 								</a>
-							</div>
-						</div>
+							{# </div>
+						</div> #}
 
 						{# <div class="column is-half">
 							<div class="navbar-item">
@@ -140,6 +143,7 @@
 								</a>
 							</div>
 						</div> #}
+
 
 					</div>
 				</div>
