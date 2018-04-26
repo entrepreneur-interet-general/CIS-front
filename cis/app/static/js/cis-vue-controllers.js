@@ -127,6 +127,7 @@
 			d_page_n			: page_n,
 			d_page_max			: page_max,
 
+			d_loading			: true,
 			d_count  			: count_results, 
 			d_count_tot			: count_results_total,
 
@@ -501,6 +502,7 @@
 				console.log("- v_navbar_search_input -M- / before .then() / this.q_results_per_page :", this.q_results_per_page ) ;
 				v_results.d_results_per_page 	= this.q_results_per_page ;
 				v_results.d_page_n 				= this.q_page_n ;
+				v_results.d_loading 			= true ;
 
 
 				// generate slug
@@ -527,6 +529,7 @@
 
 						// pass data to other Vue instance
 						console.log("- v_navbar_search_input -M- / after then() / passing q_data to v_results.d_results ... ") ;
+						v_results.d_loading 			= false ;
 						v_results.d_results 			= q_data ;
 
 						// console.log("- v_navbar_search_input / after then() / q_data : ") ;

@@ -113,8 +113,11 @@ var api_url_current_infos	= url_root + url_api_infos ;
 console.log("api_url_current")
 
 // MAIN AJAX FUNCTION AS PROMISE
-function ajax_query_to_openscraper( url_arg = api_url_current, data_q_slug = "search_for=" ) {
+function ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug = "search_for=" ) {
 	
+	console.log( "AJAX >>> url_arg 	   : ", url_arg ) ;
+	console.log( "AJAX >>> data_q_slug : ", data_q_slug ) ;
+
 	// build ajax request options
 	// cf : https://stackoverflow.com/questions/23984586/reply-to-ajax-request-using-tornado 
 	// cf : https://stackoverflow.com/questions/26896679/tornado-cannot-read-json-ajax-requests 
@@ -125,16 +128,16 @@ function ajax_query_to_openscraper( url_arg = api_url_current, data_q_slug = "se
 		crossDomain 	: true,
 		crossOrigin		: true, 
 		
+		// WARNING : somtimes slug is very long so response could be denied even is CORS is enabled...
 		// cf : https://openclassrooms.com/forum/sujet/probleme-avec-cross-origin-request-node
-		header			: {'Access-Control-Allow-Origin': url_root },
+		header			: {'Access-Control-Allow-Origin': "http://carrefourdesinnovationssociales.fr/" },
+		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
 
 		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
-		// url 			: api_url_current , // url_prod - url_dev
-		url 			: url_arg , // url_prod - url_dev
+		url 			: url_arg ,
 
 		data			: data_q_slug ,
 		
-		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
 		// data			: {'token': 'test_token'},
 		// data 		: JSON.stringify({new_val : $(this).text()}),
 
@@ -163,7 +166,7 @@ function ajax_query_to_openscraper( url_arg = api_url_current, data_q_slug = "se
 		},
 
 		error 			: function ( httpReq,status,exception ){
-			console.log( "ERROR in AJAX >>> " ) ;
+			console.log( "AJAX >>> ERROR !!! " ) ;
 			alert( status + " " + exception );
 			return { "status" : "error", "exception": exception }
 		}

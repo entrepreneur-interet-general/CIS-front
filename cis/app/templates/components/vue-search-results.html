@@ -16,8 +16,8 @@
 </style> #}
 
 
-{# <div id="search-results-canvas" class="columns is-multiline is-mobile"> #}
-<div id="search-results-canvas" class="">
+{# <p id="search-results-canvas" class="columns is-multiline is-mobile"> #}
+<p id="search-results-canvas" class="">
 
 
 	<div class="container">
@@ -46,15 +46,38 @@
 
 		</div>
 	
-		<div 	v-else
-				class="has-text-centered">
+		<p 	v-else-if="d_loading"
+				class="has-text-centered is-large">
 			<br>
-			<span>
-				pas de résultats
+			<br>
+				<span class="icon is-large has-text-primary">
+					<i class="fas fa-3x fa-sync fa-pulse"></i>
+				</span>
+			<br>
+			<br>
+		</p>
+
+
+		<p 	v-else
+				class="has-text-centered is-large">
+			<br>
+			<br>
+			<span class="icon is-large has-text-primary">
+				<i class="fas fa-3x fa-times"></i>
+			</span>
+			<span class="icon is-large has-text-primary">
+				<i class="fas fa-3x fa-times"></i>
 			</span>
 			<br>
-		</div>
-
+			<span class="icon is-large has-text-primary">
+				<i class="fas fa-3x fa-minus"></i>
+			</span>
+			<br>
+			<br>
+				désolé, pas de résultats
+			<br>
+			<br>
+		</p>
 
 	</div>
 

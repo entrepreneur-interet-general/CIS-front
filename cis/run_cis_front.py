@@ -4,9 +4,14 @@ import os
 
 os.environ['FLASK_CONFIGURATION'] = "default" # "testing" / "production"
 
+### for debugging
+os.environ['FLASK_CONFIGURATION'] = "production"
+
 from app import app
 
 debug = True
+
+
 
 if __name__ == '__main__':
 	""" 
