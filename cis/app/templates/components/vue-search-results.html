@@ -16,8 +16,8 @@
 </style> #}
 
 
-{# <p id="search-results-canvas" class="columns is-multiline is-mobile"> #}
-<p id="search-results-canvas" class="">
+{# <div id="search-results-canvas" class="columns is-multiline is-mobile"> #}
+<div id="search-results-canvas" class="">
 
 
 	<div class="container">
@@ -46,7 +46,7 @@
 
 		</div>
 	
-		<p 	v-else-if="d_loading"
+		<div 	v-else-if="d_loading"
 				class="has-text-centered is-large">
 			<br>
 			<br>
@@ -55,10 +55,10 @@
 				</span>
 			<br>
 			<br>
-		</p>
+		</div>
 
 
-		<p 	v-else
+		<div 	v-else
 				class="has-text-centered is-large">
 			<br>
 			<br>
@@ -77,7 +77,7 @@
 				désolé, pas de résultats
 			<br>
 			<br>
-		</p>
+		</div>
 
 	</div>
 
