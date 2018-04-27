@@ -200,6 +200,7 @@
 			d_columns_width 	: 12/columns_indices.length,
 
 			d_results			: results, 
+			
 			d_page_n			: page_n,
 			d_page_max			: page_max,
 

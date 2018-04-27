@@ -56,7 +56,7 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 #### Tech stack
 - _Language_ : **Python**... because ... uuh ... eeeh ... I like this language too much ? 
 - _Backend_  : **[Flask](http://flask.pocoo.org/)**... minimalistic Python framework
-- _Frontend_ : **[Bulma](https://bulma.io/)**  (to make it nice) and **[Vue.js](https://vuejs.org/)**, **[Ajax]()** (to make queries to [Openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) )
+- _Frontend_ : **[Bulma](https://bulma.io/)** as CSS framework, **[Vue.js](https://vuejs.org/)** as JS framework, **[Ajax]()** for API queries (to make queries to [Openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) )
 - _Server_   : **[Ubuntu 16.04]()**, **[NGINX](https://www.nginx.com/)**, **[Gunicorn](http://gunicorn.org/)**, hosted in **[Digital Ocean](http://digitalocean.com/)**, domain name from **[OVH](http://ovh.com/)**
 
 ------
@@ -72,6 +72,18 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. DONE - connect logged pages to [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API + display results
 1. DONE - create a search engine based on [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API 
 1. what else ? ...
+
+-------
+
+## NOW WHAT ? 
+
+#### Next steps in the to do list : 
+
+1. add project page when clicking on a project card (Vue.js)
+1. starting to implement charts section (Vue.js)
+1. add user preferences pages
+1. translations for english / spanish / german / ... 
+1. ... 
 
 -------
 
@@ -109,14 +121,14 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 
 -------
 
-<h4 align=center><br>home for connected user (work in progress)</h4>
+<h4 align=center><br>home for connected user </h4>
 
 ![alt text](./screenshots/cis-front-user-index.png "index")
 
 
 -------
 
-<h4 align=center><br>search engine for connected user (work in progress)</h4>
+<h4 align=center><br>search engine for connected user</h4>
 
 ![alt text](./screenshots/cis-front-user-search.png "search")
 
