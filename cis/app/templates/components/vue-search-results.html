@@ -24,21 +24,24 @@
 		
 
 		{# RESULTS #}
-		<div 	v-if="d_count > 0"
-				class="columns">
+		<div 	v-show="!d_show_project"
+				v-if="d_count > 0"
+				class="columns"
+				>
 
 			<div	class="column is-3"
 					v-for="i in d_columns"
-			>	
+				>	
 				<div class="columns is-multiline">
 
-					<!-- <v-results-item 
-						v-for="d in d_results['query_results'].slice(i*d_items_per_column,(i+1)*d_items_per_column+1)" 
-						v-bind:item="d">
-					</v-results-item> -->
+					{# pass showProjectInfos() function to component #}
+					{# cf : https://medium.com/front-end-hacking/passing-methods-as-props-in-vue-js-d65805bccee #}
 					<v-results-item 
 						v-for="d in resortArray(i)" 
-						v-bind:item="d">
+						:item="d" 
+						:showproject="showProjectInfos" 
+						>
+
 					</v-results-item>
 
 				</div>
@@ -48,8 +51,35 @@
 		</div>
 	
 
+		{# SHOW ONE ITEM #}
+		<div	v-show="d_show_project">
+
+			<div>
+				<a 	class="button is-text tooltip is-tooltip-right"
+					style="margin-bottom:10px"
+					data-tooltip="retour à la liste de résultats"
+					@click="closeProjectInfos"
+					>
+					<span class="icon has-text-primary">
+						<i class="fas fa-arrow-left"></i>
+					</span>
+					<span>
+						retour aux résultats de recherche
+					</span>
+				</a>
+			</div>
+
+			<v-results-one-item 
+				:item="d_current_project"
+			>
+			</v-results-one-item>
+
+		</div>
+
+
 		{# LOADING #}
-		<div 	v-else-if="d_loading"
+		<div 	
+				v-if="d_loading"
 				class="has-text-centered is-large">
 			<br>
 			<br>
@@ -62,7 +92,10 @@
 
 
 		{# NO RESULTS #}
-		<div 	v-else
+		<div 	
+				v-if="!d_loading"
+				v-if="d_count === 0"
+				v-show="!d_show_project"
 				class="has-text-centered is-large">
 			<br>
 			<br>

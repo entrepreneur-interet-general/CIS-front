@@ -1,5 +1,8 @@
 {# count results and switch views #}
-<level v-if="d_count > 0" id="user-switch-bottom" class="level">
+<level 	v-show="!d_show_project"
+		v-if="d_count > 0" 
+		id="user-switch-bottom" 
+		class="level">
 
 
 	<div class="container">

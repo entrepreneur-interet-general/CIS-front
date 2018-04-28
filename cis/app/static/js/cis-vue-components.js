@@ -206,7 +206,7 @@ var projectholderFieldName 	= "structure porteuse" ;
 
 var linksrcFieldName 		= "link_src" ;
 var linkdataFieldName 		= "link_data" ;
-var websiteFieldName 		= "website" ;
+var linkWebsiteFieldName 	= "website" ;
 
 var spideridFieldName 		= "spider_id" ;
 
@@ -242,7 +242,7 @@ Vue.component('v-results-item', {
 	// Cette prop est appelée results.
 
 	delimiters	: custom_delimiters,
-	props		: ['item'],
+	props		: ['item', 'showproject'],
 
 	template	: `
 					<div class="column is-12">
@@ -252,7 +252,15 @@ Vue.component('v-results-item', {
 							<!-- image -->
 							<div class="card-image">
 								<figure class="image">
-									<img v-bind:src="getCardImage" alt="image du projet" class="proj-card-img">
+									<a 	href="#user-results-top"
+										:project_id="item._id" 
+										@click="showproject(item=item)"
+									>
+										<img 	:src="getCardImage" 
+												alt="image du projet" 
+												class="proj-card-img"
+										>
+									</a>
 								</figure>
 							</div>
 							
@@ -268,9 +276,18 @@ Vue.component('v-results-item', {
 									</span>
 								</div>
 
-								<!-- title -->
-								<p class="title is-5">[[ trimTitle ]] </p>
 
+
+								<!-- title -->
+								<p class="title is-5">
+									<a 	class="a_big"
+										href="#user-results-top"
+										:project_id="item._id" 
+										@click="showproject(item=item)"
+										>
+										[[ trimTitle ]]
+									</a>
+								</p>
 
 
 
@@ -283,8 +300,8 @@ Vue.component('v-results-item', {
 
 								<!-- tags -->
 								<div class="content" v-if="isTags">
-									<template v-for="tag_ in getTags ">
-										<span class="tag">[[ tag_ ]]</span>
+									<template 	v-for="tag_ in getTags ">
+										<span class="tag">[[ tag_ ]]</span> &nbsp;
 									</template>
 								</div>
 
@@ -293,9 +310,9 @@ Vue.component('v-results-item', {
 						
 							<footer class="card-footer">
 									<!-- link source -->
-									<a 	v-bind:href="getLinkSrc" 
+									<a 	:href="getBestLink" 
 										class="card-footer-item tooltip is-tooltip-top"
-										data-tooltip="lien vers le site sourceur"
+										data-tooltip="lien vers la page du projet chez le sourceur"
 										target="_blank"
 										>
 										<span class="icon">
@@ -303,10 +320,23 @@ Vue.component('v-results-item', {
 										</span>
 									</a>
 
-									<!-- link data -->
-									<a 	v-bind:href="getLinkData" 
+									<!-- link contributor -->
+									<a 	v-if="getLinkContributor" 
+										:href="getLinkContributor" 
 										class="card-footer-item tooltip is-tooltip-top"
-										data-tooltip="lien vers la page du projet chez le sourceur"
+										:data-tooltip="getNameContributor"
+										target="_blank"
+										>
+										<span class="icon">
+											<i class="fas fa-info-circle "></i>
+										</span>
+									</a>
+
+									<!-- link website -->
+									<a 	v-if="getLinkWebsite" 
+										:href="getLinkWebsite" 
+										class="card-footer-item tooltip is-tooltip-top"
+										data-tooltip="lien vers le site du projet"
 										target="_blank"
 										>
 										<span class="icon">
@@ -314,16 +344,6 @@ Vue.component('v-results-item', {
 										</span>
 									</a>
 
-									<!-- link contributor -->
-									<a 	v-bind:href="getLinkContributor" 
-										class="card-footer-item tooltip is-tooltip-top"
-										v-bind:data-tooltip="getNameContributor"
-										target="_blank"
-										>
-										<span class="icon">
-											<i class="fas fa-info-circle "></i>
-										</span>
-									</a>
 							</footer>
 
 						</div>
@@ -334,6 +354,7 @@ Vue.component('v-results-item', {
 	
 	computed : {
 		
+		// IMAGE
 		getCardImage : function() {
 			var imageUrl = this.item[imageFieldName] ;
 			
@@ -353,6 +374,7 @@ Vue.component('v-results-item', {
 			return imageUrl_
 		},
 
+		// ADRESS
 		getAdress : function() {
 			var adress = this.item[adressFieldName] ;
 			if (adress == undefined | adress == "" ){
@@ -362,7 +384,6 @@ Vue.component('v-results-item', {
 			}
 			return adress_
 		},
-
 
 
 		// LINKS
@@ -381,7 +402,7 @@ Vue.component('v-results-item', {
 			return link
 		},
 		getLinkWebsite : function() {
-			var link = this.item[linkwebsiteFieldName] ;
+			var link = this.item[linkWebsiteFieldName] ;
 			if (link == undefined ){
 				return false
 			} 
@@ -394,6 +415,16 @@ Vue.component('v-results-item', {
 		getNameContributor : function(){
 			var spider_id = this.item[spideridFieldName];
 			return "partagé par : " + spiders_infos[spider_id]["name"]
+		},
+		getBestLink : function() {
+			var bestLink ;
+			var linkData = this.getLinkData ; 
+			if (linkData === false ) {
+				bestLink = this.getLinkSrc ;
+			} else {
+				bestLink = linkData ;
+			}
+			return bestLink ; 
 		},
 
 		// TEXTS
@@ -425,7 +456,341 @@ Vue.component('v-results-item', {
 			}
 			return abstract_ 
 		},
+
+		// TAGS
 		isTags : function(){
+			var tags = this.item[tagsFieldName] ;
+			if (tags == undefined ){
+				return false
+			} else {
+				return true
+			}
+		},
+		getTags : function() {
+			var tags = this.item[tagsFieldName] ;
+			if (tags == undefined ){
+				tags = [""]
+			} else {
+				// TO DO --> normalize tags from nomenclature
+				tags = tags ;
+			}
+			return tags
+		},
+
+	},
+
+	methos	: {
+
+		// showProject : function () {
+		// 	console.log("... showProject ...") ; 
+		// 	var item_id = this.item["_id"]
+		// 	console.log("... showProject / item_id : ", item_id) ; 
+		// 	// showProjectInfos( project_id = item_id ) ; 
+		// },
+
+	}
+
+})
+
+
+Vue.component('v-results-one-item', {
+
+	delimiters	: custom_delimiters,
+	props		: ['item'],
+
+	template	: `	
+					<div class="columns">
+
+
+						<!-- COLUMN LEFT -->
+						<div class="column is-6 is-offset-1">
+
+							<div class="card proj-card">
+
+								<div class="card-content">
+
+									<!-- title -->
+									<p class="title is-3">
+										<a 	class="a_big"
+											:href="getBestLink"
+											target="_blank" 
+											>
+											[[ getTitle ]]
+										</a>
+									</p>
+
+									<!-- adress -->
+									<div class="content">
+										<span class="icon has-text-light">
+											<i class="fas fa-location-arrow "></i>
+										</span>
+										<span class="subtitle is-6">
+											[[ getAdress ]]
+										</span>
+									</div>
+
+									<!-- abstract -->
+									<div class="content">
+										<p class="subtitle is-4">
+											Description : 
+										</p>
+										<p class="subtitle is-6">[[ getFullAbstract ]]</p>
+									</div>
+
+								</div>
+							
+							</div>
+
+							<br>
+
+							<div class="card proj-card">
+
+								<div class="card-content">
+
+									<!-- Structure -->
+									<div class="content">
+										<p class="subtitle is-4">
+											Structure
+										</p>
+										
+										<p>
+											nom de la structure : 
+											<a	v-if="getBestLink"
+												:href="getBestLink"
+												target="_blank"
+											>
+											[[ getProjectHolder ]]
+											</a>
+										</p>
+
+
+										<p> 
+											site internet : 
+											<a	v-if="getLinkWebsite"
+												:href="getLinkWebsite"
+												target="_blank"
+											>
+												<span class="icon">
+													<i class="fas fa-external-link-alt "></i>
+												</span>
+												[[ getLinkWebsite[0] ]]
+											</a>
+											<span v-else>
+												(non renseigné)
+											</span>
+										</p>
+									</div>
+
+									<!-- Contact -->
+									<!--
+									<div class="content">
+										<p class="subtitle is-4">
+											Contact
+										</p>
+										<p>
+											porteur de projet : 
+										</p>
+									</div>
+									-->
+
+								</div>
+							
+							</div>
+
+
+						</div>
+
+
+						<!-- COLUMN RIGHT -->
+						<div class="column is-4">
+							
+							<!-- SHARED BY -->
+							<div class="card proj-card">
+
+								<!-- shared by -->
+								<div class="card-content">
+									<p>
+										Projet ajouté par 
+											<a 	:href="getBestLink" 
+												target="_blank"
+												>
+												[[ getNameContributor ]]
+											</a>
+									</p>
+
+									<br>
+									
+									<a 	:href="getBestLink" 
+										target="_blank"
+										>
+										<span class="icon">
+											<i class="fas fa-link "></i>
+										</span>
+										Voir le projet sur le site sourceur
+									</a>
+								</div>
+
+							</div>
+						
+							<br>
+
+							<!-- IMAGE -->
+							<div class="card proj-card">
+
+								<!-- image -->
+								<div class="card-image">
+									<figure class="image">
+										<a 	:href="getBestLink" 
+											target="_blank"
+										>
+											<img 	:src="getCardImage" 
+													alt="image du projet" 
+													class="proj-card-img"
+											>
+										</a>
+									</figure>
+								</div>
+
+							</div>
+						
+							<br>
+
+
+							
+							<!-- tags -->
+							<div class="content">
+								<p class="title is-5">
+									Mot-clés 
+								</p>
+								<template 	
+									v-if="isTags"
+									v-for="tag_ in getTags "
+									>
+									<span class="tag">[[ tag_ ]]</span>&nbsp;
+								</template>
+								<p v-else>
+									(non renseigné)
+								<p>
+							</div>
+
+
+							<!-- share item -->
+							<div class="content" >
+
+								<p class="title is-5">
+									Partagez ce projet
+								</p>
+
+								<p>
+									<a 	id="btn_cis_proj_facebook"
+										class="button is-text" 
+										href="https://www.facebook.com/TouteslesInnoSo/" 
+										>
+										<span class="icon has-text-primary">
+											<i class="fab fa-lg fa-facebook"></i>
+										</span>
+									</a>
+
+									<a 	id="btn_cis_proj_twitter"
+										class="button is-text" 
+										href="https://twitter.com/touteslesinnoso"
+										>
+										<span class="icon has-text-primary">
+											<i class="fab fa-lg fa-twitter"></i>
+										</span>
+									</a>
+
+								</p>
+
+							</div>
+
+
+						</div>
+
+
+					</div>
+				`,
+	
+	methods		: {
+
+		getFullText : function (textArray) {
+			var full_text = "" ;
+			textArray.forEach( function(text) {
+				if (text != undefined ) {
+					full_text += text + " " ;
+				}
+			});
+			return full_text
+		},
+
+	},
+
+	computed : {
+
+		// IMAGE
+		getCardImage : function() {
+			var imageUrl = this.item[imageFieldName] ;
+			
+			if (imageUrl == undefined){
+
+				// default image if no scrapped image
+				var randomInt =  Math.floor( ( Math.random() * numb_default_images ) + 1 ); 
+				
+				//// choose thick default image
+				var imageUrl_ = deft_imageUrl_medium + randomInt + ".png";
+			
+			} else {
+				var imageUrl_ = imageUrl[0] ;
+				// TO DO : check if image url contains 'logo', 'tampon', or that kind of shitty stuff...
+				// 
+			}
+			return imageUrl_
+		},
+
+		// ADRESS
+		getAdress : function() {
+			var adress = this.item[adressFieldName] ;
+			if (adress == undefined | adress == "" ){
+				var adress_ = "(adresse non définie)"
+			} else {
+				var adress_ = this.getFullText(adress) ;
+			}
+			return adress_
+		},
+
+		// TEXTS
+		getTitle : function() {
+			var title = this.item[titleFieldName] ;
+			if (title == undefined ){
+				var title_ = "(projet sans titre)"
+			} else {
+				title_ = this.getFullText(title) ;
+			}
+			return title_ 
+		},
+		getFullAbstract : function() {
+			var abstract = this.item[abstractFieldName];
+			// console.log( abstract ) ;
+			if (abstract == undefined ){
+				var abstract_ 	= "(projet sans résumé)"
+			} else {
+				abstract_ = this.getFullText(abstract) ;
+			}
+			return abstract_ 
+		},
+		getProjectHolder : function() {
+			var project_holder = this.item[projectholderFieldName];
+			// console.log( project_holder ) ;
+			if (project_holder == undefined ){
+				var project_holder_ 	= "(non renseigné)"
+			} else {
+				project_holder_ = this.getFullText(project_holder) ;
+			}
+			return project_holder_ 
+		},
+
+		// TAGS
+		isTags : function() {
 			var tags = this.item[tagsFieldName] ;
 			if (tags == undefined ){
 				return false
@@ -446,21 +811,49 @@ Vue.component('v-results-item', {
 		},
 
 
+		// LINKS
+		getLinkSrc : function() {
+			var link = this.item[linksrcFieldName] ;
+			if (link == undefined ){
+				return false
+			} 
+			return link
+		},
+		getLinkData : function() {
+			var link = this.item[linkdataFieldName] ;
+			if (link == undefined ){
+				return false
+			} 
+			return link
+		},
+		getLinkWebsite : function() {
+			var link = this.item[linkWebsiteFieldName] ;
+			if (link == undefined ){
+				return false
+			} 
+			return link
+		},
+		getLinkContributor : function() {
+			var spider_id = this.item[spideridFieldName];
+			return spiders_infos[spider_id]["page_url"]
+		},
+		getNameContributor : function() {
+			var spider_id = this.item[spideridFieldName];
+			return spiders_infos[spider_id]["name"]
+		},
+		getBestLink : function() {
+			var bestLink ;
+			var linkData = this.getLinkData ; 
+			if (linkData === false ) {
+				bestLink = this.getLinkSrc ;
+			} else {
+				bestLink = linkData ;
+			}
+			return bestLink ; 
+		},
 
 	}
 
 })
-
-
-// Vue.component('v-results-list', {
-// 	// Le composant search-item accepte maintenant une
-// 	// « prop » qui est comme un attribut personnalisé.
-// 	// Cette prop est appelée results.
-
-// 	delimiters	: custom_delimiters,
-// 	props		: ['item'],
-// 	template	: '<div class="column is-3"> [[ item["titre du projet"] ]] </div>',
-
-// })
 
 

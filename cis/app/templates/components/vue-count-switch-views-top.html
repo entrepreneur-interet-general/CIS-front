@@ -1,5 +1,7 @@
 {# count results and switch views #}
-<level id="user-switch-top" class="level">
+<level 	v-show="!d_show_project"
+		id="user-switch-top" 
+		class="level">
 
 
 	<div class="container">
@@ -16,12 +18,12 @@
 					
 					<div class="buttons has-addons is-centered">
 
-						<a class="button" id="page_down" v-on:click="v_page_down" href="#user-results-top">
+						<a class="button" id="page_down" v-on:click="v_page_down">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
 							</span>					
 						</a>
-						<a class="button" id="page_up" v-on:click="v_page_up" href="#user-results-top">
+						<a class="button" id="page_up" v-on:click="v_page_up" >
 							<span class="icon">
 								<i class="fas fa-chevron-right"></i>
 							</span>					

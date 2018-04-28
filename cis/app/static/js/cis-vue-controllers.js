@@ -190,6 +190,7 @@
 		
 		el			: '#user-results',
 		delimiters	: custom_delimiters,
+		// components 	: {"v-results-item" : vResultsItem }, 
 
 		data		: {
 			
@@ -199,14 +200,20 @@
 			d_items_per_column 	: results_per_page/columns_indices.length,
 			d_columns_width 	: 12/columns_indices.length,
 
+			// togglers
+			d_loading			: true,
+			d_show_project 		: false,
+			d_current_project 	: {},
+
+			// data results
 			d_results			: results, 
+			
+			// pagination
+			d_count  			: count_results, 
+			d_count_tot			: count_results_total,
 			
 			d_page_n			: page_n,
 			d_page_max			: page_max,
-
-			d_loading			: true,
-			d_count  			: count_results, 
-			d_count_tot			: count_results_total,
 
 			d_count_start 		: count_start, 
 			d_count_stop  		: count_stop, 
@@ -253,6 +260,24 @@
 
 				return arrayResultsForColumn ;
 
+			},
+
+			// show item infos
+			showProjectInfos : function ( item ) {
+				console.log("*** v_results / showProjectInfos...");
+				console.log("*** v_results / item : ", item );
+
+				// pass item info to d_current_project
+				this.d_current_project = item ;
+
+				// toggle d_show_project
+				this.d_show_project = true ;
+			},
+
+			// back to item list
+			closeProjectInfos : function () {
+				// toggle d_show_project
+				this.d_show_project = false ;
 			},
 		},
 
@@ -322,8 +347,8 @@
 	
 	console.log("::: tags var initialisation ... ")
 	console.log("::: CHOICES_FILTERS_TAGS 		: ", CHOICES_FILTERS_TAGS )
-	console.log("::: CHOICES_FILTERS_PARTNERS 	: ", CHOICES_FILTERS_PARTNERS )
-	console.log("::: CHOICES_FILTERS_GEOLOC 	: ", CHOICES_FILTERS_GEOLOC )
+	// console.log("::: CHOICES_FILTERS_PARTNERS 	: ", CHOICES_FILTERS_PARTNERS )
+	// console.log("::: CHOICES_FILTERS_GEOLOC 	: ", CHOICES_FILTERS_GEOLOC )
 	// console.log("::: CATEGORIES_CIS_DICT 	  	: ", CATEGORIES_CIS_DICT )
 	console.log("::: CATEGORIES_CIS_DICT_FLAT 	: ", CATEGORIES_CIS_DICT_FLAT)
 	// console.log("::: NOMENCLATURE_CIS_DICT 		: ", NOMENCLATURE_CIS_DICT)
@@ -636,7 +661,7 @@
 					
 					.then( function( q_data ){
 						
-						// reset spiders_infos 
+						// reset spiders_infos global variable 
 						spiders_infos = q_data.spiders_dict ; 
 
 						// reset vars
