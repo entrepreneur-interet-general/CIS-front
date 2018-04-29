@@ -136,7 +136,7 @@ function ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug = "sear
 		
 		// WARNING : somtimes slug is very long so response could be denied even is CORS is enabled...
 		// cf : https://openclassrooms.com/forum/sujet/probleme-avec-cross-origin-request-node
-		// header			: {'Access-Control-Allow-Origin': "*" },
+		header			: {'Access-Control-Allow-Origin': "*" },
 		// header  		: {"Content-Length": data_q_slug.length }, 
 		// header			: {'Access-Control-Allow-Origin': "http://carrefourdesinnovationssociales.fr/" },
 		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
