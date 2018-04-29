@@ -382,12 +382,15 @@
 			// f_filters_partners	: CHOICES_FILTERS_PARTNERS["choices"], 
 			// f_filters_partners	: CHOICES_FILTERS_PARTNERS, 
 			f_checked_partners	: [],
+
+			f_stats				: {},
 		},
 
 		created		: function() {
 			console.log(">>> v_navbar_search_filters / initiating ... "); 
 			console.log(">>> v_navbar_search_filters / this.f_categories : ", this.f_categories); 
 			this.f_queryOpenScraper_infos() ;	
+			this.f_queryOpenScraper_stats() ;	
 		},
 
 		methods		: {
@@ -416,7 +419,26 @@
 
 				});
 
-				
+			},
+
+			f_queryOpenScraper_stats : function() {
+
+				var f_stats = this.f_stats ;
+
+				console.log("- f_queryOpenScraper_stats ") ;
+
+				ajax_query_to_openscraper( url_arg=api_url_current_stats, data_q_slug="" )
+					
+					.then( function(res){
+					
+						console.log("- f_queryOpenScraper_stats / res : ", res ) ;
+
+						f_stats = res ;
+
+						console.log("- f_queryOpenScraper_stats " ) ;
+
+				});
+
 			},
 
 			f_update_checked_spider_id : function () {

@@ -98,6 +98,7 @@ var url_api_root_prod	= 'http://www.cis-openscraper.com' ;
 
 var url_api_data	= '/api/data' ;
 var url_api_infos	= '/api/infos' ;
+var url_api_stats	= '/api/stats' ;
 
 // choose api url depending on config_name
 var url_root ; 
@@ -109,6 +110,7 @@ if (meta_config_name == "production") {
 
 var api_url_current 		= url_root + url_api_data ;
 var api_url_current_infos	= url_root + url_api_infos ; 
+var api_url_current_stats	= url_root + url_api_stats ; 
 
 console.log("api_url_current")
 

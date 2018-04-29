@@ -610,12 +610,15 @@ Vue.component('v-results-one-item', {
 								<!-- shared by -->
 								<div class="card-content">
 									<p>
-										Projet ajouté par 
+										Projet ajouté par : 
+											<strong>
 											<a 	:href="getBestLink" 
 												target="_blank"
+												class="has-text-primary"
 												>
 												[[ getNameContributor ]]
 											</a>
+											</strong>
 									</p>
 
 									<br>
