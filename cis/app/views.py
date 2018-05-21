@@ -283,7 +283,7 @@ def load_user(userEmail):
 		# 				userName 		= user['userName'],
 		# 				userAuthLevel 	= user['userAuthLevel'] 
 		# 			)
-		user_ = User()
+		user_ = User(userOID=str(user["_id"]))
 		user_.populate_from_dict(dict_input=user)
 
 		return user_
@@ -485,12 +485,57 @@ def logout():
 
 
 ### TO DO 
-@app.route('/settings', methods=['GET', 'POST'])
+@app.route('/preferences/parameters', methods=['GET', 'POST'])
 @login_required
-def settings():
+def pref_parameters():
+	"""
+	to update user infos
+	"""
 
-	return render_template('user_settings.html')
+	form = UserParametersForm()
 
+	# print current_user
+
+
+	if request.method == 'POST' :
+
+		return redirect(url_for('pref_parameters'))
+
+
+	elif request.method == 'GET' :
+
+		# prepopulate input fields 
+		form.userOID.data 		= current_user.userOID
+		form.userName.data 		= current_user.userName
+		form.userSurname.data 	= current_user.userSurname
+		form.userEmail.data 	= current_user.userEmail
+		
+		log_cis.debug("current_user.userOtherStructure :", current_user.userOtherStructure )
+		# form.userOtherStructure	= current_user.userOtherStructure
+
+		# prepopulate select fields
+		form.userProfile.process_data(current_user.userProfile)
+		form.userPartnerStructure.process_data(current_user.userPartnerStructure)
+		form.userStructureProfile.process_data(current_user.userStructureProfile)
+
+		# prepopulate boolean fields
+		form.userHaveProjects.process_data(current_user.userHaveProjects)
+		form.userJoinCollective.process_data(current_user.userJoinCollective)
+
+
+		return render_template('user_preferences/user_parameters.html',
+								
+								config_name		= config_name, 						# prod or default...
+								app_metas		= app_metas, 
+								language		= "fr" ,
+								languages_dict	= app_languages_dict ,
+
+								site_section 	= "preferences",
+								site_subsection = "parameters",
+								form			= form,
+								user_infos		= current_user.get_public_infos 	# cf model_user.py
+								
+								)
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###

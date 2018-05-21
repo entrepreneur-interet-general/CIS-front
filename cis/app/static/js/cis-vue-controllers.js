@@ -320,6 +320,7 @@
 				// console.log( "--- v_results / new_results.status :", new_results.status ) ; 
 				console.log( new_results ) ; 
 
+				// this.d_show_project	= false ;
 				this.d_count 		= new_results.query_log.count_results ;
 				this.d_count_tot 	= new_results.query_log.count_results_tot ;
 				// this.d_page_n 		= new_results.query_log.query.page_n ;
@@ -577,15 +578,15 @@
 			q_search_string 	: search_string,
 
 			// tags for query
-			q_search_in_tags		: search_in_tags,
+			q_search_in_tags	: search_in_tags,
 
 
 
 			// TO DO : spiders ( aka partners )
-			q_search_in_spiders		: search_in_spiders,
+			q_search_in_spiders	: search_in_spiders,
 
 			// TO DO : adresses ( aka locations )
-			q_search_in_adresses 	: search_in_adresses,
+			q_search_in_adresses : search_in_adresses,
 
 
 
@@ -651,8 +652,9 @@
 				
 				console.log("- v_navbar_search_input / call_ajax with v_queryOpenScraper method ... ") ; 
 				
-				// TO DO 
 				// show loading page css
+
+				v_results.d_show_project	= false ;
 
 				console.log("- v_navbar_search_input / reset_page_n : ", reset_page_n) ; 
 				if (reset_page_n == true ){

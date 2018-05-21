@@ -70,6 +70,7 @@
 		
 
 		{# VUE.JS #}
+		<script src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script> 
 		{% if config_name == "production" %}
 			<!-- production version, optimized for size and speed -->
 			<script src="https://cdn.jsdelivr.net/npm/vue"></script> 
@@ -128,7 +129,7 @@
 		</nav>
 
 		{# 2d nav bar - filters navbar #}
-		{% if user_infos.is_authenticated == True %}
+		{% if user_infos.is_authenticated == True and site_section != "preferences" %}
 			{% if site_section in ["home", "register", "login"] %}
 				{% set display_filters = "none" %}
 			{% else %}
@@ -190,9 +191,10 @@
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-filters-toggler.js') }}?version=0.0.1"></script>
 
 		<!-- CUSTOM JS FOR AJAX CALLS -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.4"></script>
+		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.5"></script>
 		
 		<!-- CUSTOM VUE JS -->
+		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-store.js') }}?version=0.0.1"></script>
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.5"></script>
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.5"></script>
 

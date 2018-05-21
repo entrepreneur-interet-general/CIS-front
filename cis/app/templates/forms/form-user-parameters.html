@@ -1,0 +1,228 @@
+
+<form action="/preferences/parameters" method="POST" name="form">
+
+	{{ form.hidden_tag() }}
+	{# { { form.csrf_token }} #}
+
+	{{ form.userOID() }}
+
+	{# INFO GLOBAL #}
+
+	<div class="columns">
+	
+
+		{# INFO PERSO #}
+		<div class="column is-half">
+
+			<div class="field">
+				<label class="label">Prénom</label>
+				<div class="control has-icons-left">
+					{{ form.userName (class ='input is-medium')  }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-user"></i>
+					</span>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Nom</label>
+				<div class="control has-icons-left">
+					{{ form.userSurname (class ='input is-medium')  }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-user"></i>
+					</span>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Email</label>
+				<div class="control has-icons-left">
+					{{ form.userEmail (class ='input is-medium')  }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-envelope"></i>
+					</span>
+				</div>
+			</div>
+
+			{# <p class="help ">* champs requis</p> #}
+			
+
+		</div>
+
+
+		{# INFO PRO #}
+		<div class="column is-half">
+
+			<div class="field">
+				<label class="label">Profil métier</label>
+				<div class="control">
+					<div class="select is-fullwidth">
+						{{ form.userProfile (class ='input is-medium')  }}
+					</div>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Structure</label>
+				<div class="control">
+					<div class="select is-fullwidth">
+						{{ form.userPartnerStructure (class ='input is-medium')  }}
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="field" style='display:none' id="userOtherStructureField">
+				<div class="control has-icons-left">
+					{{ form.userOtherStructure (class ='input is-medium')  }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-building"></i>
+					</span>
+				</div>
+			</div>
+
+			{# <div class="field" style='display:none' id="userSiretField">
+				<div class="control has-icons-left">
+					{{ form.userSiret }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-building"></i>
+					</span>
+				</div>
+				<p class="help is-light">(optionnel)</p>
+			</div> #}
+
+
+			<div class="field" style='display:none' id="userStructureProfileField">
+				<div class="control">
+					<div class="select is-fullwidth">
+						{{ form.userStructureProfile (class ='input is-medium')  }}
+					</div>
+				</div>
+			</div>
+
+
+			<div id="userWishesFields" style='display:none'>
+
+				<div class="field is-pulled-left">
+					{{ form.userHaveProjects( class ='is-checkradio is-primary has-background-color') }}
+					{{ form.userHaveProjects.label }}
+				</div>
+				<br>
+				<div class="field is-pulled-left">
+					{{ form.userJoinCollective( class ='is-checkradio is-primary has-background-color') }}
+					{{ form.userJoinCollective.label }}
+				</div>
+				<br><br>
+				
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+
+	<br>
+
+	{# PASSWORD RENEWAL #}
+
+	<div class="columns">
+
+		<div class="column">
+
+			<a 	class="button is-outlined is-primary is-medium " 
+				id="showModifyPwdBtn"
+				onclick="ToggleModifyPassword()"
+				>
+				Modifier mon mot de passe
+			</a>
+		</div>
+
+	</div>
+
+	<div style='display:none' id="userModifyPassword">
+
+		<div class="columns" >
+
+			<div class="column is-half">
+
+				<div class="field">
+					<label class="label">Ancien mot de passe</label>
+					<div class="control has-icons-left">
+						{{ form.oldPassword (class ='input is-medium') }}
+						<span class="icon is-small is-left">
+							<i class="fas fa-key"></i>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="columns">
+
+			<div class="column is-half">
+
+				<div class="field">
+					<label class="label">Nouveau mot de passe</label>
+					<div class="control has-icons-left">
+						{{ form.newPassword (class ='input is-medium')  }}
+						<span class="icon is-small is-left">
+							<i class="fas fa-key"></i>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="column is-half">
+
+				<div class="field">
+					<label class="label">Confirmez votre nouveau mot de passe</label>
+					<div class="control has-icons-left">
+						{{ form.userConfirmPassword (class ='input is-medium')  }}
+						<span class="icon is-small is-left">
+							<i class="fas fa-key"></i>
+						</span>
+					</div>
+				</div>
+
+			</div>
+		
+		</div>
+
+	</div>
+
+
+
+	<br><br>
+
+
+	<div class="columns">
+
+		<div class="column is-12">
+
+			<button class="button is-primary is-medium " 
+					type="submit"
+					disabled>
+				Enregistrer mes informations
+			</button>
+
+			&nbsp; 
+
+			<button class="button is-text is-medium " disabled>
+				Supprimer mon compte
+			</button>
+
+		</div>
+
+	</div>
+
+</form>
+
+
+
+<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/form-display-other-structure-name.js') }}"></script>

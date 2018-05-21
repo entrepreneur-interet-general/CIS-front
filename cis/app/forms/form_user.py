@@ -12,6 +12,9 @@ log_cis.info(">>> reading _forms.form_user.py ")
 ### USER FIELDS
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
+### custom hidden fields
+userOID 			= HiddenField("userOID")
+
 
 ### commons infos about user 
 
@@ -53,18 +56,20 @@ userEmail		= EmailField	( 	u"email"   ,
 									], 
 									render_kw={'class': 'input', 'placeholder': u"votre email *"  }  
 								)
+
+
+
 # userPassword_large 	= PasswordField	( 	u'user password', 
 # 									validators = [ DataRequired() ], 
 # 									render_kw={'class': 'input is-large', 'placeholder': u"votre mot de passe"  }
 # 								) 
-userPassword 		= PasswordField	( 	u"mot de passe", 
+userPassword 		= PasswordField	( 	u"votre mot de passe", 
 										validators = [ 
 											DataRequired( 		message=u"vous devez rentrer un mot de passe" ),
 											Length(min=4, 		message=u"vous devez rentrer un mot de passe plus long") 
 											], 
 										render_kw={'class': 'input', 'placeholder': u"votre mot de passe *"  }
-									) 
-
+									)
 registerPassword 	= PasswordField ( 	u"votre mot de passe",
 										validators = [
 											DataRequired(			message=u"vous devez rentrer un mot de passe" ),
@@ -74,9 +79,29 @@ registerPassword 	= PasswordField ( 	u"votre mot de passe",
 										],
 										render_kw={'class': 'input', 'placeholder': u"tapez votre mot de passe *"}
 									)
-userConfirmPassword = PasswordField ( 	u"répéter le mot de passe", 
-										render_kw={'class': 'input', 'placeholder': u"répétez votre mot de passe *" } 
+oldPassword 		= PasswordField	( 	u"votre ancien mot de passe", 
+										validators = [ 
+											# DataRequired( 		message=u"vous devez rentrer un mot de passe" ),
+											Length(min=4, 		message=u"vous devez rentrer un mot de passe plus long") 
+											], 
+										render_kw={'class': 'input', 'placeholder': u"votre mot de passe"  }
+									) 
+newPassword 		= PasswordField ( 	u"votre nouveau mot de passe",
+										validators = [
+											# DataRequired(			message=u"vous devez rentrer un mot de passe" ),
+											EqualTo(				'userConfirmPassword', 
+																	message=u"les deux mots de passe doivent être identiques"),
+											Length(min=4, max=100, 	message=u"vous devez rentrer un mot de passe")
+										],
+										render_kw={'class': 'input', 'placeholder': u"tapez votre mot de passe"}
 									)
+userConfirmPassword = PasswordField ( 	u"répéter le mot de passe", 
+										render_kw={'class': 'input', 'placeholder': u"répétez votre mot de passe" } 
+									)
+
+
+
+
 
 userRememberMe 		= BooleanField  ( 	u"se souvenir de moi", 
 										default=False, 	
@@ -124,7 +149,7 @@ userStructureSiret		= IntegerField  ( 	u'le numéro de siret de votre structure'
 userPartnerStructure	= SelectField	( 	u'sélectionner votre structure', 
 											validators 	= [ Optional() ],
 											choices 	= CHOICES_STRUCTURES , 
-											default   	= 0 ,
+											default		= 0 ,
 											render_kw 	= {	'class'      : 'input select',
 															'data-width' : "100%",
 															'description': u'votre structure'
@@ -246,6 +271,20 @@ class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 	userRememberMe 	= userRememberMe
 	userAcceptCGU 	= userAcceptCGU
 
+class UserParametersForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
+	
+	### user infos
+	userOID				= userOID
+	userEmail			= userEmail
+
+	### user password
+	oldPassword 		= oldPassword
+	newPassword 		= newPassword
+	userConfirmPassword = userConfirmPassword
+
+	### optionnal infos
+	# userRememberMe 	= userRememberMe
+	# userAcceptCGU 	= userAcceptCGU
 
 class PreRegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 

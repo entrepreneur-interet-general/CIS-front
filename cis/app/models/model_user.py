@@ -49,7 +49,8 @@ class AnonymousUser(AnonymousUserMixin):
 class User( UserMixin, ModelMixin ):
 
 
-	def __init__(self, 	userName		= None,
+	def __init__(self, 	userOID			= None,
+						userName		= None,
 						userEmail		= None, 
 						userPassword	= None,
 						userAuthLevel	= "visitor",
@@ -61,6 +62,8 @@ class User( UserMixin, ModelMixin ):
 						follow_up_user	= "- suivi utilisateur -",
 
 						temp_pwd		= None,
+
+						fav_items		= [],
 
 						):
 		"""
@@ -75,6 +78,7 @@ class User( UserMixin, ModelMixin ):
 
  		self.userRememberMe 		= userRememberMe
 
+ 		self.userOID 				= userOID
  		self.userEmail 				= userEmail
  		self.userAuthLevel 			= userAuthLevel
  		self.userPassword 			= userPassword
@@ -115,6 +119,10 @@ class User( UserMixin, ModelMixin ):
 		self.follow_up_user			= follow_up_user
 
 
+		### PREFERENCES
+		self.fav_items				= fav_items
+
+
 	@property
 	def is_admin_level(self):
 		return self.userAuthLevel == "admin"
@@ -128,7 +136,10 @@ class User( UserMixin, ModelMixin ):
 	def get_public_infos(self):
 		
 		return { 	
+					"userOID" 			: self.userOID, 
 					"userName" 			: self.userName, 
+					"userSurname" 		: self.userSurname, 
+					"userEmail" 		: self.userEmail, 
 					"userAuthLevel" 	: self.userAuthLevel,
 					"is_authenticated" 	: self.is_authenticated
 				}

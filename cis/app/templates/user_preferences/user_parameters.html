@@ -1,0 +1,116 @@
+
+{% extends "main.html" %}
+
+{% block content %}
+
+
+<style>
+	.aside {
+		display:block;
+		/* background-color: #F9F9F9; */
+		border-right: 1px solid #7a7a7a;
+	}
+	.menu-item-active {
+		color
+	}
+
+</style>
+
+<section class="hero is-light skip-navbar">
+	
+	<div class="hero-body">
+		
+		<div class="container">
+			
+
+			<div class="columns">
+
+				<aside class="column is-3 aside hero is-fullheight">
+
+					<div class="menu">
+				
+						{# <div class="main"> #}
+
+							<ul class="menu-list">
+
+								<li>
+									<a href="/search" class=" has-text-grey">
+											<span class="icon">
+												<i class="fa fa-arrow-left"></i>
+											</span>
+											<span class="name">Retour à la recherche</span>
+									</a>
+								</li>
+
+								<br>
+
+								<li>
+									<a href="/preferences/parameters" class=" {% if site_subsection=='parameters' %} has-text-primary" {% endif %}>
+										{% if site_subsection=='parameters' %} <strong> {% endif %}
+											<span class="icon">
+												<i class="fa fa-cog"></i>
+											</span>
+											<span class="name">Paramètres du compte</span>
+										{% if site_subsection=='parameters' %}  </strong> {% endif %}
+									</a>
+								</li>
+
+								<li>
+									<a href="/preferences/my_projects" class=" " disabled>
+										<span class="icon">
+											<i class="fa fa-table"></i>
+										</span>
+										<span class="name">Mes projets</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="/preferences/my_projects" class=" " disabled>
+										<span class="icon">
+											<i class="fa fa-heart"></i>
+										</span>
+										<span class="name">Projets sauvegardés</span>
+									</a>
+								</li>
+							
+							</ul>
+						
+						{# </div> #}
+
+					</div>
+
+				</aside>
+
+
+
+				<div class="column is-8 is-offset-1">
+
+					{% include "elements/flash-messages.html"%}
+
+
+					<h1 class="title has-text-primary">Bienvenue {{ user_infos.userName }} </h1>
+
+					<h3 class="subtitle has-text-grey">{{ user_infos.userAuthLevel }}</h3>
+					{# <h3 class="subtitle has-text-grey">{{ user_infos.userOID }}</h3> #}
+					
+					<br>
+					
+
+						{% include "forms/form-user-parameters.html" %}
+
+
+					<br>
+
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+
+
+{% endblock %}

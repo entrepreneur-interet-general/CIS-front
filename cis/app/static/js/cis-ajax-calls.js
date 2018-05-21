@@ -133,13 +133,27 @@ function ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug = "sear
 		// crossOrigin		: true, 
 		// cors 			: true,
 		// secure			: true,
-		
+
+		// beforeSend: function (xhr) {
+		// 	xhr.setRequestHeader( 'X-Test-Header', "testing");
+		// },
+		// xhrFields: {
+		// 	withCredentials: true
+		//  },
+
 		// WARNING : somtimes slug is very long so response could be denied even is CORS is enabled...
 		// cf : https://openclassrooms.com/forum/sujet/probleme-avec-cross-origin-request-node
-		header			: {'Access-Control-Allow-Origin': "*" },
+		// header  		: { 'Access-Control-Allow-Credentials': "true"  }, 
+		headers			: {
+			// 'X-Requested-With': 'XMLHttpRequest',
+			'X-Token-Header' : "testing",
+			// 'Access-Control-Allow-Origin': "*" ,
+			// 'Access-Control-Allow-Credentials': "true",
+			// "Content-Length": data_q_slug.length, 
+		},
 		// header  		: {"Content-Length": data_q_slug.length }, 
-		// header			: {'Access-Control-Allow-Origin': "http://carrefourdesinnovationssociales.fr/" },
-		// headers		: {'X-XSRFToken' : 'token' }, 		// not needed if not post method
+		// headers		: {'Access-Control-Allow-Origin': "http://carrefourdesinnovationssociales.fr/" },
+		// headers		: {'X-XSRFToken' : 'xs-rf-token' }, 		// not needed if not post method
 
 		//// SWITCH TO URL_DEV IF SIMULTANEOUSLY DOING TESTS ON OPENSCRAPER SOURCE CODE
 		url 			: url_arg ,
@@ -151,8 +165,9 @@ function ajax_query_to_openscraper( url_arg=api_url_current, data_q_slug = "sear
 		
 		// data			: {'token': 'test_token'},
 		// data 		: JSON.stringify({new_val : $(this).text()}),
-
-		// contentType		: 'application/json',
+		
+		// contentLength 	: data_q_slug.length ,
+		// contentType		: 'application/json; charset=utf-8',
 		dataType		: 'json',
 		// dataType		: 'script',
 		// dataType 		:"jsonp",

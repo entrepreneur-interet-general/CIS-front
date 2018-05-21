@@ -53,6 +53,13 @@ app_languages_dict = {
 		"tr"	: u"aramak"
 	},
 
+	"preferences"	: {
+		"eng" 	: u"preferences",
+		"fr"	: u"préférences",
+		"esp"	: u"preferencias",
+		"tr"	: u"seçimler"
+	},
+
 	### TO DO 
 	### contents
 	

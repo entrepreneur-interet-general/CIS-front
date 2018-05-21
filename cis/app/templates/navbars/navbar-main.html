@@ -24,7 +24,7 @@
 
 
 	{# navbar's buttons #}
-	<div id="navbarMain" class="navbar-menu">
+	<a id="navbarMain" class="navbar-menu">
 		
 		{# <div class="navbar-start is-fullwidth"> #}
 
@@ -92,7 +92,7 @@
 						<div class="navbar-item">
 							<a class="modal-button" data-target="modal_charte" aria-haspopup="true"> 
 							{# <a class="button is-text" href="/info/project-history" disabled> #}
-								<span>Le projet</span>
+								<span>Projet</span>
 							</a>
 						</div>
 
@@ -113,7 +113,7 @@
 						</div>
 
 
-						{% if user_infos.userAuthLevel in ["admin", "staff"] %}
+						{# {% if user_infos.userAuthLevel in ["admin", "staff"] %}
 						<div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip multiline"
 								data-tooltip="espace d'administration du site réservé aux niveaux : staff et admin"
 							>
@@ -123,25 +123,84 @@
 								</span>
 							</a>
 						</div>
-						{% endif %}
+						{% endif %} #}
 
-						<a class="navbar-item tooltip is-tooltip-bottom"
-							data-tooltip="bonjour, {{ user_infos.userName }} ({{ user_infos.userAuthLevel }})"
-							>
-							<span class="icon has-text-grey">
-								<i class="fas fa-2x fa-user-circle"></i>
-							</span>
-						</a>
+						{# data-tooltip="bonjour, {{ user_infos.userName }} ({{ user_infos.userAuthLevel }})"> #}
+						<div class="navbar-item is-hoverable has-dropdown ">
+							<a 	class="navbar-item"
+								href="/preferences/parameters">
+								<span class="icon has-text-primary">
+									<i class="far fa-2x fa-user-circle"></i>
+								</span>
+							</a>
+							<div class="navbar-dropdown is-boxed is-right">
+								
+								<a class="navbar-item" href="/preferences/parameters">
+									<strong> {{ user_infos.userName }} {{ user_infos.userSurname }}  </strong> 
+									&nbsp;
+									( {{ user_infos.userAuthLevel }} )
+								</a>
 
-						<a 	class="navbar-item tooltip is-tooltip-bottom" 
+								<hr class="navbar-divider">
+								<a class="navbar-item" href="/preferences/parameters">
+									<span class="icon">
+										<i class="fas fa-cog"></i>
+									</span>
+									Paramètres du compte
+								</a>
+								
+								<hr class="navbar-divider">
+								<a class="navbar-item" href="/preferences/parameters">
+									<span class="icon">
+										<i class="fas fa-table"></i>
+									</span>
+									Mes projets
+								</a>
+								
+								<hr class="navbar-divider">
+								<a class="navbar-item" href="/preferences/parameters">
+									<span class="icon">
+										<i class="fas fa-heart"></i>
+									</span>
+									Projets sauvegardés
+								</a>
+
+
+								{% if user_infos.userAuthLevel in ["admin", "staff"] %}
+								<hr class="navbar-divider">
+								{# <div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip multiline"
+										data-tooltip="espace d'administration du site réservé aux niveaux : staff et admin"
+									> #}
+									{# <a class="button is-warning is-outlined" href="/admin" target="_blank"> #}
+									<a class="navbar-item" href="/admin" target="_blank">
+										<span class="icon">
+											<i class="fas fa-lock"></i>
+										</span>
+										Espace Admin
+									</a>
+								{# </div> #}
+								{% endif %}
+
+
+								<a class="navbar-item" href="/logout">
+									<button class="button is-fullwidth">
+										Se déconnecter
+									</button>
+								</a>
+
+
+							</div>
+
+						</div>
+
+						{# <a 	class="navbar-item tooltip is-tooltip-bottom" 
 							id="btn_logout"
 							data-tooltip="se déconnecter"
 							href="/logout">
 							<span class="icon has-text-grey">
-								{# <i class="fas fa-2x fa-sign-out-alt"></i> #}
 								<i class="fas fa-lg fa-power-off"></i>
 							</span>
-						</a>
+						</a> #}
 
 					{% endif %}
 
