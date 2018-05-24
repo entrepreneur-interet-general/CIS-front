@@ -18,13 +18,13 @@ function DisplaySiretAndOtherStructureNameField(){
 		$('#userOtherStructureField').show();
 		$('#userStructureProfileField').show();
 		$('#userWishesFields').show();
-		// $('#userSiretField').show();
+		$('#userSiretField').show();
 	}
 	if (selected_option != 'other') {
 		$("#userOtherStructureField").hide();
 		$('#userStructureProfileField').hide();
 		$('#userWishesFields').hide();
-		// $("#userSiretField").hide();
+		$("#userSiretField").hide();
 	}
 
 };
@@ -54,9 +54,11 @@ function ToggleModifyPassword(){
 $(document).ready(function() {
 
 	// run function when load or change on #userStructure select input
-	$("#userPartnerStructure").bind( 'load change', function() {
+	// cf : 
+	$("#userPartnerStructure").bind( 'change load', function() {
 		DisplaySiretAndOtherStructureNameField() 
 	});
+	$("#userPartnerStructure").trigger( 'change');
 
 	// $("#showModifyPwdBtn").bind( 'change', function() {
 	// 	ToggleModifyPassword() 

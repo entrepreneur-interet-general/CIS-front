@@ -510,7 +510,7 @@ def pref_infos():
 	if request.method == 'POST' :
 
 		print 
-		log_cis.info("updating an user \n")
+		log_cis.info("updating an user - POST \n")
 
 		# for debugging purposes 
 		for f_field in form : 
@@ -531,8 +531,12 @@ def pref_infos():
 				if existing_user["_id"] != existing_email["_id"] : 
 					is_new_email_taken = True 
 		
-			if existing_user is None or is_new_email_taken : 
-				flash(u"Erreur : utilisateur inexistant ou email déjà utilisé", category='warning')
+			if existing_user is None :
+				flash(u"Erreur : utilisateur inexistant", category='warning')
+				return redirect(url_for('pref_infos'))
+
+			if is_new_email_taken : 
+				flash(u"Erreur : cet email déjà utilisé", category='warning')
 				return redirect(url_for('pref_infos'))
 
 			else : 
@@ -544,7 +548,7 @@ def pref_infos():
 				# # update visitor to user in db --> function from ModelMixin
 				log_cis.warning("updating new_user in mongo_users" )
 				
-				user_obj.populate_from_form(form=form)
+				user_obj.populate_from_form( form=form )
 				user_obj.update_document_in_mongo( document=existing_user, coll=mongo_users )
 				
 				### relog user
@@ -563,17 +567,14 @@ def pref_infos():
 
 	elif request.method == 'GET' :
 
+		log_cis.info("updating an user - GET \n")
+
 		# prepopulate input fields 
-		form.userOID.data 		= current_user.userOID
-		form.userName.data 		= current_user.userName
-		form.userSurname.data 	= current_user.userSurname
-		form.userEmail.data 	= current_user.userEmail
-		
-		log_cis.debug("current_user.userOtherStructure :", current_user.userOtherStructure )
-		# try : 
-		# form.userOtherStructure = current_user.userOtherStructure
-		# except : 
-		# 	form.userOtherStructure	= ""			
+		form.userOID.data 				= current_user.userOID
+		form.userName.data 				= current_user.userName
+		form.userSurname.data 			= current_user.userSurname
+		form.userEmail.data 			= current_user.userEmail
+		form.userOtherStructure.data 	= current_user.userOtherStructure	
 
 		# prepopulate select fields
 		form.userProfile.process_data(current_user.userProfile)
@@ -584,10 +585,6 @@ def pref_infos():
 		form.userHaveProjects.process_data(current_user.userHaveProjects)
 		form.userJoinCollective.process_data(current_user.userJoinCollective)
 		form.userNewsletter.process_data(current_user.userNewsletter)
-		# try : 
-		# 	form.userNewsletter.process_data(current_user.userNewsletter)
-		# except : 
-		# 	form.userNewsletter.process_data(False)
 
 
 		return render_template('user_preferences/user_parameters.html',

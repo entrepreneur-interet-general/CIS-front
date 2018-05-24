@@ -139,12 +139,17 @@ class User( UserMixin, ModelMixin ):
 	def get_public_infos(self):
 		
 		return { 	
-					"userOID" 			: self.userOID, 
-					"userName" 			: self.userName, 
-					"userSurname" 		: self.userSurname, 
-					"userEmail" 		: self.userEmail, 
-					"userAuthLevel" 	: self.userAuthLevel,
-					"is_authenticated" 	: self.is_authenticated
+					u"userOID" 				: self.userOID, 
+					u"userName" 			: self.userName, 
+					u"userSurname" 			: self.userSurname, 
+					u"userEmail" 			: self.userEmail, 
+
+					u"userPartnerStructure"	: self.userPartnerStructure, 
+					u"userOtherStructure"	: self.userOtherStructure, 
+					u"userStructureProfile" : self.userStructureProfile, 
+
+					u"userAuthLevel" 		: self.userAuthLevel,
+					u"is_authenticated" 	: self.is_authenticated
 				}
 
 	def get_auth_level(self):

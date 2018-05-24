@@ -73,6 +73,10 @@ html {
 	box-shadow: none ;
 }
 
+div.select {
+	height: 100% !important ;
+}
+
 /*  */
 
 .tab {

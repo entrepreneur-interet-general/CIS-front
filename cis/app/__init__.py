@@ -110,14 +110,17 @@ from	flask_pymongo import PyMongo ### flask_pymongo instead of flask.ext.pymongo
 app		= Flask( __name__ )
 
 ### FOR DEBUGGING PURPOSES
+### LOG / PRINT HEADERS
 @app.before_request
 def before_request():
 	
 	print
 	print "+ - "*25
 
+	log_cis.debug( '/// NEW REQUEST /// ' )
+
 	### print headers
-	log_cis.debug( '/// REQUEST HEADERS : \n %s ', request.headers )
+	# log_cis.debug( '/// REQUEST HEADERS : \n %s ', request.headers )
 	### NOTE BUG : 
 	### SAFARI HEADERS DON'T CONTAIN COOKIE, THEREFORE NOR CSRF VALUE
 	

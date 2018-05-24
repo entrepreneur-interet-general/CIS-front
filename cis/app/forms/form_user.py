@@ -160,10 +160,15 @@ userPartnerStructure	= SelectField	( 	u'sélectionner votre structure',
 												}
 										)
 userOtherStructure		= StringField	(	u'le nom de votre structure' , 
-											validators = [ Optional(), Length(min=0, max=75) ], 
+											validators = [ Optional(), Length(min=0, max=100) ], 
 											render_kw={'class': 'input', 'placeholder': u"le nom de votre structure"  }  
 										)
-
+# userOtherStructure		= StringField	(	u'le nom de votre structure' , 
+# 											validators = [ 
+# 												Optional(), 
+# 												Length(min=0, max=100, 	message=u"vous devez rentrer un nom d'au moins 3 caractères ") ], 
+# 											render_kw={'class': 'input'	, 'placeholder': u"le nom de votre structure"  }  
+# 										)
 
 ### user preferences / auth level
 

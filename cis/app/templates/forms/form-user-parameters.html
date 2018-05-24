@@ -46,6 +46,14 @@
 			</div>
 
 
+			<br>
+
+			<div class="field is-pulled-left">
+				{{ form.userNewsletter( class='is-checkradio is-primary has-background-color') }}
+				{{ form.userNewsletter.label }}
+			</div>
+
+			<br>
 			{# <p class="help ">* champs requis</p> #}
 
 		</div>
@@ -54,9 +62,10 @@
 		{# INFO PRO #}
 		<div class="column is-half">
 
+
 			<div class="field">
-				<label class="label">Profil métier</label>
-				<div class="control has-icons-left">
+				<label class="label">Votre profil métier</label>
+				<div class="control has-icons-left" >
 					<div class="select is-fullwidth">
 						{{ form.userProfile (class='input is-medium')  }}
 						<span class="icon is-small is-left">
@@ -65,10 +74,10 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<div class="field">
-				<label class="label">Choix de votre structure</label>
-				<div class="control has-icons-left">
+				<label class="label">Votre structure</label>
+				<div class="control has-icons-left" >
 					<div class="select is-fullwidth">
 						{{ form.userPartnerStructure (class='input is-medium')  }}
 						<span class="icon is-small is-left">
@@ -89,16 +98,6 @@
 				</div>
 			</div>
 
-			{# <div class="field" style='display:none' id="userSiretField">
-				<div class="control has-icons-left">
-					{{ form.userSiret }}
-					<span class="icon is-small is-left">
-						<i class="fas fa-building"></i>
-					</span>
-				</div>
-				<p class="help is-light">(optionnel)</p>
-			</div> #}
-
 			<div class="field" style='display:none' id="userStructureProfileField">
 				<label class="label">Profil de votre structure</label>
 				<div class="control has-icons-left">
@@ -109,6 +108,17 @@
 						</span>
 					</div>
 				</div>
+			</div>
+
+			<div class="field" style='display:none' id="userSiretField">
+				<label class="label">N° de SIRET de votre structure</label>
+				<div class="control has-icons-left">
+					{{ form.userStructureSiret (class='input is-medium') }}
+					<span class="icon is-small is-left">
+						<i class="fas fa-building"></i>
+					</span>
+				</div>
+				{# <p class="help is-light">(optionnel)</p> #}
 			</div>
 
 			<br>
@@ -209,7 +219,7 @@
 	</div>
  	#}
 
-	<br>
+	{# <br>
 
 	<div class="columns">
 
@@ -222,7 +232,7 @@
 
 		</div>
 
-	</div>
+	</div> #}
 
 	<br><br>
 

@@ -106,7 +106,7 @@
 
 
 		{# CUSTOM STYLES ---> TO FIX #}
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}?version=0.0.3">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}?version=0.0.4">
 
 
 	</head>
@@ -190,16 +190,20 @@
 		<!-- CUSTOM JS FILTERS TOGGLING -->
 		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-filters-toggler.js') }}?version=0.0.1"></script>
 
-		<!-- CUSTOM JS FOR AJAX CALLS -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.5"></script>
-		
-		<!-- CUSTOM VUE JS -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-store.js') }}?version=0.0.1"></script>
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.5"></script>
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.5"></script>
+		{% if site_section not in ['preferences', 'landing'] %}
 
-		<!-- CUSTOM JS SEARCH CALLER -->
-		{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script> #}
+			<!-- CUSTOM JS FOR AJAX CALLS -->
+			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.5"></script>
+			
+			<!-- CUSTOM VUE JS -->
+			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-store.js') }}?version=0.0.1"></script>
+			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.5"></script>
+			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.5"></script>
+
+			<!-- CUSTOM JS SEARCH CALLER -->
+			{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script> #}
+
+		{% endif %}
 
 	{# {% endif %} #}
 
