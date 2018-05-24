@@ -25,6 +25,7 @@ import  os
 from    os import environ
 import	time, datetime
 from	datetime import timedelta
+from 	datetime import date
 import	json
 from 	pprint import pprint, pformat
 from	bson import json_util
@@ -70,7 +71,7 @@ except:
 ### FLASK-ADMIN IMPORT 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 from	flask_admin 	import Admin, AdminIndexView
-
+from 	flask_admin.model import typefmt
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### CRYPTO IMPORT 
@@ -261,7 +262,11 @@ from . import views
 # cf : https://github.com/flask-admin/flask-admin/blob/master/examples/pymongo/app.py
 
 
-admin = Admin(app, index_view=views.MyAdminIndexView(), name='admin interface for CIS')
+admin = Admin(	app, 
+				index_view=views.MyAdminIndexView(), 
+				name='back office',
+				template_mode="bootstrap2"
+				)
 
 # Add views in admin interface
 admin.add_view( views.UserViewAdmin( 			mongo_users, 		'Users' ) )

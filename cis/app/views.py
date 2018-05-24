@@ -696,6 +696,7 @@ def pref_password():
 ### ADMIN ROUTES
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
+### to customize admin views check : https://www.youtube.com/watch?v=BIcjT2Zz4bU
 
 class MyAdminIndexView(AdminIndexView) :
 
@@ -714,14 +715,29 @@ class MyAdminIndexView(AdminIndexView) :
 		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
 		return redirect(url_for('index'))
 
+def date_format(view, value):
+	return value.strftime('%d.%m.%Y')
 
+MY_DEFAULT_FORMATTERS = dict(typefmt.BASE_FORMATTERS)
+MY_DEFAULT_FORMATTERS.update({
+		type(None): typefmt.null_formatter,
+		date: date_format
+	})
+	
 class UserViewAdmin(ModelView):
 	"""
 	view of an user in flask-admin
 	cf : https://github.com/mrjoes/flask-admin/blob/master/examples/pymongo/app.py
 	"""
-	
 	### for flask-login 
+	column_type_formatters = MY_DEFAULT_FORMATTERS
+
+	list_template = 'admin/list.html'
+	create_template = 'admin/create.html'
+	edit_template = 'admin/edit.html'
+
+	can_export = True
+ 	can_set_page_size = True
 
 	def is_accessible(self) :
 		""" 
@@ -750,17 +766,35 @@ class UserViewAdmin(ModelView):
 								'userPartnerStructure', 'userOtherStructure','verified_as_partner',
 								'userAuthLevel', 
 								'userHaveProjects','userJoinCollective',
-								'userMessage',
-								'created_at', 'login_last_at'
+								'userMessage', 'follow_up_user',
+								# 'created_at', 
+								'login_last_at',
 							)
+	column_details_list = column_list + ('created_at', 'last_modified_at',)
+	can_view_details = True
 
 	column_searchable_list 		= ( 'userName', 'userSurname', 'userEmail', 
-									'userPartnerStructure', 'userOtherStructure' )
+									'userPartnerStructure', 'userOtherStructure',
+									'verified_as_partner'
+									)
 	column_sortable_list	= column_list
-	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
-	# 							'structure',)
+	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', 
+	# 							'userPartnerStructure','userOtherStructure'
+	# 							)
 	
 	# column_filters = (BooleanEqualFilter(column=UserID.userName, name='userName'),)
+
+	column_labels = dict(	userName				= 'Name', 
+							userSurname				= 'Last Name',
+							userEmail				= 'Email',
+							userProfile				= 'Profile',
+							userPartnerStructure	= 'Structure (partner)',
+							userOtherStructure		= 'Structure (other)',
+							userAuthLevel			= 'Auth Level',
+							userHaveProjects		= 'Have Projects',
+							userJoinCollective		= 'Want to join collective',
+							userMessage				= 'Message',
+						)
 
 	form 					= UserAdminInfos
 
@@ -781,6 +815,14 @@ class MessagesFromLandingAdmin(ModelView):
 	"""
 	
 	### for flask-login 
+	column_type_formatters = MY_DEFAULT_FORMATTERS
+
+	list_template = 'admin/list.html'
+	create_template = 'admin/create.html'
+	edit_template = 'admin/edit.html'
+
+	can_export = True
+ 	can_set_page_size = True
 
 	def is_accessible(self) :
 		""" 
@@ -815,6 +857,16 @@ class MessagesFromLandingAdmin(ModelView):
 	# 							'structure',)
 	
 	# column_filters = (BooleanEqualFilter(column=UserID.userName, name='userName'),)
+
+	column_labels = dict(	userName				= 'Name', 
+							userSurname				= 'Last Name',
+							userEmail				= 'Email',
+							# userPartnerStructure	= 'Structure (partner)',
+							userOtherStructure		= 'Structure (other)',
+							userHaveProjects		= 'Have Projects',
+							userJoinCollective		= 'Want to join collective',
+							userMessage				= 'Message',
+						)
 
 	form 					= MessagesFromLandingAdmin
 

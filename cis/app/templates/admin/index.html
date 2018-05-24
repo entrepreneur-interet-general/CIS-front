@@ -1,0 +1,18 @@
+{% extends 'admin/master.html' %}
+
+{% block brand %}
+
+	{% include "admin/bo_brand.html" %}
+	{# {{ super() }} #}
+
+{% endblock brand %}
+
+
+
+{% block body %}
+	
+	{{ super() }}
+
+	<h3>Bienvenue dans le back office du Carrefour des innovations sociales</h3>
+
+{% endblock body %}
