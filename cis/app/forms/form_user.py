@@ -14,6 +14,7 @@ log_cis.info(">>> reading _forms.form_user.py ")
 
 ### custom hidden fields
 userOID 			= HiddenField("userOID")
+userEmailHidden 	= HiddenField("userEmailHidden")
 
 
 ### commons infos about user 
@@ -281,11 +282,6 @@ class UserParametersForm( UserSharedInfos, UserStructureInfos, UserProfile, User
 	userOID				= userOID
 	userEmail			= userEmail
 
-	# ### user password
-	# oldPassword 		= oldPassword
-	# newPassword 		= newPassword
-	# userConfirmPassword = userConfirmPassword
-
 	### optionnal infos
 	userNewsletter		= userNewsletter
 
@@ -293,7 +289,7 @@ class UserNewPassword (FlaskForm) :
 
 	### user infos
 	userOID				= userOID
-	# userEmail			= userEmail
+	# userEmailHidden			= userEmailHidden
 	
 	### user password
 	oldPassword 		= oldPassword
@@ -308,6 +304,9 @@ class PreRegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID)
 	userHaveProjects 	= userHaveProjects_strong
 	userJoinCollective	= userJoinCollective_strong
 
+
+
+### TO IMPLEMENT WITH FLAKS-MAIL
 
 class PwdForgotForm( FlaskForm ):
 

@@ -49,12 +49,13 @@ class ModelMixin :
 
 
 	# TO DO !!!
-	def update_document_in_mongo(self, document=None, coll=None , **kwargs):
+	def update_document_in_mongo(self, document=None, coll=None, exceptions=["userOID"], **kwargs):
 		"""
 		update current model as document in mongoDB, in defined collection coll
 		"""
 		for k,v in self.__dict__.iteritems() :
-			document[k] = v 
+			if k not in exceptions :
+				document[k] = v 
 		coll.save(document)
 
 

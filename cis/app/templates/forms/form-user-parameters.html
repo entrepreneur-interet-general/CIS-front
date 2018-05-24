@@ -1,10 +1,11 @@
 
-<form action="/preferences/parameters" method="POST" name="form">
+<form action="/preferences/user_infos" method="POST" name="form">
 
 	{{ form.hidden_tag() }}
 	{# { { form.csrf_token }} #}
 
 	{{ form.userOID() }}
+	{# {{ form.userEmailHidden() }} #}
 
 	{# INFO GLOBAL #}
 

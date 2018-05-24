@@ -328,10 +328,18 @@ def login():
 
 				return redirect(request.args.get("next") or url_for("index"))
 
+			else : 
+
+				log_cis.error("password was not validated / form.errors : %s", form.errors )
+
+				flash(u"Email ou mot de passe incorrect(s)", category='warning')
+
+				return redirect(url_for("login"))
+				
 		else :
 
 			log_cis.error("form was not validated / form.errors : %s", form.errors )
-			
+
 			flash(u"Email ou mot de passe incorrect(s)", category='warning')
 
 			return redirect(url_for("login"))
@@ -510,7 +518,8 @@ def pref_infos():
 
 		
 		if form.validate_on_submit():
-			existing_user = mongo_users.find_one({"userEmail" : form.userEmail.data} )
+
+			existing_user = mongo_users.find_one({"_id" : ObjectId(form.userOID.data)} )
 			
 			log_cis.debug("existing_user : %s", pformat(existing_user) )
 
@@ -520,7 +529,21 @@ def pref_infos():
 				return redirect(url_for('pref_infos'))
 
 			else : 
-				flash(u"Vos informations ont bien été mises à jour", category='success')
+
+				### saving updated infos in user
+				user_obj = User()
+				user_obj.populate_from_dict(dict_input=existing_user)
+
+				# # update visitor to user in db --> function from ModelMixin
+				log_cis.warning("updating new_user in mongo_users" )
+				
+				user_obj.populate_from_form(form=form)
+				user_obj.update_document_in_mongo( document=existing_user, coll=mongo_users )
+				
+				### relog user
+				login_user( user_obj, remember=existing_user['userRememberMe'] )
+
+				flash(u"Vos informations ont bien été mises à jour", category='primary')
 				return redirect(url_for('pref_infos'))
 		
 		else : 
@@ -597,8 +620,10 @@ def pref_password():
 			log_cis.info( "form name : %s / form data : %s ", f_field.name, f_field.data )
 
 		if form.validate_on_submit():
-			existing_user = mongo_users.find_one({"userOID" : form.userOID.data} )
-			
+
+			existing_user = mongo_users.find_one({"_id" : ObjectId(form.userOID.data) } )
+			# existing_user = mongo_users.find_one({"userEmail" : form.userEmailHidden.data} )
+
 			log_cis.debug("existing_user : %s", pformat(existing_user) )
 
 			if existing_user is None : 
@@ -606,9 +631,30 @@ def pref_password():
 				return redirect(url_for('pref_password'))
 
 			else : 
-				### update password
 
-				flash(u"Votre mot de passe a  bien été mis à jour", category='success')
+				### check if old password is correct 
+				log_cis.info ( "checking oldPassword : ", User.validate_login( existing_user['userPassword'], form.oldPassword.data ) )
+
+				### update password / create new hashpassword
+				new_hashpass = generate_password_hash(form.newPassword.data, method='sha256')
+				log_cis.debug("new_hashpass : %s", new_hashpass )
+
+				### saving new password in user
+				user_obj = User(userPassword=new_hashpass)
+				user_obj.populate_from_dict(dict_input=existing_user)
+
+				### TO DO 
+				# # update visitor to user in db --> function from ModelMixin
+				log_cis.warning("updating user_obj in mongo_users" )
+
+				user_obj.update_document_in_mongo( document=existing_user, coll=mongo_users )
+
+				### re-log user
+				### login with flask-login
+				login_user( user_obj, remember=existing_user['userRememberMe'] )
+
+
+				flash(u"Votre mot de passe a  bien été mis à jour", category='primary')
 				return redirect(url_for('pref_password'))
 		
 		else : 
@@ -623,6 +669,7 @@ def pref_password():
 
 		# prepopulate input fields 
 		form.userOID.data 		= current_user.userOID
+		# form.userEmailHidden.data 	= current_user.userEmail
 		
 		return render_template('user_preferences/user_parameters.html',
 								

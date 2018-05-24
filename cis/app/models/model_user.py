@@ -49,7 +49,8 @@ class AnonymousUser(AnonymousUserMixin):
 class User( UserMixin, ModelMixin ):
 
 
-	def __init__(self, 	userOID			= None,
+	def __init__(self, 	
+						userOID			= None,
 						userName		= None,
 						userEmail		= None, 
 						userPassword	= None,
