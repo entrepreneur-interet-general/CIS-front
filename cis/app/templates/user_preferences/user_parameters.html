@@ -45,33 +45,48 @@
 								<br>
 
 								<li>
-									<a href="/preferences/parameters" class=" {% if site_subsection=='parameters' %} has-text-primary" {% endif %}>
-										{% if site_subsection=='parameters' %} <strong> {% endif %}
+									<a href="/preferences/user_infos" class="{% if site_subsection=='infos' %} has-text-primary {% else %} has-text-grey {% endif %}">
+										{% if site_subsection=='infos' %} <strong> {% endif %}
 											<span class="icon">
 												<i class="fa fa-cog"></i>
 											</span>
-											<span class="name">Paramètres du compte</span>
-										{% if site_subsection=='parameters' %}  </strong> {% endif %}
+											<span class="name">Vos informations</span>
+										{% if site_subsection=='infos' %}  </strong> {% endif %}
 									</a>
 								</li>
 
 								<li>
-									<a href="/preferences/my_projects" class=" " disabled>
+									<a href="/preferences/user_password" class="{% if site_subsection=='password' %} has-text-primary {% else %} has-text-grey {% endif %}" >
+										{% if site_subsection=='password' %} <strong> {% endif %}
+											<span class="icon">
+												<i class="fa fa-unlock"></i>
+											</span>
+											<span class="name">Changer le mot de passe</span>
+										{% if site_subsection=='password' %}  </strong> {% endif %}
+									</a>
+								</li>
+
+								{# <li>
+									<a href="/preferences/user_projects" class="{% if site_subsection=='projects' %} has-text-primary {% else %} has-text-grey {% endif %}" >
+										{% if site_subsection=='projects' %} <strong> {% endif %}
 										<span class="icon">
 											<i class="fa fa-table"></i>
 										</span>
 										<span class="name">Mes projets</span>
+										{% if site_subsection=='projects' %}  </strong> {% endif %}
 									</a>
-								</li>
+								</li> #}
 
-								<li>
-									<a href="/preferences/my_projects" class=" " disabled>
+								{# <li>
+									<a href="/preferences/user_favorites" class="{% if site_subsection=='favorites' %} has-text-primary {% else %} has-text-grey {% endif %}" >
+										{% if site_subsection=='favorites' %} <strong> {% endif %}
 										<span class="icon">
 											<i class="fa fa-heart"></i>
 										</span>
 										<span class="name">Projets sauvegardés</span>
+										{% if site_subsection=='favorites' %}  </strong> {% endif %}
 									</a>
-								</li>
+								</li> #}
 							
 							</ul>
 						
@@ -85,7 +100,6 @@
 
 				<div class="column is-8 is-offset-1">
 
-					{% include "elements/flash-messages.html"%}
 
 
 					<h1 class="title has-text-primary">Bienvenue {{ user_infos.userName }} </h1>
@@ -93,11 +107,20 @@
 					<h3 class="subtitle has-text-grey">{{ user_infos.userAuthLevel }}</h3>
 					{# <h3 class="subtitle has-text-grey">{{ user_infos.userOID }}</h3> #}
 					
-					<br>
 					
+					{% include "elements/flash-messages.html"%}
 
-						{% include "forms/form-user-parameters.html" %}
 
+					<br>
+						{% if site_subsection=='infos' %}
+							
+							{% include "forms/form-user-parameters.html" %}
+
+						{% elif site_subsection=='password' %}
+
+							{% include "forms/form-user-password.html" %}
+
+						{% endif %}
 
 					<br>
 

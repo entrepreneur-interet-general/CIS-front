@@ -17,7 +17,7 @@
 			<div class="field">
 				<label class="label">Prénom</label>
 				<div class="control has-icons-left">
-					{{ form.userName (class ='input is-medium')  }}
+					{{ form.userName (class='input is-medium')  }}
 					<span class="icon is-small is-left">
 						<i class="fas fa-user"></i>
 					</span>
@@ -27,7 +27,7 @@
 			<div class="field">
 				<label class="label">Nom</label>
 				<div class="control has-icons-left">
-					{{ form.userSurname (class ='input is-medium')  }}
+					{{ form.userSurname (class='input is-medium')  }}
 					<span class="icon is-small is-left">
 						<i class="fas fa-user"></i>
 					</span>
@@ -37,15 +37,15 @@
 			<div class="field">
 				<label class="label">Email</label>
 				<div class="control has-icons-left">
-					{{ form.userEmail (class ='input is-medium')  }}
+					{{ form.userEmail (class='input is-medium')  }}
 					<span class="icon is-small is-left">
 						<i class="fas fa-envelope"></i>
 					</span>
 				</div>
 			</div>
 
+
 			{# <p class="help ">* champs requis</p> #}
-			
 
 		</div>
 
@@ -55,26 +55,33 @@
 
 			<div class="field">
 				<label class="label">Profil métier</label>
-				<div class="control">
+				<div class="control has-icons-left">
 					<div class="select is-fullwidth">
-						{{ form.userProfile (class ='input is-medium')  }}
+						{{ form.userProfile (class='input is-medium')  }}
+						<span class="icon is-small is-left">
+							<i class="fas fa-building"></i>
+						</span>
 					</div>
 				</div>
 			</div>
 
 			<div class="field">
-				<label class="label">Structure</label>
-				<div class="control">
+				<label class="label">Choix de votre structure</label>
+				<div class="control has-icons-left">
 					<div class="select is-fullwidth">
-						{{ form.userPartnerStructure (class ='input is-medium')  }}
+						{{ form.userPartnerStructure (class='input is-medium')  }}
+						<span class="icon is-small is-left">
+							<i class="fas fa-building"></i>
+						</span>
 					</div>
 				</div>
 			</div>
 			
 
 			<div class="field" style='display:none' id="userOtherStructureField">
+				<label class="label">Nom de votre structure</label>
 				<div class="control has-icons-left">
-					{{ form.userOtherStructure (class ='input is-medium')  }}
+					{{ form.userOtherStructure (class='input is-medium')  }}
 					<span class="icon is-small is-left">
 						<i class="fas fa-building"></i>
 					</span>
@@ -91,25 +98,29 @@
 				<p class="help is-light">(optionnel)</p>
 			</div> #}
 
-
 			<div class="field" style='display:none' id="userStructureProfileField">
-				<div class="control">
+				<label class="label">Profil de votre structure</label>
+				<div class="control has-icons-left">
 					<div class="select is-fullwidth">
-						{{ form.userStructureProfile (class ='input is-medium')  }}
+						{{ form.userStructureProfile (class='input is-medium')  }}
+						<span class="icon is-small is-left">
+							<i class="fas fa-building"></i>
+						</span>
 					</div>
 				</div>
 			</div>
 
-
+			<br>
+			
 			<div id="userWishesFields" style='display:none'>
 
 				<div class="field is-pulled-left">
-					{{ form.userHaveProjects( class ='is-checkradio is-primary has-background-color') }}
+					{{ form.userHaveProjects( class='is-checkradio is-primary has-background-color') }}
 					{{ form.userHaveProjects.label }}
 				</div>
 				<br>
 				<div class="field is-pulled-left">
-					{{ form.userJoinCollective( class ='is-checkradio is-primary has-background-color') }}
+					{{ form.userJoinCollective( class='is-checkradio is-primary has-background-color') }}
 					{{ form.userJoinCollective.label }}
 				</div>
 				<br><br>
@@ -123,11 +134,11 @@
 
 
 
-	<br>
+	{# <br> #}
 
 	{# PASSWORD RENEWAL #}
 
-	<div class="columns">
+	{# <div class="columns">
 
 		<div class="column">
 
@@ -150,7 +161,7 @@
 				<div class="field">
 					<label class="label">Ancien mot de passe</label>
 					<div class="control has-icons-left">
-						{{ form.oldPassword (class ='input is-medium') }}
+						{{ form.oldPassword (class='input is-medium') }}
 						<span class="icon is-small is-left">
 							<i class="fas fa-key"></i>
 						</span>
@@ -169,7 +180,7 @@
 				<div class="field">
 					<label class="label">Nouveau mot de passe</label>
 					<div class="control has-icons-left">
-						{{ form.newPassword (class ='input is-medium')  }}
+						{{ form.newPassword (class='input is-medium')  }}
 						<span class="icon is-small is-left">
 							<i class="fas fa-key"></i>
 						</span>
@@ -183,7 +194,7 @@
 				<div class="field">
 					<label class="label">Confirmez votre nouveau mot de passe</label>
 					<div class="control has-icons-left">
-						{{ form.userConfirmPassword (class ='input is-medium')  }}
+						{{ form.userConfirmPassword (class='input is-medium')  }}
 						<span class="icon is-small is-left">
 							<i class="fas fa-key"></i>
 						</span>
@@ -195,8 +206,22 @@
 		</div>
 
 	</div>
+ 	#}
 
+	<br>
 
+	<div class="columns">
+
+		<div class="column is-12">
+
+			<div class="field is-pulled-left">
+				{{ form.userNewsletter( class='is-checkradio is-primary has-background-color') }}
+				{{ form.userNewsletter.label }}
+			</div>
+
+		</div>
+
+	</div>
 
 	<br><br>
 
@@ -207,13 +232,15 @@
 
 			<button class="button is-primary is-medium " 
 					type="submit"
-					disabled>
-				Enregistrer mes informations
+					>
+				Mettre à jour mes informations
 			</button>
 
 			&nbsp; 
 
-			<button class="button is-text is-medium " disabled>
+			<button class="button is-text is-medium tooltip is-tooltip-top is-tooltip-danger"
+					data-tooltip="fonctionnalité en construction" 
+					disabled>
 				Supprimer mon compte
 			</button>
 

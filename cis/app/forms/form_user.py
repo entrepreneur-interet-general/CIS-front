@@ -81,14 +81,14 @@ registerPassword 	= PasswordField ( 	u"votre mot de passe",
 									)
 oldPassword 		= PasswordField	( 	u"votre ancien mot de passe", 
 										validators = [ 
-											# DataRequired( 		message=u"vous devez rentrer un mot de passe" ),
+											DataRequired( 		message=u"vous devez rentrer votre mot de passe actuel" ),
 											Length(min=4, 		message=u"vous devez rentrer un mot de passe plus long") 
 											], 
 										render_kw={'class': 'input', 'placeholder': u"votre mot de passe"  }
 									) 
 newPassword 		= PasswordField ( 	u"votre nouveau mot de passe",
 										validators = [
-											# DataRequired(			message=u"vous devez rentrer un mot de passe" ),
+											DataRequired(			message=u"vous devez rentrer un nouveau mot de passe" ),
 											EqualTo(				'userConfirmPassword', 
 																	message=u"les deux mots de passe doivent être identiques"),
 											Length(min=4, max=100, 	message=u"vous devez rentrer un mot de passe")
@@ -115,7 +115,10 @@ userAcceptCGU 		= BooleanField  ( 	u"j'accepte les conditions générales d'util
 										default 	= False, 	
 										render_kw = {'class': 'is-checkradio is-black is-normal'	, 'checked':'' } 
 									)
-
+userNewsletter 		= BooleanField  ( 	u"je souhaite recevoir la newsletter du Carrefour des innovations sociales", 
+										default 	= False, 	
+										render_kw = {'class': 'is-checkradio is-black is-normal' },
+									)
 
 ### shared data's infos about user's structure
 
@@ -268,6 +271,7 @@ class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 	userConfirmPassword = userConfirmPassword
 
 	### optionnal infos
+	userNewsletter	= userNewsletter
 	userRememberMe 	= userRememberMe
 	userAcceptCGU 	= userAcceptCGU
 
@@ -277,14 +281,24 @@ class UserParametersForm( UserSharedInfos, UserStructureInfos, UserProfile, User
 	userOID				= userOID
 	userEmail			= userEmail
 
+	# ### user password
+	# oldPassword 		= oldPassword
+	# newPassword 		= newPassword
+	# userConfirmPassword = userConfirmPassword
+
+	### optionnal infos
+	userNewsletter		= userNewsletter
+
+class UserNewPassword (FlaskForm) : 
+
+	### user infos
+	userOID				= userOID
+	# userEmail			= userEmail
+	
 	### user password
 	oldPassword 		= oldPassword
 	newPassword 		= newPassword
 	userConfirmPassword = userConfirmPassword
-
-	### optionnal infos
-	# userRememberMe 	= userRememberMe
-	# userAcceptCGU 	= userAcceptCGU
 
 class PreRegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 

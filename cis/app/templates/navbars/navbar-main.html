@@ -135,40 +135,48 @@
 							</a>
 							<div class="navbar-dropdown is-boxed is-right">
 								
-								<a class="navbar-item" href="/preferences/parameters">
+								<a class="navbar-item" href="/preferences/user_infos">
 									<strong> {{ user_infos.userName }} {{ user_infos.userSurname }}  </strong> 
 									&nbsp;
 									( {{ user_infos.userAuthLevel }} )
 								</a>
 
 								<hr class="navbar-divider">
-								<a class="navbar-item" href="/preferences/parameters">
+								<a class="navbar-item" href="/preferences/user_infos">
 									<span class="icon">
 										<i class="fas fa-cog"></i>
 									</span>
-									Paramètres du compte
+									Vos informations
 								</a>
-								
+
 								<hr class="navbar-divider">
-								<a class="navbar-item" href="/preferences/parameters">
+								<a class="navbar-item" href="/preferences/user_password">
+									<span class="icon">
+										<i class="fas fa-unlock"></i>
+									</span>
+									Changer le mot de passe
+								</a>
+
+								{# <hr class="navbar-divider">
+								<a class="navbar-item" href="/preferences/user_projects">
 									<span class="icon">
 										<i class="fas fa-table"></i>
 									</span>
 									Mes projets
-								</a>
+								</a> #}
 								
-								<hr class="navbar-divider">
-								<a class="navbar-item" href="/preferences/parameters">
+								{# <hr class="navbar-divider">
+								<a class="navbar-item" href="/preferences/user_favorites">
 									<span class="icon">
 										<i class="fas fa-heart"></i>
 									</span>
 									Projets sauvegardés
-								</a>
+								</a> #}
 
 
 								{% if user_infos.userAuthLevel in ["admin", "staff"] %}
 								<hr class="navbar-divider">
-								{# <div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip multiline"
+								{# <div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip-multiline"
 										data-tooltip="espace d'administration du site réservé aux niveaux : staff et admin"
 									> #}
 									{# <a class="button is-warning is-outlined" href="/admin" target="_blank"> #}

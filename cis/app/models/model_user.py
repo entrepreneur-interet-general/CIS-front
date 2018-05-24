@@ -63,7 +63,7 @@ class User( UserMixin, ModelMixin ):
 
 						temp_pwd		= None,
 
-						fav_items		= [],
+						userFavorites	= [],
 
 						):
 		"""
@@ -107,6 +107,8 @@ class User( UserMixin, ModelMixin ):
  		self.userJoinCollective 	= None
  		self.userMessage 			= None
 
+		self.userNewsletter			= None 
+
  		self.userPartnerStructure 	= None
 		self.userOtherStructure		= None
  		self.userStructureProfile 	= None
@@ -120,7 +122,7 @@ class User( UserMixin, ModelMixin ):
 
 
 		### PREFERENCES
-		self.fav_items				= fav_items
+		self.userFavorites			= userFavorites
 
 
 	@property

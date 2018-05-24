@@ -127,12 +127,14 @@
 
 
 	
-	{# <br>
+	{# 
+	<br>
 
 	<div class="field">
 		{{ form.userRememberMe }}
 		{{ form.userRememberMe.label}}
-	</div>  #}
+	</div>  
+	#}
 	
 
 	<div class="is-divider" data-content="une remarque, un commentaire ? (optionnel)"></div>
@@ -151,7 +153,16 @@
 
 	<br>
 
-	<div class="field">
+	<div class="field has-text-left">
+		{{ form.userNewsletter( class='is-checkradio is-black is-normal') }}
+		<label for="userNewsletter">
+			Je souhaite recevoir la newsletter 
+			{# du Carrefour des innovations sociales #}
+		</label>
+	</div>
+
+
+	<div class="field has-text-left">
 		{{ form.userAcceptCGU( class ='is-checkradio is-black is-normal') }}
 		{# { { form.userAcceptCGU.label }} #}
 		<label for="userAcceptCGU">
@@ -166,7 +177,7 @@
 
 
 
-	<button class="button is-block is-primary is-large is-fullwidth tooltip is-tooltip-danger is-tooltip-multiline" 
+	<button class="button is-block is-primary is-large is-fullwidth tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline" 
 			data-tooltip="Soyez parmi les premiers à être informé.e de la sortie de la première version du moteur de recherche" 
 			type="submit">
 		S'enregistrer

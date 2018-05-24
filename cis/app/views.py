@@ -272,17 +272,13 @@ def load_user(userEmail):
 	if not user :
 		
 		log_cis.debug( "no user found in db" )
+		
 		# return None
 		return AnonymousUser()
 
 	else :
 		
 		log_cis.debug( "user : \n %s", pformat(user)  )
-		# return User( 
-		# 				userEmail 		= user['userEmail'],
-		# 				userName 		= user['userName'],
-		# 				userAuthLevel 	= user['userAuthLevel'] 
-		# 			)
 		user_ = User(userOID=str(user["_id"]))
 		user_.populate_from_dict(dict_input=user)
 
@@ -484,10 +480,16 @@ def logout():
 
 
 
+
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+### USER PREFERENCES ROUTES
+### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+
+
 ### TO DO 
-@app.route('/preferences/parameters', methods=['GET', 'POST'])
+@app.route('/preferences/user_infos', methods=['GET', 'POST'])
 @login_required
-def pref_parameters():
+def pref_infos():
 	"""
 	to update user infos
 	"""
@@ -499,7 +501,34 @@ def pref_parameters():
 
 	if request.method == 'POST' :
 
-		return redirect(url_for('pref_parameters'))
+		print 
+		log_cis.info("updating an user \n")
+
+		# for debugging purposes 
+		for f_field in form : 
+			log_cis.info( "form name : %s / form data : %s ", f_field.name, f_field.data )
+
+		
+		if form.validate_on_submit():
+			existing_user = mongo_users.find_one({"userEmail" : form.userEmail.data} )
+			
+			log_cis.debug("existing_user : %s", pformat(existing_user) )
+
+		
+			if existing_user is None : 
+				flash(u"Erreur : utilisateur inexistant", category='warning')
+				return redirect(url_for('pref_infos'))
+
+			else : 
+				flash(u"Vos informations ont bien été mises à jour", category='success')
+				return redirect(url_for('pref_infos'))
+		
+		else : 
+			
+			log_cis.error("form was not validated : form.errors : %s", form.errors )
+
+			flash(u"Erreur : formulaire invalide", category='warning')
+			return redirect(url_for('pref_infos'))
 
 
 	elif request.method == 'GET' :
@@ -511,7 +540,10 @@ def pref_parameters():
 		form.userEmail.data 	= current_user.userEmail
 		
 		log_cis.debug("current_user.userOtherStructure :", current_user.userOtherStructure )
-		# form.userOtherStructure	= current_user.userOtherStructure
+		# try : 
+		# form.userOtherStructure = current_user.userOtherStructure
+		# except : 
+		# 	form.userOtherStructure	= ""			
 
 		# prepopulate select fields
 		form.userProfile.process_data(current_user.userProfile)
@@ -521,6 +553,11 @@ def pref_parameters():
 		# prepopulate boolean fields
 		form.userHaveProjects.process_data(current_user.userHaveProjects)
 		form.userJoinCollective.process_data(current_user.userJoinCollective)
+		form.userNewsletter.process_data(current_user.userNewsletter)
+		# try : 
+		# 	form.userNewsletter.process_data(current_user.userNewsletter)
+		# except : 
+		# 	form.userNewsletter.process_data(False)
 
 
 		return render_template('user_preferences/user_parameters.html',
@@ -531,11 +568,76 @@ def pref_parameters():
 								languages_dict	= app_languages_dict ,
 
 								site_section 	= "preferences",
-								site_subsection = "parameters",
+								site_subsection = "infos",
 								form			= form,
 								user_infos		= current_user.get_public_infos 	# cf model_user.py
 								
 								)
+
+
+@app.route('/preferences/user_password', methods=['GET', 'POST'])
+@login_required
+def pref_password():
+	"""
+	to update user infos
+	"""
+
+	form = UserNewPassword()
+
+	# print current_user
+
+
+	if request.method == 'POST' :
+
+		print 
+		log_cis.info("updating user password \n")
+
+		# for debugging purposes 
+		for f_field in form : 
+			log_cis.info( "form name : %s / form data : %s ", f_field.name, f_field.data )
+
+		if form.validate_on_submit():
+			existing_user = mongo_users.find_one({"userOID" : form.userOID.data} )
+			
+			log_cis.debug("existing_user : %s", pformat(existing_user) )
+
+			if existing_user is None : 
+				flash(u"Erreur : utilisateur inexistant", category='warning')
+				return redirect(url_for('pref_password'))
+
+			else : 
+				### update password
+
+				flash(u"Votre mot de passe a  bien été mis à jour", category='success')
+				return redirect(url_for('pref_password'))
+		
+		else : 
+			
+			log_cis.error("form was not validated : form.errors : %s", form.errors )
+
+			flash(u"Erreur : formulaire invalide", category='warning')
+			return redirect(url_for('pref_password'))
+
+
+	elif request.method == 'GET' :
+
+		# prepopulate input fields 
+		form.userOID.data 		= current_user.userOID
+		
+		return render_template('user_preferences/user_parameters.html',
+								
+								config_name		= config_name, 						# prod or default...
+								app_metas		= app_metas, 
+								language		= "fr" ,
+								languages_dict	= app_languages_dict ,
+
+								site_section 	= "preferences",
+								site_subsection = "password",
+								form			= form,
+								user_infos		= current_user.get_public_infos 	# cf model_user.py
+								
+								)
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###

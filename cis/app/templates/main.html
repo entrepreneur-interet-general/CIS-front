@@ -216,7 +216,21 @@
 		// https://blog.toky.co/mixpanels-basic-tutorial-guide-to-start-custom-event-tracking-on-your-website/
 		console.log("sending data to Mix Panel")
 		mixpanel.track("page_view");
+		mixpanel.identify("{{ user_infos.userOID }}");
+
+		mixpanel.people.set({
+			"$id"	: "{{ user_infos.userOID }}",		// only special properties need the $
+			"$email": "{{ user_infos.userEmail }}",		// 
+			
+			//"$created": "2011-03-16 16:53:54",
+			//"$last_login": new Date(),         // properties can be dates...
+			//"credits": 150,                    // ...or numbers
+		});
+
+
 	</script> 
+
+	
 
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-mixpanel-metrics.js') }}"></script>
 	
