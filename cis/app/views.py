@@ -335,7 +335,7 @@ def login():
 				flash(u"Email ou mot de passe incorrect(s)", category='warning')
 
 				return redirect(url_for("login"))
-				
+
 		else :
 
 			log_cis.error("form was not validated / form.errors : %s", form.errors )
@@ -640,8 +640,9 @@ def pref_password():
 				log_cis.debug("new_hashpass : %s", new_hashpass )
 
 				### saving new password in user
-				user_obj = User(userPassword=new_hashpass)
+				user_obj = User()
 				user_obj.populate_from_dict(dict_input=existing_user)
+				user_obj.userPassword = new_hashpass
 
 				### TO DO 
 				# # update visitor to user in db --> function from ModelMixin
