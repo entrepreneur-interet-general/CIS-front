@@ -571,8 +571,8 @@ def pref_infos():
 
 		# prepopulate input fields 
 		form.userOID.data 				= current_user.userOID
-		form.userName.data 				= current_user.userName
-		form.userSurname.data 			= current_user.userSurname
+		form.userName.data 				= current_user.userName.capitalize()
+		form.userSurname.data 			= current_user.userSurname.capitalize()
 		form.userEmail.data 			= current_user.userEmail
 		form.userOtherStructure.data 	= current_user.userOtherStructure	
 
@@ -698,6 +698,27 @@ def pref_password():
 
 ### to customize admin views check : https://www.youtube.com/watch?v=BIcjT2Zz4bU
 
+### flask-admin formatters
+### cf : http://flask-admin.readthedocs.io/en/latest/api/mod_model/#flask_admin.model.BaseModelView.column_type_formatters 
+
+def date_format(view, value):
+	return value.strftime('%d.%m.%Y')
+
+MY_DEFAULT_FORMATTERS = dict(typefmt.BASE_FORMATTERS)
+MY_DEFAULT_FORMATTERS.update({
+		type(None): typefmt.null_formatter,
+		date: date_format
+	})
+
+class CustomWidget(XEditableWidget):
+	def get_kwargs(self, subfield, kwargs):
+		if subfield.type == 'TextAreaField':
+			kwargs['data-type'] = 'textarea'
+			kwargs['data-rows'] = '20'
+		# elif: kwargs for other fields
+
+		return kwargs
+
 class MyAdminIndexView(AdminIndexView) :
 
 	def is_accessible(self) :
@@ -715,15 +736,6 @@ class MyAdminIndexView(AdminIndexView) :
 		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
 		return redirect(url_for('index'))
 
-def date_format(view, value):
-	return value.strftime('%d.%m.%Y')
-
-MY_DEFAULT_FORMATTERS = dict(typefmt.BASE_FORMATTERS)
-MY_DEFAULT_FORMATTERS.update({
-		type(None): typefmt.null_formatter,
-		date: date_format
-	})
-	
 class UserViewAdmin(ModelView):
 	"""
 	view of an user in flask-admin
@@ -732,9 +744,9 @@ class UserViewAdmin(ModelView):
 	### for flask-login 
 	column_type_formatters = MY_DEFAULT_FORMATTERS
 
-	list_template = 'admin/list.html'
+	list_template 	= 'admin/list.html'
 	create_template = 'admin/create.html'
-	edit_template = 'admin/edit.html'
+	edit_template 	= 'admin/edit.html'
 
 	can_export = True
  	can_set_page_size = True
@@ -754,7 +766,8 @@ class UserViewAdmin(ModelView):
 
 		return redirect(url_for('index'))
 
-
+	def get_list_form(self):
+		return self.scaffold_list_form(widget=CustomWidget)
 
 	### for flask-admin
 
@@ -770,7 +783,7 @@ class UserViewAdmin(ModelView):
 								# 'created_at', 
 								'login_last_at',
 							)
-	column_details_list = column_list + ('created_at', 'last_modified_at',)
+	column_details_list = column_list + ('created_at', 'last_modified_at', '_id')
 	can_view_details = True
 
 	column_searchable_list 		= ( 'userName', 'userSurname', 'userEmail', 
@@ -784,6 +797,7 @@ class UserViewAdmin(ModelView):
 	
 	# column_filters = (BooleanEqualFilter(column=UserID.userName, name='userName'),)
 
+	
 	column_labels = dict(	userName				= 'Name', 
 							userSurname				= 'Last Name',
 							userEmail				= 'Email',
@@ -792,7 +806,7 @@ class UserViewAdmin(ModelView):
 							userOtherStructure		= 'Structure (other)',
 							userAuthLevel			= 'Auth Level',
 							userHaveProjects		= 'Have Projects',
-							userJoinCollective		= 'Want to join collective',
+							userJoinCollective		= 'Wants to join collective',
 							userMessage				= 'Message',
 						)
 
@@ -817,9 +831,9 @@ class MessagesFromLandingAdmin(ModelView):
 	### for flask-login 
 	column_type_formatters = MY_DEFAULT_FORMATTERS
 
-	list_template = 'admin/list.html'
+	list_template 	= 'admin/list.html'
 	create_template = 'admin/create.html'
-	edit_template = 'admin/edit.html'
+	edit_template 	= 'admin/edit.html'
 
 	can_export = True
  	can_set_page_size = True
@@ -864,7 +878,7 @@ class MessagesFromLandingAdmin(ModelView):
 							# userPartnerStructure	= 'Structure (partner)',
 							userOtherStructure		= 'Structure (other)',
 							userHaveProjects		= 'Have Projects',
-							userJoinCollective		= 'Want to join collective',
+							userJoinCollective		= 'Wants to join collective',
 							userMessage				= 'Message',
 						)
 

@@ -3,7 +3,7 @@
 mixin classes to inject into several models later
 """
 
-from . 	import FORM_FIELDS_TO_IGNORE, time, datetime
+from . 	import FORM_FIELDS_TO_IGNORE, VALUES_TO_CAPITALIZE, time, datetime
 
 from .. import log_cis, pformat
 
@@ -32,6 +32,8 @@ class ModelMixin :
 		"""
 		for k,v in dict_input.iteritems() :
 			log_cis.debug("k : %s / v : %s ", k, v )
+			if k in VALUES_TO_CAPITALIZE :
+				v = v.capitalize()
 			self.__dict__[ k ] = v
 
 

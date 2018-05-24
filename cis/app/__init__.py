@@ -72,6 +72,7 @@ except:
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 from	flask_admin 	import Admin, AdminIndexView
 from 	flask_admin.model import typefmt
+from 	flask_admin.model.widgets import XEditableWidget
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### CRYPTO IMPORT 
@@ -225,11 +226,23 @@ mongo_users.update_many({'follow_up_user'		: {"$exists" : False}}, {"$set": {'fo
 # mongo_users.update_many({'follow_up_user'		: {"$exists" : False}}, {"$set": {'follow_up_user'		: "- suivi des échanges avec l'utilisateur -" }})
 mongo_users.update_many({'userNewsletter'		: {"$exists" : False}}, {"$set": {'userNewsletter'		: True }})
 
+for user in mongo_users.find({}):
+	# mod_doc = modify_doc(doc)
+	user['userName']	= user['userName'].capitalize()
+	user['userSurname'] = user['userSurname'].capitalize()
+	mongo_users.save(user)
+
 
 # create fields in feedback documents if fields doesn't exit yet
 # note : files created are ignored by .gitignore
 mongo_feedbacks.update_many({'created_at'			: {"$exists" : False}}, {"$set": {'created_at'			: datetime.datetime.today() }})
 mongo_feedbacks.update_many({'follow_up_feedback'	: {"$exists" : False}}, {"$set": {'follow_up_feedback'	: "- suivi du message de l'utilisateur -" }})
+
+for user in mongo_feedbacks.find({}):
+	# mod_doc = modify_doc(doc)
+	user['userName']	= user['userName'].capitalize()
+	user['userSurname'] = user['userSurname'].capitalize()
+	mongo_feedbacks.save(user)
 
 ### TEMPORARY FUNCTIONS FOR CLEANING WHILE DEVELOPPING
 ### WARNING : COMMENT THIS BEFORE PUSHING TO PROD
