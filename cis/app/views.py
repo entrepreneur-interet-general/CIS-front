@@ -520,12 +520,19 @@ def pref_infos():
 		if form.validate_on_submit():
 
 			existing_user = mongo_users.find_one({"_id" : ObjectId(form.userOID.data)} )
-			
 			log_cis.debug("existing_user : %s", pformat(existing_user) )
 
+
+			### check if new email is already used by someone else
+			is_new_email_taken = False
+			existing_email = mongo_users.find_one( {"userEmail" : form.userEmail.data} )
+			log_cis.debug("existing_email : %s", pformat(existing_email) )
+			if existing_email is not None : 
+				if existing_user["_id"] != existing_email["_id"] : 
+					is_new_email_taken = True 
 		
-			if existing_user is None : 
-				flash(u"Erreur : utilisateur inexistant", category='warning')
+			if existing_user is None or is_new_email_taken : 
+				flash(u"Erreur : utilisateur inexistant ou email déjà utilisé", category='warning')
 				return redirect(url_for('pref_infos'))
 
 			else : 
