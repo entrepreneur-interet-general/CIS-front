@@ -787,7 +787,8 @@ class UserViewAdmin(ModelView):
 								'userPartnerStructure', 'userOtherStructure','verified_as_partner',
 								'userAuthLevel', 
 								'userHaveProjects','userJoinCollective',
-								'userMessage', 'follow_up_user',
+								'userMessage', 
+								'follow_up_user',
 								# 'created_at', 
 								'login_last_at',
 							)
@@ -796,7 +797,9 @@ class UserViewAdmin(ModelView):
 
 	column_searchable_list 		= ( 'userName', 'userSurname', 'userEmail', 
 									'userPartnerStructure', 'userOtherStructure',
-									'verified_as_partner'
+									'verified_as_partner',
+									'userProfile',
+									'userAuthLevel', 
 									)
 	column_sortable_list	= column_list
 	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', 
@@ -816,6 +819,8 @@ class UserViewAdmin(ModelView):
 							userHaveProjects		= 'Have Projects',
 							userJoinCollective		= 'Wants to join collective',
 							userMessage				= 'Message',
+							follow_up_user			= 'Suivi',
+
 						)
 
 	form 					= UserAdminInfos
@@ -870,7 +875,8 @@ class MessagesFromLandingAdmin(ModelView):
 								'userMessage',
 								'created_at',
 								'userHaveProjects', 'userJoinCollective', 
-								'follow_up_feedback',
+								# 'follow_up_feedback',
+								'follow_up_user'
 							)
 	column_searchable_list 		= column_list
 
@@ -889,6 +895,7 @@ class MessagesFromLandingAdmin(ModelView):
 							userHaveProjects		= 'Have Projects',
 							userJoinCollective		= 'Wants to join collective',
 							userMessage				= 'Message',
+							follow_up_user			= 'Suivi',
 						)
 
 	form 					= MessagesFromLandingAdmin
