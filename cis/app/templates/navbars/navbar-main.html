@@ -32,7 +32,7 @@
 
 
 	{# navbar's buttons #}
-	<a id="navbarMain" class="navbar-menu">
+	<div id="navbarMain" class="navbar-menu">
 		
 		{# <div class="navbar-start is-fullwidth"> #}
 
@@ -53,7 +53,7 @@
 			
 			<span class="navbar-item">
 
-				<div class="field is-grouped">
+				<a class="field is-grouped">
 
 
 					{# 
@@ -87,7 +87,7 @@
 					{% if user_infos.is_authenticated == False %}
 
 						<div class="navbar-item">
-							<a 	id="btn_login" 
+							<a	id="btn_login" 
 								class="button is-primary is-outlined" 
 								href="/login">
 								<span>Connectez-vous</span>
@@ -135,6 +135,7 @@
 
 						{# data-tooltip="bonjour, {{ user_infos.userName }} ({{ user_infos.userAuthLevel }})"> #}
 						<div class="navbar-item is-hoverable has-dropdown ">
+							
 							<a 	class="navbar-item"
 								href="/preferences/user_infos">
 								<span class="icon has-text-primary">
