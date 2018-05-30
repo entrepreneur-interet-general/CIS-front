@@ -1,5 +1,12 @@
 <div class="container">
 
+	{# burger #}		
+	<span class="navbar-burger burger" data-target="navbar-search-filters">
+		<span></span>
+		<span></span>
+		<span></span>
+	</span> 
+
 	{# navbar's buttons #}
 	<div id="navbar-search-filters" class="navbar-menu">
 
@@ -108,8 +115,10 @@
 					v-bind:id="checkboxes_list.name"
 					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
-				<a :class='["navbar-link", {"has-text-primary" : checkboxes_list.is_active }, {"has-text-weight-semibold" : checkboxes_list.is_active } ]'>
-					<span>[[ checkboxes_list.fullname ]]</span>
+				<a :class='["navbar-link", {"has-text-primary has-text-weight-semibold" : checkboxes_list.is_active } ]'>
+					<span>
+						[[ checkboxes_list.fullname ]]
+					</span>
 				</a>
 
 				<div 	:id="checkboxes_list.name" 
@@ -175,7 +184,7 @@
 					class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
 				{# <a class="navbar-link"> #}
-				<a :class='["navbar-link", {"has-text-primary" : f_filters_partners_active }, {"has-text-weight-semibold" : f_filters_partners_active } ]'>
+				<a 	:class='["navbar-link", {"has-text-primary has-text-weight-semibold has-background-primary" : f_filters_partners_active } ]'>
 
 					<span>
 						Sourceurs 

@@ -172,7 +172,11 @@ def index():
 				# create default password
 				temp_pwd = pwd_generator()
 				hashpass = generate_password_hash( temp_pwd, method='sha256')
-				
+		
+				# capitalize name and surname 
+				form.userName.data 		= form.userName.data.capitalize()
+				form.userSurname.data 	= form.userSurname.data.capitalize()
+
 				# populate user class
 				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
 				new_user.populate_from_form(form=form)
@@ -233,7 +237,7 @@ def search():
 	# 				]
 
 	# as long search engine is in beta version
-	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction.</strong><br> Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
+	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction. </strong><br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
 			category='primary'
 		)
 
@@ -379,6 +383,10 @@ def register():
 
 
 		if form.validate_on_submit():
+
+			# capitalize name and surname 
+			form.userName.data 		= form.userName.data.capitalize()
+			form.userSurname.data 	= form.userSurname.data.capitalize()
 
 			existing_user = mongo_users.find_one({"userEmail" : form.userEmail.data} )
 			
@@ -860,9 +868,9 @@ class MessagesFromLandingAdmin(ModelView):
 								'userName', 'userSurname', 'userEmail', 
 								'userOtherStructure', 
 								'userMessage',
-								'follow_up_user',
 								'created_at',
 								'userHaveProjects', 'userJoinCollective', 
+								'follow_up_feedback',
 							)
 	column_searchable_list 		= column_list
 

@@ -34,14 +34,11 @@
 				</div>
 
 				{# projects counter #}
-				<div v-if="d_count > 0" class="level-item">
+				<div v-if="d_count > 0" class="level-item is-hidden-touch">
 
 					<div id="notification-search-results" class="notification notification-results  is-white">
 						
 						<strong>
-							{# <span class="has-text-primary is-8">
-								[[ d_count ]]
-							</span> #}
 							<span class="has-text-primary is-8">
 								[[ d_count_start ]] - [[ d_count_stop ]]
 							</span>
@@ -71,7 +68,7 @@
 					<div id="notification-search-results-pages" class="notification notification-results  is-white">
 						
 						<span>
-							page [[ d_page_n ]] / [[ d_page_max ]]
+							 [[ d_page_n ]] / [[ d_page_max ]]
 						</span>
 						
 					</div>

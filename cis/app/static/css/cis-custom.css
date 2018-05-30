@@ -8,6 +8,23 @@ html {
 	display: none;
 }
 
+.underline {
+	/* text-decoration: underline; */
+	border-bottom: 5px solid currentColor;
+}
+
+.correct_5px_down {
+	position: relative; top: 2px ;
+}
+  
+#nav-toggle-state {
+	display: none;
+  }
+  
+#nav-toggle-state:checked ~ .nav-menu {
+	display: block;
+}
+
 #navbar-top {
 	height: 70px;
 	z-index:10;

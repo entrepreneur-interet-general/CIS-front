@@ -12,19 +12,27 @@
 			<img id="navbar-logo" src='{{url_for ("static", filename="logos/CIS/CIS_beta_logo_LD.png" ) }}' alt="Logo">
 		</a>
 
-		{# burger #}
+		{# burger #}		
 		<span class="navbar-burger burger" data-target="navbarMain">
 			<span></span>
 			<span></span>
 			<span></span>
-		</span>
+		</span> 
+		
+
+		{# <!-- Using a <label /> here -->
+		<label class="nav-toggle" for="nav-toggle-state">
+			<span></span>           <!-- ^^^^^^^^^^^^^^^^ -->
+			<span></span>
+			<span></span>
+		</label> #}
 
 	</div>
 
 
 
 	{# navbar's buttons #}
-	<a id="navbarMain" class="navbar-menu">
+	<div id="navbarMain" class="navbar-menu">
 		
 		{# <div class="navbar-start is-fullwidth"> #}
 
@@ -83,7 +91,7 @@
 								class="button is-primary is-outlined" 
 								href="/login">
 								<span>Connectez-vous</span>
-							</a>
+							</div>
 						</div>
 
 					{% else %}
@@ -222,5 +230,11 @@
 
 
 		</div>
+	
+
+
+
+
 	</div>
+
 </div>
