@@ -278,7 +278,7 @@ from . import views
 admin = Admin(	app, 
 				index_view=views.MyAdminIndexView(), 
 				name='back office',
-				template_mode="bootstrap2"
+				# template_mode="bootstrap2"
 				)
 
 # Add views in admin interface

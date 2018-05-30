@@ -72,8 +72,10 @@ Vue.component('v-filter-categ-item', {
 			console.log("+++ current_value : ", current_value  ) ;
 
 			if(this.f_checked.includes(current_value)){
+				// remove from f_checked if already present
 				this.f_checked.splice(this.f_checked.indexOf(current_value), 1)
 			} else {
+				// add to f_checked if not
 				this.f_checked.push(current_value)
 			}
 

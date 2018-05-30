@@ -860,6 +860,7 @@ class MessagesFromLandingAdmin(ModelView):
 								'userName', 'userSurname', 'userEmail', 
 								'userOtherStructure', 
 								'userMessage',
+								'follow_up_user',
 								'created_at',
 								'userHaveProjects', 'userJoinCollective', 
 							)

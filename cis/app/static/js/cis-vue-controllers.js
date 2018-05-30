@@ -366,7 +366,7 @@
 		data		: {
 
 			// retrieve all filters buttons created on the fly by : 
-			// flask-jinja |OR| ajax request to distant API in the future (TO DO)
+			// flask-jinja |OR| ajax request to distant API in the future
 			// --> as vue data vars..
 			
 			f_filters_tags		: CHOICES_FILTERS_TAGS, 		
@@ -412,7 +412,7 @@
 						// f_filters_partners["choices"].push(res["spiders"]["spiders_list"]) ;
 						
 						res["spiders"]["spiders_list"].forEach( function (spider, index) {
-							Vue.set(f_filters_partners, index, spider) 
+							Vue.set(f_filters_partners, index, spider)
 						})
 						f_filters_partners.sort(compare) ; 
 						// this.f_is_partners = true ;
@@ -488,6 +488,41 @@
 
 			},
 
+			f_update_categories_active : function() {
+				console.log("- v_navbar_search_input -M- f_update_categories_active ... ") ; 
+				var f_filters_tags 		= this.f_filters_tags ;
+				var f_checked 			= this.f_checked ;
+				
+				console.log("- v_navbar_search_input -M- f_filters_tags : ", f_filters_tags) ; 
+
+				// loop through categories
+				f_filters_tags.forEach( function( filters_categ ) {
+					
+					var count_active_filters = 0 ; 
+					
+					// list all filters' ids 
+					// var filters_list = filters_categ.choices.map(function (el) { return el.id; });
+					// console.log("- v_navbar_search_input -M- filters_list : ", filters_list) ; 
+					
+					// flag active comparing with f_checked
+					filters_categ.choices.forEach( function ( filter ){
+						if ( f_checked.includes(filter.id) ){
+							filter.is_active = true ;
+							count_active_filters = count_active_filters + 1  ; 
+						}
+					});
+					
+					// update values in filters_categ 
+					filters_categ.is_active_count = count_active_filters ; 
+					if (count_active_filters > 0 ){
+						filters_categ.is_active = true ;
+					} else {
+						filters_categ.is_active = false ;
+					}
+
+				});
+			},
+
 			f_cleanCheckedFromCheckboxesList : function(checkboxes_list_name) {
 				
 				console.log("- v_navbar_search_input -M- f_cleanTagsFromCheckboxesList ... ") ; 
@@ -522,7 +557,17 @@
 		},
 
 		computed	: {
-			// TO DO 
+			
+			// f_filters_tags_count : function() {
+			// 	return this.f_checked.length ;
+			// },
+
+			f_filters_partners_count : function() {
+				return this.f_checked_partners.length ;
+			},
+			f_filters_partners_active : function() {
+				return this.f_filters_partners_count > 0 ;
+			},
 		},
 
 		watch		: {
@@ -537,6 +582,7 @@
 				console.log("--- v_navbar_search_filters -W- f_checked --> oldVal : " + oldVal + " / newVal : " + newVal );
 				console.log("--- v_navbar_search_filters -W- f_checked --> run : this.f_update_checked_as_tags_codes() ");
 				this.f_update_checked_as_tags_codes();
+				this.f_update_categories_active();
 			},
 
 			'f_checked_partners' : function(newVal, oldVal){
@@ -546,7 +592,6 @@
 				console.log("--- v_navbar_search_filters -W- f_checked_partners --> run : this.f_update_checked_spider_id() ");
 				this.f_update_checked_spider_id();
 			},
-
 
 		},
 
