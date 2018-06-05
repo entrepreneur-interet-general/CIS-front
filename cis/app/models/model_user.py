@@ -73,7 +73,7 @@ class User( UserMixin, ModelMixin ):
 		- take care of keeping same field names than in forms
 		"""
 
-		log_cis.debug("creating User")
+		log_cis.debug("creating User / userOID = %s", userOID)
 
 		# session and auth variables
 

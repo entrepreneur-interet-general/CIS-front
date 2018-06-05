@@ -267,11 +267,15 @@ def search():
 from models import User, AnonymousUser
 
 @login_manager.user_loader
-def load_user(userEmail):
+def load_user(userEmail):	
+	"""
+	populates the current_user flask_login object
+	"""
 
 	log_cis.debug("userEmail : %s", userEmail)
 
 	user = mongo_users.find_one({ "userEmail" : userEmail })
+	# user = mongo_users.find_one({ "_id" : ObjectId(userOID) })
 
 	if not user :
 		
@@ -283,8 +287,13 @@ def load_user(userEmail):
 	else :
 		
 		log_cis.debug( "user : \n %s", pformat(user)  )
-		user_ = User(userOID=str(user["_id"]))
+		log_cis.debug( "user['_id'] : %s", str(user["_id"]) )
+
+		user_ = User( )
 		user_.populate_from_dict(dict_input=user)
+		
+		### adds forgotten OID into current_user
+		user_.userOID = str(user["_id"])
 
 		return user_
 
@@ -576,9 +585,11 @@ def pref_infos():
 	elif request.method == 'GET' :
 
 		log_cis.info("updating an user - GET \n")
+		
+		print current_user.__dict__
 
 		# prepopulate input fields 
-		form.userOID.data 				= current_user.userOID
+		form.userOID.data 				= str(current_user.userOID)
 		form.userName.data 				= current_user.userName.capitalize()
 		form.userSurname.data 			= current_user.userSurname.capitalize()
 		form.userEmail.data 			= current_user.userEmail
