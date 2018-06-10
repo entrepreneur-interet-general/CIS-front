@@ -36,9 +36,24 @@
 		
 		{# <div class="navbar-start is-fullwidth"> #}
 
-		{% if user_infos.is_authenticated == True and site_section == "search" %}
+		{% if user_infos.is_authenticated == True %}
+
+			{% if site_section == "search" %}
 		
-			{% include "navbars/navbar-search-input.html" %}
+				{% include "navbars/navbar-search-input.html" %}
+
+			{% elif site_section == "project" %}
+
+				<div class="navbar-item">
+					<a href="/search" class=" has-text-grey">
+							<span class="icon">
+								<i class="fa fa-arrow-left"></i>
+							</span>
+							<span class="name">Retour à la recherche</span>
+					</a>
+				</div>
+
+			{% endif %}
 
 		{% endif %}
 
@@ -98,8 +113,8 @@
 
 
 						<div class="navbar-item">
-							<a class="modal-button" data-target="modal_charte" aria-haspopup="true"> 
-							{# <a class="button is-text" href="/info/project-history" disabled> #}
+							{# <a class="modal-button" data-target="modal_charte" aria-haspopup="true">  #}
+							<a class="button is-text" href="/infos/project">
 								<span>Projet</span>
 							</a>
 						</div>

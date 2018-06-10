@@ -46,6 +46,13 @@ app_languages_dict = {
 		"tr"	: u"kayıtlı olmak"
 	},
 
+	"project" 	: {	
+		"eng" 	: u"project",
+		"fr"	: u"projet",
+		"esp"	: u"proyecto",
+		"tr"	: u"proje"
+	},
+
 	"search"	: {
 		"eng" 	: u"search",
 		"fr"	: u"recherche",

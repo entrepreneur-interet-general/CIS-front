@@ -122,7 +122,7 @@ def error403(error):
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### INDEX AND LANDING
+### STATIC PAGES : INDEX / LANDING / PROJECT
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 @app.route('/', methods=['GET', 'POST'])
@@ -217,6 +217,26 @@ def index():
 						)
 
 
+@app.route('/infos/project')
+def project():
+	"""
+	static page for project
+	"""
+	log_cis.debug("current_user : \n %s ", pformat(current_user.__dict__))
+
+	return render_template('index.html',
+							
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
+
+							site_section		= "project",
+							user_infos			= current_user.get_public_infos
+						)
+
+
+	
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### SEARCH PAGES
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -692,7 +712,7 @@ def pref_password():
 	elif request.method == 'GET' :
 
 		# prepopulate input fields 
-		form.userOID.data 		= current_user.userOID
+		form.userOID.data 				= current_user.userOID
 		# form.userEmailHidden.data 	= current_user.userEmail
 		
 		return render_template('user_preferences/user_parameters.html',

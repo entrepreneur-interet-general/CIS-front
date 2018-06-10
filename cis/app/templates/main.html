@@ -130,7 +130,7 @@
 
 		{# 2d nav bar - filters navbar #}
 		{% if user_infos.is_authenticated == True and site_section != "preferences" %}
-			{% if site_section in ["home", "register", "login"] %}
+			{% if site_section in ["home", "register", "login", "project"] %}
 				{% set display_filters = "none" %}
 			{% else %}
 				{% set display_filters = "" %}

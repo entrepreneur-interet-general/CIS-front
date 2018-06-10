@@ -15,17 +15,23 @@
 
 
 {# section dates clés #}
-<section id="lame-dates" class="hero is-white skip-navbar">
+<section id="lame-dates" class="hero is-white ">
 	<div class="hero-body">
 		<div class="container">
 
 			<div class="content is-medium  has-text-centered">
-				
+
+				{% if site_section != "project" %}
 				<h2 class="has-text-black">
+				{% else %}
+				<h2 class="has-text-primary">
+				{% endif %}
+
 					<strong>Les dates clés </strong>
 				</h2>
 									
 				{# button to scroll down #}
+				{% if site_section != "project" %}
 				<a 	href="#lame-betatest" 
 					class="button is-text is-medium tooltip is-tooltip-bottom"
 					data-tooltip="continuer pour en savoir plus...">
@@ -33,6 +39,7 @@
 						<i class="fas fa-lg fa-chevron-down"></i>
 					</span>
 				</a>
+				{% endif %}
 			</div>
 
 
