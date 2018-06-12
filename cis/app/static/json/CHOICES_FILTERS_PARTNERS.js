@@ -1,6 +1,6 @@
 var CHOICES_FILTERS_PARTNERS = [
     {
-        "fullname": "Contributeurs", 
+        "fullname": "Sourceurs", 
         "name": "sources_", 
         "choices": [
             {
