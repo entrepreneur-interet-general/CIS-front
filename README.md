@@ -23,6 +23,7 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. **clone or [download](https://github.com/entrepreneur-interet-general/CIS-front/archive/master.zip) the repo**
 1. **[install MongoDB](https://docs.mongodb.com/manual/installation/) locally** or get the URI of the MongoDB you're using
 1. **go to your cis folder**
+1. **install pip**: `sudo apt install python-pip`
 1. **install the libraries (without [virtual environment](https://pypi.python.org/pypi/virtualenv))**
 
 	> $ pip install -r requirements.txt
