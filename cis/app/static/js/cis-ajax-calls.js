@@ -102,7 +102,7 @@ var url_api_stats	= '/api/stats' ;
 
 // choose api url depending on config_name
 var url_root ; 
-if (meta_config_name == "production") {
+if (meta_config_name == "production" || meta_config_name == "testing") {
 	url_root 		= url_api_root_prod ;
 } else {
 	url_root 		= url_api_root_dev ;

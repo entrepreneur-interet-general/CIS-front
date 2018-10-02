@@ -23,15 +23,29 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. **clone or [download](https://github.com/entrepreneur-interet-general/CIS-front/archive/master.zip) the repo**
 1. **[install MongoDB](https://docs.mongodb.com/manual/installation/) locally** or get the URI of the MongoDB you're using
 1. **go to your cis folder**
-1. **install the libraries (without [virtual environment](https://pypi.python.org/pypi/virtualenv))**
+1. **use Python 2**
+1. **install python pip and virtualenv**
+	
+	>
+		$ sudo apt install python-pip
+		$ sudo apt install virtualenv
 
-	> $ pip install -r requirements.txt
+1. **install a [virtual environment](https://pypi.python.org/pypi/virtualenv)**
+	> 
+		$ virtualenv venv
+1. **install the libraries**
+	> 
+		$ sudo pip install -r requirements.txt
+
+1. __if you encounter problems installing the requirements try to install the 'cryptography' library following those steps : [install crypto]__
+	> 
+		$ pip install cryptography --global-option=build_ext --global-option="-L/usr/local/opt/openssl/lib" --global-option="-I/usr/local/opt/openssl/include"
 
 1. **update the `app/backend/config_secret_vars_example.py` file** with your mongoDB URI (if you're not using default mongoDB connection)
 
-1. **run app** from `$ ~/../cis`
-
-	> $ python run_cis_front.py
+1. **got to your `/cis` folder and run**
+	> 	
+		$ python run_cis_front.py
 
 1. **check in your browser** at `localhost:8100`
 
