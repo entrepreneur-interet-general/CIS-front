@@ -1,0 +1,70 @@
+<div class="map"></div>
+<style>
+.map { 
+    margin-top: calc(70px + 52px);
+    height: 600px; 
+}
+</style>
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script>
+'use strict';
+
+var mymap = L.map( document.querySelector('.map') ).setView([46.2276, 2.2137], 6);
+
+L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(mymap);
+
+// fetch data
+fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=5000')
+.then(r => r.json())
+.then(data => {
+    const {query_results: projects} = data;
+
+    console.info('projects', projects);
+
+    const projectWithValidAddress = projects
+    .filter(p => Array.isArray(p['adresse du projet']))
+
+
+
+
+    const addresses = projectWithValidAddress.map(p => p['adresse du projet'].join(' '))
+    
+    console.info('addr', addresses);
+
+    const adressesCSV = 'adresse\n' + addresses.join('\n')
+
+    const adresseCSVBANBody = new FormData();
+    adresseCSVBANBody.append('data', new File([adressesCSV], 'adresses.csv'))
+
+
+    return fetch('https://api-adresse.data.gouv.fr/search/csv/', {
+        method: 'POST',
+        body: adresseCSVBANBody,
+    })
+    .then(r => r.text())
+    .then(geolocsTxt => {
+        const geolocs = d3.csvParse(geolocsTxt);
+
+        console.info('geolocs', geolocs)
+
+        projectWithValidAddress.map((p, i) => {
+            p.geoloc = geolocs[i];
+        })
+
+        for(const p of projectWithValidAddress){
+            L.marker({lon: p.geoloc.longitude, lat: p.geoloc.latitude}).addTo(mymap)
+            .bindPopup(`<strong>${p['titre du projet']}</strong><br>${(p['tags'] || []).join(' ')}`);
+        }
+
+
+    });
+
+})
+.catch(err => console.error('carto err', err))
+
+
+
+</script>
