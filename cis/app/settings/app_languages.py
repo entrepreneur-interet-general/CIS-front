@@ -60,6 +60,13 @@ app_languages_dict = {
 		"tr"	: u"aramak"
 	},
 
+	"carto"	: {
+		"eng" 	: u"map",
+		"fr"	: u"carto",
+		"esp"	: u"carto",
+		"tr"	: u"harita"
+	},
+
 	"preferences"	: {
 		"eng" 	: u"preferences",
 		"fr"	: u"préférences",
