@@ -30,7 +30,6 @@ import	json
 from 	pprint import pprint, pformat
 from	bson import json_util
 from	bson.objectid import ObjectId
-from 	bson import json_util
 from	bson.json_util import dumps
 import	itertools
 import	unidecode
@@ -42,9 +41,9 @@ import	uuid
 
 import inspect
 
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### SET LOGGER 
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+# ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+# ### SET LOGGER 
+# ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 from backend.config_logging import log_cis
 log_cis.debug('>>> TESTING LOGGER')
@@ -127,6 +126,7 @@ def before_request():
 	### SAFARI HEADERS DON'T CONTAIN COOKIE, THEREFORE NOR CSRF VALUE
 	
 
+
 ### set environment and app variables
 log_cis.debug(">>> configuring app's env vars...\n")
 
@@ -134,19 +134,12 @@ from .backend.config_env import *
 
 configure_app(app)
 
-if config_name == "default" or config_name == "production" :
-
-	log_cis.info('>>> config_name : %s', config_name )
-	print
-
-	log_cis.info(	">>> ENVIRONMENT VARIABLES / to understand what the fuck is goin on ... : \n %s", 
+if config_name == "default" or config_name == "production" or config_name == "testing"  :
+	log_cis.info('>>> config_name : %s \n', config_name )
+	log_cis.info(	">>> ENVIRONMENT VARIABLES / to understand what the fuck is goin on ... : \n %s \n", 
 					pformat({ k : v for k,v in  os.environ.iteritems() }) )
-	print
-
-	log_cis.info(	">>> APP.CONFIG / to understand what the fucking fuck is goin on ... : \n %s", 
+	log_cis.info(	">>> APP.CONFIG / to understand what the fucking fuck is goin on ... : \n %s \n", 
 					pformat({ k : v for k,v in  app.config.iteritems() }) )
-	print
-
 print
 
 

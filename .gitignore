@@ -19,7 +19,7 @@
 cis/app/_backups_collections/*.json
 
 ### LOG FILES
-cis/app/logs/
+cis/app/logs/*.log
 
 ### DROPBOX FILES
 *.dropbox
