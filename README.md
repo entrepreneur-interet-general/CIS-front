@@ -43,9 +43,9 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 
 1. **update the `app/backend/config_secret_vars_example.py` file** with your mongoDB URI (if you're not using default mongoDB connection)
 
-1. **got to your `/cis` folder and run**
+1. **got to your `/cis` folder and run :**
 	> 	
-		$ python run_cis_front.py
+		$ python run_cis_front.py --mode=testing
 
 1. **check in your browser** at `localhost:8100`
 
