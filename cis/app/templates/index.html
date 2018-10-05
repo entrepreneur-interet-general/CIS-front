@@ -3,27 +3,16 @@
 
 {% block content %}
 
-
 	{# { % if is_landing is defined %} #}
 	{% if user_infos.is_authenticated == False %}
 		
-		{% if site_section == "carto" %}
-
-			{% include "spa.html" %}
-		
-		{% else %}
-		
-			{% include "landing.html" %}
-		
-		{% endif %}
+		{% include "landing.html" %}
 	
 	{% else %}
 	
 		{% include "index-user.html"%}
 	
 	{% endif %}
-
-
 
 
 {% endblock %}

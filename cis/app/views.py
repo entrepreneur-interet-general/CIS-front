@@ -285,7 +285,7 @@ def carto():
 			category='primary'
 		)
 
-	return render_template( "index.html",
+	return render_template( "spa.html",
 
 							config_name			= config_name, # prod, testing, default...
 							app_metas			= app_metas, 
