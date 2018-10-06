@@ -28,6 +28,8 @@
 		{# GOOGLE INDEXING / cf : https://support.google.com/webmasters/answer/6259634?hl=en #}
 		<meta name="google-site-verification" content="vSnFdoQsEBUIOqbQWr3h1SRXb1mu0ttVN0fo4H25XNk" />
 
+ 
+		
 
 		{# MIX PANEL - METRICS --- only in production mode #}
 		{% if config_name == "production" %}
@@ -59,8 +61,7 @@
 		{# BULMA #}
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.3">
-		
-        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		
 
 		{# VUE.JS #}
@@ -74,9 +75,25 @@
 		{% endif %}
 
 
+		{# RECAPTCHA - SECURITY #}
+
+
+		{# CRISP - CHAT #}
+
+
 		{# LEAFLET / cf : http://leafletjs.com/ #}
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>	
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+
+
+		{# CHARTS - VIZ / cf : http://www.chartjs.org/ #}
+		<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>		
+
+
+		{# DATATABLE - VIZ #}
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+		<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 
 		{# CUSTOM STYLES ---> TO FIX #}
@@ -113,6 +130,8 @@
 
                 const projectWithValidAddress = projects
                 .filter(p => Array.isArray(p['adresse du projet']))
+
+
 
 
                 const addresses = projectWithValidAddress.map(p => p['adresse du projet'].join(' '))
