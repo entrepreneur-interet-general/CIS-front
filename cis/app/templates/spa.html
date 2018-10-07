@@ -171,7 +171,8 @@
         })
 
         </script>
-
+		
+		<script defer src="/static/build/bundle.js"></script>
 
 
 	</head>
@@ -190,7 +191,223 @@
 				id="navbar-top" 
 				role="navigation" 
 				aria-label="main navigation">
-			{% include "navbars/navbar-main.html" %}
+			
+			<div class="container">
+
+				<div id="brand"></div>
+
+				{# Copy of navbar/navbar-main.html without the brand part: #}
+				<div id="navbarMain" class="navbar-menu">
+					
+					{# <div class="navbar-start is-fullwidth"> #}
+
+					{% if user_infos.is_authenticated == True %}
+
+						{% if site_section == "search" %}
+					
+							{% include "navbars/navbar-search-input.html" %}
+
+						{% elif site_section == "project" %}
+
+							<div class="navbar-item">
+								<a href="/search" class=" has-text-grey">
+										<span class="icon">
+											<i class="fa fa-arrow-left"></i>
+										</span>
+										<span class="name">Retour à la recherche</span>
+								</a>
+							</div>
+
+						{% endif %}
+
+					{% endif %}
+
+					{# </div> #}
+
+
+
+
+					{# buttons at navbar start #}
+
+					<div class="navbar-end">
+						
+						<span class="navbar-item">
+
+							<a class="field is-grouped">
+
+
+								{# 
+								<p class="control">
+									{{ user_infos.userName }} - {{ user_infos.userAuthLevel}}
+								</p>			
+								#}
+
+
+								{% if user_infos.is_authenticated == False %}
+
+									{# SOCIAL NETWORKS #}
+									<a class="navbar-item " href="https://twitter.com/touteslesinnoso" target="_blank">
+										<span class="icon has-text-primary">
+											<i class="fab fa-2x fa-twitter"></i>
+										</span>
+									</a>
+
+
+									<a class="navbar-item " href="https://www.facebook.com/TouteslesInnoSo/" target="_blank">
+										<span class="icon has-text-primary ">
+											<i class="fab fa-2x fa-facebook"></i>
+										</span>
+									</a>
+
+								{% endif %}
+
+
+
+								{# LOGIN - LOGOUT - USER BTNS #}
+								{% if user_infos.is_authenticated == False %}
+
+									<div class="navbar-item">
+										<a	id="btn_login" 
+											class="button is-primary is-outlined" 
+											href="/login">
+											<span>Connectez-vous</span>
+										</a>
+									</div>
+
+								{% else %}
+
+
+									<div class="navbar-item">
+										{# <a class="modal-button" data-target="modal_charte" aria-haspopup="true">  #}
+										<a class="button is-text" href="/infos/project">
+											<span>Projet</span>
+										</a>
+									</div>
+
+									<div class="navbar-item">
+										{# <a class="button is-text" href="/info/who-are-we" disabled> #}
+										<a class="modal-button" data-target="modal_who" aria-haspopup="true"> 
+											<span>Qui sommes-nous ?</span>
+										</a>
+									</div>
+
+									<div class="navbar-item" >
+										{# <a class="modal-button" data-target="modal_legal" aria-haspopup="true">  #}
+										<a 	id="btn_mailto_navbar"
+											class="button is-text" 
+											href="mailto:contact@carrefourdesinnovationssociales.fr">
+											<span>Contact</span>
+										</a>
+									</div>
+
+
+									{# {% if user_infos.userAuthLevel in ["admin", "staff"] %}
+									<div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip multiline"
+											data-tooltip="espace d'administration du site réservé aux niveaux : staff et admin"
+										>
+										<a class="button is-warning is-outlined" href="/admin" target="_blank">
+											<span class="icon">
+												<i class="fas fa-lg fa-lock"></i>
+											</span>
+										</a>
+									</div>
+									{% endif %} #}
+
+									{# data-tooltip="bonjour, {{ user_infos.userName }} ({{ user_infos.userAuthLevel }})"> #}
+									<div class="navbar-item is-hoverable has-dropdown ">
+										
+										<a 	class="navbar-item"
+											href="/preferences/user_infos">
+											<span class="icon has-text-primary">
+												<i class="far fa-2x fa-user-circle"></i>
+											</span>
+										</a>
+										<div class="navbar-dropdown is-boxed is-right">
+											
+											<a class="navbar-item" href="/preferences/user_infos">
+												<strong> {{ user_infos.userName }} {{ user_infos.userSurname }}  </strong> 
+												&nbsp;
+												( {{ user_infos.userAuthLevel }} )
+											</a>
+
+											<hr class="navbar-divider">
+											<a class="navbar-item" href="/preferences/user_infos">
+												<span class="icon">
+													<i class="fas fa-cog"></i>
+												</span>
+												Vos informations
+											</a>
+
+											<hr class="navbar-divider">
+											<a class="navbar-item" href="/preferences/user_password">
+												<span class="icon">
+													<i class="fas fa-unlock"></i>
+												</span>
+												Changer le mot de passe
+											</a>
+
+											{# <hr class="navbar-divider">
+											<a class="navbar-item" href="/preferences/user_projects">
+												<span class="icon">
+													<i class="fas fa-table"></i>
+												</span>
+												Mes projets
+											</a> #}
+											
+											{# <hr class="navbar-divider">
+											<a class="navbar-item" href="/preferences/user_favorites">
+												<span class="icon">
+													<i class="fas fa-heart"></i>
+												</span>
+												Projets sauvegardés
+											</a> #}
+
+
+											{% if user_infos.userAuthLevel in ["admin", "staff"] %}
+											<hr class="navbar-divider">
+											{# <div 	class="navbar-item tooltip is-tooltip-bottom is-tooltip-warning is-tooltip-multiline"
+													data-tooltip="espace d'administration du site réservé aux niveaux : staff et admin"
+												> #}
+												{# <a class="button is-warning is-outlined" href="/admin" target="_blank"> #}
+												<a class="navbar-item" href="/admin" target="_blank">
+													<span class="icon">
+														<i class="fas fa-lock"></i>
+													</span>
+													Espace Admin
+												</a>
+											{# </div> #}
+											{% endif %}
+
+
+											<a class="navbar-item" href="/logout">
+												<button class="button is-fullwidth">
+													Se déconnecter
+												</button>
+											</a>
+
+
+										</div>
+
+									</div>
+
+									{# <a 	class="navbar-item tooltip is-tooltip-bottom" 
+										id="btn_logout"
+										data-tooltip="se déconnecter"
+										href="/logout">
+										<span class="icon has-text-grey">
+											<i class="fas fa-lg fa-power-off"></i>
+										</span>
+									</a> #}
+
+								{% endif %}
+
+							</div>
+
+						</span>
+
+					</div>
+				</div>
+			</div>
 		</nav>
 
 		{# 2d nav bar - filters navbar #}

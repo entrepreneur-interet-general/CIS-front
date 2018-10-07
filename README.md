@@ -47,8 +47,15 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 	> 	
 		$ python run_cis_front.py --mode=testing
 
-1. **check in your browser** at `localhost:8100`
+1. **Install Node.js and npm**
+1. **Build the front-end**
+	
+	> 
+		$ cd cis/app/frontend
+		$ npm install 
+		$ npm run build
 
+1. **check in your browser** at `localhost:8100`
 
 
 ### _PRODUCTION_
