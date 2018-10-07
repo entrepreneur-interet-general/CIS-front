@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify ./scripts/main.js -o ../static/build/bundle.js",
-    "watch": "watchify ./scripts/main.js -o ../static/build/bundle.js -v"
+    "watch": "watchify ./scripts/main.js -o ../static/build/bundle.js -v -d"
   },
   "babel": {
     "presets": [
