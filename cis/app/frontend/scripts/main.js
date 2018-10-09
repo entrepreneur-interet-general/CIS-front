@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import NavBar from './components/NavBar.vue';
 import SearchFilters from './components/SearchFilters.vue';
+import Footer from './components/Footer.vue';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,6 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     f_filters_partners: CHOICES_FILTERS_PARTNERS[0] 
                 }
             }
+        )
+    })
+    
+    new Vue({
+        el: document.querySelector('footer'),
+        render: createElement => createElement(
+            Footer
         )
     })
 
