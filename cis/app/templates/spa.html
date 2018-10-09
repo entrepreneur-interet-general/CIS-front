@@ -174,44 +174,21 @@
 		
 		<script defer src="/static/build/bundle.js"></script>
 
-
 	</head>
-
-
-
 
 
 
 	{# MAIN CONTENTS #}
 	<body>
 
-
-		{# 1st nav bar - main navbar #}
 		<nav></nav>
 
-		{# 2d nav bar - filters navbar #}
-		{% if user_infos.is_authenticated == True and site_section != "preferences" %}
-			{% if site_section in ["home", "register", "login", "project"] %}
-				{% set display_filters = "none" %}
-			{% else %}
-				{% set display_filters = "" %}
-			{% endif %}
-			<nav 	class="navbar is-white is-fixed-top" 
-					id="navbar-filters" 
-					role="navigation" 
-					aria-label="filters navigation"
-					style="display : {{ display_filters | lower }} ">
-				{% include "navbars/navbar-filters.html" %}
-			</nav>
-		{% endif %}
-
+		<div id="navbar-filters"></div>
 
         <div class="map"></div>
 
-
 		{# footer #}
 		{% include "footer.html" %}
-
 	
 	</body>
 
