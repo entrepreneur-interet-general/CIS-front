@@ -43,12 +43,3 @@ export default {
 
 <style>
 </style>
-
-
-
-Vue.component('v-filter-categ-item', {
-
-	delimiters	: custom_delimiters,
-	
-
-})
