@@ -14,7 +14,9 @@ for(const f of filterDescriptions){
 }
 
 const store = new Vuex.Store({
+    strict: true,
     state: {
+        filterDescriptions,
         selectedFilters,
         user: {
             // TODO import user infos to the client-side
@@ -23,12 +25,21 @@ const store = new Vuex.Store({
         }
     },
     mutations: {
-        toggleSelectedFilter ({filter, value}) {
-            const selectedValues = selectedFilters.get(filter)
+        toggleSelectedFilter (state, {filter, value}) {
+            const selectedValues = state.selectedFilters.get(filter)
             if(selectedValues.has(value))
                 selectedValues.delete(value)
             else 
                 selectedValues.add(value)
+
+            // trigger re-render
+            state.selectedFilters = new Map(state.selectedFilters)
+        },
+        emptyOneFilter (state, {filter}) {
+            state.selectedFilters.set(filter, new Set())
+
+            // trigger re-render
+            state.selectedFilters = new Map(state.selectedFilters)
         }
     }
 })

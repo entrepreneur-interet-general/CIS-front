@@ -1,7 +1,7 @@
 <template>
     <div class="navbar is-white is-fixed-top" id="navbar-filters" role="menubar" aria-label="filters navigation">
         <div class="container">
-            
+
             <!--
             <span class="navbar-burger burger" data-target="navbar-search-filters">
                 <span></span>
@@ -15,8 +15,8 @@
                 <div class="navbar-start">
 
                     <span v-for="filter in filterDescriptions" 
-                        v-bind:key="filter.name"
-                        v-bind:id="filter.name"
+                        :key="filter.name"
+                        :id="filter.name"
                         class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
                         <a :class='["navbar-link", {"has-text-primary has-text-weight-semibold" : filter.is_active } ]'>
@@ -27,20 +27,27 @@
 
                         <div :id="filter.name" class="navbar-dropdown">
 
-                            <FilterItem 
-                                v-for="choice in filter.choices"
-                                :key="choice.name"
-                                :item="choice"
-                                v-model="f_checked"
-                                >
-                            </FilterItem>
+                            <a class="navbar-item" v-for="choice in filter.choices" :key="choice.name">
+                                <div class="field">
+                                    <input 	class="is-checkradio is-default is-normal" 
+                                            :id="choice.name" 
+                                            type="checkbox" 
+                                            :checked="selectedFilters.get(filter.name).has(choice.name)"
+                                            @input="toggleSelectedFilter({filter: filter.name, value: choice.name})"
+                                            >
+                                    <label :for="choice.name">
+                                        {{ choice.fullname }}
+                                    </label>
+                                </div>
+                            </a>
                         
                             <div class="navbar-item">
                                 <a 	class="button is-text is-fullwidth has-text-primary"
-                                    @click="f_cleanCheckedFromCheckboxesList(choices.name)">
+                                    @click="emptyOneFilter({filter: filter.name})">
                                     Effacer
                                 </a>
                             </div>
+
                         </div>
                     </span>
                 </div>
@@ -78,13 +85,19 @@
 </template>
 
 <script>
-import FilterItem from './FilterItem.vue'
+import {mapMutations, mapState} from 'vuex'
 
 export default {
-    components: {
-        FilterItem
-    },
-	props: ['filterDescriptions']
+    props: ['filterDescriptions'],
+    computed: mapState([
+        'selectedFilters', 'test'
+    ]),
+    methods: {
+        ...mapMutations([
+            'toggleSelectedFilter',
+            'emptyOneFilter'
+        ])
+    }
 }
 </script>
 
