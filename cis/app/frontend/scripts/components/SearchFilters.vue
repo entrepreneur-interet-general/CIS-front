@@ -43,40 +43,6 @@
                             </div>
                         </div>
                     </span>
-
-
-                    <span	id="sources_"
-                            class="navbar-item navbar-item-filter has-dropdown is-hoverable">
-
-                        <a 	:class='["navbar-link", {"has-text-primary has-text-weight-semibold has-background-primary" : f_filters_partners_active } ]'>
-
-                            <span>
-                                Contributeurs
-                            </span>
-                        </a>
-
-                        <div class="navbar-dropdown">
-
-                            <FilterItem 
-                                v-for="choice in f_filters_partners"
-                                :key="choice.name"
-                                :item="choice"
-                                v-model="f_checked_partners"
-                                >
-                            </FilterItem>
-
-                                
-                            <!-- footer -->
-                        
-                            <div class="navbar-item">
-                                <a 	class="button is-text is-fullwidth has-text-primary"
-                                    @click="f_cleanCheckedFromCheckboxesList('sources_')"
-                                    >
-                                    Effacer
-                                </a>
-                            </div>  
-                        </div>
-                    </span>
                 </div>
 
                 <!--
@@ -118,7 +84,7 @@ export default {
     components: {
         FilterItem
     },
-	props: ['filterDescriptions', 'f_filters_partners']
+	props: ['filterDescriptions']
 }
 </script>
 

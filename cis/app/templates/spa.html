@@ -62,23 +62,6 @@
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.3">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		
-
-		{# VUE.JS #}
-		<script src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script> 
-		{% if config_name == "production" %}
-			<!-- production version, optimized for size and speed -->
-			<script src="https://cdn.jsdelivr.net/npm/vue"></script> 
-		{% else %}
-			<!-- development version, includes helpful console warnings -->
-			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		{% endif %}
-
-
-		{# RECAPTCHA - SECURITY #}
-
-
-		{# CRISP - CHAT #}
 
 
 		{# LEAFLET / cf : http://leafletjs.com/ #}
@@ -229,8 +212,6 @@
 			<!-- CUSTOM JS FOR AJAX CALLS -->
 			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.5"></script>
 			
-			<!-- CUSTOM VUE JS -->
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-store.js') }}?version=0.0.1"></script>
 			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.6"></script>
 			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.6"></script>
 
