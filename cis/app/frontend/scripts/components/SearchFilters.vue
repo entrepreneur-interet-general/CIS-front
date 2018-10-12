@@ -90,7 +90,7 @@ import {mapMutations, mapState} from 'vuex'
 export default {
     props: ['filterDescriptions'],
     computed: mapState([
-        'selectedFilters', 'test'
+        'selectedFilters'
     ]),
     methods: {
         ...mapMutations([
