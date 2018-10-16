@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VueRouter from 'vue-router'
 import {csvParse} from 'd3-dsv';
 
 import CISCartoScreen from './components/screens/CISCartoScreen.vue';
+import SearchScreen from './components/screens/SearchScreen.vue';
 
-
+Vue.use(VueRouter)
 Vue.use(Vuex)
 
 const filterDescriptions = [].concat(CHOICES_FILTERS_TAGS, CHOICES_FILTERS_PARTNERS);
@@ -79,21 +81,35 @@ fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=500')
 })
 .catch(err => console.error('CIS data or BAN data error', err))
 
+const routes = [
+    { path: '/carto', component: CISCartoScreen, props(route){
+        return {
+            logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
+            brand: 'Carrefour des Innovations Sociales',
+            filterDescriptions
+        }
+    } },
+    { path: '/spa-search', component: SearchScreen, props(route){
+        return {
+            logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
+            brand: 'Carrefour des Innovations Sociales',
+            filterDescriptions
+        } }
+    }
+]
+
+const router = new VueRouter({
+    mode: 'history',
+    routes
+})
+
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     new Vue({
         el: document.querySelector('#vue-content'),
+        router,
         store,
-        render: createElement => createElement(
-            CISCartoScreen, 
-            {
-                props: {
-                    logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
-                    brand: 'Carrefour des Innovations Sociales',
-                    filterDescriptions
-                }
-            }
-        )
+        render: h => h( Vue.component('router-view') )
     })
 
 }, {once: true})  
