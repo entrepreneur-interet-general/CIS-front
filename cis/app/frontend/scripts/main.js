@@ -2,10 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import {csvParse} from 'd3-dsv';
 
-import NavBar from './components/NavBar.vue';
-import SearchFilters from './components/SearchFilters.vue';
-import CISMap from './components/CISMap.vue';
-import Footer from './components/Footer.vue';
+import CISCartoScreen from './components/screens/CISCartoScreen.vue';
+
 
 Vue.use(Vuex)
 
@@ -51,7 +49,7 @@ const store = new Vuex.Store({
     }
 })
 
-fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=1000')
+fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=500')
 .then(r => r.json())
 .then(data => {
     const {query_results: projects} = data;
@@ -84,44 +82,17 @@ fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=1000')
 document.addEventListener('DOMContentLoaded', () => {
     
     new Vue({
-        el: document.querySelector('nav'),
+        el: document.querySelector('#vue-content'),
+        store,
         render: createElement => createElement(
-            NavBar, 
+            CISCartoScreen, 
             {
                 props: {
                     logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
                     brand: 'Carrefour des Innovations Sociales',
-                    user: store.state.user
-                }
-            }
-        )
-    })
-    
-    new Vue({
-        el: document.querySelector('#navbar-filters'),
-        store,
-        render: createElement => createElement(
-            SearchFilters, 
-            {
-                props: {
                     filterDescriptions
                 }
             }
-        )
-    })
-    
-    new Vue({
-        el: document.querySelector('.map'),
-        store,
-        render: createElement => createElement(
-            CISMap
-        )
-    })
-    
-    new Vue({
-        el: document.querySelector('footer'),
-        render: createElement => createElement(
-            Footer
         )
     })
 
