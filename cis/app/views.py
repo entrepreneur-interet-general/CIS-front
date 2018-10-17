@@ -273,29 +273,23 @@ def search():
 							user_infos			= current_user.get_public_infos
 						)
 
+@app.route('/spa-search', methods=['GET'])
 @app.route('/carto', methods=['GET'])
-# @login_required
-def carto():
+def spa():
 
-	log_cis.debug("entering carto page")
-
+	log_cis.debug("entering SPA page")
 
 	# as long search engine is in beta version
 	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction. </strong><br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
 			category='primary'
 		)
 
-	return render_template( "spa.html",
-
-							config_name			= config_name, # prod, testing, default...
-							app_metas			= app_metas, 
-							language			= "fr" ,
-							languages_dict		= app_languages_dict ,
-							
-							site_section		= "carto",
-							# filters_choices		= filters_choices,
-							user_infos			= current_user.get_public_infos
-						)
+	return render_template(
+		"spa.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
