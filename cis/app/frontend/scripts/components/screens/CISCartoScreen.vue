@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavBar :logo="logo" :brand="brand" :user="user" />
-        <SearchFilters :filterDescriptions="filterDescriptions"/>
+        <SearchWithFilters :filterDescriptions="filterDescriptions"/>
         <main>
             <CISMap/>
         </main>
@@ -13,13 +13,13 @@
 import {mapState} from 'vuex'
 
 import NavBar from '../NavBar.vue';
-import SearchFilters from '../SearchFilters.vue';
+import SearchWithFilters from '../SearchWithFilters.vue';
 import CISMap from '../CISMap.vue';
 import Footer from '../Footer.vue';
 
 export default {
     components: {
-        NavBar, SearchFilters, CISMap, Footer
+        NavBar, SearchWithFilters, CISMap, Footer
     },
     props: [
         'logo', 'brand', 'filterDescriptions'
@@ -30,3 +30,10 @@ export default {
     ])
 }
 </script>
+
+
+<style>
+main{
+    margin-top: calc(70px + 52px);
+}
+</style>

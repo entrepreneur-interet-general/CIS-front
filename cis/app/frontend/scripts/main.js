@@ -6,6 +6,9 @@ import {csvParse} from 'd3-dsv';
 import CISCartoScreen from './components/screens/CISCartoScreen.vue';
 import SearchScreen from './components/screens/SearchScreen.vue';
 
+import {searchProjects} from './cisProjectSearchAPI.js';
+
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
@@ -19,13 +22,14 @@ const store = new Vuex.Store({
     strict: true,
     state: {
         filterDescriptions,
-        selectedFilters,
         user: {
             // TODO import user infos to the client-side
             userName: 'DAV BRU',
             userSurname: 'HARDCODED'
         },
-        projects: []
+        projects: [],
+        
+        selectedFilters
     },
     mutations: {
         toggleSelectedFilter (state, {filter, value}) {
@@ -47,6 +51,20 @@ const store = new Vuex.Store({
         setProjects(state, {projects}){
             console.log('projects', projects)
             state.projects = projects;
+        }
+    },
+    actions: {
+        search({commit}, text){
+            console.log('search', text)
+            
+            searchProjects(text)
+                .then(projects => {
+                    console.log('projects pour', text)
+                    console.log(projects)
+
+                    // commit nia nia
+                }) 
+                .fail(err => console.error('err search', text, err))
         }
     }
 })

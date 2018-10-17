@@ -1,20 +1,9 @@
 <template>
     <div>
         <NavBar :logo="logo" :brand="brand" :user="user" />
-        <SearchFilters :filterDescriptions="filterDescriptions"/>
+        <SearchWithFilters :filterDescriptions="filterDescriptions"/>
         <main>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
-            Recherche...<br/>
+            <SearchResults/>
         </main>
         <Footer/>
     </div>
@@ -24,12 +13,13 @@
 import {mapState} from 'vuex'
 
 import NavBar from '../NavBar.vue';
-import SearchFilters from '../SearchFilters.vue';
+import SearchWithFilters from '../SearchWithFilters.vue';
+import SearchResults from '../SearchResults.vue';
 import Footer from '../Footer.vue';
 
 export default {
     components: {
-        NavBar, SearchFilters, Footer
+        NavBar, SearchWithFilters, SearchResults, Footer
     },
     props: [
         'logo', 'brand', 'filterDescriptions'
@@ -40,3 +30,9 @@ export default {
     ])
 }
 </script>
+
+<style>
+main{
+    margin-top: calc(70px + 52px);
+}
+</style>
