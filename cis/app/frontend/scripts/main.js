@@ -18,6 +18,19 @@ for(const f of filterDescriptions){
     selectedFilters.set(f.name, new Set())
 }
 
+function uniformizeProject(p){
+    const TEXTURE_COUNT = 16;
+
+    if(!p.image){
+        // add texture as image
+        // so it's a deterministic function, let's use the id to determine which texture is used
+        p.image = `/static/illustrations/textures/medium_fiche_${Math.floor(Math.random()*TEXTURE_COUNT+1)}.png`
+    }
+
+    return p;
+}
+
+
 const store = new Vuex.Store({
     strict: true,
     state: {
@@ -49,8 +62,7 @@ const store = new Vuex.Store({
             state.selectedFilters = new Map(state.selectedFilters)
         },
         setProjects(state, {projects}){
-            console.log('projects', projects)
-            state.projects = projects;
+            state.projects = projects.map(uniformizeProject);
         }
     },
     actions: {
@@ -62,13 +74,14 @@ const store = new Vuex.Store({
                     console.log('projects pour', text)
                     console.log(projects)
 
-                    // commit nia nia
+                    commit('setProjects', {projects})
                 }) 
-                .fail(err => console.error('err search', text, err))
+                .catch(err => console.error('err search', text, err))
         }
     }
 })
 
+/*
 fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=500')
 .then(r => r.json())
 .then(data => {
@@ -98,6 +111,7 @@ fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=500')
 
 })
 .catch(err => console.error('CIS data or BAN data error', err))
+*/
 
 const routes = [
     { path: '/carto', component: CISCartoScreen, props(route){
