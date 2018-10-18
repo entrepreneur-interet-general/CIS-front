@@ -71,7 +71,12 @@ export default {
 </script>
 
 <style scoped>
+.card-image {
+    min-height: 100px;
+}
+
 .card-image img{
     width: 100%;
+
 }
 </style>

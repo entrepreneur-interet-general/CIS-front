@@ -34,7 +34,7 @@ interface CISProjectFront{
     id: CIS_ID (extends String)
     title: string,
     tags: Array<string>,
-    image: string, // URL
+    image: Array<string>, // URL
     address: string,
     projectPartners: Array<string>,
     url: string

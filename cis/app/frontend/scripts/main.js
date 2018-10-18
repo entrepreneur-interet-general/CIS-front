@@ -24,7 +24,10 @@ function uniformizeProject(p){
     if(!p.image){
         // add texture as image
         // so it's a deterministic function, let's use the id to determine which texture is used
-        p.image = `/static/illustrations/textures/medium_fiche_${Math.floor(Math.random()*TEXTURE_COUNT+1)}.png`
+        p.image = `/static/illustrations/textures/medium_fiche_${ (parseInt(p.id.substr(p.id.length - 6), 16)%TEXTURE_COUNT) + 1}.png`
+    }
+    else{
+        p.image = p.image[0]
     }
 
     return p;
