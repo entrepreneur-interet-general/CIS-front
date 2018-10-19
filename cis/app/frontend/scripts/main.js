@@ -33,6 +33,32 @@ function uniformizeProject(p){
     return p;
 }
 
+function filterValuesToCISTags(filterValues){
+    const cisTags = new Set();
+
+    const categoriesByUITag = CATEGORIES_CIS_DICT_FLAT;
+    const cisTagByCategory = NORMALIZATION_TAGS_SOURCES_CIS_DICT;
+
+    let uiTags = [];
+    for(const [filter, tags] of filterValues.entries()){
+        uiTags = [...uiTags, ...([...tags].map(t => filter+t))]
+    }
+
+    for(const uiTag of uiTags){
+        const categories = categoriesByUITag[uiTag];
+
+        for(const category of categories){
+            const categoriesCISTags = cisTagByCategory[category];
+
+            for(const tag of categoriesCISTags){
+                cisTags.add(tag);
+            }
+        }
+    }
+
+    return cisTags;
+}
+
 
 const store = new Vuex.Store({
     strict: true,
@@ -45,18 +71,16 @@ const store = new Vuex.Store({
         },
         projects: [],
         
-        selectedFilters
+        selectedFilters,
+        searchedText: ''
     },
     mutations: {
-        toggleSelectedFilter (state, {filter, value}) {
-            const selectedValues = state.selectedFilters.get(filter)
-            if(selectedValues.has(value))
-                selectedValues.delete(value)
-            else 
-                selectedValues.add(value)
-
+        setSelectedFilters (state, {selectedFilters}) {
             // trigger re-render
-            state.selectedFilters = new Map(state.selectedFilters)
+            state.selectedFilters = new Map(selectedFilters)
+        },
+        setSearchedText (state, {searchedText}) {
+            state.searchedText = searchedText
         },
         emptyOneFilter (state, {filter}) {
             state.selectedFilters.set(filter, new Set())
@@ -69,12 +93,37 @@ const store = new Vuex.Store({
         }
     },
     actions: {
-        search({commit}, text){
-            console.log('search', text)
-            
-            searchProjects(text)
+        toggleFilter({state, commit, dispatch}, {filter, value}){
+            const selectedFilters = state.selectedFilters
+            const selectedValues = selectedFilters.get(filter)
+            if(selectedValues.has(value))
+                selectedValues.delete(value)
+            else 
+                selectedValues.add(value)
+                
+            commit('setSelectedFilters', {selectedFilters})
+            dispatch('search')
+        },
+
+        emptyOneFilter({state, commit, dispatch}, {filter}){
+            const selectedFilters = state.selectedFilters
+            selectedFilters.set(filter, new Set())
+
+            commit('setSelectedFilters', {selectedFilters})
+            dispatch('search')
+        },
+
+        searchedTextChanged({commit, dispatch}, {searchedText}){
+            commit('setSearchedText', {searchedText})
+            dispatch('search')
+        },
+
+        search({state, commit}){
+            const cisTags = filterValuesToCISTags(state.selectedFilters)
+
+            searchProjects(state.searchedText, cisTags)
                 .then(projects => {
-                    console.log('projects pour', text)
+                    console.log('projects pour', state.searchedText, cisTags)
                     console.log(projects)
 
                     commit('setProjects', {projects})
@@ -85,7 +134,7 @@ const store = new Vuex.Store({
 })
 
 /*
-fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=500')
+fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=5000')
 .then(r => r.json())
 .then(data => {
     const {query_results: projects} = data;

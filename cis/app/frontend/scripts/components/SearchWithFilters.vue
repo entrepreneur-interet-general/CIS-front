@@ -7,7 +7,7 @@
                     type="search" 
                     class="input is-large is-light input-navbar" 
                     placeholder="Tapez un mot clé, un lieu, un projet…"
-                    @input="search"
+                    @input="searchedTextChanged"
                     >
                 <span class="icon is-normal is-left">
                     <i class="fas fa-search"></i>
@@ -35,7 +35,9 @@
                                         :id="choice.name" 
                                         type="checkbox" 
                                         :checked="selectedFilters.get(filter.name).has(choice.name)"
-                                        @input="toggleSelectedFilter({filter: filter.name, value: choice.name})"
+                                        :data-filter="filter.name"
+                                        :data-choice="choice.name"
+                                        @input="changeFilter"
                                         >
                                 <label :for="choice.name">
                                     {{ choice.fullname }}
@@ -44,7 +46,8 @@
                         </a>
                     
                         <div class="navbar-item">
-                            <a 	class="button is-text is-fullwidth has-text-primary"
+                            <a  class="button is-text is-fullwidth has-text-primary"
+                                :data-filter="filter.name"
                                 @click="emptyOneFilter({filter: filter.name})">
                                 Effacer
                             </a>
@@ -58,7 +61,7 @@
 </template>
 
 <script>
-import {mapMutations, mapActions, mapState} from 'vuex'
+import {mapState} from 'vuex'
 
 export default {
     props: ['filterDescriptions'],
@@ -66,12 +69,20 @@ export default {
         'selectedFilters'
     ]),
     methods: {
-        ...mapMutations([
-            'toggleSelectedFilter',
-            'emptyOneFilter'
-        ]),
-        search(e){
-            this.$store.dispatch('search', e.target.value)
+        emptyOneFilter(){
+            this.$store.dispatch(
+                'emptyOneFilter', 
+                {filter: target.getAttribute('data-filter')}
+            )
+        },
+        changeFilter({target}){
+            this.$store.dispatch(
+                'toggleFilter', 
+                {filter: target.getAttribute('data-filter'), value: target.getAttribute('data-choice')}
+            )
+        },
+        searchedTextChanged(e){
+            this.$store.dispatch('searchedTextChanged', {searchedText: e.target.value})
         }
     }
 }

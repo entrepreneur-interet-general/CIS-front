@@ -63,8 +63,11 @@ export function getProjects(count=500){
 }
 
 
-export function searchProjects(text, page=1, per_page=40){
-    const url = `${APISearchOrigin}/api/data?page_n=${page}&token=test_token&shuffle_seed=1&search_for=${encodeURIComponent(text)}&results_per_page=${per_page}`
+export function searchProjects(text, tags, page=1, per_page=40){
+    let url = `${APISearchOrigin}/api/data?page_n=${page}&token=test_token&shuffle_seed=1&search_for=${encodeURIComponent(text)}&results_per_page=${per_page}`
+    
+    if(tags && tags.size >= 1)
+        url += `&search_in_tags=${encodeURIComponent([...tags].join(','))}`
 
     return fetch(url)
     .then(r => r.json())
