@@ -63,7 +63,7 @@ export function getProjects(count=500){
 }
 
 
-export function searchProjects(text, tags, page=1, per_page=40){
+export function searchProjects(text, tags, page=1, per_page=1000){
     let url = `${APISearchOrigin}/api/data?page_n=${page}&token=test_token&shuffle_seed=1&search_for=${encodeURIComponent(text)}&results_per_page=${per_page}`
     
     if(tags && tags.size >= 1)
