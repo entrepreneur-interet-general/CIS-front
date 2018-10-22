@@ -275,7 +275,8 @@ def search():
 
 @app.route('/spa-search', methods=['GET'])
 @app.route('/carto', methods=['GET'])
-def spa():
+@app.route('/project/<id>', methods=['GET'])
+def spa(id=''):
 
 	log_cis.debug("entering SPA page")
 

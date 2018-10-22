@@ -5,8 +5,10 @@ import {csvParse} from 'd3-dsv';
 
 import CISCartoScreen from './components/screens/CISCartoScreen.vue';
 import SearchScreen from './components/screens/SearchScreen.vue';
+import CISProjectScreen from './components/screens/CISProjectScreen.vue'
 
-import {searchProjects} from './cisProjectSearchAPI.js';
+
+import {searchProjects, getProjectById, getSpiders} from './cisProjectSearchAPI.js';
 
 
 Vue.use(VueRouter)
@@ -18,20 +20,7 @@ for(const f of filterDescriptions){
     selectedFilters.set(f.name, new Set())
 }
 
-function uniformizeProject(p){
-    const TEXTURE_COUNT = 16;
 
-    if(!p.image){
-        // add texture as image
-        // so it's a deterministic function, let's use the id to determine which texture is used
-        p.image = `/static/illustrations/textures/medium_fiche_${ (parseInt(p.id.substr(p.id.length - 6), 16)%TEXTURE_COUNT) + 1}.png`
-    }
-    else{
-        p.image = p.image[0]
-    }
-
-    return p;
-}
 
 function filterValuesToCISTags(filterValues){
     const cisTags = new Set();
@@ -70,6 +59,9 @@ const store = new Vuex.Store({
             userSurname: 'HARDCODED'
         },
         projects: [],
+        spiders: undefined,
+
+        displayedProject: undefined,
         
         selectedFilters,
         searchedText: ''
@@ -89,7 +81,13 @@ const store = new Vuex.Store({
             state.selectedFilters = new Map(state.selectedFilters)
         },
         setProjects(state, {projects}){
-            state.projects = projects.map(uniformizeProject);
+            state.projects = projects;
+        },
+        setDisplayedProject(state, {project}){
+            state.displayedProject = project;
+        },
+        setSpiders(state, {spiders}){
+            state.spiders = spiders
         }
     },
     actions: {
@@ -129,6 +127,15 @@ const store = new Vuex.Store({
                     commit('setProjects', {projects})
                 }) 
                 .catch(err => console.error('err search', text, err))
+        },
+        getSpiders({commit}){
+            getSpiders()
+            .then(spiders => {
+                console.log('spiders', spiders)
+
+                commit('setSpiders', {spiders})
+            }) 
+            .catch(err => console.error('err getSpiders', text, err))
         }
     }
 })
@@ -165,22 +172,74 @@ fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=5000')
 .catch(err => console.error('CIS data or BAN data error', err))
 */
 
+const BRAND_DATA = Object.freeze({
+    logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
+    brand: 'Carrefour des Innovations Sociales',
+})
+
 const routes = [
     { path: '/carto', component: CISCartoScreen, props(route){
         return {
-            logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
-            brand: 'Carrefour des Innovations Sociales',
-            filterDescriptions
+            filterDescriptions,
+            ...BRAND_DATA
         }
     } },
-    { path: '/spa-search', component: SearchScreen, props(route){
-        return {
-            logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
-            brand: 'Carrefour des Innovations Sociales',
-            filterDescriptions
-        } }
+    { 
+        path: '/spa-search', 
+        component: SearchScreen, 
+        props(route){
+            return {
+                filterDescriptions,
+                ...BRAND_DATA
+            }
+        },
+        beforeEnter(to, from, next){
+
+            // get spiders data if they're not already here
+            if(!store.state.spiders){
+                store.dispatch('getSpiders');
+            }
+
+            next()
+        }
+    },
+    {
+        path: '/project/:id',
+        component: CISProjectScreen, 
+        props(route){
+            return {
+                ...BRAND_DATA
+            }
+        },
+        beforeEnter(to, from, next){
+            const {id} = to.params;
+            console.log('beforeEnter /project/:id', id)
+
+            const project = store.state.projects.find(p => p.id === id)
+
+            // get project data
+            if(!project){
+                getProjectById(id)
+                .then(project => {
+                    store.commit('setDisplayedProject', {project})
+                })
+                .catch(err => console.error('project route error', err))
+            }
+
+            store.commit('setDisplayedProject', {project: project || {}})
+
+
+            // get spiders data if they're not already here
+            if(!store.state.spiders){
+                store.dispatch('getSpiders');
+            }
+
+            next()
+        }
     }
 ]
+
+
 
 const router = new VueRouter({
     mode: 'history',
