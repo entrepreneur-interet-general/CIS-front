@@ -62,23 +62,6 @@
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.3">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		
-
-		{# VUE.JS #}
-		<script src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script> 
-		{% if config_name == "production" %}
-			<!-- production version, optimized for size and speed -->
-			<script src="https://cdn.jsdelivr.net/npm/vue"></script> 
-		{% else %}
-			<!-- development version, includes helpful console warnings -->
-			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		{% endif %}
-
-
-		{# RECAPTCHA - SECURITY #}
-
-
-		{# CRISP - CHAT #}
 
 
 		{# LEAFLET / cf : http://leafletjs.com/ #}
@@ -98,79 +81,6 @@
 
 		{# CUSTOM STYLES ---> TO FIX #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}?version=0.0.4">
-
-
-        <style>
-        .map { 
-            margin-top: calc(70px + 52px);
-            height: 500px; 
-            width: 80%;
-            margin-left: 10%;
-        }
-        </style>
-        <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
-        <script>
-        'use strict';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const mymap = L.map( document.querySelector('.map') ).setView([46.2276, 2.2137], 6);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(mymap);
-
-            // fetch data
-            fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=200')
-            .then(r => r.json())
-            .then(data => {
-                const {query_results: projects} = data;
-
-                console.info('projects', projects);
-
-                const projectWithValidAddress = projects
-                .filter(p => Array.isArray(p['adresse du projet']))
-
-
-
-
-                const addresses = projectWithValidAddress.map(p => p['adresse du projet'].join(' '))
-                
-                console.info('addr', addresses);
-
-                const adressesCSV = 'adresse\n' + addresses.join('\n')
-
-                const adresseCSVBANBody = new FormData();
-                adresseCSVBANBody.append('data', new File([adressesCSV], 'adresses.csv'))
-
-
-                return fetch('https://api-adresse.data.gouv.fr/search/csv/', {
-                    method: 'POST',
-                    body: adresseCSVBANBody,
-                })
-                .then(r => r.text())
-                .then(geolocsTxt => {
-                    const geolocs = d3.csvParse(geolocsTxt);
-
-                    console.info('geolocs', geolocs)
-
-                    projectWithValidAddress.map((p, i) => {
-                        p.geoloc = geolocs[i];
-                    })
-
-                    for(const p of projectWithValidAddress){
-                        L.marker({lon: p.geoloc.longitude, lat: p.geoloc.latitude}).addTo(mymap)
-                        .bindPopup(`<strong>${p['titre du projet']}</strong><br>${(p['tags'] || []).join(' ')}`);
-                    }
-
-
-                });
-
-            })
-            .catch(err => console.error('carto err', err))
-        })
-
-        </script>
 		
 		<script defer src="/static/build/bundle.js"></script>
 
@@ -187,8 +97,7 @@
 
         <div class="map"></div>
 
-		{# footer #}
-		{% include "footer.html" %}
+		<footer></footer>
 	
 	</body>
 
@@ -213,37 +122,7 @@
 
 	<!-- CUSTOM UTIL JS FOR BULMA -->
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-navbar-burger.js') }}?version=0.0.1"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-modals-toggler.js') }}?version=0.0.1"></script>
 	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-notification-dismisser.js') }}?version=0.0.1"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-counter.js') }}?version=0.0.2"></script>
-
-
-	{# IMPORT VUE AND AJAX CIS JS FILES #}
-
-	{# {% if user_infos.is_authenticated == True %} #}
-
-		<!-- CUSTOM JS FILTERS TOGGLING -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-filters-toggler.js') }}?version=0.0.1"></script>
-
-		{% if site_section not in ['preferences', 'landing'] %}
-
-			<!-- CUSTOM JS FOR AJAX CALLS -->
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.5"></script>
-			
-			<!-- CUSTOM VUE JS -->
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-store.js') }}?version=0.0.1"></script>
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.6"></script>
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.6"></script>
-
-			<!-- CUSTOM JS SEARCH CALLER -->
-			{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script> #}
-
-		{% endif %}
-
-	{# {% endif %} #}
-
-
-
 
 	
 
