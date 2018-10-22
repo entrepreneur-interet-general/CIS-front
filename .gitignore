@@ -27,10 +27,6 @@ cis/app/logs/*.log
 
 
 
-
-### BOWER
-bower_components
-
 ### OSX ###
 *.DS_Store
 .AppleDouble
@@ -166,3 +162,8 @@ snippets/
 ### KomodoEdit ###
 *.komodoproject
 .komodotools
+
+
+# Front-end
+
+cis/app/frontend/node_modules

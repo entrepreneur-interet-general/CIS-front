@@ -1,0 +1,35 @@
+{
+  "name": "cis-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify ./scripts/main.js -o ../static/build/bundle.js",
+    "watch": "watchify ./scripts/main.js -o ../static/build/bundle.js -v -d"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      "@nymag/vueify",
+      "babelify"
+    ]
+  },
+  "author": "DINSIC - Etalab - EIG 2",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@nymag/vueify": "9.4.5",
+    "babelify": "^10.0.0",
+    "browserify": "^14.5.0",
+    "watchify": "^3.11.0"
+  },
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
+}

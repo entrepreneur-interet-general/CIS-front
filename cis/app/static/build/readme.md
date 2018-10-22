@@ -1,0 +1,1 @@
+Dossier où sont créés les assets front-end à partir du code dans `cis/app/frontend`
