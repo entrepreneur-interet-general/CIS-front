@@ -11,7 +11,3 @@ export default {
 	props: ['logo', 'brand']
 }
 </script>
-
-<style>
-
-</style>

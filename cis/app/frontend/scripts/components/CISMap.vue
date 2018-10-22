@@ -64,7 +64,6 @@ export default {
 
 <style>
 .map { 
-    margin-top: calc(70px + 52px);
     height: 500px; 
     width: 80%;
     margin-left: 10%;

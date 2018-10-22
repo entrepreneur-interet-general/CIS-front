@@ -43,6 +43,13 @@
                 -->
 
                 <div class="navbar-item">
+                    <router-link to="/spa-search">Moteur de recherche</router-link>
+                </div>
+                <div class="navbar-item">
+                    <router-link to="/carto">Carte</router-link>
+                </div>
+
+                <div class="navbar-item">
                     <a class="button is-text" href="/infos/project">
                         Projet
                     </a>
@@ -91,7 +98,3 @@ export default {
     props: ['user']
 }
 </script>
-
-<style>
-
-</style>
