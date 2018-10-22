@@ -5,14 +5,14 @@
         <main>
             <div class="container">
 
-                <router-link class="back" to="/spa-search">
+                <a class="back" href="/spa-search" @click="goBack">
                     <span class="icon has-text-primary">
                         <i class="fas fa-arrow-left"></i>
                     </span>
                     <span>
                         retour aux résultats de recherche
                     </span>
-                </router-link>
+                </a>
 
                 <div class="columns">
 
@@ -81,7 +81,14 @@ export default {
                 window.scrollTo(0, 0)
             }
         }, 100);
+    },
+
+    methods: {
+        goBack(){
+            this.$router.go(-1)
+        }
     }
+
 }
 </script>
 
