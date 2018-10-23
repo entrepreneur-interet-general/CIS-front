@@ -3,23 +3,20 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router'
 import {csvParse} from 'd3-dsv';
 
-import CISCartoScreen from './components/screens/CISCartoScreen.vue';
 import SearchScreen from './components/screens/SearchScreen.vue';
 import CISProjectScreen from './components/screens/CISProjectScreen.vue'
 
-
 import {searchProjects, getProjectById, getSpiders} from './cisProjectSearchAPI.js';
-
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
+
 
 const filterDescriptions = [].concat(CHOICES_FILTERS_TAGS, CHOICES_FILTERS_PARTNERS);
 const selectedFilters = new Map()
 for(const f of filterDescriptions){
     selectedFilters.set(f.name, new Set())
 }
-
 
 
 function filterValuesToCISTags(filterValues){
@@ -53,12 +50,13 @@ const store = new Vuex.Store({
     strict: true,
     state: {
         filterDescriptions,
-        user: {
+        /*user: {
             // TODO import user infos to the client-side
             userName: 'DAV BRU',
             userSurname: 'HARDCODED'
-        },
+        },*/
         projects: [],
+        geolocByProjectId: new Map(),
         spiders: undefined,
 
         displayedProject: undefined,
@@ -88,6 +86,9 @@ const store = new Vuex.Store({
         },
         setSpiders(state, {spiders}){
             state.spiders = spiders
+        },
+        addGeolocs(state, {geolocByProjectId}){
+            state.geolocByProjectId = new Map([...state.geolocByProjectId, ...geolocByProjectId])
         }
     },
     actions: {
@@ -136,41 +137,54 @@ const store = new Vuex.Store({
                 commit('setSpiders', {spiders})
             }) 
             .catch(err => console.error('err getSpiders', text, err))
+        },
+        findProjectsGeolocs({commit}, projects){
+            console.log('findProjectsGeolocs', projects)
+
+            const projectWithValidAddress = projects.filter(p => p['address'])
+            const addresses = projectWithValidAddress.map(p => p['address'].replace(/[^(\w|\s)]/g, '').slice(0, 200) )
+
+            const adressesCSV = 'adresse\n' + addresses.join('\n')
+            const adresseCSVBANBody = new FormData();
+            adresseCSVBANBody.append('data', new File([adressesCSV], 'adresses.csv'))
+
+            return fetch('https://api-adresse.data.gouv.fr/search/csv/', {
+                method: 'POST',
+                body: adresseCSVBANBody,
+            })
+            .then(r => r.text())
+            .then(geolocsTxt => {
+                console.log('text', geolocsTxt)
+
+                const geolocs = csvParse(geolocsTxt);
+                console.log('geolocs', geolocs)
+
+
+                const geolocByProjectId = new Map();
+
+                projectWithValidAddress.forEach(({id}, i) => {
+                    const {latitude, longitude} = geolocs[i];
+
+                    geolocByProjectId.set(
+                        id, 
+                        (Number.isFinite(parseFloat(latitude)) && Number.isFinite(parseFloat(longitude))) ?
+                            {latitude: parseFloat(latitude), longitude: parseFloat(longitude)} : 
+                            false
+                    )
+                })
+
+                projects.forEach(({id}) => {
+                    if(!geolocByProjectId.has(id)){
+                        geolocByProjectId.set(id, false)
+                    }
+                })
+
+                commit('addGeolocs', {geolocByProjectId})
+            });
         }
     }
 })
 
-/*
-fetch('http://cis-openscraper.com/api/data?token=pwa&results_per_page=5000')
-.then(r => r.json())
-.then(data => {
-    const {query_results: projects} = data;
-    const projectWithValidAddress = projects
-    .filter(p => Array.isArray(p['adresse du projet']))
-    const addresses = projectWithValidAddress.map(p => p['adresse du projet'].join(' '))
-
-    const adressesCSV = 'adresse\n' + addresses.join('\n')
-    const adresseCSVBANBody = new FormData();
-    adresseCSVBANBody.append('data', new File([adressesCSV], 'adresses.csv'))
-
-    return fetch('https://api-adresse.data.gouv.fr/search/csv/', {
-        method: 'POST',
-        body: adresseCSVBANBody,
-    })
-    .then(r => r.text())
-    .then(geolocsTxt => {
-        const geolocs = csvParse(geolocsTxt);
-
-        projectWithValidAddress.forEach((p, i) => {
-            p.geoloc = geolocs[i];
-        })
-
-        store.commit('setProjects', {projects: projectWithValidAddress})
-    });
-
-})
-.catch(err => console.error('CIS data or BAN data error', err))
-*/
 
 const BRAND_DATA = Object.freeze({
     logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
@@ -178,12 +192,6 @@ const BRAND_DATA = Object.freeze({
 })
 
 const routes = [
-    { path: '/carto', component: CISCartoScreen, props(route){
-        return {
-            filterDescriptions,
-            ...BRAND_DATA
-        }
-    } },
     { 
         path: '/spa-search', 
         component: SearchScreen, 
