@@ -52,25 +52,62 @@ function fromMongoModelToFrontModel(projectInMongo){
         address: Array.isArray(projectInMongo['adresse du projet']) ? projectInMongo['adresse du projet'].join(' '): '',
         projectPartners: projectInMongo['partenaires du projet'],
         url: projectInMongo['link_src'],
-        // spider_id: SpiderId,
+        spiderId: projectInMongo['spider_id'],
         description: Array.isArray(projectInMongo['résumé du projet']) ? projectInMongo['résumé du projet'].join(' '): '',
     }
 }
 
 
-export function getProjects(count=500){
-    
+function uniformizeProject(p){
+    const TEXTURE_COUNT = 16;
+
+    if(!p.image){
+        // add texture as image
+        // so it's a deterministic function, let's use the id to determine which texture is used
+        p.image = `/static/illustrations/textures/medium_fiche_${ (parseInt(p.id.substr(p.id.length - 6), 16)%TEXTURE_COUNT) + 1}.png`
+    }
+    else{
+        p.image = p.image[0]
+    }
+
+    return p;
+}
+
+
+// This function is awkward
+// TODO Create a dedicated server-side end-point to get only the spiders
+export function getSpiders(){
+    let url = `${APISearchOrigin}/api/data?token=pwa&results_per_page=1`;
+
+    return fetch(url)
+    .then(r => r.json())
+    .then(({spiders_dict}) => spiders_dict)
+}
+
+
+// This function is super-inefficient
+// TODO Create a server-side end-point to get only one project
+export function getProjectById(id){
+    let url = `${APISearchOrigin}/api/data?token=pwa&results_per_page=100000`;
+
+    return fetch(url)
+    .then(r => r.json())
+    .then(({query_results}) => query_results.find(p => p._id === id) )
+    .then(fromMongoModelToFrontModel)
+    .then(uniformizeProject)
 }
 
 
 export function searchProjects(text, tags, page=1, per_page=1000){
-    let url = `${APISearchOrigin}/api/data?page_n=${page}&token=test_token&shuffle_seed=1&search_for=${encodeURIComponent(text)}&results_per_page=${per_page}`
+    text = text.trim();
+
+    let url = `${APISearchOrigin}/api/data?page_n=${page}&token=test_token&shuffle_seed=1&${text.length >= 1 ? 'search_for='+encodeURIComponent(text) : ''}&results_per_page=${per_page}`
     
     if(tags && tags.size >= 1)
         url += `&search_in_tags=${encodeURIComponent([...tags].join(','))}`
 
     return fetch(url)
     .then(r => r.json())
-    .then(({query_results}) => Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel) : [])
+    .then(({query_results}) => Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [])
 
 }

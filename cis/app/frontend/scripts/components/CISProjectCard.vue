@@ -3,9 +3,9 @@
         <div class="card proj-card">
 
             <!-- TODO change to <router-link> -->
-            <a class="card-image">
+            <router-link :to="`/project/${project.id}`" class="card-image">
                 <img class="proj-card-img" :src="project.image" :alt="'illustration du projet' + project.title" >
-            </a>
+            </router-link>
             
             <div class="card-content">
                 <div class="content">
@@ -19,9 +19,9 @@
 
                 <p class="title is-5">
                     <!-- TODO change to <router-link> -->
-                    <a class="a_big">
+                    <router-link :to="`/project/${project.id}`" class="a_big">
                         {{project.title}}
-                    </a>
+                    </router-link>
                 </p>
 
                 <div class="content">

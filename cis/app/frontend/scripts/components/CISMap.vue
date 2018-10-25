@@ -9,11 +9,12 @@
                 :url="url"
                 :attribution="attribution"/>
             <l-marker v-for="p in projects" 
-                :key="p._id"
-                :lat-lng="{lon: p.geoloc.longitude, lat: p.geoloc.latitude}">
+                v-if="geolocByProjectId.get(p.id)"
+                :key="p.id"
+                :lat-lng="{lon: geolocByProjectId.get(p.id).longitude, lat: geolocByProjectId.get(p.id).latitude}">
                 <l-popup>
                 <div @click="popupClick">
-                    <strong>{{(p['titre du projet'] || []).join(' ')}}</strong>
+                    <strong>{{p['title']}}</strong>
                     <br>{{(p['tags'] || []).join(' ')}}
                 </div>
                 </l-popup>
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
 
 export default {
@@ -46,7 +47,7 @@ export default {
         };
     },
     computed: mapState([
-        'projects'
+        'projects', 'geolocByProjectId'
     ]),
     methods: {
         zoomUpdate(zoom) {
@@ -57,7 +58,22 @@ export default {
         },
         popupClick() {
             console.log("Popup Click!");
-        }
+        },
+        ...mapActions([
+            'findProjectsGeolocs'
+        ])
+    },
+    beforeUpdate(){
+        const projectsWithMissingAddress = this.projects.filter(p => !this.geolocByProjectId.has(p.id))
+
+        if(projectsWithMissingAddress.length >= 1)
+            this.findProjectsGeolocs(projectsWithMissingAddress)
+    },
+    mounted(){
+        const projectsWithMissingAddress = this.projects.filter(p => !this.geolocByProjectId.has(p.id))
+
+        if(projectsWithMissingAddress.length >= 1)
+            this.findProjectsGeolocs(projectsWithMissingAddress)
     }
 };
 </script>

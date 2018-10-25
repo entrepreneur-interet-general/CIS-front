@@ -84,6 +84,9 @@ export default {
         searchedTextChanged(e){
             this.$store.dispatch('searchedTextChanged', {searchedText: e.target.value})
         }
+    },
+    mounted(){
+        this.$store.dispatch('searchedTextChanged', {searchedText: ''})
     }
 }
 </script>

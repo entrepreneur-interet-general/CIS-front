@@ -5,17 +5,14 @@
 
             <div class="buttons has-addons is-right">
 
-                <button class="button is-normal is-primary is-selected">
+                <button :class="['button', view === views.VIEW_LIST ? 'is-selected is-primary' : undefined]" @click="setView(views.VIEW_LIST)">
                     <span class="icon">
                         <i class="fas fa-list"></i>
                     </span>
                     <span>Liste</span>
                 </button>
 
-                <button class="button is-normal tooltip is-tooltip-danger is-tooltip-bottom"
-                    data-tooltip="en construction"
-                    disabled
-                    >
+                <button :class="['button', view === views.VIEW_MAP ? 'is-selected is-primary' : undefined]" @click="setView(views.VIEW_MAP)">
                     <span class="icon">
                         <i class="fas fa-map"></i>
                     </span>
@@ -35,13 +32,17 @@
             </div>
         </header>
         <div class="container">
-            <div class="columns">
+
+            <div class="columns" v-if="view === views.VIEW_LIST">
                 <div class="column is-3" v-for="(projectColumn, i) in projectColumns" :key="i">
                     <div class="columns is-multiline">
                         <CISProjectCard v-for="project in projectColumn" :key="project.id" :project="project"/>
                     </div>
                 </div>
             </div>
+
+            <CISMap v-if="view === views.VIEW_MAP"/>
+
         </div>
     </section>
 </template>
@@ -49,6 +50,7 @@
 <script>
 import {mapState} from 'vuex'
 import CISProjectCard from './CISProjectCard.vue'
+import CISMap from './CISMap.vue'
 
 const COLUMN_COUNT = 4;
 
@@ -57,22 +59,27 @@ const MORE_PROJECTS_ON_SCROLL_COUNT = 20;
 
 const SCROLL_BEFORE_BOTTOM_TRIGGER = 500;
 
+const VIEW_LIST = 'VIEW_LIST';
+const VIEW_MAP = 'VIEW_MAP';
+
+
 let scrollListener;
 
 export default {
     components: {
-        CISProjectCard
+        CISProjectCard, CISMap
     },
 
     data(){
         return {
-            showCount: DEFAULT_SHOW_COUNT
+            views : {VIEW_LIST, VIEW_MAP},
+            showCount: DEFAULT_SHOW_COUNT,
+            view: VIEW_LIST
         }
     },
 
     watch: {
         projects(prev, next){
-            console.log('projects watch', prev === next, prev, next)
             this.showCount = DEFAULT_SHOW_COUNT;
         }
     },
@@ -93,6 +100,12 @@ export default {
             projects: 'projects',
             count: ({projects}) => projects.length
         })
+    },
+
+    methods: {
+        setView(view){
+            this.view = view;
+        }
     },
 
     mounted(){
