@@ -273,17 +273,11 @@ def search():
 							user_infos			= current_user.get_public_infos
 						)
 
-@app.route('/spa-search', methods=['GET'])
-@app.route('/carto', methods=['GET'])
-@app.route('/project/<id>', methods=['GET'])
+@app.route('/bientot/recherche', methods=['GET'])
+@app.route('/bientot/project/<id>', methods=['GET'])
 def spa(id=''):
 
 	log_cis.debug("entering SPA page")
-
-	# as long search engine is in beta version
-	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction. </strong><br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
-			category='primary'
-		)
 
 	return render_template(
 		"spa.html",
@@ -291,6 +285,91 @@ def spa(id=''):
 		app_metas			= app_metas, 
 		language			= "fr" 
 	)
+
+
+
+# V3 Website
+# URLs are prefixed with '/bientot/' for now
+
+@app.route('/bientot/', methods=['GET'])
+def home():
+
+	log_cis.debug("entering new home page")
+
+	return render_template(
+		"new-home.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+
+# @app.route('/bientot/le-collectif', methods=['GET'])
+# def home():
+
+# 	log_cis.debug("entering le collectif page")
+
+# 	return render_template(
+# 		"le-collectif.html",
+# 		config_name			= config_name, # prod, testing, default...
+# 		app_metas			= app_metas, 
+# 		language			= "fr" 
+# 	)
+
+
+@app.route('/bientot/le-projet', methods=['GET'])
+def leProjet():
+
+	log_cis.debug("entering le projet page")
+
+	return render_template(
+		"le-projet.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/le-projet/outils', methods=['GET'])
+def lesOutils():
+
+	log_cis.debug("entering les outils page")
+
+	return render_template(
+		"les-outils.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/le-projet/presse', methods=['GET'])
+def presse():
+
+	log_cis.debug("entering presse page")
+
+	return render_template(
+		"presse.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+
+
+@app.route('/bientot/le-projet/recompenses', methods=['GET'])
+def recompenses():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"recompenses.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+
+
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
