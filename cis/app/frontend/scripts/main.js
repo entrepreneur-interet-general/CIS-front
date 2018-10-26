@@ -193,7 +193,7 @@ const BRAND_DATA = Object.freeze({
 
 const routes = [
     { 
-        path: '/spa-search', 
+        path: '/bientot/recherche',
         component: SearchScreen, 
         props(route){
             return {
@@ -212,7 +212,7 @@ const routes = [
         }
     },
     {
-        path: '/project/:id',
+        path: '/bientot/project/:id',
         component: CISProjectScreen, 
         props(route){
             return {

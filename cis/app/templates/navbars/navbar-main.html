@@ -18,14 +18,6 @@
 			<span></span>
 			<span></span>
 		</span> 
-		
-
-		{# <!-- Using a <label /> here -->
-		<label class="nav-toggle" for="nav-toggle-state">
-			<span></span>           <!-- ^^^^^^^^^^^^^^^^ -->
-			<span></span>
-			<span></span>
-		</label> #}
 
 	</div>
 
@@ -37,25 +29,26 @@
 
 				<a class="field is-grouped">
 					<div class="navbar-item">
-						{# <a class="modal-button" data-target="modal_charte" aria-haspopup="true">  #}
-						<a class="button is-text" href="/infos/project">
+						<a class="button is-text" href="/bientot/recherche">
+							<span>Moteur de recherche</span>
+						</a>
+					</div>
+
+					<div class="navbar-item">
+						<a class="button is-text" href="/bientot/le-projet">
 							<span>Projet</span>
 						</a>
 					</div>
 
 					<div class="navbar-item">
-						{# <a class="button is-text" href="/info/who-are-we" disabled> #}
-						<a class="modal-button" data-target="modal_who" aria-haspopup="true"> 
+						<a class="button is-text" href="/bientot/qui-sommes-nous"> 
 							<span>Qui sommes-nous ?</span>
 						</a>
 					</div>
 
-					<div class="navbar-item" >
-						{# <a class="modal-button" data-target="modal_legal" aria-haspopup="true">  #}
-						<a 	id="btn_mailto_navbar"
-							class="button is-text" 
-							href="mailto:contact@carrefourdesinnovationssociales.fr">
-							<span>Contact</span>
+					<div class="navbar-item">
+						<a class="button is-text" href="/bientot/nous-rejoindre"> 
+							<span>Nous rejoindre</span>
 						</a>
 					</div>
 				</a>

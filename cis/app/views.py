@@ -304,19 +304,6 @@ def home():
 	)
 
 
-# @app.route('/bientot/le-collectif', methods=['GET'])
-# def home():
-
-# 	log_cis.debug("entering le collectif page")
-
-# 	return render_template(
-# 		"le-collectif.html",
-# 		config_name			= config_name, # prod, testing, default...
-# 		app_metas			= app_metas, 
-# 		language			= "fr" 
-# 	)
-
-
 @app.route('/bientot/le-projet', methods=['GET'])
 def leProjet():
 
@@ -353,8 +340,6 @@ def presse():
 		language			= "fr" 
 	)
 
-
-
 @app.route('/bientot/le-projet/recompenses', methods=['GET'])
 def recompenses():
 
@@ -362,6 +347,42 @@ def recompenses():
 
 	return render_template(
 		"recompenses.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/qui-sommes-nous', methods=['GET'])
+def quiSommesNous():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"qui-sommes-nous.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/qui-sommes-nous/le-collectif', methods=['GET'])
+def leCollectif():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"le-collectif.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/nous-rejoindre', methods=['GET'])
+def nousRejoindre():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"nous-rejoindre.html",
 		config_name			= config_name, # prod, testing, default...
 		app_metas			= app_metas, 
 		language			= "fr" 
