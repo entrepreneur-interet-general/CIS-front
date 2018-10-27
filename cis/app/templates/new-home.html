@@ -1,0 +1,633 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+
+main section h2{
+    color: #592d7b !important; /* to override bulma */
+    text-align: center;
+}
+
+main > section.full-width h1,
+main > section.full-width h2{
+    text-align: center;
+    color: white !important; /* to override bulma */;
+    padding: 1em 0;
+    max-width: 60%;
+}
+
+/**
+    TOP
+**/
+main > section#top{
+    position: relative;
+    width: 100%;
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > section#top .border{
+    position: absolute;
+
+    width: 80%;
+    height: 100%;
+
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #CBC9C9;
+}
+
+main > section#top .background{
+    background-image: url(https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/illustrations/HP_section_1.png);
+    background-size: cover;
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: white;
+
+    margin: 0;
+    width: 100%;
+
+    padding: 5em 0;
+}
+
+main > section#top .background h1{
+    color: white;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 1em
+}
+
+main > section#top .border{
+    z-index: -1;
+}
+
+
+main > section#top form{
+    width: 70%;
+    background-color: white;
+}
+
+main > section#top input{
+    border: 0;
+    border-bottom: 2px solid #592d7b;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+main > section#top input:focus{
+    border: 0;
+    border-bottom: 2px solid #592d7b;
+
+    box-shadow: none;
+}
+
+
+main > section#top button{
+    color: white;
+    background-color: #592d7b;
+}
+
+
+main > section#top h3{
+    width: initial;
+    padding: 1em 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: #80C2BD;
+}
+
+main > section#top h3 .counter{
+    font-size: 5em;
+    margin-right: 0.2em;
+    font-weight: bold;
+}
+
+main > section#top h3 .text{
+    max-width: 6em;
+}
+
+
+
+/**
+    PARTICIPER
+**/
+
+section#participer{
+    
+    position: relative;
+    width: 100%;
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#participer .border{
+    position: absolute;
+
+    width: 80%;
+    height: 100%;
+
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #CBC9C9;
+}
+
+section#participer .background{
+    background-image: url(https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/illustrations/HP_section_3.png);
+    background-size: cover;
+    background-color: transparent;
+
+    padding: 6em 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#participer .background > *{
+    max-width: 60%;
+    
+}
+
+
+section#participer .border{
+    z-index: 1;
+}
+
+section#participer .background > *{
+    z-index: 2;
+}
+
+section#participer > p{
+    padding: 0 20%;
+    padding-bottom: 1em;
+}
+
+section#participer strong{
+    color: #592d7b;
+    font-size: 1.7em;
+
+    display: block;
+}
+section#participer strong a{
+    color: inherit;
+    text-decoration: underline;
+}
+
+section#participer .rejoindre{
+    max-width: 90%;
+    align-items: center;
+    color: #592d7b;
+}
+
+section#participer .rejoindre a{
+    color: white;
+    background-color: #592d7b;
+    margin-top: 1em;
+}
+
+
+
+/**
+    COLLECTIF
+**/
+
+section#collectif{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+section#collectif > *{
+    margin-bottom: 1.5em;
+}
+
+
+section#collectif h3{
+    color: #592d7b;
+}
+
+section#collectif p{:first-of-type
+    text-align: center;
+    padding: 0 20%;
+}
+
+section#collectif h3{
+    color: #592d7b;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+section#collectif ul li{
+    height: 6em;
+}
+section#collectif ul li img{
+    max-height: 100%;
+}
+
+section#collectif ul.columns{
+    justify-content: center;
+}
+section#collectif ul.columns li.column{
+    flex: initial;
+}
+section#collectif a.button{
+    padding: 1.3em;
+    color: #592d7b;
+    border-color: #592d7b;
+}
+
+
+
+/**
+    TEMOIGNAGES
+**/
+
+section#témoignages {
+    position: relative;
+    width: 100%;
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 0;
+}
+
+section#témoignages .border{
+    position: absolute;
+
+    width: 80%;
+    height: 100%;
+
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #CBC9C9;
+}
+
+section#témoignages .background{
+    background-image: url(https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/illustrations/HP_section_5.png);
+    background-size: cover;
+    background-color: transparent;
+
+    padding-top: 6em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+
+section#témoignages .border{
+    z-index: 1;
+}
+
+section#témoignages .background > *{
+    z-index: 2;
+}
+
+section#témoignages ul li img{
+    width: 10em;
+    margin-bottom: 1em;
+}
+
+section#témoignages .caroussel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+section#témoignages .caroussel button{
+    border: 0;
+    font-size: 2em;
+    padding: 1em;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+
+section#témoignages .caroussel button:focus,
+section#témoignages .caroussel button:active{
+    box-shadow: none;
+    border: 0;
+}
+
+section#témoignages .caroussel-container{
+    width: calc(15em * 3);
+    overflow: hidden;
+}
+section#témoignages .caroussel-container ul.caroussel-content{
+    white-space: nowrap;
+    padding-bottom: 2em;
+}
+
+section#témoignages .caroussel-container ul.caroussel-content li{
+    width: 15em;
+    padding: 0 0.5em;
+
+    background-color: transparent;
+    white-space: normal;
+    vertical-align: top;
+
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#témoignages .caroussel-container ul.caroussel-content li .text{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    color: #3D3A39;
+    background-color: white;
+    padding: 1em;
+    box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.16);
+}
+
+section#témoignages .caroussel-container ul.caroussel-content li .text h1{
+    color: #592d7b;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+/**
+    CONTACT
+**/
+
+section#contacter{
+    width: 100%;
+    background-color: #592d7b;
+
+    color: white !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2em 0;
+}
+
+section#contacter h2,
+section#contacter a{
+    color: inherit !important;
+}
+
+
+section#contacter form{
+    width: 60%;
+}
+
+section#contacter form strong{
+    color: inherit;
+}
+    
+
+</style>
+
+
+<main>
+    <section id="top">
+        <div class="border"></div>
+        <div class="background">
+            <h1 class="title is-2">Découvrez et repérez tous les projets d'innovation sociale en France</h1>
+            <form action="/bientot/recherche" method="GET" class="columns">
+                <div class="column is-10">
+                    <div class="search control has-icons-left">
+                        <input type="search" name="text"
+                            class="input is-large input-navbar" 
+                            placeholder="Tapez un mot clé, un lieu, un projet…">
+                        <span class="icon is-medium is-left">
+                            <i class="fas fa-search fa-lg"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="column is-2">
+                    <button class="button is-large is-fullwidth" type="submit">Rechercher</button>
+                </div>
+            </form>
+            <h3>
+                <span class="counter"></span>
+                <span class="text">projets déjà réferencés</span>
+            </h3>
+        </div>
+    </section>
+
+    <!--
+    The video is not available, let's forget about this section for now
+
+    <section>
+        <h2>2 minutes pour comprendre le projet</h2>
+        <video src=""></video>white-space: normal;
+    </section>
+    -->
+
+    <section id="participer">
+        <div class="border"></div>
+        <div class="background">
+            <h2 class="title is-2">Comment participer ?</h2>
+            <p>
+                <strong>Nous ne référençons pas directement les projets. Nous relayons ceux recensés par les membres du <a href="/bientot/le-collectif">collectif</a>.</strong>
+            </p>
+            <p>
+                Des centaines de sites recensent déjà des projets d’innovation sociale. Nous voulons rendre cette information plus accessible. Les données sur les projets sont donc collectées auprès des sites des membres du collectif qui recensent des projets.
+            </p>
+            <div class="columns rejoindre">
+                <div class="column is-4 is-offset-1">
+                    <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/illustrations/HP_lame3_collectif%402x.png">
+                </div>
+                <div class="column is-4">
+                    <p>
+                        Vous recensez des projets d’innovation sociale et vous souhaiteriez les partager ? Ou vous êtes simplement intéréssé par notre démarche ?
+                    </p>
+                    <a class="button" href="/bientot/le-collectif">Découvrez comment rejoindre le projet</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collectif">
+        <h2 class="title is-2">Un collectif de plus de 50 membres</h2>
+        <p>Le Carrefour des innovations sociales rassemble des associations, têtes de réseaux, collectivités, fondations, médias, centres de recherche et institutions
+        <div class="columns">
+            <div class="column" style="flex: 2;">
+                <h3>Ils ont initié le projet</h3>
+                <ul class="columns">
+                    <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/CGET_signat_seul_CMJN.png" alt="Logo CGET">
+                    <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/LaFonda_RVB.png" alt="Logo La Fonda">
+                </ul>
+            </div>
+            <div class="column" style="flex: 5;">
+                <h3>Ils copilotent le projet</h3>
+                <ul class="columns">
+                    <li class="column"> <img src="/static/logos/Partenaires/Associations_et_accompagnateurs/AVISE_RVB.png" alt="Logo Avise">
+                    <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FONDATION_COGNAC_JAY.png" alt="Logo Fondation Cognacq-Jay">
+                    <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/APRILES.png" alt="Logo Apriles">
+                    <li class="column"> <img src="/static/logos/Partenaires/Associations_et_accompagnateurs/GNIAC.png" alt="Logo Gniac">
+                    <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/Labo_ESS.png" alt="Logo Le Labo ESS">
+                </ul>
+            </div>
+        </div>
+        <a class="button" href="./le-collectif">Découvrez tous les membres du collectif</a>
+        <div>
+            <h3>Ils soutiennent le projet</h3>
+            <ul class="columns">
+                <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FNCE_Horizontal_200ans.png" alt="Logo Fondation Caisse d'Epargne">
+                <li class="column"> <img src="/static/logos/Partenaires/logos à ajouter/FFE.png" alt="Logo FFR">
+                <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Investissements_d'avenir_-_logo.jpeg" alt="Logo Investissements d'avenir">
+                <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Etalab logo.PNG" alt="Logo Etalab">
+                <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/EIG.png" alt="Logo Entrepreneur d'Intérêt général">
+            </ul>
+        </div>
+    </section>
+
+    <section id="témoignages">
+        <div class="border"></div>
+        <div class="background">
+            <h2 class="title is-2">Le collectif témoigne</h2>
+
+            <div class="caroussel">
+                <button class="button previous">&lt;</button>
+                <div class="caroussel-container">
+                    <ul class="caroussel-content">
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_Hugues_Sibille.png">
+                            <div class="text">
+                                <h1>Hugues Sibille, Président du Labo de l’ESS et de la Commission Innovation sociale du CSESS</h1>
+                                <blockquote>« L’innovation sociale est une Grande Promesse qu’il nous incombe de reconnaître, de transformer et surtout d’accélérer, pour obtenir des résultats à la hauteur des besoins sociaux non  satisfaits »</blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_philippe_laurent.png">
+                            <div class="text">
+                                <h1>Philippe Laurent, Maire de Sceaux et Secrétaire général de l'AMF</h1>
+                                <blockquote>« Face au risque grandissant de fracture sociale et territoriale liée à la crise, l’ESS apparaît aujourd’hui comme une chance à saisir. Nous avons donc choisi de participer au Carrefour des innovations sociales pour partager des bonnes pratiques et des initiatives à impact positif qui bouleversent les façons de faire en créant de la valeur sociale partagée. » </blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_florence_raineix.png">
+                            <div class="text">
+                                <h1>Florence Raineix, directrice générale de la Fédération Nationale des Caisses d’Epargne</h1>
+                                <blockquote>« En tant que banques coopératives régionales, les Caisses d’Epargne via leur fédération, sont fières de contribuer à la co-construction de cette plateforme au service des territoires et de ses innovations sociales » </blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_yannick_blanc.png">
+                            <div class="text">
+                                <h1>Yannick Blanc, Vice-Président de la Fonda</h1>
+                                <blockquote>« Le Carrefour des innovations sociales peut devenir un levier avec lequel on soulève le monde. Il permettra de comprendre et développer la capacité d’initiative et de coopération présente dans la société, au fondement de l’innovation sociale et de ses promesses »</blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_cedric_szabo.png">
+                            <div class="text">
+                                <h1>Cédric Szabo, Directeur des Maires Ruraux de France  </h1>
+                                <blockquote>« A un carrefour, se rencontrent des protagonistes venus de tous horizons, dont certains ignoraient l’existence des autres. C’est pour donner à tous à voir le monde rural tel qu’il est que les projets municipaux ruraux ont toute leur place dans ce lieu d’échanges  » </blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_giorgia_segrebondi.png">
+                            <div class="text">
+                                <h1>Giorgia Sebregondi, Directrice du laboratoire des solidarités de la Fondation Cognacq-Jay</h1>
+                                <blockquote>« Ce projet, ce sont des rencontres enrichissantes, d'autres perspectives sur l'innovation sociale, l'expérience d'une gouvernance originale et la découverte de nouveaux projets solidaires » Julien Kounowski, Chef de projet SIILAB pour la DRJSCS Hauts-de-France « Pour apporter les travaux et les réalisations de notre laboratoire d'innovation publique et les partager au national sur le champ de l'innovation sociale » </blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_emma_stocking.png">
+                            <div class="text">
+                                <h1>Emma Stokking, Responsable innovation sociale à Sparknews</h1>
+                                <blockquote>« Sparknews a pour mission d’identifier et de mettre en valeur les innovations sociales les plus inspirantes. Il était donc naturel de nous associer à ce carrefour afin de contribuer et de trouver de nouveaux sujets » </blockquote>
+                            </div>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/entrepreneur-interet-general/CIS-front@6ebbcc04bcd62a9e83642990583b90ffb8347c73/cis/app/static/photos/Portraits_photos_christophe_thevignot copie 4.png">
+                            <div class="text">
+                                <h1> Christophe Thevignot, AEIDL </h1>
+                                <blockquote>« Identifier, mettre en lumière et contribuer aux innovations sociales en Europe fait partie des priorités de l’AEIDL » Steven Bertal, co-fondateur de Génération2 Conseil « Le Carrefour des innovations sociales offre une lisibilité nouvelle du secteur de l'ESS en France, utile pour l'intérêt général et nos activités de conseil  » </blockquote>
+                            </div>
+                    </ul>
+                </div>
+                <button class="button next">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contacter">
+        <h2 class="title is-2">Une question à nous poser ?</h2>
+
+        {% include "forms/form-preregister.html" %}
+    </section>
+</main>
+
+<script>
+'use strict';
+
+const projectCountP = fetch('http://www.cis-openscraper.com/api/infos')
+.then(r => r.json())
+.then(res => res.counts.data)
+
+document.addEventListener('DOMContentLoaded', e => {
+    // counter
+    const DELAY = 1000;
+    
+    const counter = document.querySelector('#top .counter')
+    projectCountP.then(projectCount => {
+        const start = performance.now();
+
+        (function step(){
+            requestAnimationFrame(now => {
+                const elapsed = now - start;
+                let fraction = elapsed/DELAY;
+                if(fraction >= 1)
+                    fraction = 1;
+
+                // ease out expo to stabilize the significative numbers quickly
+                const toDisplay = projectCount * (1 - (fraction === 1 ? 0 : Math.pow(2, -10*fraction)));
+
+                counter.textContent = Math.round(toDisplay);
+
+                if(fraction < 1){
+                    step();
+                }
+            })
+        })();
+    })
+
+
+    // témoignages
+    let shift = 0;
+    const SHIFT_UNIT = 15; // em
+    const TESTIMONY_COUNT = document.querySelectorAll('#témoignages ul.caroussel-content li').length;
+    const TESIMONY_SHOWN = 3;
+
+    const carousselContainer = document.querySelector('#témoignages .caroussel-content')
+    const nextButton = document.querySelector('#témoignages .caroussel .next')
+    const previousButton = document.querySelector('#témoignages .caroussel .previous')
+    
+    previousButton.addEventListener('click', e => {
+        if(shift >= 1)
+            shift -= 1;
+        carousselContainer.style.transform = `translateX(-${shift*SHIFT_UNIT}em)`
+    })
+    
+    nextButton.addEventListener('click', e => {
+        if(shift < TESTIMONY_COUNT-TESIMONY_SHOWN)
+            shift += 1;
+        carousselContainer.style.transform = `translateX(-${shift*SHIFT_UNIT}em)`
+    })
+
+}, {once: true})
+</script>
+
+{% endblock %}

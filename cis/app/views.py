@@ -273,17 +273,94 @@ def search():
 							user_infos			= current_user.get_public_infos
 						)
 
-@app.route('/spa-search', methods=['GET'])
-@app.route('/carto', methods=['GET'])
-@app.route('/project/<id>', methods=['GET'])
+
+
+# V3 Website
+# URLs are prefixed with '/bientot/' for now
+
+@app.route('/bientot/', methods=['GET', 'POST'])
+@app.route('/bientot/')
+def home():
+
+	log_cis.debug("entering new home page")
+	
+	form 			= PreRegisterForm()
+
+	try :
+		current_session_uid = session["public_id"]
+		# Check_tokens_user ( current_session_uid, lang_set )
+	except : 
+		current_session_uid = None
+
+
+	if request.method == 'POST' :
+		
+		### for debugging purposes
+		for f_field in form : 
+			log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+		if form.validate_on_submit():
+
+			### ADD A NEW FEEDBACK
+			# create preregister data and store it in MongoDB
+			new_preregister 	= PreRegister()
+			new_preregister.populate_from_form( form=form )
+			new_preregister.add_created_at()
+			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
+
+			# check if email/user already exists in users db
+			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
+			
+			### ADD A NEW USER
+			# create a potential user if doesn't already exist in db
+			if not existing_user :
+				
+				# create default password
+				temp_pwd = pwd_generator()
+				hashpass = generate_password_hash( temp_pwd, method='sha256')
+		
+				# capitalize name and surname 
+				form.userName.data 		= form.userName.data.capitalize()
+				form.userSurname.data 	= form.userSurname.data.capitalize()
+
+				# populate user class
+				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
+				new_user.populate_from_form(form=form)
+				new_user.add_created_at()
+				new_user.check_if_user_structure_is_partner()
+
+				# save user in db as visitor
+				new_user.insert_to_mongo( coll=mongo_users )
+			
+			flash(u"votre message a bien été envoyé, merci de votre intérêt !", category='primary')
+
+			return redirect(request.args.get("next") or "/bientot/")
+
+
+		else :
+			
+			log_cis.error("form was not validated / form.errors : %s", form.errors )
+			
+			flash(u"problème lors de l'envoi de votre message", category='warning')
+
+			return redirect("/bientot/")
+
+
+	return render_template(
+		"new-home.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr", 
+		form				= form
+	)
+
+
+@app.route('/bientot/recherche', methods=['GET'])
+@app.route('/bientot/project/<id>', methods=['GET'])
 def spa(id=''):
 
 	log_cis.debug("entering SPA page")
-
-	# as long search engine is in beta version
-	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction. </strong><br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
-			category='primary'
-		)
 
 	return render_template(
 		"spa.html",
@@ -291,6 +368,95 @@ def spa(id=''):
 		app_metas			= app_metas, 
 		language			= "fr" 
 	)
+
+
+@app.route('/bientot/le-projet', methods=['GET'])
+def leProjet():
+
+	log_cis.debug("entering le projet page")
+
+	return render_template(
+		"le-projet.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/le-projet/outils', methods=['GET'])
+def lesOutils():
+
+	log_cis.debug("entering les outils page")
+
+	return render_template(
+		"les-outils.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/le-projet/presse', methods=['GET'])
+def presse():
+
+	log_cis.debug("entering presse page")
+
+	return render_template(
+		"presse.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/le-projet/recompenses', methods=['GET'])
+def recompenses():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"recompenses.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/qui-sommes-nous', methods=['GET'])
+def quiSommesNous():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"qui-sommes-nous.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/qui-sommes-nous/le-collectif', methods=['GET'])
+def leCollectif():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"le-collectif.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+@app.route('/bientot/nous-rejoindre', methods=['GET'])
+def nousRejoindre():
+
+	log_cis.debug("entering recompenses page")
+
+	return render_template(
+		"nous-rejoindre.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
+
+
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###

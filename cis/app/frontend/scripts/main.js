@@ -62,7 +62,7 @@ const store = new Vuex.Store({
         displayedProject: undefined,
         
         selectedFilters,
-        searchedText: ''
+        searchedText: new URL(location).searchParams.get('text') || ''
     },
     mutations: {
         setSelectedFilters (state, {selectedFilters}) {
@@ -193,7 +193,7 @@ const BRAND_DATA = Object.freeze({
 
 const routes = [
     { 
-        path: '/spa-search', 
+        path: '/bientot/recherche',
         component: SearchScreen, 
         props(route){
             return {
@@ -212,7 +212,7 @@ const routes = [
         }
     },
     {
-        path: '/project/:id',
+        path: '/bientot/project/:id',
         component: CISProjectScreen, 
         props(route){
             return {
