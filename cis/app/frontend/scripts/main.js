@@ -62,7 +62,7 @@ const store = new Vuex.Store({
         displayedProject: undefined,
         
         selectedFilters,
-        searchedText: ''
+        searchedText: new URL(location).searchParams.get('text') || ''
     },
     mutations: {
         setSelectedFilters (state, {selectedFilters}) {

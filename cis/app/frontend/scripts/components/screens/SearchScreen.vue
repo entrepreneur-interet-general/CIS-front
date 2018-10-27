@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavBar :logo="logo" :brand="brand" :user="user" />
+        <NavBar :logo="logo" :brand="brand"/>
         <SearchWithFilters :filterDescriptions="filterDescriptions"/>
         <main>
             <SearchResults/>
@@ -24,10 +24,6 @@ export default {
     props: [
         'logo', 'brand', 'filterDescriptions'
     ],
-    
-    computed: mapState([
-        'user'
-    ])
 }
 </script>
 

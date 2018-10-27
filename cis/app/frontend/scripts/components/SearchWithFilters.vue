@@ -5,6 +5,7 @@
             <div class="search control has-icons-left has-icons-right is-expanded">
                 <input 
                     type="search" 
+                    v-model="searchedText"
                     class="input is-large is-light input-navbar" 
                     placeholder="Tapez un mot clé, un lieu, un projet…"
                     @input="searchedTextChanged"
@@ -65,9 +66,18 @@ import {mapState} from 'vuex'
 
 export default {
     props: ['filterDescriptions'],
-    computed: mapState([
-        'selectedFilters'
-    ]),
+    computed: 
+        {
+            ...mapState([
+                'selectedFilters'
+            ]),
+            searchedText: {
+                get () { return this.$store.state.searchedText },
+                set (value) {
+                    this.$store.dispatch('searchedTextChanged', {searchedText: value})
+                }
+            }
+        },
     methods: {
         emptyOneFilter(){
             this.$store.dispatch(
@@ -80,13 +90,10 @@ export default {
                 'toggleFilter', 
                 {filter: target.getAttribute('data-filter'), value: target.getAttribute('data-choice')}
             )
-        },
-        searchedTextChanged(e){
-            this.$store.dispatch('searchedTextChanged', {searchedText: e.target.value})
         }
     },
     mounted(){
-        this.$store.dispatch('searchedTextChanged', {searchedText: ''})
+        this.$store.dispatch('searchedTextChanged', {searchedText: this.searchedText})
     }
 }
 </script>

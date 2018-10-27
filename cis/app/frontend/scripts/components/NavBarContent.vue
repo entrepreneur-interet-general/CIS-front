@@ -27,15 +27,11 @@
 			</div>
 
 		</div>
+	</div>
 </template>
 
 <script>
-import UserMenu from './UserMenu.vue';
 
 export default {
-    components: {
-        UserMenu
-    },
-    props: ['user']
 }
 </script>
