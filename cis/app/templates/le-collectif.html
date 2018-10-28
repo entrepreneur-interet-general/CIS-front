@@ -2,17 +2,235 @@
 
 {% block content %}
 
+<style>
+main{
+    background-color: white;
+}
+
+main > nav,
+main > section{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+section#collectif{
+    
+}
+section#collectif .présentation{
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 3em;
+}
+section#collectif .présentation h2{
+    margin: 1em 0;
+}
+section#collectif .présentation > *{
+    flex: 1;
+}
+
+section#collectif .présentation > :first-child li{
+    color: #592d7b;
+    font-weight: bold;
+}
+section#collectif .présentation > :first-child li:before{
+    content: "-";
+    
+    padding-right: 5px;
+}
+
+section#collectif .présentation > :first-child li a{
+    color: #592d7b;
+    font-weight: normal;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #592d7b;
+}
+
+
+
+section#collectif .présentation > :last-child{
+    height: 20em;
+
+    position: relative;
+    left: 5em;
+
+    background-image: url('/static/photos/180620_CollectifCIS_photos (2).jpg');
+    background-size: cover;
+    background-position: bottom;
+
+}
+section#collectif .présentation > :last-child ul{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0));
+    
+    display: flex;
+    justify-content: flex-start;
+
+    color: white;
+}
+
+section#collectif .présentation > :last-child ul li{
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+
+    margin-right: 1em;
+    padding: 1em;
+    
+    width: 6em;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#collectif .présentation > :last-child ul li .nb{
+    font-size: 2em;
+}
+
+section#collectif .button{
+    height: unset;
+    padding: 1em 2em;
+    color: #592d7b;
+
+    border: 1px solid #592d7b;
+}
+
+section#collectif .rejoindre{
+    background-color: #592d7b;
+    color: white;
+    padding: 2em;
+}
+
+section#collectif .rejoindre h2{
+    color: inherit;
+}
+
+section#equipe-op{
+
+}
+section#equipe-op .equipe li{
+    width: 17em;
+    padding: 1em 3em;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+section#equipe-op .equipe li img{
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+
+</style>
+
 <main>
     <nav>
-        <ul>
-            <li><a href="./qui-sommes-nous/le-collectif">Le collectif</a>
-            <li><a href="./qui-sommes-nous">Qui fait quoi ?</a>
+        <ul class="cis-tabs">
+            <li class="selected"><a href="/bientot/qui-sommes-nous">Le collectif</a>
+            <li><a href="/bientot/qui-sommes-nous/qui-fait-quoi">Qui fait quoi ?</a>
         </ul>
     </nav>
 
-    <section>
-        <h1>Le carrefour des innovations sociales est porté par un collectif</h1>
+    <section id="collectif">
+        <div class="présentation">
+            <div>
+                <h1 class="title is-3">Le carrefour des innovations sociales est porté par un collectif</h1>
+                <p>Ce projet est à l’initiative de plusieurs têtes de réseaux, accompagnateurs, observateurs et chercheurs. Ils ont l’envie de partager la connaissance des solutions de terrain et les rendre accessibles. L’ambition est de renforcer la connaissance et le potentiel transformateur des innovations sociales pour cultiver une société meilleure. L’association de préfiguration du Carrefour des innovations sociales a été créee fin 2017.
 
+                <h2 class="title is-4">Le collectif, comment ça marche ?</h2>
+                <ul>
+                    <li>Il réunit tous les membres adhérant à la charte <a target="_blank" href="/static/files/Charte_carrefourdesinnovationssociales_VF_V2.pdf">Téléchargez la charte</a>
+                    <li>Il se réunit deux fois par an
+                    <li>Il fixe les orientations et décisions stratégiques
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <span class="nb">1</span>
+                        <span class="text">Collectif ouvert</span>
+                    <li>
+                        <span class="nb">50</span>
+                        <span class="text">Membres</span>
+                    <li>
+                        <span class="nb">2</span>
+                        <span class="text">Réunions annuelles</span>
+                </ul>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-offset-1 is-3">
+                <a class="button"
+                    href="/bientot/qui-sommes-nous/qui-fait-quoi"
+                >
+                Découvrez le portrait des membres
+                </a>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-offset-1 is-10">
+                <div class="rejoindre">
+                    <h2 class="title is-4">Vous êtes une structure de l’innovation sociale et vous voulez participer au projet ?</h2>
+                    
+                    <a class="button"
+                        href="/bientot/nous-rejoindre"
+                    >
+                    Rejoignez le collectif
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="equipe-op">
+        <h1 class="title is-3">L’équipe opérationnelle</h1>
+
+        <p>Une équipe opérationnelle conduit le projet au quotidien. Elle instruit, met en oeuvre les actions décidées par le collectif et le comité de pilotage et suit leur état d’avancement.
+
+        <ul class="equipe">
+            <li>
+                <img src="/static/photos/benedicte_pachod.png">
+                <strong>Bénédicte Pachod</strong>
+                <span>Chargé de projet au Commissariat général à l’égalité des territoires</span>
+            <li>
+                <img src="/static/photos/bastien_engelbach.png">
+                <strong>Bastien Engelbach</strong>
+                <span> Coordonateur des programmes à La Fonda</span>
+            <li>
+                <img src="/static/photos/emmanuel_dupont.png">
+                <strong>Emmanuel Dupont </strong>
+                <span>Responsable de mission au Commissariat général à l’égalité des territoires</span>
+            <li>
+                <img src="/static/photos/membres/Yannick_Blanc.jpg">
+                <strong>Yannick Blanc </strong>
+                <span>Haut-commissaire à l’engagement civique</span>
+            <li>
+                <img src="/static/photos/elise_lalique.png">
+                <strong>Elise Lalique </strong>
+                <span>Designer - Entrepreneuse d’intérêt générale</span>
+            <li>
+                <img src="/static/photos/julien_paris.png">
+                <strong>Julien Paris </strong>
+                <span>Développeur -Entrepreneur d’intérêt générale</span>
+            <li>
+                <img src="/static/photos/denis_sabardine.png">
+                <strong>Denis Sabardine </strong>
+                <span>Animateur et développeur des réseaux GNIAC et RESET</span>
+
+        </ul>
     </section>
 
 </main>
