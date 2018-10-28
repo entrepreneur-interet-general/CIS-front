@@ -13,9 +13,13 @@ Vue.use(Vuex)
 
 
 const filterDescriptions = [].concat(CHOICES_FILTERS_TAGS, CHOICES_FILTERS_PARTNERS);
-const selectedFilters = new Map()
-for(const f of filterDescriptions){
-    selectedFilters.set(f.name, new Set())
+
+function makeEmptySelectedFilters(){
+    const selectedFilters = new Map()
+    for(const f of filterDescriptions){
+        selectedFilters.set(f.name, new Set())
+    }
+    return selectedFilters;
 }
 
 
@@ -32,6 +36,8 @@ function filterValuesToCISTags(filterValues){
 
     for(const uiTag of uiTags){
         const categories = categoriesByUITag[uiTag];
+
+        console.log('categories', categories, categoriesByUITag, uiTag)
 
         for(const category of categories){
             const categoriesCISTags = cisTagByCategory[category];
@@ -56,12 +62,13 @@ const store = new Vuex.Store({
             userSurname: 'HARDCODED'
         },*/
         projects: [],
+        total: 0,
         geolocByProjectId: new Map(),
         spiders: undefined,
 
         displayedProject: undefined,
         
-        selectedFilters,
+        selectedFilters: makeEmptySelectedFilters(),
         searchedText: new URL(location).searchParams.get('text') || ''
     },
     mutations: {
@@ -78,13 +85,19 @@ const store = new Vuex.Store({
             // trigger re-render
             state.selectedFilters = new Map(state.selectedFilters)
         },
+        clearAllFilters(state){
+            state.selectedFilters = makeEmptySelectedFilters()
+        },
         setProjects(state, {projects}){
             state.projects = projects;
+        },
+        setProjectTotal(state, {total}){
+            state.total = total;
         },
         setDisplayedProject(state, {project}){
             state.displayedProject = project;
         },
-        setSpiders(state, {spiders}){
+        setSpiders(state, {spiders}){makeEmptySelectedFilters
             state.spiders = spiders
         },
         addGeolocs(state, {geolocByProjectId}){
@@ -112,20 +125,32 @@ const store = new Vuex.Store({
             dispatch('search')
         },
 
+        clearAllFilters({commit, dispatch}){
+            commit('clearAllFilters')
+            dispatch('search')
+        },
+
         searchedTextChanged({commit, dispatch}, {searchedText}){
             commit('setSearchedText', {searchedText})
             dispatch('search')
         },
 
         search({state, commit}){
-            const cisTags = filterValuesToCISTags(state.selectedFilters)
+            const selectedFiltersWithoutSourceurs = new Map(state.selectedFilters)
+            selectedFiltersWithoutSourceurs.delete('sources_');
 
-            searchProjects(state.searchedText, cisTags)
-                .then(projects => {
+            const cisTags = filterValuesToCISTags(selectedFiltersWithoutSourceurs)
+
+            const spiderIds = [...state.selectedFilters.get('sources_')]
+                .map(name => CHOICES_FILTERS_PARTNERS[0].choices.find(c => c.name === name).id)
+
+            searchProjects(state.searchedText, cisTags, spiderIds)
+                .then(({projects, total}) => {
                     console.log('projects pour', state.searchedText, cisTags)
                     console.log(projects)
 
                     commit('setProjects', {projects})
+                    commit('setProjectTotal', {total})
                 }) 
                 .catch(err => console.error('err search', text, err))
         },
