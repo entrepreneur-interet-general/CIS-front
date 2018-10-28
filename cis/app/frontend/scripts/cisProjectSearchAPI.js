@@ -50,7 +50,7 @@ function fromMongoModelToFrontModel(projectInMongo){
         tags: projectInMongo['tags'],
         image: projectInMongo['image(s) du projet'],
         address: Array.isArray(projectInMongo['adresse du projet']) ? projectInMongo['adresse du projet'].join(' '): '',
-        projectPartners: projectInMongo['partenaires du projet'],
+        projectPartners: Array.isArray(projectInMongo['partenaires du projet']) ? projectInMongo['partenaires du projet'].join(' '): '',
         url: projectInMongo['link_src'],
         spiderId: projectInMongo['spider_id'],
         description: Array.isArray(projectInMongo['résumé du projet']) ? projectInMongo['résumé du projet'].join(' '): '',
@@ -98,16 +98,22 @@ export function getProjectById(id){
 }
 
 
-export function searchProjects(text, tags, page=1, per_page=1000){
+export function searchProjects(text, tags, spiderIds=[], page=1, per_page=1000){
     text = text.trim();
 
-    let url = `${APISearchOrigin}/api/data?page_n=${page}&token=test_token&shuffle_seed=1&${text.length >= 1 ? 'search_for='+encodeURIComponent(text) : ''}&results_per_page=${per_page}`
-    
-    if(tags && tags.size >= 1)
-        url += `&search_in_tags=${encodeURIComponent([...tags].join(','))}`
+    const searchArg = text.length >= 1 ? '&search_for='+encodeURIComponent(text) : '';
+    const spiderArg = spiderIds.length >= 1 ? '&'+spiderIds.map(id => 'spider_id='+id).join('&') : '';
+    const tagsArg = tags && tags.size >= 1 ? `&search_in_tags=${encodeURIComponent([...tags].join(','))}` : '';
+
+    let url = `${APISearchOrigin}/api/data?page_n=${page}&results_per_page=${per_page}&token=test_token&shuffle_seed=1${searchArg}${spiderArg}${tagsArg}`
 
     return fetch(url)
     .then(r => r.json())
-    .then(({query_results}) => Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [])
+    .then(({query_results, query_log}) => (
+        { 
+            projects: Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [],
+            total: query_log.count_results_tot
+        }
+    ))
 
 }

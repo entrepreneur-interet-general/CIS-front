@@ -8,12 +8,12 @@
             </router-link>
             
             <div class="card-content">
-                <div class="content">
+                <div class="content" v-if="project.address.trim().length > 1">
                     <span class="icon has-text-light">
                         <i class="fas fa-location-arrow"></i>
                     </span>
                     <span class="subtitle is-6">
-                        {{project.address}}
+                        {{project.address.slice(0, 100)}}
                     </span>
                 </div>
 
@@ -78,5 +78,15 @@ export default {
 .card-image img{
     width: 100%;
 
+}
+
+.card-content .tag{
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    
+    padding: 0.2em 1em;
+
+    background-color: #767676;
+    color: white;
 }
 </style>

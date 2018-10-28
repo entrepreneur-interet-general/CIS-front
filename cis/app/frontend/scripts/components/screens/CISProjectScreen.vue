@@ -5,7 +5,7 @@
         <main>
             <div class="container">
 
-                <a class="back" href="/spa-search" @click="goBack">
+                <a class="back" href="/bientot/recherche" @click="goBack">
                     <span class="icon has-text-primary">
                         <i class="fas fa-arrow-left"></i>
                     </span>
@@ -16,29 +16,29 @@
 
                 <div class="columns">
 
-                    <div class="column is-6">
+                    <div class="column is-5 is-offset-1">
                         <div class="description">
-                            <h1 class="title is-1">{{project.title}}</h1>
+                            <h1 class="title is-3">{{project.title}}</h1>
                             <p v-if="project.address">{{project.address}}</p>
                             <p>{{project.description}}</p>
 
-                            <h2 class="title is-2">Structure</h2>
-                            <p>{{project.partners}}</p>
+                            <div v-if="project.projectPartners">
+                                <h2 class="title is-4">Structure</h2>
+                                <p>{{project.projectPartners}}</p>
+                            </div>
+
                             <a :href="project.url">Voir le site du projet</a>
                         </div>
                     </div>
 
-                    <div class="column is-6">
+                    <div class="column is-5">
                         <div class="added" v-if="spiders && project && spiders[project.spiderId]">Project ajouté par <a :href="spiders[project.spiderId].page_url">{{spiders[project.spiderId].name}}</a></div>
                         <img :src="project.image"/>
                         <div class="content">
-                            <h2 class="title is-2">Categories</h2>
+                            <h2 class="title is-5">Catégories</h2>
                             <span v-for="tag in project.tags" class="tag" :key="tag">
                                 {{tag}}
                             </span>
-                        </div>
-                        <div>
-                            <h2 class="title is-2">Partagez ce projet ?</h2>
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@ export default {
     },
 
     methods: {
-        goBack(){
+        goBack(e){
             this.$router.go(-1)
         }
     }
@@ -108,8 +108,44 @@ a.back{
     margin-top: 0;
 }
 
+.columns .column img{
+    width: 100%;
+    margin-bottom: 1em;
+}
 
 .description, .added{
     background-color: white;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.description h1{
+    font-weight: bold;
+}
+
+.description p {
+    margin-bottom: 1em;
+}
+
+.description a{
+    color: #592d7b;
+    border-bottom: 1px solid #592d7b;
+}
+
+.added a{
+    color: #592d7b;
+    font-weight: bold;
+}
+
+.content h2{
+    font-weight: bold;
+
+}
+
+.content .tag{
+    background-color: #767676;
+    color: white;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
 }
 </style>

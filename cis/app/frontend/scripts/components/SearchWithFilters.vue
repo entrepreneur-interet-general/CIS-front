@@ -47,11 +47,11 @@
                         </a>
                     
                         <div class="navbar-item">
-                            <a  class="button is-text is-fullwidth has-text-primary"
+                            <button class="button is-text is-fullwidth has-text-primary"
                                 :data-filter="filter.name"
                                 @click="emptyOneFilter({filter: filter.name})">
                                 Effacer
-                            </a>
+                            </button>
                         </div>
 
                     </div>
@@ -79,11 +79,8 @@ export default {
             }
         },
     methods: {
-        emptyOneFilter(){
-            this.$store.dispatch(
-                'emptyOneFilter', 
-                {filter: target.getAttribute('data-filter')}
-            )
+        emptyOneFilter({filter}){
+            this.$store.dispatch( 'emptyOneFilter', {filter} )
         },
         changeFilter({target}){
             this.$store.dispatch(
@@ -104,5 +101,14 @@ export default {
 
 input[type="search"]{
     height: 100%;
+}
+
+#navbar-filters .navbar-end{
+    margin-right: 10em;
+}
+
+
+#navbar-filters .navbar-end .navbar-item{
+    padding: 0.2em 0.2em;
 }
 </style>
