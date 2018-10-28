@@ -50,7 +50,7 @@ function fromMongoModelToFrontModel(projectInMongo){
         tags: projectInMongo['tags'],
         image: projectInMongo['image(s) du projet'],
         address: Array.isArray(projectInMongo['adresse du projet']) ? projectInMongo['adresse du projet'].join(' '): '',
-        projectPartners: projectInMongo['partenaires du projet'],
+        projectPartners: Array.isArray(projectInMongo['partenaires du projet']) ? projectInMongo['partenaires du projet'].join(' '): '',
         url: projectInMongo['link_src'],
         spiderId: projectInMongo['spider_id'],
         description: Array.isArray(projectInMongo['résumé du projet']) ? projectInMongo['résumé du projet'].join(' '): '',
