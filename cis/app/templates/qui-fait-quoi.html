@@ -1,0 +1,393 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+main{
+    background-color: #F6F6F6;
+}
+
+main > nav,
+main > section{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.input[type="search"]{
+    margin-bottom: 1em;
+}
+
+main .choices{
+    max-width: 45em;
+}
+main .choices label{
+    width: 15em;
+    vertical-align: top;
+}
+main .choices input[type="checkbox"]{
+    margin-right: 1em;
+}
+
+
+main ul.members{
+    text-align: left;
+    margin-top: 2em;
+}
+main ul.members > li{
+    display: inline-block;
+    width: 30em;
+    margin: 0 1em 1em 0;
+    
+    vertical-align: top;
+
+    background-color: white;
+
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.04);
+}
+
+main ul.members > li > *{
+    padding: 0 1em;
+}
+main ul.members > li > :first-child{
+    padding-top: 1em;
+}
+main ul.members > li > :last-child{
+    padding-bottom: 1em;
+}
+
+
+main ul.members > li > header{
+    padding-bottom: 1em;
+}
+
+main ul.members > li > header > :first-child{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+main ul.members > li > header > :first-child img{
+    object-fit: cover;
+    object-position: center;
+    width: 50%;
+    margin-right: 1em;
+}
+
+main ul.members > li > header ul.activities li{
+    font-size: 0.7em;
+    background-color: #767676;
+    color: white;
+    padding: 0.2em 0.5em;
+    margin-right: 0.5em;
+
+    display: inline-block;
+
+}
+
+
+
+main ul.members > li > header h1{
+    display: inline-block;
+    margin-right: 1em;
+
+    font-size: 1.1em;
+    font-weight: bold;
+}
+main ul.members > li > header .scale{
+    font-size: 0.7em;
+    white-space: nowrap;
+    color: rgba(61, 58, 57, 1);
+}
+
+
+main ul.members > li > footer{
+    background-color: #F6F6F6;
+    position: relative;
+
+    font-size: 0.8em;
+
+    margin-top: 3em;
+    padding-top: 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main ul.members > li > footer img{
+    position: absolute;
+    
+    width: 5em;
+    height: 5em;
+
+    object-fit: cover;
+    object-position: center;
+    
+    left: 2em;
+    top: -2em;
+
+    border-radius: 50%;
+}
+
+
+main ul.members > li > footer .person{
+    margin-left: 8em;
+}
+
+main ul.members > li > footer .count{
+    color: #592d7b;
+    max-width: 9em;
+
+    display: flex;
+    align-items: center;
+}
+main ul.members > li > footer .count .nb{
+    font-size: 3em;
+    
+    margin-right: 0.1em;
+    font-weight: bold;
+}
+
+
+
+</style>
+
+<main>
+    <nav>
+        <ul class="cis-tabs">
+            <li><a href="/bientot/qui-sommes-nous">Le collectif</a>
+            <li class="selected"><a href="/bientot/qui-sommes-nous/qui-fait-quoi">Qui fait quoi ?</a>
+        </ul>
+    </nav>
+
+    <section>
+        <form>
+            <div class="search control has-icons-left">
+                <input type="search"
+                    class="input is-large input-navbar" 
+                    placeholder="Chercher un membre du collectif">
+                <span class="icon is-medium is-left">
+                    <i class="fas fa-search fa-lg"></i>
+                </span>
+            </div>
+
+            <div class="activities">
+                <h2 class="title is-4">Activités</h2>
+
+            </div>
+        </form>
+        <ul class="members">
+        </ul>
+    </section>
+
+</main>
+
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="/static/js/Bouture.js"></script>
+<script>
+'use strict';
+
+const CSVToObjectKeyMap = Object.freeze({
+    'PUBLICATION SUR LE SITE': 'published',
+    'MEMBRE DU COLLECTIF': 'name',
+    'PRESENTATION SUCCINCTE': 'presentation',
+    'ECHELLE DE SON ACTION': 'scale',
+    'SITE WEB': 'url',
+    'TWEET': 'twitter',
+    'ACTIVITES': 'activities',
+    'CONTACT SUR LE SITE DU CIS': 'contact',
+    'FONCTION DU CONTACT': 'contactRole',
+    'NOM Photo portrait': 'portraitURL'
+})
+
+const membersP = fetch('/static/data/members.csv')
+.then(r => r.text())
+.then(d3.csvParse)
+.then(dataFromText => {
+    const rowsByMemberName = new Map();
+
+    for(const row of dataFromText){
+        const name = row['MEMBRE DU COLLECTIF']
+
+        if(!rowsByMemberName.has(name)){
+            rowsByMemberName.set(name, new Set())
+        }
+
+        const rows = rowsByMemberName.get(name)
+        rows.add(row);
+    }
+
+
+    const membersByName = new Map()
+
+    for(const [name, rows] of rowsByMemberName){
+         if(!membersByName.has(name)){
+            membersByName.set(name, {
+                name: name,
+                activities: new Set()
+            })
+        }
+
+        const member = membersByName.get(name)
+
+        for(const row of rows){
+            for(let [csvKey, value] of Object.entries(row)){
+                const objectKey = CSVToObjectKeyMap[csvKey.trim()]
+                value = value.trim();
+                if(value){
+                    if(objectKey === 'activities'){
+                        member.activities.add(value);
+                    }
+                    else{
+                        member[objectKey] = value;
+                    }
+                }
+            }
+        }
+    }
+
+    return [...membersByName.values()]
+        .filter(member => member.published === 'ok')
+
+})
+.catch(err => console.error('members data error', err));
+
+
+const spidersP = Promise.all(
+    [
+        fetch('http://www.cis-openscraper.com/api/infos?only_spiders_list=true')
+        .then(r => r.json())
+        .then(r => r.spiders.spiders_dict),
+
+        fetch('http://www.cis-openscraper.com/api/stats?only_spiders_stats=true')
+        .then(r => r.json())
+        .then(r => r.counts_stats.spiders_stats)
+    ]
+)
+.then(([spidersById, countById]) => {
+    const spiders = {};
+
+    console.log('spidersById, countById', spidersById, countById)
+
+    return [...Object.entries(spidersById)]
+        .map(([id, {name, logo_url}]) => ({
+            id, 
+            name,
+            logoUrl: logo_url,
+            count: countById[id]
+        }))
+})
+
+
+
+
+document.addEventListener('DOMContentLoaded', e => {
+
+    let selectedActivityFilters = new Set();
+    let filterText = '';
+
+    function isMemberSelected(member){
+        const matchesFilters = [...member.activities].some(a => selectedActivityFilters.has(a))
+
+        const filterTextLow = filterText.toLowerCase()
+
+        const matchesText = filterText === '' || member.name.toLowerCase().includes(filterTextLow) || member.presentation.toLowerCase().includes(filterTextLow)
+
+        return matchesFilters && matchesText
+    }
+
+    Promise.all([membersP, spidersP])
+    .then(([members, spiders]) => {
+        console.log('members', members)
+
+        function renderMemberList(){
+            const selectedMembers = members.filter(isMemberSelected)
+
+            console.log('selectedMembers', selectedMembers)
+
+            const newUl = Bouture.ul({class: 'members'}, selectedMembers.map(member => {
+                const spider = spiders.find(s => s.name.trim().toLowerCase() === member.name.trim().toLowerCase())
+
+                return Bouture.li([
+                    Bouture.header([
+                        Bouture.div([
+                            Bouture.img({src: spider && spider.logoUrl ? spider.logoUrl : ''}),
+                            Bouture.ul(
+                                {class: 'activities'},
+                                [...member.activities].map(a => Bouture.li(a))
+                            )
+                        ]),
+                        Bouture.div([
+                            Bouture.h1(member.name),
+                            member.scale ? Bouture.span({class: 'scale'}, `Echelle ${member.scale}`) : ''
+                        ])
+                    ]),
+                    Bouture.p(member.presentation),
+                    Bouture.footer([
+                        member.portraitURL ? Bouture.img({src: `/static/photos/membres/${member.portraitURL}`}) : '',
+                        Bouture.div({class: 'person'}, [
+                            Bouture.div(member.contact),
+                            Bouture.div(member.contactRole)
+                        ]),
+                        spider ? Bouture.div({class: 'count'}, [
+                            Bouture.span({class: 'nb'}, spider.count),
+                            Bouture.span('projets partagés'),
+                        ]) : ''
+                    ])
+                ])
+            })).getElement()
+
+            document.querySelector('main section ul.members').replaceWith(newUl)
+        }
+
+        // build activities filter
+        let activities = new Set();
+        for(const m of members){
+            for(const a of m.activities){
+                activities.add(a)
+            }
+        }
+
+        // all activities are selected by default
+        selectedActivityFilters = new Set(activities);
+
+        const activitiesCheckboxes = Bouture.div({class: 'choices'}, [...activities].map(a => {
+            return Bouture.label(
+                {class: 'checkbox'}, 
+                [
+                    Bouture.input(
+                        {
+                            type: 'checkbox',
+                            checked: true,
+                            onChange(e){
+                                if(e.target.checked)
+                                    selectedActivityFilters.add(a)
+                                else
+                                    selectedActivityFilters.delete(a)
+                                
+                                renderMemberList();
+                            }
+                        }),
+                    Bouture.span(a)
+                ]
+            )
+        }))
+
+        document.querySelector('.activities').append(activitiesCheckboxes.getElement())
+
+        // make input responsive
+        document.querySelector('input[type="search"]').addEventListener('input', e => {
+            filterText = e.target.value;
+
+            renderMemberList();
+        })
+
+
+        // build members list
+        renderMemberList();
+    })
+    .catch(err => console.error('page build error', err))
+
+
+}, {once: true})
+</script>
+
+{% endblock %}
