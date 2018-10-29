@@ -2,82 +2,247 @@
 
 {% block content %}
 
+<style>
+
+main > nav,
+main > section{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+section#open-source{
+    
+}
+section#open-source h1{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+section#open-source h1,
+section#open-source p{
+    max-width: 40em;
+}
+
+
+section#architecture{
+    width: 100%;
+    padding: 0;
+    border: 0;
+
+    background-color: #F6F6F6;
+}
+
+section#architecture > *{
+    width: 80%;
+    margin: 0 auto;
+
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #CBC9C9;
+}
+
+section#architecture ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1em 2em;
+}
+
+section#architecture ul li{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section#architecture ul li p{
+    width: 80%;
+}
+section#architecture ul li strong{
+    color: #592d7b;
+    font-weight: bold;
+}
+
+
+
+.software-show{
+    display: flex;
+
+    padding-top: 5em;
+}
+
+.software-show:nth-of-type(odd){
+    flex-direction: row;
+}
+.software-show:nth-of-type(even){
+    flex-direction: row-reverse;
+}
+
+
+.software-show > *{
+    flex: 1;
+}
+
+.software-show img{
+    max-width: 120%;
+}
+
+
+.software-show:nth-of-type(odd) img{
+    transform: translate(-20%, -20%);
+}
+.software-show:nth-of-type(even) img{
+    transform: translate(20%, -20%);
+}
+
+
+.software-show h1{
+    color: #592d7b;
+    font-weight: bold;
+    font-size: 1.7em;
+}
+.software-show h2{
+    font-weight: bold;
+
+    font-size: 1.4em;
+}
+.software-show h3{
+    color: #592d7b;
+}
+
+.software-show ul{
+    margin-bottom: 2em;
+}
+
+
+.software-show ul li:before{
+    content: "-";
+    
+    padding-right: 5px;
+}
+
+
+.software-show a{
+    padding: 1em 2em;
+    margin-right: 1em;
+
+    border-radius: 3px;
+}
+
+.software-show a.test{
+    color: white;
+    background-color: #592d7b;
+    border: 1px solid #592d7b;
+}
+.software-show a.github{
+    color: #592d7b;
+    background-color: white;
+    border: 1px solid #592d7b;
+}
+
+
+
+</style>
+
 <main>
     <nav>
-        <ul>
-            <li><a href="..">A propos</a>
-            <li><a href="../le-projet/outils">Les outils techniques</a>
-            <li><a href="../le-projet/presse">Ils parlent de nous</a>
-            <li><a href="../le-projet/recompenses">Récompenses</a>
+        <ul class="cis-tabs">
+            <li><a href="/bientot/le-projet">A propos</a>
+            <li class="selected"><a href="/bientot/le-projet/outils">Les outils techniques</a>
+            <li><a href="/bientot/le-projet/presse">Ils parlent de nous</a>
+            <li><a href="/bientot/le-projet/recompenses">Récompenses</a>
         </ul>
     </nav>
 
-    <section>
+    <section id="open-source">
         <h1>Nous développons trois logiciels <em>open source</em></h1>
-        <p>Ces outils.... </p>
+        <p>Ces outils sont nés des besoins spécifiques du Carrefour des innovations sociales. Ils permettent d’extraire, de consolider et de visualiser les informations des projets d’innovations sociales.
+        <p>Nous investissons dans de l’innovation numérique. Cette suite est open-source et conçue de manière générique. Elle peut être adaptée à d’autres projets. Les trois logiciels fonctionnent indépendamment.
     </section>
 
-    <section>
+    <section id="architecture">
         <div>
-            <img>
+            <ul>
+                <li>
+                    <img src="/static/illustrations/Projet_outils_open_scraper.png">
+                    <p><strong>Open scraper</strong> collecte toute l’information des projets sur les sites des membres du collectif.
+                <li>
+                    <img src="/static/illustrations/Projet_outils_solidata.png">
+                    <p><strong>Solidata</strong> centralise et consolide les informations sur les projets.
+                <li>
+                    <img src="/static/illustrations/Projet_outils_apiviz.png">
+                    <p><strong>Apiviz</strong> est l’interface qui permet de visualiser ces informations sous forme de fiches projets, cartographie et datavisualisation.
+            </ul>
+        </div>
+    </section>
+
+    <section class="software-show">
+        <div>
+            <img src="/static/illustrations/Projet_outils_screenshot_openscraper.png">
         </div>
         <div>
             <h1>Open Scraper</h1>
             <h2>Pour collecter des données publiées sur des sites</h2>
             <h3>Fonctionnalités</h3>
             <ul>
-                <li>nia nia
-                <li>nia nia
-                <li>nia nia
+                <li>Récupérer des données publiées sur des sites internet
+                <li>Homogénéiser des données disparates 
+                <li>Ouvrir les données en maîtrisant leurs degrés d'ouverture (des données qui restent privées à de l’open data)
             </ul>
-            <a href="">Tester Open Scraper</a>
-            <a href="">Voir sur Github</a>
+            <!-- <a class="test" href="">Tester Open Scraper</a> -->
+            <a class="github" href="https://github.com/entrepreneur-interet-general/OpenScraper">Voir sur Github</a>
         </div>
     </section>
 
-    <section>
+    <section class="software-show">
+
         <div>
-            <img>
+            <img src="/static/illustrations/Projet_outils_screenshot_solidata.png">
         </div>
+        
         <div>
             <h1>Solidata</h1>
             <h2>Pour collecter des données publiées sur des sites</h2>
             <h3>Fonctionnalités</h3>
             <ul>
-                <li>nia nia
-                <li>nia nia
-                <li>nia nia
+                <li>Agréger des données provenant de sources ou de fichiers différents 
+                <li>Enrichir les données grâce à des données externes : géolocalisation, données administratives (SIRET), ... 
+                <li>Homogénéiser les tags des données agrégées 
+                <li>Ouvrir les données en maîtrisant leurs degrés d’ouverture (des données qui restent privées à de l’open data)
             </ul>
-            <a href="">Tester Open Scraper</a>
-            <a href="">Voir sur Github</a>
+            <!-- <a class="test" href="">Tester Solidata</a> -->
+            <a class="github" href="https://github.com/entrepreneur-interet-general/solidata_frontend">Voir sur Github</a>
         </div>
     </section>
 
-    <section>
+    <section class="software-show">
+
         <div>
-            <img>
+            <img src="/static/illustrations/Projet_outils_screenshot_apiviz.png">
         </div>
         <div>
             <h1>Apiviz</h1>
             <h2>Pour collecter des données publiées sur des sites</h2>
             <h3>Fonctionnalités</h3>
             <ul>
-                <li>nia nia
-                <li>nia nia
-                <li>nia nia
+                <li>Chercher des données via un moteur de recherche 
+                <li>Visualiser les données agrégées sous différentes formes : cartographie, datavisualisation, vue détaillée des données (fiches projets) …
+                <li>Faire sa propre liste de favoris
             </ul>
-            <a href="">Tester Open Scraper</a>
-            <a href="">Voir sur Github</a>
+            <!-- <a class="test" href="">Tester Apiviz</a> -->
+            <a class="github" href="https://github.com/entrepreneur-interet-general/CIS-front">Voir sur Github</a>
         </div>
     </section>
-
-    <section>
-        <h1>Intéressés ?</h1>
-        <p>nia nia
-        <h1>échanger</h1>
-        <a></a>
+<!--
+    <section class="contact">
+        <h2>Vous êtes intéréssé.e par un ou plusieurs de ces logiciels ?</h1>
+        <p> Ils sont open-source et libres d’être utilisés par tous.
+        <h1>Vous voulez échanger avec nous ?</h1>
+        <a href="/bientot/contact">Ecrivez-nous</a>
     </section>
-
+-->
 </main>
 
 {% endblock %}
