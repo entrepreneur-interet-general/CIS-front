@@ -394,13 +394,13 @@ def lesOutils():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/le-projet/presse', methods=['GET'])
+@app.route('/bientot/le-projet/parlent-de-nous', methods=['GET'])
 def presse():
 
 	log_cis.debug("entering presse page")
 
 	return render_template(
-		"presse.html",
+		"parlent-de-nous.html",
 		config_name			= config_name, # prod, testing, default...
 		app_metas			= app_metas, 
 		language			= "fr" 
