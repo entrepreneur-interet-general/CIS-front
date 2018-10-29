@@ -232,7 +232,9 @@ header > .count-and-tabs{
 
 header .results-count{
     padding: 0.5em 1em;
+
     background-color: white;
+    border-radius: 3px;
     font-size: 1.2em;
 
     display: flex;
