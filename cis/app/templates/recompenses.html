@@ -2,49 +2,106 @@
 
 {% block content %}
 
+<style>
+.award{
+    display: flex;
+    align-items: center;
+}
+
+.award:nth-child(odd){
+    flex-direction: row;
+}
+
+.award:nth-child(even){
+    flex-direction: row-reverse;
+}
+
+.award > :first-child{
+    flex: 1;
+}
+.award > .description{
+    flex: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 1em;
+}
+
+
+
+.award > .description img {
+    max-height: 4em;
+}
+
+.award > .description h1{
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+
+</style>
+
 <main>
     <nav>
-        <ul>
-            <li><a href=".">A propos</a>
-            <li><a href="./le-projet/outils">Les outils techniques</a>
-            <li><a href="./le-projet/presse">Ils parlent de nous</a>
-            <li><a href="./le-projet/recompenses">Récompenses</a>
+        <ul class="cis-tabs">
+            <li><a href="/bientot/le-projet">A propos</a>
+            <li><a href="/bientot/le-projet/outils">Les outils techniques</a>
+            <li><a href="/bientot/le-projet/parlent-de-nous">Ils parlent de nous</a>
+            <li class="selected"><a href="/bientot/le-projet/recompenses">Récompenses</a>
         </ul>
     </nav>
 
-    <section>
-        <div>
-            <img>
-            <h1>Entrepreneur d'Intérêt Général</h1>
-            <p>blablba</p>
-            <a href=""></a>
-        </div>
-        <div>
-            <img>   
+    <section class="award">
+        <div class="description">
+            <img src="/static/logos/recompense/OECD_logo_new.svg.png">
+            <time>Octobre 2018</time>
+            <h1>Organisation de coopération et de développement économiques</h1>
+            <p>Nous avons été retenus comme l’une des deux innovations françaises par l’Observatoire de l’innovation publique de l’OCDE. Un rapport publié par l’OCDE et des événements permettront de présenter nos travaux à un public international.</p>
+            <a href="https://oecd-opsi.org/innovations/carrefour-des-innovations-sociales-social-innovation-crossroad/">Connaître l’OECD</a>
         </div>
     </section>
 
-    <section>
+    <section class="award">
         <div>
-            <img>
-            <h1>Entrepreneur d'Intérêt Général</h1>
-            <p>blablba</p>
-            <a href=""></a>
+            <img src="/static/photos/fondation.jpg">   
         </div>
-        <div>
-            <img>   
+        <div class="description">
+            <img src="/static/logos/recompense/Fondation_bien_commun.jpg">
+            <time>Septembre 2018</time>
+            <h1>Fondation pour la co-construction du bien commun</h1>
+            <p>Nous avons reçu la distinction « d’exemple inspirant », catégorie « Projets Cèdre du Liban » décernée par la Fondation pour la co-construction du bien commun.</p>
         </div>
     </section>
 
-    <section>
+    <section class="award">
         <div>
-            <img>
-            <h1>Entrepreneur d'Intérêt Général</h1>
-            <p>blablba</p>
-            <a href=""></a>
+            <img src="/static/photos/transformateur_numerique.jpg">   
         </div>
+        <div class="description">
+            <img src="/static/logos/recompense/logo_transformateur_numerique.png">
+            <time>Avril 2018</time>
+            <h1>Transformateur numérique</h1>
+            <p>Nous avons été lauréat du Transformateur numérique co-organisé par l’Agence nationale pour l’amélioration des conditions de travail (ANACT) et la Fondation Internet Nouvelle Génération (FING).</p>
+        </div>
+    </section>
+
+
+
+    <section class="award">
         <div>
-            <img>   
+            <img src="/static/photos/imageEIG.png">   
+        </div>
+        <div class="description">
+            <div>
+                <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Investissements_d'avenir_-_logo.jpeg">
+                <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Etalab logo.PNG">
+                <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/EIG.png">
+            </div>
+            <time>Janvier 2018</time>
+            <h1>Entrepreneur d’intérêt Général</h1>
+            <p>Nous avons été lauréat du Programme EIG (Entrepreneur d’Intérêt Général), deuxième promotion.Nous avons bénéficié d’un financement du PIA et d’un accompagnement d’Etalab.</p>
         </div>
     </section>
 

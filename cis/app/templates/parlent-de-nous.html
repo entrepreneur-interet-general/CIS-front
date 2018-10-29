@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+
+section#presse ul {
+    padding: 1em;
+}
+
+section#presse ul li{
+    display: inline-block;
+    background-color: #f6f6f6;
+    
+    width: 17em;
+
+    margin-right: 2em;    
+    
+    vertical-align: top;
+}
+
+section#presse ul li > :first-child{
+    background-color: white;
+    height: 5em;    
+    padding: 0.5em;
+    
+    text-align: center;
+}
+
+section#presse ul li > :first-child img{
+    height: 100%;
+}
+
+
+section#presse ul li > :nth-child(2){
+    padding: 1em;
+}
+
+section#presse ul li > :nth-child(2) h1{
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+
+section#presse ul li a{
+    color: #532A7B;
+    border-bottom: 1px solid currentColor;
+
+    display: inline-block;
+    padding: 0.5em 0;
+}
+
+
+
+
+</style>
+
+<main>
+    
+    <nav>
+        <ul class="cis-tabs">
+            <li><a href="/bientot/le-projet">A propos</a>
+            <li><a href="/bientot/le-projet/outils">Les outils techniques</a>
+            <li class="selected"><a href="/bientot/le-projet/parlent-de-nous">Ils parlent de nous</a>
+            <li><a href="/bientot/le-projet/recompenses">Récompenses</a>
+        </ul>
+    </nav>
+
+    <section id="presse">
+        <ul>
+            <li>
+                <div>
+                    <img src="/static/logos/presse/NumeriquESS.png">
+                </div>
+                <div>
+                    <time datetime="2018-06-12">12 juin 2018</time>
+                    <h1>NumeriquESS</h1>
+                    <p>Carrefour des innovations sociales : connecter les initiatives de la société civile</p>
+                    <a href="https://numeriquess.squarespace.com/news/2018/4/3/9-carrefourdesinnovationssociales-3jep7-6g75-xg7mz-tep79-8h95x">Ecouter le podcast</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/Le_Monde.svg.png">
+                </div>
+                <div>
+                    <time datetime="2018-05-25">25 mai 2018</time>, par Sébastien Poulet-Goffard
+                    <h1>Le Monde</h1>
+                    <p>« Entrepreneurs et travailleurs sociaux, rencontrez-vous ! »</p>
+                    <a href="https://www.lemonde.fr/idees/article/2018/05/25/entrepreneurs-et-travailleurs-sociaux-rencontrez-vous_5304433_3232.html">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/AR-texte-gauche.jpg">
+                </div>
+                <div>
+                    <time datetime="2018-05-28">28 mai 2018</time>
+                    <h1>Podcast d’Actifs Radio</h1>
+                    <p>Le Carrefour des Innovations Sociales veut contribuer à accélérer l’innovation sociale en France</p>
+                    <a href="http://www.actifsradio.fr/economie/398-carrefour-innovations-sociales">Ecouter le podcast</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/logo_bdt_territoires_desktop.png">
+                </div>
+                <div>
+                    <time datetime="2018-04-26">26 avril 2018</time>, par Caroline Megglé
+                    <h1>Localtis, groupe Caisse des dépôts</h1>
+                    <p>En bref - Le CGET et ses partenaires lancent leur Carrefour des innovations sociales</p>
+                    <a href="https://www.caissedesdepotsdesterritoires.fr/cs/ContentServer?pagename=Territoires/Articles/Articles&cid=1250280998219">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/images.png">
+                </div>
+                <div>
+                    <time datetime="2018-04-18">18 avril 2018</time>, par Sylvain Maschino pour Fédération nationale des Caisses d'Epargne
+                    <h1>Carenews</h1>
+                    <p>Les Caisses d'Epargne s'engagent aux côtés du Carrefour des innovations sociales</p>
+                    <a href="https://www.caissedesdepotsdesterritoires.fr/cs/ContentServer?pagename=Territoires/Articles/Articles&cid=1250280998219">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/LOGO-600x220-463.jpg">
+                </div>
+                <div>
+                    <time datetime="2018-01-08">8 janvier 2018</time>, par Hélène Bustos
+                    <h1>Transrural Initiatives</h1>
+                    <p>Cartographier l’innovation sociale</p>
+                    <a href="http://www.transrural-initiatives.org/2017/03/transrural-initiatives-n465-decembre-2017/">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/logos-Lab-Territorial.png">
+                </div>
+                <div>
+                    <time datetime="2017-08-01">1 août 2017</time>
+                    <h1>le laboratoire territorial</h1>
+                    <p>Cartographier l’innovation sociale</p>
+                    <a href="https://www.labterritorial.fr/bientot-une-banque-de-linnovation-sociale/">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/logo_bdt_territoires_desktop.png">
+                </div>
+                <div>
+                    <time datetime="2017-07-17">17 juillet 2017</time>, par Caroline Megglé
+                    <h1>Localtis, groupe Caisse des dépôts</h1>
+                    <p>Banque de l’innovation sociale : donner à voir une France des territoires extrêmement dynamique</p>
+                    <a href="https://www.caissedesdepotsdesterritoires.fr/cs/ContentServer?pagename=Territoires/Articles/Articles&cid=1250279556469">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/FqENOrjE_400x400.jpg">
+                </div>
+                <div>
+                    <time datetime="2017-05">mai 2017</time>
+                    <h1>La tribune Fonda</h1>
+                    <p>Une plateforme web qui mettra en commun l’ensemble des innovations sociales recensées sur le territoire</p>
+                    <a href="https://fonda.asso.fr/ressources/le-carrefour-des-innovations-sociales">Lire l’article</a>
+                </div>
+                
+            <li>
+                <div>
+                    <img src="/static/logos/presse/tw1324le_400x400.jpg">
+                </div>
+                <div>
+                    <time datetime="2017-04-20">20 avril 2017</time>
+                    <h1>Commissariat général à l’égalité des territoires</h1>
+                    <p>Une banque de l’innovation sociale au service de l’expérimentation dans les territoires</p>
+                    <a href="http://www.cget.gouv.fr/une-banque-de-linnovation-sociale-service-de-lexperimentation-territoires">Lire l’article</a>
+                </div>
+
+        </ul>
+    </section>
+
+
+</main>
+
+{% endblock %}
