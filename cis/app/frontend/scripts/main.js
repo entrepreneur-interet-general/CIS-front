@@ -12,7 +12,10 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 
-const filterDescriptions = [].concat(CHOICES_FILTERS_TAGS, CHOICES_FILTERS_PARTNERS);
+const filterDescriptions = [].concat(
+    CHOICES_FILTERS_TAGS.filter(c => c.name !== 'methods_'), 
+    CHOICES_FILTERS_PARTNERS
+);
 
 function makeEmptySelectedFilters(){
     const selectedFilters = new Map()
