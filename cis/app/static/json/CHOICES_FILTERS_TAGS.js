@@ -65,7 +65,7 @@ var CHOICES_FILTERS_TAGS = [
                 "id": "pubics_senior"
             }
         ]
-    }/*, 
+    }, 
     {
         "fullname": "M\u00e9thodes", 
         "name": "methods_", 
@@ -106,5 +106,5 @@ var CHOICES_FILTERS_TAGS = [
                 "id": "methods_research"
             }
         ]
-    }*/
+    }
 ]
