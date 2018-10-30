@@ -68,11 +68,11 @@ export default {
     props: ['filterDescriptions'],
     computed: 
         {
-            ...mapState([
-                'selectedFilters'
-            ]),
+            ...mapState({
+                selectedFilters: ({search}) => search.question.selectedFilters
+            }),
             searchedText: {
-                get () { return this.$store.state.searchedText },
+                get () { return this.$store.state.search.question.query },
                 set (value) {
                     this.$store.dispatch('searchedTextChanged', {searchedText: value})
                 }

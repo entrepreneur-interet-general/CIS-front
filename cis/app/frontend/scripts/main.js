@@ -55,6 +55,7 @@ function filterValuesToCISTags(filterValues){
 }
 
 
+
 const store = new Vuex.Store({
     strict: true,
     state: {
@@ -64,43 +65,68 @@ const store = new Vuex.Store({
             userName: 'DAV BRU',
             userSurname: 'HARDCODED'
         },*/
-        projects: [],
-        total: 0,
         geolocByProjectId: new Map(),
         spiders: undefined,
 
         displayedProject: undefined,
+
+        search: {
+            question: {
+                query: new URL(location).searchParams.get('text') || '',
+                selectedFilters: makeEmptySelectedFilters()
+            },
+            answer: {
+                pendingAbort: undefined, // function that can be used to abort the current pending search
+                result: undefined, // search results {projects, total}
+                error: undefined // if last search ended in an error
+            }
+        }
         
-        selectedFilters: makeEmptySelectedFilters(),
-        searchedText: new URL(location).searchParams.get('text') || ''
     },
     mutations: {
+        setSearchedText (state, {searchedText}) {
+            state.search.question.query = searchedText
+        },
         setSelectedFilters (state, {selectedFilters}) {
             // trigger re-render
-            state.selectedFilters = new Map(selectedFilters)
-        },
-        setSearchedText (state, {searchedText}) {
-            state.searchedText = searchedText
+            state.search.question.selectedFilters = new Map(selectedFilters)
         },
         emptyOneFilter (state, {filter}) {
-            state.selectedFilters.set(filter, new Set())
+            state.search.question.selectedFilters.set(filter, new Set())
 
             // trigger re-render
-            state.selectedFilters = new Map(state.selectedFilters)
+            state.search.question.selectedFilters = new Map(state.search.question.selectedFilters)
         },
         clearAllFilters(state){
-            state.selectedFilters = makeEmptySelectedFilters()
+            state.search.question.selectedFilters = makeEmptySelectedFilters()
         },
-        setProjects(state, {projects}){
-            state.projects = projects;
+
+        setSearchResult(state, {result}){
+            state.search.answer = {
+                pendingAbort: undefined,
+                result,
+                error: undefined
+            }
         },
-        setProjectTotal(state, {total}){
-            state.total = total;
+        setSearchPending(state, {pendingAbort}){
+            state.search.answer = {
+                pendingAbort,
+                result: undefined,
+                error: undefined
+            }
         },
+        setSearchError(state, {error}){
+            state.search.answer = {
+                pendingAbort: undefined,
+                result: undefined,
+                error
+            }
+        },
+        
         setDisplayedProject(state, {project}){
             state.displayedProject = project;
         },
-        setSpiders(state, {spiders}){makeEmptySelectedFilters
+        setSpiders(state, {spiders}){
             state.spiders = spiders
         },
         addGeolocs(state, {geolocByProjectId}){
@@ -109,7 +135,7 @@ const store = new Vuex.Store({
     },
     actions: {
         toggleFilter({state, commit, dispatch}, {filter, value}){
-            const selectedFilters = state.selectedFilters
+            const selectedFilters = state.search.question.selectedFilters
             const selectedValues = selectedFilters.get(filter)
             if(selectedValues.has(value))
                 selectedValues.delete(value)
@@ -121,7 +147,7 @@ const store = new Vuex.Store({
         },
 
         emptyOneFilter({state, commit, dispatch}, {filter}){
-            const selectedFilters = state.selectedFilters
+            const selectedFilters = state.search.question.selectedFilters
             selectedFilters.set(filter, new Set())
 
             commit('setSelectedFilters', {selectedFilters})
@@ -139,31 +165,28 @@ const store = new Vuex.Store({
         },
 
         search({state, commit}){
-            const selectedFiltersWithoutSourceurs = new Map(state.selectedFilters)
+            const {search} = state;
+            const selectedFiltersWithoutSourceurs = new Map(search.question.selectedFilters)
             selectedFiltersWithoutSourceurs.delete('sources_');
 
             const cisTags = filterValuesToCISTags(selectedFiltersWithoutSourceurs)
 
-            const spiderIds = [...state.selectedFilters.get('sources_')]
+            const spiderIds = [...search.question.selectedFilters.get('sources_')]
                 .map(name => CHOICES_FILTERS_PARTNERS[0].choices.find(c => c.name === name).id)
 
-            searchProjects(state.searchedText, cisTags, spiderIds)
-                .then(({projects, total}) => {
-                    console.log('projects pour', state.searchedText, cisTags)
-                    console.log(projects)
+            commit('setSearchPending', {pendingAbort: true})
 
-                    commit('setProjects', {projects})
-                    commit('setProjectTotal', {total})
+            searchProjects(search.question.query, cisTags, spiderIds)
+                .then(({projects, total}) => {
+                    commit('setSearchResult', {result: {projects, total}})
                 }) 
-                .catch(err => console.error('err search', text, err))
+                .catch(error => {
+                    commit('setSearchError', {error})
+                })
         },
         getSpiders({commit}){
             getSpiders()
-            .then(spiders => {
-                console.log('spiders', spiders)
-
-                commit('setSpiders', {spiders})
-            }) 
+            .then(spiders => commit('setSpiders', {spiders})) 
             .catch(err => console.error('err getSpiders', text, err))
         },
         findProjectsGeolocs({commit}, projects){
@@ -263,7 +286,6 @@ const routes = [
             }
 
             store.commit('setDisplayedProject', {project: project || {}})
-
 
             // get spiders data if they're not already here
             if(!store.state.spiders){
