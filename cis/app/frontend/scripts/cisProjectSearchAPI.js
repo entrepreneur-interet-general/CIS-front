@@ -77,11 +77,11 @@ function uniformizeProject(p){
 // This function is awkward
 // TODO Create a dedicated server-side end-point to get only the spiders
 export function getSpiders(){
-    let url = `${APISearchOrigin}/api/data?token=pwa&results_per_page=1`;
+    let url = `${APISearchOrigin}/api/infos?only_spiders_list=true`;
 
     return fetch(url)
     .then(r => r.json())
-    .then(({spiders_dict}) => spiders_dict)
+    .then(({spiders}) => spiders.spiders_dict)
 }
 
 
