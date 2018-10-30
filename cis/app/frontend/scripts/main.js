@@ -320,7 +320,7 @@ const routes = [
             const {id} = to.params;
             console.log('beforeEnter /project/:id', id)
 
-            const project = store.state.projects.find(p => p.id === id)
+            const project = store.state.search.answer.result.projects.find(p => p.id === id)
 
             // get project data
             if(!project){
