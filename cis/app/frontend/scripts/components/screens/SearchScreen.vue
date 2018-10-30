@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavBar :logo="logo" :brand="brand"/>
-        <SearchWithFilters :filterDescriptions="filterDescriptions"/>
+        <SearchWithFilters/>
         <main>
             <SearchResults/>
         </main>
@@ -22,7 +22,7 @@ export default {
         NavBar, SearchWithFilters, SearchResults, Footer
     },
     props: [
-        'logo', 'brand', 'filterDescriptions'
+        'logo', 'brand'
     ],
 }
 </script>

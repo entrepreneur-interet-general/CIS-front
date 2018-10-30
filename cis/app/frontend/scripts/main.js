@@ -11,16 +11,24 @@ import {searchProjects, getProjectById, getSpiders} from './cisProjectSearchAPI.
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
+const SOURCE_FILTER_NAME = 'source_';
 
-const filterDescriptions = [].concat(CHOICES_FILTERS_TAGS, CHOICES_FILTERS_PARTNERS);
+function makeSourceFilterFromSpiders(spiders){
 
-function makeEmptySelectedFilters(){
-    const selectedFilters = new Map()
-    for(const f of filterDescriptions){
-        selectedFilters.set(f.name, new Set())
+    console.log('spiders', spiders);
+
+    return {
+        "fullname": "Source", 
+        "name": SOURCE_FILTER_NAME,
+        "choices": [...Object.entries(spiders)].map(([id, {name}]) => ({
+            "fullname": name, 
+            "id": id,
+            "spiderId": id,
+            "name": name
+        }))
     }
-    return selectedFilters;
 }
+
 
 
 function filterValuesToCISTags(filterValues){
@@ -51,53 +59,107 @@ function filterValuesToCISTags(filterValues){
     return cisTags;
 }
 
+const INITIAL_FILTER_DESCRIPTIONS = CHOICES_FILTERS_TAGS.filter(c => c.name !== 'methods_')
+
+
+function makeEmptySelectedFilters(filterDescriptions){
+    const selectedFilters = new Map()
+    for(const f of filterDescriptions){
+        selectedFilters.set(f.name, new Set())
+    }
+    return selectedFilters;
+}
+
 
 const store = new Vuex.Store({
     strict: true,
     state: {
-        filterDescriptions,
         /*user: {
             // TODO import user infos to the client-side
             userName: 'DAV BRU',
             userSurname: 'HARDCODED'
         },*/
-        projects: [],
-        total: 0,
+        
         geolocByProjectId: new Map(),
         spiders: undefined,
 
         displayedProject: undefined,
+
+        filterDescriptions: INITIAL_FILTER_DESCRIPTIONS,
+        search: {
+            question: {
+                query: new URL(location).searchParams.get('text') || '',
+                selectedFilters: makeEmptySelectedFilters(INITIAL_FILTER_DESCRIPTIONS)
+            },
+            answer: {
+                pendingAbort: undefined, // function that can be used to abort the current pending search
+                result: undefined, // search results {projects, total}
+                error: undefined // if last search ended in an error
+            }
+        }
         
-        selectedFilters: makeEmptySelectedFilters(),
-        searchedText: new URL(location).searchParams.get('text') || ''
     },
     mutations: {
+        setSearchedText (state, {searchedText}) {
+            state.search.question.query = searchedText
+        },
         setSelectedFilters (state, {selectedFilters}) {
             // trigger re-render
-            state.selectedFilters = new Map(selectedFilters)
-        },
-        setSearchedText (state, {searchedText}) {
-            state.searchedText = searchedText
+            state.search.question.selectedFilters = new Map(selectedFilters)
         },
         emptyOneFilter (state, {filter}) {
-            state.selectedFilters.set(filter, new Set())
+            state.search.question.selectedFilters.set(filter, new Set())
 
             // trigger re-render
-            state.selectedFilters = new Map(state.selectedFilters)
+            state.search.question.selectedFilters = new Map(state.search.question.selectedFilters)
         },
         clearAllFilters(state){
-            state.selectedFilters = makeEmptySelectedFilters()
+            state.search.question.selectedFilters = makeEmptySelectedFilters(state.filterDescriptions)
         },
-        setProjects(state, {projects}){
-            state.projects = projects;
+
+        setSearchResult(state, {result}){
+            state.search.answer = {
+                pendingAbort: undefined,
+                result,
+                error: undefined
+            }
         },
-        setProjectTotal(state, {total}){
-            state.total = total;
+        setSearchPending(state, {pendingAbort}){
+            state.search.answer = {
+                pendingAbort,
+                result: undefined,
+                error: undefined
+            }
         },
+        setSearchError(state, {error}){
+            state.search.answer = {
+                pendingAbort: undefined,
+                result: undefined,
+                error
+            }
+        },
+        
+        setSourceFilter(state, {sourceFilter}){
+            console.log('setSourceFilter', sourceFilter)
+
+            const sourceFilterIndex = state.filterDescriptions.findIndex(fd => fd.name === SOURCE_FILTER_NAME)
+
+            console.log('sourceFilterIndex', sourceFilterIndex)
+
+            if(sourceFilterIndex !== -1){
+                state.filterDescriptions[sourceFilterIndex] = sourceFilter
+            }
+            else{
+                state.filterDescriptions.push(sourceFilter);
+                state.search.question.selectedFilters.set(SOURCE_FILTER_NAME, new Set())
+                //state.filterDescriptions = state.filterDescriptions
+            }
+        },
+
         setDisplayedProject(state, {project}){
             state.displayedProject = project;
         },
-        setSpiders(state, {spiders}){makeEmptySelectedFilters
+        setSpiders(state, {spiders}){
             state.spiders = spiders
         },
         addGeolocs(state, {geolocByProjectId}){
@@ -106,7 +168,7 @@ const store = new Vuex.Store({
     },
     actions: {
         toggleFilter({state, commit, dispatch}, {filter, value}){
-            const selectedFilters = state.selectedFilters
+            const selectedFilters = state.search.question.selectedFilters
             const selectedValues = selectedFilters.get(filter)
             if(selectedValues.has(value))
                 selectedValues.delete(value)
@@ -118,7 +180,7 @@ const store = new Vuex.Store({
         },
 
         emptyOneFilter({state, commit, dispatch}, {filter}){
-            const selectedFilters = state.selectedFilters
+            const selectedFilters = state.search.question.selectedFilters
             selectedFilters.set(filter, new Set())
 
             commit('setSelectedFilters', {selectedFilters})
@@ -136,30 +198,33 @@ const store = new Vuex.Store({
         },
 
         search({state, commit}){
-            const selectedFiltersWithoutSourceurs = new Map(state.selectedFilters)
-            selectedFiltersWithoutSourceurs.delete('sources_');
+            const {search} = state;
+            const selectedFiltersWithoutSourceurs = new Map(search.question.selectedFilters)
+            selectedFiltersWithoutSourceurs.delete(SOURCE_FILTER_NAME);
 
             const cisTags = filterValuesToCISTags(selectedFiltersWithoutSourceurs)
 
-            const spiderIds = [...state.selectedFilters.get('sources_')]
-                .map(name => CHOICES_FILTERS_PARTNERS[0].choices.find(c => c.name === name).id)
+            const selectedSources = search.question.selectedFilters.get(SOURCE_FILTER_NAME)
 
-            searchProjects(state.searchedText, cisTags, spiderIds)
+            const spiderIds = selectedSources ? [...selectedSources].map(source => {
+                return [...Object.entries(store.state.spiders)].find(([id, spider]) => spider.name === source)[0]
+            }) : undefined;
+
+            commit('setSearchPending', {pendingAbort: true})
+
+            searchProjects(search.question.query, cisTags, spiderIds)
                 .then(({projects, total}) => {
-                    console.log('projects pour', state.searchedText, cisTags)
-                    console.log(projects)
-
-                    commit('setProjects', {projects})
-                    commit('setProjectTotal', {total})
+                    commit('setSearchResult', {result: {projects, total}})
                 }) 
-                .catch(err => console.error('err search', text, err))
+                .catch(error => {
+                    commit('setSearchError', {error})
+                })
         },
         getSpiders({commit}){
             getSpiders()
             .then(spiders => {
-                console.log('spiders', spiders)
-
                 commit('setSpiders', {spiders})
+                commit('setSourceFilter', {sourceFilter: makeSourceFilterFromSpiders(spiders)})
             }) 
             .catch(err => console.error('err getSpiders', text, err))
         },
@@ -211,6 +276,12 @@ const store = new Vuex.Store({
 })
 
 
+
+
+
+
+
+
 const BRAND_DATA = Object.freeze({
     logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
     brand: 'Carrefour des Innovations Sociales',
@@ -222,11 +293,12 @@ const routes = [
         component: SearchScreen, 
         props(route){
             return {
-                filterDescriptions,
                 ...BRAND_DATA
             }
         },
         beforeEnter(to, from, next){
+
+            //console.log('store.state', store.state)
 
             // get spiders data if they're not already here
             if(!store.state.spiders){
@@ -260,7 +332,6 @@ const routes = [
             }
 
             store.commit('setDisplayedProject', {project: project || {}})
-
 
             // get spiders data if they're not already here
             if(!store.state.spiders){

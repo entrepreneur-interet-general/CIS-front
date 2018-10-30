@@ -22,7 +22,7 @@
             <div class="count-and-tabs">
 
                 <div class="results-count">
-                    <span class="nb">{{total}}</span> 
+                    <span class="nb">{{pending ? '?' : total}}</span> 
                     <span>projets trouvés</span>
                 </div>
 
@@ -55,8 +55,12 @@
                 </div>
             </div>
         </header>
-        <div class="container">
 
+        <div class="container" v-if="pending">
+            <div class="pending">Recherche en cours...</div>
+        </div>
+
+        <div class="container" v-if="!pending">
             <div class="columns" v-if="view === views.VIEW_LIST && total > 0" >
                 <div class="column is-3" v-for="(projectColumn, i) in projectColumns" :key="i">
                     <div class="columns is-multiline">
@@ -68,8 +72,8 @@
             <div class="no-result" v-if="view === views.VIEW_LIST && total === 0">(Aucun résultat)</div>
 
             <CISMap v-if="view === views.VIEW_MAP"/>
-
         </div>
+
     </section>
 </template>
 
@@ -112,19 +116,22 @@ export default {
 
     computed: {
         projectColumns(){
-            const {projects} = this.$store.state;
+            const {projects} = this.$store.state.search.answer.result;
 
-            const columnsData = Array(COLUMN_COUNT).fill().map(() => []);
-            
-            projects.slice(0, this.showCount).forEach((p, i) => {
-                columnsData[i%COLUMN_COUNT].push(p);
-            })
-            
-            return columnsData
+            if(projects){
+                const columnsData = Array(COLUMN_COUNT).fill().map(() => []);
+                
+                projects.slice(0, this.showCount).forEach((p, i) => {
+                    columnsData[i%COLUMN_COUNT].push(p);
+                })
+                
+                return columnsData
+            }
         },
         ...mapState({
             filterDescriptions: 'filterDescriptions',
-            selectedFilters: ({selectedFilters}) => {
+            selectedFilters: ({search}) => {
+                const {selectedFilters} = search.question
                 const filters = []
 
                 for(const [filter, values] of selectedFilters){
@@ -135,8 +142,10 @@ export default {
 
                 return filters
             },
-            projects: 'projects',
-            total: 'total'
+            pending: ({search}) => !!search.answer.pendingAbort,
+            projects: ({search}) => search.answer.result && search.answer.result.projects,
+            total: ({search}) => search.answer.result && search.answer.result.total,
+            
         })
     },
 
@@ -157,7 +166,7 @@ export default {
             if (
                 window.innerHeight + window.scrollY >= (document.body.offsetHeight - SCROLL_BEFORE_BOTTOM_TRIGGER)
             ) {
-                if(this.showCount < this.$store.state.projects.length){
+                if(this.$store.state.search.answer.result && this.showCount < this.$store.state.search.answer.result.projects.length){
                     this.showCount = this.showCount + MORE_PROJECTS_ON_SCROLL_COUNT
                 }
             }
@@ -232,7 +241,9 @@ header > .count-and-tabs{
 
 header .results-count{
     padding: 0.5em 1em;
+
     background-color: white;
+    border-radius: 3px;
     font-size: 1.2em;
 
     display: flex;
@@ -252,6 +263,10 @@ section{
 }
 
 .no-result{
+    text-align: center;
+    padding: 2em;
+}
+.pending{
     text-align: center;
     padding: 2em;
 }
