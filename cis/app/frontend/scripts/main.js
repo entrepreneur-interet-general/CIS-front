@@ -289,7 +289,7 @@ const BRAND_DATA = Object.freeze({
 
 const routes = [
     { 
-        path: '/bientot/recherche',
+        path: '/recherche',
         component: SearchScreen, 
         props(route){
             return {
@@ -309,7 +309,7 @@ const routes = [
         }
     },
     {
-        path: '/bientot/project/:id',
+        path: '/project/:id',
         component: CISProjectScreen, 
         props(route){
             return {
@@ -320,7 +320,9 @@ const routes = [
             const {id} = to.params;
             console.log('beforeEnter /project/:id', id)
 
-            const project = store.state.search.answer.result.projects.find(p => p.id === id)
+            const result = store.state.search.answer.result
+
+            const project = result && result.projects.find(p => p.id === id)
 
             // get project data
             if(!project){

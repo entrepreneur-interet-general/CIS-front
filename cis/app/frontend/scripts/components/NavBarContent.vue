@@ -3,25 +3,25 @@
 		<div class="navbar-end">
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/bientot/recherche">
+				<a class="button is-text" href="/recherche">
 					<span>Moteur de recherche</span>
 				</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/bientot/le-projet">
+				<a class="button is-text" href="/le-projet">
 					<span>Projet</span>
 				</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/bientot/qui-sommes-nous"> 
+				<a class="button is-text" href="/qui-sommes-nous"> 
 					<span>Qui sommes-nous ?</span>
 				</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/bientot/nous-rejoindre"> 
+				<a class="button is-text" href="/nous-rejoindre"> 
 					<span>Nous rejoindre</span>
 				</a>
 			</div>

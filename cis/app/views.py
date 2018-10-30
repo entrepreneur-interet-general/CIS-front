@@ -121,165 +121,10 @@ def error403(error):
 
 
 
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### STATIC PAGES : INDEX / LANDING / PROJECT
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
+# V3 Website
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/')
-def index():
-
-	# time_now	= datetime.datetime.utcnow()
-
-	# filters_choices = get_filters_choices()
-	form 			= PreRegisterForm()
-
-	# TO DO 
-	### set language
-
-	# TO DO 
-	### check token from session["public_id"] 
-	try :
-		current_session_uid = session["public_id"]
-		# Check_tokens_user ( current_session_uid, lang_set )
-	except : 
-		current_session_uid = None
-
-
-	if request.method == 'POST' :
-		
-		### for debugging purposes
-		for f_field in form : 
-			log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
-
-
-		if form.validate_on_submit():
-
-			### ADD A NEW FEEDBACK
-			# create preregister data and store it in MongoDB
-			new_preregister 	= PreRegister()
-			new_preregister.populate_from_form( form=form )
-			new_preregister.add_created_at()
-			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
-
-			# check if email/user already exists in users db
-			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
-			
-			### ADD A NEW USER
-			# create a potential user if doesn't already exist in db
-			if not existing_user :
-				
-				# create default password
-				temp_pwd = pwd_generator()
-				hashpass = generate_password_hash( temp_pwd, method='sha256')
-		
-				# capitalize name and surname 
-				form.userName.data 		= form.userName.data.capitalize()
-				form.userSurname.data 	= form.userSurname.data.capitalize()
-
-				# populate user class
-				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
-				new_user.populate_from_form(form=form)
-				new_user.add_created_at()
-				new_user.check_if_user_structure_is_partner()
-
-				# save user in db as visitor
-				new_user.insert_to_mongo( coll=mongo_users )
-			
-			flash(u"votre message a bien été envoyé, merci de votre intérêt !", category='primary')
-
-			return redirect(request.args.get("next") or url_for("index"))
-
-
-		else :
-			
-			log_cis.error("form was not validated / form.errors : %s", form.errors )
-			
-			flash(u"problème lors de l'envoi de votre message", category='warning')
-
-			return redirect(url_for("index"))
-
-		
-
-	log_cis.debug("current_user : \n %s ", pformat(current_user.__dict__))
-
-	return render_template( "index.html",
-							
-							config_name			= config_name, # prod or default...
-							app_metas			= app_metas, 
-							language			= "fr" ,
-							languages_dict		= app_languages_dict ,
-
-							site_section		= "home",
-							# filters_choices		= filters_choices,
-							form				= form,
-							user_infos			= current_user.get_public_infos
-						)
-
-
-@app.route('/infos/project')
-def project():
-	"""
-	static page for project
-	"""
-	log_cis.debug("current_user : \n %s ", pformat(current_user.__dict__))
-
-	return render_template('index.html',
-							
-							config_name			= config_name, # prod or default...
-							app_metas			= app_metas, 
-							language			= "fr" ,
-							languages_dict		= app_languages_dict ,
-
-							site_section		= "project",
-							user_infos			= current_user.get_public_infos
-						)
-
-
-	
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-### SEARCH PAGES
-### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
-
-@app.route('/search', methods=['GET', 'POST'])
-@login_required
-def search():
-
-	log_cis.debug("entering search page")
-
-	# filters_choices = get_filters_choices() 	### function inside : utils.py/__init__.py
-	# filters_choices = [
-	# 					{"domains" 		: {"fullname":u"Domaines",		"choices": 	CHOICES_DOMAINS} 	},
-	# 					{"geoloc"		: {"fullname":u"Localisations",	"choices": 	[] } 				},
-	# 					{"partners"		: {"fullname":u"Partenaires",	"choices": 	CHOICES_PARTNERS}	},
-	# 					{"publics"		: {"fullname":u"Publics",		"choices":	CHOICES_PUBLICS}	},
-	# 					{"methods"		: {"fullname":u"Méthodes",		"choices":	CHOICES_METHODS}	}
-	# 				]
-
-	# as long search engine is in beta version
-	flash(	u"<strong>Le Carrefour des innovations sociales bêta est en construction. </strong><br>Certaines fonctionnalités sont déjà disponibles et d'autres le seront très prochainement !", 
-			category='primary'
-		)
-
-	return render_template( "index.html",
-
-							config_name			= config_name, # prod or default...
-							app_metas			= app_metas, 
-							language			= "fr" ,
-							languages_dict		= app_languages_dict ,
-							
-							site_section		= "search",
-							# filters_choices		= filters_choices,
-							user_infos			= current_user.get_public_infos
-						)
-
-
-
-# V3 Website
-# URLs are prefixed with '/bientot/' for now
-
-@app.route('/bientot/', methods=['GET', 'POST'])
-@app.route('/bientot/')
 def home():
 
 	log_cis.debug("entering new home page")
@@ -335,7 +180,7 @@ def home():
 			
 			flash(u"votre message a bien été envoyé, merci de votre intérêt !", category='primary')
 
-			return redirect(request.args.get("next") or "/bientot/")
+			return redirect(request.args.get("next") or "/")
 
 
 		else :
@@ -344,7 +189,7 @@ def home():
 			
 			flash(u"problème lors de l'envoi de votre message", category='warning')
 
-			return redirect("/bientot/")
+			return redirect("/")
 
 
 	return render_template(
@@ -356,8 +201,8 @@ def home():
 	)
 
 
-@app.route('/bientot/recherche', methods=['GET'])
-@app.route('/bientot/project/<id>', methods=['GET'])
+@app.route('/recherche', methods=['GET'])
+@app.route('/project/<id>', methods=['GET'])
 def spa(id=''):
 
 	log_cis.debug("entering SPA page")
@@ -370,7 +215,7 @@ def spa(id=''):
 	)
 
 
-@app.route('/bientot/le-projet', methods=['GET'])
+@app.route('/le-projet', methods=['GET'])
 def leProjet():
 
 	log_cis.debug("entering le projet page")
@@ -382,7 +227,7 @@ def leProjet():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/le-projet/outils', methods=['GET'])
+@app.route('/le-projet/outils', methods=['GET'])
 def lesOutils():
 
 	log_cis.debug("entering les outils page")
@@ -394,7 +239,7 @@ def lesOutils():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/le-projet/parlent-de-nous', methods=['GET'])
+@app.route('/le-projet/parlent-de-nous', methods=['GET'])
 def presse():
 
 	log_cis.debug("entering presse page")
@@ -406,7 +251,7 @@ def presse():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/le-projet/recompenses', methods=['GET'])
+@app.route('/le-projet/recompenses', methods=['GET'])
 def recompenses():
 
 	log_cis.debug("entering recompenses page")
@@ -418,7 +263,7 @@ def recompenses():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/qui-sommes-nous', methods=['GET'])
+@app.route('/qui-sommes-nous', methods=['GET'])
 def quiSommesNous():
 
 	log_cis.debug("entering qui-sommes-nous page")
@@ -430,7 +275,7 @@ def quiSommesNous():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/qui-sommes-nous/qui-fait-quoi', methods=['GET'])
+@app.route('/qui-sommes-nous/qui-fait-quoi', methods=['GET'])
 def leCollectif():
 
 	log_cis.debug("entering qui-fait-quoi page")
@@ -442,7 +287,7 @@ def leCollectif():
 		language			= "fr" 
 	)
 
-@app.route('/bientot/nous-rejoindre', methods=['GET'])
+@app.route('/nous-rejoindre', methods=['GET'])
 def nousRejoindre():
 
 	log_cis.debug("entering nous-rejoindre page")

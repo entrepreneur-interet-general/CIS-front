@@ -5,7 +5,7 @@
         <main>
             <div class="container">
 
-                <a class="back" href="/bientot/recherche" @click="goBack">
+                <a class="back" href="/recherche" @click="goBack">
                     <span class="icon has-text-primary">
                         <i class="fas fa-arrow-left"></i>
                     </span>
