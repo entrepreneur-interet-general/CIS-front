@@ -3,7 +3,7 @@
         <div class="card proj-card">
 
             <!-- TODO change to <router-link> -->
-            <router-link :to="`/bientot/project/${project.id}`" class="card-image">
+            <router-link :to="`/project/${project.id}`" class="card-image">
                 <img class="proj-card-img" :src="project.image" :alt="'illustration du projet' + project.title" >
             </router-link>
             
@@ -19,7 +19,7 @@
 
                 <p class="title is-5">
                     <!-- TODO change to <router-link> -->
-                    <router-link :to="`/bientot/project/${project.id}`" class="a_big">
+                    <router-link :to="`/project/${project.id}`" class="a_big">
                         {{project.title}}
                     </router-link>
                 </p>
