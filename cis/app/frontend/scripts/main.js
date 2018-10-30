@@ -283,7 +283,7 @@ const store = new Vuex.Store({
 
 
 const BRAND_DATA = Object.freeze({
-    logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
+    logo: '/static/logos/CIS/CIS_logo.png',
     brand: 'Carrefour des Innovations Sociales',
 })
 
