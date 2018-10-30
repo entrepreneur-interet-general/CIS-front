@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 // ease out expo to stabilize the significative numbers quickly
                 const toDisplay = projectCount * (1 - (fraction === 1 ? 0 : Math.pow(2, -10*fraction)));
 
-                counter.textContent = Math.round(toDisplay);
+                counter.textContent = Math.round(Math.max(0, toDisplay));
 
                 if(fraction < 1){
                     step();
