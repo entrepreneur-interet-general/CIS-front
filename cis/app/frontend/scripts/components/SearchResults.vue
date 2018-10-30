@@ -125,8 +125,6 @@ export default {
                     columnsData[i%COLUMN_COUNT].push(p);
                 })
                 
-                console.log('projects', projects, columnsData)
-
                 return columnsData
             }
         },
@@ -168,7 +166,7 @@ export default {
             if (
                 window.innerHeight + window.scrollY >= (document.body.offsetHeight - SCROLL_BEFORE_BOTTOM_TRIGGER)
             ) {
-                if(this.showCount < this.$store.state.answer.result.projects.length){
+                if(this.$store.state.search.answer.result && this.showCount < this.$store.state.search.answer.result.projects.length){
                     this.showCount = this.showCount + MORE_PROJECTS_ON_SCROLL_COUNT
                 }
             }

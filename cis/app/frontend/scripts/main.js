@@ -11,19 +11,24 @@ import {searchProjects, getProjectById, getSpiders} from './cisProjectSearchAPI.
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
+const SOURCE_FILTER_NAME = 'source_';
 
-const filterDescriptions = [].concat(
-    CHOICES_FILTERS_TAGS.filter(c => c.name !== 'methods_'), 
-    CHOICES_FILTERS_PARTNERS
-);
+function makeSourceFilterFromSpiders(spiders){
 
-function makeEmptySelectedFilters(){
-    const selectedFilters = new Map()
-    for(const f of filterDescriptions){
-        selectedFilters.set(f.name, new Set())
+    console.log('spiders', spiders);
+
+    return {
+        "fullname": "Source", 
+        "name": SOURCE_FILTER_NAME,
+        "choices": [...Object.entries(spiders)].map(([id, {name}]) => ({
+            "fullname": name, 
+            "id": id,
+            "spiderId": id,
+            "name": name
+        }))
     }
-    return selectedFilters;
 }
+
 
 
 function filterValuesToCISTags(filterValues){
@@ -54,26 +59,37 @@ function filterValuesToCISTags(filterValues){
     return cisTags;
 }
 
+const INITIAL_FILTER_DESCRIPTIONS = CHOICES_FILTERS_TAGS.filter(c => c.name !== 'methods_')
+
+
+function makeEmptySelectedFilters(filterDescriptions){
+    const selectedFilters = new Map()
+    for(const f of filterDescriptions){
+        selectedFilters.set(f.name, new Set())
+    }
+    return selectedFilters;
+}
 
 
 const store = new Vuex.Store({
     strict: true,
     state: {
-        filterDescriptions,
         /*user: {
             // TODO import user infos to the client-side
             userName: 'DAV BRU',
             userSurname: 'HARDCODED'
         },*/
+        
         geolocByProjectId: new Map(),
         spiders: undefined,
 
         displayedProject: undefined,
 
+        filterDescriptions: INITIAL_FILTER_DESCRIPTIONS,
         search: {
             question: {
                 query: new URL(location).searchParams.get('text') || '',
-                selectedFilters: makeEmptySelectedFilters()
+                selectedFilters: makeEmptySelectedFilters(INITIAL_FILTER_DESCRIPTIONS)
             },
             answer: {
                 pendingAbort: undefined, // function that can be used to abort the current pending search
@@ -98,7 +114,7 @@ const store = new Vuex.Store({
             state.search.question.selectedFilters = new Map(state.search.question.selectedFilters)
         },
         clearAllFilters(state){
-            state.search.question.selectedFilters = makeEmptySelectedFilters()
+            state.search.question.selectedFilters = makeEmptySelectedFilters(state.filterDescriptions)
         },
 
         setSearchResult(state, {result}){
@@ -123,6 +139,23 @@ const store = new Vuex.Store({
             }
         },
         
+        setSourceFilter(state, {sourceFilter}){
+            console.log('setSourceFilter', sourceFilter)
+
+            const sourceFilterIndex = state.filterDescriptions.findIndex(fd => fd.name === SOURCE_FILTER_NAME)
+
+            console.log('sourceFilterIndex', sourceFilterIndex)
+
+            if(sourceFilterIndex !== -1){
+                state.filterDescriptions[sourceFilterIndex] = sourceFilter
+            }
+            else{
+                state.filterDescriptions.push(sourceFilter);
+                state.search.question.selectedFilters.set(SOURCE_FILTER_NAME, new Set())
+                //state.filterDescriptions = state.filterDescriptions
+            }
+        },
+
         setDisplayedProject(state, {project}){
             state.displayedProject = project;
         },
@@ -167,12 +200,15 @@ const store = new Vuex.Store({
         search({state, commit}){
             const {search} = state;
             const selectedFiltersWithoutSourceurs = new Map(search.question.selectedFilters)
-            selectedFiltersWithoutSourceurs.delete('sources_');
+            selectedFiltersWithoutSourceurs.delete(SOURCE_FILTER_NAME);
 
             const cisTags = filterValuesToCISTags(selectedFiltersWithoutSourceurs)
 
-            const spiderIds = [...search.question.selectedFilters.get('sources_')]
-                .map(name => CHOICES_FILTERS_PARTNERS[0].choices.find(c => c.name === name).id)
+            const selectedSources = search.question.selectedFilters.get(SOURCE_FILTER_NAME)
+
+            const spiderIds = selectedSources ? [...selectedSources].map(source => {
+                return [...Object.entries(store.state.spiders)].find(([id, spider]) => spider.name === source)[0]
+            }) : undefined;
 
             commit('setSearchPending', {pendingAbort: true})
 
@@ -186,7 +222,10 @@ const store = new Vuex.Store({
         },
         getSpiders({commit}){
             getSpiders()
-            .then(spiders => commit('setSpiders', {spiders})) 
+            .then(spiders => {
+                commit('setSpiders', {spiders})
+                commit('setSourceFilter', {sourceFilter: makeSourceFilterFromSpiders(spiders)})
+            }) 
             .catch(err => console.error('err getSpiders', text, err))
         },
         findProjectsGeolocs({commit}, projects){
@@ -237,6 +276,12 @@ const store = new Vuex.Store({
 })
 
 
+
+
+
+
+
+
 const BRAND_DATA = Object.freeze({
     logo: '/static/logos/CIS/CIS_beta_logo_LD.png',
     brand: 'Carrefour des Innovations Sociales',
@@ -248,11 +293,12 @@ const routes = [
         component: SearchScreen, 
         props(route){
             return {
-                filterDescriptions,
                 ...BRAND_DATA
             }
         },
         beforeEnter(to, from, next){
+
+            //console.log('store.state', store.state)
 
             // get spiders data if they're not already here
             if(!store.state.spiders){

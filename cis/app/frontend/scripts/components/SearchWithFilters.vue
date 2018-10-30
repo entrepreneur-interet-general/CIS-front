@@ -65,11 +65,11 @@
 import {mapState} from 'vuex'
 
 export default {
-    props: ['filterDescriptions'],
     computed: 
         {
             ...mapState({
-                selectedFilters: ({search}) => search.question.selectedFilters
+                selectedFilters: ({search}) => search.question.selectedFilters,
+                'filterDescriptions': 'filterDescriptions'
             }),
             searchedText: {
                 get () { return this.$store.state.search.question.query },
