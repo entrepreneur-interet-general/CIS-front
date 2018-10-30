@@ -1,158 +1,160 @@
-PUBLICATION SUR LE SITE,MEMBRE DU COLLECTIF,PRESENTATION SUCCINCTE,ECHELLE DE SON ACTION,SITE WEB ,TWEET,ACTIVITES,CONTACT SUR LE SITE DU CIS,FONCTION DU CONTACT,NOM Photo portrait
+PUBLICATION SUR LE SITE,MEMBRE DU COLLECTIF,PRESENTATION SUCCINCTE,ECHELLE DE SON ACTION,SITE WEB ,TWEET,ACTIVITES,CONTACT SUR LE SITE DU CIS,FONCTION DU CONTACT,NOM Photo portrait,NOM Photo logo,Sous dossier attaché
 ok,ADEME,"Participer à la mise en œuvre des politiques publiques dans les domaines de l’environnement, de l’énergie et du développement durable.",Nationale,www.ademe.fr,"@ademe
-",financement,Hervé Pernin,Conseiller technique,
-,ADEME,,,,,recherche,,,
-,ADEME,,,,,accompagnement conseil,,,
-,ADEME,,,,,formation,,,
-,ADEME,,,,,centre de ressources,,,
-ok,AEIDL,"Fournir une gamme diversifiée de services, dans une perspective européenne, multilingue et multiculturelle avec une expertise spécifique pour l'animation de réseau, de projet et de programme.",Européenne,www.aeidl.eu,@AEIDL,accompagnement conseil,Christophe Thevignot,Knowledge manager & ICT,Thevignot_Christophe_AEIDL.png
-,AEIDL,,,,,recherche,,,
-,AEIDL,,,,,centre de ressources,,,
-,AEIDL,,,,,observation,,,
-ok,Aides Territoires,Aides-territoires facilite l'accès aux aides publiques pour les projets d'aménagement durable. Une Startup d'Etat incubée à la Fabrique Numérique du Ministère de la Cohésion des Territoires. ,Nationale,https://aides-territoires.beta.gouv.fr/,NON,centre de ressources,Elise Marion,Intrapreneure,
-ok,Agence du numérique,Permettre l'appropriation du numérique par tous et la transition numérique des territoires.,Nationale,https://agencedunumerique.gouv.fr,@AgenceNumerique,accompagnement conseil,Pierre-Louis Rolle,Chargé de mission,
-,Agence du numérique,,,,,centre de ressources,,,
-,Agence du numérique,,,,,financement,,,
-ok,ANIMAFAC,"Accompagner les projets des associations étudiantes, promouvoir l’engagement et permettre la rencontre entre les jeunes engagés.",Nationale,https://www.animafac.net,@animafac,accompagnement conseil,Loïs Labille,Chargé des projets d'innovation sociale,Labille_Lois_Animafac.jpg
-,ANIMAFAC,,,,,incubation,,,
-,ANIMAFAC,,,,,mentorat,,,
-,ANIMAFAC,,,,,formation,,,
-ok,APIE,Promouvoir une gestion optimisée des actifs immatériels publics et accompagner les stratégies de valorisation de ce patrimoine.,Nationale,https://www.economie.gouv.fr/apie,@APIE_gouv,accompagnement conseil,Jean-Baptiste Labrune,Chargé de mission auprès de la direction,
-ok,APRILES,"Repérer, expertiser et diffuser des actions favorisant le lien social, l’implication citoyenne et la dynamique de territoire.",Nationale,apriles.net,@AgenceApriles,observation,Estelle Camus,Responsable éditoriale,
-,APRILES,,,,,centre de ressources,,,
-ok,Ashoka,"Agir en faveur de l’innovation sociale grâce à un réseau d'acteur et accélérer les idées et initiatives ayant un impact sociétal positif, pour préparer l’avenir dès à présent.",Internationale,https://www.ashoka.org/fr,@AshokaFrance,mentorat,Julie Auffray,Venture associate,
-,Ashoka,,,,,accompagnement conseil,,,
-ok,Association des Maires Ruraux de France,"Fédèrer, informer et représenter les maires des communes de moins de 3 500 habitants partout en France.",Nationale,www.amf.asso.fr,@Maires_Ruraux,centre de ressources,Cédric Szabo,Directeur,Szabo_Cedric_AMRF_copyr_LDaniere.jpg
-,Association des Maires Ruraux de France,,,,,accompagnement conseil,,,
-,Association des Maires Ruraux de France,,,,,observation,,,
+",financement,Hervé Pernin,Conseiller technique,,ADEME.png,Institution_et_tetes_de_reseau
+,ADEME,,,,,recherche,,,,,
+,ADEME,,,,,accompagnement conseil,,,,,
+,ADEME,,,,,formation,,,,,
+,ADEME,,,,,centre de ressources,,,,,
+ok,AEIDL,"Fournir une gamme diversifiée de services, dans une perspective européenne, multilingue et multiculturelle avec une expertise spécifique pour l'animation de réseau, de projet et de programme.",Européenne,www.aeidl.eu,@AEIDL,accompagnement conseil,Christophe Thevignot,Knowledge manager & ICT,Thevignot_Christophe_AEIDL.png,AEIDL_CMYK.png,Associations_et_accompagnateurs
+,AEIDL,,,,,recherche,,,,,
+,AEIDL,,,,,centre de ressources,,,,,
+,AEIDL,,,,,observation,,,,,
+ok,Aides Territoires,Aides-territoires facilite l'accès aux aides publiques pour les projets d'aménagement durable. Une Startup d'Etat incubée à la Fabrique Numérique du Ministère de la Cohésion des Territoires. ,Nationale,https://aides-territoires.beta.gouv.fr/,NON,centre de ressources,Elise Marion,Intrapreneure,,,
+ok,Agence du numérique,Permettre l'appropriation du numérique par tous et la transition numérique des territoires.,Nationale,https://agencedunumerique.gouv.fr,@AgenceNumerique,accompagnement conseil,Pierre-Louis Rolle,Chargé de mission,,,
+,Agence du numérique,,,,,centre de ressources,,,,,
+,Agence du numérique,,,,,financement,,,,,
+ok,ANIMAFAC,"Accompagner les projets des associations étudiantes, promouvoir l’engagement et permettre la rencontre entre les jeunes engagés.",Nationale,https://www.animafac.net,@animafac,accompagnement conseil,Loïs Labille,Chargé des projets d'innovation sociale,Labille_Lois_Animafac.jpg,Animafac.png,Institution_et_tetes_de_reseau
+,ANIMAFAC,,,,,incubation,,,,,
+,ANIMAFAC,,,,,mentorat,,,,,
+,ANIMAFAC,,,,,formation,,,,,
+ok,APIE,Promouvoir une gestion optimisée des actifs immatériels publics et accompagner les stratégies de valorisation de ce patrimoine.,Nationale,https://www.economie.gouv.fr/apie,@APIE_gouv,accompagnement conseil,Jean-Baptiste Labrune,Chargé de mission auprès de la direction,,APIE_sans_signature.png,Institution_et_tetes_de_reseau
+ok,APRILES,"Repérer, expertiser et diffuser des actions favorisant le lien social, l’implication citoyenne et la dynamique de territoire.",Nationale,apriles.net,@AgenceApriles,observation,Estelle Camus,Responsable éditoriale,,APRILES.png,Think_Thank_et_acteurs_de_la_recherche
+,APRILES,,,,,centre de ressources,,,,,
+ok,Ashoka,"Agir en faveur de l’innovation sociale grâce à un réseau d'acteur et accélérer les idées et initiatives ayant un impact sociétal positif, pour préparer l’avenir dès à présent.",Internationale,https://www.ashoka.org/fr,@AshokaFrance,mentorat,Julie Auffray,Venture associate,,Ashoka_bleu.png,Associations_et_accompagnateurs
+,Ashoka,,,,,accompagnement conseil,,,,,
+ok,Association des Maires Ruraux de France,"Fédèrer, informer et représenter les maires des communes de moins de 3 500 habitants partout en France.",Nationale,www.amf.asso.fr,@Maires_Ruraux,centre de ressources,Cédric Szabo,Directeur,Szabo_Cedric_AMRF_copyr_LDaniere.jpg,AMRF.png,Institution_et_tetes_de_reseau
+,Association des Maires Ruraux de France,,,,,accompagnement conseil,,,,,
+,Association des Maires Ruraux de France,,,,,observation,,,,,
 en attente,ATIS,Accompagner l’émergence et le développement des entreprises sociales en Nouvelle Aquitaine,Régionale,https://atis-asso.org/,@AtisInnovation,accompagnement conseil,"Alicia Beillon
-",Chargée de mission,
-,ATIS,,,,,incubation,,,
-,ATIS,,,,,centre de ressources,,,
-ok,Avise,"Accompagner le développement de l’Economie sociale et solidaire, en animant des communautés d'acteurs et des programmes nationaux couvrant toutes les étapes de vie d’une structure.",Nationale,https://www.avise.org,@avise_org,centre de ressources,Cécile Leclair,Directrice générale,Leclair_Cecile_Avise.jpg
-,Avise,,,,,observation,,,
-,Avise,,,,,accompagnement conseil,,,
-ok,Bleu Blanc Zèbre,"Fédérer et agréger des solutions et des individus qui refusent la fatalité et agissent pour les autres, avec les autres.",Nationale,bleublanczebre.fr,@leszebres,accompagnement conseil,Julien Loyer,Directeur Général,
-,Bleu Blanc Zèbre,,,,,centre de ressources,,,
-,Bleu Blanc Zèbre,,,,,observation,,,
-ok,Brie'nov,Développer les usages et l'inclusion numériques en tant que premier living lab rural de la région Ile de France.,Régionale,https://www.brienov.fr,NON,accompagnement conseil,Didier Galet,vice-Président,Galet_Didier_Brienov.JPG
-,Brie'nov,,,,,recherche,,,
-ok,BRUDED,Echanger des expériences pour promouvoir un aménagement et un développement local durables avec plus de 140 communes et intercommunalités sur la Bretagne historique. ,Régionale,https://www.bruded.fr,@BRUDED_,accompagnement conseil,Ivana Potelon,Chargée de mission ,
-,BRUDED,,,,,centre de ressources,,,
-,,,,,,formation,,,
-ok,UMR Acteurs Ressources et territoires dans le développement (ARTDEV) Université Montpellier 3,"Offrir une gamme riche de formations, essentiellement initiales mais également continues en histoire, psychologie, lettres et arts, documentation, ou encore développement durable.",Régionale,https://beziers.www.univ-montp3.fr/,NON,formation,Benoit Prevost,Directeur,
-,UMR Acteurs Ressources et territoires dans le développement (ARTDEV) Université Montpellier 3,,,,,recherche,,,
-ok,Coexister,"Coordonner des temps de dialogue pour développer l’esprit critique, des opérations de solidarité pour l’engagement civique des jeunes et des ateliers de sensibilisation et d’éducation au vivre ensemble.",Nationale,https://www.coexister.fr/,@AssoCoexister,centre de ressources,Chloé Lesterlin,Chargée du développement et des partenariats,
-,Coexister,,,,,formation,,,
-ok,Commissariat général à l’égalité des territoires,Concevoir et animer les politiques de la ville et d’aménagement du territoire avec les acteurs locaux et les citoyens afin de lutter contre les inégalités territoirales et soutenir les dynamiques territoriales.,Nationale,www.cget.gouv.fr,@CGET_gouv,accompagnement conseil,Emmanuel Dupont,Responsable de la mission Stratégie de recherche et d'innovation,Dupont_Emmanuel_CGET.jpg
-,Commissariat général à l’égalité des territoires,,,,,formation,,,
-,Commissariat général à l’égalité des territoires,,,,,observation,,,
-,Commissariat général à l’égalité des territoires,,,,,recherche,,,
-ok,Citego,"Promouvoir le partage de connaissances entre praticiens, chercheurs, élus, associations et citoyens, autour de la gouvernance des territoires.",Nationale,citego.org,NON,recherche,Stéphanie Cabantous,Secrétaire générale,Cabantous_Stephanie_Citego.jpg
-,Citego,,,,,observation,,,
-,Citego,,,,,centre de ressources,,,
-ok,Confédération générale des SCOP,Accompagner la création et le développement des SCOP et SCIC via un réseau régional.,Nationale,www.les-scop.coop,@les_scop,centre de ressources,Fatima Bellaredj,Déléguée générale,
-,Confédération générale des SCOP,,,,,accompagnement conseil,,,
-ok,Coorace,Fédérer nationalement et rassembler plus de 500 entreprises oeuvrant pour l'emploi et le développement de territoires solidaires dans une perspective d'Economie Sociale et Solidaire.,Nationale,www.coorace.org,@COORACE,centre de ressources,Sébastien Galtier,Chargé de mission innovation sociale,
-,Coorace,,,,,observation,,,
-,Coorace,,,,,accompagnement conseil,,,
-ok,Chambre régionale d'économie sociale et solidaire des Pays de la Loire (CRESS PdL),"Fédérer les entreprises de l'Economie Sociale et Solidaire ligériennes : associations, coopératives, mutuelles…",Régionale,www.cress-pdl.org,@cress_pdl,accompagnement conseil,Céline Durand,Directrice,
-,Chambre régionale d'économie sociale et solidaire des Pays de la Loire (CRESS PdL),,,,,centre de ressources,,,
-en attente,Conseil national des Chambres Régionales de l'Économie Sociale (CNCRESS),Structurer les Chambres régionales d'économie sociale et solidaire et favoriser une meilleure reconnaissance de leurs actions au niveau national.,Nationale,http://www.cncres.org,@CNCRES,centre de ressources,Florent Duclos,Directeur,
-,Conseil national des Chambres Régionales de l'Économie Sociale (CNCRESS),,,,,accompagnement conseil,,,
-en attente,Conservatoire national des Arts et Métiers (CNAM),"Former tout au long de la vie, mener des travaux de recherche appliquée et diffuser la culture scientifique et technique.",Nationale,www.cnam.fr, @LeCnam ‏ ,formation,Elisabetta Bucolo,Maitre de conférences,
-,Conservatoire national des Arts et Métiers (CNAM),,,,,recherche,,,
-en attente,CRISALIDH,"Etre une interface entre société civile et monde académique, visant à développer des relations étroites entre la communauté universitaire et les acteurs et actrices de l’innovation sociale.",Régionale,https://crisalidh.u-bordeaux.fr/, @Crisalidh ,recherche,Luc Paboeuf,Responsable opérationnel,
-,CRISALIDH,,,,,observation,,,
-,CRISALIDH,,,,,centre de ressources,,,
-ok,Direction générale de la cohésion sociale (DGCS),"Concevoir, piloter et évaluer les politiques publiques de solidarité, de développement social et de promotion de l’égalité, afin de favoriser la cohésion sociale et le soutien à l’autonomie des personnes.",Nationale,http://solidarites-sante.gouv.fr/ministere/organisation/directions/article/dgcs-direction-generale-de-la-cohesion-sociale,@MinSoliSante,centre de ressources,Stéphanie Brun,Chef du bureau de l'animation territoriale,
-,Direction générale de la cohésion sociale (DGCS),,,,,recherche,,,
-,Direction générale de la cohésion sociale (DGCS),,,,,observation,,,
-,Direction générale de la cohésion sociale (DGCS),,,,,financement,,,
-ok,Direction générale à l'emploi et à la formation professionnelle (DGEFP),Concevoir et mettre en œuvre les orientations du gouvernement en matière d’emploi et de formation professionnelle.,,,@Minist_Travail,centre de ressources,Chantal Caritey,Cheffe de projet Démarches territoriales,Caritey_Chantal_DGEFP.jpg
-,Direction générale à l'emploi et à la formation professionnelle (DGEFP),,,,,recherche,,,
-,Direction générale à l'emploi et à la formation professionnelle (DGEFP),,,,,observation,,,
-,Direction générale à l'emploi et à la formation professionnelle (DGEFP),,,,,financement,,,
-ok,Délégation interministérielle pour l’hébergement et l’accès au logement ,Assurer la coordination et le suivi de la mise en oeuvre des priorités de l’Etat en matière d’hébergement et d’accès au logement des personnes sans-abri ou mal logées.,Nationale,http://www.gouvernement.fr/delegation-interministerielle-a-l-hebergement-et-a-l-acces-au-logement-dihal,@dihal_hl‏,centre de ressources,Léa Loubier,Cheffe de projet logement,
-,Délégation interministérielle pour l’hébergement et l’accès au logement ,,,,,observation,,,
-ok,DRJCS Hauts-de-France,"Fédérer, dans la région Hauts-de-France, différents services de l’État dont l’objectif commun est de renforcer le lien social, piloter et animer les politiques publiques. ",Régionale,hauts-de-france.drjscs.gouv.fr,NON,centre de ressources,Yasmine Cometa,Correspondante régionale Vie Associative - Economie Sociale et Solidaire,
-,DRJCS Hauts-de-France,,,,,financement,,,
-,DRJCS Hauts-de-France,,,,,accompagnement conseil,,,
-ok,Ecole de Paris du Management,Echanger et débattre sur les expériences novatrices en matière de management et d'innovations sociales.,Nationale,https://www.ecole.org/fr,NON,formation,Michel Berry,Secrétaire général,
-,Ecole de Paris du Management,,,,,recherche,,,
-,Ecole de Paris du Management,,,,,observation,,,
-ok,EnSSsemble,Aider les citoyens à #FaireAutrement et à trouver un engagement qui leur ressemble.,Nationale,https://enssemble.org,@EnSSemble_org,formation,Sabine Pradelle,Présidente et co-fondatrice,
-,EnSSsemble,,,,,accompagnement conseil,,,
-,EnSSsemble,,,,,centre de ressources,,,
-ok,Etalab,Piloter la politique d'ouverture et de partage des données publiques #OpenData.,Nationale,https://www.data.gouv.fr/fr/organizations/etalab,@Etalab,centre de ressources,Bastien Guerry,Entrepreneur d'intérêt général,Guerry_Bastien_Etalab.jpg
-,Etalab,,,,,accompagnement conseil,,,
-,Etalab,,,,,observation,,,
-ok,Fédération française des GEIQ,"Les Geiq regroupent des entreprises, sur différents territoires et secteurs, qui parient sur le potentiel de personnes éloignées du marché du travail pour résoudre leurs problèmes structurels de recrutement, en organisant des parcours d’insertion et de qualification.",Nationale,www.lesgeiq.fr,@FFGeiq,centre de ressources,Adeline Letur,Chargée de mission en charge des partenariats,
-,Fédération française des GEIQ,,,,,accompagnement conseil,,,
-,Fédération française des GEIQ,,,,,formation,,,
-ok,Fonds d'expérimentation pour la jeunesse (FEJ),Laboratoire de préfiguration des futures politiques publiques de jeunesse.,Nationale,www.experimentation.jeunes.gouv.fr,@Injep‏,financement,Malika Kacimi,Cheffe de la Mission d'animation du FEJ,
-,Fonds d'expérimentation pour la jeunesse (FEJ),,,,,centre de ressources,,,
-,Fonds d'expérimentation pour la jeunesse (FEJ),,,,,recherche,,,
-en attente,Fondation Internet Nouvelle Génération (FING),Susciter une réflexion sur les usages de l’Internet de demain.,,,@la_fing,recherche,Denis Pansu,Responsable innovation ouverte,Pansu_Denis_FING.jpeg
-,Fondation Internet Nouvelle Génération (FING),,,,,centre de ressources,,,
-,Fondation Internet Nouvelle Génération (FING),,,,,observation,,,
-ok,Fédération nationale des Caisses d’Épargne (FNCE),"Organe d'expression et de répresentation du réseau des Caisses D'Epargne  de 16 banques coopératives régionales, de leurs 4,8 millions de sociétaires et de leurs 3 330 élus.",Nationale,www.federation.caisse-epargne.fr,@FNCE,accompagnement conseil,Sylvain Maschino,Chargé d'études engagement sociétal,
-,Fédération nationale des Caisses d’Épargne (FNCE),,,,,financement,,,
-,Fédération nationale des Caisses d’Épargne (FNCE),,,,,observation,,,
-ok,Fondation Cognacq Jay,"Soutenir et développer la solidarité sociale de demain à travers le Laboratoire des solidarités : une base de connaissances repérant les initiatives innovantes, SOLIDARUM.ORG, une revue de prospective Visions solidaires pour demain, le Prix Fondation Cognacq-jay, et un événement annuel pour favoriser l'échange entre les acteurs de l'intérêt général, les Rencontres solidaires.",Nationale,www.solidarum.org,@Solidarum,accompagnement conseil,Giorgia Sebregondi,Directrice du laboratoire des solidarités ,Ceriani_Sebregondi_Cognacq_Jay_copyr_AlexandraLebon.jpg
-,Fondation Cognacq Jay,,,http://www.cognacq-jay.fr/LabSolidaire,@Cognacq_jay,média,,,
-,Fondation Cognacq Jay,,,,,centre de ressources,,,
-,Fondation Cognacq Jay,,,,,observation,,,
-ok,Fondation La France s'engage,"Promouvoir l’engagement de la société civile dans des initiatives innovantes, solidaires et utiles. Financer et accompagner des projets en s'inscrivant dans les Objectifs de Développement Durable.",Nationale,https://www.fondationlafrancesengage.org/,@LaFrancesengage,accompagnement conseil,Nils Pedersen,Responsable du concours et des relations institutionnelles,
-,Fondation La France s'engage,,,,,financement,,,
+",Chargée de mission,,,
+,ATIS,,,,,incubation,,,,,
+,ATIS,,,,,centre de ressources,,,,,
+ok,Avise,"Accompagner le développement de l’Economie sociale et solidaire, en animant des communautés d'acteurs et des programmes nationaux couvrant toutes les étapes de vie d’une structure.",Nationale,https://www.avise.org,@avise_org,centre de ressources,Cécile Leclair,Directrice générale,Leclair_Cecile_Avise.jpg,AVISE_RVB.png,Associations_et_accompagnateurs
+,Avise,,,,,observation,,,,,
+,Avise,,,,,accompagnement conseil,,,,,
+ok,Bleu Blanc Zèbre,"Fédérer et agréger des solutions et des individus qui refusent la fatalité et agissent pour les autres, avec les autres.",Nationale,bleublanczebre.fr,@leszebres,accompagnement conseil,Julien Loyer,Directeur Général,,BBZ.png,Associations_et_accompagnateurs
+,Bleu Blanc Zèbre,,,,,centre de ressources,,,,,
+,Bleu Blanc Zèbre,,,,,observation,,,,,
+ok,Brie'nov,Développer les usages et l'inclusion numériques en tant que premier living lab rural de la région Ile de France.,Régionale,https://www.brienov.fr,NON,accompagnement conseil,Didier Galet,vice-Président,Galet_Didier_Brienov.JPG,BrieNov.png,Associations_et_accompagnateurs
+,Brie'nov,,,,,recherche,,,,,
+ok,BRUDED,Echanger des expériences pour promouvoir un aménagement et un développement local durables avec plus de 140 communes et intercommunalités sur la Bretagne historique. ,Régionale,https://www.bruded.fr,@BRUDED_,accompagnement conseil,Ivana Potelon,Chargée de mission ,,BRUDED.png,Associations_et_accompagnateurs
+,BRUDED,,,,,centre de ressources,,,,,
+,,,,,,formation,,,,,
+ok,UMR Acteurs Ressources et territoires dans le développement (ARTDEV) Université Montpellier 3,"Offrir une gamme riche de formations, essentiellement initiales mais également continues en histoire, psychologie, lettres et arts, documentation, ou encore développement durable.",Régionale,https://beziers.www.univ-montp3.fr/,NON,formation,Benoit Prevost,Directeur,,,
+,UMR Acteurs Ressources et territoires dans le développement (ARTDEV) Université Montpellier 3,,,,,recherche,,,,,
+ok,Coexister,"Coordonner des temps de dialogue pour développer l’esprit critique, des opérations de solidarité pour l’engagement civique des jeunes et des ateliers de sensibilisation et d’éducation au vivre ensemble.",Nationale,https://www.coexister.fr/,@AssoCoexister,centre de ressources,Chloé Lesterlin,Chargée du développement et des partenariats,,Coexister.png,Associations_et_accompagnateurs
+,Coexister,,,,,formation,,,,,
+ok,Commissariat général à l’égalité des territoires,Concevoir et animer les politiques de la ville et d’aménagement du territoire avec les acteurs locaux et les citoyens afin de lutter contre les inégalités territoirales et soutenir les dynamiques territoriales.,Nationale,www.cget.gouv.fr,@CGET_gouv,accompagnement conseil,Emmanuel Dupont,Responsable de la mission Stratégie de recherche et d'innovation,Dupont_Emmanuel_CGET.jpg,CGET_signat_seul_CMJN.png,Institution_et_tetes_de_reseau
+,Commissariat général à l’égalité des territoires,,,,,formation,,,,,
+,Commissariat général à l’égalité des territoires,,,,,observation,,,,,
+,Commissariat général à l’égalité des territoires,,,,,recherche,,,,,
+ok,Citego,"Promouvoir le partage de connaissances entre praticiens, chercheurs, élus, associations et citoyens, autour de la gouvernance des territoires.",Nationale,citego.org,NON,recherche,Stéphanie Cabantous,Secrétaire générale,Cabantous_Stephanie_Citego.jpg,CITEGO.png,Think_Thank_et_acteurs_de_la_recherche
+,Citego,,,,,observation,,,,,
+,Citego,,,,,centre de ressources,,,,,
+ok,Confédération générale des SCOP,Accompagner la création et le développement des SCOP et SCIC via un réseau régional.,Nationale,www.les-scop.coop,@les_scop,centre de ressources,Fatima Bellaredj,Déléguée générale,,SGSCOP.png,Institution_et_tetes_de_reseau
+,Confédération générale des SCOP,,,,,accompagnement conseil,,,,,
+ok,Coorace,Fédérer nationalement et rassembler plus de 500 entreprises de l'Economie Sociale et Solidaire oeuvrant pour l'emploi et le développement de territoires solidaires. ,Nationale,www.coorace.org,@COORACE,centre de ressources,Elsa Audurier,Chargée de mission communication,,COORACE.png,Associations_et_accompagnateurs
+,Coorace,,,,,observation,,,,,
+,Coorace,,,,,accompagnement conseil,,,,,
+ok,Chambre régionale d'économie sociale et solidaire des Pays de la Loire (CRESS PdL),"Fédérer les entreprises de l'Economie Sociale et Solidaire ligériennes : associations, coopératives, mutuelles…",Régionale,www.cress-pdl.org,@cress_pdl,accompagnement conseil,Céline Durand,Directrice,,CRESS_Pdl.png,Institution_et_tetes_de_reseau
+,Chambre régionale d'économie sociale et solidaire des Pays de la Loire (CRESS PdL),,,,,centre de ressources,,,,,
+en attente,Conseil national des Chambres Régionales de l'Économie Sociale (CNCRESS),Structurer les Chambres régionales d'économie sociale et solidaire et favoriser une meilleure reconnaissance de leurs actions au niveau national.,Nationale,http://www.cncres.org,@CNCRES,centre de ressources,Florent Duclos,Directeur,,,
+,Conseil national des Chambres Régionales de l'Économie Sociale (CNCRESS),,,,,accompagnement conseil,,,,,
+en attente,Conservatoire national des Arts et Métiers (CNAM),"Former tout au long de la vie, mener des travaux de recherche appliquée et diffuser la culture scientifique et technique.",Nationale,www.cnam.fr, @LeCnam ‏ ,formation,Elisabetta Bucolo,Maitre de conférences,,,
+,Conservatoire national des Arts et Métiers (CNAM),,,,,recherche,,,,,
+en attente,CRISALIDH,"Etre une interface entre société civile et monde académique, visant à développer des relations étroites entre la communauté universitaire et les acteurs et actrices de l’innovation sociale.",Régionale,https://crisalidh.u-bordeaux.fr/, @Crisalidh ,recherche,Luc Paboeuf,Responsable opérationnel,,,
+,CRISALIDH,,,,,observation,,,,,
+,CRISALIDH,,,,,centre de ressources,,,,,
+ok,Direction générale de la cohésion sociale (DGCS),"Concevoir, piloter et évaluer les politiques publiques de solidarité, de développement social et de promotion de l’égalité, afin de favoriser la cohésion sociale et le soutien à l’autonomie des personnes.",Nationale,http://solidarites-sante.gouv.fr/ministere/organisation/directions/article/dgcs-direction-generale-de-la-cohesion-sociale,@MinSoliSante,centre de ressources,Stéphanie Brun,Chef du bureau de l'animation territoriale,,DGCS.png,Institution_et_tetes_de_reseau
+,Direction générale de la cohésion sociale (DGCS),,,,,recherche,,,,,
+,Direction générale de la cohésion sociale (DGCS),,,,,observation,,,,,
+,Direction générale de la cohésion sociale (DGCS),,,,,financement,,,,,
+ok,Direction générale à l'emploi et à la formation professionnelle (DGEFP),Concevoir et mettre en œuvre les orientations du gouvernement en matière d’emploi et de formation professionnelle.,Nationale,https://travail-emploi.gouv.fr/,@Minist_Travail,centre de ressources,Chantal Caritey,Cheffe de projet Démarches territoriales,Caritey_Chantal_DGEFP.jpg,DGEFP.jpg,Institution_et_tetes_de_reseau
+,Direction générale à l'emploi et à la formation professionnelle (DGEFP),,,,,recherche,,,,,
+,Direction générale à l'emploi et à la formation professionnelle (DGEFP),,,,,observation,,,,,
+,Direction générale à l'emploi et à la formation professionnelle (DGEFP),,,,,financement,,,,,
+ok,Délégation interministérielle pour l’hébergement et l’accès au logement ,Assurer la coordination et le suivi de la mise en oeuvre des priorités de l’Etat en matière d’hébergement et d’accès au logement des personnes sans-abri ou mal logées.,Nationale,http://www.gouvernement.fr/delegation-interministerielle-a-l-hebergement-et-a-l-acces-au-logement-dihal,@dihal_hl‏,centre de ressources,Léa Loubier,Cheffe de projet logement,,dihal.png,Institution_et_tetes_de_reseau
+,Délégation interministérielle pour l’hébergement et l’accès au logement ,,,,,observation,,,,,
+ok,DRJCS Hauts-de-France,"Fédérer, dans la région Hauts-de-France, différents services de l’État dont l’objectif commun est de renforcer le lien social, piloter et animer les politiques publiques. ",Régionale,hauts-de-france.drjscs.gouv.fr,NON,centre de ressources,Yasmine Cometa,Correspondante régionale Vie Associative - Economie Sociale et Solidaire,,DRJSCS_HDF.png,Institution_et_tetes_de_reseau
+,DRJCS Hauts-de-France,,,,,financement,,,,,
+,DRJCS Hauts-de-France,,,,,accompagnement conseil,,,,,
+ok,Ecole de Paris du Management,Echanger et débattre sur les expériences novatrices en matière de management et d'innovations sociales.,Nationale,https://www.ecole.org/fr,NON,formation,Michel Berry,Secrétaire général,,ecoleparismanagt.png,Think_Thank_et_acteurs_de_la_recherche
+,Ecole de Paris du Management,,,,,recherche,,,,,
+,Ecole de Paris du Management,,,,,observation,,,,,
+ok,EnSSsemble,Aider les citoyens à #FaireAutrement et à trouver un engagement qui leur ressemble.,Nationale,https://enssemble.org,@EnSSemble_org,formation,Sabine Pradelle,Présidente et co-fondatrice,,enssemble.org.png,Institution_et_tetes_de_reseau
+,EnSSsemble,,,,,accompagnement conseil,,,,,
+,EnSSsemble,,,,,centre de ressources,,,,,
+ok,Etalab,Piloter la politique d'ouverture et de partage des données publiques #OpenData.,Nationale,https://www.data.gouv.fr/fr/organizations/etalab,@Etalab,centre de ressources,Bastien Guerry,Entrepreneur d'intérêt général,,Etalab logo.PNG,Institution_et_tetes_de_reseau
+,Etalab,,,,,accompagnement conseil,,,,,
+,Etalab,,,,,observation,,,,,
+ok,Fédération française des GEIQ,"Les Geiq regroupent des entreprises, sur différents territoires et secteurs, qui parient sur le potentiel de personnes éloignées du marché du travail pour résoudre leurs problèmes structurels de recrutement, en organisant des parcours d’insertion et de qualification.",Nationale,www.lesgeiq.fr,@FFGeiq,centre de ressources,Adeline Letur,Chargée de mission en charge des partenariats,,Federation_GEIQ.png,Institution_et_tetes_de_reseau
+,Fédération française des GEIQ,,,,,accompagnement conseil,,,,,
+,Fédération française des GEIQ,,,,,formation,,,,,
+ok,Fonds d'expérimentation pour la jeunesse (FEJ),Laboratoire de préfiguration des futures politiques publiques de jeunesse.,Nationale,www.experimentation.jeunes.gouv.fr,@Injep‏,financement,Malika Kacimi,Cheffe de la Mission d'animation du FEJ,,Injep+fej.png,Institution_et_tetes_de_reseau
+,Fonds d'expérimentation pour la jeunesse (FEJ),,,,,centre de ressources,,,,,
+,Fonds d'expérimentation pour la jeunesse (FEJ),,,,,recherche,,,,,
+en attente,Fondation Internet Nouvelle Génération (FING),Susciter une réflexion sur les usages de l’Internet de demain.,,,@la_fing,recherche,Denis Pansu,Responsable innovation ouverte,Pansu_Denis_FING.jpeg,,
+,Fondation Internet Nouvelle Génération (FING),,,,,centre de ressources,,,,,
+,Fondation Internet Nouvelle Génération (FING),,,,,observation,,,,,
+ok,Fédération nationale des Caisses d’Épargne (FNCE),"Organe d'expression et de répresentation du réseau des Caisses d'Epargne. La fédération est l'émanation des 15 Caisses d'Epargne, banques régionales et coopératives et de leurs 4,8 millions de sociétaires.Elle a notamment pour mission de définir, coordonner et promouvoir les actions de responsabilité sociale des Caisses d'Epargne.",Nationale,www.federation.caisse-epargne.fr,@FNCE,accompagnement conseil,Sylvain Maschino,Chargé d'études engagement sociétal,,FNCE_Horizontal_200ans.png,Fondation_et_acteurs_engages_RSE
+,Fédération nationale des Caisses d’Épargne (FNCE),,,,,financement,,,,,
+,Fédération nationale des Caisses d’Épargne (FNCE),,,,,observation,,,,,
+ok,Fondation Cognacq Jay,"Soutenir et développer la solidarité sociale de demain à travers le Laboratoire des solidarités : une base de connaissances repérant les initiatives innovantes, SOLIDARUM.ORG, une revue de prospective Visions solidaires pour demain, le Prix Fondation Cognacq-jay, et un événement annuel pour favoriser l'échange entre les acteurs de l'intérêt général, les Rencontres solidaires.",Nationale,www.solidarum.org,@Solidarum,accompagnement conseil,Giorgia Sebregondi,Directrice du laboratoire des solidarités ,Ceriani_Sebregondi_Cognacq_Jay_copyr_AlexandraLebon.jpg,FONDATION_COGNAC_JAY.png,Fondation_et_acteurs_engages_RSE
+,Fondation Cognacq Jay,,,http://www.cognacq-jay.fr/LabSolidaire,@Cognacq_jay,média,,,,,
+,Fondation Cognacq Jay,,,,,centre de ressources,,,,,
+,Fondation Cognacq Jay,,,,,observation,,,,,
+ok,Fondation La France s'engage,"Promouvoir l’engagement de la société civile dans des initiatives innovantes, solidaires et utiles. Financer et accompagner des projets en s'inscrivant dans les Objectifs de Développement Durable.",Nationale,https://www.fondationlafrancesengage.org/,@LaFrancesengage,accompagnement conseil,Nils Pedersen,Responsable du concours et des relations institutionnelles,,FFE.png,Fondation_et_acteurs_engages_RSE
+,Fondation La France s'engage,,,,,financement,,,,,
 ok,Génération 2 Conseil,Conseiller et accompagner des actions de mécénat collaboratif et des partenariats associations-entreprises. ,Nationale,www.generation2.coop,@ScopG2C,accompagnement conseil,Steven Bertal,"Associate Director & cofounder
-",Bertal_Steven_Generation2conseil.jpg
-ok,GNIAC,"Construire, par le décloisonnement, la transversalité et la bienveillance, de nouveaux liens et de nouvelles solutions d'utilité sociale grâce à un réseau national et actif de personnes.",Nationale,www.gniac.fr,@GNIAC_asso,centre de ressources,Denis SABARDINE,Animateur National,Denis_Sabardine_GNIAC.jpg
-en attente,Institut Godin,Premier centre de transfert en pratiques solidaires et innovation sociale de France.,Nationale,https://institutgodin.com/,@InstitutGodin,recherche,Nicolas Chochoy,Directeur,
-,Institut Godin,,,,,accompagnement conseil,,,
-,Institut Godin,,,,,centre de ressources,,,
-ok,La Fonda,"Coproduire des éclairages pour nourrir les choix stratégiques des acteurs du monde associatif, être une plateforme d'intelligence collective.",Nationale,https://fonda.asso.fr,@fonda2020,recherche,Charlotte Debray,Déléguée générale,
-,La Fonda,,,,,centre de ressources,,,
-,La Fonda,,,,,observation,,,
-ok,Labo de l'ESS,"Construire, par un travail collaboratif, des axes structurants de l’ESS, à partir d’initiatives concrètes, innovantes et inspirantes issues des territoires.",Nationale,www.lelabo-ess.org,@lelabo_ess,recherche,Françoise Bernon,Déléguée générale,
-,Labo de l'ESS,,,,,observation,,,
-,Labo de l'ESS,,,,,centre de ressources,,,
-ok,La Part du Colibri,"Réaliser des reportages et des enquêtes sur des initiatives constructives, être un slow média dédié au journalisme de solution.",Nationale,lapartducolibri.fr,@partducolibri,média,Baptiste Gapenne,Fondateur,
-,La Part du Colibri,,,,,observation,,,
-ok,Nov'impact,"Hub, connecteur et accompagnement de l'innovation sociale et environnementale pour accélérer l'impact de tous les acteurs engagés",Nationale,https://novimpact.org/,@NovImpact ,centre de ressources,Catherine Von Dahle,Présidente Fondatrice,Vondahle_Catherine_NovImpact.jpg
-,Nov'impact,,,,,accompagnement conseil,,,
-,Nov'impact,,,,,observation,,,
-ok,Ouishare,"Explorer les émergences et expérimenter de nouvelles manières de travailler, d'innover et de collaborer.",Internationale,https://www.ouishare.net/,@Ouishare_Fr,accompagnement conseil,Taoufik Vallipuram,Connector France & Co-founder Lab Ouishare x Chronos,
-,Ouishare,,,,,recherche,,,
-,Ouishare,,,,,observation,,,
-ok,Prima Terra,"Etre une école de l'entreprenariat territorial, un écosystème coopératif pour votre codéveloppement        .",Nationale,www.prima-terra.fr,@PRIMATERRAleFil,formation,Alexis Durand Jeanson,Directeur,
-ok,Réseau rural,"Réfléchir et échanger sur les territoires ruraux et les politiques utiles à leur développement, dans le cadre de la mise en oeuvre du Fonds européen agricole pour le développement rural.",Nationale,https://www.reseaurural.fr,@reseaururalfr,centre de ressources,x,x,
-ok,Ronalpia,"Détecter, sélectionner et accompagner les entrepreneurs sociaux qui apportent des solutions aux fragilités, individuelles, territoriales et systémiques en Auvergne Rhône-Alpes.",Régionale,http://www.ronalpia.fr/,@ronalpia ,accompagnement conseil,Léna Geitner,Directrice,Geitner_Lena_Ronalpia.jpg
-,Ronalpia,,,,,accompagnement conseil,,,
-,,,,,,incubation,,,
-,Ronalpia,,,,,mentorat,,,
-ok,RTES,Rassembler plus de 120 collectivités territoriales françaises ayant des politiques de soutien à l’Economie Sociale et Solidaire.,Nationale,rtes.fr,@ReseauRTES,centre de ressources,Anne-Laure Federici,Déléguée générale,Federici_Anne_Laure_RTES.jpg
-,RTES,,,,,observation,,,
-,RTES,,,,,accompagnement conseil,,,
-ok,Sceaux,Offrir un écosystème d’innovation sociale pour un développement local inclusif et durable dans le Sud Parisien,Départementale,https://www.sceaux.fr,@Ville_de_Sceaux,centre de ressources,Othmane Khaoua,Conseiller municipal délégué à l'Economie sociale et solidaire,
-,Sceaux,,,,,incubation,,,
+",Bertal_Steven_Generation2conseil.jpg,G2C.png,Associations_et_accompagnateurs
+ok,GNIAC,"Construire, par le décloisonnement, la transversalité et la bienveillance, de nouveaux liens et de nouvelles solutions d'utilité sociale grâce à un réseau national et actif de personnes.",Nationale,www.gniac.fr,@GNIAC_asso,centre de ressources,Denis SABARDINE,Animateur National,Denis_Sabardine_GNIAC.jpg,GNIAC.png,Associations_et_accompagnateurs
+en attente,Institut Godin,Premier centre de transfert en pratiques solidaires et innovation sociale de France.,Nationale,https://institutgodin.com/,@InstitutGodin,recherche,Nicolas Chochoy,Directeur,,,
+,Institut Godin,,,,,accompagnement conseil,,,,,
+,Institut Godin,,,,,centre de ressources,,,,,
+ok,La Fonda,"Coproduire des éclairages pour nourrir les choix stratégiques des acteurs du monde associatif, être une plateforme d'intelligence collective.",Nationale,https://fonda.asso.fr,@fonda2020,recherche,Charlotte Debray,Déléguée générale,,LaFonda_RVB.png,Think_Thank_et_acteurs_de_la_recherche
+,La Fonda,,,,,centre de ressources,,,,,
+,La Fonda,,,,,observation,,,,,
+ok,Labo de l'ESS,"Construire, par un travail collaboratif, des axes structurants de l’ESS, à partir d’initiatives concrètes, innovantes et inspirantes issues des territoires.",Nationale,www.lelabo-ess.org,@lelabo_ess,recherche,Françoise Bernon,Déléguée générale,,Labo_ESS.png,Think_Thank_et_acteurs_de_la_recherche
+,Labo de l'ESS,,,,,observation,,,,,
+,Labo de l'ESS,,,,,centre de ressources,,,,,
+ok,La Part du Colibri,"Réaliser des reportages et des enquêtes sur des initiatives constructives, être un slow média dédié au journalisme de solution.",Nationale,lapartducolibri.fr,@partducolibri,média,Baptiste Gapenne,Fondateur,,la_part_du_colibri.png,Medias_de_solutions
+,La Part du Colibri,,,,,observation,,,,,
+ok,Nov'impact,"Hub, connecteur et accompagnement de l'innovation sociale et environnementale pour accélérer l'impact de tous les acteurs engagés",Nationale,https://novimpact.org/,@NovImpact ,centre de ressources,Catherine Von Dahle,Présidente Fondatrice,Vondahle_Catherine_NovImpact.jpg,NovImpact.png,Associations_et_accompagnateurs
+,Nov'impact,,,,,accompagnement conseil,,,,,
+,Nov'impact,,,,,média,,,,,
+,Nov'impact,,,,,incubation,,,,,
+,Nov'impact,,,,,observation,,,,,
+ok,Ouishare,"Explorer les émergences et expérimenter de nouvelles manières de travailler, d'innover et de collaborer.",Internationale,https://www.ouishare.net/,@Ouishare_Fr,accompagnement conseil,Taoufik Vallipuram,Connector France & Co-founder Lab Ouishare x Chronos,,Ouishare.png,Associations_et_accompagnateurs
+,Ouishare,,,,,recherche,,,,,
+,Ouishare,,,,,observation,,,,,
+ok,Prima Terra,"Etre une école de l'entreprenariat territorial, un écosystème coopératif pour votre codéveloppement        .",Nationale,www.prima-terra.fr,@PRIMATERRAleFil,formation,Alexis Durand Jeanson,Directeur,,PRIMA_TERRA.png,Associations_et_accompagnateurs
+ok,Réseau rural,"Réfléchir et échanger sur les territoires ruraux et les politiques utiles à leur développement, dans le cadre de la mise en oeuvre du Fonds européen agricole pour le développement rural.",Nationale,https://www.reseaurural.fr,@reseaururalfr,centre de ressources,x,x,,Reseau_rural.png,Institution_et_tetes_de_reseau
+ok,Ronalpia,"Détecter, sélectionner et accompagner les entrepreneurs sociaux qui apportent des solutions aux fragilités, individuelles, territoriales et systémiques en Auvergne Rhône-Alpes.",Régionale,http://www.ronalpia.fr/,@ronalpia ,accompagnement conseil,Léna Geitner,Directrice,Geitner_Lena_Ronalpia.jpg,Ronalpia.png,Associations_et_accompagnateurs
+,Ronalpia,,,,,accompagnement conseil,,,,,
+,,,,,,incubation,,,,,
+,Ronalpia,,,,,mentorat,,,,,
+ok,RTES,Rassembler plus de 120 collectivités territoriales françaises ayant des politiques de soutien à l’Economie Sociale et Solidaire.,Nationale,rtes.fr,@ReseauRTES,centre de ressources,Anne-Laure Federici,Déléguée générale,Federici_Anne_Laure_RTES.jpg,RTES_quadri.png,Institution_et_tetes_de_reseau
+,RTES,,,,,observation,,,,,
+,RTES,,,,,accompagnement conseil,,,,,
+ok,Sceaux,Offrir un écosystème d’innovation sociale pour un développement local inclusif et durable dans le Sud Parisien,Départementale,https://www.sceaux.fr,@Ville_de_Sceaux,centre de ressources,Othmane Khaoua,Conseiller municipal délégué à l'Economie sociale et solidaire,,Sceaux_up_ville_de _sceaux.png,Institution_et_tetes_de_reseau
+,Sceaux,,,,,incubation,,,,,
 ok,SIILAB,Innover et investir dans l'Economie Sociale et Solidaire grâce à un living lab régional.,Régionale,hauts-de-france.drjscs.gouv.fr/spip.php?article1469,@SIILABHDF,accompagnement conseil,Julien Kounowski,"Chef de projet DRJSCS SIILAB, responsable de Pôle 
-",
-,SIILAB,,,,,recherche,,,
-,SIILAB,,,,,centre de ressources,,,
-ok,SparkNews,Identifier à travers le monde les innovations sociales et environnementales les plus inspirantes pour leur donner la visibilité qu'elles méritent dans les médias et auprès des entreprises.,Internationale,www.sparknews.com,@Sparknews,média,Emma Stokking,Responsable innovation sociale,Stokking_Emma_Sparknews.png
-,SparkNews,,,,,observation,,,
-ok,Synergies,"Agir pour que tous - particuliers, scolaires, collectivités, agriculteurs et entreprises deviennent des acteurs du développement durable en Mayenne.",Départementale,www.synergies53.fr,NON,accompagnement conseil,Maude Laurent,Coordinatrice Synergies & Animatrice du Réseau des collectivités,
-,Synergies,,,,,centre de ressources,,,
+",,SIILAB.png,Associations_et_accompagnateurs
+,SIILAB,,,,,recherche,,,,,
+,SIILAB,,,,,centre de ressources,,,,,
+ok,Sparknews,Identifier à travers le monde les innovations sociales et environnementales les plus inspirantes pour leur donner la visibilité qu'elles méritent dans les médias et auprès des entreprises.,Internationale,www.sparknews.com,@Sparknews,média,Emma Stokking,Responsable innovation sociale,Stokking_Emma_Sparknews.png,Sparknews.png,Medias_de_solutions
+,Sparknews,,,,,observation,,,,,
+ok,Synergies,"Agir pour que tous - particuliers, scolaires, collectivités, agriculteurs et entreprises deviennent des acteurs du développement durable en Mayenne.",Départementale,www.synergies53.fr,NON,accompagnement conseil,Maude Laurent,Coordinatrice Synergies & Animatrice du Réseau des collectivités,,SYNERGIE.png,Associations_et_accompagnateurs
+,Synergies,,,,,centre de ressources,,,,,
 ok,Territoria,Observer l'innovation dans les collectivités territoriales et organiser un Prix d'Innovation national depuis 1986.,Nationale,territoria.asso.fr,@ObsTerritoria,formation,Marie-Christine Jung,"Délégué général
-",Jung_Marie_Christine_Territoria.jpg
-,Territoria,,,,,centre de ressources,,,
-,Territoria,,,,,observation,,,
-ok,Ticket for change,"Lutter contre le gâchis de talents, animer des programmes d’accompagnement et faire émerger les entrepreneurs du changement de demain.",Nationale,https://www.ticketforchange.org,@TicketforChange,accompagnement conseil,Intissar Bouftaim,Responsable des alumni,Bouftaim_Intissar_Ticket_for_change.jpg
-,Ticket for change,,,,,incubation,,,
-,Ticket for change,,,,,mentorat,,,
-ok,UNADEL,Agir pour un développement local qui mobilise les citoyens aux côtés des élus et techniciens. Observer et mettre en lien les acteurs et actrices des transitions dont notre société à besoin.,Nationale,unadel.org,@AssoUnadel,centre de ressources,Valérian Poyau,Chargé de mission,Poyau_Valérian_UNADEL.jpg
-,UNADEL,,,,,accompagnement conseil,,,
-,UNADEL,,,,,observation,,,
-ok,Villes Internet,Accompagner le déploiement des politiques publiques numériques locales en rassemblant des élus locaux de manière transpolitique autour du thème de l'Internet citoyen.,Nationale,www.villes-internet.net,@Villes_Internet,centre de ressources,Florence Durand - Tornare,Fondatrice et déléguée,
-,Villes Internet,,,,,accompagnement conseil,,,
+",Jung_Marie_Christine_Territoria.jpg,TERRITORIA-HQ.png,Associations_et_accompagnateurs
+,Territoria,,,,,centre de ressources,,,,,
+,Territoria,,,,,observation,,,,,
+ok,Ticket for change,"Lutter contre le gâchis de talents, animer des programmes d’accompagnement et faire émerger les entrepreneurs du changement de demain.",Nationale,https://www.ticketforchange.org,@TicketforChange,accompagnement conseil,Intissar Bouftaim,Responsable des alumni,Bouftaim_Intissar_Ticket_for_change.jpg,Ticket_for_Change.png,Associations_et_accompagnateurs
+,Ticket for change,,,,,incubation,,,,,
+,Ticket for change,,,,,mentorat,,,,,
+ok,UNADEL,Agir pour un développement local qui mobilise les citoyens aux côtés des élus et techniciens. Observer et mettre en lien les acteurs et actrices des transitions dont notre société à besoin.,Nationale,unadel.org,@AssoUnadel,centre de ressources,Valérian Poyau,Chargé de mission,Poyau_Valérian_UNADEL.jpg,Unadel.png,Institution_et_tetes_de_reseau
+,UNADEL,,,,,accompagnement conseil,,,,,
+,UNADEL,,,,,observation,,,,,
+ok,Villes Internet,Accompagner le déploiement des politiques publiques numériques locales en rassemblant des élus locaux de manière transpolitique autour du thème de l'Internet citoyen.,Nationale,www.villes-internet.net,@Villes_Internet,centre de ressources,Florence Durand - Tornare,Fondatrice et déléguée,,VillesInternet.png,Associations_et_accompagnateurs
+,Villes Internet,,,,,accompagnement conseil,,,,,

@@ -195,13 +195,17 @@ const CSVToObjectKeyMap = Object.freeze({
     'ACTIVITES': 'activities',
     'CONTACT SUR LE SITE DU CIS': 'contact',
     'FONCTION DU CONTACT': 'contactRole',
-    'NOM Photo portrait': 'portraitURL'
+    'NOM Photo portrait': 'portraitURL',
+    'NOM Photo logo': 'logoFilename',
+    'Sous dossier attaché': 'logoFolder'
 })
 
 const membersP = fetch('/static/data/members.csv')
 .then(r => r.text())
 .then(d3.csvParse)
 .then(dataFromText => {
+    console.log('dataFromText', dataFromText);
+
     const rowsByMemberName = new Map();
 
     for(const row of dataFromText){
@@ -309,7 +313,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 return Bouture.li([
                     Bouture.header([
                         Bouture.div([
-                            Bouture.img({src: spider && spider.logoUrl ? spider.logoUrl : ''}),
+                            Bouture.img({src: member.logoFolder && member.logoFilename ? `/static/logos/Partenaires/${member.logoFolder}/${member.logoFilename}`: ''}),
                             Bouture.ul(
                                 {class: 'activities'},
                                 [...member.activities].map(a => Bouture.li(a))
