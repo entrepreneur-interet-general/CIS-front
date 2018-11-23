@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{# CSS A CLEANER ABSOLUMENT !!! --> BASE BULMA A RETROUVER !!! #}
+<style>
+    .award{
+        display: flex;
+        align-items: center;
+    }
+
+    .award:nth-child(odd){
+        flex-direction: row;
+    }
+
+    .award:nth-child(even){
+        flex-direction: row-reverse;
+    }
+
+    .award > :first-child{
+        flex: 1;
+    }
+    .award > .description{
+        flex: 2;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 1em;
+    }
+
+
+
+    .award > .description img {
+        max-height: 4em;
+    }
+
+    .award > .description h1{
+        font-size: 1.1em;
+        font-weight: bold;
+        padding: 0.5em 0;
+    }
+
+</style>
+
+<main>
+    <nav>
+        <ul class="cis-tabs">
+            <li><a href="/the-project">About the project</a>
+            <li><a href="/the-project/tools">Digital innovation</a>
+            {# <li><a href="/le-projet/parlent-de-nous">Ils parlent de nous</a> #}
+            <li class="selected"><a href="/the-project/rewards">Rewards</a>
+        </ul>
+    </nav>
+
+    <section class="award">
+        <div class="description">
+            <img src="/static/logos/recompense/OECD_logo_new.svg.png">
+            <time>October 2018</time>
+            <h1>Organisation for Economic Co-operation and Development (OECD)</h1>
+            <p>We have been selected as one of the 2 French innovations by the OECD Observatory of Public Sector Innovation. Events and a report will help to present our works to an international audience..</p>
+            <a href="https://oecd-opsi.org/innovations/carrefour-des-innovations-sociales-social-innovation-crossroad/">Get to know the OECD</a>
+        </div>
+    </section>
+
+    <section class="award">
+        <div>
+            <img src="/static/photos/fondation.jpg">   
+        </div>
+        <div class="description">
+            <img src="/static/logos/recompense/Fondation_bien_commun.jpg">
+            <time>September 2018</time>
+            <h1>Fondation pour la co-construction du bien commun (Foundation for the co-construction of common good)</h1>
+            <p>We have been rewarded of the ‘’inspiring example’’ in the category ‘’Projects Cedar of Lebanon’’ by the Fondation pour la co-construction du bien commun</p>
+        </div>
+    </section>
+
+    <section class="award">
+        <div>
+            <img src="/static/photos/transformateur_numerique.jpg">   
+        </div>
+        <div class="description">
+            <img src="/static/logos/recompense/logo_transformateur_numerique.png">
+            <time>April 2018</time>
+            <h1>Transformateur numérique (Digital transformer)</h1>
+            <p>We have been laureate of the Transformateur numérique organized by both the Agence nationale pour l’amélioration des conditions de travail (ANACT) and the Fondation Internet Nouvelle Génération (FING)</p>
+        </div>
+    </section>
+
+
+
+    <section class="award">
+        <div>
+            <img src="/static/photos/imageEIG.png">   
+        </div>
+        <div class="description">
+            <div>
+                <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Investissements_d'avenir_-_logo.jpeg">
+                <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Etalab logo.PNG">
+                <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/EIG.png">
+            </div>
+            <time>January 2018</time>
+            <h1>Entrepreneur d’intérêt général  (Public interest entrepreneur)</h1>
+            <p>We have been laureate of the program Entrepreneur d’intérêt général. Social Innovations Crossroad has been financed by the Programme d’investissement d’avenir (PIA) and coached by Etalab.</p>
+        </div>
+    </section>
+
+
+</main>
+
+{% endblock %}

@@ -101,11 +101,14 @@ export function getProjectById(id){
 export function searchProjects(text, tags, spiderIds=[], page=1, per_page=1000){
     text = text.trim();
 
-    const searchArg = text.length >= 1 ? '&search_for='+encodeURIComponent(text) : '';
-    const spiderArg = spiderIds.length >= 1 ? '&'+spiderIds.map(id => 'spider_id='+id).join('&') : '';
-    const tagsArg = tags && tags.size >= 1 ? `&search_in_tags=${encodeURIComponent([...tags].join(','))}` : '';
+    const shuffle_seed      = Math.floor((Math.random() * 10000) + 1); ;
+    console.log("shuffle_seed : ", shuffle_seed) ;
 
-    let url = `${APISearchOrigin}/api/data?page_n=${page}&results_per_page=${per_page}&token=test_token&shuffle_seed=1${searchArg}${spiderArg}${tagsArg}`
+    const searchArg         = text.length >= 1 ? '&search_for='+encodeURIComponent(text) : '';
+    const spiderArg         = spiderIds.length >= 1 ? '&'+spiderIds.map(id => 'spider_id='+id).join('&') : '';
+    const tagsArg           = tags && tags.size >= 1 ? `&search_in_tags=${encodeURIComponent([...tags].join(','))}` : '';
+
+    let url = `${APISearchOrigin}/api/data?page_n=${page}&results_per_page=${per_page}&token=test_token&shuffle_seed=${shuffle_seed}${searchArg}${spiderArg}${tagsArg}`
 
     return fetch(url)
     .then(r => r.json())

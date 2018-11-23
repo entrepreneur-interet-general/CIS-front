@@ -201,6 +201,90 @@ def home():
 	)
 
 
+@app.route('/en', methods=['GET', 'POST'])
+# @app.route('/eng')
+def home_english():
+
+	log_cis.debug("entering new home page")
+	
+	form 			= PreRegisterForm()
+
+	try :
+		current_session_uid = session["public_id"]
+		# Check_tokens_user ( current_session_uid, lang_set )
+	except : 
+		current_session_uid = None
+
+
+	if request.method == 'POST' :
+		
+		### for debugging purposes
+		for f_field in form : 
+			log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+		if form.validate_on_submit():
+
+			### ADD A NEW FEEDBACK
+			# create preregister data and store it in MongoDB
+			new_preregister 	= PreRegister()
+			new_preregister.populate_from_form( form=form )
+			new_preregister.add_created_at()
+			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
+
+			# check if email/user already exists in users db
+			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
+			
+			### ADD A NEW USER
+			# create a potential user if doesn't already exist in db
+			if not existing_user :
+				
+				# create default password
+				temp_pwd = pwd_generator()
+				hashpass = generate_password_hash( temp_pwd, method='sha256')
+		
+				# capitalize name and surname 
+				form.userName.data 		= form.userName.data.capitalize()
+				form.userSurname.data 	= form.userSurname.data.capitalize()
+
+				# populate user class
+				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
+				new_user.populate_from_form(form=form)
+				new_user.add_created_at()
+				new_user.check_if_user_structure_is_partner()
+
+				# save user in db as visitor
+				new_user.insert_to_mongo( coll=mongo_users )
+			
+			flash(u"votre message a bien été envoyé, merci de votre intérêt !", category='primary')
+
+			return redirect(request.args.get("next") or "/")
+
+
+		else :
+			
+			log_cis.error("form was not validated / form.errors : %s", form.errors )
+			
+			flash(u"problème lors de l'envoi de votre message", category='warning')
+
+			return redirect("/")
+
+
+	return render_template(
+		"new-home-english.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "en", 
+		form				= form
+	)
+
+
+
+
+
+
+
+
 @app.route('/recherche', methods=['GET'])
 @app.route('/project/<id>', methods=['GET'])
 def spa(id=''):
@@ -215,6 +299,10 @@ def spa(id=''):
 	)
 
 
+
+
+
+
 @app.route('/le-projet', methods=['GET'])
 def leProjet():
 
@@ -227,6 +315,20 @@ def leProjet():
 		language			= "fr" 
 	)
 
+
+@app.route('/the-project', methods=['GET'])
+def theProject():
+
+	log_cis.debug("entering theProject page")
+
+	return render_template(
+		"le-projet-english.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "en" 
+	)
+
+
 @app.route('/le-projet/outils', methods=['GET'])
 def lesOutils():
 
@@ -238,6 +340,19 @@ def lesOutils():
 		app_metas			= app_metas, 
 		language			= "fr" 
 	)
+
+@app.route('/the-project/tools', methods=['GET'])
+def theTools():
+
+	log_cis.debug("entering tools page")
+
+	return render_template(
+		"les-outils-english.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "en" 
+	)
+
 
 @app.route('/le-projet/parlent-de-nous', methods=['GET'])
 def presse():
@@ -262,6 +377,23 @@ def recompenses():
 		app_metas			= app_metas, 
 		language			= "fr" 
 	)
+
+@app.route('/the-project/rewards', methods=['GET'])
+def rewards():
+
+	log_cis.debug("entering rewards page")
+
+	return render_template(
+		"recompenses-english.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "en" 
+	)
+
+
+
+
+
 
 @app.route('/qui-sommes-nous', methods=['GET'])
 def quiSommesNous():

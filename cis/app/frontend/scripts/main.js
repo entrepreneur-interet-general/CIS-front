@@ -17,16 +17,34 @@ function makeSourceFilterFromSpiders(spiders){
 
     console.log('spiders', spiders);
 
+    var choices =  [ ...Object.entries(spiders) ] ;
+    console.log('choices : ', choices);
+
+    var choices_mapped = choices.map(([id, {name}]) => ({
+        "fullname": name, 
+        "id": id,
+        "spiderId": id,
+        "name": name
+    })) ;
+    console.log('choices_mapped : ', choices_mapped);
+
+    choices_mapped.sort(function(a, b){
+        return a.name > b.name;
+      });
+
     return {
         "fullname": "Source", 
         "name": SOURCE_FILTER_NAME,
-        "choices": [...Object.entries(spiders)].map(([id, {name}]) => ({
+        "choices": choices_mapped ,
+        /*[ ...Object.entries(spiders)].map(([id, {name}]) => ({
             "fullname": name, 
             "id": id,
             "spiderId": id,
             "name": name
-        }))
+        })) */
     }
+
+
 }
 
 

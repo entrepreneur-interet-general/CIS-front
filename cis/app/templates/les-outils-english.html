@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+{# CSS A CLEANER ABSOLUMENT !!! --> BASE BULMA A RETROUVER !!! #}
+<style>
+
+    main > nav,
+    main > section{
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    section#open-source{
+        
+    }
+    section#open-source h1{
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+
+    section#open-source h1,
+    section#open-source p{
+        max-width: 40em;
+    }
+
+
+    section#architecture{
+        width: 100%;
+        padding: 0;
+        border: 0;
+
+        background-color: #F6F6F6;
+    }
+
+    section#architecture > *{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    section#architecture ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1em 2em;
+    }
+
+    section#architecture ul li{
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    section#architecture ul li p{
+        width: 80%;
+    }
+    section#architecture ul li strong{
+        color: #592d7b;
+        font-weight: bold;
+    }
+
+
+
+    .software-show{
+        display: flex;
+
+        padding-top: 5em;
+    }
+
+    .software-show:nth-of-type(odd){
+        flex-direction: row;
+    }
+    .software-show:nth-of-type(even){
+        flex-direction: row-reverse;
+    }
+
+
+    .software-show > *{
+        flex: 1;
+    }
+
+    .software-show img{
+        max-width: 120%;
+    }
+
+
+    .software-show:nth-of-type(odd) img{
+        transform: translate(-20%, -20%);
+    }
+    .software-show:nth-of-type(even) img{
+        transform: translate(20%, -20%);
+    }
+
+
+    .software-show h1{
+        color: #592d7b;
+        font-weight: bold;
+        font-size: 1.7em;
+    }
+    .software-show h2{
+        font-weight: bold;
+
+        font-size: 1.4em;
+    }
+    .software-show h3{
+        color: #592d7b;
+    }
+
+    .software-show ul{
+        margin-bottom: 2em;
+    }
+
+
+    .software-show ul li:before{
+        content: "-";
+        
+        padding-right: 5px;
+    }
+
+
+    .software-show a{
+        padding: 1em 2em;
+        margin-right: 1em;
+
+        border-radius: 3px;
+    }
+
+    .software-show a.test{
+        color: white;
+        background-color: #592d7b;
+        border: 1px solid #592d7b;
+    }
+    .software-show a.github{
+        color: #592d7b;
+        background-color: white;
+        border: 1px solid #592d7b;
+    }
+
+
+
+</style>
+
+<main>
+    <nav>
+        <ul class="cis-tabs">
+            <li><a href="/the-project">About the project</a>
+            <li class="selected"><a href="/the-project/tools">Digital innovation</a>
+            {# <li><a href="/le-projet/parlent-de-nous">Ils parlent de nous</a> #}
+            <li><a href="/the-project/rewards">Rewards</a>
+        </ul>
+    </nav>
+
+    <section id="open-source">
+        <h1>We are developping 3 open-source <em>open source</em> softwares</h1>
+        <p>These softwares were initiated based on the specific needs of Social Innovations Crossroad. They enable to collect, aggregate, consolidate and visualize information on social innovation projects.
+        <p>We also invest in digital investment. These softwares are open-source in an operational way. They are starting to be adapted to other needs of actors working the public interest. the 3 softwares can be used separately.
+    </section>
+
+    <section id="architecture">
+        <div>
+            <ul>
+                <li>
+                    <img src="/static/illustrations/Projet_outils_open_scraper.png">
+                    <p><strong>Open scraper</strong>  collects projects information directly on the websites.
+
+                <li>
+                    <img src="/static/illustrations/Projet_outils_solidata.png">
+                    <p><strong>Solidata</strong> aggregates and consolidates projects information.
+                <li>
+                    <img src="/static/illustrations/Projet_outils_apiviz.png">
+                    <p><strong>Apiviz</strong>  is where to visualise information thanks to a search engine, a map and data visualisation tools.
+
+            </ul>
+        </div>
+    </section>
+
+    <section class="software-show">
+        <div>
+            <img src="/static/illustrations/Projet_outils_screenshot_openscraper.png">
+        </div>
+        <div>
+            <h1>Open Scraper</h1>
+            <h2>To collect data on websites</h2>
+            <h3>Features</h3>
+            <ul>
+                <li>Collect data published on websites
+                <li>Turn disparate data into homogenous ones
+                <li>Open data and control the degree of their sharing (from private data to open data)
+            </ul>
+            <!-- <a class="test" href="">Tester Open Scraper</a> -->
+            <a class="github" href="https://github.com/entrepreneur-interet-general/OpenScraper">Check on Github</a>
+        </div>
+    </section>
+
+    <section class="software-show">
+
+        <div>
+            <img src="/static/illustrations/Projet_outils_screenshot_solidata.png">
+        </div>
+        
+        <div>
+            <h1>Solidata</h1>
+            <h2>To aggregate and consolidate data</h2>
+            <h3>Features</h3>
+            <ul>
+                <li>Aggregate data coming from diverse files and sources
+                <li>Enrich data thanks to external open data : geolocalisation, administrative data, …
+                <li>Open data and control the degree of their sharing (from private data to open data)
+            </ul>
+            <!-- <a class="test" href="">Tester Solidata</a> -->
+            <a class="github" href="https://github.com/entrepreneur-interet-general/solidata_frontend">Check on Github</a>
+        </div>
+    </section>
+
+    <section class="software-show">
+
+        <div>
+            <img src="/static/illustrations/Projet_outils_screenshot_apiviz.png">
+        </div>
+        <div>
+            <h1>Apiviz</h1>
+            <h2>To visualise data flow</h2>
+            <h3>Features</h3>
+            <ul>
+                <li>Look for precise data thanks to a search engine
+                <li>Visualise aggregated data in different ways : map, data visualisation, etc.
+                <li>Make its own favorite list
+            </ul>
+            <!-- <a class="test" href="">Tester Apiviz</a> -->
+            <a class="github" href="https://github.com/entrepreneur-interet-general/CIS-front">Check on Github</a>
+        </div>
+    </section>
+<!--
+    <section class="contact">
+        <h2>Vous êtes intéréssé.e par un ou plusieurs de ces logiciels ?</h1>
+        <p> Ils sont open-source et libres d’être utilisés par tous.
+        <h1>Vous voulez échanger avec nous ?</h1>
+        <a href="/contact">Ecrivez-nous</a>
+    </section>
+-->
+</main>
+
+{% endblock %}
