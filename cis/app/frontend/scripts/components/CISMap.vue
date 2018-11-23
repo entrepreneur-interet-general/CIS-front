@@ -89,4 +89,14 @@ export default {
     width: 80%;
     margin-left: 10%;
 }
+
+/*
+    Leaflet adds its own z-index to a bunch of elements which makes the map appear on top of 
+    other elements with no good reason
+    This line allows for the map to be usable without known limit yet while leaving the map below
+    other elements
+*/
+.map .leaflet-container *{
+  z-index: 1;
+}
 </style>
