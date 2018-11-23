@@ -46,9 +46,14 @@ export default {
                 '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contibutors'
         };
     },
-    computed: mapState([
-        'projects', 'geolocByProjectId'
-    ]),
+    computed: {
+        ...mapState([
+            'geolocByProjectId'
+        ]),
+        ...mapState({
+            projects: ({search}) => search.answer.result && search.answer.result.projects,            
+        })
+    },
     methods: {
         zoomUpdate(zoom) {
             this.currentZoom = zoom;

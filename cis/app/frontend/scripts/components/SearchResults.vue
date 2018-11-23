@@ -35,7 +35,7 @@
                         <span>Liste</span>
                     </button>
 
-                    <button disabled :class="['button', view === views.VIEW_MAP ? 'is-selected is-primary' : undefined]" @click="setView(views.VIEW_MAP)">
+                    <button :class="['button', view === views.VIEW_MAP ? 'is-selected is-primary' : undefined]" @click="setView(views.VIEW_MAP)">
                         <span class="icon">
                             <i class="fas fa-map"></i>
                         </span>
@@ -80,7 +80,7 @@
 <script>
 import {mapState} from 'vuex'
 import CISProjectCard from './CISProjectCard.vue'
-//import CISMap from './CISMap.vue'
+import CISMap from './CISMap.vue'
 
 const COLUMN_COUNT = 4;
 
@@ -96,8 +96,10 @@ const VIEW_MAP = 'VIEW_MAP';
 let scrollListener;
 
 export default {
+    name: 'SearchResults',
+
     components: {
-        CISProjectCard//, CISMap
+        CISProjectCard, CISMap
     },
 
     data(){
