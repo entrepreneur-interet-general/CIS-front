@@ -118,6 +118,8 @@ export default {
     position: absolute;
     top: 0;
     width: 100%;
+
+    padding-top: 1em;
 }
 
 .map .count-and-tabs-container .results-count,

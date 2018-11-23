@@ -1,7 +1,6 @@
 <template>
     <section>
-        <header class="container">
-
+        <header class="container" v-if="view === VIEW_LIST || selectedFilters.length >= 1">
             <div class="inline-filters" v-if="selectedFilters.length >= 1">
                 <span class="all">
                     Supprimer tous les filtres
@@ -57,7 +56,6 @@ const DEFAULT_SHOW_COUNT = 50;
 const MORE_PROJECTS_ON_SCROLL_COUNT = 20;
 
 const SCROLL_BEFORE_BOTTOM_TRIGGER = 500;
-
 
 
 let scrollListener;
@@ -155,8 +153,12 @@ export default {
 </script>
 
 <style scoped>
+header{
+    padding-top: 1em;
+}
+
 header > .inline-filters{
-    padding-top: 1.5em;
+    margin-bottom: 1em;
 }
 
 header > .inline-filters span{

@@ -70,9 +70,7 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    padding-top: 1.5em;
-
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .count-and-tabs .results-count{
