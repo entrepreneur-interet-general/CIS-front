@@ -18,50 +18,16 @@
                     <button @click="clearFilter({filter, value})">x</button>
                 </span>
             </div>
-
-            <div class="count-and-tabs">
-
-                <div class="results-count">
-                    <span class="nb">{{pending ? '?' : total}}</span> 
-                    <span>projets trouvés</span>
-                </div>
-
-                <div class="buttons has-addons is-right">
-
-                    <button :class="['button', view === views.VIEW_LIST ? 'is-selected is-primary' : undefined]" @click="setView(views.VIEW_LIST)">
-                        <span class="icon">
-                            <i class="fas fa-list"></i>
-                        </span>
-                        <span>Liste</span>
-                    </button>
-
-                    <button :class="['button', view === views.VIEW_MAP ? 'is-selected is-primary' : undefined]" @click="setView(views.VIEW_MAP)">
-                        <span class="icon">
-                            <i class="fas fa-map"></i>
-                        </span>
-                        <span>Carte</span>
-                    </button>
-
-                    <button class="button is-normal tooltip is-tooltip-danger is-tooltip-bottom"
-                        data-tooltip="en construction"
-                        disabled
-                        >
-                        <span class="icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </span>
-                        <span>Données</span>
-                    </button>
-
-                </div>
-            </div>
         </header>
 
         <div class="container" v-if="pending">
             <div class="pending">Recherche en cours...</div>
         </div>
 
-        <div class="container" v-if="!pending">
-            <div class="columns" v-if="view === views.VIEW_LIST && total > 0" >
+        <div class="container" v-if="!pending && view === VIEW_LIST">
+            <CISSearchResultsCountAndTabs :view="view" @viewChange="setView"/>
+            
+            <div class="columns" v-if="view === VIEW_LIST && total > 0" >
                 <div class="column is-3" v-for="(projectColumn, i) in projectColumns" :key="i">
                     <div class="columns is-multiline">
                         <CISProjectCard v-for="project in projectColumn" :key="project.id" :project="project"/>
@@ -69,10 +35,10 @@
                 </div>
             </div>
 
-            <div class="no-result" v-if="view === views.VIEW_LIST && total === 0">(Aucun résultat)</div>
-
-            <CISMap v-if="view === views.VIEW_MAP"/>
+            <div class="no-result" v-if="view === VIEW_LIST && total === 0">(Aucun résultat)</div>
         </div>
+
+        <CISMap v-if="view === VIEW_MAP" :view="view" @viewChange="setView"/>
 
     </section>
 </template>
@@ -81,6 +47,9 @@
 import {mapState} from 'vuex'
 import CISProjectCard from './CISProjectCard.vue'
 import CISMap from './CISMap.vue'
+import CISSearchResultsCountAndTabs from './CISSearchResultsCountAndTabs.vue'
+
+import {VIEW_MAP, VIEW_LIST} from '../constants.js'
 
 const COLUMN_COUNT = 4;
 
@@ -89,8 +58,6 @@ const MORE_PROJECTS_ON_SCROLL_COUNT = 20;
 
 const SCROLL_BEFORE_BOTTOM_TRIGGER = 500;
 
-const VIEW_LIST = 'VIEW_LIST';
-const VIEW_MAP = 'VIEW_MAP';
 
 
 let scrollListener;
@@ -99,12 +66,13 @@ export default {
     name: 'SearchResults',
 
     components: {
-        CISProjectCard, CISMap
+        CISProjectCard, CISMap, CISSearchResultsCountAndTabs
     },
 
     data(){
         return {
-            views : {VIEW_LIST, VIEW_MAP},
+            VIEW_MAP, 
+            VIEW_LIST,
             showCount: DEFAULT_SHOW_COUNT,
             view: VIEW_LIST
         }
@@ -228,37 +196,6 @@ header > .inline-filters span.all{
     color: #767676;
 }
 
-
-
-header > .count-and-tabs{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-top: 1.5em;
-
-    margin-bottom: 2em;
-}
-
-header .results-count{
-    padding: 0.5em 1em;
-
-    background-color: white;
-    border-radius: 3px;
-    font-size: 1.2em;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-header .results-count .nb{
-    color: #532A7B;
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-right: 0.5em;
-}
 
 section{
     background-color: #d9d9d9;

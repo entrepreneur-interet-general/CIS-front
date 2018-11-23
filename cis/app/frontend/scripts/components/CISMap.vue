@@ -1,5 +1,11 @@
 <template>
     <div class="map">
+        <div class="count-and-tabs-container">
+            <div class="container">
+                <CISSearchResultsCountAndTabs :view="view" @viewChange="$emit('viewChange', $event)"/>
+            </div>
+        </div>
+
         <l-map
         :zoom="zoom"
         :center="center"
@@ -27,14 +33,19 @@
 import { mapState, mapActions } from 'vuex'
 import { LMap, LTileLayer, LMarker, LPopup } from "vue2-leaflet";
 
+import CISSearchResultsCountAndTabs from './CISSearchResultsCountAndTabs.vue'
+
+
 export default {
     name: "CISMap",
     components: {
         LMap,
         LTileLayer,
         LMarker,
-        LPopup
+        LPopup,
+        CISSearchResultsCountAndTabs
     },
+    props: ['view'],
     data() {
         return {
             zoom: 6,
@@ -86,8 +97,7 @@ export default {
 <style>
 .map { 
     height: 500px; 
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
 }
 
 /*
@@ -99,4 +109,20 @@ export default {
 .map .leaflet-container *{
   z-index: 1;
 }
+
+
+.map{
+    position: relative;
+}
+.map .count-and-tabs-container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.map .count-and-tabs-container .results-count,
+.map .count-and-tabs-container .buttons{
+    z-index: 2;
+}
+
 </style>
