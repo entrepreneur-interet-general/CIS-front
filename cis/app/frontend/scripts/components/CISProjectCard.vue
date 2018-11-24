@@ -18,7 +18,6 @@
                 </div>
 
                 <p class="title is-5">
-                    <!-- TODO change to <router-link> -->
                     <router-link :to="`/project/${project.id}`" class="a_big">
                         {{project.title}}
                     </router-link>
@@ -28,7 +27,7 @@
                     <p class="subtitle is-6">{{summary}}</p>
                 </div>
 
-                <div class="content" v-if="project.tags">
+                <div class="content" v-if="Array.isArray(project.tags) && project.tags.length >=1">
                     <span v-for="tag in project.tags" class="tag" :key="tag">
                         {{tag}}
                     </span>

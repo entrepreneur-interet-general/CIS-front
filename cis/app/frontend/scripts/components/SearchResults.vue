@@ -153,12 +153,14 @@ export default {
 </script>
 
 <style scoped>
-header{
-    padding-top: 1em;
+
+/* TODO SASS : make a variable out of this background-value. Also used in CISSearchResultsCountAndTabs */
+section{
+    background-color: #F6F6F6;
 }
 
 header > .inline-filters{
-    margin-bottom: 1em;
+    padding-top: 1em;
 }
 
 header > .inline-filters span{
@@ -199,9 +201,6 @@ header > .inline-filters span.all{
 }
 
 
-section{
-    background-color: #d9d9d9;
-}
 
 .no-result{
     text-align: center;
