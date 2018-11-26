@@ -69,6 +69,30 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. ... pray for all that to work as expected, and keep calm... 
 
 
+#### Creating the first admin account
+
+Go to `/register`, create an account, then:
+```sh
+# Connect to MongoDB
+mongo
+# => mongo shell prompts
+
+# Use cis-front database
+use cis_front
+
+# list users
+db.users.find()
+
+# get the id of the user you want to move to admin
+# abcdef
+
+# Modify user
+db.users.updateOne({_id: ObjectId('abcdef')}, {$set: {userAuthLevel: 'admin'}})
+```
+
+Then, you can login with your admin user which can change settings of other users 
+
+
 
 ------
 
@@ -80,31 +104,6 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 - _Frontend_ : **[Bulma](https://bulma.io/)** as CSS framework, **[Vue.js](https://vuejs.org/)** as JS framework, **[Ajax]()** for API queries (to make queries to [Openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) )
 - _Server_   : **[Ubuntu 16.04]()**, **[NGINX](https://www.nginx.com/)**, **[Gunicorn](http://gunicorn.org/)**, hosted in **[Digital Ocean](http://digitalocean.com/)**, domain name from **[OVH](http://ovh.com/)**
 
-------
-
-## ROADMAP TO A MVP
-
-#### To do list :
-
-1. DONE - set up a basic Flask skeleton
-1. DONE - make the landing page + integrate a form 
-1. DONE - deploy with domain name
-1. DONE - create a login page and store users in db
-1. DONE - connect logged pages to [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API + display results
-1. DONE - create a search engine based on [openscraper](https://github.com/entrepreneur-interet-general/OpenScraper) API 
-1. what else ? ...
-
--------
-
-## NOW WHAT ? 
-
-#### Next steps in the to do list : 
-
-1. add project page when clicking on a project card (Vue.js)
-1. starting to implement charts section (Vue.js)
-1. add user preferences pages
-1. translations for english / spanish / german / ... 
-1. ... 
 
 -------
 

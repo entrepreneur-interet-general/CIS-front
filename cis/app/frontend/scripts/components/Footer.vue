@@ -42,7 +42,13 @@
 						</p>
 
 						<p>
-							<a href="/admint" target="_blank"> 
+							<a href="/login" target="_blank"> 
+								Login 
+							</a>
+						</p>
+
+						<p>
+							<a href="/admin" target="_blank"> 
 								Admin 
 							</a>
 						</p>
