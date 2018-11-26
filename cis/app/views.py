@@ -520,7 +520,7 @@ def login():
 
 				# flash(u"Vous êtes bien connecté.e", category='light')
 
-				return redirect(request.args.get("next") or url_for("index"))
+				return redirect(request.args.get("next") or url_for("home"))
 
 			else : 
 
@@ -638,7 +638,7 @@ def register():
 
 				flash(u"Votre compte a bien été créé", category='success')
 
-				return redirect(url_for('index'))
+				return redirect(url_for('home'))
 
 		else :
 			
@@ -682,7 +682,7 @@ def logout():
 	
 	flash(u"Vous êtes maintenant déconnecté.e", category='primary')
 
-	return redirect(url_for('index'))
+	return redirect(url_for('home'))
 
 
 
@@ -934,7 +934,7 @@ class MyAdminIndexView(AdminIndexView) :
 		
 		# TO DO : flash if auth level not enough
 		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
-		return redirect(url_for('index'))
+		return redirect(url_for('home'))
 
 class UserViewAdmin(ModelView):
 	"""
@@ -964,7 +964,7 @@ class UserViewAdmin(ModelView):
 		# TO DO : flash if auth level not enough
 		flash(u"Vous ne pouvez pas accéder à cette section", category='warning')
 
-		return redirect(url_for('index'))
+		return redirect(url_for('home'))
 
 	def get_list_form(self):
 		return self.scaffold_list_form(widget=CustomWidget)
@@ -1055,7 +1055,7 @@ class MessagesFromLandingAdmin(ModelView):
 		
 		# TO DO : flash if auth level not enough
 
-		return redirect(url_for('index'))
+		return redirect(url_for('home'))
 
 
 
@@ -1135,10 +1135,10 @@ def download_file(file_ext, file_name):
 			
 			log_cis.error("downloading this file is not working: %s.%s ", file_name, file_ext )
 			
-			return redirect(url_for('index'))
+			return redirect(url_for('home'))
 
 	else :
 
 		log_cis.error("downloading this file is not authorized: %s.%s ", file_name, file_ext )
 
-		return redirect(url_for('index'))
+		return redirect(url_for('home'))
