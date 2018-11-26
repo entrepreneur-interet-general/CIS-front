@@ -69,6 +69,30 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. ... pray for all that to work as expected, and keep calm... 
 
 
+#### Creating the first admin account
+
+Go to `/register`, create an account, then:
+```sh
+# Connect to MongoDB
+mongo
+# => mongo shell prompts
+
+# Use cis-front database
+use cis_front
+
+# list users
+db.users.find()
+
+# get the id of the user you want to move to admin
+# abcdef
+
+# Modify user
+db.users.updateOne({_id: ObjectId('abcdef')}, {$set: {userAuthLevel: 'admin'}})
+```
+
+Then, you can login with your admin user which can change settings of other users 
+
+
 
 ------
 
