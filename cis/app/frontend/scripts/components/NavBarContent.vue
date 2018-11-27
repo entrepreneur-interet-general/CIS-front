@@ -21,17 +21,17 @@
 			</div>
 
 			<div class="navbar-item">
+				<a class="button is-text" href="/nous-rejoindre"> 
+					<span>Nous rejoindre</span>
+				</a>
+			</div>
+
+
+			<div class="navbar-item">
 				<a class="button is-text" href="/en"> 
 					<span>English</span>
 				</a>
 			</div>
-
-			<!-- <div class="navbar-item">
-				<a class="button is-text" href="/nous-rejoindre"> 
-					<span>Nous rejoindre</span>
-				</a>
-			</div> -->
-
 		</div>
 	</div>
 </template>
