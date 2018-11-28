@@ -3,9 +3,26 @@
 {% block content %}
 
 <style>
-.join-us{
-
+.join-us section > :not(section){
+    width: 80%;
+    margin: 0 auto;
 }
+
+.join-us .structure-expand,
+.join-us .project-carrier-expand{
+    width: 100%;
+}
+
+.join-us section > form{
+    width: 100%;
+    background-color: #F6F6F6; /* TODO SASS variable*/ 
+}
+.join-us .project-carrier-expand form > *{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
 
 .join-us .buttons {
     justify-content: center;  /* Bulma override */
@@ -51,9 +68,8 @@
     color: #532A7B;
 }
 
-.join-us .structure-expand{
-    
-}
+
+
 .join-us .structure-expand ul.reasons{
     text-align: center;
 }
@@ -61,6 +77,11 @@
     display: flex;
     flex-direction: column;
     
+}
+
+
+.join-us .join-walkthrough{
+    background-color: #F6F6F6; /* TODO SASS variable */ 
 }
 
 </style>
