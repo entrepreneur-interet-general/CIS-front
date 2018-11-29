@@ -1060,36 +1060,27 @@ class MessagesFromLandingAdmin(ModelView):
 		return redirect(url_for('home'))
 
 
-
 	### for flask-admin
 
 	column_list 			= (	
 								'userName', 'userSurname', 'userEmail', 
 								'userOtherStructure', 
+								'userFeedbackTopic',
 								'userMessage',
 								'created_at',
-								'userHaveProjects', 'userJoinCollective', 
-								# 'follow_up_feedback',
 								'follow_up_user'
 							)
 	column_searchable_list 		= column_list
-
-	# column_searchable_list 		= ('userName', 'userEmail', 'userOtherStructure')
 	column_sortable_list	= column_list
-	# column_sortable_list 	= (	'userName', 'userSurname', 'userEmail', \
-	# 							'structure',)
-	
-	# column_filters = (BooleanEqualFilter(column=UserID.userName, name='userName'),)
 
-	column_labels = dict(	userName				= 'Name', 
-							userSurname				= 'Last Name',
-							userEmail				= 'Email',
-							# userPartnerStructure	= 'Structure (partner)',
-							userOtherStructure		= 'Structure (other)',
-							userHaveProjects		= 'Have Projects',
-							userJoinCollective		= 'Wants to join collective',
-							userMessage				= 'Message',
-							follow_up_user			= 'Suivi',
+	column_labels = dict(	userName				= u'Prénom', 
+							userSurname				= u'Nom',
+							userEmail				= u'Email',
+							userOtherStructure		= u'Structure',
+							userFeedbackTopic		= u'Sujet',
+							userMessage				= u'Message',
+							follow_up_user			= u'Suivi',
+							created_at				= u'Reçu le'
 						)
 
 	form 					= MessagesFromLandingAdmin
