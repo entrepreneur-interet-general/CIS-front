@@ -260,3 +260,25 @@ iframe{
 }
 
 
+footer{
+	font-size: 1em;
+}
+
+footer h2{
+	font-weight: bold;
+	font-size: 1.1em;
+	margin-bottom: 0.5em;
+}
+
+footer h2 a {
+	color: currentColor;
+	text-decoration: underline;
+}
+
+footer .column h2:not(:first-of-type){
+	margin-top: 0.5em;
+}
+
+footer ul{
+	list-style: none;
+}

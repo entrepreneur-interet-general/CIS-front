@@ -431,6 +431,18 @@ def nousRejoindre():
 		language			= "fr" 
 	)
 
+@app.route('/contact', methods=['GET'])
+def contact():
+
+	log_cis.debug("entering contact page")
+
+	return render_template(
+		"contact.html",
+		config_name			= config_name, # prod, testing, default...
+		app_metas			= app_metas, 
+		language			= "fr" 
+	)
+
 
 
 

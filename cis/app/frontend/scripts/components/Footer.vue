@@ -1,105 +1,54 @@
 <template>
 	<footer class="footer">
 		<div class="container">
-			<div class="content is-small">
-				<div class="columns">
-					<div class="column is-4 is-offset-2">
-						<h3>
-							<strong class="has-text-primary"> Le Carrefour des innovations sociales </strong>
-						</h3>
-						
-						<br>
+			<div class="columns">
 
-						<p>
-							<a href="/qui-sommes-nous">
-							<!-- <a class="modal-button" data-target="modal_who" aria-haspopup="true">  -->
-								Qui sommes-nous ?  
-							</a>
-						</p>
-						
-						<!-- <p>
-							<a class="modal-button" data-target="modal_charte" aria-haspopup="true"> 
-								La charte du collectif 
-							</a>
-						</p> -->
-						
-						<!-- <p>
-							<a class="modal-button" data-target="modal_legal" aria-haspopup="true"> 
-								Mentions légales 
-							</a>
-						</p> -->
-
-						<!-- <p>
-							<a class="modal-button" data-target="modal_feedback_tester" aria-haspopup="true"> 
-								Vos retours d'utilisateur
-							</a>
-						</p> -->
-						
-						<p>
+				<div class="column is-4 is-offset-2">
+					<h2 class="has-text-primary"> Le Carrefour des innovations sociales </h2>
+					
+					<ul>
+						<li>
+							<a href="/qui-sommes-nous">Qui sommes-nous ?</a>
+						<li>
 							<a href="https://github.com/entrepreneur-interet-general/CIS-front" target="_blank"> 
 								Code source 
 							</a>
-						</p>
-
-						<p>
-							<a href="/login" target="_blank"> 
-								Login 
-							</a>
-						</p>
-
-						<p>
-							<a href="/admin" target="_blank"> 
-								Admin 
-							</a>
-						</p>
-						
-
-					</div>
+						<li>
+							<a href="/login">Login</a>
+						<li>
+							<a href="/admin">Admin</a>
+				</div>
 
 
-					<div class="column is-4">
-
-						<h3>
-							<strong class="has-text-primary">Newsletter</strong>
-						</h3>
+				<div class="column is-4">
+					<h2 class="has-text-primary">Newsletter</h2>
 
 						<MailchimpSubscribe></MailchimpSubscribe>
 
-						<h3 style="margin-top: 0.5em">
-							<strong class="has-text-primary">Contactez-nous</strong>
-						</h3>
-						<p>
-							Pour toute question, écrivez-nous à : <br>
-							<a 	id="btn_mailto_footer" 
-								href="mailto:contact@carrefourdesinnovationssociales.fr">
-								contact@carrefourdesinnovationssociales.fr
-							</a>
-						</p>
+						<h2 class="has-text-primary"><a href="/contact">Contactez-nous</a></h2>
 
-						<h3 style="margin-top: 1em">
-							<strong class="has-text-primary"> Suivez-nous </strong>
-						</h3>
-						<div class="content is-medium">
-							
-							<a 	id="btn_cis_facebook"
-								class="button is-primary" 
-								href="https://www.facebook.com/TouteslesInnoSo/" >
-								<span class="icon">
-									<i class="fab fa-lg fa-facebook"></i>
-								</span>
-							</a>
-							
-							&nbsp;&nbsp;&nbsp;
+					<h2 class="has-text-primary">Suivez-nous</h2>
 
-							<a 	id="btn_cis_twitter"
-								class="button is-primary" 
-								href="https://twitter.com/touteslesinnoso" >
-								<span class="icon ">
-									<i class="fab fa-lg fa-twitter"></i>
-								</span>
-							</a>
-							
-						</div>
+					<div class="content is-medium">
+						
+						<a 	id="btn_cis_facebook"
+							class="button is-primary" 
+							href="https://www.facebook.com/TouteslesInnoSo/" >
+							<span class="icon">
+								<i class="fab fa-lg fa-facebook"></i>
+							</span>
+						</a>
+						
+						&nbsp;&nbsp;&nbsp;
+
+						<a 	id="btn_cis_twitter"
+							class="button is-primary" 
+							href="https://twitter.com/touteslesinnoso" >
+							<span class="icon ">
+								<i class="fab fa-lg fa-twitter"></i>
+							</span>
+						</a>
+						
 					</div>
 				</div>
 			</div>
