@@ -61,10 +61,7 @@ try :
 	os.environ["MAIL_SERVER"]			= MAIL_SERVER
 	os.environ["MAIL_USERNAME"]			= MAIL_USERNAME
 
-	os.environ["MONGODB_DB"]				= MONGO_DBNAME
 	os.environ["MONGODB_URI"]				= MONGO_URI
-	os.environ["MONGODB_COLL_USERS"]		= MONGO_COLL_USERS
-	os.environ["MONGODB_COLL_FEEDBACKS"]	= MONGO_COLL_FEEDBACKS
 
 ### except if no production env 
 except : 
@@ -112,10 +109,11 @@ class Config(object):
 	JWT_SECRET_KEY		= os.getenv("JWT_SECRET_KEY")
 	
 	""" MONGODB """
-	MONGO_DBNAME			=  os.getenv("MONGODB_DB")
-	MONGO_URI				=  os.getenv("MONGODB_URI")
-	MONGO_COLL_USERS		=  os.getenv("MONGODB_COLL_USERS")
-	MONGO_COLL_FEEDBACKS	=  os.getenv("MONGODB_COLL_FEEDBACKS")
+	MONGO_DBNAME							= 'cis_front'
+	MONGO_URI								= os.getenv("MONGODB_URI")
+	MONGO_COLL_USERS						= "users"
+	MONGO_COLL_FEEDBACKS					= "feedbacks"
+	MONGO_COLL_JOIN_MESSAGE_PROJECT_CARRIER = "join_message_project_carrier"
 
 	""" MAILING """
 	VALIDITY_CONFIRM	= os.getenv("VALIDITY_CONFIRM")

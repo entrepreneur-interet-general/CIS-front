@@ -26,10 +26,7 @@ SERVER_NAME_TEST	= "True"
 
 
 """ MONGODB """
-MONGO_DBNAME			= 'cis_front'
 MONGO_URI				= 'mongodb://localhost:27017/cis_front'
-MONGO_COLL_USERS		= "users"
-MONGO_COLL_FEEDBACKS	= "feedbacks"
 
 """ MAILING """
 VALIDITY_CONFIRM	= "7"
