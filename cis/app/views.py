@@ -56,9 +56,6 @@ def token_required(f):
 def error404(error):
 
 	log_cis.error( "error - 404 : %s", error )
-
-	# filters_choices = get_filters_choices()
-	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
 
@@ -69,8 +66,6 @@ def error404(error):
 
 							site_section		= "404",
 							error_msg			= u"la page demandée n'existe pas",
-							# filters_choices		= filters_choices,
-							form				= form,
 							user_infos			= current_user.get_public_infos,
 						),404
 
@@ -78,9 +73,6 @@ def error404(error):
 def error500(error):
 
 	log_cis.error( "error - 500 : %s", error )
-
-	# filters_choices = get_filters_choices()
-	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
 
@@ -91,7 +83,6 @@ def error500(error):
 
 							site_section		= "500",
 							error_msg			= u"erreur serveur",
-							# filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos,
 						),500
@@ -100,9 +91,6 @@ def error500(error):
 def error403(error):
 
 	log_cis.error( "error - 403 : %s", error )
-
-	# filters_choices = get_filters_choices()
-	form 			= PreRegisterForm()
 	
 	return render_template( "errors.html",
 
@@ -113,7 +101,6 @@ def error403(error):
 							
 							site_section		= "403",
 							error_msg			= u"méthode non autorisé",
-							# filters_choices		= filters_choices,
 							form				= form,
 							user_infos			= current_user.get_public_infos,
 						),403
@@ -129,7 +116,7 @@ def home():
 
 	log_cis.debug("entering new home page")
 	
-	form 			= PreRegisterForm()
+	form 			= FeedbackForm()
 
 	try :
 		current_session_uid = session["public_id"]
@@ -433,6 +420,8 @@ def nousRejoindre():
 
 @app.route('/contact', methods=['GET'])
 def contact():
+	
+	form = FeedbackForm()
 
 	log_cis.debug("entering contact page")
 
@@ -440,7 +429,8 @@ def contact():
 		"contact.html",
 		config_name			= config_name, # prod, testing, default...
 		app_metas			= app_metas, 
-		language			= "fr" 
+		language			= "fr",
+		form 				= form
 	)
 
 
