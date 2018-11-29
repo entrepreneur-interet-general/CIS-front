@@ -107,7 +107,7 @@ def error403(error):
 							languages_dict		= app_languages_dict ,
 							
 							site_section		= "403",
-							error_msg			= u"méthode non autorisé",
+							error_msg			= u"accès interdit",
 							form				= form,
 							user_infos			= current_user.get_public_infos
 						),403
@@ -133,74 +133,12 @@ def home():
 	)
 
 
-@app.route('/en', methods=['GET', 'POST'])
-# @app.route('/eng')
+@app.route('/en', methods=['GET'])
 def home_english():
 
-	log_cis.debug("entering new home page")
+	log_cis.debug("entering new home page in English")
 	
 	form 			= FeedbackForm()
-
-	try :
-		current_session_uid = session["public_id"]
-		# Check_tokens_user ( current_session_uid, lang_set )
-	except : 
-		current_session_uid = None
-
-
-	if request.method == 'POST' :
-		
-		### for debugging purposes
-		for f_field in form : 
-			log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
-
-
-		if form.validate_on_submit():
-
-			### ADD A NEW FEEDBACK
-			# create preregister data and store it in MongoDB
-			new_preregister 	= PreRegister()
-			new_preregister.populate_from_form( form=form )
-			new_preregister.add_created_at()
-			new_preregister.insert_to_mongo( coll=mongo_feedbacks )
-
-			# check if email/user already exists in users db
-			existing_user 		= mongo_users.find_one({"userEmail" : form.userEmail.data} )
-			
-			### ADD A NEW USER
-			# create a potential user if doesn't already exist in db
-			if not existing_user :
-				
-				# create default password
-				temp_pwd = pwd_generator()
-				hashpass = generate_password_hash( temp_pwd, method='sha256')
-		
-				# capitalize name and surname 
-				form.userName.data 		= form.userName.data.capitalize()
-				form.userSurname.data 	= form.userSurname.data.capitalize()
-
-				# populate user class
-				new_user 	= User( userPassword = hashpass, userAuthLevel="visitor", temp_pwd=temp_pwd )
-				new_user.populate_from_form(form=form)
-				new_user.add_created_at()
-				new_user.check_if_user_structure_is_partner()
-
-				# save user in db as visitor
-				new_user.insert_to_mongo( coll=mongo_users )
-			
-			flash(u"votre message a bien été envoyé, merci de votre intérêt !", category='primary')
-
-			return redirect(request.args.get("next") or "/")
-
-
-		else :
-			
-			log_cis.error("form was not validated / form.errors : %s", form.errors )
-			
-			flash(u"problème lors de l'envoi de votre message", category='warning')
-
-			return redirect("/")
-
 
 	return render_template(
 		"new-home-english.html",
@@ -209,7 +147,6 @@ def home_english():
 		language			= "en", 
 		form				= form
 	)
-
 
 
 
