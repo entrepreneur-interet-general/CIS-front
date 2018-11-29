@@ -1029,7 +1029,7 @@ class UserViewAdmin(ModelView):
 	}
 
 
-class MessagesFromLandingAdmin(ModelView):
+class FeedbackAdmin(ModelView):
 	"""
 	view of a message in flask-admin
 	cf : https://github.com/mrjoes/flask-admin/blob/master/examples/pymongo/app.py
