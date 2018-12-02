@@ -38,13 +38,13 @@ userName		= StringField	( 	u"prénom",
 										DataRequired(			message=u"vous devez rentrer un prénom"), 
 										Length(min=3, max=50,	message=u"vous devez rentrer un prénom d'au moins 3 caractères ")
 									], 
-									render_kw={'class': 'input'	, 'placeholder': u"votre prénom *"  }  
+									render_kw={'class': 'input'}  
 								)
 userSurname		= StringField	( 	u"nom" , 
 									validators = [ 
 										DataRequired(			message=u"vous devez rentrer un nom pour valider"), 
 										Length(min=3, max=50, 	message=u"vous devez rentrer un nom d'au moins 3 caractères ") ], 
-									render_kw={'class': 'input'	, 'placeholder': u"votre nom *"  }  
+									render_kw={'class': 'input'}  
 								)
 # userEmail_large	= EmailField	( 	u'user email'   , 
 # 									validators = [ DataRequired(), Length(min=7, max=50) ], 
@@ -55,7 +55,7 @@ userEmail		= EmailField	( 	u"email"   ,
 										DataRequired(			message=u"email invalide"), 
 										Length(min=7, max=50) 
 									], 
-									render_kw={'class': 'input', 'placeholder': u"votre email *"  }  
+									render_kw={'class': 'input'}  
 								)
 
 
@@ -139,8 +139,27 @@ userJoinCollective_strong  	= BooleanField  ( 	u'<strong>J’aimerais être part
 												default=False, 	
 												render_kw={'class': 'is-checkradio has-background-color is-white is-normal'	 } 
 											)
+
+FEEDBACK_TOPIC_TADATA = u'La suite logicielle tadata'
+FEEDBACK_TOPIC_CIS = u'Le projet Carrefour des innovations sociales'
+FEEDBACK_TOPIC_BUG = u'Un bug repéré sur le site'
+FEEDBACK_TOPIC_PROPOSAL = u'Une suggestion d’amélioration'
+FEEDBACK_TOPIC_OTHER = u'Un autre sujet'
+
+userFeedbackTopic			= SelectField(		u'Sujet du message', 
+												choices=[
+													(FEEDBACK_TOPIC_TADATA, FEEDBACK_TOPIC_TADATA), 
+													(FEEDBACK_TOPIC_CIS, FEEDBACK_TOPIC_CIS), 
+													(FEEDBACK_TOPIC_BUG, FEEDBACK_TOPIC_BUG), 
+													(FEEDBACK_TOPIC_PROPOSAL, FEEDBACK_TOPIC_PROPOSAL), 
+													(FEEDBACK_TOPIC_OTHER, FEEDBACK_TOPIC_OTHER), 
+												],
+												render_kw={'id': 'feedback-topic'}
+										)
+
+
 userMessage					= TextAreaField	(  	u'Message', 					
-												render_kw={'class' : 'textarea' , 'rows':'3', 'placeholder' : 'votre message, vos suggestions...' }
+												render_kw={'class' : 'textarea' , 'rows':'5'}
 											)
 
 ### specific infos about user's structure
@@ -161,14 +180,8 @@ userPartnerStructure	= SelectField	( 	u'sélectionner votre structure',
 										)
 userOtherStructure		= StringField	(	u'le nom de votre structure' , 
 											validators = [ Optional(), Length(min=0, max=100) ], 
-											render_kw={'class': 'input', 'placeholder': u"le nom de votre structure"  }  
+											render_kw={'class': 'input'}  
 										)
-# userOtherStructure		= StringField	(	u'le nom de votre structure' , 
-# 											validators = [ 
-# 												Optional(), 
-# 												Length(min=0, max=100, 	message=u"vous devez rentrer un nom d'au moins 3 caractères ") ], 
-# 											render_kw={'class': 'input'	, 'placeholder': u"le nom de votre structure"  }  
-# 										)
 
 ### user preferences / auth level
 
@@ -301,13 +314,15 @@ class UserNewPassword (FlaskForm) :
 	newPassword 		= newPassword
 	userConfirmPassword = userConfirmPassword
 
-class PreRegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
+
+class FeedbackForm(UserID):
 
 	### user infos
-	userEmail		= userEmail
+	userEmail			= userEmail
+	userOtherStructure 	= userOtherStructure
+	userFeedbackTopic   = userFeedbackTopic
+	userMessage			= userMessage
 
-	userHaveProjects 	= userHaveProjects_strong
-	userJoinCollective	= userJoinCollective_strong
 
 
 

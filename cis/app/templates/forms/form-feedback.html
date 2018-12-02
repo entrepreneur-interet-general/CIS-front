@@ -1,0 +1,83 @@
+
+<form action="/feedback" method="POST" name="form">
+
+	{{ form.hidden_tag() }}
+	{# { { form.csrf_token }} #}
+
+	{# USER NAME AND SURNAME #}
+	<div class="field is-horizontal">
+		<div class="field-body">
+			<div class="field">
+				<p class="control is-expanded">
+					<label>Prénom *
+						{{ form.userName() }}
+					</label>
+				</p>
+			</div>
+
+			<div class="field">
+				<p class="control is-expanded">
+					<label>Nom *
+						{{ form.userSurname() }}
+					</label>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	{# USER STRUCTURE NAME #}
+	<div class="field" id="userOtherStructureField">
+		<p class="control is-expanded">
+			<label>Structure
+				{{ form.userOtherStructure }}
+			</label>
+		</p>
+	</div>
+
+	{# USER EMAIL #}
+	<div class="field is-horizontal">
+		<div class="field-body">
+			<div class="field">
+				<p class="control is-expanded">
+					<label>Email *
+						{{ form.userEmail() }}
+					</label>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	{# USER FEEDBACK TOPIC #}
+	<div class="field">
+		<div class="control">
+			<label for="feedback-topic">Votre message concerne *</label>
+			<div class="select is-fullwidth">
+				{{ form.userFeedbackTopic }}
+			</div>
+		</div>
+	</div>
+			
+
+	{# USER MESSAGE #}
+	<div class="field is-horizontal">
+		<div class="field-body">
+			<div class="field">
+				<label class="control">
+					Message *
+					{{ form.userMessage }}
+				</label>
+				
+			</div>
+		</div>
+	</div>
+
+	<p class="help is-light">* champs requis</p>
+
+	{# SUBMIT BTN #}
+	<div class="field is-grouped is-grouped-centered">
+		<button class="button is-primary is-medium" type="submit">
+			Envoyer
+		</button>
+	</div>
+
+</form>

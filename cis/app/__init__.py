@@ -275,10 +275,8 @@ admin = Admin(	app,
 				)
 
 # Add views in admin interface
-admin.add_view( views.UserViewAdmin( 			mongo_users, 		'Users' ) )
-admin.add_view( views.MessagesFromLandingAdmin( mongo_feedbacks, 	'Feedbacks' ) )
-
-
+admin.add_view( views.UserViewAdmin( mongo_users, 		'Users' ) )
+admin.add_view( views.FeedbackAdmin( mongo_feedbacks, 	'Feedbacks' ) )
 
 
 
