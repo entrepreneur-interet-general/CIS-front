@@ -257,6 +257,24 @@ document.addEventListener('DOMContentLoaded', e => {
         projectCarrierReferencedByPartnerExpand.setAttribute('hidden', '')
     })
 
+    const referencedProjectCarrierForm = projectCarrierReferencedByPartnerExpand.querySelector('form')
+    referencedProjectCarrierForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const url = form.action;
+
+        fetch(url, { 
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(r => r.text())
+        .then(() => {
+            form.innerHTML = `<div>Merci, nous avons bien reçu les informations concernant la structure partenaire qui référence votre projet sur son site. Après vérification des information, nous prendrons contact avec elle.</div>`
+        })
+        .catch(err => console.error('project carrier error', err))
+    })
+
 
     // Des projets à partager ?
     const structureHasProjectsButton = document.body.querySelector('button.has-projects');
