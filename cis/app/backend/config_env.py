@@ -113,7 +113,7 @@ class Config(object):
 	MONGO_URI								= os.getenv("MONGODB_URI")
 	MONGO_COLL_USERS						= "users"
 	MONGO_COLL_FEEDBACKS					= "feedbacks"
-	MONGO_COLL_JOIN_MESSAGE_PROJECT_CARRIER = "join_message_project_carrier"
+	MONGO_COLL_JOIN_MESSAGE_REFERENCED_PROJECT_CARRIER = "join_message_referenced_project_carrier"
 
 	""" MAILING """
 	VALIDITY_CONFIRM	= os.getenv("VALIDITY_CONFIRM")

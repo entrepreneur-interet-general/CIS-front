@@ -293,11 +293,15 @@ def nousRejoindre():
 
 	log_cis.debug("entering nous-rejoindre page")
 
+	referencedProjectCarrierForm = ReferencedProjectCarrierForm()
+
+
 	return render_template(
 		"nous-rejoindre.html",
 		config_name			= config_name, # prod, testing, default...
 		app_metas			= app_metas, 
-		language			= "fr" 
+		language			= "fr",
+		referencedProjectCarrierForm = referencedProjectCarrierForm
 	)
 
 @app.route('/contact', methods=['GET'])
@@ -316,9 +320,6 @@ def contact():
 	)
 
 
-
-
-
 @app.route('/feedback', methods=['POST'])
 def feedback():
 
@@ -331,10 +332,6 @@ def feedback():
 		# Check_tokens_user ( current_session_uid, lang_set )
 	except : 
 		current_session_uid = None
-		
-	### for debugging purposes
-	for f_field in form : 
-		log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
 
 
 	if form.validate_on_submit():
@@ -379,6 +376,39 @@ def feedback():
 
 		
 	return redirect(request.referrer or "/")
+
+
+		
+@app.route('/nous-rejoindre/porteur-projet-reference', methods=['POST'])
+def porteurProjetReference():
+
+	log_cis.debug("entering /nous-rejoindre/porteur-projet-reference endpoint")
+	
+	form = ReferencedProjectCarrierForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		referencedProjectCarrierFeedback = ModelMixin()
+		referencedProjectCarrierFeedback.populate_from_form( form=form )
+		referencedProjectCarrierFeedback.add_created_at()
+		referencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_referenced_project_carrier )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
+
+
+
 
 
 

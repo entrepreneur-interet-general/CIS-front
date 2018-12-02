@@ -121,13 +121,9 @@
 
         <section hidden class="referenced-by-a-partner-expand">
             <p>C’est super ! Parlez-nous de cette structure. Cela nous permettra de faire connaissance et peut-être lui proposer de rejoindre le collectif. Si la structure rejoint le Carrefour des innovations sociales, votre projet pourra être visible sur ce site.
-            <form>
-                <label>
-                    Nom de la structure partenaire
-                    <input type=text>
-                </label>
-                <button type="submit">Envoyer</button>
-            </form>
+            
+            {% include "forms/form-referenced-project-carrier.html" %}
+
         </section>
 
         <section hidden class="not-yet-referenced-by-a-partner-expand">

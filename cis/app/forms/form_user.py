@@ -240,6 +240,28 @@ follow_up_user			= TextAreaField	(  	u'Suivi utilisateur',
 follow_up_feedback		= TextAreaField	(  	u'Suivi du message', 					
 												render_kw={'class' : 'textarea' , 'rows':'3', 'placeholder' : u"suivi du message de l'utilisateur" }
 											)
+
+# Join us fields
+
+structureWebsite		= StringField	(	u'site de la structure' , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+										)
+
+personName				= StringField	(	u'nom de la personne' , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+										)
+
+personEmail				= EmailField	( 	u"email", 
+											validators = [ 
+												DataRequired(message=u"email invalide"), 
+												Length(min=1, max=1000) 
+											], 
+											render_kw={'class': 'input'}  
+										)
+
+
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -322,6 +344,34 @@ class FeedbackForm(UserID):
 	userOtherStructure 	= userOtherStructure
 	userFeedbackTopic   = userFeedbackTopic
 	userMessage			= userMessage
+
+
+
+class ReferencedProjectCarrierForm(FlaskForm):
+	partnerStructureName = userOtherStructure
+	partnerStructureWebsite = structureWebsite
+	partnerStructureContactName = personName
+	partnerStructureContactEmail = personEmail
+	message = userMessage
+
+
+# class NotReferencedProjectCarrier():
+	# Nom du projet *
+	# Structure porteuse du projet *
+	# Nom du référent du projet *
+	# Email du référent *
+	# Adresse du siège social *
+	# Périmètre(s) d’action de votre projet *
+	# Choisissez une ou plusieurs catégorie(s) *
+	# Choisissez une ou plusieurs public cible *
+	# Année de création du projet *
+	# Stade d’avancement du projet *
+	# Courte description de votre projet * (contexte / besoins auquel il répond / solution)
+	# En quoi ce projet est-il innovant ? * (par rapport aux technologies / au territoire / à la méthodologie / à la gouvernance…)
+	# Mode de financement et partenariat précisez le nom de la structure partenaire et le mode d’accompagnement (financement / conseil / incubation… ) *
+	# Éventuel(s) prix reçu(s) pour ce projet
+	# Site internet de votre projet
+	# Ajoutez une pièce jointe
 
 
 
