@@ -9,14 +9,19 @@
 					<ul>
 						<li>
 							<a href="/qui-sommes-nous">Qui sommes-nous ?</a>
+						</li>
 						<li>
 							<a href="https://github.com/entrepreneur-interet-general/CIS-front" target="_blank"> 
 								Code source 
 							</a>
+						</li>
 						<li>
 							<a href="/login">Login</a>
+						</li>
 						<li>
 							<a href="/admin">Admin</a>
+						</li>
+					</ul>
 				</div>
 
 
