@@ -14,6 +14,7 @@ with app.app_context():
 	### access mongodb collections ###
 	mongo_users			= mongo.db[ app.config["MONGO_COLL_USERS"] ]
 	mongo_feedbacks		= mongo.db[ app.config["MONGO_COLL_FEEDBACKS"] ]
+	mongo_join_message_referenced_project_carrier = mongo.db[ app.config["MONGO_COLL_JOIN_MESSAGE_REFERENCED_PROJECT_CARRIER"] ]
 
 	mongoColls = {
 		# "users"	: mongo_users,

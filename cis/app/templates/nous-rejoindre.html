@@ -2,11 +2,307 @@
 
 {% block content %}
 
-<main>
-    <section>
-        <h1>Qui êtes-vous ?</h1>
+<style>
+.join-us section > :not(section){
+    width: 80%;
+    margin: 0 auto;
+}
+
+.join-us .structure-expand,
+.join-us .project-carrier-expand{
+    width: 100%;
+}
+
+.join-us section > form{
+    width: 100%;
+    background-color: #F6F6F6; /* TODO SASS variable*/ 
+}
+.join-us .project-carrier-expand form > *{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.join-us .buttons {
+    justify-content: center;  /* Bulma override */
+    align-items: stretch;
+
+}
+
+.join-us .buttons button{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto; /* Bulma override */
+    white-space: initial; /* Bulma override */
+
+    max-width: 25%;
+    position: relative;
+}
+
+.join-us .buttons button.with-image{
+    padding-top: 3em;
+    margin-top: 3em; /* TODO SASS : = padding-top */
+}
+
+
+.join-us .buttons button.selected{
+    border-color: #532A7B;
+}
+
+.join-us .buttons button img{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    width: 5em;
+
+    background: #F6F6F6;
+    border-radius: 50%;
+}
+
+.join-us .buttons button strong{
+    font-weight: bold; /* Bulma override */
+
+    font-size: 1.2em;
+    color: #532A7B;
+}
+
+
+
+.join-us .structure-expand ul.reasons{
+    text-align: center;
+}
+.join-us .structure-expand ul.reasons li{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.join-us .join-walkthrough{
+    background-color: #F6F6F6; /* TODO SASS variable */ 
+}
+
+</style>
+
+<main class="join-us"> 
+    <h1 class="title is-2">Qui êtes-vous ?</h1>
+
+    <div class="buttons">
+        <button class="button with-image project-carrier">
+            <img src="/static/illustrations/Nous_rejoindre_porteur_projet.png" alt="illustration porteur de projet">
+            <strong>Un porteur de projet</strong>
+            <span>Vous portez une initiative qui est socialement innovante</span>
+        </button>
+        <button class="button with-image structure">
+            <img src="/static/illustrations/Nous_rejoindre_structure.png" alt="illustration structure">
+            <strong>Une structure</strong>
+            <span>Vous accompagnez, financez, observez les projets d’innovation sociale</span>
+        </button>
+    </div>
+
+    <section hidden class="project-carrier-expand">
+        <p>Le parti pris du Carrefour des innovations sociales est de rendre plus accessibles les projets déjà référencés sur les sites des membres du collectif.
+        <p>C’est pourquoi nous ne vous proposons pas directement un formulaire pour référencer votre projet. Pour en savoir plus, découvrez <a href="/le-projet">l’histoire du projet</a>.
+
+        <h2 class="title is-3">Votre projet est-il référencé en ligne par l’un de vos partenaires ?</h2>
+
+        <div class="buttons">
+            <button class="button referenced-by-a-partner">
+                <strong>Oui !</strong>
+                Une structure qui accompagne, finance ou valorise mon projet le référence déjà sur son site
+            </button>
+            <button class="button not-yet-referenced-by-a-partner">
+                <strong>Pas encore</strong>
+                Mais j’aimerais valoriser mon projet auprès de partenaires potentiels
+            </button>
+        </div>
+
+        <section hidden class="referenced-by-a-partner-expand">
+            <p>C’est super ! Parlez-nous de cette structure. Cela nous permettra de faire connaissance et peut-être lui proposer de rejoindre le collectif. Si la structure rejoint le Carrefour des innovations sociales, votre projet pourra être visible sur ce site.
+            
+            {% include "forms/form-referenced-project-carrier.html" %}
+
+        </section>
+
+        <section hidden class="not-yet-referenced-by-a-partner-expand">
+            <p>Notre ambition est de valoriser tous les projets existants d’innovation sociale. Pour l’instant, nous réferençons sur le site seulement les projets suivis par les <a href="/qui-sommes-nous/qui-fait-quoi">acteurs partenaires du collectif</a>.
+            <p>Cependant, nous vous invitons à remplir ce formulaire de mise en contact. Ces informations seront transmises aux membres du collectif qui pourront découvrir votre projet et prendre contact avec vous.
+            <form>
+                <label>
+                    Nom du projet
+                    <input type=text>
+                </label>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
 
     </section>
+
+    <section hidden class="structure-expand">
+        <p>L’association du Carrefour des innovations sociales réunit plus de 50 partenaires accompagnateurs, financeurs ou encore observateurs de l’innovation sociale. <a href="/qui-sommes-nous/qui-fait-quoi">Découvrez-les tous ici</a>.
+        <p>Les membres du collectif participent tous à la gouvernance du projet. Certains partagent leurs listes de projets d’innovation sociale qui sont visibles sont ce sur site.
+
+        <strong>Pourquoi rejoindre le collectif ?</strong>
+        <ul class="reasons columns is-centered">
+            <li class="column">
+                <strong>Un réseau</strong>
+                <span>Vous entrez dans un collectif de pairs qui oeuvre pour l’innovation sociale</span>
+            <li class="column">
+                <strong>0€</strong>
+                <span>L’adhésion au collectif est totalement gratuite</span>
+            <li class="column">
+                <strong>Les communs</strong>
+                <span>Vous participez à la gouvernance d’un commun numérique</span>
+        </ul>
+
+        <h2 class="title is-2">La démarche pour rejoindre le collectif</h2>
+
+        <section class="join-walkthrough">
+            <ol>
+                <li>
+                    <a><strong>Téléchargez la charte du projet</strong></a>
+                    <p>Jetez un oeil à la charte de l’association. Elle décrit la vision du projet et les principes de gouvernance.
+                <li>
+                    <strong>Parlez-nous un peu de vous</strong>
+                    <p>Vous vous retrouvez dans la charte ? C’est parfait. Nous aimerions connaître un peu plus vos motivations à rejoindre l’association et sur les projets que vous pourriez partagez avec nous.
+                    <div class="buttons">
+                        <button class="button has-projects">J’ai des projets à partager</button>
+                        <button class="button no-projects">Je n’ai pas de projets</button>
+                    </div>
+
+                    <section class="has-projects-expand" hidden>
+                        Partagez-donc vos projets !!!!!!
+                        <form>
+                            <label>
+                                Nom de la structure partenaire
+                                <input type=text>
+                            </label>
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </section>
+
+                    <section class="no-projects-expand" hidden>
+                        Oh noes! Qui êtes-vous ?
+                        <form>
+                            <label>
+                                Nom de la structure partenaire
+                                <input type=text>
+                            </label>
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </section>
+
+                <li>
+                    <strong>Validation de votre inscription</strong>
+                    <p>Une fois le formulaire rempli, l’équipe du Carrefour des innovations sociales prendra connaissance de votre demande. Un copil se réunit tous les deux mois pour valider les nouvelles incriptions.
+            </ol>
+        </section>
+
+
+    </section>
+
+
+
 </main>
+
+<script>
+"use strict";
+
+document.addEventListener('DOMContentLoaded', e => {
+    // Qui êtes-vous ?
+    const projectCarrierButton = document.body.querySelector('button.project-carrier');
+    const structureButton = document.body.querySelector('button.structure');
+
+    const projectCarrierExpand = document.body.querySelector('.project-carrier-expand');
+    const structureExpand = document.body.querySelector('.structure-expand');
+
+    projectCarrierButton.addEventListener('click', e => {
+        projectCarrierButton.classList.add('selected')
+        structureButton.classList.remove('selected')
+
+        projectCarrierExpand.removeAttribute('hidden')
+        structureExpand.setAttribute('hidden', '')
+    })
+    structureButton.addEventListener('click', e => {
+        structureButton.classList.add('selected')
+        projectCarrierButton.classList.remove('selected')
+
+        structureExpand.removeAttribute('hidden')
+        projectCarrierExpand.setAttribute('hidden', '')
+    })
+
+
+    // Votre projet est-il référencé ?
+    const projectCarrierReferencedByPartnerButton = document.body.querySelector('button.referenced-by-a-partner');
+    const projectCarrierNotYetReferencedByPartnerButton = document.body.querySelector('button.not-yet-referenced-by-a-partner');
+
+    const projectCarrierReferencedByPartnerExpand = document.body.querySelector('.referenced-by-a-partner-expand');
+    const projectCarrierNotYetReferencedByPartnerExpand = document.body.querySelector('.not-yet-referenced-by-a-partner-expand');
+    
+    projectCarrierReferencedByPartnerButton.addEventListener('click', e => {
+        projectCarrierReferencedByPartnerButton.classList.add('selected')
+        projectCarrierNotYetReferencedByPartnerButton.classList.remove('selected')
+
+        projectCarrierReferencedByPartnerExpand.removeAttribute('hidden')
+        projectCarrierNotYetReferencedByPartnerExpand.setAttribute('hidden', '')
+    })
+
+    projectCarrierNotYetReferencedByPartnerButton.addEventListener('click', e => {
+        projectCarrierNotYetReferencedByPartnerButton.classList.add('selected')
+        projectCarrierReferencedByPartnerButton.classList.remove('selected')
+
+        projectCarrierNotYetReferencedByPartnerExpand.removeAttribute('hidden')
+        projectCarrierReferencedByPartnerExpand.setAttribute('hidden', '')
+    })
+
+    const referencedProjectCarrierForm = projectCarrierReferencedByPartnerExpand.querySelector('form')
+    referencedProjectCarrierForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const url = form.action;
+
+        fetch(url, { 
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(r => r.text())
+        .then(() => {
+            form.innerHTML = `<div>Merci, nous avons bien reçu les informations concernant la structure partenaire qui référence votre projet sur son site. Après vérification des information, nous prendrons contact avec elle.</div>`
+        })
+        .catch(err => console.error('project carrier error', err))
+    })
+
+
+    // Des projets à partager ?
+    const structureHasProjectsButton = document.body.querySelector('button.has-projects');
+    const structureNoProjectsButton = document.body.querySelector('button.no-projects');
+
+    const structureHasProjectsExpand = document.body.querySelector('.has-projects-expand');
+    const structureNoProjectsExpand = document.body.querySelector('.no-projects-expand');
+
+    structureHasProjectsButton.addEventListener('click', e => {
+        structureHasProjectsButton.classList.add('selected')
+        structureNoProjectsButton.classList.remove('selected')
+
+        structureHasProjectsExpand.removeAttribute('hidden')
+        structureNoProjectsExpand.setAttribute('hidden', '')
+    })
+
+    structureNoProjectsButton.addEventListener('click', e => {
+        structureNoProjectsButton.classList.add('selected')
+        structureHasProjectsButton.classList.remove('selected')
+
+        structureNoProjectsExpand.removeAttribute('hidden')
+        structureHasProjectsExpand.setAttribute('hidden', '')
+    })
+
+
+
+}, {once: true})
+
+</script>
 
 {% endblock %}

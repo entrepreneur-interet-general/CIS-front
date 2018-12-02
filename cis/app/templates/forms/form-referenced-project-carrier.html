@@ -1,0 +1,58 @@
+<form action="/nous-rejoindre/porteur-projet-reference" method="POST" name="form">
+
+	{{ referencedProjectCarrierForm.hidden_tag() }}
+	{# { { form.csrf_token }} #}
+
+    <div class="field">
+        <p class="control is-expanded">
+            <label>Nom de la structure partenaire *
+                {{ referencedProjectCarrierForm.partnerStructureName() }}
+            </label>
+        </p>
+    </div>
+
+    <div class="field">
+        <p class="control is-expanded">
+            <label>Lien vers son site web *
+                {{ referencedProjectCarrierForm.partnerStructureWebsite() }}
+            </label>
+        </p>
+    </div>
+
+    <div class="field">
+		<p class="control is-expanded">
+			<label>Nom de votre contact *
+				{{ referencedProjectCarrierForm.partnerStructureContactName }}
+			</label>
+		</p>
+	</div>
+
+    <div class="field">
+        <p class="control is-expanded">
+            <label>Email de votre contact *
+                {{ referencedProjectCarrierForm.partnerStructureContactEmail() }}
+            </label>
+        </p>
+    </div>	
+
+	<div class="field is-horizontal">
+		<div class="field-body">
+			<div class="field">
+				<label class="control">Message *
+					{{ referencedProjectCarrierForm.message }}
+				</label>
+				
+			</div>
+		</div>
+	</div>
+
+	<p class="help is-light">* champs requis</p>
+
+	{# SUBMIT BTN #}
+	<div class="field is-grouped is-grouped-centered">
+		<button class="button is-primary is-medium" type="submit">
+			Envoyer
+		</button>
+	</div>
+
+</form>

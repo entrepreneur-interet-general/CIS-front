@@ -4,6 +4,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+[hidden]{
+	display: none !important;
+}
+
 .is-hidden {
 	display: none;
 }
