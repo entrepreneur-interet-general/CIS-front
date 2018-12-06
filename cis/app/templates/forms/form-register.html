@@ -1,189 +1,193 @@
 
 <form action="/register" method="POST" name="form">
-
-	{{ form.hidden_tag() }}
-	{# { { form.csrf_token }} #}
-
-	<div class="field">
-		<label class="label">vos informations</label>
-		<div class="control has-icons-left">
-			{{ form.userName }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-user"></i>
-			</span>
-		</div>
-	</div>
-
-	<div class="field">
-		<div class="control has-icons-left">
-			{{ form.userSurname }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-user"></i>
-			</span>
-		</div>
-	</div>
-
-	<div class="field">
-		<div class="control has-icons-left">
-			{{ form.userEmail }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-envelope"></i>
-			</span>
-		</div>
-	</div>
-
-	<div class="field">
-		<div class="control has-icons-left">
-			{{ form.registerPassword }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-key"></i>
-			</span>
-		</div>
-	</div>
-
-	<div class="field">
-		<div class="control has-icons-left">
-			{{ form.userConfirmPassword }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-key"></i>
-			</span>
-		</div>
-	</div>
-	<p class="help is-light">* champs requis</p>
+	<p>Ce formulaire a été utilisé malicieusement pour nous envoyer du spam et est actuellement désactivé le temps que nous trouvions une soltions pérenne
 	
+	<p>En attendant, pour toute question, n'hésitez pas à nous écrire à contact@carrefourdesinnovationssociales.fr
 
+	<fieldset disabled>
+		{{ form.hidden_tag() }}
+		{# { { form.csrf_token }} #}
 
-	<div class="is-divider" data-content="votre profil métier (optionnel)"></div>
-	
-
-	<div class="field">
-		<div class="control">
-			<div class="select is-fullwidth">
-				{{ form.userProfile }}
+		<div class="field">
+			<label class="label">vos informations</label>
+			<div class="control has-icons-left">
+				{{ form.userName }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-user"></i>
+				</span>
 			</div>
 		</div>
-	</div>
 
-
-
-	<div class="is-divider" data-content="votre structure (optionnel) "></div>
-
-
-	<div class="field">
-		<div class="control">
-			<div class="select is-fullwidth">
-				{{ form.userPartnerStructure }}
+		<div class="field">
+			<div class="control has-icons-left">
+				{{ form.userSurname }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-user"></i>
+				</span>
 			</div>
 		</div>
-	</div>
-	
 
-	<div class="field" style='display:none' id="userOtherStructureField">
-		<div class="control has-icons-left">
-			{{ form.userOtherStructure }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-building"></i>
-			</span>
-		</div>
-	</div>
-
-	{# <div class="field" style='display:none' id="userSiretField">
-		<div class="control has-icons-left">
-			{{ form.userSiret }}
-			<span class="icon is-small is-left">
-				<i class="fas fa-building"></i>
-			</span>
-		</div>
-		<p class="help is-light">(optionnel)</p>
-	</div> #}
-
-
-	<div class="field" style='display:none' id="userStructureProfileField">
-		<div class="control">
-			<div class="select is-fullwidth">
-				{{ form.userStructureProfile }}
+		<div class="field">
+			<div class="control has-icons-left">
+				{{ form.userEmail }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-envelope"></i>
+				</span>
 			</div>
 		</div>
-	</div>
 
-
-	<div id="userWishesFields" style='display:none'>
-
-		<div class="is-divider" data-content="vos envies"></div>
-
-		<div class="field is-pulled-left">
-			{{ form.userHaveProjects( class ='is-checkradio is-black is-normal') }}
-			{{ form.userHaveProjects.label }}
+		<div class="field">
+			<div class="control has-icons-left">
+				{{ form.registerPassword }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-key"></i>
+				</span>
+			</div>
 		</div>
-		<br>
-		<div class="field is-pulled-left">
-			{{ form.userJoinCollective( class ='is-checkradio is-black is-normal') }}
-			{{ form.userJoinCollective.label }}
+
+		<div class="field">
+			<div class="control has-icons-left">
+				{{ form.userConfirmPassword }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-key"></i>
+				</span>
+			</div>
 		</div>
-		<br><br>
+		<p class="help is-light">* champs requis</p>
 		
-	</div>
 
 
+		<div class="is-divider" data-content="votre profil métier (optionnel)"></div>
+		
 
-	
-	{# 
-	<br>
-
-	<div class="field">
-		{{ form.userRememberMe }}
-		{{ form.userRememberMe.label}}
-	</div>  
-	#}
-	
-
-	<div class="is-divider" data-content="une remarque, un commentaire ? (optionnel)"></div>
-
-
-	<div class="field is-horizontal">
-		<div class="field-body">
-			<div class="field">
-				<div class="control">
-					{{ form.userMessage() }}
+		<div class="field">
+			<div class="control">
+				<div class="select is-fullwidth">
+					{{ form.userProfile }}
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<br>
-
-	<div class="field has-text-left">
-		{{ form.userNewsletter( class='is-checkradio is-black is-normal') }}
-		<label for="userNewsletter">
-			Je souhaite recevoir la newsletter 
-			{# du Carrefour des innovations sociales #}
-		</label>
-	</div>
-
-
-	<div class="field has-text-left">
-		{{ form.userAcceptCGU( class ='is-checkradio is-black is-normal') }}
-		{# { { form.userAcceptCGU.label }} #}
-		<label for="userAcceptCGU">
-			J'accepte les 
-			<a class="modal-button has-text-primary" data-target="modal_legal" aria-haspopup="true"> 
-				Conditions Générales d'Utilisation
-			</a>
-		</label>
-	</div>
-
-	<br>
 
 
 
-	<button class="button is-block is-primary is-large is-fullwidth tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline" 
-			data-tooltip="Soyez parmi les premiers à être informé.e de la sortie de la première version du moteur de recherche" 
-			type="submit">
-		S'enregistrer
-	</button>
+		<div class="is-divider" data-content="votre structure (optionnel) "></div>
 
 
+		<div class="field">
+			<div class="control">
+				<div class="select is-fullwidth">
+					{{ form.userPartnerStructure }}
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="field" style='display:none' id="userOtherStructureField">
+			<div class="control has-icons-left">
+				{{ form.userOtherStructure }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-building"></i>
+				</span>
+			</div>
+		</div>
+
+		{# <div class="field" style='display:none' id="userSiretField">
+			<div class="control has-icons-left">
+				{{ form.userSiret }}
+				<span class="icon is-small is-left">
+					<i class="fas fa-building"></i>
+				</span>
+			</div>
+			<p class="help is-light">(optionnel)</p>
+		</div> #}
+
+
+		<div class="field" style='display:none' id="userStructureProfileField">
+			<div class="control">
+				<div class="select is-fullwidth">
+					{{ form.userStructureProfile }}
+				</div>
+			</div>
+		</div>
+
+
+		<div id="userWishesFields" style='display:none'>
+
+			<div class="is-divider" data-content="vos envies"></div>
+
+			<div class="field is-pulled-left">
+				{{ form.userHaveProjects( class ='is-checkradio is-black is-normal') }}
+				{{ form.userHaveProjects.label }}
+			</div>
+			<br>
+			<div class="field is-pulled-left">
+				{{ form.userJoinCollective( class ='is-checkradio is-black is-normal') }}
+				{{ form.userJoinCollective.label }}
+			</div>
+			<br><br>
+			
+		</div>
+
+
+
+		
+		{# 
+		<br>
+
+		<div class="field">
+			{{ form.userRememberMe }}
+			{{ form.userRememberMe.label}}
+		</div>  
+		#}
+		
+
+		<div class="is-divider" data-content="une remarque, un commentaire ? (optionnel)"></div>
+
+
+		<div class="field is-horizontal">
+			<div class="field-body">
+				<div class="field">
+					<div class="control">
+						{{ form.userMessage() }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<br>
+
+		<div class="field has-text-left">
+			{{ form.userNewsletter( class='is-checkradio is-black is-normal') }}
+			<label for="userNewsletter">
+				Je souhaite recevoir la newsletter 
+				{# du Carrefour des innovations sociales #}
+			</label>
+		</div>
+
+
+		<div class="field has-text-left">
+			{{ form.userAcceptCGU( class ='is-checkradio is-black is-normal') }}
+			{# { { form.userAcceptCGU.label }} #}
+			<label for="userAcceptCGU">
+				J'accepte les 
+				<a class="modal-button has-text-primary" data-target="modal_legal" aria-haspopup="true"> 
+					Conditions Générales d'Utilisation
+				</a>
+			</label>
+		</div>
+
+		<br>
+
+
+
+		<button class="button is-block is-primary is-large is-fullwidth tooltip is-tooltip-danger is-tooltip-bottom is-tooltip-multiline" 
+				data-tooltip="Soyez parmi les premiers à être informé.e de la sortie de la première version du moteur de recherche" 
+				type="submit">
+			S'enregistrer
+		</button>
+
+	</fieldset>
 </form>
 
 <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/form-display-other-structure-name.js') }}"></script>

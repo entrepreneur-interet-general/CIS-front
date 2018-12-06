@@ -320,7 +320,8 @@ def contact():
 	)
 
 
-@app.route('/feedback', methods=['POST'])
+# Route is disabled until a proper solution against spam is found		
+# @app.route('/feedback', methods=['POST'])
 def feedback():
 
 	log_cis.debug("entering feedback endpoint")
@@ -378,8 +379,8 @@ def feedback():
 	return redirect(request.referrer or "/")
 
 
-		
-@app.route('/nous-rejoindre/porteur-projet-reference', methods=['POST'])
+# Route is disabled until a proper solution against spam is found		
+# @app.route('/nous-rejoindre/porteur-projet-reference', methods=['POST'])
 def porteurProjetReference():
 
 	log_cis.debug("entering /nous-rejoindre/porteur-projet-reference endpoint")
@@ -534,8 +535,9 @@ def login():
 
 
 
-
-@app.route('/register', methods=['GET', 'POST'])
+# POST verb is disabled until a proper solution against spam is found
+# @app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET'])
 def register():
 
 	form = RegisterForm()
