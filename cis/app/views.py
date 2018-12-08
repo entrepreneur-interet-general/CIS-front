@@ -391,7 +391,7 @@ def porteurProjetReference():
 		
 	### for debugging purposes
 	for f_field in form : 
-		log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
+		log_cis.debug( "ReferencedProjectCarrierForm form name : %s / form data : %s", f_field.name, f_field.data )
 
 
 	if form.validate_on_submit():
@@ -411,6 +411,34 @@ def porteurProjetReference():
 	return redirect(request.referrer or "/")
 
 
+# Route is disabled until a proper solution against spam is found		
+@app.route('/nous-rejoindre/porteur-projet-non-reference', methods=['POST'])
+def porteurProjetNonReference():
+
+	log_cis.debug("entering /nous-rejoindre/porteur-projet-non-reference endpoint")
+	
+	form = NotReferencedProjectCarrierForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "NotReferencedProjectCarrierForm form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		notReferencedProjectCarrierFeedback = ModelMixin()
+		notReferencedProjectCarrierFeedback.populate_from_form( form=form )
+		notReferencedProjectCarrierFeedback.add_created_at()
+		notReferencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_not_referenced_project_carrier )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
 
 
 
