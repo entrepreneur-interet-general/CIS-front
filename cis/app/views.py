@@ -1164,6 +1164,76 @@ class ReferencedProjectCarrierFeedback(ModelView):
 	}
 
 
+class NotReferencedProjectCarrierFeedback(ModelView):
+	"""
+	view of a message in flask-admin
+	cf : https://github.com/mrjoes/flask-admin/blob/master/examples/pymongo/app.py
+	"""
+	
+	### for flask-login 
+	column_type_formatters = MY_DEFAULT_FORMATTERS
+
+	list_template 	= 'admin/list.html'
+	create_template = 'admin/create.html'
+	edit_template 	= 'admin/edit.html'
+
+	can_export = True
+ 	can_set_page_size = True
+
+	def is_accessible(self) :
+		""" 
+		make it accessible via flask-login
+		"""
+		# using custom property class 
+		# return current_user.is_admin_level # instead of : return current_user.is_authenticated
+		return current_user.is_staff_level # instead of : return current_user.is_authenticated
+
+	def inaccessible_callback(self, name, **kwargs) :
+		
+		# TO DO : flash if auth level not enough
+
+		return redirect(url_for('index'))
+
+
+
+	### for flask-admin
+	
+	column_list 			= (	
+								'projectName',
+								'projectStructureName',
+								'projectContactName',
+								'projectContactEmail',
+								'projectAddress',
+								'projectActionArea',
+								'projectActionAreaLocalDetails',
+								'projectCategories',
+								'projectCategoriesOther',
+								'projectAudiences',
+								'projectAudiencesOther',
+								'projectStartYear',
+								'projectStage',
+								'projectDescription',
+								'projectInnovation',
+								'projectFundingAndPartners',
+								'projectRewards',
+								'projectWebsite',
+								'projectAttachment'
+							)
+	column_searchable_list 		= column_list
+
+	column_sortable_list	= column_list
+
+	column_labels = dict()
+
+	form 					= NotReferencedProjectCarrierForm
+
+	# custom field rendering in admin interface 
+	form_widget_args = {
+		'created_at': {'readonly': True }
+	}
+
+
+
 
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###

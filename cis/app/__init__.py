@@ -278,6 +278,7 @@ admin = Admin(	app,
 admin.add_view( views.UserViewAdmin( mongo_users, 		'Users' ) )
 admin.add_view( views.FeedbackAdmin( mongo_feedbacks, 	'Feedbacks' ) )
 admin.add_view( views.ReferencedProjectCarrierFeedback( mongo_join_message_referenced_project_carrier, 	u"Porteurs de projets référencés" ) )
+admin.add_view( views.NotReferencedProjectCarrierFeedback( mongo_join_message_not_referenced_project_carrier, 	u"Porteurs de projets non-référencés" ) )
 
 
 
