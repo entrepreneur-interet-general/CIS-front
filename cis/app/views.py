@@ -294,6 +294,7 @@ def nousRejoindre():
 	log_cis.debug("entering nous-rejoindre page")
 
 	referencedProjectCarrierForm = ReferencedProjectCarrierForm()
+	notReferencedProjectCarrierForm = NotReferencedProjectCarrierForm()
 
 
 	return render_template(
@@ -301,7 +302,8 @@ def nousRejoindre():
 		config_name			= config_name, # prod, testing, default...
 		app_metas			= app_metas, 
 		language			= "fr",
-		referencedProjectCarrierForm = referencedProjectCarrierForm
+		referencedProjectCarrierForm = referencedProjectCarrierForm,
+		notReferencedProjectCarrierForm = notReferencedProjectCarrierForm
 	)
 
 @app.route('/contact', methods=['GET'])
