@@ -207,6 +207,25 @@
 <script>
 "use strict";
 
+function makeFormSubmitter(successMessage){
+    return e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const url = form.action;
+
+        fetch(url, { 
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(r => r.text())
+        .then(() => {
+            form.innerHTML = successMessage
+        })
+        .catch(err => console.error(form, err))
+    }
+}
+
 document.addEventListener('DOMContentLoaded', e => {
     // Qui êtes-vous ?
     const projectCarrierButton = document.body.querySelector('button.project-carrier');
@@ -255,23 +274,10 @@ document.addEventListener('DOMContentLoaded', e => {
     })
 
     const referencedProjectCarrierForm = projectCarrierReferencedByPartnerExpand.querySelector('form')
-    referencedProjectCarrierForm.addEventListener('submit', e => {
-        e.preventDefault();
+    referencedProjectCarrierForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu les informations concernant la structure partenaire qui référence votre projet sur son site. Après vérification des information, nous prendrons contact avec elle.</div>`))
 
-        const form = e.target;
-        const url = form.action;
-
-        fetch(url, { 
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then(r => r.text())
-        .then(() => {
-            form.innerHTML = `<div>Merci, nous avons bien reçu les informations concernant la structure partenaire qui référence votre projet sur son site. Après vérification des information, nous prendrons contact avec elle.</div>`
-        })
-        .catch(err => console.error('project carrier error', err))
-    })
-
+    const notReferencedProjectCarrierForm = projectCarrierNotYetReferencedByPartnerExpand.querySelector('form')
+    notReferencedProjectCarrierForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu votre formulaire de contact. Nous le transmettrons aux membres du collectif pour qu’ils prennent connaissance de votre projet. Ils seront libre de prendre contact avec vous ensuite.</div>`))
 
     // Des projets à partager ?
     const structureHasProjectsButton = document.body.querySelector('button.has-projects');
