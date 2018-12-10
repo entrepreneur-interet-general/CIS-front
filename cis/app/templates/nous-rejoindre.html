@@ -170,21 +170,16 @@
                     </div>
 
                     <section class="has-projects-expand" hidden>
-                        Partagez-donc vos projets !!!!!!
+                        <p>Vous listez des projets d’innovation sociales et vous aimeriez les valoriser sur le site du Carrefour des innovations sociales ? Dîtes-nous en un peu !
                     
                         {% include "forms/form-structure-with-projects.html" %}
 
                     </section>
 
                     <section class="no-projects-expand" hidden>
-                        Oh noes! Qui êtes-vous ?
-                        <form>
-                            <label>
-                                Nom de la structure partenaire
-                                <input type=text>
-                            </label>
-                            <button type="submit">Envoyer</button>
-                        </form>
+                       <p>Vous ne référencez pas de projets d’innovation sociale sous forme de liste mais vous souhaitez vous investir dans le projet ? Nous serions ravis de vous acceuillir, dîtes-nous en un peu plus sur votre structure.
+                        
+                        {% include "forms/form-structure-no-projects.html" %}
                     </section>
 
                 <li>

@@ -296,6 +296,7 @@ def nousRejoindre():
 	referencedProjectCarrierForm = ReferencedProjectCarrierForm()
 	notReferencedProjectCarrierForm = NotReferencedProjectCarrierForm()
 	structureWithProjectsForm = StructureWithProjectsForm()
+	structureNoProjectsForm = StructureNoProjectsForm()
 
 	return render_template(
 		"nous-rejoindre.html",
@@ -304,7 +305,8 @@ def nousRejoindre():
 		language			= "fr",
 		referencedProjectCarrierForm = referencedProjectCarrierForm,
 		notReferencedProjectCarrierForm = notReferencedProjectCarrierForm,
-		structureWithProjectsForm = structureWithProjectsForm
+		structureWithProjectsForm = structureWithProjectsForm,
+		structureNoProjectsForm = structureNoProjectsForm
 	)
 
 @app.route('/contact', methods=['GET'])
@@ -1301,6 +1303,7 @@ class StructuresFeedback(ModelView):
 								'structureWebsite',
 								'structureContactName',
 								'structureContactRole',
+								'structureContactEmail',
 								'structureReasonToJoin',
 								'structureListHow',
 								'structureListHowOther',

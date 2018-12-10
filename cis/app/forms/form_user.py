@@ -464,6 +464,20 @@ structureProjectsToShareWebsite			= StringField	(	u"Site des projets partagés" 
 											render_kw={'class': 'input'}  
 											)
 
+STRUCTURE_INTEREST_ANALYSIS = u"Analyse et transmission des innovations sociales"
+STRUCTURE_INTEREST_FRIEND = u"Développement du Carrefour des innovations sociales dans les territoires"
+STRUCTURE_INTEREST_COLLECTIVE_ACTION_FORMS = u"Compréhension des nouvelles formes d’action collective"
+
+
+structureInterests 	= MultiCheckboxField(
+	'Intérêts', 
+	choices=[
+		(STRUCTURE_INTEREST_ANALYSIS, STRUCTURE_INTEREST_ANALYSIS),
+		(STRUCTURE_INTEREST_FRIEND, STRUCTURE_INTEREST_FRIEND),
+		(STRUCTURE_INTEREST_COLLECTIVE_ACTION_FORMS, STRUCTURE_INTEREST_COLLECTIVE_ACTION_FORMS)
+	]
+)
+
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
@@ -575,12 +589,17 @@ class NotReferencedProjectCarrierForm(FlaskForm):
 	projectWebsite = structureWebsite
 	projectAttachment = FileField()
 
-class StructureWithProjectsForm(FlaskForm):
+
+class StructureFormCommons(FlaskForm):
 	structureName = userOtherStructure
 	structureWebsite = structureWebsite
 	structureContactName = personName
 	structureContactRole = personRole
+	structureContactEmail = personEmail
 	structureReasonToJoin = structureReasonToJoin
+
+
+class StructureWithProjectsForm(StructureFormCommons):
 	structureListHow = structureListHow
 	structureListHowOther = structureListHowOther
 	structureProjectsToShareCount = structureProjectsToShareCount
@@ -589,6 +608,8 @@ class StructureWithProjectsForm(FlaskForm):
 	structureProjectsToShareWebsite = structureProjectsToShareWebsite
 	structureProjectsToShareAttachment = FileField()
 
+class StructureNoProjectsForm(StructureFormCommons):
+	structureInterests = structureInterests
 
 
 ### TO IMPLEMENT WITH FLAKS-MAIL
