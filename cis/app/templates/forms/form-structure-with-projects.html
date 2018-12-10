@@ -1,0 +1,110 @@
+
+<form action="/" method="POST" name="form">
+	<p>Ce formulaire a été utilisé malicieusement pour nous envoyer du spam et est actuellement désactivé le temps que nous trouvions une soltions pérenne
+	
+	<p>En attendant, pour toute question, n'hésitez pas à nous écrire à contact@carrefourdesinnovationssociales.fr
+
+	<fieldset>
+		{{ structureWithProjectsForm.hidden_tag() }}
+		{# { { form.csrf_token }} #}
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Nom de votre structure *
+					{{ structureWithProjectsForm.structureName }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Lien vers son site web *
+					{{ structureWithProjectsForm.structureWebsite }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Votre nom *
+					{{ structureWithProjectsForm.structureContactName }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Votre fonction dans la structure *
+					{{ structureWithProjectsForm.structureContactRole }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Pourquoi voulez-vous rejoindre le Carrefour des Innovations Sociales ? *
+					{{ structureWithProjectsForm.structureReasonToJoin }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Comment recensez-vous les projets que vous listez ?*
+					{{ structureWithProjectsForm.structureListHow }}
+                    {{ structureWithProjectsForm.structureListHowOther }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Combien de projets avez-vous à partager avec le Carrefour des innovations sociales ?*
+					{{ structureWithProjectsForm.structureProjectsToShareCount }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Quelle(s) information(s) avez-vous sur vos projets ? *
+					{{ structureWithProjectsForm.structureProjectsToShareInfos }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Sous quel(s) format(s) avez-vous cette liste de projets ? *
+					{{ structureWithProjectsForm.structureProjectsToShareFormat }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Si vos projets sont en ligne, renseigner l’adresse URL correspondante
+					{{ structureWithProjectsForm.structureProjectsToSharePage }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Si vos projet ne sont pas visibles en ligne, envoyez-nous le support
+					{{ structureWithProjectsForm.structureProjectsToShareAttachment }}
+				</label>
+			</p>
+		</div>
+
+
+		<p class="help is-light">* champs requis</p>
+
+		{# SUBMIT BTN #}
+		<div class="field is-grouped is-grouped-centered">
+			<button class="button is-primary is-medium" type="submit">
+				Envoyer
+			</button>
+		</div>
+	</fieldset>
+</form>

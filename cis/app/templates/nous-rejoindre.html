@@ -171,13 +171,9 @@
 
                     <section class="has-projects-expand" hidden>
                         Partagez-donc vos projets !!!!!!
-                        <form>
-                            <label>
-                                Nom de la structure partenaire
-                                <input type=text>
-                            </label>
-                            <button type="submit">Envoyer</button>
-                        </form>
+                    
+                        {% include "forms/form-structure-with-projects.html" %}
+
                     </section>
 
                     <section class="no-projects-expand" hidden>

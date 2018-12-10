@@ -373,6 +373,92 @@ projectRewards					= StringField	(	u"Récompenses" ,
 											render_kw={'class': 'input'}  
 									)
 
+structureReasonToJoin			= TextAreaField	(  	u'Raison de rejoindre', 					
+											render_kw={'class' : 'textarea' , 'rows':'5'}
+										)
+
+
+STRUCTURE_LISTS_REWARD_WINNERS = u"Je liste les lauréats de mes appels à projets"
+STRUCTURE_LISTS_HELPED = u"Je liste les projets que j'accompagne"
+STRUCTURE_LISTS_HIGHLIGHT = u"Je liste des projets que je cherche à valoriser"
+STRUCTURE_LISTS_OTHER = u"Autre, précisez :"
+
+
+structureListHow				= MultiCheckboxField(	u'Projets listés', 
+														choices=[
+															(STRUCTURE_LISTS_REWARD_WINNERS, STRUCTURE_LISTS_REWARD_WINNERS),
+															(STRUCTURE_LISTS_HELPED, STRUCTURE_LISTS_HELPED),
+															(STRUCTURE_LISTS_HIGHLIGHT, STRUCTURE_LISTS_HIGHLIGHT),
+															(STRUCTURE_LISTS_OTHER, STRUCTURE_LISTS_OTHER)
+														]
+													)
+
+structureListHowOther			= StringField	(	u"Projets listés (autres)" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+											)
+
+STRUCTURE_PROJECTS_COUNT_0_15 = u"Entre 0 et 15"
+STRUCTURE_PROJECTS_COUNT_15_50 = u"Entre 15 et 50"
+STRUCTURE_PROJECTS_COUNT_50_200 = u"Entre 15 et 50"
+STRUCTURE_PROJECTS_COUNT_MORE_THAN_200 = u"Plus de 200"
+
+structureProjectsToShareCount	= RadioField('Label', 
+												choices=[
+													(STRUCTURE_PROJECTS_COUNT_0_15, STRUCTURE_PROJECTS_COUNT_0_15),
+													(STRUCTURE_PROJECTS_COUNT_15_50, STRUCTURE_PROJECTS_COUNT_15_50),
+													(STRUCTURE_PROJECTS_COUNT_50_200, STRUCTURE_PROJECTS_COUNT_50_200),
+													(STRUCTURE_PROJECTS_COUNT_MORE_THAN_200, STRUCTURE_PROJECTS_COUNT_MORE_THAN_200)
+												])
+
+STRUCTURE_PROJECTS_INFOS_TITRE = u"Le titre du projet"
+STRUCTURE_PROJECTS_INFOS_CARRIER_NAME = u"Le nom du porteur de projet"
+STRUCTURE_PROJECTS_INFOS_PICTURE = u"Une photo"
+STRUCTURE_PROJECTS_INFOS_LEGAL_STRUCTURE = u"La structure juridique"
+STRUCTURE_PROJECTS_INFOS_DESC = u"Une description du projet"
+STRUCTURE_PROJECTS_INFOS_CARRIER_EMAIL = u"Le contact du porteur de projet"
+STRUCTURE_PROJECTS_INFOS_LOCALISATION = u"La localisation du projet"
+
+
+structureProjectsToShareInfos = MultiCheckboxField(
+	'Infos disponibles', 
+	choices=[
+		(STRUCTURE_PROJECTS_INFOS_TITRE, STRUCTURE_PROJECTS_INFOS_TITRE),
+		(STRUCTURE_PROJECTS_INFOS_CARRIER_NAME, STRUCTURE_PROJECTS_INFOS_CARRIER_NAME),
+		(STRUCTURE_PROJECTS_INFOS_PICTURE, STRUCTURE_PROJECTS_INFOS_PICTURE),
+		(STRUCTURE_PROJECTS_INFOS_LEGAL_STRUCTURE, STRUCTURE_PROJECTS_INFOS_LEGAL_STRUCTURE),
+		(STRUCTURE_PROJECTS_INFOS_DESC, STRUCTURE_PROJECTS_INFOS_DESC),
+		(STRUCTURE_PROJECTS_INFOS_CARRIER_EMAIL, STRUCTURE_PROJECTS_INFOS_CARRIER_EMAIL),
+		(STRUCTURE_PROJECTS_INFOS_LOCALISATION, STRUCTURE_PROJECTS_INFOS_LOCALISATION)
+	]
+)
+
+STRUCTURE_PROJECTS_FORMAT_WEBSITE = u"Un site internet"
+STRUCTURE_PROJECTS_FORMAT_EXCEL = u"Un tableau excel"
+STRUCTURE_PROJECTS_FORMAT_PDF = u"Un fichier PDF"
+STRUCTURE_PROJECTS_FORMAT_API = u"Une API"
+STRUCTURE_PROJECTS_FORMAT_MAP = u"Une cartographie en ligne"
+STRUCTURE_PROJECTS_FORMAT_WORD_DOC = u"Un fichier Word"
+STRUCTURE_PROJECTS_FORMAT_DATABASE = u"Une base de données"
+
+structureProjectsToShareFormat 	= MultiCheckboxField(
+	'Formats disponibles', 
+	choices=[
+		(STRUCTURE_PROJECTS_FORMAT_WEBSITE, STRUCTURE_PROJECTS_FORMAT_WEBSITE),
+		(STRUCTURE_PROJECTS_FORMAT_EXCEL, STRUCTURE_PROJECTS_FORMAT_EXCEL),
+		(STRUCTURE_PROJECTS_FORMAT_PDF, STRUCTURE_PROJECTS_FORMAT_PDF),
+		(STRUCTURE_PROJECTS_FORMAT_API, STRUCTURE_PROJECTS_FORMAT_API),
+		(STRUCTURE_PROJECTS_FORMAT_MAP, STRUCTURE_PROJECTS_FORMAT_MAP),
+		(STRUCTURE_PROJECTS_FORMAT_WORD_DOC, STRUCTURE_PROJECTS_FORMAT_WORD_DOC),
+		(STRUCTURE_PROJECTS_FORMAT_DATABASE, STRUCTURE_PROJECTS_FORMAT_DATABASE)
+	]
+)
+
+structureProjectsToShareWebsite			= StringField	(	u"Site des projets partagés" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+											)
+
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
@@ -484,7 +570,19 @@ class NotReferencedProjectCarrierForm(FlaskForm):
 	projectWebsite = structureWebsite
 	projectAttachment = FileField()
 
-
+class StructureWithProjectsForm(FlaskForm):
+	structureName = userOtherStructure
+	structureWebsite = structureWebsite
+	structureContactName = personName
+	structureContactRole = personEmail
+	structureReasonToJoin = structureReasonToJoin
+	structureListHow = structureListHow
+	structureListHowOther = structureListHowOther
+	structureProjectsToShareCount = structureProjectsToShareCount
+	structureProjectsToShareInfos = structureProjectsToShareInfos
+	structureProjectsToShareFormat = structureProjectsToShareFormat
+	structureProjectsToShareWebsite = structureProjectsToShareWebsite
+	structureProjectsToShareAttachment = FileField()
 
 
 

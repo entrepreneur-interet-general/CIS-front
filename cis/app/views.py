@@ -295,7 +295,7 @@ def nousRejoindre():
 
 	referencedProjectCarrierForm = ReferencedProjectCarrierForm()
 	notReferencedProjectCarrierForm = NotReferencedProjectCarrierForm()
-
+	structureWithProjectsForm = StructureWithProjectsForm()
 
 	return render_template(
 		"nous-rejoindre.html",
@@ -303,7 +303,8 @@ def nousRejoindre():
 		app_metas			= app_metas, 
 		language			= "fr",
 		referencedProjectCarrierForm = referencedProjectCarrierForm,
-		notReferencedProjectCarrierForm = notReferencedProjectCarrierForm
+		notReferencedProjectCarrierForm = notReferencedProjectCarrierForm,
+		structureWithProjectsForm = structureWithProjectsForm
 	)
 
 @app.route('/contact', methods=['GET'])
