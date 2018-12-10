@@ -197,7 +197,8 @@ const CSVToObjectKeyMap = Object.freeze({
     'FONCTION DU CONTACT': 'contactRole',
     'NOM Photo portrait': 'portraitURL',
     'NOM Photo logo': 'logoFilename',
-    'Sous dossier attaché': 'logoFolder'
+    'Sous dossier attaché': 'logoFolder',
+    'Code scraper OID': 'spiderId'
 })
 
 const membersP = fetch('/static/data/members.csv')
@@ -255,32 +256,9 @@ const membersP = fetch('/static/data/members.csv')
 .catch(err => console.error('members data error', err));
 
 
-const spidersP = Promise.all(
-    [
-        fetch('http://www.cis-openscraper.com/api/infos?only_spiders_list=true')
-        .then(r => r.json())
-        .then(r => r.spiders.spiders_dict),
-
-        fetch('http://www.cis-openscraper.com/api/stats?only_spiders_stats=true')
+const spiderCountByIdP = fetch('http://www.cis-openscraper.com/api/stats?only_spiders_stats=true')
         .then(r => r.json())
         .then(r => r.counts_stats.spiders_stats)
-    ]
-)
-.then(([spidersById, countById]) => {
-    const spiders = {};
-
-    console.log('spidersById, countById', spidersById, countById)
-
-    return [...Object.entries(spidersById)]
-        .map(([id, {name, logo_url}]) => ({
-            id, 
-            name,
-            logoUrl: logo_url,
-            count: countById[id]
-        }))
-})
-
-
 
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -298,8 +276,8 @@ document.addEventListener('DOMContentLoaded', e => {
         return matchesFilters && matchesText
     }
 
-    Promise.all([membersP, spidersP])
-    .then(([members, spiders]) => {
+    Promise.all([membersP, spiderCountByIdP])
+    .then(([members, spiderCountById]) => {
         console.log('members', members)
 
         function renderMemberList(){
@@ -308,7 +286,9 @@ document.addEventListener('DOMContentLoaded', e => {
             console.log('selectedMembers', selectedMembers)
 
             const newUl = Bouture.ul({class: 'members'}, selectedMembers.map(member => {
-                const spider = spiders.find(s => s.name.trim().toLowerCase() === member.name.trim().toLowerCase())
+                console.log('member spiderCountById', member, spiderCountById)
+
+                const count = spiderCountById[member.spiderId]
 
                 return Bouture.li([
                     Bouture.header([
@@ -331,8 +311,8 @@ document.addEventListener('DOMContentLoaded', e => {
                             Bouture.div(member.contact),
                             Bouture.div(member.contactRole)
                         ]),
-                        spider ? Bouture.div({class: 'count'}, [
-                            Bouture.span({class: 'nb'}, spider.count),
+                        count ? Bouture.div({class: 'count', 'data-spider-id': member.spiderId}, [
+                            Bouture.span({class: 'nb'}, count),
                             Bouture.span('projets partagés'),
                         ]) : ''
                     ])
