@@ -473,6 +473,35 @@ def structureAvecProjets():
 	return redirect(request.referrer or "/")
 
 
+@app.route('/nous-rejoindre/structure-sans-projets', methods=['POST'])
+def structureSansProjets():
+
+	log_cis.debug("entering /nous-rejoindre/structure-sans-projets endpoint")
+	
+	form = StructureNoProjectsForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "StructureNoProjectsForm form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		structureNoProjectsFeedback = ModelMixin()
+		structureNoProjectsFeedback.populate_from_form( form=form )
+		structureNoProjectsFeedback.add_created_at()
+		structureNoProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
+
+
 
 
 
