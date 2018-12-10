@@ -1333,6 +1333,7 @@ class StructuresFeedback(ModelView):
 								'structureContactName',
 								'structureContactRole',
 								'structureContactEmail',
+								'structureInterests',
 								'structureReasonToJoin',
 								'structureListHow',
 								'structureListHowOther',
