@@ -294,14 +294,19 @@ def nousRejoindre():
 	log_cis.debug("entering nous-rejoindre page")
 
 	referencedProjectCarrierForm = ReferencedProjectCarrierForm()
-
+	notReferencedProjectCarrierForm = NotReferencedProjectCarrierForm()
+	structureWithProjectsForm = StructureWithProjectsForm()
+	structureNoProjectsForm = StructureNoProjectsForm()
 
 	return render_template(
 		"nous-rejoindre.html",
 		config_name			= config_name, # prod, testing, default...
 		app_metas			= app_metas, 
 		language			= "fr",
-		referencedProjectCarrierForm = referencedProjectCarrierForm
+		referencedProjectCarrierForm = referencedProjectCarrierForm,
+		notReferencedProjectCarrierForm = notReferencedProjectCarrierForm,
+		structureWithProjectsForm = structureWithProjectsForm,
+		structureNoProjectsForm = structureNoProjectsForm
 	)
 
 @app.route('/contact', methods=['GET'])
@@ -389,7 +394,7 @@ def porteurProjetReference():
 		
 	### for debugging purposes
 	for f_field in form : 
-		log_cis.debug( "preregister form name : %s / form data : %s", f_field.name, f_field.data )
+		log_cis.debug( "ReferencedProjectCarrierForm form name : %s / form data : %s", f_field.name, f_field.data )
 
 
 	if form.validate_on_submit():
@@ -409,7 +414,92 @@ def porteurProjetReference():
 	return redirect(request.referrer or "/")
 
 
+# Route is disabled until a proper solution against spam is found		
+@app.route('/nous-rejoindre/porteur-projet-non-reference', methods=['POST'])
+def porteurProjetNonReference():
 
+	log_cis.debug("entering /nous-rejoindre/porteur-projet-non-reference endpoint")
+	
+	form = NotReferencedProjectCarrierForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "NotReferencedProjectCarrierForm form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		notReferencedProjectCarrierFeedback = ModelMixin()
+		notReferencedProjectCarrierFeedback.populate_from_form( form=form )
+		notReferencedProjectCarrierFeedback.add_created_at()
+		notReferencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_not_referenced_project_carrier )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
+
+
+@app.route('/nous-rejoindre/structure-avec-projets', methods=['POST'])
+def structureAvecProjets():
+
+	log_cis.debug("entering /nous-rejoindre/structure-avec-projets endpoint")
+	
+	form = StructureWithProjectsForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "StructureWithProjectsForm form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		structureWithProjectsFeedback = ModelMixin()
+		structureWithProjectsFeedback.populate_from_form( form=form )
+		structureWithProjectsFeedback.add_created_at()
+		structureWithProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
+
+
+@app.route('/nous-rejoindre/structure-sans-projets', methods=['POST'])
+def structureSansProjets():
+
+	log_cis.debug("entering /nous-rejoindre/structure-sans-projets endpoint")
+	
+	form = StructureNoProjectsForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "StructureNoProjectsForm form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		structureNoProjectsFeedback = ModelMixin()
+		structureNoProjectsFeedback.populate_from_form( form=form )
+		structureNoProjectsFeedback.add_created_at()
+		structureNoProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
 
 
 
@@ -1127,6 +1217,139 @@ class ReferencedProjectCarrierFeedback(ModelView):
 						)
 
 	form 					= ReferencedProjectCarrierForm
+
+	# custom field rendering in admin interface 
+	form_widget_args = {
+		'created_at': {'readonly': True }
+	}
+
+
+class NotReferencedProjectCarrierFeedback(ModelView):
+	"""
+	view of a message in flask-admin
+	cf : https://github.com/mrjoes/flask-admin/blob/master/examples/pymongo/app.py
+	"""
+	
+	### for flask-login 
+	column_type_formatters = MY_DEFAULT_FORMATTERS
+
+	list_template 	= 'admin/list.html'
+	create_template = 'admin/create.html'
+	edit_template 	= 'admin/edit.html'
+
+	can_export = True
+ 	can_set_page_size = True
+
+	def is_accessible(self) :
+		""" 
+		make it accessible via flask-login
+		"""
+		# using custom property class 
+		# return current_user.is_admin_level # instead of : return current_user.is_authenticated
+		return current_user.is_staff_level # instead of : return current_user.is_authenticated
+
+	def inaccessible_callback(self, name, **kwargs) :
+		
+		# TO DO : flash if auth level not enough
+
+		return redirect(url_for('index'))
+
+
+
+	### for flask-admin
+	
+	column_list 			= (	
+								'projectName',
+								'projectStructureName',
+								'projectContactName',
+								'projectContactEmail',
+								'projectAddress',
+								'projectActionArea',
+								'projectActionAreaLocalDetails',
+								'projectCategories',
+								'projectCategoriesOther',
+								'projectAudiences',
+								'projectAudiencesOther',
+								'projectStartYear',
+								'projectStage',
+								'projectDescription',
+								'projectInnovation',
+								'projectFundingAndPartners',
+								'projectRewards',
+								'projectWebsite',
+								'projectAttachment'
+							)
+	column_searchable_list 		= column_list
+
+	column_sortable_list	= column_list
+
+	column_labels = dict()
+
+	form 					= NotReferencedProjectCarrierForm
+
+	# custom field rendering in admin interface 
+	form_widget_args = {
+		'created_at': {'readonly': True }
+	}
+
+
+class StructuresFeedback(ModelView):
+	"""
+	view of a message in flask-admin
+	cf : https://github.com/mrjoes/flask-admin/blob/master/examples/pymongo/app.py
+	"""
+	
+	### for flask-login 
+	column_type_formatters = MY_DEFAULT_FORMATTERS
+
+	list_template 	= 'admin/list.html'
+	create_template = 'admin/create.html'
+	edit_template 	= 'admin/edit.html'
+
+	can_export = True
+ 	can_set_page_size = True
+
+	def is_accessible(self) :
+		""" 
+		make it accessible via flask-login
+		"""
+		# using custom property class 
+		# return current_user.is_admin_level # instead of : return current_user.is_authenticated
+		return current_user.is_staff_level # instead of : return current_user.is_authenticated
+
+	def inaccessible_callback(self, name, **kwargs) :
+		
+		# TO DO : flash if auth level not enough
+
+		return redirect(url_for('index'))
+
+
+
+	### for flask-admin
+	
+	column_list 			= (	
+								'structureName',
+								'structureWebsite',
+								'structureContactName',
+								'structureContactRole',
+								'structureContactEmail',
+								'structureInterests',
+								'structureReasonToJoin',
+								'structureListHow',
+								'structureListHowOther',
+								'structureProjectsToShareCount',
+								'structureProjectsToShareInfos',
+								'structureProjectsToShareFormat',
+								'structureProjectsToShareWebsite',
+								'structureProjectsToShareAttachment'
+							)
+	column_searchable_list 		= column_list
+
+	column_sortable_list	= column_list
+
+	column_labels = dict()
+
+	form 					= NotReferencedProjectCarrierForm
 
 	# custom field rendering in admin interface 
 	form_widget_args = {

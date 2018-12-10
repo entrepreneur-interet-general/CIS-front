@@ -1,0 +1,153 @@
+<form action="/nous-rejoindre/porteur-projet-non-reference" method="POST" name="form">
+	<p>Ce formulaire a été utilisé malicieusement pour nous envoyer du spam et est actuellement désactivé le temps que nous trouvions une solutions pérenne
+	
+	<p>En attendant, pour toute question, n'hésitez pas à nous écrire à contact@carrefourdesinnovationssociales.fr
+
+	<fieldset disabled>
+		{{ notReferencedProjectCarrierForm.hidden_tag() }}
+		{# { { form.csrf_token }} #}
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Nom du projet *
+					{{ notReferencedProjectCarrierForm.projectName() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Structure porteuse du projet *
+					{{ notReferencedProjectCarrierForm.projectStructureName() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Nom du référent du projet *
+					{{ notReferencedProjectCarrierForm.projectContactName }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Email de votre contact *
+					{{ notReferencedProjectCarrierForm.projectContactEmail() }}
+				</label>
+			</p>
+		</div>	
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Adresse du siège social *
+					{{ notReferencedProjectCarrierForm.projectAddress() }}
+				</label>
+			</p>
+		</div>	
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Périmètre(s) d’action de votre projet *
+					{{ notReferencedProjectCarrierForm.projectActionArea() }}
+					{{ notReferencedProjectCarrierForm.projectActionAreaLocalDetails() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Choisissez une ou plusieurs catégorie(s) *
+					{{ notReferencedProjectCarrierForm.projectCategories() }}
+					{{ notReferencedProjectCarrierForm.projectCategoriesOther() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Choisissez un ou plusieurs public cible *
+					{{ notReferencedProjectCarrierForm.projectAudiences() }}
+					{{ notReferencedProjectCarrierForm.projectAudiencesOther() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Année de création du projet *
+					{{ notReferencedProjectCarrierForm.projectStartYear() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Stade d’avancement du projet *
+					{{ notReferencedProjectCarrierForm.projectStage() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Courte description de votre projet (contexte / besoins auquel il répond / solution) *
+					{{ notReferencedProjectCarrierForm.projectDescription() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>En quoi ce projet est-il innovant ? * (par rapport aux technologies / au territoire / à la méthodologie / à la gouvernance…)
+					{{ notReferencedProjectCarrierForm.projectInnovation() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Mode de financement et partenariat précisez le nom de la structure partenaire et le mode d’accompagnement (financement / conseil / incubation… ) *
+					{{ notReferencedProjectCarrierForm.projectFundingAndPartners() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Éventuel(s) prix reçu(s) pour ce projet
+					{{ notReferencedProjectCarrierForm.projectRewards() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Site internet de votre projet
+					{{ notReferencedProjectCarrierForm.projectWebsite() }}
+				</label>
+			</p>
+		</div>
+
+		<div class="field">
+			<p class="control is-expanded">
+				<label>Ajoutez une pièce jointe
+                    <p>Tout document qui pourra utile à la compréhension du projet (document de présentation / dossier de demande de subvention…)
+					{{ notReferencedProjectCarrierForm.projectAttachment() }}
+				</label>
+			</p>
+		</div>
+
+		<p class="help is-light">* champs requis</p>
+
+		{# SUBMIT BTN #}
+		<div class="field is-grouped is-grouped-centered">
+			<button class="button is-primary is-medium" type="submit">
+				Envoyer
+			</button>
+		</div>
+
+	</fieldset>
+
+</form>

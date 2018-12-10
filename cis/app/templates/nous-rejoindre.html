@@ -129,13 +129,10 @@
         <section hidden class="not-yet-referenced-by-a-partner-expand">
             <p>Notre ambition est de valoriser tous les projets existants d’innovation sociale. Pour l’instant, nous réferençons sur le site seulement les projets suivis par les <a href="/qui-sommes-nous/qui-fait-quoi">acteurs partenaires du collectif</a>.
             <p>Cependant, nous vous invitons à remplir ce formulaire de mise en contact. Ces informations seront transmises aux membres du collectif qui pourront découvrir votre projet et prendre contact avec vous.
-            <form>
-                <label>
-                    Nom du projet
-                    <input type=text>
-                </label>
-                <button type="submit">Envoyer</button>
-            </form>
+            
+            
+            {% include "forms/form-not-referenced-project-carrier.html" %}
+
         </section>
 
     </section>
@@ -173,25 +170,16 @@
                     </div>
 
                     <section class="has-projects-expand" hidden>
-                        Partagez-donc vos projets !!!!!!
-                        <form>
-                            <label>
-                                Nom de la structure partenaire
-                                <input type=text>
-                            </label>
-                            <button type="submit">Envoyer</button>
-                        </form>
+                        <p>Vous listez des projets d’innovation sociales et vous aimeriez les valoriser sur le site du Carrefour des innovations sociales ? Dîtes-nous en un peu !
+                    
+                        {% include "forms/form-structure-with-projects.html" %}
+
                     </section>
 
                     <section class="no-projects-expand" hidden>
-                        Oh noes! Qui êtes-vous ?
-                        <form>
-                            <label>
-                                Nom de la structure partenaire
-                                <input type=text>
-                            </label>
-                            <button type="submit">Envoyer</button>
-                        </form>
+                       <p>Vous ne référencez pas de projets d’innovation sociale sous forme de liste mais vous souhaitez vous investir dans le projet ? Nous serions ravis de vous acceuillir, dîtes-nous en un peu plus sur votre structure.
+                        
+                        {% include "forms/form-structure-no-projects.html" %}
                     </section>
 
                 <li>
@@ -209,6 +197,25 @@
 
 <script>
 "use strict";
+
+function makeFormSubmitter(successMessage){
+    return e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const url = form.action;
+
+        fetch(url, { 
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(r => r.text())
+        .then(() => {
+            form.innerHTML = successMessage
+        })
+        .catch(err => console.error(form, err))
+    }
+}
 
 document.addEventListener('DOMContentLoaded', e => {
     // Qui êtes-vous ?
@@ -258,23 +265,10 @@ document.addEventListener('DOMContentLoaded', e => {
     })
 
     const referencedProjectCarrierForm = projectCarrierReferencedByPartnerExpand.querySelector('form')
-    referencedProjectCarrierForm.addEventListener('submit', e => {
-        e.preventDefault();
+    referencedProjectCarrierForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu les informations concernant la structure partenaire qui référence votre projet sur son site. Après vérification des information, nous prendrons contact avec elle.</div>`))
 
-        const form = e.target;
-        const url = form.action;
-
-        fetch(url, { 
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then(r => r.text())
-        .then(() => {
-            form.innerHTML = `<div>Merci, nous avons bien reçu les informations concernant la structure partenaire qui référence votre projet sur son site. Après vérification des information, nous prendrons contact avec elle.</div>`
-        })
-        .catch(err => console.error('project carrier error', err))
-    })
-
+    const notReferencedProjectCarrierForm = projectCarrierNotYetReferencedByPartnerExpand.querySelector('form')
+    notReferencedProjectCarrierForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu votre formulaire de contact. Nous le transmettrons aux membres du collectif pour qu’ils prennent connaissance de votre projet. Ils seront libre de prendre contact avec vous ensuite.</div>`))
 
     // Des projets à partager ?
     const structureHasProjectsButton = document.body.querySelector('button.has-projects');
@@ -299,7 +293,11 @@ document.addEventListener('DOMContentLoaded', e => {
         structureHasProjectsExpand.setAttribute('hidden', '')
     })
 
+    const structureHasProjectsForm = structureHasProjectsExpand.querySelector('form')
+    structureHasProjectsForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu votre demande pour rejoindre le collectif du Carrefour des innovations sociales et les informations concernant les projets que vous aimeriez voir apparaître sur le site. Nous allons prendre en compte votre demande et revenir vers vous très vite.</div>`))
 
+    const structureNoProjectsForm = structureNoProjectsExpand.querySelector('form')
+    structureNoProjectsForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu votre demande pour rejoindre le collectif du Carrefour des innovations sociales. Nous allons prendre en compte votre demande et revenir vers vous très vite.</div>`))
 
 }, {once: true})
 

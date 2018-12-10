@@ -7,6 +7,11 @@ from ..settings.app_choices import *
 
 log_cis.info(">>> reading _forms.form_user.py ")
 
+class MultiCheckboxField(SelectMultipleField):
+	
+	widget = widgets.ListWidget(prefix_label=False)
+	option_widget = widgets.CheckboxInput()
+
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FIELDS
@@ -261,6 +266,218 @@ personEmail				= EmailField	( 	u"email",
 											render_kw={'class': 'input'}  
 										)
 
+personRole				= StringField	( 	u"role", 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+										)
+
+projectName 			= StringField	(	u'nom du projet' , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+										)
+
+address					= TextAreaField	(  	u'Adresse', 					
+											render_kw={'class' : 'textarea' , 'rows':'3'}
+										)
+
+PROJECT_ACTION_AREA_NATIONAL = u'nationale'
+PROJECT_ACTION_AREA_LOCAL = u'local'
+
+projectActionArea		= MultiCheckboxField (	u"Périmètre d'action", 
+										choices=[
+											(PROJECT_ACTION_AREA_NATIONAL, PROJECT_ACTION_AREA_NATIONAL), 
+											(PROJECT_ACTION_AREA_LOCAL, PROJECT_ACTION_AREA_LOCAL)
+										]
+									)
+
+projectActionAreaLocalDetails	= StringField	(	u"Périmètre d'action locale détails" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+									)
+
+PROJECT_CATEGORY_LIFE_ENV = u"Cadre de vie"
+PROJECT_CATEGORY_SUST_DEV = u"Développement durable"
+PROJECT_CATEGORY_ECO_DEV = u"Développement économique"
+PROJECT_CATEGORY_HABITAT = u"Habitat"
+PROJECT_CATEGORY_INCLUSION = u"Inclusion"
+PROJECT_CATEGORY_SOCIAL_NET = u"Lien social"
+PROJECT_CATEGORY_HEALTH_SPORT = u"Santé, Sport"
+PROJECT_CATEGORY_EMPLOYMENT = u"Travail"
+
+projectCategories 				= MultiCheckboxField(	u'Catégories', 
+														choices=[
+															(PROJECT_CATEGORY_LIFE_ENV, PROJECT_CATEGORY_LIFE_ENV),
+															(PROJECT_CATEGORY_SUST_DEV, PROJECT_CATEGORY_SUST_DEV),
+															(PROJECT_CATEGORY_ECO_DEV, PROJECT_CATEGORY_ECO_DEV),
+															(PROJECT_CATEGORY_HABITAT, PROJECT_CATEGORY_HABITAT),
+															(PROJECT_CATEGORY_INCLUSION, PROJECT_CATEGORY_INCLUSION),
+															(PROJECT_CATEGORY_SOCIAL_NET, PROJECT_CATEGORY_SOCIAL_NET),
+															(PROJECT_CATEGORY_HEALTH_SPORT, PROJECT_CATEGORY_HEALTH_SPORT), 
+															(PROJECT_CATEGORY_EMPLOYMENT, PROJECT_CATEGORY_EMPLOYMENT)
+														]
+													)
+
+projectCategoriesOther			= StringField	(	u"Autres catégories" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+									)
+
+PROJECT_AUDIENCE_YOUTH = u"Jeunesse"
+PROJECT_AUDIENCE_HANDICAP = u"Handicap"
+PROJECT_AUDIENCE_ELDERLY = u"Senior"
+PROJECT_AUDIENCE_OTHER = u"Autre, précisez"
+
+projectAudiences				= MultiCheckboxField(	u'Catégories', 
+														choices=[
+															(PROJECT_AUDIENCE_YOUTH, PROJECT_AUDIENCE_YOUTH),
+															(PROJECT_AUDIENCE_HANDICAP, PROJECT_AUDIENCE_HANDICAP),
+															(PROJECT_AUDIENCE_ELDERLY, PROJECT_AUDIENCE_ELDERLY),
+															(PROJECT_AUDIENCE_OTHER, PROJECT_AUDIENCE_OTHER)
+														]
+													)
+
+projectAudiencesOther			= StringField	(	u"Autres publics" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+									)
+
+projectStartYear				= StringField	(	u"Année de création" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+									)
+
+PROJECT_STAGE_IDEA = u"Idéation"
+PROJECT_STAGE_DEV = u"Développement"
+PROJECT_STAGE_BOOTSTRAP = u"Amorçage"
+PROJECT_STAGE_SPREAD = u"Essaimage"
+
+projectStage					= MultiCheckboxField(	u'Catégories', 
+														choices=[
+															(PROJECT_STAGE_IDEA, PROJECT_STAGE_IDEA),
+															(PROJECT_STAGE_DEV, PROJECT_STAGE_DEV),
+															(PROJECT_STAGE_BOOTSTRAP, PROJECT_STAGE_BOOTSTRAP),
+															(PROJECT_STAGE_SPREAD, PROJECT_STAGE_SPREAD)
+														]
+													)
+
+
+projectDescription				= TextAreaField	(  	u'Description', 					
+											render_kw={'class' : 'textarea' , 'rows':'5'}
+										)
+
+projectInnovation				= TextAreaField	(  	u'Innovation', 					
+											render_kw={'class' : 'textarea' , 'rows':'5'}
+										)
+
+projectFundingAndPartners		= TextAreaField	(  	u'projectFundingAndPartners', 					
+											render_kw={'class' : 'textarea' , 'rows':'5'}
+										)
+
+projectRewards					= StringField	(	u"Récompenses" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+									)
+
+structureReasonToJoin			= TextAreaField	(  	u'Raison de rejoindre', 					
+											render_kw={'class' : 'textarea' , 'rows':'5'}
+										)
+
+
+STRUCTURE_LISTS_REWARD_WINNERS = u"Je liste les lauréats de mes appels à projets"
+STRUCTURE_LISTS_HELPED = u"Je liste les projets que j'accompagne"
+STRUCTURE_LISTS_HIGHLIGHT = u"Je liste des projets que je cherche à valoriser"
+STRUCTURE_LISTS_OTHER = u"Autre, précisez :"
+
+
+structureListHow				= MultiCheckboxField(	u'Projets listés', 
+														choices=[
+															(STRUCTURE_LISTS_REWARD_WINNERS, STRUCTURE_LISTS_REWARD_WINNERS),
+															(STRUCTURE_LISTS_HELPED, STRUCTURE_LISTS_HELPED),
+															(STRUCTURE_LISTS_HIGHLIGHT, STRUCTURE_LISTS_HIGHLIGHT),
+															(STRUCTURE_LISTS_OTHER, STRUCTURE_LISTS_OTHER)
+														]
+													)
+
+structureListHowOther			= StringField	(	u"Projets listés (autres)" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+											)
+
+STRUCTURE_PROJECTS_COUNT_0_15 = u"Entre 0 et 15"
+STRUCTURE_PROJECTS_COUNT_15_50 = u"Entre 15 et 50"
+STRUCTURE_PROJECTS_COUNT_50_200 = u"Entre 15 et 50"
+STRUCTURE_PROJECTS_COUNT_MORE_THAN_200 = u"Plus de 200"
+
+structureProjectsToShareCount	= RadioField('Label', 
+												choices=[
+													(STRUCTURE_PROJECTS_COUNT_0_15, STRUCTURE_PROJECTS_COUNT_0_15),
+													(STRUCTURE_PROJECTS_COUNT_15_50, STRUCTURE_PROJECTS_COUNT_15_50),
+													(STRUCTURE_PROJECTS_COUNT_50_200, STRUCTURE_PROJECTS_COUNT_50_200),
+													(STRUCTURE_PROJECTS_COUNT_MORE_THAN_200, STRUCTURE_PROJECTS_COUNT_MORE_THAN_200)
+												])
+
+STRUCTURE_PROJECTS_INFOS_TITRE = u"Le titre du projet"
+STRUCTURE_PROJECTS_INFOS_CARRIER_NAME = u"Le nom du porteur de projet"
+STRUCTURE_PROJECTS_INFOS_PICTURE = u"Une photo"
+STRUCTURE_PROJECTS_INFOS_LEGAL_STRUCTURE = u"La structure juridique"
+STRUCTURE_PROJECTS_INFOS_DESC = u"Une description du projet"
+STRUCTURE_PROJECTS_INFOS_CARRIER_EMAIL = u"Le contact du porteur de projet"
+STRUCTURE_PROJECTS_INFOS_LOCALISATION = u"La localisation du projet"
+
+
+structureProjectsToShareInfos = MultiCheckboxField(
+	'Infos disponibles', 
+	choices=[
+		(STRUCTURE_PROJECTS_INFOS_TITRE, STRUCTURE_PROJECTS_INFOS_TITRE),
+		(STRUCTURE_PROJECTS_INFOS_CARRIER_NAME, STRUCTURE_PROJECTS_INFOS_CARRIER_NAME),
+		(STRUCTURE_PROJECTS_INFOS_PICTURE, STRUCTURE_PROJECTS_INFOS_PICTURE),
+		(STRUCTURE_PROJECTS_INFOS_LEGAL_STRUCTURE, STRUCTURE_PROJECTS_INFOS_LEGAL_STRUCTURE),
+		(STRUCTURE_PROJECTS_INFOS_DESC, STRUCTURE_PROJECTS_INFOS_DESC),
+		(STRUCTURE_PROJECTS_INFOS_CARRIER_EMAIL, STRUCTURE_PROJECTS_INFOS_CARRIER_EMAIL),
+		(STRUCTURE_PROJECTS_INFOS_LOCALISATION, STRUCTURE_PROJECTS_INFOS_LOCALISATION)
+	]
+)
+
+STRUCTURE_PROJECTS_FORMAT_WEBSITE = u"Un site internet"
+STRUCTURE_PROJECTS_FORMAT_EXCEL = u"Un tableau excel"
+STRUCTURE_PROJECTS_FORMAT_PDF = u"Un fichier PDF"
+STRUCTURE_PROJECTS_FORMAT_API = u"Une API"
+STRUCTURE_PROJECTS_FORMAT_MAP = u"Une cartographie en ligne"
+STRUCTURE_PROJECTS_FORMAT_WORD_DOC = u"Un fichier Word"
+STRUCTURE_PROJECTS_FORMAT_DATABASE = u"Une base de données"
+
+structureProjectsToShareFormat 	= MultiCheckboxField(
+	'Formats disponibles', 
+	choices=[
+		(STRUCTURE_PROJECTS_FORMAT_WEBSITE, STRUCTURE_PROJECTS_FORMAT_WEBSITE),
+		(STRUCTURE_PROJECTS_FORMAT_EXCEL, STRUCTURE_PROJECTS_FORMAT_EXCEL),
+		(STRUCTURE_PROJECTS_FORMAT_PDF, STRUCTURE_PROJECTS_FORMAT_PDF),
+		(STRUCTURE_PROJECTS_FORMAT_API, STRUCTURE_PROJECTS_FORMAT_API),
+		(STRUCTURE_PROJECTS_FORMAT_MAP, STRUCTURE_PROJECTS_FORMAT_MAP),
+		(STRUCTURE_PROJECTS_FORMAT_WORD_DOC, STRUCTURE_PROJECTS_FORMAT_WORD_DOC),
+		(STRUCTURE_PROJECTS_FORMAT_DATABASE, STRUCTURE_PROJECTS_FORMAT_DATABASE)
+	]
+)
+
+structureProjectsToShareWebsite			= StringField	(	u"Site des projets partagés" , 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+											)
+
+STRUCTURE_INTEREST_ANALYSIS = u"Analyse et transmission des innovations sociales"
+STRUCTURE_INTEREST_FRIEND = u"Développement du Carrefour des innovations sociales dans les territoires"
+STRUCTURE_INTEREST_COLLECTIVE_ACTION_FORMS = u"Compréhension des nouvelles formes d’action collective"
+
+
+structureInterests 	= MultiCheckboxField(
+	'Intérêts', 
+	choices=[
+		(STRUCTURE_INTEREST_ANALYSIS, STRUCTURE_INTEREST_ANALYSIS),
+		(STRUCTURE_INTEREST_FRIEND, STRUCTURE_INTEREST_FRIEND),
+		(STRUCTURE_INTEREST_COLLECTIVE_ACTION_FORMS, STRUCTURE_INTEREST_COLLECTIVE_ACTION_FORMS)
+	]
+)
+
 
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
@@ -292,7 +509,6 @@ class UserSharedInfos(FlaskForm) :
 	userMessage			= userMessage
 
 
-
 ### USER FORMS
 
 class LoginForm( UserBasics ):
@@ -300,7 +516,6 @@ class LoginForm( UserBasics ):
 	userEmail			= userEmail
 	userPassword 		= userPassword
 	userRememberMe		= userRememberMe
-
 
 class RegisterForm( UserSharedInfos, UserStructureInfos, UserProfile, UserID):
 	
@@ -336,6 +551,7 @@ class UserNewPassword (FlaskForm) :
 	newPassword 		= newPassword
 	userConfirmPassword = userConfirmPassword
 
+### Feedback forms
 
 class FeedbackForm(UserID):
 
@@ -345,8 +561,6 @@ class FeedbackForm(UserID):
 	userFeedbackTopic   = userFeedbackTopic
 	userMessage			= userMessage
 
-
-
 class ReferencedProjectCarrierForm(FlaskForm):
 	partnerStructureName = userOtherStructure
 	partnerStructureWebsite = structureWebsite
@@ -354,26 +568,48 @@ class ReferencedProjectCarrierForm(FlaskForm):
 	partnerStructureContactEmail = personEmail
 	message = userMessage
 
+class NotReferencedProjectCarrierForm(FlaskForm):
+	projectName = projectName
+	projectStructureName = userOtherStructure
+	projectContactName = personName
+	projectContactEmail = personEmail
+	projectAddress = address
+	projectActionArea = projectActionArea
+	projectActionAreaLocalDetails = projectActionAreaLocalDetails
+	projectCategories = projectCategories
+	projectCategoriesOther = projectCategoriesOther
+	projectAudiences = projectAudiences
+	projectAudiencesOther = projectAudiencesOther
+	projectStartYear = projectStartYear
+	projectStage = projectStage
+	projectDescription = projectDescription
+	projectInnovation = projectInnovation
+	projectFundingAndPartners = projectFundingAndPartners
+	projectRewards = projectRewards
+	projectWebsite = structureWebsite
+	projectAttachment = FileField()
 
-# class NotReferencedProjectCarrier():
-	# Nom du projet *
-	# Structure porteuse du projet *
-	# Nom du référent du projet *
-	# Email du référent *
-	# Adresse du siège social *
-	# Périmètre(s) d’action de votre projet *
-	# Choisissez une ou plusieurs catégorie(s) *
-	# Choisissez une ou plusieurs public cible *
-	# Année de création du projet *
-	# Stade d’avancement du projet *
-	# Courte description de votre projet * (contexte / besoins auquel il répond / solution)
-	# En quoi ce projet est-il innovant ? * (par rapport aux technologies / au territoire / à la méthodologie / à la gouvernance…)
-	# Mode de financement et partenariat précisez le nom de la structure partenaire et le mode d’accompagnement (financement / conseil / incubation… ) *
-	# Éventuel(s) prix reçu(s) pour ce projet
-	# Site internet de votre projet
-	# Ajoutez une pièce jointe
+
+class StructureFormCommons(FlaskForm):
+	structureName = userOtherStructure
+	structureWebsite = structureWebsite
+	structureContactName = personName
+	structureContactRole = personRole
+	structureContactEmail = personEmail
+	structureReasonToJoin = structureReasonToJoin
 
 
+class StructureWithProjectsForm(StructureFormCommons):
+	structureListHow = structureListHow
+	structureListHowOther = structureListHowOther
+	structureProjectsToShareCount = structureProjectsToShareCount
+	structureProjectsToShareInfos = structureProjectsToShareInfos
+	structureProjectsToShareFormat = structureProjectsToShareFormat
+	structureProjectsToShareWebsite = structureProjectsToShareWebsite
+	structureProjectsToShareAttachment = FileField()
+
+class StructureNoProjectsForm(StructureFormCommons):
+	structureInterests = structureInterests
 
 
 ### TO IMPLEMENT WITH FLAKS-MAIL
