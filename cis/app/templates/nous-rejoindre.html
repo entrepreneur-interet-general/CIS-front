@@ -296,7 +296,8 @@ document.addEventListener('DOMContentLoaded', e => {
     const structureHasProjectsForm = structureHasProjectsExpand.querySelector('form')
     structureHasProjectsForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu votre demande pour rejoindre le collectif du Carrefour des innovations sociales et les informations concernant les projets que vous aimeriez voir apparaître sur le site. Nous allons prendre en compte votre demande et revenir vers vous très vite.</div>`))
 
-
+    const structureNoProjectsForm = structureNoProjectsExpand.querySelector('form')
+    structureNoProjectsForm.addEventListener('submit', makeFormSubmitter(`<div>Merci, nous avons bien reçu votre demande pour rejoindre le collectif du Carrefour des innovations sociales. Nous allons prendre en compte votre demande et revenir vers vous très vite.</div>`))
 
 }, {once: true})
 
