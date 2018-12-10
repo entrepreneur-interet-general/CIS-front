@@ -115,6 +115,7 @@ class Config(object):
 	MONGO_COLL_FEEDBACKS					= "feedbacks"
 	MONGO_COLL_JOIN_MESSAGE_REFERENCED_PROJECT_CARRIER = "join_message_referenced_project_carrier"
 	MONGO_COLL_JOIN_MESSAGE_NOT_REFERENCED_PROJECT_CARRIER = "join_message_not_referenced_project_carrier"
+	MONGO_COLL_JOIN_MESSAGE_STRUCTURES = "join_message_structures"
 
 	""" MAILING """
 	VALIDITY_CONFIRM	= os.getenv("VALIDITY_CONFIRM")

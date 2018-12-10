@@ -442,6 +442,34 @@ def porteurProjetNonReference():
 	return redirect(request.referrer or "/")
 
 
+@app.route('/nous-rejoindre/structure-avec-projets', methods=['POST'])
+def structureAvecProjets():
+
+	log_cis.debug("entering /nous-rejoindre/structure-avec-projets endpoint")
+	
+	form = StructureWithProjectsForm()
+		
+	### for debugging purposes
+	for f_field in form : 
+		log_cis.debug( "StructureWithProjectsForm form name : %s / form data : %s", f_field.name, f_field.data )
+
+
+	if form.validate_on_submit():
+
+		log_cis.debug("form validated")
+		### ADD A NEW JOIN US ENTRY
+		structureWithProjectsFeedback = ModelMixin()
+		structureWithProjectsFeedback.populate_from_form( form=form )
+		structureWithProjectsFeedback.add_created_at()
+		structureWithProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
+
+	else :
+		
+		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+
+		
+	return redirect(request.referrer or "/")
+
 
 
 

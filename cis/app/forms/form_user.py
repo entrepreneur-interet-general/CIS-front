@@ -266,6 +266,11 @@ personEmail				= EmailField	( 	u"email",
 											render_kw={'class': 'input'}  
 										)
 
+personRole				= StringField	( 	u"role", 
+											validators = [ Optional(), Length(min=1, max=1000) ], 
+											render_kw={'class': 'input'}  
+										)
+
 projectName 			= StringField	(	u'nom du projet' , 
 											validators = [ Optional(), Length(min=1, max=1000) ], 
 											render_kw={'class': 'input'}  
@@ -574,7 +579,7 @@ class StructureWithProjectsForm(FlaskForm):
 	structureName = userOtherStructure
 	structureWebsite = structureWebsite
 	structureContactName = personName
-	structureContactRole = personEmail
+	structureContactRole = personRole
 	structureReasonToJoin = structureReasonToJoin
 	structureListHow = structureListHow
 	structureListHowOther = structureListHowOther
