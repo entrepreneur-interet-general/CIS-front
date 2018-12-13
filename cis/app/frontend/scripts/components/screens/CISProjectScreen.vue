@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="column is-5">
-                        <div class="added" v-if="spiders && project && spiders[project.spiderId]">Project ajouté par <a :href="spiders[project.spiderId].page_url">{{spiders[project.spiderId].name}}</a></div>
+                        <div class="added" v-if="spiders && project && spiders[project.spiderId]">Projet ajouté par <a :href="spiders[project.spiderId].page_url">{{spiders[project.spiderId].name}}</a></div>
                         <img :src="project.image"/>
                         <div class="content">
                             <h2 class="title is-5">Catégories</h2>
