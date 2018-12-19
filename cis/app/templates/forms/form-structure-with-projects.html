@@ -1,12 +1,12 @@
 
 <form action="/nous-rejoindre/structure-avec-projets" method="POST" name="form">
-	<p>Ce formulaire a été utilisé malicieusement pour nous envoyer du spam et est actuellement désactivé le temps que nous trouvions une solutions pérenne
-	
-	<p>En attendant, pour toute question, n'hésitez pas à nous écrire à contact@carrefourdesinnovationssociales.fr
-
-	<fieldset disabled>
+	<fieldset>
 		{{ structureWithProjectsForm.hidden_tag() }}
 		{# { { form.csrf_token }} #}
+
+		<div hidden>
+			{{ structureWithProjectsForm.userMiddlename() }}
+		</div>
 
 		<div class="field">
 			<p class="control is-expanded">

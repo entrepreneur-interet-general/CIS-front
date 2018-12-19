@@ -395,38 +395,38 @@ def feedback():
 
 
 
-
-# Route is disabled until a proper solution against spam is found		
-# @app.route('/nous-rejoindre/porteur-projet-reference', methods=['POST'])
+@app.route('/nous-rejoindre/porteur-projet-reference', methods=['POST'])
 def porteurProjetReference():
 
 	log_cis.debug("entering /nous-rejoindre/porteur-projet-reference endpoint")
 	
 	form = ReferencedProjectCarrierForm()
 		
-	### for debugging purposes
-	for f_field in form : 
-		log_cis.debug( "ReferencedProjectCarrierForm form name : %s / form data : %s", f_field.name, f_field.data )
+	if form.__dict__[ANTI_SPAM_FIELD_NAME].data == '':
+		# Likely human submitter
 
+		if form.validate_on_submit():
 
-	if form.validate_on_submit():
+			log_cis.debug("form validated")
+			### ADD A NEW JOIN US ENTRY
+			referencedProjectCarrierFeedback = ModelMixin()
+			referencedProjectCarrierFeedback.populate_from_form( form=form )
+			referencedProjectCarrierFeedback.add_created_at()
+			referencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_referenced_project_carrier )
 
-		log_cis.debug("form validated")
-		### ADD A NEW JOIN US ENTRY
-		referencedProjectCarrierFeedback = ModelMixin()
-		referencedProjectCarrierFeedback.populate_from_form( form=form )
-		referencedProjectCarrierFeedback.add_created_at()
-		referencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_referenced_project_carrier )
+		else :
+			
+			log_cis.debug("form was not validated / form.errors : %s", form.errors )
 
 	else :
-		
-		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+		# Most certainly spam robot submitter
+		# let's store nothing in the database and pretend everything went well
+		log_cis.debug("likely spambot submission")
 
 		
 	return redirect(request.referrer or "/")
 
-
-# Route is disabled until a proper solution against spam is found		
+	
 @app.route('/nous-rejoindre/porteur-projet-non-reference', methods=['POST'])
 def porteurProjetNonReference():
 
@@ -434,23 +434,26 @@ def porteurProjetNonReference():
 	
 	form = NotReferencedProjectCarrierForm()
 		
-	### for debugging purposes
-	for f_field in form : 
-		log_cis.debug( "NotReferencedProjectCarrierForm form name : %s / form data : %s", f_field.name, f_field.data )
+	if form.__dict__[ANTI_SPAM_FIELD_NAME].data == '':
+		# Likely human submitter
 
+		if form.validate_on_submit():
 
-	if form.validate_on_submit():
+			log_cis.debug("form validated")
+			### ADD A NEW JOIN US ENTRY
+			notReferencedProjectCarrierFeedback = ModelMixin()
+			notReferencedProjectCarrierFeedback.populate_from_form( form=form )
+			notReferencedProjectCarrierFeedback.add_created_at()
+			notReferencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_not_referenced_project_carrier )
 
-		log_cis.debug("form validated")
-		### ADD A NEW JOIN US ENTRY
-		notReferencedProjectCarrierFeedback = ModelMixin()
-		notReferencedProjectCarrierFeedback.populate_from_form( form=form )
-		notReferencedProjectCarrierFeedback.add_created_at()
-		notReferencedProjectCarrierFeedback.insert_to_mongo( coll=mongo_join_message_not_referenced_project_carrier )
+		else :
+			
+			log_cis.debug("form was not validated / form.errors : %s", form.errors )
 
 	else :
-		
-		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+		# Most certainly spam robot submitter
+		# let's store nothing in the database and pretend everything went well
+		log_cis.debug("likely spambot submission")
 
 		
 	return redirect(request.referrer or "/")
@@ -463,25 +466,28 @@ def structureAvecProjets():
 	
 	form = StructureWithProjectsForm()
 		
-	### for debugging purposes
-	for f_field in form : 
-		log_cis.debug( "StructureWithProjectsForm form name : %s / form data : %s", f_field.name, f_field.data )
+	if form.__dict__[ANTI_SPAM_FIELD_NAME].data == '':
+		# Likely human submitter
 
+		if form.validate_on_submit():
 
-	if form.validate_on_submit():
+			log_cis.debug("form validated")
+			### ADD A NEW JOIN US ENTRY
+			structureWithProjectsFeedback = ModelMixin()
+			structureWithProjectsFeedback.populate_from_form( form=form )
+			structureWithProjectsFeedback.add_created_at()
+			structureWithProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
 
-		log_cis.debug("form validated")
-		### ADD A NEW JOIN US ENTRY
-		structureWithProjectsFeedback = ModelMixin()
-		structureWithProjectsFeedback.populate_from_form( form=form )
-		structureWithProjectsFeedback.add_created_at()
-		structureWithProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
+		else :
+			
+			log_cis.debug("form was not validated / form.errors : %s", form.errors )
 
 	else :
-		
-		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+		# Most certainly spam robot submitter
+		# let's store nothing in the database and pretend everything went well
+		log_cis.debug("likely spambot submission")
+	
 
-		
 	return redirect(request.referrer or "/")
 
 
@@ -492,23 +498,27 @@ def structureSansProjets():
 	
 	form = StructureNoProjectsForm()
 		
-	### for debugging purposes
-	for f_field in form : 
-		log_cis.debug( "StructureNoProjectsForm form name : %s / form data : %s", f_field.name, f_field.data )
-
-
-	if form.validate_on_submit():
-
-		log_cis.debug("form validated")
-		### ADD A NEW JOIN US ENTRY
-		structureNoProjectsFeedback = ModelMixin()
-		structureNoProjectsFeedback.populate_from_form( form=form )
-		structureNoProjectsFeedback.add_created_at()
-		structureNoProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
-
-	else :
 		
-		log_cis.debug("form was not validated / form.errors : %s", form.errors )
+	if form.__dict__[ANTI_SPAM_FIELD_NAME].data == '':
+		# Likely human submitter
+
+		if form.validate_on_submit():
+
+			log_cis.debug("form validated")
+			### ADD A NEW JOIN US ENTRY
+			structureNoProjectsFeedback = ModelMixin()
+			structureNoProjectsFeedback.populate_from_form( form=form )
+			structureNoProjectsFeedback.add_created_at()
+			structureNoProjectsFeedback.insert_to_mongo( coll=mongo_join_message_structures )
+
+		else :
+			
+			log_cis.debug("form was not validated / form.errors : %s", form.errors )
+			
+	else :
+		# Most certainly spam robot submitter
+		# let's store nothing in the database and pretend everything went well
+		log_cis.debug("likely spambot submission")
 
 		
 	return redirect(request.referrer or "/")

@@ -578,6 +578,7 @@ class ReferencedProjectCarrierForm(FlaskForm):
 	partnerStructureContactName = personName
 	partnerStructureContactEmail = personEmail
 	message = userMessage
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 class NotReferencedProjectCarrierForm(FlaskForm):
 	projectName = projectName
@@ -599,6 +600,7 @@ class NotReferencedProjectCarrierForm(FlaskForm):
 	projectRewards = projectRewards
 	projectWebsite = structureWebsite
 	projectAttachment = FileField()
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 
 class StructureFormCommons(FlaskForm):
@@ -608,6 +610,7 @@ class StructureFormCommons(FlaskForm):
 	structureContactRole = personRole
 	structureContactEmail = personEmail
 	structureReasonToJoin = structureReasonToJoin
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 
 class StructureWithProjectsForm(StructureFormCommons):
