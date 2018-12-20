@@ -479,6 +479,16 @@ structureInterests 	= MultiCheckboxField(
 )
 
 
+###
+# The following field is meant to be a honeypot field added hidden to forms
+# If it is filed, it means a bot filed the form and the message is spam
+
+antiSpamField	= StringField	(	u"Middle name" , 
+								validators = [ Optional() ], 
+								render_kw={'class': 'input'}  
+								)
+
+
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 ### USER FORMS
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
@@ -560,6 +570,7 @@ class FeedbackForm(UserID):
 	userOtherStructure 	= userOtherStructure
 	userFeedbackTopic   = userFeedbackTopic
 	userMessage			= userMessage
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 class ReferencedProjectCarrierForm(FlaskForm):
 	partnerStructureName = userOtherStructure
@@ -567,6 +578,7 @@ class ReferencedProjectCarrierForm(FlaskForm):
 	partnerStructureContactName = personName
 	partnerStructureContactEmail = personEmail
 	message = userMessage
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 class NotReferencedProjectCarrierForm(FlaskForm):
 	projectName = projectName
@@ -588,6 +600,7 @@ class NotReferencedProjectCarrierForm(FlaskForm):
 	projectRewards = projectRewards
 	projectWebsite = structureWebsite
 	projectAttachment = FileField()
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 
 class StructureFormCommons(FlaskForm):
@@ -597,6 +610,7 @@ class StructureFormCommons(FlaskForm):
 	structureContactRole = personRole
 	structureContactEmail = personEmail
 	structureReasonToJoin = structureReasonToJoin
+	userMiddlename		= antiSpamField # hidden field used as spam honeypot
 
 
 class StructureWithProjectsForm(StructureFormCommons):

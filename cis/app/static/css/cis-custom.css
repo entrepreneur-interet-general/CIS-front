@@ -8,6 +8,10 @@ html {
 	display: none !important;
 }
 
+fieldset{
+	border: 0;
+}
+
 .is-hidden {
 	display: none;
 }
