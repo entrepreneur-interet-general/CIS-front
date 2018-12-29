@@ -2,7 +2,6 @@
     <div class="column is-12">    
         <div class="card proj-card">
 
-            <!-- TODO change to <router-link> -->
             <router-link :to="`/project/${project.id}`" class="card-image">
                 <img class="proj-card-img" :src="project.image" :alt="'illustration du projet' + project.title" >
             </router-link>
@@ -33,15 +32,6 @@
                     </span>
                 </div>
             </div>
-        
-            <footer class="card-footer">
-                <a v-if="project.url" :href="project.url" class="card-footer-item"
-                    title="lien vers le site du projet" target="_blank">
-                    <span class="icon">
-                        <i class="fas fa-external-link-alt"></i>
-                    </span>
-                </a>
-            </footer>
 
         </div>
     </div>
