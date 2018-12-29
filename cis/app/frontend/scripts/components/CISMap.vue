@@ -39,9 +39,11 @@
 
         <l-map
         :zoom="zoom"
+        :options="{zoomControl: false}"
         :center="center"
         @update:center="centerUpdate"
         @update:zoom="zoomUpdate">
+            <l-control-zoom position="bottomright"/>
             <l-tile-layer
                 :url="url"
                 :attribution="attribution"/>
@@ -64,7 +66,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
+import { LMap, LControlZoom, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 
 import CISSearchResultsCountAndTabs from './CISSearchResultsCountAndTabs.vue'
@@ -75,6 +77,7 @@ export default {
     name: "CISMap",
     components: {
         LMap,
+        LControlZoom,
         LTileLayer,
         LMarker,
         LIcon,
