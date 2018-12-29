@@ -39,30 +39,35 @@
 
         <l-map
         :zoom="zoom"
+        :options="{zoomControl: false}"
         :center="center"
         @update:center="centerUpdate"
         @update:zoom="zoomUpdate">
+            <l-control-zoom position="bottomright"/>
             <l-tile-layer
                 :url="url"
                 :attribution="attribution"/>
-            <l-marker v-for="p in projects" 
-                v-if="geolocByProjectId.get(p.id)"
-                :key="p.id"
-                :lat-lng="{lng: geolocByProjectId.get(p.id).longitude, lat: geolocByProjectId.get(p.id).latitude}"
-                @click="highlightProject(p)">
-                
-                <l-icon
-                    iconUrl="https://unpkg.com/leaflet@1.3.4/dist/images/marker-icon.png"
-                    :iconSize="p === highlightedProject ? [31, 46] : [19, 29]"/>
+            <v-marker-cluster>
+                <l-marker v-for="p in projects" 
+                    v-if="geolocByProjectId.get(p.id)"
+                    :key="p.id"
+                    :lat-lng="{lng: geolocByProjectId.get(p.id).longitude, lat: geolocByProjectId.get(p.id).latitude}"
+                    @click="highlightProject(p)">
+                    
+                    <l-icon
+                        iconUrl="/static/icons/icon_pin_violet.png"
+                        :iconSize="p === highlightedProject ? [46, 46] : [29, 29]"/>                    
 
-            </l-marker>
+                </l-marker>
+            </v-marker-cluster>
         </l-map>
     </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
+import { LMap, LControlZoom, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
+import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 
 import CISSearchResultsCountAndTabs from './CISSearchResultsCountAndTabs.vue'
 
@@ -72,9 +77,11 @@ export default {
     name: "CISMap",
     components: {
         LMap,
+        LControlZoom,
         LTileLayer,
         LMarker,
         LIcon,
+        'v-marker-cluster': Vue2LeafletMarkerCluster,
         CISSearchResultsCountAndTabs
     },
     props: ['view'],
