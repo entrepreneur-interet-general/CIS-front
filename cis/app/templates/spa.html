@@ -32,10 +32,12 @@
 		{# note : hack refresh cache adding this : ?version=0.0.1 after brackets #}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-carousel.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.3">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin="anonymous" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}?version=0.0.4">
 		
-		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" crossorigin="anonymous"></script>
 
 		<script defer src="{{ url_for('static', filename='json/CHOICES_FILTERS_TAGS.js') }}"></script>
 		<script defer src="{{ url_for('static', filename='json/CHOICES_FILTERS_GEOLOC.js') }}"></script>
