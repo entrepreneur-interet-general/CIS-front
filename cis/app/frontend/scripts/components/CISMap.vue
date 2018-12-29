@@ -53,8 +53,8 @@
                     @click="highlightProject(p)">
                     
                     <l-icon
-                        iconUrl="https://unpkg.com/leaflet@1.3.4/dist/images/marker-icon.png"
-                        :iconSize="p === highlightedProject ? [31, 46] : [19, 29]"/>                    
+                        iconUrl="/static/icons/icon_pin_violet.png"
+                        :iconSize="p === highlightedProject ? [46, 46] : [29, 29]"/>                    
 
                 </l-marker>
             </v-marker-cluster>
