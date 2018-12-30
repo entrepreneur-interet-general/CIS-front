@@ -75,8 +75,6 @@ export default {
     }),
 
     mounted(){
-        console.log('mounted', window.pageXOffset, window.pageYOffset)
-
         // hack to scroll top because vue-router scrollBehavior thing doesn't seem to work on Firefox on Linux at least
         const int = setInterval(() => {
             if(window.pageYOffset < 50){

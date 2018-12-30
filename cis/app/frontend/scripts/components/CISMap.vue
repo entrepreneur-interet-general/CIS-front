@@ -104,7 +104,6 @@ export default {
             this.currentCenter = center;
         },
         highlightProject(p) {
-            console.log("Highlight project", p);
             this.highlightedProject = p;
         },
         ...mapActions([
