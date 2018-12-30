@@ -27,14 +27,14 @@
                                 <p>{{project.projectPartners}}</p>
                             </div>
 
-                            <a v-if="project.website" :href="project.website">Voir le site du projet</a>
+                            <a v-if="project.website" :href="project.website" target="_blank">Voir le site du projet</a>
                         </div>
                     </div>
 
                     <div class="column is-5">
                         <div class="added" v-if="spiders && project && spiders[project.spiderId]">
                             Project ajouté par 
-                            <a :href="project.pageAtSourcer || spiders[project.spiderId].page_url">
+                            <a :href="project.pageAtSourcer || spiders[project.spiderId].page_url" target="_blank">
                                 {{spiders[project.spiderId].name}}
                             </a>
                         </div>
