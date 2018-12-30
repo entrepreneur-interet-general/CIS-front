@@ -14,23 +14,18 @@ Vue.use(Vuex)
 const SOURCE_FILTER_NAME = 'source_';
 
 function makeSourceFilterFromSpiders(spiders){
-
-    console.log('spiders', spiders);
-
     var choices =  [ ...Object.entries(spiders) ] ;
-    console.log('choices : ', choices);
 
     var choices_mapped = choices.map(([id, {name}]) => ({
         "fullname": name, 
         "id": id,
         "spiderId": id,
         "name": name
-    })) ;
-    console.log('choices_mapped : ', choices_mapped);
+    }));
 
     choices_mapped.sort(function(a, b){
         return a.name > b.name;
-      });
+    });
 
     return {
         "fullname": "Source", 
@@ -48,7 +43,6 @@ function makeSourceFilterFromSpiders(spiders){
 }
 
 
-
 function filterValuesToCISTags(filterValues){
     const cisTags = new Set();
 
@@ -62,8 +56,6 @@ function filterValuesToCISTags(filterValues){
 
     for(const uiTag of uiTags){
         const categories = categoriesByUITag[uiTag];
-
-        console.log('categories', categories, categoriesByUITag, uiTag)
 
         for(const category of categories){
             const categoriesCISTags = cisTagByCategory[category];
@@ -150,6 +142,7 @@ const store = new Vuex.Store({
             }
         },
         setSearchError(state, {error}){
+            console.error('search error', error)
             state.search.answer = {
                 pendingAbort: undefined,
                 result: undefined,
@@ -158,11 +151,7 @@ const store = new Vuex.Store({
         },
         
         setSourceFilter(state, {sourceFilter}){
-            console.log('setSourceFilter', sourceFilter)
-
             const sourceFilterIndex = state.filterDescriptions.findIndex(fd => fd.name === SOURCE_FILTER_NAME)
-
-            console.log('sourceFilterIndex', sourceFilterIndex)
 
             if(sourceFilterIndex !== -1){
                 state.filterDescriptions[sourceFilterIndex] = sourceFilter
@@ -247,8 +236,6 @@ const store = new Vuex.Store({
             .catch(err => console.error('err getSpiders', text, err))
         },
         findProjectsGeolocs({commit}, projects){
-            console.log('findProjectsGeolocs', projects)
-
             const projectWithValidAddress = projects.filter(p => p['address'])
             const addresses = projectWithValidAddress.map(p => p['address'].replace(/[^(\w|\s)]/g, '').slice(0, 200) )
 
@@ -262,11 +249,7 @@ const store = new Vuex.Store({
             })
             .then(r => r.text())
             .then(geolocsTxt => {
-                console.log('text', geolocsTxt)
-
                 const geolocs = csvParse(geolocsTxt);
-                console.log('geolocs', geolocs)
-
 
                 const geolocByProjectId = new Map();
 
@@ -298,8 +281,6 @@ const store = new Vuex.Store({
 
 
 
-
-
 const BRAND_DATA = Object.freeze({
     logo: '/static/logos/CIS/CIS_logo.png',
     brand: 'Carrefour des Innovations Sociales',
@@ -315,8 +296,7 @@ const routes = [
             }
         },
         beforeEnter(to, from, next){
-
-            //console.log('store.state', store.state)
+            console.info('beforeEnter /recherche')
 
             // get spiders data if they're not already here
             if(!store.state.spiders){
@@ -336,7 +316,7 @@ const routes = [
         },
         beforeEnter(to, from, next){
             const {id} = to.params;
-            console.log('beforeEnter /project/:id', id)
+            console.info('beforeEnter /project/:id', id)
 
             const result = store.state.search.answer.result
 

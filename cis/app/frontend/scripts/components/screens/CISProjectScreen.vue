@@ -27,12 +27,17 @@
                                 <p>{{project.projectPartners}}</p>
                             </div>
 
-                            <a :href="project.url">Voir le site du projet</a>
+                            <a v-if="project.website" :href="project.website" target="_blank">Voir le site du projet</a>
                         </div>
                     </div>
 
                     <div class="column is-5">
-                        <div class="added" v-if="spiders && project && spiders[project.spiderId]">Project ajouté par <a :href="spiders[project.spiderId].page_url">{{spiders[project.spiderId].name}}</a></div>
+                        <div class="added" v-if="spiders && project && spiders[project.spiderId]">
+                            Project ajouté par 
+                            <a :href="project.pageAtSourcer || spiders[project.spiderId].page_url" target="_blank">
+                                {{spiders[project.spiderId].name}}
+                            </a>
+                        </div>
                         <img :src="project.image"/>
                         <div class="content">
                             <h2 class="title is-5">Catégories</h2>
@@ -70,8 +75,6 @@ export default {
     }),
 
     mounted(){
-        console.log('mounted', window.pageXOffset, window.pageYOffset)
-
         // hack to scroll top because vue-router scrollBehavior thing doesn't seem to work on Firefox on Linux at least
         const int = setInterval(() => {
             if(window.pageYOffset < 50){
