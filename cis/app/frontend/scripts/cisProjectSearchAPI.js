@@ -37,8 +37,10 @@ interface CISProjectFront{
     image: string, // URL
     address: string,
     projectPartners: Array<string>,
-    url: string
-    // spider_id: SpiderId,
+    website: string,                    // project website
+    pageAtSourcer: string,              // project page in sourcer
+    projectInSourcerListing: string,    // sourcer searchresult/list page where the project appeared
+    spider_id: SpiderId,
     description: string
 }
 
@@ -51,7 +53,9 @@ function fromMongoModelToFrontModel(projectInMongo){
         image: projectInMongo['image(s) du projet'],
         address: Array.isArray(projectInMongo['adresse du projet']) ? projectInMongo['adresse du projet'].join(' '): '',
         projectPartners: Array.isArray(projectInMongo['partenaires du projet']) ? projectInMongo['partenaires du projet'].join(' '): '',
-        url: projectInMongo['link_src'],
+        website: projectInMongo['website'] && projectInMongo['website'][0],
+        pageAtSourcer: projectInMongo['link_data'],
+        projectInSourcerListing: projectInMongo['link_src'],
         spiderId: projectInMongo['spider_id'],
         description: Array.isArray(projectInMongo['résumé du projet']) ? projectInMongo['résumé du projet'].join(' '): '',
     }
@@ -102,7 +106,6 @@ export function searchProjects(text, tags, spiderIds=[], page=1, per_page=1000){
     text = text.trim();
 
     const shuffle_seed      = Math.floor((Math.random() * 10000) + 1); ;
-    console.log("shuffle_seed : ", shuffle_seed) ;
 
     const searchArg         = text.length >= 1 ? '&search_for='+encodeURIComponent(text) : '';
     const spiderArg         = spiderIds.length >= 1 ? '&'+spiderIds.map(id => 'spider_id='+id).join('&') : '';
