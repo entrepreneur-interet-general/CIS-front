@@ -90,7 +90,9 @@ export default {
         }
     },
     mounted(){
-        this.$store.dispatch('searchedTextChanged', {searchedText: this.searchedText})
+        if(!this.$store.state.search.answer.result){
+            this.$store.dispatch('searchedTextChanged', {searchedText: this.searchedText})
+        }
     }
 }
 </script>
