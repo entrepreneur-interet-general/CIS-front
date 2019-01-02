@@ -1,3 +1,5 @@
+@import './cis-colors.scss';
+
 main#outils{
     & > nav,
     & > section{
@@ -25,7 +27,7 @@ main#outils{
         padding: 0;
         border: 0;
 
-        background-color: #F6F6F6;
+        background-color: $cis-grey-background;
     }
 
     section#architecture > *{
@@ -52,7 +54,7 @@ main#outils{
         width: 80%;
     }
     section#architecture ul li strong{
-        color: #592d7b;
+        color: $cis-primary;
         font-weight: bold;
     }
 
@@ -90,7 +92,7 @@ main#outils{
 
 
     .software-show h1{
-        color: #592d7b;
+        color: $cis-primary;
         font-weight: bold;
         font-size: 1.7em;
     }
@@ -100,7 +102,7 @@ main#outils{
         font-size: 1.4em;
     }
     .software-show h3{
-        color: #592d7b;
+        color: $cis-primary;
     }
 
     .software-show ul{
@@ -123,14 +125,14 @@ main#outils{
     }
 
     .software-show a.test{
-        color: white;
-        background-color: #592d7b;
-        border: 1px solid #592d7b;
+        color: $cis-primary-invert;
+        background-color: $cis-primary;
+        border: 1px solid $cis-primary;
     }
     .software-show a.github{
-        color: #592d7b;
-        background-color: white;
-        border: 1px solid #592d7b;
+        color: $cis-primary;
+        background-color: $cis-primary-invert;
+        border: 1px solid $cis-primary;
     }
 
 }

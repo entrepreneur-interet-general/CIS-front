@@ -1,5 +1,5 @@
 main#qui-fait-quoi{
-    background-color: #F6F6F6;
+    background-color: $cis-grey-background;
 
 
     & > nav,
@@ -96,7 +96,7 @@ main#qui-fait-quoi{
 
 
     ul.members > li > footer{
-        background-color: #F6F6F6;
+        background-color: $cis-grey-background;
         position: relative;
 
         font-size: 0.8em;
@@ -129,7 +129,7 @@ main#qui-fait-quoi{
     }
 
     ul.members > li > footer .count{
-        color: #592d7b;
+        color: $cis-primary;
         max-width: 9em;
 
         display: flex;

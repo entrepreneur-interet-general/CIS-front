@@ -1,50 +1,25 @@
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
+@import "./cis-colors.scss";
+
 @import url(https://fonts.googleapis.com/css?family=Barlow&subset=latin,latin-ext);
 
- 
-// Add custom colors and their inverts
-$cis-purple			: #55267c;
-$cis-purple-invert  : #fff;
 
-$cis-yellow			: #dab300;
-$cis-yellow-invert  : #fff;
+$primary		: $cis-primary; 
+$primary-invert : $cis-primary-invert;
 
-$cis-blue			: #80c2bd;
-$cis-blue-invert  	: #fff;
+$light 			: $cis-grey-light;
+$dark			: $cis-grey-dark;
 
-$cis-transparent    : rgba(1,1,1,0) ;
+$text           : #3D3A39;
 
-$primary			: $cis-purple ; 
-$primary-invert 	: $cis-purple-invert;
-
-$info				: $cis-blue ; 
-$info-invert		: $cis-blue-invert;
-
-$warning			: $cis-yellow ; 
-$warning-invert		: $cis-purple-invert;
-
-
-$cis-grey-light		: #d9d9d9;
-$cis-grey-dark		: #1b1b1b; 
-
-$light 				: $cis-grey-light ;
-$dark				: $cis-grey-dark ;
-
-$link				: $grey;
-$link-hover 		: $cis-purple ; 
+$link			: $grey;
+$link-hover 	: $cis-primary;
 
 $family-sans-serif 	: "Barlow", sans-serif ;
 $family-primary 	: $family-sans-serif ; 
 
-
-/*
-$notification-radius : 3px ;
-
-$timeline-marker-background-color 	: $cis-purple ;
-$timeline-line						: $cis-purple ;
-*/
 
 // Import the rest of Bulma at the end
 @import "../node_modules/bulma/bulma.sass";

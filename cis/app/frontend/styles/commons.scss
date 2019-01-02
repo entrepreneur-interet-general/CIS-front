@@ -1,4 +1,4 @@
-/* custom css for CIS */
+@import './cis-colors.scss';
 
 html {
 	scroll-behavior: smooth;
@@ -64,7 +64,7 @@ fieldset{
 
 .navbar {
 	border-bottom: 1px solid;
-	border-bottom-color: #d9d9d9 ;
+	border-bottom-color: $cis-grey-light ;
 }
 
 #navbar-logo {
@@ -75,10 +75,6 @@ fieldset{
 	padding : 0.5rem ;
 }
 
-
-.a_big {
-	color : black ;
-}
 
 // INPUTS
 
@@ -272,7 +268,6 @@ main > section{
 }
 
 main > nav{
-    color: black;
     padding: 2em 0;
 }
 
@@ -286,13 +281,13 @@ main > nav{
     padding: 0 2em;
 }
 .cis-tabs li:not(:last-child){
-    border-right: 1px solid #CBCBCB;
+    border-right: 1px solid $cis-grey-light;
 }
 
 .cis-tabs li.selected a{
     font-weight: bold;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid #592d7b;
+    border-bottom: 1px solid $cis-primary;
 }
 
 .cis-tabs li a{

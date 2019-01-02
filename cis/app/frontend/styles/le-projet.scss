@@ -1,3 +1,5 @@
+@import './cis-colors.scss';
+
 main#projet{
     
     & > nav,
@@ -85,7 +87,7 @@ main#projet{
 
         margin-right: 1em;
 
-        background-color: #F6F6F6;
+        background-color: $cis-grey-background;
         white-space: normal;
         vertical-align: top;
 
@@ -98,12 +100,11 @@ main#projet{
     section#visibilité .caroussel-container ul.caroussel-content li .text{
         font-size: 0.9em;
         line-height: 1.2em;
-        color: #3D3A39;
         padding: 1em;
     }
 
     section#visibilité .caroussel-container ul.caroussel-content li .text h1{
-        color: #592d7b;
+        color: $cis-primary;
         font-weight: bold;
         margin-bottom: 1em;
     }
@@ -113,8 +114,8 @@ main#projet{
         height: 18em;
         padding: 1em 3em;
         
-        background-color: #592d7b;
-        color: white;
+        background-color: $cis-primary;
+        color: $cis-primary-invert;
 
         display: flex;
         flex-direction: row;
@@ -144,9 +145,9 @@ main#projet{
 
     section#definition div {
         padding: 2em 1em;
-        background-color: #592d7b;
+        background-color: $cis-primary;
 
-        color: white;
+        color: $cis-primary-invert;
 
         width: 66%;
         position: relative;
@@ -161,7 +162,7 @@ main#projet{
 
 
     section#concrètement .cis-cards li{
-        background-color: #F6F6F6;
+        background-color: $cis-grey-background;
     }
 
     section#concrètement .cis-cards li h1{
@@ -175,9 +176,9 @@ main#projet{
     }
 
     section#concrètement .cis-cards a{
-        color: #592d7b;
-        border: 1px solid #592d7b;
-        background-color: white;
+        color: $cis-primary;
+        border: 1px solid $cis-primary;
+        background-color: $cis-primary-invert;
 
         padding: 1em 2em;
         display: inline-block;
@@ -190,8 +191,8 @@ main#projet{
     }
 
     section#communs .charte{
-        color: white;
-        background-color: #592d7b;
+        color: $cis-primary-invert;
+        background-color: $cis-primary;
 
         padding: 1em;
     }

@@ -1,10 +1,12 @@
+@import './cis-colors.scss';
+
 section#presse ul {
     padding: 1em;
 }
 
 section#presse ul li{
     display: inline-block;
-    background-color: #f6f6f6;
+    background-color: $cis-grey-background;
     
     width: 17em;
 
@@ -37,7 +39,7 @@ section#presse ul li > :nth-child(2) h1{
 }
 
 section#presse ul li a{
-    color: #532A7B;
+    color: $cis-primary;
     border-bottom: 1px solid currentColor;
 
     display: inline-block;

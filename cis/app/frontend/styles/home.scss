@@ -1,14 +1,16 @@
+@import './cis-colors.scss';
+
 main#home{
 
     section h2{
-        color: #592d7b !important; /* to override bulma */
+        color: $cis-primary;
         text-align: center;
     }
 
     & > section.full-width h1,
     & > section.full-width h2{
         text-align: center;
-        color: white !important; /* to override bulma */;
+        color: $cis-primary-invert;
         padding: 1em 0;
         max-width: 60%;
     }
@@ -34,6 +36,7 @@ main#home{
     }
 
     & > section#top .background{
+        // this image should be of color $cis-primary
         background-image: url(/static/illustrations/HP_section_1.png);
         background-size: cover;
         background-color: transparent;
@@ -42,7 +45,7 @@ main#home{
         flex-direction: column;
         align-items: center;
 
-        color: white;
+        color: $cis-primary-invert;
 
         margin: 0;
         width: 100%;
@@ -51,7 +54,7 @@ main#home{
     }
 
     & > section#top .background h1{
-        color: white;
+        color: $cis-primary-invert;
         width: 60%;
         text-align: center;
         margin-bottom: 1em
@@ -64,27 +67,27 @@ main#home{
 
     & > section#top form{
         width: 70%;
-        background-color: white;
+        background-color: $cis-primary-invert;
     }
 
     & > section#top input{
         border: 0;
-        border-bottom: 2px solid #592d7b;
+        border-bottom: 2px solid $cis-primary;
         border-radius: 0;
         box-shadow: none;
     }
 
     & > section#top input:focus{
         border: 0;
-        border-bottom: 2px solid #592d7b;
+        border-bottom: 2px solid $cis-primary;
 
         box-shadow: none;
     }
 
 
     & > section#top button{
-        color: white;
-        background-color: #592d7b;
+        color: $cis-primary-invert;
+        background-color: $cis-primary;
     }
 
 
@@ -96,7 +99,7 @@ main#home{
         flex-direction: row;
         align-items: center;
 
-        color: #80C2BD;
+        color: $cis-secundary;
     }
 
     & > section#top h3 .counter{
@@ -165,7 +168,7 @@ main#home{
     }
 
     section#participer strong{
-        color: #592d7b;
+        color: $cis-primary;
         font-size: 1.7em;
 
         display: block;
@@ -178,12 +181,12 @@ main#home{
     section#participer .rejoindre{
         max-width: 90%;
         align-items: center;
-        color: #592d7b;
+        color: $cis-primary;
     }
 
     section#participer .rejoindre a{
         color: white;
-        background-color: #592d7b;
+        background-color: $cis-primary;
         margin-top: 1em;
     }
 
@@ -206,7 +209,7 @@ main#home{
 
 
     section#collectif h3{
-        color: #592d7b;
+        color: $cis-primary;
     }
 
     section#collectif p{
@@ -215,7 +218,7 @@ main#home{
     }
 
     section#collectif h3{
-        color: #592d7b;
+        color: $cis-primary;
         text-align: center;
         margin-bottom: 1em;
     }
@@ -236,8 +239,8 @@ main#home{
     }
     section#collectif a.button{
         padding: 1.3em;
-        color: #592d7b;
-        border-color: #592d7b;
+        color: $cis-primary;
+        border-color: $cis-primary;
     }
 
 
@@ -341,14 +344,13 @@ main#home{
     section#témoignages .caroussel-container ul.caroussel-content li .text{
         font-size: 0.9em;
         line-height: 1.2em;
-        color: #3D3A39;
         background-color: white;
         padding: 1em;
         box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.16);
     }
 
     section#témoignages .caroussel-container ul.caroussel-content li .text h1{
-        color: #592d7b;
+        color: $cis-primary;
         font-weight: bold;
         margin-bottom: 1em;
     }
@@ -359,7 +361,7 @@ main#home{
 
     section#contacter{
         width: 100%;
-        background-color: #592d7b;
+        background-color: $cis-primary;
 
         color: white !important;
 

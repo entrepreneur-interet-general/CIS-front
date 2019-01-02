@@ -17,7 +17,7 @@
                 </div>
 
                 <p class="title is-5">
-                    <router-link :to="`/project/${project.id}`" class="a_big">
+                    <router-link :to="`/project/${project.id}`">
                         {{project.title}}
                     </router-link>
                 </p>

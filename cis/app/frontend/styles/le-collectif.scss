@@ -1,3 +1,5 @@
+@import './cis-colors.scss';
+
 main#le-collectif{
     background-color: white;
     
@@ -25,7 +27,7 @@ main#le-collectif{
     }
 
     section#collectif .présentation > :first-child li{
-        color: #592d7b;
+        color: $cis-primary;
         font-weight: bold;
     }
     section#collectif .présentation > :first-child li:before{
@@ -35,12 +37,12 @@ main#le-collectif{
     }
 
     section#collectif .présentation > :first-child li a{
-        color: #592d7b;
+        color: $cis-primary;
         font-weight: normal;
 
         white-space: nowrap;
 
-        border-bottom: 1px solid #592d7b;
+        border-bottom: 1px solid $cis-primary;
     }
 
 
@@ -91,14 +93,14 @@ main#le-collectif{
     section#collectif .button{
         height: unset;
         padding: 1em 2em;
-        color: #592d7b;
+        color: $cis-primary;
 
-        border: 1px solid #592d7b;
+        border: 1px solid $cis-primary;
     }
 
     section#collectif .rejoindre{
-        background-color: #592d7b;
-        color: white;
+        background-color: $cis-primary;
+        color: $cis-primary-invert;
         padding: 2em;
     }
 
