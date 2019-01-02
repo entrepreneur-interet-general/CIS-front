@@ -140,7 +140,9 @@ export default {
 .map { 
     height: 500px; 
     width: 100%;
+}
 
+.map:not(:first-child){
     margin-top: 1em;
 }
 

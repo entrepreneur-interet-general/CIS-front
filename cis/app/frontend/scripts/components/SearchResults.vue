@@ -157,6 +157,9 @@ export default {
 /* TODO SASS : make a variable out of this background-value. Also used in CISSearchResultsCountAndTabs */
 section{
     background-color: #F6F6F6;
+    width: 100%;
+
+    padding-bottom: 0;
 }
 
 header > .inline-filters{
