@@ -1,47 +1,48 @@
 @import './cis-colors.scss';
 
-section#presse ul {
-    padding: 1em;
-}
+section#presse {
+    ul {
+        padding: 1em;
 
-section#presse ul li{
-    display: inline-block;
-    background-color: $cis-grey-background;
+        li{
+            display: inline-block;
+            background-color: $cis-grey-background;
+            
+            width: 17em;
     
-    width: 17em;
-
-    margin-right: 2em;    
+            margin-right: 2em;    
+            
+            vertical-align: top;
+        }
     
-    vertical-align: top;
-}
+        li > :first-child{
+            background-color: white;
+            height: 5em;    
+            padding: 0.5em;
+            
+            text-align: center;
 
-section#presse ul li > :first-child{
-    background-color: white;
-    height: 5em;    
-    padding: 0.5em;
+            img{
+                height: 100%;
+            }
+        }
     
-    text-align: center;
-}
+        li > :nth-child(2){
+            padding: 1em;
 
-section#presse ul li > :first-child img{
-    height: 100%;
-}
-
-
-section#presse ul li > :nth-child(2){
-    padding: 1em;
-}
-
-section#presse ul li > :nth-child(2) h1{
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 0.5em 0;
-}
-
-section#presse ul li a{
-    color: $cis-primary;
-    border-bottom: 1px solid currentColor;
-
-    display: inline-block;
-    padding: 0.5em 0;
+            h1{
+                font-size: 1.1em;
+                font-weight: bold;
+                padding: 0.5em 0;
+            }
+        }
+    
+        li a{
+            color: $cis-primary;
+            border-bottom: 1px solid currentColor;
+    
+            display: inline-block;
+            padding: 0.5em 0;
+        }
+    }
 }

@@ -1,37 +1,36 @@
 .award{
     display: flex;
     align-items: center;
-}
 
-.award:nth-child(odd){
-    flex-direction: row;
-}
+    &:nth-child(odd){
+        flex-direction: row;
+    }
+    
+    &:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    
+    & > :first-child{
+        flex: 1;
+    }
 
-.award:nth-child(even){
-    flex-direction: row-reverse;
-}
+    & > .description{
+        flex: 2;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    
+        padding: 1em;
 
-.award > :first-child{
-    flex: 1;
-}
-.award > .description{
-    flex: 2;
+        img {
+            max-height: 4em;
+        }
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    padding: 1em;
-}
-
-
-
-.award > .description img {
-    max-height: 4em;
-}
-
-.award > .description h1{
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 0.5em 0;
+        h1{
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 0.5em 0;
+        }
+    }
 }

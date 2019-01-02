@@ -8,24 +8,6 @@ main#projet{
         padding-right: 2em;
     }
 
-    .cis-cards{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .cis-cards > *{
-        margin: 0 1em;
-        padding: 1em;
-        flex: 1;
-    }
-
-    .cis-cards > * img{
-        height: 7em;
-    }
-
-
     & section h2{
         font-size: 0.8em;
     }
@@ -37,77 +19,90 @@ main#projet{
         padding-bottom: 0.5em;
     }
 
+    .cis-cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        & > *{
+            margin: 0 1em;
+            padding: 1em;
+            flex: 1;
+        }
+    
+        & > * img{
+            height: 7em;
+        }
+    }
+
+
     section#visibilité{
         display: flex;
         flex-direction: row;
         align-items: center;
-    }
 
-    section#visibilité > :first-child{
-        flex: 1;
-    }
-    section#visibilité > :last-child{
-        flex: 1;
-    }
+        & > :first-child{
+            flex: 1;
+        }
+        & > :last-child{
+            flex: 1;
+        }
+    
+    
+        .caroussel{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .caroussel button{
+            border: 0;
+            font-size: 2em;
+            padding: 1em;
+            font-weight: bold;
+            background-color: transparent;
+        }
+    
+    
+        .caroussel button:focus,
+        .caroussel button:active{
+            box-shadow: none;
+            border: 0;
+        }
+    
+        .caroussel-container ul.caroussel-content li{
+            width: 10em;
+            padding: 0 0.5em;
+    
+            margin-right: 1em;
+    
+            background-color: $cis-grey-background;
+            white-space: normal;
+            vertical-align: top;
+    
+    
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
 
-
-    section#visibilité .caroussel{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-
-    section#visibilité .caroussel button{
-        border: 0;
-        font-size: 2em;
-        padding: 1em;
-        font-weight: bold;
-        background-color: transparent;
-    }
-
-
-    section#visibilité .caroussel button:focus,
-    section#visibilité .caroussel button:active{
-        box-shadow: none;
-        border: 0;
-    }
-
-    section#visibilité .caroussel-container{
-
-    }
-    section#visibilité .caroussel-container ul.caroussel-content{
+            .text{
+                font-size: 0.9em;
+                line-height: 1.2em;
+                padding: 1em;
+            }
         
+            .text h1{
+                color: $cis-primary;
+                font-weight: bold;
+                margin-bottom: 1em;
+            }
+        }
+    
     }
 
-
-    section#visibilité .caroussel-container ul.caroussel-content li{
-        width: 10em;
-        padding: 0 0.5em;
-
-        margin-right: 1em;
-
-        background-color: $cis-grey-background;
-        white-space: normal;
-        vertical-align: top;
-
-
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    section#visibilité .caroussel-container ul.caroussel-content li .text{
-        font-size: 0.9em;
-        line-height: 1.2em;
-        padding: 1em;
-    }
-
-    section#visibilité .caroussel-container ul.caroussel-content li .text h1{
-        color: $cis-primary;
-        font-weight: bold;
-        margin-bottom: 1em;
-    }
+    
 
     section#collectif{
         width: 100%;
@@ -121,19 +116,19 @@ main#projet{
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
+        img{
+            height: 150%;
+        }
+    
+        p{
+            font-size: 2em;
+            font-weight: bold;
+            max-width: 26em;
+            padding: 1em;
+        }
     }
 
-    section#collectif img{
-        height: 150%;
-    }
-
-
-    section#collectif p{
-        font-size: 2em;
-        font-weight: bold;
-        max-width: 26em;
-        padding: 1em;
-    }
 
 
 
@@ -142,74 +137,73 @@ main#projet{
     }
 
 
-
-    section#definition div {
-        padding: 2em 1em;
-        background-color: $cis-primary;
-
-        color: $cis-primary-invert;
-
-        width: 66%;
-        position: relative;
-        left: 33%;
+    section#definition{
+        div {
+            padding: 2em 1em;
+            background-color: $cis-primary;
+    
+            color: $cis-primary-invert;
+    
+            width: 66%;
+            position: relative;
+            left: 33%;
+        }
+    
+        h1{
+            color: inherit;
+        }
     }
 
 
-    section#definition h1{
-        color: inherit;
-    }
 
-
-
-    section#concrètement .cis-cards li{
-        background-color: $cis-grey-background;
-    }
-
-    section#concrètement .cis-cards li h1{
-        font-size: 1.7em;
-        line-height: 1.3em;
-        font-weight: bold;
-    }
-
-    section#concrètement .cis-cards p{
-        padding-bottom: 2em;
-    }
-
-    section#concrètement .cis-cards a{
-        color: $cis-primary;
-        border: 1px solid $cis-primary;
-        background-color: $cis-primary-invert;
-
-        padding: 1em 2em;
-        display: inline-block;
+    section#concrètement {
+        .cis-cards {
+            li {
+                background-color: $cis-grey-background;
+            }
+    
+            li h1 {
+                font-size: 1.7em;
+                line-height: 1.3em;
+                font-weight: bold;
+            }
+        
+            p {
+                padding-bottom: 2em;
+            }
+        
+            a {
+                color: $cis-primary;
+                border: 1px solid $cis-primary;
+                background-color: $cis-primary-invert;
+        
+                padding: 1em 2em;
+                display: inline-block;
+            }
+        }
     }
 
 
     section#communs{
+        .charte{
+            color: $cis-primary-invert;
+            background-color: $cis-primary;
+    
+            padding: 1em;
 
-
-    }
-
-    section#communs .charte{
-        color: $cis-primary-invert;
-        background-color: $cis-primary;
-
-        padding: 1em;
-    }
-
-
-    section#communs .charte h1{
-        font-size: 1.7em;
-        line-height: 1.3em;
-        font-weight: bold;
-    }
-
-
-    section#communs .charte a{
-        display: inline-block;
-        margin-top: 1em;
-
-        color: white;
-        border-bottom: 1px solid currentColor;
+            h1{
+                font-size: 1.7em;
+                line-height: 1.3em;
+                font-weight: bold;
+            }
+        
+            a{
+                display: inline-block;
+                margin-top: 1em;
+        
+                color: white;
+                border-bottom: 1px solid currentColor;
+            }
+        }
     }
 }

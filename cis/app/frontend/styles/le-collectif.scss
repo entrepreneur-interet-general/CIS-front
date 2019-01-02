@@ -10,120 +10,120 @@ main#le-collectif{
     }
 
     section#collectif{
+        .présentation{
+            display: flex; 
+            flex-direction: row;
+            align-items: center;
+    
+            margin-bottom: 3em;
+
+            h2{
+                margin: 1em 0;
+            }
+
+            & > *{
+                flex: 1;
+            }
         
-    }
-    section#collectif .présentation{
-        display: flex; 
-        flex-direction: row;
-        align-items: center;
+            & > :first-child li{
+                color: $cis-primary;
+                font-weight: bold;
 
-        margin-bottom: 3em;
-    }
-    section#collectif .présentation h2{
-        margin: 1em 0;
-    }
-    section#collectif .présentation > *{
-        flex: 1;
-    }
+                &::before{
+                    content: "-";
+                    
+                    padding-right: 5px;
+                }
 
-    section#collectif .présentation > :first-child li{
-        color: $cis-primary;
-        font-weight: bold;
-    }
-    section#collectif .présentation > :first-child li:before{
-        content: "-";
+                a{
+                    color: $cis-primary;
+                    font-weight: normal;
+            
+                    white-space: nowrap;
+            
+                    border-bottom: 1px solid $cis-primary;
+                }
+            }
         
-        padding-right: 5px;
-    }
-
-    section#collectif .présentation > :first-child li a{
-        color: $cis-primary;
-        font-weight: normal;
-
-        white-space: nowrap;
-
-        border-bottom: 1px solid $cis-primary;
-    }
-
-
-
-    section#collectif .présentation > :last-child{
-        height: 20em;
-
-        position: relative;
-        left: 5em;
-
-        background-image: url('/static/photos/180620_CollectifCIS_photos (2).jpg');
-        background-size: cover;
-        background-position: bottom;
-
-    }
-    section#collectif .présentation > :last-child ul{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0));
+            & > :last-child{
+                height: 20em;
         
-        display: flex;
-        justify-content: flex-start;
-
-        color: white;
-    }
-
-    section#collectif .présentation > :last-child ul li{
-        font-weight: bold;
-        font-size: 1.2em;
-        text-align: center;
-
-        margin-right: 1em;
-        padding: 1em;
+                position: relative;
+                left: 5em;
         
-        width: 6em;
+                background-image: url('/static/photos/180620_CollectifCIS_photos (2).jpg');
+                background-size: cover;
+                background-position: bottom;
         
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+                ul{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0));
+                    
+                    display: flex;
+                    justify-content: flex-start;
+            
+                    color: white;
+
+                    li{
+                        font-weight: bold;
+                        font-size: 1.2em;
+                        text-align: center;
+                
+                        margin-right: 1em;
+                        padding: 1em;
+                        
+                        width: 6em;
+                        
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .nb{
+                            font-size: 2em;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .button{
+            height: unset;
+            padding: 1em 2em;
+            color: $cis-primary;
+    
+            border: 1px solid $cis-primary;
+        }
+    
+        .rejoindre{
+            background-color: $cis-primary;
+            color: $cis-primary-invert;
+            padding: 2em;
+
+            h2{
+                color: inherit;
+            }
+        }
     }
 
-    section#collectif .présentation > :last-child ul li .nb{
-        font-size: 2em;
-    }
-
-    section#collectif .button{
-        height: unset;
-        padding: 1em 2em;
-        color: $cis-primary;
-
-        border: 1px solid $cis-primary;
-    }
-
-    section#collectif .rejoindre{
-        background-color: $cis-primary;
-        color: $cis-primary-invert;
-        padding: 2em;
-    }
-
-    section#collectif .rejoindre h2{
-        color: inherit;
-    }
 
     section#equipe-op{
+        .equipe li{
+            width: 17em;
+            padding: 1em 3em;
+    
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+    
+            text-align: center;
 
+            img{
+                border-radius: 50%;
+                margin-bottom: 1em;
+            }
+        }
     }
-    section#equipe-op .equipe li{
-        width: 17em;
-        padding: 1em 3em;
-
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-
-        text-align: center;
-    }
-    section#equipe-op .equipe li img{
-        border-radius: 50%;
-        margin-bottom: 1em;
-    }
-
 }

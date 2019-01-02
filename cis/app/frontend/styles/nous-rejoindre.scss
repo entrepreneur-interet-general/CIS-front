@@ -27,58 +27,53 @@
         justify-content: center;  /* Bulma override */
         align-items: stretch;
 
+        button{
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: auto; /* Bulma override */
+            white-space: initial; /* Bulma override */
+    
+            max-width: 25%;
+            position: relative;
+
+            &.with-image{
+                $img-position: 3em;
+                padding-top: $img-position;
+                margin-top: $img-position;
+            }
+        
+            &.selected{
+                border-color: $cis-primary;
+            }
+
+            img{
+                position: absolute;
+                top: 0;
+                transform: translateY(-50%);
+                width: 5em;
+        
+                background: $cis-grey-background;
+                border-radius: 50%;
+            }
+        
+            strong{
+                font-weight: bold; /* Bulma override */
+        
+                font-size: 1.2em;
+                color: $cis-primary;
+            }
+        }
     }
-
-    .buttons button{
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: auto; /* Bulma override */
-        white-space: initial; /* Bulma override */
-
-        max-width: 25%;
-        position: relative;
-    }
-
-
-    .buttons button.with-image{
-        $img-position: 3em;
-        padding-top: $img-position;
-        margin-top: $img-position;
-    }
-
-
-    .buttons button.selected{
-        border-color: $cis-primary;
-    }
-
-    .buttons button img{
-        position: absolute;
-        top: 0;
-        transform: translateY(-50%);
-        width: 5em;
-
-        background: $cis-grey-background;
-        border-radius: 50%;
-    }
-
-    .buttons button strong{
-        font-weight: bold; /* Bulma override */
-
-        font-size: 1.2em;
-        color: $cis-primary;
-    }
-
 
     .structure-expand ul.reasons{
         text-align: center;
-    }
-    .structure-expand ul.reasons li{
-        display: flex;
-        flex-direction: column;
-        
-    }
 
+        li{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 
     .join-walkthrough{
         background-color: $cis-grey-background;
