@@ -88,6 +88,7 @@ export default {
 
     methods: {
         goBack(e){
+            e.preventDefault()
             this.$router.go(-1)
         }
     }
