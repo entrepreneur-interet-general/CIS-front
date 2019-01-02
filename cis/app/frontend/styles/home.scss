@@ -1,0 +1,384 @@
+main section h2{
+    color: #592d7b !important; /* to override bulma */
+    text-align: center;
+}
+
+main > section.full-width h1,
+main > section.full-width h2{
+    text-align: center;
+    color: white !important; /* to override bulma */;
+    padding: 1em 0;
+    max-width: 60%;
+}
+
+/**
+    TOP
+**/
+main > section#top{
+    position: relative;
+    width: 100%;
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main > section#top .border{
+    position: absolute;
+
+    width: 80%;
+    height: 100%;
+}
+
+main > section#top .background{
+    background-image: url(/static/illustrations/HP_section_1.png);
+    background-size: cover;
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: white;
+
+    margin: 0;
+    width: 100%;
+
+    padding: 5em 0;
+}
+
+main > section#top .background h1{
+    color: white;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 1em
+}
+
+main > section#top .border{
+    z-index: -1;
+}
+
+
+main > section#top form{
+    width: 70%;
+    background-color: white;
+}
+
+main > section#top input{
+    border: 0;
+    border-bottom: 2px solid #592d7b;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+main > section#top input:focus{
+    border: 0;
+    border-bottom: 2px solid #592d7b;
+
+    box-shadow: none;
+}
+
+
+main > section#top button{
+    color: white;
+    background-color: #592d7b;
+}
+
+
+main > section#top h3{
+    width: initial;
+    padding: 1em 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: #80C2BD;
+}
+
+main > section#top h3 .counter{
+    font-size: 5em;
+    margin-right: 0.2em;
+    font-weight: bold;
+}
+
+main > section#top h3 .text{
+    max-width: 6em;
+}
+
+
+
+/**
+    PARTICIPER
+**/
+
+section#participer{
+    
+    position: relative;
+    width: 100%;
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#participer .border{
+    position: absolute;
+
+    width: 80%;
+    height: 100%;
+}
+
+section#participer .background{
+    background-image: url(/static/illustrations/HP_section_3.png);
+    background-size: cover;
+    background-color: transparent;
+
+    padding: 6em 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#participer .background > *{
+    max-width: 60%;
+    
+}
+
+
+section#participer .border{
+    z-index: 1;
+}
+
+section#participer .background > *{
+    z-index: 2;
+}
+
+section#participer > p{
+    padding: 0 20%;
+    padding-bottom: 1em;
+}
+
+section#participer strong{
+    color: #592d7b;
+    font-size: 1.7em;
+
+    display: block;
+}
+section#participer strong a{
+    color: inherit;
+    text-decoration: underline;
+}
+
+section#participer .rejoindre{
+    max-width: 90%;
+    align-items: center;
+    color: #592d7b;
+}
+
+section#participer .rejoindre a{
+    color: white;
+    background-color: #592d7b;
+    margin-top: 1em;
+}
+
+
+
+/**
+    COLLECTIF
+**/
+
+section#collectif{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+
+section#collectif > *{
+    margin-bottom: 1.5em;
+}
+
+
+section#collectif h3{
+    color: #592d7b;
+}
+
+section#collectif p{
+    text-align: center;
+    padding: 0 20%;
+}
+
+section#collectif h3{
+    color: #592d7b;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+section#collectif ul li{
+    height: 6em;
+}
+section#collectif ul li img{
+    max-height: 100%;
+}
+
+section#collectif ul.columns{
+    justify-content: center;
+    align-items: center;
+}
+section#collectif ul.columns li.column{
+    flex: initial;
+}
+section#collectif a.button{
+    padding: 1.3em;
+    color: #592d7b;
+    border-color: #592d7b;
+}
+
+
+
+/**
+    TEMOIGNAGES
+**/
+
+section#témoignages {
+    position: relative;
+    width: 100%;
+    border: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 0;
+}
+
+section#témoignages .border{
+    position: absolute;
+
+    width: 80%;
+    height: 100%;
+}
+
+section#témoignages .background{
+    background-image: url(/static/illustrations/HP_section_5.png);
+    background-size: cover;
+    background-color: transparent;
+
+    padding-top: 6em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+
+section#témoignages .border{
+    z-index: 1;
+}
+
+section#témoignages .background > *{
+    z-index: 2;
+}
+
+section#témoignages ul li img{
+    width: 10em;
+    margin-bottom: 1em;
+}
+
+section#témoignages .caroussel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+section#témoignages .caroussel button{
+    border: 0;
+    font-size: 2em;
+    padding: 1em;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+
+section#témoignages .caroussel button:focus,
+section#témoignages .caroussel button:active{
+    box-shadow: none;
+    border: 0;
+}
+
+section#témoignages .caroussel-container{
+    width: calc(15em * 3);
+    overflow: hidden;
+}
+section#témoignages .caroussel-container ul.caroussel-content{
+    white-space: nowrap;
+    padding-bottom: 2em;
+}
+
+section#témoignages .caroussel-container ul.caroussel-content li{
+    width: 15em;
+    padding: 0 0.5em;
+
+    background-color: transparent;
+    white-space: normal;
+    vertical-align: top;
+
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section#témoignages .caroussel-container ul.caroussel-content li .text{
+    font-size: 0.9em;
+    line-height: 1.2em;
+    color: #3D3A39;
+    background-color: white;
+    padding: 1em;
+    box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.16);
+}
+
+section#témoignages .caroussel-container ul.caroussel-content li .text h1{
+    color: #592d7b;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+/**
+    CONTACT
+**/
+
+section#contacter{
+    width: 100%;
+    background-color: #592d7b;
+
+    color: white !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2em 0;
+}
+
+section#contacter h2,
+section#contacter a{
+    color: inherit !important;
+}
+
+
+section#contacter form{
+    width: 60%;
+}
+
+section#contacter form strong{
+    color: inherit;
+}
+    
