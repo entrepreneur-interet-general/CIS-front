@@ -4,28 +4,30 @@
 
 
 <main id="home">
-    <section id="top">
-        <div class="background">
-            <h1 class="title is-2">Découvrez et repérez tous les projets d'innovation sociale en France</h1>
-            <form action="/recherche" method="GET" class="columns">
-                <div class="column is-10">
-                    <div class="search control has-icons-left">
-                        <input type="search" name="text"
-                            class="input is-large input-navbar" 
-                            placeholder="Tapez un mot clé, un lieu, un projet…">
-                        <span class="icon is-medium is-left">
-                            <i class="fas fa-search fa-lg"></i>
-                        </span>
+    <section id="top" class="hero">
+        <div class="background columns is-centered">
+            <div class="column is-8">
+                <h1 class="title is-2">Découvrez et repérez tous les projets d'innovation sociale en France</h1>
+                <form action="/recherche" method="GET" class="columns">
+                    <div class="column is-10">
+                        <div class="search control has-icons-left">
+                            <input type="search" name="text"
+                                class="input is-large input-navbar" 
+                                placeholder="Tapez un mot clé, un lieu, un projet…">
+                            <span class="icon is-medium is-left">
+                                <i class="fas fa-search fa-lg"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="column is-2">
-                    <button class="button is-large is-fullwidth" type="submit">Rechercher</button>
-                </div>
-            </form>
-            <h3>
-                <span class="counter"></span>
-                <span class="text">projets déjà réferencés</span>
-            </h3>
+                    <div class="column is-2">
+                        <button class="button is-large is-fullwidth" type="submit">Rechercher</button>
+                    </div>
+                </form>
+                <h3>
+                    <span class="counter"></span>
+                    <span class="text">projets déjà réferencés</span>
+                </h3>
+            </div>
         </div>
     </section>
 
@@ -38,22 +40,27 @@
     </section>
     -->
 
-    <section id="participer">
+    <section id="participer" class="hero">
         <div class="background">
-            <h2 class="title is-2">Comment participer ?</h2>
-            <p>
-                <strong>Nous ne référençons pas directement les projets. Nous relayons ceux recensés par les membres du <a href="/qui-sommes-nous">collectif</a>.</strong>
-            </p>
-            <p>
-                Des centaines de sites recensent déjà des projets d’innovation sociale. Nous voulons rendre cette information plus accessible. Les données sur les projets sont donc collectées auprès des sites des membres du collectif qui recensent des projets.
-            </p>
-            <div class="columns rejoindre">
-                <div class="column is-4 is-offset-1">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <h2 class="title is-2">Comment participer ?</h2>
+                    <p>
+                        <strong>Nous ne référençons pas directement les projets. Nous relayons ceux recensés par les membres du <a href="/qui-sommes-nous">collectif</a>.</strong>
+                    </p>
+                    <p>
+                        Des centaines de sites recensent déjà des projets d’innovation sociale. Nous voulons rendre cette information plus accessible. Les données sur les projets sont donc collectées auprès des sites des membres du collectif qui recensent des projets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered rejoindre">
+                <div class="column is-4">
                     <img src="/static/illustrations/HP_lame3_collectif%402x.png">
                 </div>
                 <div class="column is-4">
                     <p>
-                        Vous recensez des projets d’innovation sociale et vous souhaiteriez les partager ? Ou vous êtes simplement intéréssé par notre démarche ?
+                        Vous recensez des projets d’innovation sociale et vous souhaiteriez les partager&nbsp;? Ou vous êtes simplement intéréssé par notre démarche&nbsp;?
                     </p>
                     <a class="button" href="/nous-rejoindre">Découvrez comment rejoindre le projet</a>
                 </div>
@@ -61,42 +68,48 @@
         </div>
     </section>
 
-    <section id="collectif">
-        <h2 class="title is-2">Un collectif de plus de 50 membres</h2>
-        <p>Le Carrefour des innovations sociales rassemble des associations, têtes de réseaux, collectivités, fondations, médias, centres de recherche et institutions
-        <div class="columns">
-            <div class="column" style="flex: 2;">
-                <h3>Ils ont initié le projet</h3>
-                <ul class="columns">
-                    <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/CGET_signat_seul_CMJN.png" alt="Logo CGET">
-                    <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/LaFonda_RVB.png" alt="Logo La Fonda">
-                </ul>
+    <section id="collectif" class="hero">
+        <div class="columns is-centered">
+            <div class="column is-10">
+                <h2 class="title is-2">Un collectif de plus de 50 membres</h2>
+                <p>Le Carrefour des innovations sociales rassemble des associations, têtes de réseaux, collectivités, fondations, médias, centres de recherche et institutions
+                <div class="columns is-centered">
+                    <div class="column is-3">
+                        <h3>Ils ont initié le projet</h3>
+                        <ul class="columns">
+                            <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/CGET_signat_seul_CMJN.png" alt="Logo CGET">
+                            <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/LaFonda_RVB.png" alt="Logo La Fonda">
+                        </ul>
+                    </div>
+                    <div class="column is-offset-1 is-6">
+                        <h3>Ils copilotent le projet</h3>
+                        <ul class="columns">
+                            <li class="column"> <img src="/static/logos/Partenaires/Associations_et_accompagnateurs/AVISE_RVB.png" alt="Logo Avise">
+                            <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FONDATION_COGNAC_JAY.png" alt="Logo Fondation Cognacq-Jay">
+                            <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/APRILES.png" alt="Logo Apriles">
+                            <li class="column"> <img src="/static/logos/Partenaires/Associations_et_accompagnateurs/GNIAC.png" alt="Logo Gniac">
+                            <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/Labo_ESS.png" alt="Logo Le Labo ESS">
+                        </ul>
+                    </div>
+                </div>
+                <div class="columns is-centered">
+                    <a class="button" href="./qui-sommes-nous">Découvrez tous les membres du collectif</a>
+                </div>
+                <div>
+                    <h3>Ils soutiennent le projet</h3>
+                    <ul class="columns">
+                        <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FNCE_Horizontal_200ans.png" alt="Logo Fondation Caisse d'Epargne">
+                        <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Investissements_d'avenir_-_logo.jpeg" alt="Logo Investissements d'avenir">
+                        <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Etalab logo.PNG" alt="Logo Etalab">
+                        <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/EIG.png" alt="Logo Entrepreneur d'Intérêt général">
+                        <li class="column" style="height: 8em;"> <img src="/static/logos/Partenaires/logos à ajouter/FFE.png" alt="Logo FFE">
+                    </ul>
+                </div>
             </div>
-            <div class="column" style="flex: 5;">
-                <h3>Ils copilotent le projet</h3>
-                <ul class="columns">
-                    <li class="column"> <img src="/static/logos/Partenaires/Associations_et_accompagnateurs/AVISE_RVB.png" alt="Logo Avise">
-                    <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FONDATION_COGNAC_JAY.png" alt="Logo Fondation Cognacq-Jay">
-                    <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/APRILES.png" alt="Logo Apriles">
-                    <li class="column"> <img src="/static/logos/Partenaires/Associations_et_accompagnateurs/GNIAC.png" alt="Logo Gniac">
-                    <li class="column"> <img src="/static/logos/Partenaires/Think_Thank_et_acteurs_de_la_recherche/Labo_ESS.png" alt="Logo Le Labo ESS">
-                </ul>
-            </div>
-        </div>
-        <a class="button" href="./qui-sommes-nous">Découvrez tous les membres du collectif</a>
-        <div>
-            <h3>Ils soutiennent le projet</h3>
-            <ul class="columns">
-                <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FNCE_Horizontal_200ans.png" alt="Logo Fondation Caisse d'Epargne">
-                <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Investissements_d'avenir_-_logo.jpeg" alt="Logo Investissements d'avenir">
-                <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Etalab logo.PNG" alt="Logo Etalab">
-                <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/EIG.png" alt="Logo Entrepreneur d'Intérêt général">
-                <li class="column" style="height: 8em;"> <img src="/static/logos/Partenaires/logos à ajouter/FFE.png" alt="Logo FFE">
-            </ul>
         </div>
     </section>
 
-    <section id="témoignages">
+    <section id="témoignages" class="hero">
         <div class="background">
             <h2 class="title is-2">Le collectif témoigne</h2>
 
@@ -216,7 +229,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
     // témoignages
     let shift = 0;
-    const SHIFT_UNIT = 15; // em
+    const SHIFT_UNIT = 17; // em
     const TESTIMONY_COUNT = document.querySelectorAll('#témoignages ul.caroussel-content li').length;
     const TESIMONY_SHOWN = 3;
 

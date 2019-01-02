@@ -1,5 +1,7 @@
 @import './cis-colors.scss';
 
+$INTER_SECTION_SPACING: 3em;
+
 main#home{
 
     section h2{
@@ -16,12 +18,8 @@ main#home{
     }
 
     section#top{
-        position: relative;
-        width: 100%;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        margin-bottom: $INTER_SECTION_SPACING;
 
         .background{
             // this image should be of color $cis-primary
@@ -35,14 +33,10 @@ main#home{
     
             color: $cis-primary-invert;
     
-            margin: 0;
-            width: 100%;
-    
             padding: 5em 0;
 
             h1{
                 color: $cis-primary-invert;
-                width: 60%;
                 text-align: center;
                 margin-bottom: 1em
             }
@@ -50,7 +44,6 @@ main#home{
 
 
         form{
-            width: 70%;
             background-color: $cis-primary-invert;
         }
     
@@ -80,7 +73,8 @@ main#home{
             display: flex;
             flex-direction: row;
             align-items: center;
-    
+            justify-content: center;
+
             color: $cis-secundary;
 
             .counter{
@@ -95,16 +89,11 @@ main#home{
         }
     
     }
-
-
     
 
     section#participer{
-        width: 100%;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        margin-bottom: $INTER_SECTION_SPACING;
     
         .background{
             background-image: url(/static/illustrations/HP_section_3.png);
@@ -117,17 +106,7 @@ main#home{
             flex-direction: column;
             align-items: center;
         }
-    
-        .background > *{
-            max-width: 60%;
-            
-        }
-    
-    
-        & > p{
-            padding: 0 20%;
-            padding-bottom: 1em;
-        }
+
     
         strong{
             color: $cis-primary;
@@ -141,7 +120,6 @@ main#home{
         }
     
         .rejoindre{
-            max-width: 90%;
             align-items: center;
             color: $cis-primary;
         }
@@ -157,9 +135,6 @@ main#home{
     
 
     section#collectif{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
         & > *{
             margin-bottom: 1.5em;
@@ -167,7 +142,9 @@ main#home{
     
         p{
             text-align: center;
-            padding: 0 20%;
+            max-width: 40em;
+            margin: 0 auto;
+            margin-bottom: 1.5em;
         }
     
         h3{
@@ -192,23 +169,15 @@ main#home{
         }
 
         a.button{
-            padding: 1.3em;
+            margin-bottom: 1.5em;
+            
             color: $cis-primary;
             border-color: $cis-primary;
         }
     } 
 
 
-    
-
     section#témoignages {
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        padding-bottom: 0;
 
         .background{
             background-image: url(/static/illustrations/HP_section_5.png);
@@ -216,17 +185,10 @@ main#home{
             background-color: transparent;
     
             padding-top: 6em;
-    
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-    
-            width: 100%;
         }
     
-    
         ul li img{
-            width: 10em;
+            height: 10em;
             margin-bottom: 1em;
         }
     
@@ -249,11 +211,12 @@ main#home{
                     border: 0;
                 }
             }
-            
         }
     
+        $CAROUSSEL_ELEMENT_WIDTH: 17em;
+
         .caroussel-container{
-            width: calc(15em * 3);
+            width: $CAROUSSEL_ELEMENT_WIDTH * 3;
             overflow: hidden;
 
             ul.caroussel-content{
@@ -261,13 +224,12 @@ main#home{
                 padding-bottom: 2em;
 
                 li{
-                    width: 15em;
+                    width: $CAROUSSEL_ELEMENT_WIDTH;
                     padding: 0 0.5em;
             
                     background-color: transparent;
                     white-space: normal;
                     vertical-align: top;
-            
             
                     display: inline-flex;
                     flex-direction: column;
