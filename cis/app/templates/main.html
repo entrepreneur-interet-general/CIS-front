@@ -65,7 +65,7 @@
 
 		{# BULMA #}
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.3">
+		<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-custom.css') }}?version=0.0.3"> -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		
 
@@ -80,15 +80,9 @@
 		{% endif %}
 
 
-		{# RECAPTCHA - SECURITY #}
-
-
-		{# CRISP - CHAT #}
-
-
 		{# LEAFLET / cf : http://leafletjs.com/ #}
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
 
 
 		{# CHARTS - VIZ / cf : http://www.chartjs.org/ #}
@@ -102,7 +96,7 @@
 
 
 		{# CUSTOM STYLES ---> TO FIX #}
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cis-custom.css') }}?version=0.0.4">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='build/bundle.css') }}">
 
 
 	</head>
@@ -115,7 +109,6 @@
 	{# MAIN CONTENTS #}
 	<body>
 
-
 		{# 1st nav bar - main navbar #}
 		<nav 	class="navbar is-white is-fixed-top" 
 				id="navbar-top" 
@@ -123,23 +116,6 @@
 				aria-label="main navigation">
 			{% include "navbars/navbar-main.html" %}
 		</nav>
-
-		{# 2d nav bar - filters navbar #}
-		{% if user_infos.is_authenticated == True and site_section != "preferences" %}
-			{% if site_section in ["home", "register", "login", "project"] %}
-				{% set display_filters = "none" %}
-			{% else %}
-				{% set display_filters = "" %}
-			{% endif %}
-			<nav 	class="navbar is-white is-fixed-top" 
-					id="navbar-filters" 
-					role="navigation" 
-					aria-label="filters navigation"
-					style="display : {{ display_filters | lower }} ">
-				{% include "navbars/navbar-filters.html" %}
-			</nav>
-		{% endif %}
-
 
 
 		{# contents #}
