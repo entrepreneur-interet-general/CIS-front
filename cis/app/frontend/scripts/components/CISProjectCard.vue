@@ -66,7 +66,15 @@ export default {
 
 .card-image img{
     width: 100%;
+}
 
+.proj-card {
+	border-radius: 3px ;
+	box-shadow : 5px 5px 9px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1) ; 
+}
+
+.proj-card-img {
+	border-radius : 3px 3px 0px 0px ;
 }
 
 .card-content .tag{

@@ -1,0 +1,43 @@
+#navbar-top {
+	height: 70px;
+	z-index:10;
+}
+
+#navbar-filters {
+	height: 30px;
+	top: 70px;
+	z-index: 5 ;
+}
+
+.skip-navbar {
+	padding-top: 70px;
+}
+
+.skip-navbar-search {
+	padding-top : 135px ;
+
+}
+
+.navbar {
+	border-bottom: 1px solid;
+	border-bottom-color: $cis-grey-light ;
+}
+
+#navbar-logo {
+	max-height:45px ! important ;
+}
+
+.navbar-item-filter {
+	padding : 0.5rem ;
+}
+
+.input-navbar{
+	border-top	: 0px transparent;
+	border-right: 0px transparent;
+	border-left	: 0px transparent;	
+	box-shadow	: none;
+}
+
+.button.is-text {
+	text-decoration: none ;
+}

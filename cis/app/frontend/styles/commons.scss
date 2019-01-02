@@ -12,77 +12,59 @@ fieldset{
 	border: 0;
 }
 
-.is-hidden {
-	display: none;
+main{
+    margin-top: 70px;
+
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+	
+	& > section,
+	& > nav{
+		margin: 0;
+	
+		width: 80%;
+	}
+	
+	& > section{
+		padding-bottom: 3em;
+	}
+	
+	& > nav{
+		padding: 2em 0;
+	}
 }
 
-.underline {
-	// text-decoration: underline; 
-	border-bottom: 5px solid currentColor;
-}
+.cis-tabs{
+    display: flex;
+    flex-direction: row;
+	justify-content: flex-start;
+	
+	li{
+		padding: 0 2em;
 
-.correct_5px_down {
-	position: relative; top: 2px ;
-}
-  
-#nav-toggle-state {
-	display: none;
-  }
-  
-#nav-toggle-state:checked ~ .nav-menu {
-	display: block;
-}
-
-#navbar-top {
-	height: 70px;
-	z-index:10;
-}
-
-#navbar-filters {
-	height: 30px;
-	top: 70px;
-	z-index: 5 ;
-}
-
-#navbarFilters {
-	padding-left:175px;
-}
-
-.skip-navbar {
-	padding-top: 70px;
-}
-
-.skip-navbar-search {
-	padding-top : 135px ;
-
+		&:not(:last-child){
+			border-right: 1px solid $cis-grey-light;
+		}
+		
+		&.selected a{
+			font-weight: bold;
+			padding-bottom: 0.5em;
+			border-bottom: 1px solid $cis-primary;
+		}
+		
+		a{
+			color: inherit;
+		}
+	}
+	
 }
 
 .button {
 	border-radius: 10 px ;
 	height: 100 px;
-}
-
-.navbar {
-	border-bottom: 1px solid;
-	border-bottom-color: $cis-grey-light ;
-}
-
-#navbar-logo {
-	max-height:45px ! important ;
-}
-
-.navbar-item-filter {
-	padding : 0.5rem ;
-}
-
-
-// INPUTS
-
-.input-navbar{
-	border-top	: 0px transparent;
-	border-right: 0px transparent;
-	border-left	: 0px transparent;	
-	box-shadow	: none;
 }
 
 .tagsinput {
@@ -94,18 +76,9 @@ div.select {
 	height: 100% !important ;
 }
 
-
 .tab {
 	text-indent:40px
 }
-
-.is-vcentered {
-	display: flex;
-	align-items: center;
-}
-
-
-// FILTERS 
 
 .navbar-dropdown {
 	max-height: 500px;
@@ -113,67 +86,10 @@ div.select {
 	overflow-y: auto;
 }
 
-#user-results-top{
-	margin-top: -15px;
-}
-
-
-.button.is-text {
-	text-decoration: none ;
-}
-
-
-
-.img-cis-full-width {
-	width		: cover;
-}
-
-.img-cis-mini {
-	max-width : 120px;
-}
-
-.img-cis-logo-mini {
-	display		: block;
-	// height 		: 60px ;
-	max-width 	: 90px;
-	max-height 	: 60px;
-	// max-width 	: 90px;
-	// object-fit	: contain ; 
-	width		: auto;
-	height		: auto;
-	display		: inline-block;
-	margin 		: 25px ;
-}
-
-// cf : https://codepen.io/jahid-webdev/pen/JRPvBj 
-.img-cis-logo-partner{
-	// filter: url(filters.svg#grayscale); Firefox 3.5+ 
-	filter				: gray; // IE5+ 
-	-webkit-filter		: grayscale(1); // Webkit Nightlies & Chrome Canary 
-	-webkit-transition	: all .2s ease-in-out;  
-}
-
-.img-cis-logo-partner:hover {
-filter: none;
-	-webkit-filter		: grayscale(0);
-	-webkit-transform	: scale(1.5);
-}
-
 .avatar img {
 	padding: 2px;
 	border-radius : 50% ;
 }
-
-.proj-card-img {
-	border-radius : 3px 3px 0px 0px ;
-}
-
-.proj-card {
-	border-radius: 3px ;
-	box-shadow : 5px 5px 9px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1) ; 
-}
-
-
 
 #btn-feedbacks {
 	position: fixed;
@@ -187,32 +103,6 @@ filter: none;
 
 }
 
-
-.iframe-container {
-	height: 100%;
-}
-
-iframe{
-	position:absolute;
-
-	width: 1px;
-	min-width: 100%;
-
-	height:100%; 
-	min-height: 100%;
-	display : block ;
-
-}
-
-
-
-#user-search-section {
-	background-color: #d9d9d9 ;
-}
-
-#btns-switch-level {
-	margin-right: 0px ; 
-}
 
 .notification {
 	padding : 0.75rem 2.5rem 0.75rem 1.5rem ;
@@ -244,53 +134,3 @@ footer .column h2:not(:first-of-type){
 footer ul{
 	list-style: none;
 }
-
-
-main{
-    margin-top: 70px;
-
-    width: 100%;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-main > section,
-main > nav{
-    margin: 0;
-
-    width: 80%;
-}
-
-main > section{
-    padding-bottom: 3em;
-}
-
-main > nav{
-    padding: 2em 0;
-}
-
-.cis-tabs{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-.cis-tabs li{
-    padding: 0 2em;
-}
-.cis-tabs li:not(:last-child){
-    border-right: 1px solid $cis-grey-light;
-}
-
-.cis-tabs li.selected a{
-    font-weight: bold;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid $cis-primary;
-}
-
-.cis-tabs li a{
-    color: inherit;
-}
-
