@@ -1,0 +1,145 @@
+main#qui-fait-quoi{
+    background-color: #F6F6F6;
+
+
+    & > nav,
+    & > section{
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    .input[type="search"]{
+        margin-bottom: 1em;
+    }
+
+    .choices{
+        max-width: 45em;
+    }
+    .choices label{
+        width: 15em;
+        vertical-align: top;
+    }
+    .choices input[type="checkbox"]{
+        margin-right: 1em;
+    }
+
+
+    ul.members{
+        text-align: left;
+        margin-top: 2em;
+    }
+    ul.members > li{
+        display: inline-block;
+        width: 30em;
+        margin: 0 1em 1em 0;
+        
+        vertical-align: top;
+
+        background-color: white;
+
+        box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.04);
+    }
+
+    ul.members > li > *{
+        padding: 0 1em;
+    }
+    ul.members > li > :first-child{
+        padding-top: 1em;
+    }
+    ul.members > li > :last-child{
+        padding-bottom: 1em;
+    }
+
+
+    ul.members > li > header{
+        padding-bottom: 1em;
+    }
+
+    ul.members > li > header > :first-child{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    ul.members > li > header > :first-child img{
+        object-fit: cover;
+        object-position: center;
+        width: 50%;
+        margin-right: 1em;
+    }
+
+    ul.members > li > header ul.activities li{
+        font-size: 0.7em;
+        background-color: #767676;
+        color: white;
+        padding: 0.2em 0.5em;
+        margin-right: 0.5em;
+
+        display: inline-block;
+
+    }
+
+
+
+    ul.members > li > header h1{
+        display: inline-block;
+        margin-right: 1em;
+
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    ul.members > li > header .scale{
+        font-size: 0.7em;
+        white-space: nowrap;
+        color: rgba(61, 58, 57, 1);
+    }
+
+
+    ul.members > li > footer{
+        background-color: #F6F6F6;
+        position: relative;
+
+        font-size: 0.8em;
+
+        margin-top: 3em;
+        padding-top: 1em;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    ul.members > li > footer img{
+        position: absolute;
+        
+        width: 5em;
+        height: 5em;
+
+        object-fit: cover;
+        object-position: center;
+        
+        left: 2em;
+        top: -2em;
+
+        border-radius: 50%;
+    }
+
+
+    ul.members > li > footer .person{
+        margin-left: 8em;
+    }
+
+    ul.members > li > footer .count{
+        color: #592d7b;
+        max-width: 9em;
+
+        display: flex;
+        align-items: center;
+    }
+    ul.members > li > footer .count .nb{
+        font-size: 3em;
+        
+        margin-right: 0.1em;
+        font-weight: bold;
+    }
+
+}

@@ -10,7 +10,7 @@
     "build:js": "browserify ./scripts/main.js -o ../static/build/bundle.js",
     "build:css": "node-sass --omit-source-map-url styles/main.scss ../static/build/bundle.css",
     "watch:js": "watchify ./scripts/main.js -o ../static/build/bundle.js -v -d",
-    "watch:css": "node-sass --omit-source-map-url styles/main.scss ../static/build/bundle.css --watch"
+    "watch:css": "node-sass styles/main.scss ../static/build/bundle.css --watch --source-map-embed"
   },
   "babel": {
     "presets": [
@@ -31,7 +31,7 @@
     "@nymag/vueify": "9.4.5",
     "babelify": "^10.0.0",
     "browserify": "^14.5.0",
-    "bulma": "^0.5.1",
+    "bulma": "^0.7.2",
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.1",
     "watchify": "^3.11.0"
