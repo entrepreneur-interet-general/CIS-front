@@ -1,13 +1,12 @@
 @import './cis-colors.scss';
+@import './cis-spacing.scss';
 
 main#outils{
-    & > nav,
-    & > section{
-        padding-left: 2em;
-        padding-right: 2em;
-    }
 
     section#open-source{
+
+        margin-bottom: $cis-spacing_3;
+        
         h1{
             font-size: 1.5em;
             font-weight: bold;
@@ -26,6 +25,8 @@ main#outils{
         width: 100%;
         padding: 0;
         border: 0;
+
+	    margin-bottom: $cis-spacing_4;
 
         background-color: $cis-grey-background;
 
@@ -60,13 +61,11 @@ main#outils{
     }
 
     
-
-
-
     .software-show{
         display: flex;
 
-        padding-top: 5em;
+
+	    margin: $cis-spacing_4 inherit;
 
         & > *{
             flex: 1;
@@ -83,7 +82,7 @@ main#outils{
             flex-direction: row-reverse;
 
             img{
-                transform: translate(20%, -20%);
+                transform: translate(10%, -20%);
             }
         }
     

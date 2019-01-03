@@ -1,48 +1,62 @@
 @import './cis-colors.scss';
 
-section#presse {
-    ul {
-        padding: 1em;
 
+section#presse {
+    ul.mentions{
         li{
             display: inline-block;
             background-color: $cis-grey-background;
             
-            width: 17em;
-    
-            margin-right: 2em;    
+            $mention-spacing: 1%;
+
+            margin: $mention-spacing;
+
+            width: 100%;
+
+            @media (min-width: 30em){
+                width: 100%/2 - 2*$mention-spacing;
+            }   
+
+            @media (min-width: 45em){
+                width: 100%/3 - 3*$mention-spacing;
+            }   
+
+            @media (min-width: 60em){
+                width: 100%/4 - 4*$mention-spacing;
+            }   
             
             vertical-align: top;
-        }
-    
-        li > :first-child{
-            background-color: white;
-            height: 5em;    
-            padding: 0.5em;
             
-            text-align: center;
-
-            img{
-                height: 100%;
-            }
-        }
+            & > :first-child{
+                background-color: white;
+                height: 5em;    
+                padding: 0.5em;
+                
+                text-align: center;
     
-        li > :nth-child(2){
-            padding: 1em;
-
-            h1{
-                font-size: 1.1em;
-                font-weight: bold;
+                img{
+                    height: 100%;
+                }
+            }
+        
+            & > :nth-child(2){
+                padding: 1em;
+    
+                h1{
+                    font-size: 1.1em;
+                    font-weight: bold;
+                    padding: 0.5em 0;
+                }
+            }
+        
+            a{
+                color: $cis-primary;
+                border-bottom: 1px solid currentColor;
+        
+                display: inline-block;
                 padding: 0.5em 0;
             }
         }
-    
-        li a{
-            color: $cis-primary;
-            border-bottom: 1px solid currentColor;
-    
-            display: inline-block;
-            padding: 0.5em 0;
-        }
     }
+    
 }

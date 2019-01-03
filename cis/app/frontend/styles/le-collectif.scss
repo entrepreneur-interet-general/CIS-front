@@ -2,14 +2,10 @@
 
 main#le-collectif{
     background-color: white;
-    
-    & > nav,
-    & > section{
-        padding-left: 2em;
-        padding-right: 2em;
-    }
 
     section#collectif{
+        margin-bottom: $cis-spacing_4;
+        
         .présentation{
             display: flex; 
             flex-direction: row;
@@ -110,6 +106,9 @@ main#le-collectif{
 
 
     section#equipe-op{
+        
+        margin-bottom: $cis-spacing_4;
+        
         .equipe li{
             width: 17em;
             padding: 1em 3em;

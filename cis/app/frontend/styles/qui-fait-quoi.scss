@@ -1,12 +1,6 @@
 main#qui-fait-quoi{
     background-color: $cis-grey-background;
 
-    & > nav,
-    & > section{
-        padding-left: 2em;
-        padding-right: 2em;
-    }
-
     .input[type="search"]{
         margin-bottom: 1em;
     }
@@ -25,20 +19,28 @@ main#qui-fait-quoi{
 
     ul.members{
         text-align: left;
-        margin-top: 2em;
+        margin-top: 2em;  
 
-        li{
+        & > li{
             display: inline-block;
-            width: 30em;
-            margin: 0 1em 1em 0;
             
+            $mention-spacing: 1%;
+
+            margin: $mention-spacing;
+            
+            width: 100%;
+    
+            @media (min-width: 40em){
+                width: 100%/2 - 2*$mention-spacing;
+            }   
+
             vertical-align: top;
     
             background-color: white;
     
             box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.04);
 
-            *{
+            & > *{
                 padding: 0 1em;
             }
             & > :first-child{
@@ -49,7 +51,7 @@ main#qui-fait-quoi{
             }
         
         
-            & > li > header{
+            header{
                 padding-bottom: 1em;
 
                 & > :first-child{
@@ -59,21 +61,26 @@ main#qui-fait-quoi{
                     align-items: flex-start;
                 }
                 & > :first-child img{
-                    object-fit: cover;
+                    object-fit: contain;
                     object-position: center;
+                    
+                    max-height: 20vh;
                     width: 50%;
                     margin-right: 1em;
                 }
             
-                ul.activities li{
-                    font-size: 0.7em;
-                    background-color: #767676;
-                    color: white;
-                    padding: 0.2em 0.5em;
-                    margin-right: 0.5em;
-            
-                    display: inline-block;
-            
+                ul.activities {
+                    flex:1;
+                    
+                    li{
+                        font-size: 0.7em;
+                        background-color: #767676;
+                        color: white;
+                        padding: 0.2em 0.5em;
+                        margin-right: 0.5em;
+                
+                        display: inline-block;
+                    }
                 }
             
                 h1{
@@ -92,7 +99,7 @@ main#qui-fait-quoi{
             }
         
         
-            & > li > footer{
+            footer{
                 background-color: $cis-grey-background;
                 position: relative;
         
