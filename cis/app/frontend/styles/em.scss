@@ -1,0 +1,11 @@
+// adapted from https://css-tricks.com/snippets/sass/px-to-em-functions/
+
+@function em($pixels) {
+    $browser-context: 16px;
+
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @return $pixels / $browser-context * 1em;
+}

@@ -1,22 +1,20 @@
+@import './em.scss';
 @import './cis-colors.scss';
+@import './cis-spacing.scss';
 
 main#projet{
-    
-    & > nav,
-    & > section{
-        padding-left: 2em;
-        padding-right: 2em;
-    }
 
-    & section h2{
-        font-size: 0.8em;
+    section h2{
+        font-size: em(14px);
+        margin-bottom: $cis-spacing_1;
     }
-    & section h2 + h1{
+    section h2 + h1,
+    section#communs h1{
         font-size: 1.7em;
         line-height: 1.3em;
         font-weight: bold;
 
-        padding-bottom: 0.5em;
+        margin-bottom: $cis-spacing_1;
     }
 
     .cis-cards{
@@ -26,7 +24,6 @@ main#projet{
         align-items: flex-start;
 
         & > *{
-            margin: 0 1em;
             padding: 1em;
             flex: 1;
         }
@@ -34,18 +31,29 @@ main#projet{
         & > * img{
             height: 7em;
         }
+
+        .cis-card{
+            padding: 1em;
+    
+            img{
+                height: 7em;
+            }
+        }
     }
 
 
     section#visibilité{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
 
-        & > :first-child{
+	    margin-bottom: $cis-spacing_3;
+
+        .columns{
+            align-items: center;
+        }
+
+        & > .column:first-child{
             flex: 1;
         }
-        & > :last-child{
+        & > .column:last-child{
             flex: 1;
         }
     
@@ -108,6 +116,7 @@ main#projet{
         width: 100%;
         height: 18em;
         padding: 1em 3em;
+	    margin-bottom: $cis-spacing_3;
         
         background-color: $cis-primary;
         color: $cis-primary-invert;
@@ -133,20 +142,19 @@ main#projet{
 
 
     section#nous{
-        padding-top: 3em;
+        
+	    margin-bottom: $cis-spacing_3;
     }
 
 
     section#definition{
-        div {
+        margin-bottom: $cis-spacing_3;
+        
+        .column {
             padding: 2em 1em;
             background-color: $cis-primary;
     
             color: $cis-primary-invert;
-    
-            width: 66%;
-            position: relative;
-            left: 33%;
         }
     
         h1{
@@ -157,8 +165,10 @@ main#projet{
 
 
     section#concrètement {
+        margin-bottom: $cis-spacing_3;
+        
         .cis-cards {
-            li {
+            .cis-card {
                 background-color: $cis-grey-background;
             }
     
@@ -185,6 +195,9 @@ main#projet{
 
 
     section#communs{
+
+        margin-bottom: $cis-spacing_3;
+
         .charte{
             color: $cis-primary-invert;
             background-color: $cis-primary;
