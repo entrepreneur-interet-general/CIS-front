@@ -1,4 +1,12 @@
+@import './cis-colors.scss';
 @import './cis-misc.scss';
+
+
+html[lang="fr"] #navbar-main .navbar-item [lang="fr"],
+html[lang="en"] #navbar-main .navbar-item [lang="en"]{
+	text-decoration: underline;
+}
+
 
 #navbar-top {
 	height: $cis-navbar-height;
@@ -17,12 +25,11 @@
 
 .skip-navbar-search {
 	padding-top : 135px ;
-
 }
 
 .navbar {
 	border-bottom: 1px solid;
-	border-bottom-color: $cis-grey-light ;
+	border-bottom-color: $cis-grey-light;
 }
 
 #navbar-logo {
