@@ -100,7 +100,7 @@ export default {
 <style scoped>
 main{
     background-color: #f6f6f6;
-    margin-top: calc(70px);
+    margin-top: calc(60px);
 }
 
 a.back{

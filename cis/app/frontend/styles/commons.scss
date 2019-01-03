@@ -1,5 +1,6 @@
 @import './cis-colors.scss';
 @import './cis-spacing.scss';
+@import './cis-misc.scss';
 
 html {
 	scroll-behavior: smooth;
@@ -14,7 +15,7 @@ fieldset{
 }
 
 main{
-    margin-top: 70px;
+    margin-top: $cis-navbar-height;
 
 	/*
     width: 100%;

@@ -1,16 +1,18 @@
+@import './cis-misc.scss';
+
 #navbar-top {
-	height: 70px;
+	height: $cis-navbar-height;
 	z-index:10;
 }
 
 #navbar-filters {
 	height: 30px;
-	top: 70px;
+	top: $cis-navbar-height;
 	z-index: 5 ;
 }
 
 .skip-navbar {
-	padding-top: 70px;
+	padding-top: $cis-navbar-height;
 }
 
 .skip-navbar-search {
