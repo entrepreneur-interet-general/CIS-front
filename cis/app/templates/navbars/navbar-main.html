@@ -22,30 +22,23 @@
 
 	{# navbar's buttons #}
 	<div id="navbar-main" class="navbar-menu">
+
 		<div class="navbar-end">
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/recherche">
-					<span>Moteur de recherche</span>
-				</a>
+				<a href="/recherche">Moteur de recherche</a>
 			</div>
 
-			<div class="navbar-item">
-				<a class="button is-text" href="/le-projet">
-					<span>Projet</span>
-				</a>
+			<div class="navbar-item {% if request.path.startswith('/le-projet') %}selected{% endif %}">
+				<a href="/le-projet">Projet</a>
 			</div>
 
-			<div class="navbar-item">
-				<a class="button is-text" href="/qui-sommes-nous"> 
-					<span>Qui sommes-nous ?</span>
-				</a>
+			<div class="navbar-item {% if request.path.startswith('/qui-sommes-nous') %}selected{% endif %}">
+				<a href="/qui-sommes-nous">Qui sommes-nous ?</a>
 			</div>
 
-			<div class="navbar-item">
-				<a class="button is-text" href="/nous-rejoindre"> 
-					<span>Nous rejoindre</span>
-				</a>
+			<div class="navbar-item {% if request.path == '/nous-rejoindre' %}selected{% endif %}">
+				<a href="/nous-rejoindre">Nous rejoindre</a>
 			</div>
 
 			<div class="navbar-item">

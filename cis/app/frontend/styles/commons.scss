@@ -37,18 +37,20 @@ main{
 			border-right: 1px solid $cis-grey-light;
 		}
 		
-		&.selected a{
-			font-weight: bold;
-			padding-bottom: 0.5em;
-			border-bottom: 1px solid $cis-primary;
-		}
-		
 		a{
 			color: inherit;
 		}
-	}
-	
+	}	
 }
+
+#navbar-main .navbar-item.selected a,
+.cis-tabs li.selected a{
+	font-weight: bold;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid $cis-primary;
+}
+
+
 
 .button {
 	border-radius: 10 px ;

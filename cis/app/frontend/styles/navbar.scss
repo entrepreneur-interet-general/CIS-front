@@ -7,6 +7,19 @@ html[lang="en"] #navbar-main .navbar-item [lang="en"]{
 	text-decoration: underline;
 }
 
+#navbar-main .navbar-item.selected a{
+	transform:translateY(0.2em);
+}
+
+#navbar-main .navbar-item{
+	padding-left: 1em;
+	padding-right: 1em;
+
+	a{
+		color: $cis-text-color;
+	}
+}
+
 
 #navbar-top {
 	height: $cis-navbar-height;
