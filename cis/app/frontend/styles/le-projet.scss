@@ -4,13 +4,11 @@
 
 main#projet{
 
-    section h2{
+    section h2.subtitle{
         font-size: em(14px);
-        margin-bottom: $cis-spacing_1;
     }
-    section h2 + h1,
+    section h2.subtitle + h1,
     section#communs h1{
-        font-size: 1.7em;
         line-height: 1.3em;
         font-weight: bold;
 
@@ -130,9 +128,8 @@ main#projet{
             height: 150%;
         }
     
-        p{
-            font-size: 2em;
-            font-weight: bold;
+        h2{
+            color: $cis-primary-invert;
             max-width: 26em;
             padding: 1em;
         }
@@ -157,7 +154,7 @@ main#projet{
             color: $cis-primary-invert;
         }
     
-        h1{
+        h2{
             color: inherit;
         }
     }
@@ -170,12 +167,6 @@ main#projet{
         .cis-cards {
             .cis-card {
                 background-color: $cis-grey-background;
-            }
-    
-            li h1 {
-                font-size: 1.7em;
-                line-height: 1.3em;
-                font-weight: bold;
             }
         
             p {
@@ -198,6 +189,10 @@ main#projet{
 
         margin-bottom: $cis-spacing_3;
 
+        .subtitle{
+            margin-bottom: 0.5em;
+        }
+
         .charte{
             color: $cis-primary-invert;
             background-color: $cis-primary;
@@ -205,9 +200,7 @@ main#projet{
             padding: 1em;
 
             h1{
-                font-size: 1.7em;
-                line-height: 1.3em;
-                font-weight: bold;
+                color: inherit;
             }
         
             a{

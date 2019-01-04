@@ -1,9 +1,10 @@
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
+@import "./em.scss";
 @import "./cis-colors.scss";
 
-@import url(https://fonts.googleapis.com/css?family=Barlow&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Barlow:400,700&subset=latin-ext);
 
 
 $primary		: $cis-primary; 
@@ -13,6 +14,10 @@ $light 			: $cis-grey-light;
 $dark			: $cis-grey-dark;
 
 $text           : $cis-text-color;
+$body-size      : $cis-base-font-size;
+
+$size-1         : em(40px);
+$size-2         : em(28px);
 
 $link			: $grey;
 $link-hover 	: $cis-primary;

@@ -22,6 +22,11 @@
         margin: 0 auto;
     }
 
+    h1{
+        margin-top: 5em;
+        text-align: center;
+    }
+
 
     .buttons {
         justify-content: center;  /* Bulma override */
@@ -57,26 +62,34 @@
                 border-radius: 50%;
             }
         
-            strong{
-                font-weight: bold; /* Bulma override */
-        
-                font-size: 1.2em;
+            h2{
                 color: $cis-primary;
             }
         }
     }
 
-    .structure-expand ul.reasons{
-        text-align: center;
+    .structure-expand {
+        .why{
+            color: $cis-primary;
+            font-weight: bold;
+        }
 
-        li{
-            display: flex;
-            flex-direction: column;
+        ul.reasons{
+            text-align: center;
+
+            li{
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 
     .join-walkthrough{
         background-color: $cis-grey-background;
+
+        h2{
+            color: $cis-primary;
+        }
     }
 
 }

@@ -1,3 +1,4 @@
+@import './em.scss';
 @import './cis-colors.scss';
 @import './cis-spacing.scss';
 @import './cis-misc.scss';
@@ -17,6 +18,15 @@ fieldset{
 main{
     margin-top: $cis-navbar-height;
 }
+
+button, .button{
+	font-size: em(14px);
+}
+
+
+
+
+
 
 .cis-tabs{
     display: flex;
@@ -51,11 +61,6 @@ main{
 }
 
 
-
-.button {
-	border-radius: 10 px ;
-	height: 100 px;
-}
 
 .tagsinput {
 	border    : none ;

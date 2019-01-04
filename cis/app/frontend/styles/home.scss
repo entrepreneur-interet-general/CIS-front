@@ -107,27 +107,30 @@ main#home{
             align-items: center;
         }
 
-    
-        strong{
+        h1{
+            text-align: center;
             color: $cis-primary;
-            font-size: 1.7em;
-    
-            display: block;
         }
-        strong a{
-            color: inherit;
-            text-decoration: underline;
+
+        h2{
+            color: $cis-primary;
+            text-align: left;
+
+            a{
+                color: inherit;
+                text-decoration: underline;
+            }
         }
     
         .rejoindre{
             align-items: center;
             color: $cis-primary;
-        }
-    
-        .rejoindre a{
-            color: $cis-primary-invert;
-            background-color: $cis-primary;
-            margin-top: 1em;
+
+            a{
+                color: $cis-primary-invert;
+                background-color: $cis-primary;
+                margin-top: 1em;
+            }
         }
     }
 

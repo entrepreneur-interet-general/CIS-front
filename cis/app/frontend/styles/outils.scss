@@ -4,14 +4,7 @@
 main#outils{
 
     section#open-source{
-
         margin-bottom: $cis-spacing_3;
-        
-        h1{
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-        }
     
         h1,
         p{
@@ -92,13 +85,9 @@ main#outils{
     
         h1{
             color: $cis-primary;
-            font-weight: bold;
-            font-size: 1.7em;
         }
         h2{
-            font-weight: bold;
-    
-            font-size: 1.4em;
+            
         }
         h3{
             color: $cis-primary;
