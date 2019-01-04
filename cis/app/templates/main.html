@@ -51,17 +51,10 @@
 
 
 		{# BULMA EXTENSIONS FOR WHOLE WEBSITE #}
-		{# <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-checkradio.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-tooltip.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-badge.min.css') }}"> #}
-		{# <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-divider.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-timeline.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-tagsinput.min.css') }}"> #}
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='css/bulma-ext/bulma-tagsinput.min.js') }}"></script>
-		{# <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.css') }}"> #}
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='css/bulma-ext/bulma-tagsinput.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='css/bulma-ext/bulma-steps.min.js') }}"></script>
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma-ext/bulma-carousel.min.css') }}">
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='css/bulma-ext/bulma-carousel.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='css/bulma-ext/bulma-carousel.min.js') }}"></script>
 
 		{# BULMA #}
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> #}
@@ -86,13 +79,13 @@
 
 
 		{# CHARTS - VIZ / cf : http://www.chartjs.org/ #}
-		<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>		
 
 
 		{# DATATABLE - VIZ #}
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-		<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 
 		{# CUSTOM STYLES ---> TO FIX #}
@@ -135,52 +128,11 @@
 	{# note : hack refresh cache adding this : ?version=0.0.1 after brackets #}
 
 	{# TEMPORARY SOLUTION #}
-	<!-- CUSTOM JS FILTERS VARS / TEMPORARY WHILE SOLIDATA IS IN DEVELOPMENT -->
-	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-getjson-nomenclature.js') }}"></script> #}
-	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-tags-nomenclature.js') }}"></script> #}
-	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS.js') }}"></script> #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_TAGS.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_PARTNERS.js') }}"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CHOICES_FILTERS_GEOLOC.js') }}"></script>
-	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT.js') }}"></script> #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT_FLAT.js') }}"></script>
-	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NOMENCLATURE_CIS_DICT.js') }}"></script> #}
-	{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS.js') }}"></script> #}
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS_DICT.js') }}"></script>
-
-
-	<!-- CUSTOM UTIL JS FOR BULMA -->
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-navbar-burger.js') }}?version=0.0.1"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-modals-toggler.js') }}?version=0.0.1"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-notification-dismisser.js') }}?version=0.0.1"></script>
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-counter.js') }}?version=0.0.2"></script>
-
-
-	{# IMPORT VUE AND AJAX CIS JS FILES #}
-
-	{# {% if user_infos.is_authenticated == True %} #}
-
-		<!-- CUSTOM JS FILTERS TOGGLING -->
-		<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-filters-toggler.js') }}?version=0.0.1"></script>
-
-		{% if site_section not in ['preferences', 'landing'] %}
-
-			<!-- CUSTOM JS FOR AJAX CALLS -->
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-ajax-calls.js') }}?version=0.0.5"></script>
-			
-			<!-- CUSTOM VUE JS -->
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-store.js') }}?version=0.0.1"></script>
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-components.js') }}?version=0.0.6"></script>
-			<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-vue-controllers.js') }}?version=0.0.6"></script>
-
-			<!-- CUSTOM JS SEARCH CALLER -->
-			{# <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-search-caller.js') }}"></script> #}
-
-		{% endif %}
-
-	{# {% endif %} #}
-
-
+	<script src="{{ url_for('static', filename='json/CHOICES_FILTERS_TAGS.js') }}"></script>
+	<script src="{{ url_for('static', filename='json/CHOICES_FILTERS_PARTNERS.js') }}"></script>
+	<script src="{{ url_for('static', filename='json/CHOICES_FILTERS_GEOLOC.js') }}"></script>
+	<script src="{{ url_for('static', filename='json/CATEGORIES_CIS_DICT_FLAT.js') }}"></script>
+	<script src="{{ url_for('static', filename='json/NORMALIZATION_TAGS_SOURCES_CIS_DICT.js') }}"></script>
 
 
 	
@@ -209,7 +161,7 @@
 
 	
 
-	<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='js/cis-mixpanel-metrics.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/cis-mixpanel-metrics.js') }}"></script>
 	
 	{% endif %}
 
