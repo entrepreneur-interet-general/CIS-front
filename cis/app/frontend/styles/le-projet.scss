@@ -1,11 +1,11 @@
-@import './em.scss';
+@import './rem.scss';
 @import './cis-colors.scss';
 @import './cis-spacing.scss';
 
 main#projet{
 
     section h2.subtitle{
-        font-size: em(14px);
+        font-size: rem(14px);
     }
     section h2.subtitle + h1,
     section#communs h1{

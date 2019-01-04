@@ -1,14 +1,18 @@
+@import './rem.scss';
 @import './cis-colors.scss';
 @import './cis-misc.scss';
 
-
-html[lang="fr"] #navbar-main .navbar-item [lang="fr"],
-html[lang="en"] #navbar-main .navbar-item [lang="en"]{
+html[lang="fr"] nav #navbar-main .navbar-item [lang="fr"],
+html[lang="en"] nav #navbar-main .navbar-item [lang="en"]{
 	text-decoration: underline;
 }
 
+nav{
+	font-size: $cis-navbar-font-size;
+}
+
 #navbar-main .navbar-item.selected a{
-	transform:translateY(0.2em);
+	transform: translateY(0.2em);
 }
 
 #navbar-main .navbar-item{
@@ -30,6 +34,8 @@ html[lang="en"] #navbar-main .navbar-item [lang="en"]{
 	height: 30px;
 	top: $cis-navbar-height;
 	z-index: 5 ;
+
+	font-size: $cis-navbar-font-size;
 }
 
 .skip-navbar {

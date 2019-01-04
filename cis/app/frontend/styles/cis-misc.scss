@@ -1,3 +1,5 @@
-@import './em.scss';
+@import './rem.scss';
 
-$cis-navbar-height: em(60px);
+$cis-navbar-height: rem(60px);
+
+$cis-navbar-font-size: rem(16px);

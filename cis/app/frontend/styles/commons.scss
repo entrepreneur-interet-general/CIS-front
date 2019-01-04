@@ -1,9 +1,10 @@
-@import './em.scss';
+@import './rem.scss';
 @import './cis-colors.scss';
 @import './cis-spacing.scss';
 @import './cis-misc.scss';
 
 html {
+	font-size: $cis-base-font-size; // base for rem
 	scroll-behavior: smooth;
 }
 
@@ -20,7 +21,7 @@ main{
 }
 
 button, .button{
-	font-size: em(14px);
+	font-size: rem(14px);
 }
 
 

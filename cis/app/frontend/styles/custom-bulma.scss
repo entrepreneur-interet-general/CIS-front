@@ -1,8 +1,9 @@
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
-@import "./em.scss";
+@import "./rem.scss";
 @import "./cis-colors.scss";
+@import "./cis-misc.scss";
 
 @import url(https://fonts.googleapis.com/css?family=Barlow:400,700&subset=latin-ext);
 
@@ -16,8 +17,8 @@ $dark			: $cis-grey-dark;
 $text           : $cis-text-color;
 $body-size      : $cis-base-font-size;
 
-$size-1         : em(40px);
-$size-2         : em(28px);
+$size-1         : rem(40px);
+$size-2         : rem(28px);
 
 $link			: $grey;
 $link-hover 	: $cis-primary;
@@ -34,5 +35,9 @@ $family-primary 	: $family-sans-serif ;
 // BULMA OVERRIDE
 
 form .control{
-    font-size: em(14px);
+    font-size: rem(14px);
+}
+
+.is-checkradio[type="checkbox"] + label{
+    font-size: $cis-navbar-font-size
 }
