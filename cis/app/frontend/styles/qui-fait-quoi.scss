@@ -1,3 +1,5 @@
+@import './rem.scss';
+
 main#qui-fait-quoi{
     background-color: $cis-grey-background;
 
@@ -73,7 +75,7 @@ main#qui-fait-quoi{
                     flex:1;
                     
                     li{
-                        font-size: 0.7em;
+                        font-size: rem(12px);
                         background-color: #767676;
                         color: white;
                         padding: 0.2em 0.5em;
@@ -92,7 +94,7 @@ main#qui-fait-quoi{
                 }
                 
                 .scale{
-                    font-size: 0.7em;
+                    font-size: rem(12px);
                     white-space: nowrap;
                     color: rgba(61, 58, 57, 1);
                 }

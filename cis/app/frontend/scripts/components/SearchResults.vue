@@ -164,6 +164,8 @@ section{
 
 header > .inline-filters{
     padding-top: 1em;
+
+    font-size: 12px;
 }
 
 header > .inline-filters span{

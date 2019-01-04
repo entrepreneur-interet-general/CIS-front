@@ -85,5 +85,7 @@ export default {
 
     background-color: #767676;
     color: white;
+
+    font-size: 12px;
 }
 </style>
