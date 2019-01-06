@@ -17,7 +17,7 @@
                 </div>
 
                 <p class="title is-5">
-                    <router-link :to="`/project/${project.id}`" class="a_big">
+                    <router-link :to="`/project/${project.id}`">
                         {{project.title}}
                     </router-link>
                 </p>
@@ -66,7 +66,15 @@ export default {
 
 .card-image img{
     width: 100%;
+}
 
+.proj-card {
+	border-radius: 3px ;
+	box-shadow : 5px 5px 9px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1) ; 
+}
+
+.proj-card-img {
+	border-radius : 3px 3px 0px 0px ;
 }
 
 .card-content .tag{
@@ -77,5 +85,7 @@ export default {
 
     background-color: #767676;
     color: white;
+
+    font-size: 12px;
 }
 </style>

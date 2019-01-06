@@ -1,5 +1,4 @@
 
-
 <div class="container">
 
 	{# brand #}
@@ -13,7 +12,7 @@
 		</a>
 
 		{# burger #}		
-		<span class="navbar-burger burger" data-target="navbarMain">
+		<span class="navbar-burger burger" data-target="navbar-main">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -23,37 +22,27 @@
 
 
 	{# navbar's buttons #}
-	<div id="navbarMain" class="navbar-menu">
+	<div id="navbar-main" class="navbar-menu">
 		<div class="navbar-end">
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/recherche">
-					<span>Search engine</span>
-				</a>
+				<a href="/recherche">Moteur de recherche</a>
+			</div>
+
+			<div class="navbar-item {% if request.path.startswith('/le-projet') %}selected{% endif %}">
+				<a href="/le-projet">Projet</a>
+			</div>
+
+			<div class="navbar-item {% if request.path.startswith('/qui-sommes-nous') %}selected{% endif %}">
+				<a href="/qui-sommes-nous">Qui sommes-nous ?</a>
+			</div>
+
+			<div class="navbar-item {% if request.path == '/nous-rejoindre' %}selected{% endif %}">
+				<a href="/nous-rejoindre">Nous rejoindre</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/the-project">
-					<span>Project</span>
-				</a>
-			</div>
-
-			<div class="navbar-item">
-				<a class="button is-text" href="/qui-sommes-nous"> 
-					<span>Who are we ?</span>
-				</a>
-			</div>
-
-			<div class="navbar-item">
-				<a class="button is-text" href="/nous-rejoindre"> 
-					<span>Nous rejoindre</span>
-				</a>
-			</div>
-
-			<div class="navbar-item">
-				<a class="button is-text" href="/"> 
-					<span>Français</span>
-				</a>
+				<a lang="fr" href="/">FR</a>&nbsp;/&nbsp;<span lang="en">EN</span>
 			</div>
 
 		</div>

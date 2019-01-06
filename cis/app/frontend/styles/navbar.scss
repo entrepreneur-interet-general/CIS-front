@@ -1,0 +1,67 @@
+@import './rem.scss';
+@import './cis-colors.scss';
+@import './cis-misc.scss';
+
+html[lang="fr"] nav #navbar-main .navbar-item [lang="fr"],
+html[lang="en"] nav #navbar-main .navbar-item [lang="en"]{
+	text-decoration: underline;
+}
+
+nav{
+	font-size: $cis-navbar-font-size;
+}
+
+#navbar-main .navbar-item.selected a{
+	transform: translateY(0.2em);
+}
+
+#navbar-main .navbar-item{
+	padding-left: 1em;
+	padding-right: 1em;
+
+	a{
+		color: $cis-text-color;
+	}
+}
+
+
+#navbar-top {
+	height: $cis-navbar-height;
+	z-index:10;
+}
+
+#navbar-filters {
+	height: 30px;
+	top: $cis-navbar-height;
+	z-index: 5 ;
+
+	font-size: $cis-navbar-font-size;
+}
+
+.skip-navbar {
+	padding-top: $cis-navbar-height;
+}
+
+.skip-navbar-search {
+	padding-top : 135px ;
+}
+
+.navbar {
+	border-bottom: 1px solid;
+	border-bottom-color: $cis-grey-light;
+}
+
+#navbar-logo {
+	max-height:45px ! important ;
+}
+
+.navbar-item-filter {
+	padding : 0.5rem ;
+}
+
+.input-navbar{
+	border-top	: 0px transparent;
+	border-right: 0px transparent;
+	border-left	: 0px transparent;	
+	box-shadow	: none;
+}

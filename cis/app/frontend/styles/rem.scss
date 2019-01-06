@@ -1,0 +1,14 @@
+
+$cis-base-font-size: 18px;
+
+// adapted from https://css-tricks.com/snippets/sass/px-to-em-functions/
+
+@function rem($pixels) {
+    $browser-context: $cis-base-font-size;
+
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @return $pixels / $browser-context * 1rem;
+}

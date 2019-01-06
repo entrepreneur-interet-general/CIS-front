@@ -29,6 +29,6 @@ export default {
 
 <style>
 main{
-    margin-top: calc(70px + 52px);
+    margin-top: calc(60px + 52px);
 }
 </style>

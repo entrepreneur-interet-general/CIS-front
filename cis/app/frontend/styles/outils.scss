@@ -1,22 +1,16 @@
+@import './cis-colors.scss';
+@import './cis-spacing.scss';
+
 main#outils{
-    & > nav,
-    & > section{
-        padding-left: 2em;
-        padding-right: 2em;
-    }
 
     section#open-source{
+        margin-bottom: $cis-spacing_3;
+    
+        h1,
+        p{
+            max-width: 40em;
+        }
         
-    }
-    section#open-source h1{
-        font-size: 1.5em;
-        font-weight: bold;
-        margin-bottom: 0.5em;
-    }
-
-    section#open-source h1,
-    section#open-source p{
-        max-width: 40em;
     }
 
 
@@ -25,112 +19,107 @@ main#outils{
         padding: 0;
         border: 0;
 
-        background-color: #F6F6F6;
+	    margin-bottom: $cis-spacing_4;
+
+        background-color: $cis-grey-background;
+
+        & > *{
+            width: 80%;
+            margin: 0 auto;
+        }
+    
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1em 2em;
+
+            li{
+                flex: 1;
+        
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                p{
+                    width: 80%;
+                }
+                strong{
+                    color: $cis-primary;
+                    font-weight: bold;
+                }
+            }
+        }
     }
 
-    section#architecture > *{
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    section#architecture ul{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 1em 2em;
-    }
-
-    section#architecture ul li{
-        flex: 1;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    section#architecture ul li p{
-        width: 80%;
-    }
-    section#architecture ul li strong{
-        color: #592d7b;
-        font-weight: bold;
-    }
-
-
-
+    
     .software-show{
         display: flex;
 
-        padding-top: 5em;
+
+	    margin: $cis-spacing_4 inherit;
+
+        & > *{
+            flex: 1;
+        }
+
+        &:nth-of-type(odd){
+            flex-direction: row;
+
+            img{
+                transform: translate(-20%, -20%);
+            }
+        }
+        &:nth-of-type(even){
+            flex-direction: row-reverse;
+
+            img{
+                transform: translate(10%, -20%);
+            }
+        }
+    
+        img{
+            max-width: 120%;
+        }
+    
+        h1{
+            color: $cis-primary;
+        }
+        h2{
+            
+        }
+        h3{
+            color: $cis-primary;
+        }
+    
+        ul{
+            margin-bottom: 2em;
+
+            li::before{
+                content: "-";
+                
+                padding-right: 5px;
+            }
+        }
+    
+    
+        a{
+            padding: 1em 2em;
+            margin-right: 1em;
+    
+            border-radius: 3px;
+        }
+    
+        a.test{
+            color: $cis-primary-invert;
+            background-color: $cis-primary;
+            border: 1px solid $cis-primary;
+        }
+        a.github{
+            color: $cis-primary;
+            background-color: $cis-primary-invert;
+            border: 1px solid $cis-primary;
+        }
     }
-
-    .software-show:nth-of-type(odd){
-        flex-direction: row;
-    }
-    .software-show:nth-of-type(even){
-        flex-direction: row-reverse;
-    }
-
-
-    .software-show > *{
-        flex: 1;
-    }
-
-    .software-show img{
-        max-width: 120%;
-    }
-
-
-    .software-show:nth-of-type(odd) img{
-        transform: translate(-20%, -20%);
-    }
-    .software-show:nth-of-type(even) img{
-        transform: translate(20%, -20%);
-    }
-
-
-    .software-show h1{
-        color: #592d7b;
-        font-weight: bold;
-        font-size: 1.7em;
-    }
-    .software-show h2{
-        font-weight: bold;
-
-        font-size: 1.4em;
-    }
-    .software-show h3{
-        color: #592d7b;
-    }
-
-    .software-show ul{
-        margin-bottom: 2em;
-    }
-
-
-    .software-show ul li:before{
-        content: "-";
-        
-        padding-right: 5px;
-    }
-
-
-    .software-show a{
-        padding: 1em 2em;
-        margin-right: 1em;
-
-        border-radius: 3px;
-    }
-
-    .software-show a.test{
-        color: white;
-        background-color: #592d7b;
-        border: 1px solid #592d7b;
-    }
-    .software-show a.github{
-        color: #592d7b;
-        background-color: white;
-        border: 1px solid #592d7b;
-    }
-
 }

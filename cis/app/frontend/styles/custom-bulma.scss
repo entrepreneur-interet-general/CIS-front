@@ -1,51 +1,43 @@
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
-@import url(https://fonts.googleapis.com/css?family=Barlow&subset=latin,latin-ext);
+@import "./rem.scss";
+@import "./cis-colors.scss";
+@import "./cis-misc.scss";
 
- 
-// Add custom colors and their inverts
-$cis-purple			: #55267c;
-$cis-purple-invert  : #fff;
-
-$cis-yellow			: #dab300;
-$cis-yellow-invert  : #fff;
-
-$cis-blue			: #80c2bd;
-$cis-blue-invert  	: #fff;
-
-$cis-transparent    : rgba(1,1,1,0) ;
-
-$primary			: $cis-purple ; 
-$primary-invert 	: $cis-purple-invert;
-
-$info				: $cis-blue ; 
-$info-invert		: $cis-blue-invert;
-
-$warning			: $cis-yellow ; 
-$warning-invert		: $cis-purple-invert;
+@import url(https://fonts.googleapis.com/css?family=Barlow:400,700&subset=latin-ext);
 
 
-$cis-grey-light		: #d9d9d9;
-$cis-grey-dark		: #1b1b1b; 
+$primary		: $cis-primary; 
+$primary-invert : $cis-primary-invert;
 
-$light 				: $cis-grey-light ;
-$dark				: $cis-grey-dark ;
+$light 			: $cis-grey-light;
+$dark			: $cis-grey-dark;
 
-$link				: $grey;
-$link-hover 		: $cis-purple ; 
+$text           : $cis-text-color;
+$body-size      : $cis-base-font-size;
+
+$size-1         : rem(40px);
+$size-2         : rem(28px);
+
+$link			: $grey;
+$link-hover 	: $cis-primary;
 
 $family-sans-serif 	: "Barlow", sans-serif ;
 $family-primary 	: $family-sans-serif ; 
 
 
-/*
-$notification-radius : 3px ;
-
-$timeline-marker-background-color 	: $cis-purple ;
-$timeline-line						: $cis-purple ;
-*/
-
 // Import the rest of Bulma at the end
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/bulma-checkradio/dist/css/bulma-checkradio.sass";
+
+
+// BULMA OVERRIDE
+
+form .control{
+    font-size: rem(14px);
+}
+
+.is-checkradio[type="checkbox"] + label{
+    font-size: $cis-navbar-font-size
+}

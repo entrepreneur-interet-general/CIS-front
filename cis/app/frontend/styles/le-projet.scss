@@ -1,9 +1,18 @@
+@import './rem.scss';
+@import './cis-colors.scss';
+@import './cis-spacing.scss';
+
 main#projet{
-    
-    & > nav,
-    & > section{
-        padding-left: 2em;
-        padding-right: 2em;
+
+    section h2.subtitle{
+        font-size: rem(14px);
+    }
+    section h2.subtitle + h1,
+    section#communs h1{
+        line-height: 1.3em;
+        font-weight: bold;
+
+        margin-bottom: $cis-spacing_1;
     }
 
     .cis-cards{
@@ -11,204 +20,193 @@ main#projet{
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
+
+        & > *{
+            padding: 1em;
+            flex: 1;
+        }
+    
+        & > * img{
+            height: 7em;
+        }
+
+        .cis-card{
+            padding: 1em;
+    
+            img{
+                height: 7em;
+            }
+        }
     }
 
-    .cis-cards > *{
-        margin: 0 1em;
-        padding: 1em;
-        flex: 1;
-    }
-
-    .cis-cards > * img{
-        height: 7em;
-    }
-
-
-    & section h2{
-        font-size: 0.8em;
-    }
-    & section h2 + h1{
-        font-size: 1.7em;
-        line-height: 1.3em;
-        font-weight: bold;
-
-        padding-bottom: 0.5em;
-    }
 
     section#visibilité{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
 
-    section#visibilité > :first-child{
-        flex: 1;
-    }
-    section#visibilité > :last-child{
-        flex: 1;
-    }
+	    margin-bottom: $cis-spacing_3;
 
+        .columns{
+            align-items: center;
+        }
 
-    section#visibilité .caroussel{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
+        & > .column:first-child{
+            flex: 1;
+        }
+        & > .column:last-child{
+            flex: 1;
+        }
+    
+    
+        .caroussel{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .caroussel button{
+            border: 0;
+            font-size: 2em;
+            padding: 1em;
+            font-weight: bold;
+            background-color: transparent;
+        }
+    
+    
+        .caroussel button:focus,
+        .caroussel button:active{
+            box-shadow: none;
+            border: 0;
+        }
+    
+        .caroussel-container ul.caroussel-content li{
+            width: 10em;
+            padding: 0 0.5em;
+    
+            margin-right: 1em;
+    
+            background-color: $cis-grey-background;
+            white-space: normal;
+            vertical-align: top;
+    
+    
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
 
-    section#visibilité .caroussel button{
-        border: 0;
-        font-size: 2em;
-        padding: 1em;
-        font-weight: bold;
-        background-color: transparent;
-    }
-
-
-    section#visibilité .caroussel button:focus,
-    section#visibilité .caroussel button:active{
-        box-shadow: none;
-        border: 0;
-    }
-
-    section#visibilité .caroussel-container{
-
-    }
-    section#visibilité .caroussel-container ul.caroussel-content{
+            .text{
+                font-size: 0.9em;
+                line-height: 1.2em;
+                padding: 1em;
+            }
         
+            .text h1{
+                color: $cis-primary;
+                font-weight: bold;
+                margin-bottom: 1em;
+            }
+        }
+    
     }
 
-
-    section#visibilité .caroussel-container ul.caroussel-content li{
-        width: 10em;
-        padding: 0 0.5em;
-
-        margin-right: 1em;
-
-        background-color: #F6F6F6;
-        white-space: normal;
-        vertical-align: top;
-
-
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    section#visibilité .caroussel-container ul.caroussel-content li .text{
-        font-size: 0.9em;
-        line-height: 1.2em;
-        color: #3D3A39;
-        padding: 1em;
-    }
-
-    section#visibilité .caroussel-container ul.caroussel-content li .text h1{
-        color: #592d7b;
-        font-weight: bold;
-        margin-bottom: 1em;
-    }
+    
 
     section#collectif{
         width: 100%;
         height: 18em;
         padding: 1em 3em;
+	    margin-bottom: $cis-spacing_3;
         
-        background-color: #592d7b;
-        color: white;
+        background-color: $cis-primary;
+        color: $cis-primary-invert;
 
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
+        img{
+            height: 150%;
+        }
+    
+        h2{
+            color: $cis-primary-invert;
+            max-width: 26em;
+            padding: 1em;
+        }
     }
 
-    section#collectif img{
-        height: 150%;
-    }
-
-
-    section#collectif p{
-        font-size: 2em;
-        font-weight: bold;
-        max-width: 26em;
-        padding: 1em;
-    }
 
 
 
     section#nous{
-        padding-top: 3em;
+        
+	    margin-bottom: $cis-spacing_3;
+    }
+
+
+    section#definition{
+        margin-bottom: $cis-spacing_3;
+        
+        .column {
+            padding: 2em 1em;
+            background-color: $cis-primary;
+    
+            color: $cis-primary-invert;
+        }
+    
+        h2{
+            color: inherit;
+        }
     }
 
 
 
-    section#definition div {
-        padding: 2em 1em;
-        background-color: #592d7b;
-
-        color: white;
-
-        width: 66%;
-        position: relative;
-        left: 33%;
-    }
-
-
-    section#definition h1{
-        color: inherit;
-    }
-
-
-
-    section#concrètement .cis-cards li{
-        background-color: #F6F6F6;
-    }
-
-    section#concrètement .cis-cards li h1{
-        font-size: 1.7em;
-        line-height: 1.3em;
-        font-weight: bold;
-    }
-
-    section#concrètement .cis-cards p{
-        padding-bottom: 2em;
-    }
-
-    section#concrètement .cis-cards a{
-        color: #592d7b;
-        border: 1px solid #592d7b;
-        background-color: white;
-
-        padding: 1em 2em;
-        display: inline-block;
+    section#concrètement {
+        margin-bottom: $cis-spacing_3;
+        
+        .cis-cards {
+            .cis-card {
+                background-color: $cis-grey-background;
+            }
+        
+            p {
+                padding-bottom: 2em;
+            }
+        
+            a {
+                color: $cis-primary;
+                border: 1px solid $cis-primary;
+                background-color: $cis-primary-invert;
+            }
+        }
     }
 
 
     section#communs{
 
+        margin-bottom: $cis-spacing_3;
 
-    }
+        .subtitle{
+            margin-bottom: 0.5em;
+        }
 
-    section#communs .charte{
-        color: white;
-        background-color: #592d7b;
+        .charte{
+            color: $cis-primary-invert;
+            background-color: $cis-primary;
+    
+            padding: 1em;
 
-        padding: 1em;
-    }
-
-
-    section#communs .charte h1{
-        font-size: 1.7em;
-        line-height: 1.3em;
-        font-weight: bold;
-    }
-
-
-    section#communs .charte a{
-        display: inline-block;
-        margin-top: 1em;
-
-        color: white;
-        border-bottom: 1px solid currentColor;
+            h1{
+                color: inherit;
+            }
+        
+            a{
+                display: inline-block;
+                margin-top: 1em;
+        
+                color: white;
+                border-bottom: 1px solid currentColor;
+            }
+        }
     }
 }

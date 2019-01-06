@@ -1,37 +1,27 @@
 <template>
-    <div id="navbarMain" class="navbar-menu">
+    <div id="navbar-main" class="navbar-menu">
 		<div class="navbar-end">
 
-			<div class="navbar-item">
-				<a class="button is-text" href="/recherche">
-					<span>Moteur de recherche</span>
-				</a>
+			<div class="navbar-item selected">
+				<a href="/recherche">Moteur de recherche</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/le-projet">
-					<span>Projet</span>
-				</a>
+				<a href="/le-projet">Projet</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/qui-sommes-nous"> 
-					<span>Qui sommes-nous ?</span>
-				</a>
+				<a href="/qui-sommes-nous">Qui sommes-nous ?</a>
 			</div>
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/nous-rejoindre"> 
-					<span>Nous rejoindre</span>
-				</a>
+				<a href="/nous-rejoindre">Nous rejoindre</a>
 			</div>
-
 
 			<div class="navbar-item">
-				<a class="button is-text" href="/en"> 
-					<span>English</span>
-				</a>
+				<span lang="fr">FR</span>&nbsp;/&nbsp;<a lang="en" href="/en">EN</a>
 			</div>
+
 		</div>
 	</div>
 </template>

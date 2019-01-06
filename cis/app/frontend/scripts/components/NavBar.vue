@@ -22,7 +22,7 @@ export default {
 
 <style>
 nav {
-	height: 70px;
+	height: 60px;
 	z-index: 10;
 }
 </style>
