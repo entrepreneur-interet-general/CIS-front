@@ -113,13 +113,20 @@ export function searchProjects(text, tags, spiderIds=[], page=1, per_page=1000){
 
     let url = `${APISearchOrigin}/api/data?page_n=${page}&results_per_page=${per_page}&token=test_token&shuffle_seed=${shuffle_seed}${searchArg}${spiderArg}${tagsArg}`
 
-    return fetch(url)
-    .then(r => r.json())
-    .then(({query_results, query_log}) => (
-        { 
-            projects: Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [],
-            total: query_log.count_results_tot
-        }
-    ))
+    const ac = new AbortController()
+
+    return {
+        abort(){
+            ac.abort()
+        },
+        promise: fetch(url, {signal: ac.signal})
+            .then(r => r.json())
+            .then(({query_results, query_log}) => (
+                { 
+                    projects: Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [],
+                    total: query_log.count_results_tot
+                }
+            ))
+    }
 
 }
