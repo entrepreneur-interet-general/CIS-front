@@ -38,7 +38,7 @@
                                         :checked="selectedFilters.get(filter.name).has(choice.name)"
                                         :data-filter="filter.name"
                                         :data-choice="choice.name"
-                                        @input="changeFilter"
+                                        @change="changeFilter"
                                         >
                                 <label :for="choice.name">
                                     {{ choice.fullname }}
