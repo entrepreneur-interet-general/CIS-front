@@ -217,14 +217,24 @@ const store = new Vuex.Store({
                 return [...Object.entries(store.state.spiders)].find(([id, spider]) => spider.name === source)[0]
             }) : undefined;
 
-            commit('setSearchPending', {pendingAbort: true})
+            // abort previous search if any
+            if(search.answer.pendingAbort){
+                search.answer.pendingAbort.abort()
+            }
 
-            searchProjects(search.question.query, cisTags, spiderIds)
+            // perform search
+            const searchPendingAbort = searchProjects(search.question.query, cisTags, spiderIds)
+
+            commit('setSearchPending', {pendingAbort: searchPendingAbort})
+
+            searchPendingAbort.promise
                 .then(({projects, total}) => {
                     commit('setSearchResult', {result: {projects, total}})
                 }) 
                 .catch(error => {
-                    commit('setSearchError', {error})
+                    // don't report aborted fetch as errors
+                    if (error.name !== 'AbortError')
+                        commit('setSearchError', {error})
                 })
         },
         getSpiders({commit}){

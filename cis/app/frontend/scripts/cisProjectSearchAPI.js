@@ -1,6 +1,29 @@
 
 const APISearchOrigin = 'http://www.cis-openscraper.com';
 
+// feature test for AbortController that works in Safari 12
+let abortableFetchSupported = false;
+
+try{
+    const ac = new AbortController()
+    
+    fetch('.', {signal: ac.signal})
+    .then(r => r.text())
+    .then(result => {
+        abortableFetchSupported = false;
+    })
+    .catch(err => {
+        abortableFetchSupported = err.name === 'AbortError'
+    })
+
+    ac.abort();
+}
+catch(e){
+    abortableFetchSupported = false;
+}
+
+
+
 /*
 Example of project in Mongo:
 {
@@ -113,13 +136,34 @@ export function searchProjects(text, tags, spiderIds=[], page=1, per_page=1000){
 
     let url = `${APISearchOrigin}/api/data?page_n=${page}&results_per_page=${per_page}&token=test_token&shuffle_seed=${shuffle_seed}${searchArg}${spiderArg}${tagsArg}`
 
-    return fetch(url)
-    .then(r => r.json())
-    .then(({query_results, query_log}) => (
-        { 
-            projects: Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [],
-            total: query_log.count_results_tot
-        }
-    ))
+    // abort fetch if this is supported
+    // abort manually when response arrives otherwise
+    const ac = abortableFetchSupported ? new AbortController() : undefined
+    let searchAborted = false
+
+    return {
+        abort(){
+            searchAborted = true
+
+            if(ac)
+                ac.abort()
+        },
+        promise: (ac ? fetch(url, {signal: ac.signal} ) : fetch(url))
+            .then(r => r.json())
+            .then(({query_results, query_log}) => {
+                if(searchAborted){
+                    const error = new Error('Search aborted')
+                    error.name = 'AbortError'
+                    throw error
+                }
+                else{
+                    return { 
+                        projects: Array.isArray(query_results) ? query_results.map(fromMongoModelToFrontModel).map(uniformizeProject) : [],
+                        total: query_log.count_results_tot
+                    }
+                }
+            })
+                
+    }
 
 }
