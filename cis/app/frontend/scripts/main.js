@@ -14,32 +14,18 @@ Vue.use(Vuex)
 const SOURCE_FILTER_NAME = 'source_';
 
 function makeSourceFilterFromSpiders(spiders){
-    var choices =  [ ...Object.entries(spiders) ] ;
-
-    var choices_mapped = choices.map(([id, {name}]) => ({
-        "fullname": name, 
-        "id": id,
-        "spiderId": id,
-        "name": name
-    }));
-
-    choices_mapped.sort(function(a, b){
-        return a.name > b.name;
-    });
-
     return {
         "fullname": "Source", 
         "name": SOURCE_FILTER_NAME,
-        "choices": choices_mapped ,
-        /*[ ...Object.entries(spiders)].map(([id, {name}]) => ({
-            "fullname": name, 
-            "id": id,
-            "spiderId": id,
-            "name": name
-        })) */
+        "choices": [ ...Object.entries(spiders)]
+            .map(([id, {name}]) => ({
+                "fullname": name, 
+                "id": id,
+                "spiderId": id,
+                "name": name
+            }))
+            .sort((a, b) => a.name.localeCompare(b.name))
     }
-
-
 }
 
 
