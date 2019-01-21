@@ -7,10 +7,10 @@
                         <button class="button close" @click="highlightProject(undefined)">X</button>
 
                         <div class="card">
-                            <div class="card-image">
+                            <router-link :to="`/project/${highlightedProject.id}`" class="card-image">
                                 <img :src="highlightedProject.image" 
                                     :alt="'illustration du projet' + highlightedProject.title">
-                            </div>
+                            </router-link>
                             
                             <div class="card-content" v-if="highlightedProject.address.trim().length > 1">
                                 <span class="icon has-text-light">
@@ -21,9 +21,9 @@
                                 </span>
                             </div>
 
-                            <div class="card-content">
-                            <h1>{{highlightedProject.title}}</h1>
-                            </div>
+                            <router-link :to="`/project/${highlightedProject.id}`" class="card-content">
+                                <h1>{{highlightedProject.title}}</h1>
+                            </router-link>
 
                             <div class="card-content" 
                                 v-if="Array.isArray(highlightedProject.tags) && highlightedProject.tags.length >=1">

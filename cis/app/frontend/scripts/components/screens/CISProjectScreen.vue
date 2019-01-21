@@ -5,7 +5,7 @@
         <main>
             <div class="container">
 
-                <a class="back" href="/recherche" @click="goBack">
+                <a class="back" @click="goBack">
                     <span class="icon has-text-primary">
                         <i class="fas fa-arrow-left"></i>
                     </span>
@@ -89,7 +89,7 @@ export default {
     methods: {
         goBack(e){
             e.preventDefault()
-            this.$router.go(-1)
+            this.$router.back()
         }
     }
 

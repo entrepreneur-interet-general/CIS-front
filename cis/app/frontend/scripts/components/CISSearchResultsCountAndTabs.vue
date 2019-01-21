@@ -89,6 +89,9 @@ export default {
 
 .count-and-tabs .result-count-parent.open{
     background-color: #F6F6F6;
+    
+    top: -1rem;
+    padding-top: 1rem;
 }
 
 
