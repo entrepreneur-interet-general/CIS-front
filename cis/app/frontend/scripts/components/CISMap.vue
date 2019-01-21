@@ -48,7 +48,7 @@
             <l-tile-layer
                 :url="url"
                 :attribution="attribution"/>
-            <v-marker-cluster>
+            <v-marker-cluster :options="{showCoverageOnHover: false, iconCreateFunction: iconCreateFunction}">
                 <l-marker v-for="p in displayedProjects"
                     :key="p.id"
                     :lat-lng="{lng: geolocByProjectId.get(p.id).longitude, lat: geolocByProjectId.get(p.id).latitude}"
@@ -122,6 +122,16 @@ export default {
         highlightProject(p) {
             this.highlightedProject = p;
         },
+        iconCreateFunction(cluster){
+            console.log('iconCreateFunction')
+            const markerCount = cluster.getChildCount();
+
+            return new L.DivIcon({
+                html: `<span>${markerCount}</span>`, 
+                className: 'cis-marker-cluster',
+                iconSize: new L.Point(40, 40)
+            });
+        },
         ...mapActions([
             'findProjectsGeolocs'
         ])
@@ -178,6 +188,21 @@ export default {
 .map .count-and-tabs-container .result-count-parent,
 .map .count-and-tabs-container .buttons{
     z-index: 2;
+}
+
+.map .cis-marker-cluster{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #80C2BD;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    border-radius: 50%;
 }
 
 .highlighted-project{
