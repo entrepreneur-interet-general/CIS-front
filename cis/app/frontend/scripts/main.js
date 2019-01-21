@@ -3,7 +3,8 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router'
 import {csvParse} from 'd3-dsv';
 
-import SearchScreen from './components/screens/SearchScreen.vue';
+import SearchListScreen from './components/screens/SearchListScreen.vue';
+import SearchMapScreen from './components/screens/SearchMapScreen.vue'
 import CISProjectScreen from './components/screens/CISProjectScreen.vue'
 
 import {searchProjects, getProjectById, getSpiders} from './cisProjectSearchAPI.js';
@@ -275,8 +276,6 @@ const store = new Vuex.Store({
 
 
 
-
-
 const BRAND_DATA = Object.freeze({
     logo: '/static/logos/CIS/CIS_logo.png',
     brand: 'Carrefour des Innovations Sociales',
@@ -285,7 +284,7 @@ const BRAND_DATA = Object.freeze({
 const routes = [
     { 
         path: '/recherche',
-        component: SearchScreen, 
+        component: SearchListScreen, 
         props(route){
             return {
                 ...BRAND_DATA
@@ -293,6 +292,25 @@ const routes = [
         },
         beforeEnter(to, from, next){
             console.info('beforeEnter /recherche')
+
+            // get spiders data if they're not already here
+            if(!store.state.spiders){
+                store.dispatch('getSpiders');
+            }
+
+            next()
+        }
+    },
+    { 
+        path: '/recherche/carte',
+        component: SearchMapScreen, 
+        props(route){
+            return {
+                ...BRAND_DATA
+            }
+        },
+        beforeEnter(to, from, next){
+            console.info('beforeEnter /recherche/carte')
 
             // get spiders data if they're not already here
             if(!store.state.spiders){

@@ -2,7 +2,7 @@
     <div class="map">
         <div class="count-and-tabs-container">
             <div class="container">
-                <CISSearchResultsCountAndTabs :view="view" :open="!!highlightedProject" @viewChange="$emit('viewChange', $event)">
+                <CISSearchResultsCountAndTabs :view="VIEW_MAP" :open="!!highlightedProject">
                     <div class="highlighted-project" v-if="highlightedProject" slot="project">
                         <button class="button close" @click="highlightProject(undefined)">X</button>
 
@@ -71,7 +71,11 @@ import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 
 import CISSearchResultsCountAndTabs from './CISSearchResultsCountAndTabs.vue'
 
+import {VIEW_MAP} from '../constants.js'
+
 const FRANCE_CENTER = [46.2276, 2.2137];
+
+
 
 export default {
     name: "CISMap",
@@ -84,7 +88,6 @@ export default {
         'v-marker-cluster': Vue2LeafletMarkerCluster,
         CISSearchResultsCountAndTabs
     },
-    props: ['view'],
     data() {
         return {
             zoom: 6,
@@ -94,7 +97,8 @@ export default {
             url: 'https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contibutors',
             
-            highlightedProject: undefined
+            highlightedProject: undefined,
+            VIEW_MAP
         };
     },
     computed: {
@@ -123,7 +127,6 @@ export default {
             this.highlightedProject = p;
         },
         iconCreateFunction(cluster){
-            console.log('iconCreateFunction')
             const markerCount = cluster.getChildCount();
 
             return new L.DivIcon({
@@ -161,9 +164,6 @@ export default {
     width: 100%;
 }
 
-.map:not(:first-child){
-    margin-top: 1em;
-}
 
 /*
     Leaflet adds its own z-index to a bunch of elements which makes the map appear on top of 
@@ -181,7 +181,7 @@ export default {
 }
 .map .count-and-tabs-container{
     position: absolute;
-    top: 0;
+    top: 1rem;
     width: 100%;
 }
 

@@ -155,6 +155,7 @@ def home_english():
 
 
 @app.route('/recherche', methods=['GET'])
+@app.route('/recherche/carte', methods=['GET'])
 @app.route('/project/<id>', methods=['GET'])
 def spa(id=''):
 
