@@ -157,7 +157,7 @@ export default {
 
 <style>
 .map { 
-    height: calc(100vh - 60px); 
+    height: calc(100vh - 120px); 
     width: 100%;
 }
 
