@@ -41,6 +41,7 @@
         :zoom="zoom"
         :options="{zoomControl: false}"
         :center="center"
+        :bounds="bounds"
         @update:center="centerUpdate"
         @update:zoom="zoomUpdate">
             <l-control-zoom position="bottomright"/>
@@ -48,8 +49,7 @@
                 :url="url"
                 :attribution="attribution"/>
             <v-marker-cluster>
-                <l-marker v-for="p in projects" 
-                    v-if="geolocByProjectId.get(p.id)"
+                <l-marker v-for="p in displayedProjects"
                     :key="p.id"
                     :lat-lng="{lng: geolocByProjectId.get(p.id).longitude, lat: geolocByProjectId.get(p.id).latitude}"
                     @click="highlightProject(p)">
@@ -66,7 +66,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { LMap, LControlZoom, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
+import { L, LMap, LControlZoom, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 
 import CISSearchResultsCountAndTabs from './CISSearchResultsCountAndTabs.vue'
@@ -99,8 +99,17 @@ export default {
     },
     computed: {
         ...mapState({
-            projects: ({search}) => search.answer.result && search.answer.result.projects,
-            geolocByProjectId: ({geolocByProjectId}) => geolocByProjectId
+            projects({search}){ return search.answer.result && search.answer.result.projects },
+            displayedProjects(){
+                return this.projects && this.projects.filter(p => this.geolocByProjectId.get(p.id))
+            },
+            bounds(){
+                return this.displayedProjects && new L.LatLngBounds(this.displayedProjects.map(p => ({
+                    lng: this.geolocByProjectId.get(p.id).longitude, 
+                    lat: this.geolocByProjectId.get(p.id).latitude
+                })));
+            },
+            geolocByProjectId({geolocByProjectId}){return geolocByProjectId}
         })
     },
     methods: {
