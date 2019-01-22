@@ -46,29 +46,70 @@ main#home{
 
         form{
             background-color: $cis-primary-invert;
-        }
-    
-        input{
-            border: 0;
-            border-bottom: 2px solid $cis-primary;
-            border-radius: 0;
-            box-shadow: none;
+            border-radius: 2px;
 
-            &:focus{
-                border: 0;
-                border-bottom: 2px solid $cis-primary;
+            height: rem(85px);
+
+            .column:first-child{
+            
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                & > *{
+                    border: 0;
+                    border-bottom: 2px solid $cis-primary;
+                    height: rem(50px);
+                }
+                
+                .image-container{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    img{
+                        width: rem(36px);
+                    }
+                }
+
+                input{
+                    
+                    width: 100%;
+
+                    padding: 0 1em;
+                    font-size: 1rem;
+                    
+                    border-radius: 0;
+                    box-shadow: none;
         
-                box-shadow: none;
+                    &:focus{
+                        border: 0;
+                        border-bottom: 2px solid $cis-primary;
+                
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .column:last-child{
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                
+                button{
+                    color: $cis-primary-invert;
+                    background-color: $cis-primary;
+        
+                    font-size: rem(18px);
+                    height: rem(50px);
+                }
             }
         }
-
-        button{
-            color: $cis-primary-invert;
-            background-color: $cis-primary;
-
-            font-size: rem(18px);
-            height: rem(50px);
-        }
+        
+        
 
         h3{
             width: initial;
