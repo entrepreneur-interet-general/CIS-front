@@ -24,6 +24,27 @@ catch(e){
 
 
 
+function makeProjectTagToUnifiedTagsMap(){
+    const map = new Map();
+
+    for(const [code, projectTags] of Object.entries(NORMALIZATION_TAGS_SOURCES_CIS_DICT)){
+        const unifiedTagName = NOMENCLATURE_CIS_DICT[code].fullname;
+
+        for(const tag of projectTags){
+            let unifiedTagNames = map.get(tag)
+            if(!unifiedTagNames){
+                unifiedTagNames = new Set()
+            }
+            unifiedTagNames.add(unifiedTagName)
+
+            map.set(tag, unifiedTagNames);
+        }
+    }
+
+    return map;
+}
+
+
 /*
 Example of project in Mongo:
 {
@@ -72,7 +93,7 @@ function fromMongoModelToFrontModel(projectInMongo){
     return {
         id: projectInMongo['_id'],
         title: Array.isArray(projectInMongo['titre du projet']) ? projectInMongo['titre du projet'].join(' '): '',
-        tags: projectInMongo['tags'],
+        tags: projectInMongo['tags'] || [],
         image: projectInMongo['image(s) du projet'],
         address: Array.isArray(projectInMongo['adresse du projet']) ? projectInMongo['adresse du projet'].join(' '): '',
         projectPartners: Array.isArray(projectInMongo['partenaires du projet']) ? projectInMongo['partenaires du projet'].join(' '): '',
@@ -85,6 +106,8 @@ function fromMongoModelToFrontModel(projectInMongo){
 }
 
 
+const projectTagToUnifiedTags = makeProjectTagToUnifiedTagsMap();
+
 function uniformizeProject(p){
     const TEXTURE_COUNT = 16;
 
@@ -96,6 +119,23 @@ function uniformizeProject(p){
     else{
         p.image = p.image[0]
     }
+
+    let projectUnifiedTags = new Set()
+
+    for(const projectTag of p.tags){
+        const unifiedTags = projectTagToUnifiedTags.get(projectTag)
+
+        if(unifiedTags){
+            for(const t of unifiedTags){
+                projectUnifiedTags.add(t);
+            }
+        }
+        else{
+            console.warn('No unified tag for project tag', projectTag, p.id, p.title)
+        }
+    }
+
+    p.tags = [...projectUnifiedTags]
 
     return p;
 }
