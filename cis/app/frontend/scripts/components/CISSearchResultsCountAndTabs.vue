@@ -11,21 +11,19 @@
 
         <div class="buttons has-addons is-right">
 
-            <button :class="['button', view === VIEW_LIST ? 'is-selected is-primary' : undefined]" 
-                @click="$emit('viewChange', VIEW_LIST)">
+            <router-link :to="`/recherche`" :class="['button', view === VIEW_LIST ? 'is-selected is-primary' : undefined]" >
                 <span class="icon">
                     <i class="fas fa-list"></i>
                 </span>
                 <span>Liste</span>
-            </button>
+            </router-link>
 
-            <button :class="['button', view === VIEW_MAP ? 'is-selected is-primary' : undefined]"
-                @click="$emit('viewChange', VIEW_MAP)">
+            <router-link :to="`/recherche/carte`" :class="['button', view === VIEW_MAP ? 'is-selected is-primary' : undefined]" >
                 <span class="icon">
                     <i class="fas fa-map"></i>
                 </span>
                 <span>Carte</span>
-            </button>
+            </router-link>
 
             <button disabled class="button is-normal tooltip is-tooltip-danger is-tooltip-bottom"
                 data-tooltip="en construction">
@@ -59,8 +57,7 @@ export default {
     computed: {
         ...mapState({
             pending: ({search}) => !!search.answer.pendingAbort,
-            total: ({search}) => search.answer.result && search.answer.result.total,
-            
+            total: ({search}) => search.answer.result && search.answer.result.total
         })
     }
 }
@@ -77,13 +74,12 @@ export default {
     margin-bottom: 1em;
 }
 
-.count-and-tabs .result-count-parent,
-.count-and-tabs .buttons{
-    padding-top: 1em;
+.count-and-tabs .result-count-parent{
+    padding-top: 1rem;
 }
 
 .count-and-tabs .result-count-parent{
-    padding: 1em;
+    padding: 0 1em;
     position: relative;
     left: -1em; /* TODO SASS : same absolute value as padding above*/
     max-width: 20em;
@@ -93,6 +89,9 @@ export default {
 
 .count-and-tabs .result-count-parent.open{
     background-color: #F6F6F6;
+    
+    top: -1rem;
+    padding-top: 1rem;
 }
 
 
