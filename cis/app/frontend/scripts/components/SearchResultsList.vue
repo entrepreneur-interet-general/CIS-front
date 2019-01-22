@@ -20,7 +20,9 @@
                 <div>
                     <h1 class="title is-1 is-primary">Aucun projet trouvé !</h1>
                     <p>Pour obtenir plus de résultats, modifier vos critères de recherche</p>
-                    <a href="/" class="button is-primary is-outlined">Supprimer tous les filtres</a>
+                    <button v-if="hasSelectedFilters" href="/" class="button is-primary is-outlined" @click="clearAllFilters">
+                        Supprimer tous les filtres
+                    </button>
                 </div>
             </div>
         </div>
@@ -84,8 +86,20 @@ export default {
             pending: ({search}) => !!search.answer.pendingAbort,
             projects: ({search}) => search.answer.result && search.answer.result.projects,
             total: ({search}) => search.answer.result && search.answer.result.total,
-            
+            hasSelectedFilters: ({search}) => {
+                const selectedFilters = search.question && search.question.selectedFilters;
+                if(!selectedFilters)
+                    return false;
+                
+                return [...selectedFilters.values()].some(selectedFilterValues => selectedFilterValues.size >= 1)
+            }
         })
+    },
+
+    methods: {
+        clearAllFilters(){
+            this.$store.dispatch( 'clearAllFilters' )
+        }
     },
 
     mounted(){
