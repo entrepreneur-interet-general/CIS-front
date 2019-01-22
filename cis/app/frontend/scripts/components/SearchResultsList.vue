@@ -15,7 +15,14 @@
                 </div>
             </div>
 
-            <div class="no-result" v-if="total === 0">(Aucun résultat)</div>
+            <div class="no-result error" v-if="total === 0">
+                <img src="/static/illustrations/erreur_no_results.png">
+                <div>
+                    <h1 class="title is-1 is-primary">Aucun projet trouvé !</h1>
+                    <p>Pour obtenir plus de résultats, modifier vos critères de recherche</p>
+                    <a href="/" class="button is-primary is-outlined">Supprimer tous les filtres</a>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -115,10 +122,7 @@ export default {
     padding-top: 1rem;
 }
 
-.no-result{
-    text-align: center;
-    padding: 2em;
-}
+
 .pending{
     text-align: center;
     padding: 2em;

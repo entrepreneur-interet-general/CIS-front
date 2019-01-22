@@ -1,6 +1,6 @@
 @import './cis-colors.scss';
 
-.http-error{
+.error{
     background-color: $cis-grey-background;
     height: 90vh;
     width: 100%;
@@ -21,14 +21,17 @@
     h1{
         color: $cis-primary;
     }
+
+    p{
+        padding-bottom: 1rem;
+    }
+
     a.button.is-primary.is-outlined{
         background-color: white;
     }
-
-    &.error-500{
-        p{
-            padding-bottom: 1rem;
-        }
+    
+    &.no-result{
+        height: 70vh;
     }
 
 }
