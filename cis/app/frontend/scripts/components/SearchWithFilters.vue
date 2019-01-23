@@ -20,7 +20,7 @@
                     :id="filter.name"
                     class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
-                    <a :class='["navbar-link", {"has-text-primary has-text-weight-semibold" : filter.is_active } ]'>
+                    <a :class='["navbar-link", {"has-text-weight-semibold" : selectedFilters.get(filter.name).size >= 1 } ]'>
                         <span>
                             {{ filter.fullname }}
                         </span>
