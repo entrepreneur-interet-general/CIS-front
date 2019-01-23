@@ -41,8 +41,8 @@
                                     </a>
                                 </div>
                                 <div v-if="project.pageAtSourcer">
-                                    <a :href="project.pageAtSourcer" target="_blank">
-                                        <img src="link">
+                                    <a :href="project.pageAtSourcer" class="link-at-sourcer" target="_blank">
+                                        <img src="/static/icons/pictogrammes_icon_link.svg">
                                         Voir ce projet sur le site
                                     </a>
                                 </div>
@@ -159,8 +159,13 @@ a.back{
     align-items: center;
     justify-content: left;
 
+    .link-at-sourcer img{
+        max-height: 1.1em;
+        transform: translateY(0.2em);
+    }
+
     img{
-        max-height: 2em;
+        height:100%;
     }
 
     a{
