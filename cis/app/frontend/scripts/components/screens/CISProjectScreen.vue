@@ -33,7 +33,7 @@
                         <div class="added" v-if="spider">
                             <div>
                                 <div>
-                                    Project ajouté par 
+                                    Projet ajouté par 
                                     <a :href="spider.page_url" target="_blank">
                                         {{spider.name}}
                                     </a>
