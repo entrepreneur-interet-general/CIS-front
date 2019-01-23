@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         <img :src="project.image"/>
-                        <div class="content">
+                        <div v-if="Array.isArray(project.tags) && project.tags.length >= 1" class="content">
                             <h2 class="title is-5">Catégories</h2>
                             <span v-for="tag in project.tags" class="tag" :key="tag">
                                 {{tag}}
