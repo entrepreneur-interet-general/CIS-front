@@ -52,54 +52,12 @@ def token_required(f):
 ### + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + ###
 
 
-@app.errorhandler(404)
-def error404(error):
-
-	log_cis.error( "error - 404 : %s", error )
-	
-	form 			= FeedbackForm()
-	
-	return render_template( "errors.html",
-
-							config_name			= config_name, # prod or default...
-							app_metas			= app_metas, 
-							language			= "fr" ,
-							languages_dict		= app_languages_dict ,
-
-							site_section		= "404",
-							error_msg			= u"la page demandée n'existe pas",
-							user_infos			= current_user.get_public_infos,
-							form				= form
-						),404
-
-@app.errorhandler(500)
-def error500(error):
-
-	log_cis.error( "error - 500 : %s", error )
-
-	form 			= FeedbackForm()
-	
-	return render_template( "errors.html",
-
-							config_name			= config_name, # prod or default...
-							app_metas			= app_metas, 
-							language			= "fr" ,
-							languages_dict		= app_languages_dict ,
-
-							site_section		= "500",
-							error_msg			= u"erreur serveur",
-							form				= form,
-							user_infos			= current_user.get_public_infos
-						),500
-
 @app.errorhandler(403)
 def error403(error):
 
 	log_cis.error( "error - 403 : %s", error )
-
-	form 			= FeedbackForm()
 	
-	return render_template( "errors.html",
+	return render_template( "errors/403.html",
 
 							config_name			= config_name, # prod or default...
 							app_metas			= app_metas, 
@@ -108,10 +66,43 @@ def error403(error):
 							
 							site_section		= "403",
 							error_msg			= u"accès interdit",
-							form				= form,
 							user_infos			= current_user.get_public_infos
 						),403
 
+
+@app.errorhandler(404)
+def error404(error):
+
+	log_cis.error( "error - 404 : %s", error )
+	
+	return render_template( "errors/404.html",
+
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict,
+
+							site_section		= "404",
+							error_msg			= u"la page demandée n'existe pas",
+							user_infos			= current_user.get_public_infos
+						),404
+
+@app.errorhandler(500)
+def error500(error):
+
+	log_cis.error( "error - 500 : %s", error )
+	
+	return render_template( "errors/500.html",
+
+							config_name			= config_name, # prod or default...
+							app_metas			= app_metas, 
+							language			= "fr" ,
+							languages_dict		= app_languages_dict ,
+
+							site_section		= "500",
+							error_msg			= u"erreur serveur",
+							user_infos			= current_user.get_public_infos
+						),500
 
 
 

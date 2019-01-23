@@ -2,7 +2,7 @@
     <div>
         <NavBar :logo="logo" :brand="brand"/>
 
-        <main>
+        <main v-if="project">
             <div class="container">
 
                 <a class="back" @click="goBack">
@@ -59,6 +59,8 @@
                 </div>
             </div>
         </main>
+
+        <NotFoundError v-if="!project"/>
         
         <Footer/>
     </div>
@@ -68,11 +70,12 @@
 import {mapState} from 'vuex'
 
 import NavBar from '../NavBar.vue';
+import NotFoundError from '../NotFoundError.vue';
 import Footer from '../Footer.vue';
 
 export default {
     components: {
-        NavBar, Footer
+        NavBar, NotFoundError, Footer
     },
     props: [
         'logo', 'brand'

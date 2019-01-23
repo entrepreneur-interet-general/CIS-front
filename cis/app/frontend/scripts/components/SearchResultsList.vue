@@ -15,7 +15,16 @@
                 </div>
             </div>
 
-            <div class="no-result" v-if="total === 0">(Aucun résultat)</div>
+            <div class="no-result error" v-if="total === 0">
+                <img src="/static/illustrations/erreur_no_results.png">
+                <div>
+                    <h1 class="title is-1 is-primary">Aucun projet trouvé !</h1>
+                    <p>Pour obtenir plus de résultats, modifier vos critères de recherche</p>
+                    <button v-if="hasSelectedFilters" href="/" class="button is-primary is-outlined" @click="clearAllFilters">
+                        Supprimer tous les filtres
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -77,8 +86,20 @@ export default {
             pending: ({search}) => !!search.answer.pendingAbort,
             projects: ({search}) => search.answer.result && search.answer.result.projects,
             total: ({search}) => search.answer.result && search.answer.result.total,
-            
+            hasSelectedFilters: ({search}) => {
+                const selectedFilters = search.question && search.question.selectedFilters;
+                if(!selectedFilters)
+                    return false;
+                
+                return [...selectedFilters.values()].some(selectedFilterValues => selectedFilterValues.size >= 1)
+            }
         })
+    },
+
+    methods: {
+        clearAllFilters(){
+            this.$store.dispatch( 'clearAllFilters' )
+        }
     },
 
     mounted(){
@@ -115,10 +136,7 @@ export default {
     padding-top: 1rem;
 }
 
-.no-result{
-    text-align: center;
-    padding: 2em;
-}
+
 .pending{
     text-align: center;
     padding: 2em;

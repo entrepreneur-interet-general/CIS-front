@@ -159,9 +159,13 @@ export function getProjectById(id){
 
     return fetch(url)
     .then(r => r.json())
-    .then(({query_results}) => query_results.find(p => p._id === id) )
-    .then(fromMongoModelToFrontModel)
-    .then(uniformizeProject)
+    .then(({query_results}) => {
+        const project = query_results.find(p => p._id === id)
+
+        return project ?
+            uniformizeProject(fromMongoModelToFrontModel(project)) : 
+            undefined;
+    })
 }
 
 

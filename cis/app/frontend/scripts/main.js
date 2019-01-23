@@ -6,6 +6,7 @@ import {csvParse} from 'd3-dsv';
 import SearchListScreen from './components/screens/SearchListScreen.vue';
 import SearchMapScreen from './components/screens/SearchMapScreen.vue'
 import CISProjectScreen from './components/screens/CISProjectScreen.vue'
+import NotFoundScreen from './components/screens/NotFoundScreen.vue'
 
 import {searchProjects, getProjectById, getSpiders} from './cisProjectSearchAPI.js';
 
@@ -354,6 +355,16 @@ const routes = [
 
             next()
         }
+    },
+    {
+        path: '*', 
+        name: 'error',
+        component: NotFoundScreen, 
+        props(route){
+            return {
+                ...BRAND_DATA
+            }
+        },
     }
 ]
 
