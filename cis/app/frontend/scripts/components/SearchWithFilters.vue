@@ -1,8 +1,9 @@
 <template>
-    <div class="navbar is-white is-fixed-top" id="navbar-filters" role="menubar" aria-label="filters navigation">
+    <div class="search-bar navbar is-white is-fixed-top" role="menubar" aria-label="filters navigation">
         <div class="container">
 
-            <div class="search control has-icons-left has-icons-right is-expanded">
+            <div class="search control is-expanded">
+                <div class="image-container"><img src="/static/icons/icon_search.svg"></div>
                 <input 
                     type="search" 
                     v-model="searchedText"
@@ -10,9 +11,6 @@
                     placeholder="Tapez un mot clé, un lieu, un projet…"
                     @input="searchedTextChanged"
                     >
-                <span class="icon is-normal is-left">
-                    <i class="fas fa-search"></i>
-                </span>
             </div>
 
             <div class="navbar-end">
@@ -22,13 +20,13 @@
                     :id="filter.name"
                     class="navbar-item navbar-item-filter has-dropdown is-hoverable">
 
-                    <a :class='["navbar-link", {"has-text-primary has-text-weight-semibold" : filter.is_active } ]'>
+                    <a :class='["navbar-link", {"has-text-weight-semibold" : selectedFilters.get(filter.name).size >= 1 } ]'>
                         <span>
                             {{ filter.fullname }}
                         </span>
                     </a>
 
-                    <div :id="filter.name" class="navbar-dropdown">
+                    <div :id="filter.name" class="navbar-dropdown is-right">
 
                         <a class="navbar-item" v-for="choice in filter.choices" :key="choice.name">
                             <div class="field">
@@ -96,21 +94,63 @@ export default {
     }
 }
 </script>
-<style scoped>
-.search{
-    flex: 1;
+
+<style lang="scss" scoped>
+@import '../../styles/cis-colors.scss';
+@import '../../styles/cis-misc.scss';
+@import '../../styles/rem.scss';
+
+.search-bar {
+    top: $cis-navbar-height;
+    height: $cis-search-bar-height;
+
+    font-size: $cis-navbar-font-size;
+    
+    .search{
+        flex: 1;
+
+        display: flex;
+        flex-direction: row;
+        //justify-content: center;
+        align-items: center;
+
+        .image-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                width: rem(36px);
+            }
+        }
+
+        input[type="search"]{
+            height: 100%;
+            border: 0;
+        }
+    }
+
+    .navbar-end{
+        
+        .navbar-link::after{
+            content: url("/static/icons/pictogrammes_icon_chevron3.svg");
+            border: 0;
+
+            transform: none;
+
+            margin-right: -0.5em;
+            width: rem(20px);
+
+            right: 1em;
+            top: 47%;
+        }
+
+        .navbar-item{
+            padding: 0.2em 0.2em;
+            border-left: 1px solid #CBCBCB;
+        }
+    }
 }
 
-input[type="search"]{
-    height: 100%;
-}
-
-#navbar-filters .navbar-end{
-    margin-right: 10em;
-}
-
-
-#navbar-filters .navbar-end .navbar-item{
-    padding: 0.2em 0.2em;
-}
 </style>

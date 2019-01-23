@@ -8,9 +8,7 @@
             
             <div class="card-content">
                 <div class="content" v-if="project.address.trim().length > 1">
-                    <span class="icon has-text-light">
-                        <i class="fas fa-location-arrow"></i>
-                    </span>
+                    <img src="/static/icons/pictogrammes_icon_pin.svg">
                     <span class="subtitle is-6">
                         {{project.address.slice(0, 100)}}
                     </span>
@@ -59,7 +57,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../../styles/cis-misc.scss';
+
 .card-image {
     min-height: 100px;
 }
@@ -70,7 +70,7 @@ export default {
 
 .proj-card {
 	border-radius: 3px ;
-	box-shadow : 5px 5px 9px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1) ; 
+	box-shadow : $cis-discrete-shadow;
 }
 
 .proj-card-img {
@@ -88,4 +88,10 @@ export default {
 
     font-size: 12px;
 }
+
+.card-content img{
+    max-height: 1.1em;
+    transform: translateY(0.1em);
+}
+
 </style>

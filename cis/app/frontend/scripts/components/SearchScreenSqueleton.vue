@@ -25,8 +25,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../../styles/cis-misc.scss';
+
 main{
-    margin-top: calc(60px + 52px);
+    margin-top: $cis-navbar-height + $cis-search-bar-height;
 }
 </style>

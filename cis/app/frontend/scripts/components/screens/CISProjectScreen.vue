@@ -6,11 +6,9 @@
             <div class="container">
 
                 <a class="back" @click="goBack">
-                    <span class="icon has-text-primary">
-                        <i class="fas fa-arrow-left"></i>
-                    </span>
+                    <img src="/static/icons/icon_arrow1.svg">
                     <span>
-                        retour aux résultats de recherche
+                        Retour aux résultats de recherche
                     </span>
                 </a>
 
@@ -32,14 +30,25 @@
                     </div>
 
                     <div class="column is-5">
-                        <div class="added" v-if="spiders && project && spiders[project.spiderId]">
-                            Project ajouté par 
-                            <a :href="project.pageAtSourcer || spiders[project.spiderId].page_url" target="_blank">
-                                {{spiders[project.spiderId].name}}
-                            </a>
+                        <div class="added" v-if="spider">
+                            <div>
+                                <div>
+                                    Projet ajouté par 
+                                    <a :href="spider.page_url" target="_blank">
+                                        {{spider.name}}
+                                    </a>
+                                </div>
+                                <div v-if="project.pageAtSourcer">
+                                    <a :href="project.pageAtSourcer" class="link-at-sourcer" target="_blank">
+                                        <img src="/static/icons/pictogrammes_icon_link.svg">
+                                        Voir ce projet sur le site
+                                    </a>
+                                </div>
+                            </div>
+                            <img v-if="spider.logo_url" :src="spider.logo_url">
                         </div>
-                        <img :src="project.image"/>
-                        <div class="content">
+                        <img class="illustration" :src="project.image"/>
+                        <div v-if="Array.isArray(project.tags) && project.tags.length >= 1" class="content">
                             <h2 class="title is-5">Catégories</h2>
                             <span v-for="tag in project.tags" class="tag" :key="tag">
                                 {{tag}}
@@ -71,7 +80,7 @@ export default {
     
     computed: mapState({
         project: 'displayedProject',
-        spiders: 'spiders'
+        spider({spiders}){ return spiders && this.project && spiders[this.project.spiderId] }
     }),
 
     mounted(){
@@ -97,22 +106,36 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../../../styles/cis-colors.scss';
+@import '../../../styles/cis-misc.scss';
+
 main{
-    background-color: #f6f6f6;
-    margin-top: calc(60px);
+    background-color: $cis-grey-background;
+    margin-top: $cis-navbar-height;
 }
 
 a.back{
     padding: 1em 0;
     display: block;
+
+    color: $cis-text-color;
+
+    img{
+        height: 1.5em;
+        transform: translateY(0.4em);
+    }
+
+    span{
+        margin-left: 1em;
+    }
 }
 
 .columns{
     margin-top: 0;
 }
 
-.columns .column img{
+.illustration{
     width: 100%;
     margin-bottom: 1em;
 }
@@ -123,33 +146,53 @@ a.back{
     margin-bottom: 1em;
 }
 
-.description h1{
-    font-weight: bold;
+.description{
+    h1{
+        font-weight: bold;
+    }
+
+    p{
+        margin-bottom: 1em;
+    }
+    
+    a{
+        color: $cis-primary;
+        border-bottom: 1px solid $cis-primary;
+    }
+} 
+
+
+.added {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+    .link-at-sourcer img{
+        max-height: 1.1em;
+        transform: translateY(0.2em);
+    }
+
+    img{
+        height:100%;
+    }
+
+    a{
+        color: $cis-primary;
+        font-weight: bold;
+    }
 }
 
-.description p {
-    margin-bottom: 1em;
-}
+.content{
+    h2{
+        font-weight: bold;
+    }
 
-.description a{
-    color: #592d7b;
-    border-bottom: 1px solid #592d7b;
-}
-
-.added a{
-    color: #592d7b;
-    font-weight: bold;
-}
-
-.content h2{
-    font-weight: bold;
-
-}
-
-.content .tag{
-    background-color: #767676;
-    color: white;
-    margin-right: 1em;
-    margin-bottom: 0.5em;
+    .tag{
+        background-color: #767676;
+        color: white;
+        margin-right: 1em;
+        margin-bottom: 0.5em;
+    }
 }
 </style>

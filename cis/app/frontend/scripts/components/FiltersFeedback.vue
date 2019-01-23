@@ -74,7 +74,7 @@ export default {
 
     border-radius: 3px;
 
-    padding: 0.2em 0 0.2em 1em;
+    padding: 0.1em 0 0.2em 1em;
     margin-right: 0.5em;
     font-size: 0.9em;
 }
