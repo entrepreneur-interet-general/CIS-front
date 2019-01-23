@@ -6,11 +6,9 @@
             <div class="container">
 
                 <a class="back" @click="goBack">
-                    <span class="icon has-text-primary">
-                        <i class="fas fa-arrow-left"></i>
-                    </span>
+                    <img src="/static/icons/icon_arrow1.svg">
                     <span>
-                        retour aux résultats de recherche
+                        Retour aux résultats de recherche
                     </span>
                 </a>
 
@@ -120,6 +118,17 @@ main{
 a.back{
     padding: 1em 0;
     display: block;
+
+    color: $cis-text-color;
+
+    img{
+        height: 1.5em;
+        transform: translateY(0.4em);
+    }
+
+    span{
+        margin-left: 1em;
+    }
 }
 
 .columns{
