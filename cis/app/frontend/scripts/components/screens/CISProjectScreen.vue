@@ -40,7 +40,7 @@
                                 </div>
                                 <div v-if="project.pageAtSourcer">
                                     <a :href="project.pageAtSourcer" class="link-at-sourcer" target="_blank">
-                                        <img src="/static/icons/pictogrammes_icon_link.svg">
+                                        <img src="/static/icons/icon_link.svg">
                                         Voir ce projet sur le site
                                     </a>
                                 </div>

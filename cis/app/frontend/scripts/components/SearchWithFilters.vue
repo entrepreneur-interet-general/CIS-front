@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="search control is-expanded">
-                <div class="image-container"><img src="/static/icons/icon_search.svg"></div>
+                <div class="image-container"><img src="/static/icons/icon_search_violet.svg"></div>
                 <input 
                     type="search" 
                     v-model="searchedText"
@@ -134,7 +134,7 @@ export default {
     .navbar-end{
         
         .navbar-link::after{
-            content: url("/static/icons/pictogrammes_icon_chevron3.svg");
+            content: url("/static/icons/icon_chevron3.svg");
             border: 0;
 
             transform: none;

@@ -12,18 +12,18 @@
         <div class="buttons has-addons is-right">
 
             <router-link :to="`/recherche`" :class="['button', view === VIEW_LIST ? 'is-selected is-primary' : undefined]" >
-                <img src="/static/icons/pictogrammes_icon_list.svg">
+                <img :src="`/static/icons/${view === VIEW_LIST ? 'icon_list_blanc.svg': 'icon_list.svg'}`">
                 <span>liste</span>
             </router-link>
 
             <router-link :to="`/recherche/carte`" :class="['button', view === VIEW_MAP ? 'is-selected is-primary' : undefined]" >
-                <img src="/static/icons/pictogrammes_icon_map.svg">
+                <img :src="`/static/icons/${view === VIEW_MAP ? 'icon_map_blanc.svg': 'icon_map.svg'}`">
                 <span>carte</span>
             </router-link>
 
             <button disabled class="button is-normal tooltip is-tooltip-danger is-tooltip-bottom"
                 data-tooltip="en construction">
-                <img src="/static/icons/pictogrammes_icon_dataviz.svg">
+                <img src="/static/icons/icon_dataviz.svg">
                 <span>données</span>
             </button>
 
