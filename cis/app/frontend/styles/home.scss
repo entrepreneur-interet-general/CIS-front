@@ -1,5 +1,6 @@
 @import './rem.scss';
 @import './cis-colors.scss';
+@import './cis-misc.scss';
 
 $INTER_SECTION_SPACING: 3em;
 
@@ -47,6 +48,7 @@ main#home{
         form{
             background-color: $cis-primary-invert;
             border-radius: 2px;
+            box-shadow: $cis-discrete-shadow;
 
             height: rem(85px);
 
@@ -123,13 +125,14 @@ main#home{
             color: $cis-secundary;
 
             .counter{
-                font-size: 5em;
+                font-size: rem(60px);
                 margin-right: 0.2em;
                 font-weight: bold;
             }
         
             .text{
                 max-width: 6em;
+                line-height: 1.2;
             }
         }
     
@@ -259,14 +262,22 @@ main#home{
             button{
                 border: 0;
                 font-size: 2em;
-                padding: 1em;
                 font-weight: bold;
+
+                background-repeat: no-repeat;
                 background-color: transparent;
                 
                 &:focus,
                 &:active{
                     box-shadow: none;
                     border: 0;
+                }
+
+                &.previous{
+                    background-image: url('/static/icons/icon_chevron2.svg');
+                }
+                &.next{
+                    background-image: url('/static/icons/icon_chevron1.svg');
                 }
             }
         }
@@ -287,6 +298,7 @@ main#home{
             
                     background-color: transparent;
                     white-space: normal;
+
                     vertical-align: top;
             
                     display: inline-flex;
@@ -298,7 +310,7 @@ main#home{
                         line-height: 1.2em;
                         background-color: white;
                         padding: 1em;
-                        box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.16);
+                        box-shadow: $cis-discrete-shadow;
 
                         h1{
                             color: $cis-primary;
