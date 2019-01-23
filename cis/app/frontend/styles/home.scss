@@ -48,7 +48,7 @@ main#home{
         form{
             background-color: $cis-primary-invert;
             border-radius: 2px;
-            box-shadow: $cis-discrete-shadow;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 
             height: rem(85px);
 
@@ -347,6 +347,10 @@ main#home{
 
             strong{
                 color: inherit;
+            }
+
+            button[type="submit"]{
+                border: 1px solid white;
             }
         }
     }

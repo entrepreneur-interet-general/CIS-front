@@ -55,7 +55,7 @@
                     @click="highlightProject(p)">
                     
                     <l-icon
-                        iconUrl="/static/icons/icon_pin_violet.png"
+                        iconUrl="/static/icons/icon_pin_plein_violet.svg"
                         :iconSize="p === highlightedProject ? [46, 46] : [29, 29]"/>                    
 
                 </l-marker>
