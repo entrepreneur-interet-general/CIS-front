@@ -26,7 +26,7 @@
                         </span>
                     </a>
 
-                    <div :id="filter.name" class="navbar-dropdown">
+                    <div :id="filter.name" class="navbar-dropdown is-right">
 
                         <a class="navbar-item" v-for="choice in filter.choices" :key="choice.name">
                             <div class="field">
@@ -132,7 +132,6 @@ export default {
     }
 
     .navbar-end{
-        margin-right: 10em;
         
         .navbar-link::after{
             content: url("/static/icons/pictogrammes_icon_chevron3.svg");
