@@ -4,7 +4,11 @@
             <div class="container">
                 <CISSearchResultsCountAndTabs :view="VIEW_MAP" :open="!!highlightedProject">
                     <div class="highlighted-project" v-if="highlightedProject" slot="project">
-                        <button class="button close" @click="highlightProject(undefined)">X</button>
+                        <button class="button close" @click="highlightProject(undefined)">
+                            <span class="icon is-small">
+                                <i class="fas fa-times"></i>
+                            </span>
+                        </button>
 
                         <div class="card">
                             <router-link :to="`/project/${highlightedProject.id}`" class="card-image">
@@ -17,7 +21,9 @@
                                 <span class="icon has-text-light">
                                     <i class="fas fa-location-arrow"></i>
                                 </span> -->
-                                <img src="/static/icons/icon_pin.svg">
+                                <span class="icon">
+                                    <img class="image is-16x16" src="/static/icons/icon_pin.svg">
+                                </span>
                                 <span class="subtitle is-6">
                                     {{highlightedProject.address.slice(0, 100)}}
                                 </span>

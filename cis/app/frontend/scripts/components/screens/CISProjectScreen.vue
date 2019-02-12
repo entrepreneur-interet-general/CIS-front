@@ -18,7 +18,9 @@
                         <div class="description">
                             <h1 class="title is-3">{{project.title}}</h1>
                             <p v-if="project.address">
-                                <img src="/static/icons/icon_pin.svg">
+                                <span class="icon">
+                                    <img class="image is-16x16" src="/static/icons/icon_pin.svg">
+                                </span>
                                 {{project.address}}
                             </p>
                             <p>{{project.description}}</p>
