@@ -17,7 +17,10 @@
                     <div class="column is-5 is-offset-1">
                         <div class="description">
                             <h1 class="title is-3">{{project.title}}</h1>
-                            <p v-if="project.address">{{project.address}}</p>
+                            <p v-if="project.address">
+                                <img src="/static/icons/icon_pin.svg">
+                                {{project.address}}
+                            </p>
                             <p>{{project.description}}</p>
 
                             <div v-if="project.projectPartners">
@@ -45,7 +48,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img v-if="spider.logo_url" :src="spider.logo_url">
+                            <img style="max-width:150px" v-if="spider.logo_url" :src="spider.logo_url">
                         </div>
                         <img class="illustration" :src="project.image"/>
                         <div v-if="Array.isArray(project.tags) && project.tags.length >= 1" class="content">

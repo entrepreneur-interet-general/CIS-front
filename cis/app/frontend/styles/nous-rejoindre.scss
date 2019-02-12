@@ -1,6 +1,12 @@
 @import './cis-colors.scss';
 
+
 .join-us{
+
+    section > .colored {
+        color: $cis-primary;
+        text-decoration: underline;
+    }
 
     section > :not(section){
         width: 80%;
@@ -36,10 +42,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            height: auto; /* Bulma override */
+            // height: auto; /* Bulma override */
             white-space: initial; /* Bulma override */
     
-            max-width: 25%;
+            // max-width: 30%;
             position: relative;
 
             &.with-image{
