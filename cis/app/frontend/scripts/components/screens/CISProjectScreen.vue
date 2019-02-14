@@ -36,23 +36,32 @@
 
                     <div class="column is-5">
                         <div class="added" v-if="spider">
-                            <div>
-                                <div>
-                                    Projet ajouté par 
-                                    <a :href="spider.page_url" target="_blank">
-                                        {{spider.name}}
-                                    </a>
+                            <div class="columns">
+                                <div class="column is-8">
+                                    <div>
+                                        Projet ajouté par 
+                                        <a :href="spider.page_url" target="_blank">
+                                            {{spider.name}}
+                                        </a>
+                                    </div>
+                                    <div v-if="project.pageAtSourcer">
+                                        <a :href="project.pageAtSourcer" class="link-at-sourcer" target="_blank">
+                                            <img src="/static/icons/icon_link.svg">
+                                            Voir ce projet sur le site
+                                        </a>
+                                    </div>
                                 </div>
-                                <div v-if="project.pageAtSourcer">
-                                    <a :href="project.pageAtSourcer" class="link-at-sourcer" target="_blank">
-                                        <img src="/static/icons/icon_link.svg">
-                                        Voir ce projet sur le site
+                                <div class="column is-4 no-left-padding is-vertical-centered">
+                                    <a :href="project.pageAtSourcer" target="_blank">
+                                        <img class="logo" v-if="spider.logo_url" :src="spider.logo_url">
                                     </a>
                                 </div>
                             </div>
-                            <img style="max-width:150px" v-if="spider.logo_url" :src="spider.logo_url">
                         </div>
-                        <img class="illustration" :src="project.image"/>
+
+                        <a :href="project.pageAtSourcer" target="_blank">
+                            <img class="illustration" :src="project.image"/>
+                        </a>
                         <div v-if="Array.isArray(project.tags) && project.tags.length >= 1" class="content">
                             <h2 class="title is-5">Catégories</h2>
                             <span v-for="tag in project.tags" class="tag" :key="tag">
@@ -182,7 +191,22 @@ a.back{
     }
 
     img{
-        height:100%;
+        height:auto;
+    }
+
+    .no-left-padding {
+        padding-left: 0em;
+    }
+    .is-vertical-centered {
+        // padding-left: 1em;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        // max-width: 175px;
+        height: auto;
+        width:100%;
     }
 
     a{

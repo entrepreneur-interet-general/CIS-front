@@ -2,55 +2,77 @@
 
 {% block content %}
 
-
+{# SEARCH INPUT #}
 <main id="home">
-    <section id="top">
-        <div class="border"></div>
-        <div class="background">
-            <h1 class="title is-1">Discover and localize projects <br>of social innovation in France !</h1>
-            <form action="/recherche" method="GET" class="columns">
-                <div class="column is-10">
-                    <div class="search control has-icons-left">
-                        <input type="search" name="text"
-                            class="input is-large input-navbar" 
-                            placeholder="Tapez un mot clé, un lieu, un projet…">
-                        <span class="icon is-medium is-left">
-                            <i class="fas fa-search fa-lg"></i>
-                        </span>
+    <section id="top" class="hero">
+        <div class="background columns is-centered">
+            <div class="column is-8">
+                <h1 class="title is-1">Discover and localize projects <br>of social innovation in France !</h1>
+                <form action="/recherche" method="GET" class="columns">
+                    <div class="column is-10">
+                        <div class="image-container"><img src="/static/icons/icon_search_violet.svg"></div>
+                        <input 
+                            type="search" 
+                            name="text"
+                            class="input"
+                            placeholder="What theme are you interested in ?">
+                        </input>
                     </div>
-                </div>
-                <div class="column is-2">
-                    <button class="button is-large is-fullwidth" type="submit">Search</button>
-                </div>
-            </form>
-            <h3>
-                <span class="counter"></span>
-                <span class="text">projects already accessibles</span>
-            </h3>
+                    <div class="column is-2 is-hidden-touch">
+                        <button class="button is-fullwidth" type="submit">Search</button>
+                    </div>
+                    {# <div class="column is-2 is-hidden-desktop">
+                        <button class="button is-fullwidth" type="submit">R</button>
+                    </div> #}
+                </form>
+                <h3>
+                    <span class="counter"></span>
+                    <span class="text">projects already accessibles</span>
+                </h3>
+            </div>
         </div>
     </section>
 
-    <!--
-    The video is not available, let's forget about this section for now
-
+    {# VIDEO #}
     <section>
-        <h2>2 minutes pour comprendre le projet</h2>
-        <video src=""></video>white-space: normal;
+        <br>
+        <h2 class="title is-1">2 minutes (in French) to understand the project</h2>
+        <div class="columns is-centered"
+             height="600px">
+            <div class="column is-8" style="width:844px; height:475px">
+                <iframe 
+                    class="is-centered"
+                    width="844px" 
+                    height="475px" 
+                    src="https://www.youtube.com/embed/QKm1KLtm9DY" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <br>
     </section>
-    -->
 
-    <section id="participer">
-        <div class="border"></div>
+    {# TEXT / PARTICIPATE #}
+    <section id="participer" class="hero">
         <div class="background">
-            <h2 class="title is-2">How to participate?</h2>
-            <p>
-                <strong>We don’t collect directly projects, we highlight those collected by members of our <a href="/qui-sommes-nous">community. </a>.</strong>
-            </p>
-            <p>
-                Hundreds of websites already collect social innovation projects. We want this information to be more accessible. Community members’ websites are automatically scraped, they don’t have to fill again all the information. Every actor already highlighting social innovations can join the community.
-            </p>
-            <div class="columns rejoindre">
-                <div class="column is-4 is-offset-1">
+        
+            <div class="columns is-centered">
+                <div class="column is-8">
+
+                    <h1 class="title is-1">How to participate?</h1>
+                    <h2 class="title is-2">
+                        <strong>We don’t collect directly projects, we highlight those collected by members of our <a href="/qui-sommes-nous">community</a>.</strong>
+                    </h2>
+                    <p>
+                        Hundreds of websites already collect social innovation projects. We want this information to be more accessible. Community members’ websites are automatically scraped, they don’t have to fill again all the information. Every actor already highlighting social innovations can join the community.
+                    </p>
+                </div>
+            </div>
+
+            <div class="columns is-centered rejoindre">
+                <div class="column is-4">
                     <img src="/static/illustrations/HP_lame3_collectif%402x.png">
                 </div>
                 <div class="column is-4">
@@ -60,11 +82,12 @@
                     <a class="button" href="/nous-rejoindre">Discover how to join the project</a>
                 </div>
             </div>
+
         </div>
     </section>
 
     <section id="collectif">
-        <h2 class="title is-2">A community of more than 50 members</h2>
+        <h2 class="title is-1">A community of more than 50 members</h2>
         <p>Social innovation crossroad federates public institutions, networks, foundations, associations, medias and research centers.</p>
         <div class="columns">
             <div class="column" style="flex: 2;">
@@ -104,7 +127,7 @@
             <h2 class="title is-2">Stories of the community</h2>
 
             <div class="caroussel">
-                <button class="button previous">&lt;</button>
+                <button class="button previous"></button>
                 <div class="caroussel-container">
                     <ul class="caroussel-content">
                         <li>
@@ -158,7 +181,7 @@
                         
                     </ul>
                 </div>
-                <button class="button next">&gt;</button>
+                <button class="button next"></button>
             </div>
         </div>
     </section>

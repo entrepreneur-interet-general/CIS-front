@@ -54,7 +54,8 @@ const CSVToObjectKeyMap = Object.freeze({
     'Code scraper OID': 'spiderId'
 })
 
-const membersP = fetch('/static/data/members.csv')
+{# const membersP = fetch('/static/data/members.csv') #}
+const membersP = fetch('/static/data/members_bis.csv')
 .then(r => r.text())
 .then(d3.csvParse)
 .then(dataFromText => {

@@ -18,7 +18,14 @@
                     <input type="text" name="b_2ad70ac7c89b9a14d9e699f6a_c6a5878897" tabindex="-1" value="">
                 </div>
                 <div class="clear">
-                    <input type="submit" value="S'abonner" name="subscribe" id="mc-embedded-subscribe" class="button is-small is-primary ">
+                    <input 
+                        type="submit" 
+                        value="S'abonner" 
+                        name="subscribe" 
+                        id="mc-embedded-subscribe" 
+                        class="button is-small is-primary "
+			    		style="height:inherit"
+                        >
                 </div>
             </div>
         </form>
