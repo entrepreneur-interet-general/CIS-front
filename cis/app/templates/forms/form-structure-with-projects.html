@@ -1,5 +1,6 @@
 
 <form action="/nous-rejoindre/structure-avec-projets" method="POST" name="form">
+	
 	<fieldset>
 		{{ structureWithProjectsForm.hidden_tag() }}
 		{# { { form.csrf_token }} #}
@@ -8,6 +9,8 @@
 			{{ structureWithProjectsForm.userMiddlename() }}
 		</div>
 
+		<br> 
+		
 		<div class="field">
 			<p class="control is-expanded">
 				<label>Nom de votre structure *
@@ -114,5 +117,10 @@
 				Envoyer
 			</button>
 		</div>
+
+		<br>
+
 	</fieldset>
+
+	
 </form>

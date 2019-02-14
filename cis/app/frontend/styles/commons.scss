@@ -26,11 +26,14 @@ button, .button{
 }
 
 
-
+p a.colored {
+	color: $cis-primary;
+	text-decoration: underline;
+}
 
 .cis-tabs{
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 	justify-content: flex-start;
 	
 	padding-top: $cis-spacing_4;

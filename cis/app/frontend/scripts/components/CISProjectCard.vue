@@ -8,7 +8,9 @@
             
             <div class="card-content">
                 <div class="content" v-if="project.address.trim().length > 1">
-                    <img src="/static/icons/icon_pin.svg">
+                    <span class="icon">
+                        <img class="image is-16x16" src="/static/icons/icon_pin.svg">
+                    </span>
                     <span class="subtitle is-6">
                         {{project.address.slice(0, 100)}}
                     </span>

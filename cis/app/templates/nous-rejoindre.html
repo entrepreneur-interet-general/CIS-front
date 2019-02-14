@@ -4,52 +4,59 @@
 
 
 <main class="join-us"> 
+
     <div class="container">
         <h1 class="title is-2">Qui êtes-vous ?</h1>
 
         <div class="buttons">
             <button class="button with-image project-carrier">
                 <img src="/static/illustrations/Nous_rejoindre_porteur_projet.png" alt="illustration porteur de projet">
-                <h2 class="title is-2">Un porteur de projet</h2>
-                <span>Vous portez une initiative qui est socialement innovante</span>
+                <h2 class="title is-2">Un porteur de projet<br>&nbsp;</h2>
+                {# <span>Vous portez une initiative qui est socialement innovante</span> #}
             </button>
             <button class="button with-image structure">
                 <img src="/static/illustrations/Nous_rejoindre_structure.png" alt="illustration structure">
-                <h2 class="title is-2">Une structure</h2>
-                <span>Vous accompagnez, financez, observez les projets d’innovation sociale</span>
+                <h2 class="title is-2">Une structure<br>&nbsp;</h2>
+                {# <span>Vous accompagnez, financez, observez les projets d’innovation sociale</span> #}
             </button>
         </div>
     </div>
 
+    <br> 
+
     <section hidden class="project-carrier-expand container">
-        <p>Le parti pris du Carrefour des innovations sociales est de rendre plus accessibles les projets déjà référencés sur les sites des membres du collectif.
-        <p>C’est pourquoi nous ne vous proposons pas directement un formulaire pour référencer votre projet. Pour en savoir plus, découvrez <a href="/le-projet">l’histoire du projet</a>.
+        <p>Le parti pris du Carrefour des innovations sociales est de rendre plus accessibles les projets déjà référencés sur les sites des membres du collectif.</p>
+        <p>C’est pourquoi nous ne vous proposons pas directement un formulaire pour référencer votre projet. Pour en savoir plus, découvrez 
+            <a class="colored" href="/le-projet">l’histoire du projet</a>.
+        </p>
 
-        <h2 class="title is-2">Votre projet est-il référencé en ligne par l’un de vos partenaires ?</h2>
+        <br> 
+        <h2 class="title is-2 has-text-centered">Votre projet est-il référencé en ligne par l’un de vos partenaires ?</h2>
 
-        <div class="buttons">
-            <button class="button referenced-by-a-partner">
-                <strong>Oui !</strong>
-                Une structure qui accompagne, finance ou valorise mon projet le référence déjà sur son site
+        <div class="buttons are-medium">
+            <button class="button is-primary is-medium referenced-by-a-partner">
+                <strong> Oui !</strong>
+                {# Une structure qui accompagne, finance ou valorise mon projet le référence déjà sur son site #}
             </button>
-            <button class="button not-yet-referenced-by-a-partner">
+            <button class="button is-primary is-medium not-yet-referenced-by-a-partner">
                 <strong>Pas encore</strong>
-                Mais j’aimerais valoriser mon projet auprès de partenaires potentiels
+                {# Mais j’aimerais valoriser mon projet auprès de partenaires potentiels #}
             </button>
         </div>
 
         <section hidden class="referenced-by-a-partner-expand">
-            <p>C’est super ! Parlez-nous de cette structure. Cela nous permettra de faire connaissance et peut-être lui proposer de rejoindre le collectif. Si la structure rejoint le Carrefour des innovations sociales, votre projet pourra être visible sur ce site.
-            
+            <p>C’est super ! Parlez-nous de cette structure. Cela nous permettra de faire connaissance et peut-être lui proposer de rejoindre le collectif. Si la structure rejoint le Carrefour des innovations sociales, votre projet pourra être visible sur ce site.</p>
+            <br>
             {% include "forms/form-referenced-project-carrier.html" %}
 
         </section>
 
         <section hidden class="not-yet-referenced-by-a-partner-expand">
-            <p>Notre ambition est de valoriser tous les projets existants d’innovation sociale. Pour l’instant, nous réferençons sur le site seulement les projets suivis par les <a href="/qui-sommes-nous/qui-fait-quoi">acteurs partenaires du collectif</a>.
-            <p>Cependant, nous vous invitons à remplir ce formulaire de mise en contact. Ces informations seront transmises aux membres du collectif qui pourront découvrir votre projet et prendre contact avec vous.
-            
-            
+            <p>Notre ambition est de valoriser tous les projets existants d’innovation sociale. Pour l’instant, nous réferençons sur le site seulement les projets suivis par les 
+                <a class="colored" href="/qui-sommes-nous/qui-fait-quoi">
+                acteurs partenaires du collectif</a>.</p>
+            <p>Cependant, nous vous invitons à remplir ce formulaire de mise en contact. Ces informations seront transmises aux membres du collectif qui pourront découvrir votre projet et prendre contact avec vous.</p>
+            <br>
             {% include "forms/form-not-referenced-project-carrier.html" %}
 
         </section>
@@ -57,10 +64,14 @@
     </section>
 
     <section hidden class="structure-expand container">
-        <p>L’association du Carrefour des innovations sociales réunit plus de 50 partenaires accompagnateurs, financeurs ou encore observateurs de l’innovation sociale. <a href="/qui-sommes-nous/qui-fait-quoi">Découvrez-les tous ici</a>.
-        <p>Les membres du collectif participent tous à la gouvernance du projet. Certains partagent leurs listes de projets d’innovation sociale qui sont visibles sont ce sur site.
+        <p>L’association du Carrefour des innovations sociales réunit plus de 50 partenaires accompagnateurs, financeurs ou encore observateurs de l’innovation sociale. 
+            <a class="colored" href="/qui-sommes-nous/qui-fait-quoi">
+            Découvrez-les tous ici</a>.</p>
+        <p>Les membres du collectif participent tous à la gouvernance du projet. Certains partagent leurs listes de projets d’innovation sociale qui sont visibles sont ce sur site.</p>
 
+        <br><br>
         <div class="why">Pourquoi rejoindre le collectif ?</div>
+        <br>
         <ul class="reasons columns is-centered">
             <li class="column">
                 <strong class="title is-1">Un réseau</strong>
@@ -72,45 +83,54 @@
                 <strong class="title is-1">Les communs</strong>
                 <span>Vous participez à la gouvernance d’un commun numérique</span>
         </ul>
-
-        <h2 class="title is-2">La démarche pour rejoindre le collectif</h2>
+        
+        <br>
+        <h2 class="title is-2 has-text-centered">La démarche pour rejoindre le collectif</h2>
+        <br>
 
         <section class="join-walkthrough">
+            <br>
             <ol>
                 <li>
-                    <h2 class="title is-2"><a>Téléchargez la charte du projet</a></h2>
-                    <p>Jetez un oeil à la charte de l’association. Elle décrit la vision du projet et les principes de gouvernance.
+                    <h2 class="title is-2">
+                        <a class="colored" target="_blank" href="/static/files/Charte_carrefourdesinnovationssociales_VF_V2.pdf">Téléchargez la charte du projet</a>
+                    </h2>
+                    <p>Jetez un oeil à la charte de l’association. Elle décrit la vision du projet et les principes de gouvernance.</p>
+                    <br>
+
                 <li>
                     <h2 class="title is-2">Parlez-nous un peu de vous</h2>
-                    <p>Vous vous retrouvez dans la charte ? C’est parfait. Nous aimerions connaître un peu plus vos motivations à rejoindre l’association et sur les projets que vous pourriez partagez avec nous.
+                    <p>Vous vous retrouvez dans la charte ? C’est parfait. Nous aimerions connaître un peu plus vos motivations à rejoindre l’association et sur les projets que vous pourriez partagez avec nous.</p>
+                    <br>
                     <div class="buttons">
-                        <button class="button has-projects">J’ai des projets à partager</button>
-                        <button class="button no-projects">Je n’ai pas de projets</button>
+                        <button class="button is-primary is-medium has-projects">J’ai des projets à partager</button>
+                        <button class="button is-primary is-medium no-projects">Je n’ai pas de projets</button>
                     </div>
 
                     <section class="has-projects-expand" hidden>
-                        <p>Vous listez des projets d’innovation sociales et vous aimeriez les valoriser sur le site du Carrefour des innovations sociales ? Dîtes-nous en un peu plus!
-                    
+                        <p>Vous listez des projets d’innovation sociales et vous aimeriez les valoriser sur le site du Carrefour des innovations sociales ? Dîtes-nous en un peu plus!</p>
+                        <br>
                         {% include "forms/form-structure-with-projects.html" %}
 
                     </section>
 
                     <section class="no-projects-expand" hidden>
-                       <p>Vous ne référencez pas de projets d’innovation sociale sous forme de liste mais vous souhaitez vous investir dans le projet ? Nous serions ravis de vous acceuillir, dîtes-nous en un peu plus sur votre structure.
-                        
+                       <p>Vous ne référencez pas de projets d’innovation sociale sous forme de liste mais vous souhaitez vous investir dans le projet ? Nous serions ravis de vous acceuillir, dîtes-nous en un peu plus sur votre structure.</p>
+                        <br>
                         {% include "forms/form-structure-no-projects.html" %}
                     </section>
 
                 <li>
                     <h2 class="title is-2">Validation de votre inscription</h2>
-                    <p>Une fois le formulaire rempli, l’équipe du Carrefour des innovations sociales prendra connaissance de votre demande. Un copil se réunit tous les deux mois pour valider les nouvelles incriptions.
+                    <p>Une fois le formulaire rempli, l’équipe du Carrefour des innovations sociales prendra connaissance de votre demande. Un copil se réunit tous les deux mois pour valider les nouvelles incriptions.</p>
             </ol>
+            <br>
         </section>
 
 
     </section>
 
-
+    <br><br>
 
 </main>
 

@@ -1,20 +1,41 @@
 <template>
     <section class="filter-feedback" v-if="selectedFilters.length >= 1">
         <div class="container inline-filters">
-            <span class="all">
-                Supprimer tous les filtres
-                <button @click="clearAllFilters">x</button>
-            </span>
-            <span v-for="{filter, value} in selectedFilters" :key="filter+value">
-                {{
-                    filterDescriptions
-                        .find(f => f.name === filter)
-                        .choices
-                        .find(c => c.name === value)
-                        .fullname
-                }}
-                <button @click="clearFilter({filter, value})">x</button>
-            </span>
+
+            <!-- <template class="all"> -->
+                <a class="button is-small" @click="clearAllFilters">
+                    <span>
+                        Supprimer tous les filtres
+                    </span>
+                    <!-- x -->
+                    <span class="icon is-small">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </a>
+            <!-- </template> -->
+
+            <!-- <template > -->
+                <a 
+                    v-for="{filter, value} in selectedFilters" :key="filter+value"
+                    class="button is-small is-grey" 
+                    @click="clearFilter({filter, value})"
+                    >
+                    <span>
+                    {{
+                        filterDescriptions
+                            .find(f => f.name === filter)
+                            .choices
+                            .find(c => c.name === value)
+                            .fullname
+                    }}
+                    </span>
+                    <!-- x -->
+                    <span class="icon is-small">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </a>
+            <!-- </template> -->
+
         </div>
     </section>
 </template>
@@ -61,11 +82,18 @@ export default {
 
 .filter-feedback > .inline-filters{
     padding-top: 1em;
-
     font-size: 12px;
 }
 
-.filter-feedback > .inline-filters span{
+.filter-feedback > .inline-filters a.button {
+    border-radius: 3px;
+    margin-right: 0.5em;
+    border: 1px solid #767676;
+    padding-top: 0.1em ;
+    padding-bottom: 0.1em ;
+    height: inherit;
+}
+/* .filter-feedback > .inline-filters span{
     white-space: nowrap;
     border: 1px solid #767676;
     background-color: #767676;
@@ -75,7 +103,6 @@ export default {
     border-radius: 3px;
 
     padding: 0.1em 0 0.2em 1em;
-    margin-right: 0.5em;
     font-size: 0.9em;
 }
 
@@ -93,7 +120,7 @@ export default {
 
     cursor: pointer;
     
-}
+} */
 
 .filter-feedback > .inline-filters span.all{
 

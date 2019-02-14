@@ -52,6 +52,13 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 	
 	> 
 		$ cd cis/app/frontend
+		$ npm install
+		$ npm run build
+
+1. (**if you encounter problems while building try this**)
+	
+	> 
+		$ rm -rf cis/app/frontend/node_modules
 		$ npm install 
 		$ npm run build
 
@@ -67,6 +74,17 @@ The official website for the project SocialConnect / aka (in French) Carrefour d
 1. **go to app folder and create a virtual env** (for instance called "venv")
 1. **set up the [gunicorn service](./unit/working_service_config.service) and [NGINX](./nginx/working_nginx_config)** accordingly 
 1. ... pray for all that to work as expected, and keep calm... 
+
+
+### _PRODUCTION_ : update code and deploy
+
+> 
+	cd /<your_app_folder>/<username>/app_cis/cis
+	git pull origin master
+	cd app/frontend
+	npm ci
+	npm run build
+	sudo systemctl restart cis_front
 
 
 #### Creating the first admin account

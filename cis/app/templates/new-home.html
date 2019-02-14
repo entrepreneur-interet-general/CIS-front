@@ -2,22 +2,31 @@
 
 {% block content %}
 
-
+{# SEARCH INPUT #}
 <main id="home">
     <section id="top" class="hero">
         <div class="background columns is-centered">
             <div class="column is-8">
                 <h1 class="title is-1">Découvrez et repérez tous les projets d'innovation sociale en France</h1>
+                
                 <form action="/recherche" method="GET" class="columns">
                     <div class="column is-10">
                         <div class="image-container"><img src="/static/icons/icon_search_violet.svg"></div>
-                        <input type="search" name="text"
+                        <input 
+                            type="search" 
+                            name="text"
+                            class="input"
                             placeholder="Quel thème vous intéresse ?">
+                        </input>
                     </div>
-                    <div class="column is-2">
+                    <div class="column is-2 is-hidden-touch">
                         <button class="button is-fullwidth" type="submit">Rechercher</button>
                     </div>
+                    {# <div class="column is-2 is-hidden-desktop">
+                        <button class="button is-fullwidth" type="submit">R</button>
+                    </div> #}
                 </form>
+
                 <h3>
                     <span class="counter"></span>
                     <span class="text">projets déjà réferencés</span>
@@ -26,24 +35,43 @@
         </div>
     </section>
 
-    <!--
-    The video is not available, let's forget about this section for now
-
+    {# VIDEO #}
     <section>
-        <h2>2 minutes pour comprendre le projet</h2>
-        <video src=""></video>white-space: normal;
+        <br>
+        <h2 class="title is-1">2 minutes pour comprendre le projet</h2>
+        <div class="columns is-centered"
+             height="600px">
+            <div class="column is-8" style="width:844px; height:475px">
+                <iframe 
+                    class="is-centered"
+                    width="844px" 
+                    height="475px" 
+                    src="https://www.youtube.com/embed/QKm1KLtm9DY" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <br>
     </section>
-    -->
-
+    
+    {# TEXT / PARTICIPATE #}
     <section id="participer" class="hero">
         <div class="background">
+
             <div class="columns is-centered">
                 <div class="column is-8">
+
                     <h1 class="title is-1">Comment participer ?</h1>
-                    <h2 class="title is-2">Nous ne référençons pas directement les projets. Nous relayons ceux recensés par les membres du <a href="/qui-sommes-nous">collectif</a>.</h2>
+                    <h2 class="title is-2">
+                        Nous ne référençons pas directement les projets. 
+                        <br>Nous relayons ceux recensés par les membres du <a href="/qui-sommes-nous">collectif</a>.
+                    </h2>
                     <p>
                         Des centaines de sites recensent déjà des projets d’innovation sociale. Nous voulons rendre cette information plus accessible. Les données sur les projets sont donc collectées auprès des sites des membres du collectif qui recensent des projets.
                     </p>
+                    
                 </div>
             </div>
 
@@ -53,19 +81,23 @@
                 </div>
                 <div class="column is-4">
                     <p>
-                        Vous recensez des projets d’innovation sociale et vous souhaiteriez les partager&nbsp;? Ou vous êtes simplement intéréssé par notre démarche&nbsp;?
+                        Vous recensez des projets d’innovation sociale et vous souhaiteriez les partager&nbsp;? Ou vous êtes simplement intéréssé.e par notre démarche&nbsp;?
                     </p>
                     <a class="button" href="/nous-rejoindre">Découvrez comment rejoindre le projet</a>
                 </div>
             </div>
+
         </div>
     </section>
 
+    {# TEXT / COLLECTIVE #}
     <section id="collectif" class="hero">
         <div class="columns is-centered">
             <div class="column is-10">
                 <h1 class="title is-1">Un collectif de plus de 50 membres</h1>
-                <p>Le Carrefour des innovations sociales rassemble des associations, têtes de réseaux, collectivités, fondations, médias, centres de recherche et institutions
+                <p>
+                    Le Carrefour des innovations sociales rassemble des associations, têtes de réseaux, collectivités, fondations, médias, centres de recherche et institutions
+                </p>
                 <div class="columns is-centered">
                     <div class="column is-3">
                         <h3>Ils ont initié le projet</h3>
@@ -88,6 +120,7 @@
                 <div class="columns is-centered">
                     <a class="button" href="./qui-sommes-nous">Découvrez tous les membres du collectif</a>
                 </div>
+                <br>
                 <div>
                     <h3>Ils soutiennent le projet</h3>
                     <ul class="columns">
@@ -95,13 +128,15 @@
                         <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Investissements_d'avenir_-_logo.jpeg" alt="Logo Investissements d'avenir">
                         <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/Etalab logo.PNG" alt="Logo Etalab">
                         <li class="column"> <img src="/static/logos/Partenaires/Institution_et_tetes_de_reseau/EIG.png" alt="Logo Entrepreneur d'Intérêt général">
-                        <li class="column" style="height: 8em;"> <img src="/static/logos/Partenaires/logos à ajouter/FFE.png" alt="Logo FFE">
+                        <li class="column" style="height: 8em;"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FFE.png" alt="Logo Fondation la France s'engage">
+                        <li class="column"> <img src="/static/logos/Partenaires/Fondation_et_acteurs_engages_RSE/FCC.png" alt="Logo Fondation Crédit Coopératif">
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    {# NEEDS TO BE REDONE WITH BULMA-CAROUSEL !!! #}
     <section id="témoignages" class="hero">
         <div class="background">
             <h1 class="title is-1">Le collectif témoigne</h1>
@@ -159,7 +194,7 @@
                                 <blockquote>« Identifier, mettre en lumière et contribuer aux innovations sociales en Europe fait partie des priorités de l’AEIDL » Steven Bertal, co-fondateur de Génération2 Conseil « Le Carrefour des innovations sociales offre une lisibilité nouvelle du secteur de l'ESS en France, utile pour l'intérêt général et nos activités de conseil  » </blockquote>
                             </div>
                         <li>
-                            <img src="/static/photos/Portraits_photos_julien_kounowski .png">
+                            <img src="/static/photos/Portraits_photos_julien_kounowski.png">
                             <div class="text">
                                 <h1> Julien Kounowski, chef de projet SIILAB pour la DRJSCS Hauts-de-France </h1>
                                 <blockquote>« Pour apporter les travaux et les réalisations de notre laboratoire d'innovation publique et les partager au national sur le champ de l'innovation sociale  » </blockquote>
@@ -177,7 +212,7 @@
         </div>
     </section>
 
-    
+    {# CONTACT #}
     <section id="contacter">
         <h2 class="title is-2">Une question à nous poser ?</h2>
 
