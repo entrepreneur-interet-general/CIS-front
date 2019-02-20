@@ -75,6 +75,10 @@ export default {
 	box-shadow : $cis-discrete-shadow;
 }
 
+.proj-card:hover {
+	box-shadow : $cis-strong-shadow;
+}
+
 .proj-card-img {
 	border-radius : 3px 3px 0px 0px ;
 }
