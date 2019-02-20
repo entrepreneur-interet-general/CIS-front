@@ -26,6 +26,7 @@ $link-hover 	: $cis-primary;
 $family-sans-serif 	: "Barlow", sans-serif ;
 $family-primary 	: $family-sans-serif ; 
 
+$button-disabled-opacity: 0.7 ;
 
 // Import the rest of Bulma at the end
 @import "../node_modules/bulma/bulma.sass";
@@ -42,3 +43,19 @@ form .control{
 .is-checkradio[type="checkbox"] + label{
     font-size: $cis-navbar-font-size
 }
+
+// Bulma default behaviour darkens the button, doesn't fit for CIS
+.button.is-primary:hover{
+    background-color:$primary-invert;
+    color:$primary;
+    border-color:$primary;
+}
+// Bulma default has a transparent background, causing the button
+// to become invisible on a purple background
+.button.is-primary.is-outlined{
+    background-color:$primary-invert;
+}
+.button.is-primary.is-outlined:hover{
+    border-color:$primary-invert;
+}
+

@@ -102,10 +102,6 @@ main#home{
                 justify-content: center;
                 
                 button{
-                    color: $cis-primary-invert;
-                    background-color: $cis-primary;
-        
-                    font-size: rem(18px);
                     height: rem(50px);
                 }
             }
@@ -174,11 +170,9 @@ main#home{
             align-items: center;
             color: $cis-primary;
 
-            a{
-                color: $cis-primary-invert;
-                background-color: $cis-primary;
-                margin-top: 1em;
-            }
+	    a{
+		margin-top: 1em;
+	    }
         }
     }
 
@@ -226,9 +220,6 @@ main#home{
 
         a.button{
             margin-bottom: 1.5em;
-            
-            color: $cis-primary;
-            border-color: $cis-primary;
         }
     } 
 
