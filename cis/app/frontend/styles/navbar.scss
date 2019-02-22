@@ -2,17 +2,9 @@
 @import './cis-colors.scss';
 @import './cis-misc.scss';
 
-html[lang="fr"] nav #navbar-main .navbar-item [lang="fr"],
-html[lang="en"] nav #navbar-main .navbar-item [lang="en"]{
-	text-decoration: underline;
-}
 
 nav{
 	font-size: $cis-navbar-font-size;
-}
-
-#navbar-main .navbar-item.selected a{
-	transform: translateY(0.2em);
 }
 
 #navbar-main .navbar-item{
@@ -21,6 +13,7 @@ nav{
 
 	a{
 		color: $cis-text-color;
+		padding-bottom: 0.3em;
 	}
 }
 

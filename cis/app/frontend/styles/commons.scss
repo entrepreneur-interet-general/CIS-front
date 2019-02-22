@@ -51,42 +51,49 @@ p a.colored {
 			border-right: 1px solid $cis-grey-light;
 		}
 		
-		// Animation: bar unter the text, filling itself when hovered
-		&:not(.selected) a{
-			color: inherit;
-			position: relative;
-			text-decoration: none;
-			padding-bottom: 0.3em;
-			&:hover{
-				color: inherit;
-			}
-			&:before{
-				content: "";
-				position: absolute;
-				width: 100%;
-				height: 1px;
-				bottom: 0;
-				left: 0;
-				background-color: $cis-primary;
-				visibility: hidden;
-				-webkit-transform: scaleX(0);
-				-webkit-transform-origin: left center;
-				transform: scaleX(0);
-				transform-origin: left center;
-				-webkit-transition: all 0.3s linear 0s;
-				transition: all 0.3s linear 0s;
-			}
-			&:hover:before{
-				visibility: visible;
-				-webkit-transform: scaleX(1);
-				transform: scaleX(1);
-			}
+		&.disabled{
+			color: $cis-grey-light;
 		}
-	}	
+	}
+}
+
+// Animation: bar unter the text, filling itself when hovere
+.navbar-item:not(.selected):not(.disabled) a:not(.selected):not(.disabled), 
+.cis-tabs li:not(.selected):not(.disabled) a{
+	color: inherit;
+	position: relative;
+	text-decoration: none;
+	padding-bottom: 0.4em;
+	&:hover{
+		color: inherit;
+	}
+	&:before{
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		bottom: 0;
+		left: 0;
+		background-color: $cis-primary;
+		visibility: hidden;
+		-webkit-transform: scaleX(0);
+		-webkit-transform-origin: left center;
+		transform: scaleX(0);
+		transform-origin: left center;
+		-webkit-transition: all 0.3s linear 0s;
+		transition: all 0.3s linear 0s;
+	}
+	&:hover:before{
+		visibility: visible;
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
+	}
 }
 
 #navbar-main .navbar-item.selected a,
-.cis-tabs li.selected a{
+.cis-tabs li.selected a,
+html[lang="fr"] nav #navbar-main .navbar-item [lang="fr"],
+html[lang="en"] nav #navbar-main .navbar-item [lang="en"] {
 	font-weight: bold;
 	padding-bottom: 0.3em;
 	border-bottom: 1px solid $cis-primary;
