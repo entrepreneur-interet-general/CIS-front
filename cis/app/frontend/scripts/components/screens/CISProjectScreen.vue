@@ -30,7 +30,7 @@
                                 <p>{{project.projectPartners}}</p>
                             </div>
 
-                            <a v-if="project.website" :href="project.website" target="_blank">Voir le site du projet</a>
+                            <a v-if="project.website" :href="project.website" class="link-primary" target="_blank">Voir le site du projet</a>
                         </div>
                     </div>
 
@@ -170,11 +170,6 @@ a.back{
 
     p{
         margin-bottom: 1em;
-    }
-    
-    a{
-        color: $cis-primary;
-        border-bottom: 1px solid $cis-primary;
     }
 } 
 

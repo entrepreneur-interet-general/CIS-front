@@ -30,6 +30,37 @@ p a.colored {
 	color: $cis-primary;
 	text-decoration: underline;
 }
+a.link-primary, a.link-on-primary {
+	display: inline-block;
+	margin-top: 1em;
+	text-indent: 0.2em;
+	padding-right: 0.2em;
+}
+
+a.link-primary {
+	color: $cis-primary;
+	border-bottom: 1px solid currentColor;
+	&:hover {
+		color:$cis-primary-invert;
+		background-color:$cis-primary;
+	}
+}
+a.link-on-primary {
+	color: $cis-primary-invert;
+	border-bottom: 1px solid currentColor;
+	&:hover {
+		color:$cis-primary;
+		background-color:$cis-primary-invert;
+	}
+}
+a.inline {
+	display: inline;
+}
+
+.disabled {
+	opacity: $disabled-opacity; 
+	pointer-events: none;
+}
 
 .cis-tabs{
 	display: flex;
@@ -58,8 +89,8 @@ p a.colored {
 }
 
 // Animation: bar unter the text, filling itself when hovere
-.navbar-item:not(.selected):not(.disabled) a:not(.selected):not(.disabled), 
-.cis-tabs li:not(.selected):not(.disabled) a{
+.navbar-item:not(.selected) a:not(.selected), 
+.cis-tabs li:not(.selected) a{
 	color: inherit;
 	position: relative;
 	text-decoration: none;
@@ -154,11 +185,6 @@ footer h2{
 	font-weight: bold;
 	font-size: 1.1em;
 	margin-bottom: 0.5em;
-}
-
-footer h2 a {
-	color: currentColor;
-	text-decoration: underline;
 }
 
 footer .column h2:not(:first-of-type){

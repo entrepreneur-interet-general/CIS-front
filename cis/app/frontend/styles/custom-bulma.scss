@@ -26,7 +26,8 @@ $link-hover 	: $cis-primary;
 $family-sans-serif 	: "Barlow", sans-serif ;
 $family-primary 	: $family-sans-serif ; 
 
-$button-disabled-opacity: 0.7 ;
+$disabled-opacity: 0.7 ;
+$button-disabled-opacity: $disabled-opacity ;
 
 // Import the rest of Bulma at the end
 @import "../node_modules/bulma/bulma.sass";
