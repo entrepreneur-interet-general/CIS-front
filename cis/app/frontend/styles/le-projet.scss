@@ -172,12 +172,6 @@ main#projet{
             p {
                 padding-bottom: 2em;
             }
-        
-            a {
-                color: $cis-primary;
-                border: 1px solid $cis-primary;
-                background-color: $cis-primary-invert;
-            }
         }
     }
 
@@ -200,13 +194,6 @@ main#projet{
                 color: inherit;
             }
         
-            a{
-                display: inline-block;
-                margin-top: 1em;
-        
-                color: white;
-                border-bottom: 1px solid currentColor;
-            }
         }
     }
 }

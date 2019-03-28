@@ -32,12 +32,8 @@ main#le-collectif{
                 }
 
                 a{
-                    color: $cis-primary;
                     font-weight: normal;
-            
                     white-space: nowrap;
-            
-                    border-bottom: 1px solid $cis-primary;
                 }
             }
         
@@ -88,9 +84,6 @@ main#le-collectif{
         .button{
             height: unset;
             padding: 1em 2em;
-            color: $cis-primary;
-    
-            border: 1px solid $cis-primary;
         }
     
         .rejoindre{

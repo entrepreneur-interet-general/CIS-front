@@ -30,6 +30,37 @@ p a.colored {
 	color: $cis-primary;
 	text-decoration: underline;
 }
+a.link-primary, a.link-on-primary {
+	display: inline-block;
+	margin-top: 1em;
+	text-indent: 0.2em;
+	padding-right: 0.2em;
+}
+
+a.link-primary {
+	color: $cis-primary;
+	border-bottom: 1px solid currentColor;
+	&:hover {
+		color:$cis-primary-invert;
+		background-color:$cis-primary;
+	}
+}
+a.link-on-primary {
+	color: $cis-primary-invert;
+	border-bottom: 1px solid currentColor;
+	&:hover {
+		color:$cis-primary;
+		background-color:$cis-primary-invert;
+	}
+}
+a.inline {
+	display: inline;
+}
+
+.disabled {
+	opacity: $disabled-opacity; 
+	pointer-events: none;
+}
 
 .cis-tabs{
 	display: flex;
@@ -39,9 +70,10 @@ p a.colored {
 	padding-top: $cis-spacing_4;
 	margin-bottom: $cis-spacing_3;
 
+
 	li{
 		padding: 0 2em;
-
+		transition: .3s;
 		&:first-child{
 			padding-left: 0;
 		}
@@ -50,14 +82,49 @@ p a.colored {
 			border-right: 1px solid $cis-grey-light;
 		}
 		
-		a{
-			color: inherit;
+		&.disabled{
+			color: $cis-grey-light;
 		}
-	}	
+	}
+}
+
+// Animation: bar unter the text, filling itself when hovere
+.navbar-item:not(.selected) a:not(.selected), 
+.cis-tabs li:not(.selected) a{
+	color: inherit;
+	position: relative;
+	text-decoration: none;
+	padding-bottom: 0.4em;
+	&:hover{
+		color: inherit;
+	}
+	&:before{
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		bottom: 0;
+		left: 0;
+		background-color: $cis-primary;
+		visibility: hidden;
+		-webkit-transform: scaleX(0);
+		-webkit-transform-origin: left center;
+		transform: scaleX(0);
+		transform-origin: left center;
+		-webkit-transition: all 0.3s linear 0s;
+		transition: all 0.3s linear 0s;
+	}
+	&:hover:before{
+		visibility: visible;
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
+	}
 }
 
 #navbar-main .navbar-item.selected a,
-.cis-tabs li.selected a{
+.cis-tabs li.selected a,
+html[lang="fr"] nav #navbar-main .navbar-item [lang="fr"],
+html[lang="en"] nav #navbar-main .navbar-item [lang="en"] {
 	font-weight: bold;
 	padding-bottom: 0.3em;
 	border-bottom: 1px solid $cis-primary;
@@ -118,11 +185,6 @@ footer h2{
 	font-weight: bold;
 	font-size: 1.1em;
 	margin-bottom: 0.5em;
-}
-
-footer h2 a {
-	color: currentColor;
-	text-decoration: underline;
 }
 
 footer .column h2:not(:first-of-type){
