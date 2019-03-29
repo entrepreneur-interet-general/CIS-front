@@ -31,9 +31,9 @@ $button-disabled-opacity: $disabled-opacity ;
 
 // Import the rest of Bulma at the end
 @import "../node_modules/bulma/bulma.sass";
-@import "../node_modules/bulma-checkradio/dist/css/bulma-checkradio.sass";
-@import "../node_modules/bulma-carousel/dist/css/bulma-carousel.sass";
-
+//@import "../node_modules/bulma-checkradio/dist/css/bulma-checkradio.sass";
+//@import "../node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.sass"
+@import "./git-bulma-carousel-4.0.1.sass"; // temporary fix, seems that the npm package is not up-to-date?
 
 // BULMA OVERRIDE
 
@@ -60,3 +60,25 @@ form .control{
     border-color:$primary-invert;
 }
 
+// BULMA-CAROUSEL OVERRIDE
+.slider-navigation-previous, .slider-navigation-next {
+    top: unset !important;
+    margin: 1em;
+
+    &:hover {
+	box-shadow : $cis-strong-shadow;
+    }
+
+}
+.slider:focus {
+    outline: none !important;
+}
+
+.slider-navigation-previous {
+	background-image: url('../icons/icon_chevron2_violet.svg');
+        left: calc( 50% + (-4em)); // To ensure correct spacing and alignment on various screen sizes; avoid buttons to overflow
+}
+.slider-navigation-next {
+	background-image: url('../icons/icon_chevron1_violet.svg');
+        right: calc( 50% + (-4em)); // Same as above
+}

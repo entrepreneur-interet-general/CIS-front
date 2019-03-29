@@ -56,7 +56,7 @@ main#projet{
         }
     
     
-        .caroussel{
+       /* .caroussel{
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -76,35 +76,7 @@ main#projet{
         .caroussel button:active{
             box-shadow: none;
             border: 0;
-        }
-    
-        .caroussel-container ul.caroussel-content li{
-            width: 10em;
-            padding: 0 0.5em;
-    
-            margin-right: 1em;
-    
-            background-color: $cis-grey-background;
-            white-space: normal;
-            vertical-align: top;
-    
-    
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-
-            .text{
-                font-size: 0.9em;
-                line-height: 1.2em;
-                padding: 1em;
-            }
-        
-            .text h1{
-                color: $cis-primary;
-                font-weight: bold;
-                margin-bottom: 1em;
-            }
-        }
+        }*/
     
     }
 

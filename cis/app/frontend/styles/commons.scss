@@ -130,7 +130,38 @@ html[lang="en"] nav #navbar-main .navbar-item [lang="en"] {
 	border-bottom: 1px solid $cis-primary;
 }
 
+.carousel {
+    overflow-x: hidden;
+    overflow-y: visible;
+    height: 29em;
+}
 
+.carousel-item {
+	padding: 0 0.5em;
+	margin-right: 1em;
+	margin-left: 1em;
+	background-color: $cis-grey-background;
+	white-space: normal;
+	vertical-align: top;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+        position: relative;
+
+
+	.text{
+		font-size: 0.9em;
+		line-height: 1.2em;
+		padding: 1em;
+	}
+
+	.text h1{
+		color: $cis-primary;
+		font-weight: bold;
+		margin-bottom: 1em;
+	}
+
+}
 
 .tagsinput {
 	border    : none ;

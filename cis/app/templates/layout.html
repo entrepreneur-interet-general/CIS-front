@@ -17,7 +17,12 @@
 		<meta name="user_token" 	content="test_token">
 		
 		{# BULMA EXTENSIONS NEEDING JS #}
-		{# <script type="text/javascript" src="/node_modules/bulma-extensions/bulma-carousel/dist/bulma-carousel.min.js"></script> #}
+		{#<!--
+		<script type="text/javascript" src="{{ url_for('static', filename='bulma-carousel/dist/js/bulma-carousel.js') }}"></script>
+		--> #}
+		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.1/dist/js/bulma-carousel.min.js"></script>
+                <!--	<link rel="stylesheet" href="{{ url_for('static', filename='bulma-carousel/dist/css/bulma-carousel.min.css') }}"> -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.1/dist/css/bulma-carousel.min.css">
 
 		{# GOOGLE INDEXING / cf : https://support.google.com/webmasters/answer/6259634?hl=en #}
 		<meta name="google-site-verification" content="vSnFdoQsEBUIOqbQWr3h1SRXb1mu0ttVN0fo4H25XNk" />
@@ -36,6 +41,18 @@
 
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
+		<!-- Initialize carousels -->
+		<script>
+			window.onload = function(){
+				// cf. https://github.com/Wikiki/bulma-carousel/blob/master/demo/assets/js/main.js
+                            // Only selects the carousel on the project page for now; same syntax may be used for other future carousels.
+                            var carousels=bulmaCarousel.attach('#projet>.container>.columns>.carousel', {
+                                slidesToShow: 2,
+                                infinite: true,
+                                pagination: false
+				});
+			};
+		</script>
 	</head>
 
 
